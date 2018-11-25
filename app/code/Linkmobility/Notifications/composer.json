@@ -1,0 +1,19 @@
+{
+    "name": "linkmobility/notifications",
+    "description": "Linkmobility SMS notifications module",
+    "type": "magento2-module",
+    "version": "dev-master",
+    "license": [
+        "OSL-3.0"
+    ],
+    "require": {
+    },
+    "extra": {
+        "map": [
+            [
+                "*",
+                "Linkmobility/Notifications"
+            ]
+        ]
+    }
+}
