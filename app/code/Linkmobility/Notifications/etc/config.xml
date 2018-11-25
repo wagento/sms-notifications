@@ -2,7 +2,7 @@
 
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
     <default>
-        <external>
+        <customer>
             <linkmobility_notifications>
                 <active>0</active>
                 <username/>
@@ -11,6 +11,6 @@
                 <platform_partner_id/>
                 <gate_id/>
             </linkmobility_notifications>
-        </external>
+        </customer>
     </default>
 </config>
