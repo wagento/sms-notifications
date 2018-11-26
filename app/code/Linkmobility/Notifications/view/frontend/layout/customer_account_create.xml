@@ -7,8 +7,8 @@
 -->
 <page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="1column" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
     <body>
-        <referenceBlock name="customer_form_register">
-            <block name="customer_sms_notifications" template="Linkmobility_Notifications::customer/register.phtml" after="customer.form.register.newsletter" />
+        <referenceBlock name="customer_form_register" template="Linkmobility_Notifications::customer/register.phtml">
+            <block name="customer_sms_notifications" as="customer.sms.notifications" template="Linkmobility_Notifications::customer/signup.phtml" before="-" />
         </referenceBlock>
     </body>
 </page>
