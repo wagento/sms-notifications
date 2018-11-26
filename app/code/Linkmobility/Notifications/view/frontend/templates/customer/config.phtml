@@ -1,6 +1,115 @@
-<form name="" action="" method="post">
-    <label>
-        <input type="checkbox" />
-        Enable SMS Notifications
-    </label>
+<form class="form form-account-sms" name="" action="" method="post">
+    <fieldset class="fieldset" data-container="general-configuration">
+        <legend class="legend">
+            <span data-title="general-configuration">
+                <?php echo $block->escapeHtml(__('General Configuration')) ?>
+            </span>
+        </legend>
+        <div class="field choice">
+            <input type="checkbox" name="enable_notifications" id="enable-notifications" data-role="enable-notifications" value="1" title="<?= $block->escapeHtmlAttr(__('Enable SMS notifications')) ?>" class="checkbox" />
+            <label class="label" for="change-email">
+                <span>
+                    <?php echo $block->escapeHtml(__('Enable SMS notifications')) ?>
+                </span>
+            </label>
+        </div>
+    </fieldset>
+    <fieldset class="fieldset" data-container="order-notifications">
+        <legend class="legend">
+            <span data-title="order-notifications">
+                <?php echo $block->escapeHtml(__('Order Notifications')) ?>
+            </span>
+        </legend>
+        <div class="field choice">
+            <input type="checkbox" name="sucessful" id="sucessful" data-role="sucessful" value="1" title="<?= $block->escapeHtmlAttr(__('Successful order')) ?>" class="checkbox" />
+            <label class="label" for="successful">
+                <span>
+                    <?php echo $block->escapeHtml(__('Successful order')) ?>
+                </span>
+            </label>
+            <div class="note">
+                <a href="#" class="action" title="<?php echo $block->escapeHtml(__('What is this?')) ?>"
+                   data-mage-init='{"tooltip": {"content": "<?php echo /* @noEscape */ '<p>' . $block->escapeHtml(__('Enables successful order creation notification, triggered when your order is created.')) . '</p>'; ?>"}}'>
+                    <span><?= $block->escapeHtml(__('What is this?')) ?></span>
+                </a>
+            </div>
+        </div>
+        <div class="field choice">
+            <input type="checkbox" name="updated" id="updated" data-role="updated" value="1" title="<?= $block->escapeHtmlAttr(__('Updated order')) ?>" class="checkbox" />
+            <label class="label" for="updated">
+                <span>
+                    <?php echo $block->escapeHtml(__('Updated order')) ?>
+                </span>
+            </label>
+            <div class="note">
+                <a href="#" class="action" title="<?php echo $block->escapeHtml(__('What is this?')) ?>"
+                   data-mage-init='{"tooltip": {"content": "<?php echo /* @noEscape */ '<p>' . $block->escapeHtml(__('Enables updated order notification, triggered when your order has some status change that is not listed below.')) . '</p>'; ?>"}}'>
+                    <span><?= $block->escapeHtml(__('What is this?')) ?></span>
+                </a>
+            </div>
+        </div>
+        <div class="field choice">
+            <input type="checkbox" name="shipped" id="shipped" data-role="shipped" value="1" title="<?= $block->escapeHtmlAttr(__('Shipped order items')) ?>" class="checkbox" />
+            <label class="label" for="shipped">
+                <span>
+                    <?php echo $block->escapeHtml(__('Shipped order item(s)')) ?>
+                </span>
+            </label>
+            <div class="note">
+                <a href="#" class="action" title="<?php echo $block->escapeHtml(__('What is this?')) ?>"
+                   data-mage-init='{"tooltip": {"content": "<?php echo /* @noEscape */ '<p>' . $block->escapeHtml(__('Enables shipped order items notification, triggered when one or more items in your order were shipped to the specified shipping address.')) . '</p>'; ?>"}}'>
+                    <span><?= $block->escapeHtml(__('What is this?')) ?></span>
+                </a>
+            </div>
+        </div>
+        <div class="field choice">
+            <input type="checkbox" name="refunded" id="refunded" data-role="refunded" value="1" title="<?= $block->escapeHtmlAttr(__('Refunded order items')) ?>" class="checkbox" />
+            <label class="label" for="refunded">
+                <span>
+                    <?php echo $block->escapeHtml(__('Refunded order item(s)')) ?>
+                </span>
+            </label>
+            <div class="note">
+                <a href="#" class="action" title="<?php echo $block->escapeHtml(__('What is this?')) ?>"
+                   data-mage-init='{"tooltip": {"content": "<?php echo /* @noEscape */ '<p>' . $block->escapeHtml(__('Enables refunded order items notification, triggered when one or more items in your order were refunded.')) . '</p>'; ?>"}}'>
+                    <span><?= $block->escapeHtml(__('What is this?')) ?></span>
+                </a>
+            </div>
+        </div>
+        <div class="field choice">
+            <input type="checkbox" name="completed" id="completed" data-role="completed" value="1" title="<?= $block->escapeHtmlAttr(__('Completed order')) ?>" class="checkbox" />
+            <label class="label" for="completed">
+                <span>
+                    <?php echo $block->escapeHtml(__('Completed order')) ?>
+                </span>
+            </label>
+            <div class="note">
+                <a href="#" class="action" title="<?php echo $block->escapeHtml(__('What is this?')) ?>"
+                   data-mage-init='{"tooltip": {"content": "<?php echo /* @noEscape */ '<p>' . $block->escapeHtml(__('Enables completed order notification, triggered when your order is fulfilled.')) . '</p>'; ?>"}}'>
+                    <span><?= $block->escapeHtml(__('What is this?')) ?></span>
+                </a>
+            </div>
+        </div>
+        <div class="field choice">
+            <input type="checkbox" name="on_hold" id="on-hold" data-role="on-hold" value="1" title="<?= $block->escapeHtmlAttr(__('On-hold status change')) ?>" class="checkbox" />
+            <label class="label" for="on-hold">
+                <span>
+                    <?php echo $block->escapeHtml(__('On-hold status change')) ?>
+                </span>
+            </label>
+            <div class="note">
+                <a href="#" class="action" title="<?php echo $block->escapeHtml(__('What is this?')) ?>"
+                   data-mage-init='{"tooltip": {"content": "<?php echo /* @noEscape */ '<p>' . $block->escapeHtml(__('Enables on-hold status change notification, triggered when your order has any problem and store can\'t fulfill.')) . '</p>'; ?>"}}'>
+                    <span><?= $block->escapeHtml(__('What is this?')) ?></span>
+                </a>
+            </div>
+        </div>
+    </fieldset>
+    <fieldset class="fieldset " data-container="other-notifications">
+        <legend class="legend">
+            <span data-title="other-notifications">
+                <?php echo $block->escapeHtml(__('Other Notifications')) ?>
+            </span>
+        </legend>
+    </fieldset>
 </form>
