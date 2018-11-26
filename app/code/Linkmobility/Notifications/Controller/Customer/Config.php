@@ -1,7 +1,7 @@
 <?php
 namespace Linkmobility\Notifications\Controller\Customer;
 
-class Config extends \Magento\Framework\App\Action\Action {
+class Config extends \Magento\Customer\Controller\AbstractAccount {
 
     public function execute() {
 
