@@ -1,5 +1,5 @@
 <?php
-namespace Magecomp\Mycard\Controller\Customer;
+namespace Linkmobility\Notifications\Controller\Customer;
 
 class Config extends \Magento\Framework\App\Action\Action {
 
