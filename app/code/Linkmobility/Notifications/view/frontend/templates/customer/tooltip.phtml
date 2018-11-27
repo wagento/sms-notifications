@@ -18,6 +18,10 @@
         background-color:#FFFFFF;
         border:1px solid #999999;
         border-radius:4px;
+        top: 25%;
+        left: 25%;
+        max-height: 500px;
+        overflow: auto;
     }
     .modal-sms.open {
         display:block;
@@ -25,10 +29,13 @@
     .modal-sms header {
         position: relative;
     }
+    .modal-sms header, .modal-sms .sms-config-content {
+        margin:20px;
+    }
     .modal-sms header .close {
         position: absolute;
-        right:20px;
-        top:20px;
+        right: -10px;
+        top: -20px;
         font-size: 3rem;
         color: #666666;
     }
