@@ -54,6 +54,10 @@
             $(".modal-sms .close").click(function (){
                 $(".modal-sms").removeClass("open");
             });
+            $("input[name='sms_notifications']").change (function (){
+                var checked = $(this).prop("checked");
+                $("#sms-config-preferences input[type='checkbox']").prop("checked", checked);
+            });
         });
     });
 </script>
