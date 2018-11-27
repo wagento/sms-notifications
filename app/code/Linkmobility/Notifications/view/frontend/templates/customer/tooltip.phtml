@@ -1,0 +1,9 @@
+<section>
+    <header>
+        <h6><?php echo $block->escapeHtml(__('SMS Notification Preferences')) ?></h6>
+    </header>
+    <div class="sms-config-content">
+        <legend<?php echo $block->escapeHtml(__('I would like to receive notifications about:')) ?>></legend>
+        <?php echo $block->getChildHtml("customer.sms.tooltip.orders"); ?>
+    </div>
+</section>
