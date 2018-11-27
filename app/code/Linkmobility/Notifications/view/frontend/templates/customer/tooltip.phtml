@@ -1,5 +1,6 @@
-<section class="modal" id="sms-config-preferences">
+<section class="modal-sms" id="sms-config-preferences">
     <header>
+        <a href="#" class="close">&times;</a>
         <h6><?php echo $block->escapeHtml(__('SMS Notification Preferences')) ?></h6>
     </header>
     <div class="sms-config-content">
@@ -7,3 +8,43 @@
         <?php echo $block->getChildHtml("customer.sms.tooltip.orders"); ?>
     </div>
 </section>
+<style>
+    .modal-sms {
+        display:none;
+        position: fixed;
+        width:50%;
+        min-width:350px;
+        max-width:900px;
+        background-color:#FFFFFF;
+        border:1px solid #999999;
+        border-radius:4px;
+    }
+    .modal-sms.open {
+        display:block;
+    }
+    .modal-sms header {
+        position: relative;
+    }
+    .modal-sms header .close {
+        position: absolute;
+        right:20px;
+        top:20px;
+        font-size: 3rem;
+        color: #666666;
+    }
+</style>
+<script>
+    require([
+        'jquery'
+    ], function ($) {
+        $(document).ready(function () {
+            $(".open-sms-modal").click(function (){
+                var modal = $($(this).data("target"));
+                modal.addClass("open");
+            });
+            $(".modal-sms .close").click(function (){
+                $(".modal-sms").removeClass("open");
+            });
+        });
+    });
+</script>
