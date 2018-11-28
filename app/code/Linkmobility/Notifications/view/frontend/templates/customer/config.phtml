@@ -1,4 +1,4 @@
-<form class="form form-account-sms" name="" action="" method="post">
+<form class="form form-account-sms" name="form-account-sms" action="" method="post">
     <fieldset class="fieldset" data-container="general-configuration">
         <legend class="legend">
             <span data-title="general-configuration">
@@ -23,3 +23,15 @@
         </legend>
     </fieldset>
 </form>
+<script>
+    require([
+        'jquery'
+    ], function ($) {
+        $(document).ready(function () {
+            $("input[name='enable_notifications']").change (function (){
+                var checked = $(this).prop("checked");
+                $("form[name='form-account-sms'] input[type='checkbox']").prop("checked", checked);
+            });
+        });
+    });
+</script>
