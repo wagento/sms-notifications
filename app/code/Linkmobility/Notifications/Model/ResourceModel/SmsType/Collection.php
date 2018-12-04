@@ -1,6 +1,6 @@
 <?php
 
-namespace Linkmobility\Notifications\Model\ResourceModel\Sms_Subscription;
+namespace Linkmobility\Notifications\Model\ResourceModel\SmsType;
 
 class Collection extends \Magento\Rule\Model\ResourceModel\Rule\Collection\AbstractCollection
 {
@@ -33,8 +33,8 @@ class Collection extends \Magento\Rule\Model\ResourceModel\Rule\Collection\Abstr
     protected function _construct()
     {
         $this->_init(
-            'Linkmobility\Notifications\Model\Sms_Subscription',
-            'Linkmobility\Notifications\Model\ResourceModel\Sms_Subscription'
+            'Linkmobility\Notifications\Model\SmsType',
+            'Linkmobility\Notifications\Model\ResourceModel\SmsType'
         );
     }
 

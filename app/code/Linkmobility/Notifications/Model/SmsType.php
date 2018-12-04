@@ -3,13 +3,13 @@
 namespace Linkmobility\Notifications\Model;
 
 /**
- * Class Sms_Subscription
+ * Class Sms_Type
  * @package Linkmobility\Notifications\Model
  *
  * @method int|null getSmsSubscriptionId()
  * @method Sms_Subscription setSmsSubscriptionId(int $id)
  */
-class Sms_Subscription extends AbstractModel
+class SmsType extends AbstractModel
 {
     /**
      * Prefix of model events names
@@ -25,7 +25,7 @@ class Sms_Subscription extends AbstractModel
      *
      * @var string
      */
-    protected $_eventObject = 'sms_subscription';
+    protected $_eventObject = 'sms_type';
 
 
     /**
@@ -58,8 +58,8 @@ class Sms_Subscription extends AbstractModel
     protected function _construct()
     {
         parent::_construct();
-        $this->_init('Linkmobility\Notifications\Model\ResourceModel\Sms_Subscription');
-        $this->setIdFieldName('sms_subscription_id');
+        $this->_init('Linkmobility\Notifications\Model\ResourceModel\SmsType');
+        $this->setIdFieldName('sms_type_id');
     }
     
 }

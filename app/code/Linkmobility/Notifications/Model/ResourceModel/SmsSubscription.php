@@ -2,7 +2,7 @@
 
 namespace Linkmobility\Notifications\Model\ResourceModel;
 
-class Sms_Subscription extends \Magento\Rule\Model\ResourceModel\AbstractResource
+class SmsSubscription extends \Magento\Rule\Model\ResourceModel\AbstractResource
 {
 
     /**
