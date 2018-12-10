@@ -2,6 +2,8 @@
 
 namespace Linkmobility\Notifications\Model;
 
+use Magento\Framework\Model\AbstractModel;
+
 /**
  * Class Sms_Type
  * @package Linkmobility\Notifications\Model
