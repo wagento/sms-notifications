@@ -75,15 +75,15 @@ class InstallSchema implements InstallSchemaInterface
                 ['nullable' => false, 'default' => '1'],
                 'SMS subscription status: enabled/disabled'
             )->addForeignKey(
-                $installer->getFkName('sms_subscription', 'customer_id', 'customer_entity', 'entity_id'),
+                $setup->getFkName('sms_subscription', 'customer_id', 'customer_entity', 'entity_id'),
                 'customer_id',
-                $installer->getTable('customer_entity'),
+                $setup->getTable('customer_entity'),
                 'entity_id',
                 \Magento\Framework\DB\Ddl\Table::ACTION_CASCADE
             )->addForeignKey(
-                $installer->getFkName('sms_subscription', 'sms_type_id', 'sms_type', 'sms_type_id'),
+                $setup->getFkName('sms_subscription', 'sms_type_id', 'sms_type', 'sms_type_id'),
                 'sms_type_id',
-                $installer->getTable('sms_type'),
+                $setup->getTable('sms_type'),
                 'sms_type_id',
                 \Magento\Framework\DB\Ddl\Table::ACTION_CASCADE
             )->setComment("SMS types table");
