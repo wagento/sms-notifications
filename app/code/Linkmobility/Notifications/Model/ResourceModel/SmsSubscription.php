@@ -15,4 +15,14 @@ class SmsSubscription extends AbstractResource {
     {
         $this->_init('sms_subscription', 'sms_subscription_id');
     }
+
+    /**
+     * Get connection
+     *
+     * @return \Magento\Framework\DB\Adapter\AdapterInterface
+     */
+    public function getConnection()
+    {
+        // TODO: Implement getConnection() method.
+    }
 }
