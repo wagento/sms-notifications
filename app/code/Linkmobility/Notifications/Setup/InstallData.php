@@ -30,7 +30,7 @@ class InstallData implements InstallDataInterface
         ];
         foreach ($data as $row) {
             $setup->getConnection()
-                ->insertForce($setup->getTable('sms_type_id'), $row);
+                ->insertForce($setup->getTable('sms_type'), $row);
         }
     }
 }
