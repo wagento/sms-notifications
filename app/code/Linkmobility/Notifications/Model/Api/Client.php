@@ -24,7 +24,13 @@ class Client {
     public function execute (){
         if ($this->method != NULL) {
             $service = $this->getService();
-            $request = array_merge($this->auth, $this->body);
+            $request = [];
+            if ($this->auth) {
+                $request = array_merge($request, $this->auth);
+            }
+            if ($this->body){
+                $request = array_merge($request, $this->body);
+            }
             $response = $service->request($this->verb, $this->method, $request);
 
             return $response;
@@ -57,6 +63,17 @@ class Client {
             $this->setService();
         }
         return $this->service;
+    }
+
+    public function setBody ($body){
+        if (!is_array($body)){
+            $body = [];
+        }
+        $platformId = $this->scopeConfig->getValue("customer/linkmobility_notifications/platform_id");
+        $platformPartnerId = $this->scopeConfig->getValue("customer/linkmobility_notifications/platform_partner_id");
+        //$gateId = $this->scopeConfig->getValue("customer/linkmobility_notifications/gate_id");
+
+        $this->body = array_merge($body, ["platformId" => $platformId, "platformPartnerId" => $platformPartnerId]);
     }
 
     protected function getURI (){
