@@ -2,8 +2,9 @@
 
 namespace Linkmobility\Notifications\Model\ResourceModel;
 
-class SmsSubscription extends \Magento\Rule\Model\ResourceModel\AbstractResource
-{
+use Magento\Framework\Model\ResourceModel\AbstractResource;
+
+class SmsSubscription extends AbstractResource {
 
     /**
      * Initialize main table and table id field
