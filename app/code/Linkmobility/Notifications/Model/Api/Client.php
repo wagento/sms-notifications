@@ -88,7 +88,7 @@ abstract class Client {
         if (!is_array($headers)){
             $headers = [];
         }
-        $this->head = array_merge($headers, ["Accept" => "application/json", "content-type" => "application/json"])
+        $this->head = array_merge($headers, ["Accept" => "application/json", "content-type" => "application/json"]);
     }
 
     protected function getURI (){
