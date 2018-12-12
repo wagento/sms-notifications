@@ -22,6 +22,7 @@ class Send extends \Linkmobility\Notifications\Model\Api\Client {
         if (!$this->getUserData()) {
             throw new \Exception("Linkmobility API: text message is empty");
         }
+        $this->setMethod("send");
         $request = array_merge($request, [
             "source" => $this->getSource(),
             "sourceTON" => self::TON,

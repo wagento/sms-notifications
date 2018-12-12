@@ -30,9 +30,12 @@ abstract class Client {
             if ($this->body){
                 $request = array_merge($request, $this->body);
             }
-            $response = $service->request($this->verb, $this->method, $request);
-
-            return $response;
+            if ($this->isEnabled()) {
+                $response = $service->request($this->verb, $this->method, $request);
+                return $response;
+            } else {
+                throw new \Exception("Linkmobility Client Exception: module is not enabled.");
+            }
         } else {
             throw new \Exception("Linkmobility Client Exception: no method defined.");
         }
@@ -85,5 +88,9 @@ abstract class Client {
         if ($username && $password) {
             $this->auth = ["auth" => [$username, $password]];
         }
+    }
+
+    protected function isEnabled() {
+        return $this->_scopeConfig->getValue("customer/linkmobility_notifications/active");
     }
 }
