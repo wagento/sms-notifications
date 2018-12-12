@@ -31,13 +31,13 @@ class CreateOrder  implements \Magento\Framework\Event\ObserverInterface {
             ->setUserData(
                 "Your order number {$order->getIncrementalId()} was received successfully. Thank you."
             );
-        $this->_logger->debug("Linkmobility: preparing request");
+        $this->_logger->info("Linkmobility: preparing request");
         try {
             $response = $this->_sender->execute();
-            $this->_logger->debug("Linkmobility: response received");
-            $this->_logger->debug(print_r($response, TRUE));
+            $this->_logger->info("Linkmobility: response received");
+            $this->_logger->info(print_r($response, TRUE));
         }catch (\Exception $e){
-            $this->_logger->debug($e->getMessage());
+            $this->_logger->info($e->getMessage());
         }
 
         return $this;
