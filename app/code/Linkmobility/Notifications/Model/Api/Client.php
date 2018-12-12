@@ -15,8 +15,13 @@ abstract class Client {
     protected $body;
     protected $head;
     protected $queryString;
+    protected $_logger;
 
-    public function __construct (\Magento\Framework\App\Config\ScopeConfigInterface $scopeConfig){
+    public function __construct (
+        \Psr\Log\LoggerInterface $logger,
+        \Magento\Framework\App\Config\ScopeConfigInterface $scopeConfig
+    ){
+        $this->_logger = $logger;
         $this->scopeConfig = $scopeConfig;
         $this->verb = self::METHOD_POST;
     }
@@ -38,6 +43,7 @@ abstract class Client {
                 array_push($request, ["body" => json_encode ($this->body)]);
             }
             if ($this->isEnabled()) {
+                $this->_logger->info(print_r($request, TRUE));
                 $response = $service->request($this->verb, $this->method, $request);
                 return $response;
             } else {
