@@ -34,13 +34,13 @@ abstract class Client {
             $this->setHead();
             $this->setAuth();
             if ($this->head){
-                array_push($request, ["headers" => $this->head]);
+                $request = array_merge($request, ["headers" => $this->head]);
             }
             if ($this->auth){
-                array_push($request, $this->auth);
+                $request = array_merge($request, $this->auth);
             }
             if ($this->body){
-                array_push($request, ["body" => json_encode ($this->body)]);
+                $request = array_merge($request, ["body" => json_encode ($this->body)]);
             }
             if ($this->isEnabled()) {
                 $this->_logger->info(print_r($request, TRUE));
