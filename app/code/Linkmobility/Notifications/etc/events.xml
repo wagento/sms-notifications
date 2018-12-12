@@ -3,4 +3,19 @@
     <event name="sales_order_place_after">
         <observer name="create_order" instance="Linkmobility\Notifications\Observer\CreateOrder" />
     </event>
+    <event name="sales_order_shipment_save_after">
+        <observer name="ship_order" instance="Linkmobility\Notifications\Observer\ShipOrder" />
+    </event>
+    <event name="sales_order_payment_refund">
+        <observer name="refund_order" instance="Linkmobility\Notifications\Observer\RefundOrder" />
+    </event>
+    <event name="order_cancel_after">
+        <observer name="cancel_order" instance="Linkmobility\Notifications\Observer\UpdateOrder" />
+    </event>
+    <event name="sales_order_status_unassign">
+        <observer name="status_order" instance="Linkmobility\Notifications\Observer\UpdateOrder" />
+    </event>
+    <event name="sales_order_payment_place_end">
+        <observer name="payment_order" instance="Linkmobility\Notifications\Observer\UpdateOrder" />
+    </event>
 </config>
