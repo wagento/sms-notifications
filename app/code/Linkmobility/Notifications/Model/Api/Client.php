@@ -1,7 +1,7 @@
 <?php
 namespace Linkmobility\Notifications\Model\Api;
 
-class Client {
+abstract class Client {
 
     const BASE_URI = "https://wsx.sp247.net/sms/";
     const METHOD_GET = "GET";
@@ -21,10 +21,9 @@ class Client {
         $this->verb = self::METHOD_POST;
     }
 
-    public function execute (){
+    public function execute (array $request = []){
         if ($this->method != NULL) {
             $service = $this->getService();
-            $request = [];
             if ($this->auth) {
                 $request = array_merge($request, $this->auth);
             }

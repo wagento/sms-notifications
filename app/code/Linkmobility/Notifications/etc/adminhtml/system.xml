@@ -23,6 +23,10 @@
                 <field id="gate_id" translate="label" type="text" sortOrder="5" showInDefault="1" showInWebsite="0" showInStore="0">
                     <label>Gate ID</label>
                 </field>
+                <field id="source_number" translate="label" type="text" sortOrder="6" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Source Phone Number</label>
+                    <comment>A mobile number, international format, starting with +.</comment>
+                </field>
             </group>
         </section>
     </system>
