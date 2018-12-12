@@ -91,6 +91,6 @@ abstract class Client {
     }
 
     protected function isEnabled() {
-        return $this->_scopeConfig->getValue("customer/linkmobility_notifications/active");
+        return $this->scopeConfig->getValue("customer/linkmobility_notifications/active");
     }
 }
