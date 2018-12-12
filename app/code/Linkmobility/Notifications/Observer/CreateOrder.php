@@ -23,7 +23,7 @@ class CreateOrder  implements \Magento\Framework\Event\ObserverInterface {
         $event = $observer->getEvent();
         $order = $event->getOrder();
         $address = ($order->getShippingAddress() ? : $order->getBillingAddress());
-        $telephone = ($address ? $address->getgetTelephone() : NULL);
+        $telephone = ($address ? $address->getTelephone() : NULL);
 
         $this->_sender
             ->setSource(
