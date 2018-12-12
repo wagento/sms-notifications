@@ -21,10 +21,11 @@ abstract class Client {
         $this->verb = self::METHOD_POST;
     }
 
-    public function execute (array $request = []){
+    public function execute (array $requestBody = []){
         if ($this->method != NULL) {
             $service = $this->getService();
-            $this->setBody();
+            $request = [];
+            $this->setBody($requestBody);
             $this->setHead();
             $this->setAuth();
             if ($this->head){
