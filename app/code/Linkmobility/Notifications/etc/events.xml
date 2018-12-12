@@ -3,7 +3,7 @@
     <event name="sales_order_place_after">
         <observer name="create_order" instance="Linkmobility\Notifications\Observer\CreateOrder" />
     </event>
-    <event name="sales_order_shipment_save_after">
+    <!--event name="sales_order_shipment_save_after">
         <observer name="ship_order" instance="Linkmobility\Notifications\Observer\ShipOrder" />
     </event>
     <event name="sales_order_payment_refund">
@@ -17,5 +17,5 @@
     </event>
     <event name="sales_order_payment_place_end">
         <observer name="payment_order" instance="Linkmobility\Notifications\Observer\UpdateOrder" />
-    </event>
+    </event-->
 </config>
