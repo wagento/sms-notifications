@@ -31,7 +31,7 @@ class CreateOrder  implements \Magento\Framework\Event\ObserverInterface {
             )
             ->setDestination($telephone)
             ->setUserData(
-                "Your order number {$order->getIncrementalId()} was received successfully. Thank you."
+                "Your order number {$order->getIncrementId()} was received successfully. Thank you."
             );
         $this->_logger->info("Linkmobility: preparing request");
         try {

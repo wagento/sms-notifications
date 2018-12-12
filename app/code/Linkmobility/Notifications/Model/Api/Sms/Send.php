@@ -9,7 +9,7 @@ class Send extends \Linkmobility\Notifications\Model\Api\Client {
     private $destination;
     private $userData;
     private $useDeliveryReport = FALSE;
-    private $ignoreResponse = TRUE;
+    private $ignoreResponse = FALSE;
 
     public function execute(array $request = [])
     {
