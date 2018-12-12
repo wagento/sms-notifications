@@ -11,7 +11,7 @@ class Send extends \Linkmobility\Notifications\Model\Api\Client {
     private $useDeliveryReport = FALSE;
     private $ignoreResponse = TRUE;
 
-    public function execute()
+    public function execute(array $request = [])
     {
         if (!$this->getSource()) {
             throw new \Exception("Linkmobility API: no source number defined");
@@ -22,7 +22,7 @@ class Send extends \Linkmobility\Notifications\Model\Api\Client {
         if (!$this->getUserData()) {
             throw new \Exception("Linkmobility API: text message is empty");
         }
-        $request = [
+        $request = array_merge($request, [
             "source" => $this->getSource(),
             "sourceTON" => self::TON,
             "destination" => $this->getDestination(),
@@ -30,7 +30,7 @@ class Send extends \Linkmobility\Notifications\Model\Api\Client {
             "userData" => $this->userData,
             "useDeliveryReport" => $this->useDeliveryReport,
             "ignoreResponse" => $this->ignoreResponse
-        ];
+        ]);
 
         return parent::execute($request);
     }
