@@ -24,11 +24,17 @@ abstract class Client {
     public function execute (array $request = []){
         if ($this->method != NULL) {
             $service = $this->getService();
-            if ($this->auth) {
-                $request = array_merge($request, $this->auth);
+            $this->setBody();
+            $this->setHead();
+            $this->setAuth();
+            if ($this->head){
+                array_push($request, ["headers" => $this->head])
+            }
+            if ($this->auth){
+                array_push($request, $this->auth);
             }
             if ($this->body){
-                $request = array_merge($request, $this->body);
+                array_push($request, ["body" => json_encode ($this->body)]);
             }
             if ($this->isEnabled()) {
                 $response = $service->request($this->verb, $this->method, $request);
@@ -76,6 +82,13 @@ abstract class Client {
         //$gateId = $this->scopeConfig->getValue("customer/linkmobility_notifications/gate_id");
 
         $this->body = array_merge($body, ["platformId" => $platformId, "platformPartnerId" => $platformPartnerId]);
+    }
+
+    public function setHead ($headers){
+        if (!is_array($headers)){
+            $headers = [];
+        }
+        $this->head = array_merge($headers, ["Accept" => "application/json", "content-type" => "application/json"])
     }
 
     protected function getURI (){
