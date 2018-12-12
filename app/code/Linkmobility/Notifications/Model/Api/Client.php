@@ -28,7 +28,7 @@ abstract class Client {
             $this->setHead();
             $this->setAuth();
             if ($this->head){
-                array_push($request, ["headers" => $this->head])
+                array_push($request, ["headers" => $this->head]);
             }
             if ($this->auth){
                 array_push($request, $this->auth);
