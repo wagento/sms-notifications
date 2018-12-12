@@ -2,7 +2,7 @@
 namespace Linkmobility\Notifications\Observer;
 
 
-class CreateOrder  implements \Magento\Framework\Event\ObserverInterface {
+class UpdateOrder  implements \Magento\Framework\Event\ObserverInterface {
 
     protected $_logger;
     protected $_sender;
