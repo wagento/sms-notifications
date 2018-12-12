@@ -22,12 +22,14 @@ class CreateOrder  implements \Magento\Framework\Event\ObserverInterface {
     public function execute(\Magento\Framework\Event\Observer $observer) {
         $event = $observer->getEvent();
         $order = $event->getOrder();
+        $address = ($order->getShippingAddress() ? : $order->getBillingAddress());
+        $telephone = ($address ? $address->getgetTelephone() : NULL);
 
         $this->_sender
             ->setSource(
                 $this->_scopeConfig->getValue("customer/linkmobility_notifications/source_number")
             )
-            ->setDestination($order->getShippingAddress()->getTelephone())
+            ->setDestination($telephone)
             ->setUserData(
                 "Your order number {$order->getIncrementalId()} was received successfully. Thank you."
             );
