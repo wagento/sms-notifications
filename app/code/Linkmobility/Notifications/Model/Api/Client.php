@@ -16,12 +16,15 @@ abstract class Client {
     protected $head;
     protected $queryString;
     protected $_logger;
+    protected $_encryptor;
 
     public function __construct (
         \Psr\Log\LoggerInterface $logger,
+        \Magento\Framework\Encryption\EncryptorInterface $encryptor,
         \Magento\Framework\App\Config\ScopeConfigInterface $scopeConfig
     ){
         $this->_logger = $logger;
+        $this->_encryptor = $encryptor;
         $this->scopeConfig = $scopeConfig;
         $this->verb = self::METHOD_POST;
     }
@@ -100,7 +103,7 @@ abstract class Client {
         $username = $this->scopeConfig->getValue("customer/linkmobility_notifications/username");
         $password = $this->scopeConfig->getValue("customer/linkmobility_notifications/password");
         if ($username && $password) {
-            $this->auth = ["auth" => [$username, $password]];
+            $this->auth = ["auth" => [$username, $this->_encryptor->decrypt ($password)]];
         }
     }
 
