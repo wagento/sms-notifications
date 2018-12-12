@@ -73,10 +73,7 @@ abstract class Client {
         return $this->service;
     }
 
-    public function setBody ($body){
-        if (!is_array($body)){
-            $body = [];
-        }
+    public function setBody (array $body = []){
         $platformId = $this->scopeConfig->getValue("customer/linkmobility_notifications/platform_id");
         $platformPartnerId = $this->scopeConfig->getValue("customer/linkmobility_notifications/platform_partner_id");
         //$gateId = $this->scopeConfig->getValue("customer/linkmobility_notifications/gate_id");
@@ -84,10 +81,7 @@ abstract class Client {
         $this->body = array_merge($body, ["platformId" => $platformId, "platformPartnerId" => $platformPartnerId]);
     }
 
-    public function setHead ($headers){
-        if (!is_array($headers)){
-            $headers = [];
-        }
+    public function setHead (array $headers = []){
         $this->head = array_merge($headers, ["Accept" => "application/json", "content-type" => "application/json"]);
     }
 
