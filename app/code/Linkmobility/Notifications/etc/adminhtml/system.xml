@@ -1,7 +1,11 @@
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../../../Magento/Config/etc/system_file.xsd">
     <system>
-        <section id="customer">
-            <group id="linkmobility_notifications" translate="label" type="text" sortOrder="100" showInDefault="1" showInWebsite="1" showInStore="1">
+        <section id="linkmobility" translate="label" sortOrder="302" showInDefault="1" showInWebsite="1" showInStore="1">
+            <class>separator-top</class>
+            <label>Linkmobility SMS</label>
+            <resource>Linkmobility_Notifications::sms_configuration</resource>
+            <tab>sales</tab>
+            <group id="sms_notifications" translate="label" type="text" sortOrder="0" showInDefault="1" showInWebsite="1" showInStore="1">
                 <label>Linkmobility SMS notifications settings</label>
                 <field id="active" translate="label" type="select" sortOrder="0" showInDefault="1" showInWebsite="1" showInStore="1">
                     <label>Enabled</label>
