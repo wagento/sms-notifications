@@ -27,7 +27,7 @@ class CreateOrder  implements \Magento\Framework\Event\ObserverInterface {
 
         $this->_sender
             ->setSource(
-                $this->_scopeConfig->getValue("customer/linkmobility_notifications/source_number")
+                $this->_scopeConfig->getValue("linkmobility/sms_notifications/source_number")
             )
             ->setDestination($telephone)
             ->setUserData(

@@ -84,8 +84,8 @@ abstract class Client {
     }
 
     public function setBody (array $body = []){
-        $platformId = $this->scopeConfig->getValue("customer/linkmobility_notifications/platform_id");
-        $platformPartnerId = $this->scopeConfig->getValue("customer/linkmobility_notifications/platform_partner_id");
+        $platformId = $this->scopeConfig->getValue("linkmobility/sms_notifications/platform_id");
+        $platformPartnerId = $this->scopeConfig->getValue("linkmobility/sms_notifications/platform_partner_id");
         //$gateId = $this->scopeConfig->getValue("customer/linkmobility_notifications/gate_id");
 
         $this->body = array_merge($body, ["platformId" => $platformId, "platformPartnerId" => $platformPartnerId]);
@@ -100,14 +100,14 @@ abstract class Client {
     }
 
     protected function setAuth (){
-        $username = $this->scopeConfig->getValue("customer/linkmobility_notifications/username");
-        $password = $this->scopeConfig->getValue("customer/linkmobility_notifications/password");
+        $username = $this->scopeConfig->getValue("linkmobility/sms_notifications/username");
+        $password = $this->scopeConfig->getValue("linkmobility/sms_notifications/password");
         if ($username && $password) {
             $this->auth = ["auth" => [$username, $this->_encryptor->decrypt ($password)]];
         }
     }
 
     protected function isEnabled() {
-        return $this->scopeConfig->getValue("customer/linkmobility_notifications/active");
+        return $this->scopeConfig->getValue("linkmobility/sms_notifications/active");
     }
 }
