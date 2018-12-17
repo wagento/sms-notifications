@@ -7,7 +7,7 @@
  *
  * @package Linkmobility\Notifications\Model\ResourceModel\SmsType
  * @author Joseph Leedy <joseph@wagento.com>
- * @author Yair García Torres <@wagento.com>
+ * @author Yair García Torres <yair.garcia@wagento.com>
  * @copyright Copyright (c) LINK Mobility (https://www.linkmobility.com/)
  * @license https://opensource.org/licenses/OSL-3.0.php Open Software License 3.0
  */
@@ -24,7 +24,7 @@ use Magento\Framework\Model\ResourceModel\Db\Collection\AbstractCollection;
  * SMS Type Collection
  *
  * @package Linkmobility\Notifications\Model\ResourceModel\SmsType
- * @author Yair García Torres <@wagento.com>
+ * @author Yair García Torres <yair.garcia@wagento.com>
  * @author Joseph Leedy <joseph@wagento.com>
  */
 class Collection extends AbstractCollection

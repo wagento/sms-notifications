@@ -7,7 +7,7 @@
  *
  * @package Linkmobility\Notifications\Model
  * @author Joseph Leedy <joseph@wagento.com>
- * @author Yair García Torres <@wagento.com>
+ * @author Yair García Torres <yair.garcia@wagento.com>
  * @copyright Copyright (c) LINK Mobility (https://www.linkmobility.com/)
  * @license https://opensource.org/licenses/OSL-3.0.php Open Software License 3.0
  */
@@ -30,7 +30,7 @@ use Magento\Framework\Registry;
  * SMS Type Model
  *
  * @package Linkmobility\Notifications\Model
- * @author Yair García Torres <@wagento.com>
+ * @author Yair García Torres <yair.garcia@wagento.com>
  * @author Joseph Leedy <joseph@wagento.com>
  */
 class SmsType extends AbstractModel
