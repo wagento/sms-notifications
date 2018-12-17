@@ -111,7 +111,7 @@ class SmsSubscription extends AbstractModel
 
     public function setIsActive(bool $isActive): SmsSubscription
     {
-        $this->setData('is_active', (int)$isActive);
+        return $this->setData('is_active', (int)$isActive);
     }
 
     public function getIsActive(): bool
