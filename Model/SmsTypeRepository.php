@@ -150,12 +150,12 @@ class SmsTypeRepository implements SmsTypeRepositoryInterface
 
             $this->smsTypeResourceModel->save($smsTypeModel);
 
-            $savedMembership = $this->get($smsType->getSmsTypeId());
+            $savedSmsType = $this->get((int)$smsTypeModel->getId());
         } catch(\Exception $e) {
             throw new CouldNotSaveException(__($e->getMessage()));
         }
 
-        return $savedMembership;
+        return $savedSmsType;
     }
 
     /**

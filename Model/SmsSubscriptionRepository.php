@@ -150,12 +150,12 @@ class SmsSubscriptionRepository implements SmsSubscriptionRepositoryInterface
 
             $this->smsSubscriptionResourceModel->save($smsSubscriptionModel);
 
-            $savedMembership = $this->get($smsSubscription->getSmsSubscriptionId());
+            $savedSmsSubscription = $this->get((int)$smsSubscriptionModel->getId());
         } catch(\Exception $e) {
             throw new CouldNotSaveException(__($e->getMessage()));
         }
 
-        return $savedMembership;
+        return $savedSmsSubscription;
     }
 
     /**
