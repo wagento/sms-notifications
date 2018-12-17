@@ -56,14 +56,14 @@ final class SmsType extends AbstractSimpleObject implements SmsTypeInterface
         return $this->_get(self::NAME);
     }
 
-    public function setStatus(string $status): SmsTypeInterface
+    public function setIsActive(bool $isActive): SmsTypeInterface
     {
-        return $this->setData(self::STATUS, $status);
+        return $this->setData(self::IS_ACTIVE, $isActive);
     }
 
-    public function getStatus(): ?string
+    public function getIsActive(): bool
     {
-        return $this->_get(self::STATUS);
+        return (bool)$this->_get(self::IS_ACTIVE);
     }
 
     public function setDescription(string $description): SmsTypeInterface

@@ -76,6 +76,7 @@ class SmsType extends AbstractModel
     public function getDataModel(): SmsTypeInterface
     {
         $smsTypeData = $this->getData();
+        $smsTypeData['is_active'] = $this->getIsActive();
         /** @var \Linkmobility\Notifications\Api\Data\SmsTypeInterface $smsType */
         $smsType = $this->smsTypeFactory->create();
 
@@ -103,6 +104,16 @@ class SmsType extends AbstractModel
         }
 
         return $this;
+    }
+
+    public function setIsActive(bool $isActive): SmsType
+    {
+        $this->setData('is_active', (int)$isActive);
+    }
+
+    public function getIsActive(): bool
+    {
+        return (bool)$this->getData('is_active');
     }
 
     protected function _construct()

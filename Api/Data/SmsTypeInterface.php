@@ -26,7 +26,7 @@ interface SmsTypeInterface
 {
     const SMS_TYPE_ID = 'sms_type_id';
     const NAME = 'name';
-    const STATUS = 'status';
+    const IS_ACTIVE = 'is_active';
     const DESCRIPTION = 'description';
 
     public function setId(int $smsTypeId): SmsTypeInterface;
@@ -38,8 +38,8 @@ interface SmsTypeInterface
     public function setName(string $name): SmsTypeInterface;
     public function getName(): ?string;
 
-    public function setStatus(string $status): SmsTypeInterface;
-    public function getStatus(): ?string;
+    public function setIsActive(bool $isActive): SmsTypeInterface;
+    public function getIsActive(): bool;
 
     public function setDescription(string $description): SmsTypeInterface;
     public function getDescription(): ?string;

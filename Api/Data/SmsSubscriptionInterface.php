@@ -26,7 +26,7 @@ interface SmsSubscriptionInterface
     const SMS_SUBSCRIPTION_ID = 'sms_subscription_id';
     const CUSTOMER_ID = 'customer_id';
     const SMS_TYPE_ID = 'sms_type_id';
-    const STATUS = 'status';
+    const IS_ACTIVE = 'is_active';
 
     public function setId(int $id): SmsSubscriptionInterface;
     public function getId(): ?int;
@@ -40,6 +40,6 @@ interface SmsSubscriptionInterface
     public function setSmsTypeId(int $smsTypeId): SmsSubscriptionInterface;
     public function getSmsTypeId(): ?int;
 
-    public function setStatus(int $status): SmsSubscriptionInterface;
-    public function getStatus(): ?int;
+    public function setIsActive(bool $isActive): SmsSubscriptionInterface;
+    public function getIsActive(): bool;
 }

@@ -66,13 +66,13 @@ final class SmsSubscription extends AbstractSimpleObject implements SmsSubscript
         return $this->_get(self::SMS_TYPE_ID);
     }
 
-    public function setStatus(int $status): SmsSubscriptionInterface
+    public function setIsActive(bool $isActive): SmsSubscriptionInterface
     {
-        return $this->setData(self::STATUS, $status);
+        return $this->setData(self::IS_ACTIVE, $isActive);
     }
 
-    public function getStatus(): ?int
+    public function getIsActive(): bool
     {
-        return $this->_get(self::STATUS);
+        return (bool)$this->_get(self::IS_ACTIVE);
     }
 }

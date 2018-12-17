@@ -35,11 +35,11 @@ class InstallSchema implements InstallSchemaInterface
                 ['nullable' => false, 'default' => ''],
                 'SMS identifier name'
             )->addColumn(
-                'status',
+                'is_active',
                 \Magento\Framework\DB\Ddl\Table::TYPE_SMALLINT,
                 null,
                 ['nullable' => false, 'default' => '1'],
-                'SMS type statuses'
+                'Whether SMS Type is enabled or disabled'
             )->addColumn(
                 'description',
                 \Magento\Framework\DB\Ddl\Table::TYPE_TEXT,
@@ -69,7 +69,7 @@ class InstallSchema implements InstallSchemaInterface
                 ['nullable' => false, 'unsigned' => true],
                 'SMS type ID'
             )->addColumn(
-                'status',
+                'is_active',
                 \Magento\Framework\DB\Ddl\Table::TYPE_SMALLINT,
                 null,
                 ['nullable' => false, 'default' => '1'],
