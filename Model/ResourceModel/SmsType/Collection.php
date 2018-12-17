@@ -17,7 +17,8 @@ namespace Linkmobility\Notifications\Model\ResourceModel\SmsType;
 
 use Linkmobility\Notifications\Model\ResourceModel\SmsType as SmsTypeResourceModel;
 use Linkmobility\Notifications\Model\SmsType as SmsTypeModel;
-use Magento\Rule\Model\ResourceModel\Rule\Collection\AbstractCollection;
+use Magento\Framework\Model\ResourceModel\Db\Collection\AbstractCollection;
+
 
 /**
  * SMS Type Collection
