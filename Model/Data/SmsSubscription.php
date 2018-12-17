@@ -26,51 +26,86 @@ use Magento\Framework\Api\AbstractSimpleObject;
  */
 final class SmsSubscription extends AbstractSimpleObject implements SmsSubscriptionInterface
 {
+    /**
+     * @param int $id
+     * @return \Linkmobility\Notifications\Api\Data\SmsSubscriptionInterface
+     */
     public function setId(int $id): SmsSubscriptionInterface
     {
         return $this->setSmsSubscriptionId($id);
     }
 
+    /**
+     * @return int|null
+     */
     public function getId(): ?int
     {
         return $this->getSmsSubscriptionId();
     }
 
+    /**
+     * @param int $smsSubscriptionId
+     * @return \Linkmobility\Notifications\Api\Data\SmsSubscriptionInterface
+     */
     public function setSmsSubscriptionId(int $smsSubscriptionId): SmsSubscriptionInterface
     {
         return $this->setData(self::SMS_SUBSCRIPTION_ID, $smsSubscriptionId);
     }
 
+    /**
+     * @return int|null
+     */
     public function getSmsSubscriptionId(): ?int
     {
         return $this->_get(self::SMS_SUBSCRIPTION_ID);
     }
 
+    /**
+     * @param string $customerId
+     * @return \Linkmobility\Notifications\Api\Data\SmsSubscriptionInterface
+     */
     public function setCustomerId(string $customerId): SmsSubscriptionInterface
     {
         return $this->setData(self::CUSTOMER_ID, $customerId);
     }
 
+    /**
+     * @return string|null
+     */
     public function getCustomerId(): ?string
     {
         return $this->_get(self::CUSTOMER_ID);
     }
 
+    /**
+     * @param int $smsTypeId
+     * @return \Linkmobility\Notifications\Api\Data\SmsSubscriptionInterface
+     */
     public function setSmsTypeId(int $smsTypeId): SmsSubscriptionInterface
     {
         return $this->setData(self::SMS_TYPE_ID, $smsTypeId);
     }
 
+    /**
+     * @return int|null
+     */
     public function getSmsTypeId(): ?int
     {
         return $this->_get(self::SMS_TYPE_ID);
     }
 
+    /**
+     * @param bool $isActive
+     * @return \Linkmobility\Notifications\Api\Data\SmsSubscriptionInterface
+     */
     public function setIsActive(bool $isActive): SmsSubscriptionInterface
     {
         return $this->setData(self::IS_ACTIVE, $isActive);
     }
 
+    /**
+     * @return bool
+     */
     public function getIsActive(): bool
     {
         return (bool)$this->_get(self::IS_ACTIVE);
