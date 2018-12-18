@@ -20,4 +20,34 @@
             </argument>
         </arguments>
     </type>
+    <type name="Linkmobility\Notifications\Model\Api\Client">
+        <arguments>
+            <argument name="logger" xsi:type="object">Linkmobility\Notifications\Logger\Logger</argument>
+        </arguments>
+    </type>
+    <type name="Linkmobility\Notifications\Observer\CancelOrder">
+        <arguments>
+            <argument name="logger" xsi:type="object">Linkmobility\Notifications\Logger\Logger</argument>
+        </arguments>
+    </type>
+    <type name="Linkmobility\Notifications\Observer\CreateOrder">
+        <arguments>
+            <argument name="logger" xsi:type="object">Linkmobility\Notifications\Logger\Logger</argument>
+        </arguments>
+    </type>
+    <type name="Linkmobility\Notifications\Observer\RefundOrder">
+        <arguments>
+            <argument name="logger" xsi:type="object">Linkmobility\Notifications\Logger\Logger</argument>
+        </arguments>
+    </type>
+    <type name="Linkmobility\Notifications\Observer\ShipOrder">
+        <arguments>
+            <argument name="logger" xsi:type="object">Linkmobility\Notifications\Logger\Logger</argument>
+        </arguments>
+    </type>
+    <type name="Linkmobility\Notifications\Observer\UpdateOrder">
+        <arguments>
+            <argument name="logger" xsi:type="object">Linkmobility\Notifications\Logger\Logger</argument>
+        </arguments>
+    </type>
 </config>
