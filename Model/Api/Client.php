@@ -1,6 +1,8 @@
 <?php
 namespace Linkmobility\Notifications\Model\Api;
 
+use Linkmobility\Notifications\Api\ConfigInterface;
+
 abstract class Client {
 
     const BASE_URI = "https://wsx.sp247.net/sms/";
@@ -10,23 +12,24 @@ abstract class Client {
     protected $service;
     protected $method;
     protected $verb;
-    protected $scopeConfig;
     protected $auth;
     protected $body;
     protected $head;
     protected $queryString;
     protected $_logger;
-    protected $_encryptor;
+
+    /**
+     * @var \Linkmobility\Notifications\Api\ConfigInterface
+     */
+    private $config;
 
     public function __construct (
         \Psr\Log\LoggerInterface $logger,
-        \Magento\Framework\Encryption\EncryptorInterface $encryptor,
-        \Magento\Framework\App\Config\ScopeConfigInterface $scopeConfig
+        ConfigInterface $config
     ){
         $this->_logger = $logger;
-        $this->_encryptor = $encryptor;
-        $this->scopeConfig = $scopeConfig;
         $this->verb = self::METHOD_POST;
+        $this->config = $config;
     }
 
     public function execute (array $requestBody = []){
@@ -84,9 +87,9 @@ abstract class Client {
     }
 
     public function setBody (array $body = []){
-        $platformId = $this->scopeConfig->getValue("linkmobility/sms_notifications/platform_id");
-        $platformPartnerId = $this->scopeConfig->getValue("linkmobility/sms_notifications/platform_partner_id");
-        //$gateId = $this->scopeConfig->getValue("customer/linkmobility_notifications/gate_id");
+        $platformId = $this->config->getPlatformId();
+        $platformPartnerId = $this->config->getPlatformPartnerId();
+        //$gateId = $this->config->getGateId();
 
         $this->body = array_merge($body, ["platformId" => $platformId, "platformPartnerId" => $platformPartnerId]);
     }
@@ -100,14 +103,14 @@ abstract class Client {
     }
 
     protected function setAuth (){
-        $username = $this->scopeConfig->getValue("linkmobility/sms_notifications/username");
-        $password = $this->scopeConfig->getValue("linkmobility/sms_notifications/password");
+        $username = $this->config->getApiUser();
+        $password = $this->config->getApiPassword();
         if ($username && $password) {
-            $this->auth = ["auth" => [$username, $this->_encryptor->decrypt ($password)]];
+            $this->auth = ["auth" => [$username, $password]];
         }
     }
 
     protected function isEnabled() {
-        return $this->scopeConfig->getValue("linkmobility/sms_notifications/active");
+        return $this->config->isEnabled();
     }
 }

@@ -2,21 +2,26 @@
 namespace Linkmobility\Notifications\Observer;
 
 
+use Linkmobility\Notifications\Api\ConfigInterface;
+
 class ShipOrder  implements \Magento\Framework\Event\ObserverInterface {
 
     protected $_logger;
     protected $_sender;
-    protected $_scopeConfig;
 
+    /**
+     * @var \Linkmobility\Notifications\Api\ConfigInterface
+     */
+    private $config;
 
     public function __construct(
         \Psr\Log\LoggerInterface $logger,
-        \Magento\Framework\App\Config\ScopeConfigInterface $scopeConfig,
+        ConfigInterface $config,
         \Linkmobility\Notifications\Model\Api\Sms\Send $sender
     ) {
         $this->_logger = $logger;
-        $this->_scopeConfig = $scopeConfig;
         $this->_sender = $sender;
+        $this->config = $config;
     }
 
     public function execute(\Magento\Framework\Event\Observer $observer) {
@@ -28,7 +33,7 @@ class ShipOrder  implements \Magento\Framework\Event\ObserverInterface {
 
         $this->_sender
             ->setSource(
-                $this->_scopeConfig->getValue("linkmobility/sms_notifications/source_number")
+                $this->config->getSourceNumber()
             )
             ->setDestination($telephone)
             ->setUserData(

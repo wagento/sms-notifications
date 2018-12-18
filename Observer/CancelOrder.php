@@ -2,20 +2,25 @@
 namespace Linkmobility\Notifications\Observer;
 
 
+use Linkmobility\Notifications\Api\ConfigInterface;
+
 class CancelOrder  implements \Magento\Framework\Event\ObserverInterface {
 
     protected $_logger;
     protected $_sender;
-    protected $_scopeConfig;
 
+    /**
+     * @var \Linkmobility\Notifications\Api\ConfigInterface
+     */
+    private $config;
 
     public function __construct(
         \Psr\Log\LoggerInterface $logger,
-        \Magento\Framework\App\Config\ScopeConfigInterface $scopeConfig,
+        ConfigInterface $config,
         \Linkmobility\Notifications\Model\Api\Sms\Send $sender
     ) {
         $this->_logger = $logger;
-        $this->_scopeConfig = $scopeConfig;
+        $this->config = $config;
         $this->_sender = $sender;
     }
 
@@ -27,7 +32,7 @@ class CancelOrder  implements \Magento\Framework\Event\ObserverInterface {
 
         $this->_sender
             ->setSource(
-                $this->_scopeConfig->getValue("linkmobility/sms_notifications/source_number")
+                $this->config->getSourceNumber()
             )
             ->setDestination($telephone)
             ->setUserData(
