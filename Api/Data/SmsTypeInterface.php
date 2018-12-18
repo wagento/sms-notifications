@@ -26,21 +26,61 @@ interface SmsTypeInterface
 {
     const SMS_TYPE_ID = 'sms_type_id';
     const NAME = 'name';
-    const STATUS = 'status';
+    const IS_ACTIVE = 'is_active';
     const DESCRIPTION = 'description';
 
+    /**
+     * @param int $smsTypeId
+     * @return \Linkmobility\Notifications\Api\Data\SmsTypeInterface
+     */
     public function setId(int $smsTypeId): SmsTypeInterface;
+
+    /**
+     * @return int|null
+     */
     public function getId(): ?int;
 
+    /**
+     * @param int $smsTypeId
+     * @return \Linkmobility\Notifications\Api\Data\SmsTypeInterface
+     */
     public function setSmsTypeId(int $smsTypeId): SmsTypeInterface;
+
+    /**
+     * @return int|null
+     */
     public function getSmsTypeId(): ?int;
 
+    /**
+     * @param string $name
+     * @return \Linkmobility\Notifications\Api\Data\SmsTypeInterface
+     */
     public function setName(string $name): SmsTypeInterface;
+
+    /**
+     * @return string|null
+     */
     public function getName(): ?string;
 
-    public function setStatus(string $status): SmsTypeInterface;
-    public function getStatus(): ?string;
+    /**
+     * @param bool $isActive
+     * @return \Linkmobility\Notifications\Api\Data\SmsTypeInterface
+     */
+    public function setIsActive(bool $isActive): SmsTypeInterface;
 
+    /**
+     * @return bool
+     */
+    public function getIsActive(): bool;
+
+    /**
+     * @param string $description
+     * @return \Linkmobility\Notifications\Api\Data\SmsTypeInterface
+     */
     public function setDescription(string $description): SmsTypeInterface;
+
+    /**
+     * @return string|null
+     */
     public function getDescription(): ?string;
 }
