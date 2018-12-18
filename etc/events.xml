@@ -10,23 +10,9 @@
         <observer name="refund_order" instance="Linkmobility\Notifications\Observer\RefundOrder" />
     </event>
     <event name="order_cancel_after">
-        <observer name="cancel_order" instance="Linkmobility\Notifications\Observer\UpdateOrder" />
+        <observer name="cancel_order" instance="Linkmobility\Notifications\Observer\CancelOrder" />
     </event>
     <event name="sales_order_save_after">
         <observer name="save_order" instance="Linkmobility\Notifications\Observer\UpdateOrder" />
     </event>
-
-    <!--event name="sales_order_shipment_save_after">
-        <observer name="ship_order" instance="Linkmobility\Notifications\Observer\ShipOrder" />
-    </event>
-    <event name="sales_order_payment_refund">
-        <observer name="refund_order" instance="Linkmobility\Notifications\Observer\RefundOrder" />
-    </event>
-
-    <event name="sales_order_status_unassign">
-        <observer name="status_order" instance="Linkmobility\Notifications\Observer\UpdateOrder" />
-    </event>
-    <event name="sales_order_payment_place_end">
-        <observer name="payment_order" instance="Linkmobility\Notifications\Observer\UpdateOrder" />
-    </event-->
 </config>
