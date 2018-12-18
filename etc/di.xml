@@ -5,4 +5,19 @@
     <preference for="Linkmobility\Notifications\Api\Data\SmsSubscriptionInterface" type="Linkmobility\Notifications\Model\Data\SmsSubscription"/>
     <preference for="Linkmobility\Notifications\Api\Data\SmsTypeInterface" type="Linkmobility\Notifications\Model\Data\SmsType"/>
     <preference for="Linkmobility\Notifications\Api\ConfigInterface" type="Linkmobility\Notifications\Model\Config"/>
+    <type name="Linkmobility\Notifications\Logger\Handler\FileHandler">
+        <arguments>
+            <argument name="filesystem" xsi:type="object">Magento\Framework\Filesystem\Driver\File</argument>
+        </arguments>
+    </type>
+    <type name="Linkmobility\Notifications\Logger\Logger">
+        <arguments>
+            <argument name="handlers" xsi:type="array">
+                <item name="debug" xsi:type="object">Linkmobility\Notifications\Logger\Handler\FileHandler</item>
+            </argument>
+            <argument name="processors" xsi:type="array">
+                <item name="sensitiveDataProcessor" xsi:type="object">Linkmobility\Notifications\Logger\Processor\SensitiveDataProcessor</item>
+            </argument>
+        </arguments>
+    </type>
 </config>
