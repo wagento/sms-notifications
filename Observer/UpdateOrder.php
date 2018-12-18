@@ -31,7 +31,7 @@ class UpdateOrder  implements \Magento\Framework\Event\ObserverInterface {
             )
             ->setDestination($telephone)
             ->setUserData(
-                "Your order number {$order->getIncrementId()} has been updated, please verify in your account. Thank you."
+                "Your order number {$order->getIncrementId()} has been updated to status: {$order->getStatus()}, please verify in your account. Thank you."
             );
         $this->_logger->info("Linkmobility: preparing request");
         try {

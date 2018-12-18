@@ -21,7 +21,8 @@ class ShipOrder  implements \Magento\Framework\Event\ObserverInterface {
 
     public function execute(\Magento\Framework\Event\Observer $observer) {
         $event = $observer->getEvent();
-        $order = $event->getOrder();
+        $shipment = $event->getShipment();
+        $order = $shipment->getOrder();
         $address = ($order->getShippingAddress() ? : $order->getBillingAddress());
         $telephone = ($address ? $address->getTelephone() : NULL);
 
