@@ -21,7 +21,8 @@ class RefundOrder  implements \Magento\Framework\Event\ObserverInterface {
 
     public function execute(\Magento\Framework\Event\Observer $observer) {
         $event = $observer->getEvent();
-        $order = $event->getPayment()->getOrder();
+        $payment = $event->getPayment();
+        $order = $payment->getOrder();
         $address = ($order->getShippingAddress() ? : $order->getBillingAddress());
         $telephone = ($address ? $address->getTelephone() : NULL);
 

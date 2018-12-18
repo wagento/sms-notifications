@@ -7,7 +7,7 @@
  *
  * @package Linkmobility\Notifications\Model
  * @author Joseph Leedy <joseph@wagento.com>
- * @author Yair García Torres <@wagento.com>
+ * @author Yair García Torres <yair.garcia@wagento.com>
  * @copyright Copyright (c) LINK Mobility (https://www.linkmobility.com/)
  * @license https://opensource.org/licenses/OSL-3.0.php Open Software License 3.0
  */
@@ -30,7 +30,7 @@ use Magento\Framework\Registry;
  * SMS Type Model
  *
  * @package Linkmobility\Notifications\Model
- * @author Yair García Torres <@wagento.com>
+ * @author Yair García Torres <yair.garcia@wagento.com>
  * @author Joseph Leedy <joseph@wagento.com>
  */
 class SmsType extends AbstractModel
@@ -76,6 +76,7 @@ class SmsType extends AbstractModel
     public function getDataModel(): SmsTypeInterface
     {
         $smsTypeData = $this->getData();
+        $smsTypeData['is_active'] = $this->getIsActive();
         /** @var \Linkmobility\Notifications\Api\Data\SmsTypeInterface $smsType */
         $smsType = $this->smsTypeFactory->create();
 
@@ -103,6 +104,16 @@ class SmsType extends AbstractModel
         }
 
         return $this;
+    }
+
+    public function setIsActive(bool $isActive): SmsType
+    {
+        return $this->setData('is_active', (int)$isActive);
+    }
+
+    public function getIsActive(): bool
+    {
+        return (bool)$this->getData('is_active');
     }
 
     protected function _construct()
