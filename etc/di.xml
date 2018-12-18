@@ -4,4 +4,5 @@
     <preference for="Linkmobility\Notifications\Api\SmsTypeRepositoryInterface" type="Linkmobility\Notifications\Model\SmsTypeRepository"/>
     <preference for="Linkmobility\Notifications\Api\Data\SmsSubscriptionInterface" type="Linkmobility\Notifications\Model\Data\SmsSubscription"/>
     <preference for="Linkmobility\Notifications\Api\Data\SmsTypeInterface" type="Linkmobility\Notifications\Model\Data\SmsType"/>
+    <preference for="Linkmobility\Notifications\Api\ConfigInterface" type="Linkmobility\Notifications\Model\Config"/>
 </config>
