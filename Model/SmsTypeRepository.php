@@ -159,7 +159,6 @@ class SmsTypeRepository implements SmsTypeRepositoryInterface
     }
 
     /**
-     * @throws \Magento\Framework\Exception\NoSuchEntityException
      * @throws \Magento\Framework\Exception\CouldNotDeleteException
      */
     public function delete(SmsTypeInterface $smsType): bool
