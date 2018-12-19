@@ -32,6 +32,9 @@ use Magento\Framework\Registry;
  * @package Linkmobility\Notifications\Model
  * @author Yair García Torres <yair.garcia@wagento.com>
  * @author Joseph Leedy <joseph@wagento.com>
+ * @method int getSmsTypeId()
+ * @method string getName()
+ * @method string getDescription()
  */
 class SmsType extends AbstractModel
 {
