@@ -1,0 +1,104 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * LINK Mobility SMS Notifications
+ *
+ * Sends transactional SMS notifications through the LINK Mobility messaging
+ * service.
+ *
+ * @author Joseph Leedy <joseph@wagento.com>
+ * @author Yair García Torres <yair.garcia@wagento.com>
+ * @copyright Copyright (c) LINK Mobility (https://www.linkmobility.com/)
+ * @license https://opensource.org/licenses/OSL-3.0.php Open Software License 3.0
+ */
+-->
+<listing xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
+    <argument name="data" xsi:type="array">
+        <item name="js_config" xsi:type="array">
+            <item name="provider" xsi:type="string">sms_subscriptions_listing.sms_subscriptions_listing_data_source</item>
+        </item>
+    </argument>
+    <settings>
+        <spinner>sms_subscriptions_listing_columns</spinner>
+        <deps>
+            <dep>sms_subscriptions_listing.sms_subscriptions_listing_data_source</dep>
+        </deps>
+    </settings>
+    <listingToolbar name="listing_top">
+        <massaction name="listing_massaction">
+            <action name="subscribe">
+                <settings>
+                    <url path="sms_notifications/subscription/massCreate"/>
+                    <type>edit</type>
+                    <label translate="true">Subscribe</label>
+                </settings>
+            </action>
+            <action name="unsubscribe">
+                <settings>
+                    <confirm>
+                        <message translate="true">Delete selected SMS subscriptions?</message>
+                        <title translate="true">Delete SMS Subscriptions</title>
+                    </confirm>
+                    <url path="sms_notifications/subscription/massDelete"/>
+                    <type>delete</type>
+                    <label translate="true">Unsubscribe</label>
+                </settings>
+            </action>
+        </massaction>
+    </listingToolbar>
+    <dataSource name="sms_subscriptions_listing_data_source" component="Magento_Ui/js/grid/provider">
+        <settings>
+            <storageConfig>
+                <param name="indexField" xsi:type="string">sms_subscription_id</param>
+            </storageConfig>
+            <updateUrl path="mui/index/render"/>
+        </settings>
+        <aclResource>Linkmobility_Notifications::sms_subscriptions</aclResource>
+        <dataProvider class="Linkmobility\Notifications\Ui\DataProvider\SmsSubscriptions" name="sms_subscriptions_listing_data_source">
+            <settings>
+                <requestFieldName>id</requestFieldName>
+                <primaryFieldName>sms_subscription_id</primaryFieldName>
+            </settings>
+        </dataProvider>
+    </dataSource>
+    <columns name="sms_subscriptions_listing_columns">
+        <selectionsColumn name="ids" sortOrder="0">
+            <settings>
+                <indexField>sms_subscription_id</indexField>
+                <resizeEnabled>false</resizeEnabled>
+                <resizeDefaultWidth>40</resizeDefaultWidth>
+            </settings>
+        </selectionsColumn>
+        <column name="sms_subscription_id" sortOrder="5">
+            <settings>
+                <filter>textRange</filter>
+                <label translate="true">Subscription ID</label>
+                <sorting>asc</sorting>
+                <resizeEnabled>false</resizeEnabled>
+                <resizeDefaultWidth>100</resizeDefaultWidth>
+                <visible>false</visible>
+            </settings>
+        </column>
+        <column name="description" sortOrder="10">
+            <settings>
+                <label translate="true">Notification</label>
+                <sortable>false</sortable>
+            </settings>
+        </column>
+        <column name="status" sortOrder="20" class="Linkmobility\Notifications\Ui\Component\Listing\Column\SmsSubscriptionStatus">
+            <settings>
+                <filter>select</filter>
+                <label translate="true">Status</label>
+                <dataType>select</dataType>
+                <options class="Linkmobility\Notifications\Ui\Component\Listing\Column\SmsSubscriptionStatus"/>
+                <resizeEnabled>false</resizeEnabled>
+                <resizeDefaultWidth>130</resizeDefaultWidth>
+            </settings>
+        </column>
+        <actionsColumn name="actions" sortOrder="40" class="Linkmobility\Notifications\Ui\Component\Listing\Column\SmsSubscriptionActions">
+            <settings>
+                <indexField>sms_subscription_id</indexField>
+            </settings>
+        </actionsColumn>
+    </columns>
+</listing>
