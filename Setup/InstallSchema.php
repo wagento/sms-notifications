@@ -69,6 +69,12 @@ class InstallSchema implements InstallSchemaInterface
                 ['nullable' => false, 'unsigned' => true],
                 'SMS type ID'
             )->addColumn(
+                'sms_type',
+                \Magento\Framework\DB\Ddl\Table::TYPE_TEXT,
+                50,
+                ['nullable' => false],
+                'SMS type code (e.g. "order_placed")'
+            )->addColumn(
                 'is_active',
                 \Magento\Framework\DB\Ddl\Table::TYPE_SMALLINT,
                 null,
