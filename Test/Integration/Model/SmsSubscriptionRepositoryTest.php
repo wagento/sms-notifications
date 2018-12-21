@@ -100,6 +100,7 @@ class SmsSubscriptionRepositoryTest extends TestCase
     public function testSaveUpdatesSmsSubscriptionEntity()
     {
         $smsSubscriptionEntity = $this->objectManager->create(SmsSubscriptionInterface::class)
+            ->setCustomerId('1')
             ->setSmsSubscriptionId(self::$smsSubscriptionFixture->getId())
             ->setSmsType('order_shipped');
 
