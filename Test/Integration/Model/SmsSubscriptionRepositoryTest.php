@@ -71,6 +71,7 @@ class SmsSubscriptionRepositoryTest extends TestCase
     {
         $searchCriteria = $this->objectManager->create(SearchCriteriaBuilderFactory::class)
             ->create()
+            ->addFilter('sms_type', 'order_placed')
             ->create();
         $results = $this->smsSubscriptionRepository->getList($searchCriteria);
 
@@ -85,7 +86,8 @@ class SmsSubscriptionRepositoryTest extends TestCase
     {
         $smsSubscriptionEntity = $this->objectManager->create(SmsSubscriptionInterface::class)
             ->setCustomerId('1')
-            ->setSmsTypeId(1);
+            ->setSmsTypeId(1)
+            ->setSmsType('order_placed');
 
         $result = $this->smsSubscriptionRepository->save($smsSubscriptionEntity);
 
@@ -98,11 +100,12 @@ class SmsSubscriptionRepositoryTest extends TestCase
     public function testSaveUpdatesSmsSubscriptionEntity()
     {
         $smsSubscriptionEntity = $this->objectManager->create(SmsSubscriptionInterface::class)
-            ->setSmsSubscriptionId(self::$smsSubscriptionFixture->getId());
+            ->setSmsSubscriptionId(self::$smsSubscriptionFixture->getId())
+            ->setSmsType('order_shipped');
 
         $result = $this->smsSubscriptionRepository->save($smsSubscriptionEntity);
 
-        $this->assertFalse($result->getIsActive());
+        $this->assertEquals('order_shipped', $result->getSmsType());
     }
 
     /**
@@ -158,7 +161,7 @@ class SmsSubscriptionRepositoryTest extends TestCase
 
     public static function createDisabledSubscriptionsFixtureProvider()
     {
-        require __DIR__ . '/../_files/create_disabled_sms_subscriptions.php';
+        require __DIR__ . '/../_files/create_sms_subscriptions.php';
     }
 
     protected function setUp()
