@@ -71,7 +71,6 @@ class SmsSubscriptionRepositoryTest extends TestCase
     {
         $searchCriteria = $this->objectManager->create(SearchCriteriaBuilderFactory::class)
             ->create()
-            ->addFilter('is_active', 0)
             ->create();
         $results = $this->smsSubscriptionRepository->getList($searchCriteria);
 
@@ -86,8 +85,7 @@ class SmsSubscriptionRepositoryTest extends TestCase
     {
         $smsSubscriptionEntity = $this->objectManager->create(SmsSubscriptionInterface::class)
             ->setCustomerId('1')
-            ->setSmsTypeId(1)
-            ->setIsActive(true);
+            ->setSmsTypeId(1);
 
         $result = $this->smsSubscriptionRepository->save($smsSubscriptionEntity);
 
@@ -100,8 +98,7 @@ class SmsSubscriptionRepositoryTest extends TestCase
     public function testSaveUpdatesSmsSubscriptionEntity()
     {
         $smsSubscriptionEntity = $this->objectManager->create(SmsSubscriptionInterface::class)
-            ->setSmsSubscriptionId(self::$smsSubscriptionFixture->getId())
-            ->setIsActive(false);
+            ->setSmsSubscriptionId(self::$smsSubscriptionFixture->getId());
 
         $result = $this->smsSubscriptionRepository->save($smsSubscriptionEntity);
 

@@ -27,7 +27,6 @@ interface SmsSubscriptionInterface
     const CUSTOMER_ID = 'customer_id';
     const SMS_TYPE = 'sms_type';
     const SMS_TYPE_ID = 'sms_type_id';
-    const IS_ACTIVE = 'is_active';
 
     /**
      * @param int $id
@@ -83,15 +82,4 @@ interface SmsSubscriptionInterface
      * @return int|null
      */
     public function getSmsTypeId(): ?int;
-
-    /**
-     * @param bool $isActive
-     * @return \Linkmobility\Notifications\Api\Data\SmsSubscriptionInterface
-     */
-    public function setIsActive(bool $isActive): SmsSubscriptionInterface;
-
-    /**
-     * @return bool
-     */
-    public function getIsActive(): bool;
 }

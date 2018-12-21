@@ -110,21 +110,4 @@ final class SmsSubscription extends AbstractSimpleObject implements SmsSubscript
     {
         return $this->_get(self::SMS_TYPE_ID);
     }
-
-    /**
-     * @param bool $isActive
-     * @return \Linkmobility\Notifications\Api\Data\SmsSubscriptionInterface
-     */
-    public function setIsActive(bool $isActive): SmsSubscriptionInterface
-    {
-        return $this->setData(self::IS_ACTIVE, $isActive);
-    }
-
-    /**
-     * @return bool
-     */
-    public function getIsActive(): bool
-    {
-        return (bool)$this->_get(self::IS_ACTIVE);
-    }
 }

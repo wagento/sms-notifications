@@ -79,7 +79,6 @@ class SmsSubscription extends AbstractModel
     public function getDataModel(): SmsSubscriptionInterface
     {
         $smsSubscriptionData = $this->getData();
-        $smsSubscriptionData['is_active'] = (int)$this->getIsActive();
         /** @var \Linkmobility\Notifications\Api\Data\SmsSubscriptionInterface $smsSubscription */
         $smsSubscription = $this->smsSubscriptionFactory->create();
 
@@ -110,16 +109,6 @@ class SmsSubscription extends AbstractModel
         }
 
         return $this;
-    }
-
-    public function setIsActive(bool $isActive): SmsSubscription
-    {
-        return $this->setData('is_active', (int)$isActive);
-    }
-
-    public function getIsActive(): bool
-    {
-        return (bool)$this->getData('is_active');
     }
 
     /**

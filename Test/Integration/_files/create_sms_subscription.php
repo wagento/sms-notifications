@@ -23,7 +23,6 @@ $smsSubscription = $objectManager->create(SmsSubscription::class);
 $smsSubscription->setData([
     'customer_id' => 1,
     'sms_type_id' => 1,
-    'is_active' => 1,
 ]);
 $smsSubscription->isObjectNew(true);
 $smsSubscription->save();

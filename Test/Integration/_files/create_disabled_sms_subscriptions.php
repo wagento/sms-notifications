@@ -23,7 +23,6 @@ for ($i = 0; $i < 10; $i++) {
     $smsSubscription->setData([
         'customer_id' => 1,
         'sms_type_id' => 1,
-        'is_active' => 0,
     ]);
     $smsSubscription->isObjectNew(true);
     $smsSubscription->save();
