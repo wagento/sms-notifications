@@ -84,6 +84,8 @@ final class SmsSubscriptions extends AbstractDataProvider
             $key = array_search($item['sms_type'], array_column($smsTypes , 'code'));
 
             if ($key === false) {
+                $item['is_active'] = 0;
+
                 continue;
             }
 
