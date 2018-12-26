@@ -79,6 +79,7 @@ final class SmsSubscriptions extends AbstractDataProvider
         $data = parent::getData();
         $smsTypes = $this->smsTypeSource->toArray();
         $customerId = $this->backendSession->getCustomerData()['customer_id'];
+        $usedSmsTypeKeys = [];
 
         foreach ($data['items'] as &$item) {
             $key = array_search($item['sms_type'], array_column($smsTypes , 'code'));
@@ -91,17 +92,19 @@ final class SmsSubscriptions extends AbstractDataProvider
 
             $item['is_active'] = 1;
             $item['description'] = $smsTypes[$key]['description'];
-
-            unset($smsTypes[$key]);
+            $usedSmsTypeKeys[] = $key;
         }
 
         unset($item);
 
         $lastItem = end($data['items']);
-
         $itemId = (int)$lastItem['sms_subscription_id'];
 
-        foreach ($smsTypes as $smsType) {
+        foreach ($smsTypes as $key => $smsType) {
+            if (in_array($key, $usedSmsTypeKeys, true)) {
+                continue;
+            }
+
             $data['items'][] = [
                 'id_field_name' => 'sms_subscription_id',
                 'sms_subscription_id' => ++$itemId,
