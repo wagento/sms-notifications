@@ -74,7 +74,7 @@ final class SmsSubscriptionActions extends Column
                 $item[$this->getData('name')]['subscribe'] = [
                     'href' => $this->urlBuilder->getUrl(
                         'sms_notifications/subscription/create',
-                        ['sms_type_id' => $item['sms_subscription_id']]
+                        ['sms_type' => $item['sms_type']]
                     ),
                     'label' => __('Subscribe'),
                 ];
