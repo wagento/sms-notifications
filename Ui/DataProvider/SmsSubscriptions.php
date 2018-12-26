@@ -106,13 +106,11 @@ final class SmsSubscriptions extends AbstractDataProvider
             }
 
             $data['items'][] = [
-                'id_field_name' => 'sms_subscription_id',
                 'sms_subscription_id' => ++$itemId,
                 'customer_id' => $customerId,
                 'is_active' => 0,
                 'sms_type' => $smsType['code'],
                 'description' => $smsType['description'],
-                'orig_data' => null
             ];
         }
 
