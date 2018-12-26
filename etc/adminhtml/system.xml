@@ -54,34 +54,34 @@
                 <field id="successful_help" translate="label" type="text" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="0">
                     <label>Successful Order Help Text</label>
                 </field>
-                <field id="updated" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="0">
+                <field id="updated" translate="label" type="text" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="0">
                     <label>Updated Order</label>
                 </field>
-                <field id="updated_help" translate="label" type="text" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="0">
+                <field id="updated_help" translate="label" type="text" sortOrder="40" showInDefault="1" showInWebsite="1" showInStore="0">
                     <label>Updated Order Help Text</label>
                 </field>
-                <field id="shipped" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="0">
+                <field id="shipped" translate="label" type="text" sortOrder="50" showInDefault="1" showInWebsite="1" showInStore="0">
                     <label>Shipped Order item</label>
                 </field>
-                <field id="shipped_help" translate="label" type="text" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="0">
+                <field id="shipped_help" translate="label" type="text" sortOrder="60" showInDefault="1" showInWebsite="1" showInStore="0">
                     <label>Shipped Order Help Text</label>
                 </field>
-                <field id="refunded" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="0">
+                <field id="refunded" translate="label" type="text" sortOrder="70" showInDefault="1" showInWebsite="1" showInStore="0">
                     <label>Refunded Order Item</label>
                 </field>
-                <field id="refunded_help" translate="label" type="text" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="0">
+                <field id="refunded_help" translate="label" type="text" sortOrder="80" showInDefault="1" showInWebsite="1" showInStore="0">
                     <label>Refunded Order Help Text</label>
                 </field>
-                <field id="completed" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="0">
+                <field id="completed" translate="label" type="text" sortOrder="90" showInDefault="1" showInWebsite="1" showInStore="0">
                     <label>Completed Order</label>
                 </field>
-                <field id="completed_help" translate="label" type="text" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="0">
+                <field id="completed_help" translate="label" type="text" sortOrder="100" showInDefault="1" showInWebsite="1" showInStore="0">
                     <label>Completed Order Help Text</label>
                 </field>
-                <field id="on_hold" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="0">
+                <field id="on_hold" translate="label" type="text" sortOrder="110" showInDefault="1" showInWebsite="1" showInStore="0">
                     <label>On-Hold Status change</label>
                 </field>
-                <field id="on_hold_help" translate="label" type="text" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="0">
+                <field id="on_hold_help" translate="label" type="text" sortOrder="120" showInDefault="1" showInWebsite="1" showInStore="0">
                     <label>On-Hold Order Help Text</label>
                 </field>
             </group>
