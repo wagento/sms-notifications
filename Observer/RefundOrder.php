@@ -4,10 +4,11 @@ namespace Linkmobility\Notifications\Observer;
 
 use Linkmobility\Notifications\Api\ConfigInterface;
 
-class RefundOrder  implements \Magento\Framework\Event\ObserverInterface {
+class RefundOrder implements \Magento\Framework\Event\ObserverInterface
+{
 
-    protected $_logger;
-    protected $_sender;
+    protected $logger;
+    protected $sender;
 
     /**
      * @var \Linkmobility\Notifications\Observer\ConfigInterface
@@ -19,33 +20,34 @@ class RefundOrder  implements \Magento\Framework\Event\ObserverInterface {
         ConfigInterface $config,
         \Linkmobility\Notifications\Model\Api\Sms\Send $sender
     ) {
-        $this->_logger = $logger;
-        $this->_sender = $sender;
+        $this->logger = $logger;
+        $this->sender = $sender;
         $this->config = $config;
     }
 
-    public function execute(\Magento\Framework\Event\Observer $observer) {
+    public function execute(\Magento\Framework\Event\Observer $observer)
+    {
         $event = $observer->getEvent();
         $payment = $event->getPayment();
         $order = $payment->getOrder();
         $address = ($order->getShippingAddress() ? : $order->getBillingAddress());
-        $telephone = ($address ? $address->getTelephone() : NULL);
+        $telephone = ($address ? $address->getTelephone() : null);
 
-        $this->_sender
+        $this->sender
             ->setSource(
                 $this->config->getSourceNumber()
             )
             ->setDestination($telephone)
             ->setUserData(
-                "Your order number {$order->getIncrementId()} has one or more items refunded. Thank you."
+                $this->config->getOrderRefundedTpl()
             );
-        $this->_logger->info("Linkmobility: preparing request");
+        $this->logger->info('Linkmobility: preparing request');
         try {
-            $response = $this->_sender->execute();
-            $this->_logger->info("Linkmobility: response received");
-            $this->_logger->info(print_r($response, TRUE));
-        }catch (\Exception $e){
-            $this->_logger->info($e->getMessage());
+            $response = $this->sender->execute();
+            $this->logger->info('Linkmobility: response received');
+            $this->logger->info(print_r($response, true));
+        } catch (\Exception $e) {
+            $this->logger->info($e->getMessage());
         }
 
         return $this;

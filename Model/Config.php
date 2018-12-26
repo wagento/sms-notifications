@@ -90,4 +90,40 @@ final class Config implements ConfigInterface
     {
         return $this->scopeConfig->isSetFlag(self::XML_PATH_ENABLE_LOGGING);
     }
+
+    public function getOrderSuccessfulTpl(string $websiteId = null): ?string
+    {
+        $scope = $websiteId === null ? ScopeConfigInterface::SCOPE_TYPE_DEFAULT : ScopeInterface::SCOPE_WEBSITE;
+
+        return $this->scopeConfig->getValue(self::XML_PATH_ORDER_SUCCESSFUL, $scope, $websiteId);
+    }
+
+    public function getOrderUpdatedTpl(string $websiteId = null): ?string
+    {
+        $scope = $websiteId === null ? ScopeConfigInterface::SCOPE_TYPE_DEFAULT : ScopeInterface::SCOPE_WEBSITE;
+
+        return $this->scopeConfig->getValue(self::XML_PATH_ORDER_UPDATED, $scope, $websiteId);
+    }
+
+    public function getOrderShippedTpl(string $websiteId = null): ?string
+    {
+        $scope = $websiteId === null ? ScopeConfigInterface::SCOPE_TYPE_DEFAULT : ScopeInterface::SCOPE_WEBSITE;
+
+        return $this->scopeConfig->getValue(self::XML_PATH_ORDER_SHIPPED, $scope, $websiteId);
+    }
+
+    public function getOrderRefundedTpl(string $websiteId = null): ?string
+    {
+        $scope = $websiteId === null ? ScopeConfigInterface::SCOPE_TYPE_DEFAULT : ScopeInterface::SCOPE_WEBSITE;
+
+        return $this->scopeConfig->getValue(self::XML_PATH_ORDER_REFUNDED, $scope, $websiteId);
+    }
+
+    public function getOrderCanceledTpl(string $websiteId = null): ?string
+    {
+        $scope = $websiteId === null ? ScopeConfigInterface::SCOPE_TYPE_DEFAULT : ScopeInterface::SCOPE_WEBSITE;
+
+        return $this->scopeConfig->getValue(self::XML_PATH_ORDER_CANCELED, $scope, $websiteId);
+    }
+
 }
