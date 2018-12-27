@@ -53,7 +53,7 @@
                 </field>
                 <field id="updated" translate="label" type="text" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="0">
                     <label>Updated Order</label>
-                    <comment>Including Processing, completing and on-hold statuses.</comment>
+                    <comment>Including processing, complete and on-hold statuses.</comment>
                 </field>
                 <field id="shipped" translate="label" type="text" sortOrder="50" showInDefault="1" showInWebsite="1" showInStore="0">
                     <label>Shipped Order item</label>
