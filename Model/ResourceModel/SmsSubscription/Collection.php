@@ -29,6 +29,11 @@ use Magento\Framework\Model\ResourceModel\Db\Collection\AbstractCollection;
 class Collection extends AbstractCollection
 {
     /**
+     * {@inheritdoc}
+     */
+    protected $_idFieldName = 'sms_subscription_id';
+
+    /**
      * @return string[]
      */
     public function getAllSmsTypes(): array
