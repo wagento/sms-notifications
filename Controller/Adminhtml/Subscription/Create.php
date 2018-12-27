@@ -20,7 +20,6 @@ use Linkmobility\Notifications\Api\SmsSubscriptionRepositoryInterface;
 use Magento\Backend\App\Action;
 use Magento\Backend\App\Action\Context;
 use Magento\Framework\Exception\CouldNotSaveException;
-use Magento\Framework\Exception\LocalizedException;
 use Psr\Log\LoggerInterface;
 
 /**
@@ -66,16 +65,28 @@ class Create extends Action
     {
         $resultRedirect = $this->resultRedirectFactory->create();
 
-        try {
-            if (
-                !$this->_getSession()->hasCustomerData()
-                || !array_key_exists('customer_id', $this->_getSession()->getCustomerData())
-            ) {
-                throw new LocalizedException(__('Could not get ID of customer to subscribe SMS notification for.'));
-            }
+        if (
+            !$this->_getSession()->hasCustomerData()
+            || !array_key_exists('customer_id', $this->_getSession()->getCustomerData())
+        ) {
+            $this->messageManager->addErrorMessage(__('Could not get customer to subscribe SMS notification to.'));
+            $resultRedirect->setPath('customer/index/index');
 
-            $customerId = (string)$this->_getSession()->getCustomerData()['customer_id'];
-            $smsType = $this->getRequest()->getParam('sms_type');
+            return $resultRedirect;
+        }
+
+        $customerId = (string)$this->_getSession()->getCustomerData()['customer_id'];
+        $smsType = $this->getRequest()->getParam('sms_type');
+
+        $resultRedirect->setPath('customer/index/edit', ['id' => $customerId, '_current' => true]);
+
+        if (empty($smsType)) {
+            $this->messageManager->addErrorMessage(__('Please select an SMS notification to subscribe the customer to.'));
+
+            return $resultRedirect;
+        }
+
+        try {
             $smsSubscription = $this->smsSubscriptionFactory->create();
 
             $smsSubscription->setCustomerId($customerId);
@@ -85,21 +96,17 @@ class Create extends Action
             $this->messageManager->addSuccessMessage(
                 __('The customer has been subscribed to the SMS notification.')
             );
-
-            $resultRedirect->setPath('customer/index/edit', ['id' => $customerId, '_current' => true]);
-        } catch (CouldNotSaveException | LocalizedException $e) {
+        } catch (CouldNotSaveException $e) {
             $this->messageManager->addErrorMessage(
                 __('Something went wrong while subscribing the customer to the SMS notification.')
             );
             $this->logger->critical(
-                __('Could not subscribe SMS notification for customer. Error: %1', $e->getMessage())
+                __('Could not subscribe customer to SMS notification. Error: %1', $e->getMessage()),
+                [
+                    'sms_type' => $smsType,
+                    'customer_id' => $customerId
+                ]
             );
-
-            if ($e instanceof CouldNotSaveException) {
-                $resultRedirect->setPath('customer/index/edit', ['id' => $customerId, '_current' => true]);
-            } else {
-                $resultRedirect->setPath('customer/index/index');
-            }
         }
 
         return $resultRedirect;
