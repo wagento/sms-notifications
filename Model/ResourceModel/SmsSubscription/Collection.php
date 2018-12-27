@@ -29,6 +29,22 @@ use Magento\Framework\Model\ResourceModel\Db\Collection\AbstractCollection;
 class Collection extends AbstractCollection
 {
     /**
+     * @return string[]
+     */
+    public function getAllSmsTypes(): array
+    {
+        $smsTypesSelect = clone $this->getSelect();
+
+        $smsTypesSelect->reset(\Magento\Framework\DB\Select::ORDER);
+        $smsTypesSelect->reset(\Magento\Framework\DB\Select::LIMIT_COUNT);
+        $smsTypesSelect->reset(\Magento\Framework\DB\Select::LIMIT_OFFSET);
+        $smsTypesSelect->reset(\Magento\Framework\DB\Select::COLUMNS);
+        $smsTypesSelect->columns('sms_type', 'main_table');
+
+        return $this->getConnection()->fetchCol($smsTypesSelect, $this->_bindParams);
+    }
+
+    /**
      * {@inheritdoc}
      */
     protected function _construct()

@@ -118,6 +118,14 @@ final class SmsSubscriptions extends AbstractDataProvider
     }
 
     /**
+     * @return string[]
+     */
+    public function getAllSmsTypes(): array
+    {
+        return $this->collection->getAllSmsTypes();
+    }
+
+    /**
      * @throws \Magento\Framework\Exception\LocalizedException
      */
     private function addCustomerFilter()
