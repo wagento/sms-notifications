@@ -73,7 +73,7 @@ class SmsSubscription extends AbstractDb
 
         $smsSubscriptions = $this->getConnection()->fetchRow($select);
 
-        if (count($smsSubscriptions) > 0) {
+        if (!empty($smsSubscriptions)) {
             throw new AlreadyExistsException(
                 __('Customer with ID %1 is already subscribed to "%2" SMS notification.', $customerId, $smsType)
             );
