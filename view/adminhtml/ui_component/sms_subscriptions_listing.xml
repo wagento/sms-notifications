@@ -79,8 +79,8 @@
         </column>
         <column name="status" sortOrder="20" class="Linkmobility\Notifications\Ui\Component\Listing\Column\SmsSubscriptionStatus">
             <settings>
-                <filter>select</filter>
                 <label translate="true">Status</label>
+                <sortable>false</sortable>
                 <dataType>select</dataType>
                 <options class="Linkmobility\Notifications\Ui\Component\Listing\Column\SmsSubscriptionStatus"/>
                 <resizeEnabled>false</resizeEnabled>
