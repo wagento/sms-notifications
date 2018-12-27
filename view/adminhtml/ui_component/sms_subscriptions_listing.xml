@@ -87,7 +87,7 @@
                 <resizeDefaultWidth>130</resizeDefaultWidth>
             </settings>
         </column>
-        <actionsColumn name="actions" sortOrder="40" class="Linkmobility\Notifications\Ui\Component\Listing\Column\SmsSubscriptionActions">
+        <actionsColumn name="actions" sortOrder="30" class="Linkmobility\Notifications\Ui\Component\Listing\Column\SmsSubscriptionActions">
             <settings>
                 <indexField>sms_subscription_id</indexField>
             </settings>
