@@ -26,6 +26,9 @@
     </settings>
     <listingToolbar name="listing_top">
         <massaction name="listing_massaction">
+            <settings>
+                <selectProvider>sms_subscriptions_listing.sms_subscriptions_listing.sms_subscriptions_listing_columns.sms_types</selectProvider>
+            </settings>
             <action name="subscribe">
                 <settings>
                     <url path="sms_notifications/subscription/massCreate"/>
@@ -49,22 +52,21 @@
     <dataSource name="sms_subscriptions_listing_data_source" component="Magento_Ui/js/grid/provider">
         <settings>
             <storageConfig>
-                <param name="indexField" xsi:type="string">sms_subscription_id</param>
+                <param name="indexField" xsi:type="string">sms_type</param>
             </storageConfig>
             <updateUrl path="mui/index/render"/>
         </settings>
         <aclResource>Linkmobility_Notifications::sms_subscriptions</aclResource>
         <dataProvider class="Linkmobility\Notifications\Ui\DataProvider\SmsSubscriptions" name="sms_subscriptions_listing_data_source">
             <settings>
-                <requestFieldName>id</requestFieldName>
-                <primaryFieldName>sms_subscription_id</primaryFieldName>
+                <primaryFieldName>sms_type</primaryFieldName>
             </settings>
         </dataProvider>
     </dataSource>
     <columns name="sms_subscriptions_listing_columns">
-        <selectionsColumn name="ids" sortOrder="0">
+        <selectionsColumn name="sms_types" sortOrder="0">
             <settings>
-                <indexField>sms_subscription_id</indexField>
+                <indexField>sms_type</indexField>
                 <resizeEnabled>false</resizeEnabled>
                 <resizeDefaultWidth>40</resizeDefaultWidth>
             </settings>
