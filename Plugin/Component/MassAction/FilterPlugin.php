@@ -15,6 +15,7 @@ declare(strict_types=1);
 
 namespace Linkmobility\Notifications\Plugin\Component\MassAction;
 
+use Linkmobility\Notifications\Api\ConfigInterface;
 use Linkmobility\Notifications\Model\ResourceModel\SmsSubscription\Collection as SmsSubscriptionCollection;
 use Magento\Framework\Api\FilterBuilder;
 use Magento\Framework\App\RequestInterface;
@@ -49,13 +50,19 @@ class FilterPlugin
      * @var \Magento\Framework\View\Element\UiComponent\DataProvider\DataProviderInterface
      */
     private $dataProvider;
+    /**
+     * @var \Linkmobility\Notifications\Api\ConfigInterface
+     */
+    private $config;
 
     public function __construct(
         RequestInterface $request,
-        FilterBuilder $filterBuilder
+        FilterBuilder $filterBuilder,
+        ConfigInterface $config
     ) {
         $this->request = $request;
         $this->filterBuilder = $filterBuilder;
+        $this->config = $config;
     }
 
     /**
@@ -70,7 +77,7 @@ class FilterPlugin
         callable $proceed,
         AbstractDb $collection
     ) {
-        if (!($collection instanceof SmsSubscriptionCollection)) {
+        if (!$this->isModuleEnabled() || !($collection instanceof SmsSubscriptionCollection)) {
             return $proceed($collection);
         }
 
@@ -94,6 +101,11 @@ class FilterPlugin
         $collection->addFieldToFilter('sms_type', ['in' => $this->getSmsTypes()]);
 
         return $collection;
+    }
+
+    private function isModuleEnabled(): bool
+    {
+        return $this->config->isEnabled();
     }
 
     /**
