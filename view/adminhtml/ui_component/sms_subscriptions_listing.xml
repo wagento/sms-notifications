@@ -71,16 +71,6 @@
                 <resizeDefaultWidth>40</resizeDefaultWidth>
             </settings>
         </selectionsColumn>
-        <column name="sms_subscription_id" sortOrder="5">
-            <settings>
-                <filter>textRange</filter>
-                <label translate="true">Subscription ID</label>
-                <sorting>asc</sorting>
-                <resizeEnabled>false</resizeEnabled>
-                <resizeDefaultWidth>100</resizeDefaultWidth>
-                <visible>false</visible>
-            </settings>
-        </column>
         <column name="description" sortOrder="10">
             <settings>
                 <label translate="true">Notification</label>
