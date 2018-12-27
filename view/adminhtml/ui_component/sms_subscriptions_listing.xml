@@ -32,7 +32,7 @@
             <action name="subscribe">
                 <settings>
                     <url path="sms_notifications/subscription/massCreate"/>
-                    <type>edit</type>
+                    <type>create</type>
                     <label translate="true">Subscribe</label>
                 </settings>
             </action>
