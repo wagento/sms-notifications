@@ -114,6 +114,8 @@ final class SmsSubscriptions extends AbstractDataProvider
             ];
         }
 
+        $data['totalRecords'] = count($data['items']);
+
         return $data;
     }
 
