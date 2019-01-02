@@ -46,8 +46,9 @@
                     <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
                 </field>
             </group>
-            <group id="templates" translate="label" type="text" sortOrder="40" showInDefault="1" showInWebsite="1" showInStore="0">
+            <group id="templates" translate="label comment" type="text" sortOrder="40" showInDefault="1" showInWebsite="1" showInStore="0">
                 <label>Message Templates</label>
+                <comment><![CDATA[<strong>Note:</strong> Limit messages to 160 characters or less.]]></comment>
                 <field id="order_placed" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="0">
                     <label>Order Placed</label>
                 </field>
