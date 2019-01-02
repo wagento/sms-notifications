@@ -28,24 +28,35 @@ use Magento\Framework\Api\SearchResultsInterface;
 interface SmsSubscriptionRepositoryInterface
 {
     /**
+     * @param int $id
+     * @return \Linkmobility\Notifications\Api\Data\SmsSubscriptionInterface
      * @throws \Magento\Framework\Exception\NoSuchEntityException
      */
     public function get(int $id): SmsSubscriptionInterface;
 
+    /**
+     * @param \Magento\Framework\Api\SearchCriteriaInterface $searchCriteria
+     * @return \Magento\Framework\Api\SearchResultsInterface
+     */
     public function getList(SearchCriteriaInterface $searchCriteria): SearchResultsInterface;
 
     /**
+     * @param \Linkmobility\Notifications\Api\Data\SmsSubscriptionInterface $smsSubscription
+     * @return \Linkmobility\Notifications\Api\Data\SmsSubscriptionInterface
      * @throws \Magento\Framework\Exception\CouldNotSaveException
      */
     public function save(SmsSubscriptionInterface $smsSubscription): SmsSubscriptionInterface;
 
     /**
-     * @throws \Magento\Framework\Exception\NoSuchEntityException
+     * @param \Linkmobility\Notifications\Api\Data\SmsSubscriptionInterface $smsSubscription
+     * @return bool
      * @throws \Magento\Framework\Exception\CouldNotDeleteException
      */
     public function delete(SmsSubscriptionInterface $smsSubscription): bool;
 
     /**
+     * @param int $id
+     * @return bool
      * @throws \Magento\Framework\Exception\NoSuchEntityException
      * @throws \Magento\Framework\Exception\CouldNotDeleteException
      */
