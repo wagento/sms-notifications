@@ -5,6 +5,7 @@
     <preference for="Linkmobility\Notifications\Api\Data\SmsSubscriptionInterface" type="Linkmobility\Notifications\Model\Data\SmsSubscription"/>
     <preference for="Linkmobility\Notifications\Api\Data\SmsTypeInterface" type="Linkmobility\Notifications\Model\Data\SmsType"/>
     <preference for="Linkmobility\Notifications\Api\ConfigInterface" type="Linkmobility\Notifications\Model\Config"/>
+    <preference for="Linkmobility\Notifications\Api\SmsSubscriptionValidatorInterface" type="Linkmobility\Notifications\Model\SmsSubscriptionValidator"/>
     <type name="Linkmobility\Notifications\Logger\Handler\FileHandler">
         <arguments>
             <argument name="filesystem" xsi:type="object">Magento\Framework\Filesystem\Driver\File</argument>
@@ -18,6 +19,26 @@
             <argument name="processors" xsi:type="array">
                 <item name="sensitiveDataProcessor" xsi:type="object">Linkmobility\Notifications\Logger\Processor\SensitiveDataProcessor</item>
             </argument>
+        </arguments>
+    </type>
+    <type name="Linkmobility\Notifications\Controller\Adminhtml\Subscription\Create">
+        <arguments>
+            <argument name="logger" xsi:type="object">Linkmobility\Notifications\Logger\Logger</argument>
+        </arguments>
+    </type>
+    <type name="Linkmobility\Notifications\Controller\Adminhtml\Subscription\Delete">
+        <arguments>
+            <argument name="logger" xsi:type="object">Linkmobility\Notifications\Logger\Logger</argument>
+        </arguments>
+    </type>
+    <type name="Linkmobility\Notifications\Controller\Adminhtml\Subscription\MassCreate">
+        <arguments>
+            <argument name="logger" xsi:type="object">Linkmobility\Notifications\Logger\Logger</argument>
+        </arguments>
+    </type>
+    <type name="Linkmobility\Notifications\Controller\Adminhtml\Subscription\MassDelete">
+        <arguments>
+            <argument name="logger" xsi:type="object">Linkmobility\Notifications\Logger\Logger</argument>
         </arguments>
     </type>
     <type name="Linkmobility\Notifications\Model\Api\Client">

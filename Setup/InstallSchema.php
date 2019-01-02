@@ -69,11 +69,11 @@ class InstallSchema implements InstallSchemaInterface
                 ['nullable' => false, 'unsigned' => true],
                 'SMS type ID'
             )->addColumn(
-                'is_active',
-                \Magento\Framework\DB\Ddl\Table::TYPE_SMALLINT,
-                null,
-                ['nullable' => false, 'default' => '1'],
-                'SMS subscription status: enabled/disabled'
+                'sms_type',
+                \Magento\Framework\DB\Ddl\Table::TYPE_TEXT,
+                50,
+                ['nullable' => false],
+                'SMS type code (e.g. "order_placed")'
             )->addForeignKey(
                 $setup->getFkName('sms_subscription', 'customer_id', 'customer_entity', 'entity_id'),
                 'customer_id',

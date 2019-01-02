@@ -17,6 +17,7 @@ namespace Linkmobility\Notifications\Model;
 
 use Linkmobility\Notifications\Api\Data\SmsSubscriptionInterface;
 use Linkmobility\Notifications\Api\Data\SmsSubscriptionInterfaceFactory;
+use Linkmobility\Notifications\Api\SmsSubscriptionValidatorInterface;
 use Linkmobility\Notifications\Model\ResourceModel\SmsSubscription as SmsSubscriptionResource;
 use Magento\Framework\Api\DataObjectHelper;
 use Magento\Framework\Data\Collection\AbstractDb;
@@ -34,7 +35,7 @@ use Magento\Framework\Registry;
  * @author Joseph Leedy <joseph@wagento.com>
  * @method int getSmsSubscriptionId()
  * @method string getCustomerId()
- * @method int getSmsTypeId()
+ * @method string getSmsType()
  */
 class SmsSubscription extends AbstractModel
 {
@@ -58,6 +59,10 @@ class SmsSubscription extends AbstractModel
      * @var \Linkmobility\Notifications\Api\Data\SmsSubscriptionInterfaceFactory
      */
     private $smsSubscriptionFactory;
+    /**
+     * @var \Linkmobility\Notifications\Api\SmsSubscriptionValidatorInterface
+     */
+    private $validator;
 
     public function __construct(
         Context $context,
@@ -65,6 +70,7 @@ class SmsSubscription extends AbstractModel
         DataObjectHelper $dataObjectHelper,
         DataObjectProcessor $dataObjectProcessor,
         SmsSubscriptionInterfaceFactory $smsSubscriptionFactory,
+        SmsSubscriptionValidatorInterface $validator,
         AbstractResource $resource = null,
         AbstractDb $resourceCollection = null,
         array $data = []
@@ -74,12 +80,12 @@ class SmsSubscription extends AbstractModel
         $this->dataObjectHelper = $dataObjectHelper;
         $this->dataObjectProcessor = $dataObjectProcessor;
         $this->smsSubscriptionFactory = $smsSubscriptionFactory;
+        $this->validator = $validator;
     }
 
     public function getDataModel(): SmsSubscriptionInterface
     {
         $smsSubscriptionData = $this->getData();
-        $smsSubscriptionData['is_active'] = (int)$this->getIsActive();
         /** @var \Linkmobility\Notifications\Api\Data\SmsSubscriptionInterface $smsSubscription */
         $smsSubscription = $this->smsSubscriptionFactory->create();
 
@@ -112,16 +118,6 @@ class SmsSubscription extends AbstractModel
         return $this;
     }
 
-    public function setIsActive(bool $isActive): SmsSubscription
-    {
-        return $this->setData('is_active', (int)$isActive);
-    }
-
-    public function getIsActive(): bool
-    {
-        return (bool)$this->getData('is_active');
-    }
-
     /**
      * {@inheritdoc}
      */
@@ -131,5 +127,14 @@ class SmsSubscription extends AbstractModel
 
         $this->_init(SmsSubscriptionResource::class);
         $this->setIdFieldName('sms_subscription_id');
+    }
+
+    /**
+     * {@inheritdoc}
+     * @throws \Zend_Validate_Exception
+     */
+    protected function _getValidationRulesBeforeSave(): \Zend_Validate_Interface
+    {
+        return $this->validator->getValidator();
     }
 }
