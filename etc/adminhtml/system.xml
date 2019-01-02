@@ -49,20 +49,20 @@
             <group id="templates" translate="label" type="text" sortOrder="40" showInDefault="1" showInWebsite="1" showInStore="0">
                 <label>Message Templates</label>
                 <field id="order_placed" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="0">
-                    <label>Successful Order</label>
+                    <label>Order Placed</label>
                 </field>
                 <field id="order_updated" translate="label" type="text" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="0">
-                    <label>Updated Order</label>
+                    <label>Order Updated</label>
                     <comment>Including processing, complete and on-hold statuses.</comment>
                 </field>
                 <field id="order_shipped" translate="label" type="text" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="0">
-                    <label>Shipped Order item</label>
+                    <label>Order Shipped</label>
                 </field>
                 <field id="order_refunded" translate="label" type="text" sortOrder="40" showInDefault="1" showInWebsite="1" showInStore="0">
-                    <label>Refunded Order Item</label>
+                    <label>Order Refunded</label>
                 </field>
                 <field id="order_canceled" translate="label" type="text" sortOrder="50" showInDefault="1" showInWebsite="1" showInStore="0">
-                    <label>Canceled Order</label>
+                    <label>Order Canceled</label>
                 </field>
             </group>
         </section>
