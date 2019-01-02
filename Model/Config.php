@@ -91,39 +91,38 @@ final class Config implements ConfigInterface
         return $this->scopeConfig->isSetFlag(self::XML_PATH_ENABLE_LOGGING);
     }
 
-    public function getOrderSuccessfulTpl(string $websiteId = null): ?string
+    public function getOrderPlacedTemplate(string $websiteId = null): ?string
     {
         $scope = $websiteId === null ? ScopeConfigInterface::SCOPE_TYPE_DEFAULT : ScopeInterface::SCOPE_WEBSITE;
 
-        return $this->scopeConfig->getValue(self::XML_PATH_ORDER_SUCCESSFUL, $scope, $websiteId);
+        return $this->scopeConfig->getValue(self::XML_PATH_TEMPLATE_ORDER_PLACED, $scope, $websiteId);
     }
 
-    public function getOrderUpdatedTpl(string $websiteId = null): ?string
+    public function getOrderUpdatedTemplate(string $websiteId = null): ?string
     {
         $scope = $websiteId === null ? ScopeConfigInterface::SCOPE_TYPE_DEFAULT : ScopeInterface::SCOPE_WEBSITE;
 
-        return $this->scopeConfig->getValue(self::XML_PATH_ORDER_UPDATED, $scope, $websiteId);
+        return $this->scopeConfig->getValue(self::XML_PATH_TEMPLATE_ORDER_UPDATED, $scope, $websiteId);
     }
 
-    public function getOrderShippedTpl(string $websiteId = null): ?string
+    public function getOrderShippedTemplate(string $websiteId = null): ?string
     {
         $scope = $websiteId === null ? ScopeConfigInterface::SCOPE_TYPE_DEFAULT : ScopeInterface::SCOPE_WEBSITE;
 
-        return $this->scopeConfig->getValue(self::XML_PATH_ORDER_SHIPPED, $scope, $websiteId);
+        return $this->scopeConfig->getValue(self::XML_PATH_TEMPLATE_ORDER_SHIPPED, $scope, $websiteId);
     }
 
-    public function getOrderRefundedTpl(string $websiteId = null): ?string
+    public function getOrderRefundedTemplate(string $websiteId = null): ?string
     {
         $scope = $websiteId === null ? ScopeConfigInterface::SCOPE_TYPE_DEFAULT : ScopeInterface::SCOPE_WEBSITE;
 
-        return $this->scopeConfig->getValue(self::XML_PATH_ORDER_REFUNDED, $scope, $websiteId);
+        return $this->scopeConfig->getValue(self::XML_PATH_TEMPLATE_ORDER_REFUNDED, $scope, $websiteId);
     }
 
-    public function getOrderCanceledTpl(string $websiteId = null): ?string
+    public function getOrderCanceledTemplate(string $websiteId = null): ?string
     {
         $scope = $websiteId === null ? ScopeConfigInterface::SCOPE_TYPE_DEFAULT : ScopeInterface::SCOPE_WEBSITE;
 
-        return $this->scopeConfig->getValue(self::XML_PATH_ORDER_CANCELED, $scope, $websiteId);
+        return $this->scopeConfig->getValue(self::XML_PATH_TEMPLATE_ORDER_CANCELED, $scope, $websiteId);
     }
-
 }

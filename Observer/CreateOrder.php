@@ -40,7 +40,7 @@ class CreateOrder  implements \Magento\Framework\Event\ObserverInterface
             )
             ->setDestination($telephone)
             ->setUserData(
-                $this->config->getOrderSuccessfulTpl()
+                $this->config->getOrderPlacedTemplate()
             );
         $this->logger->info('Linkmobility: preparing request');
         try {

@@ -40,7 +40,7 @@ class CancelOrder implements \Magento\Framework\Event\ObserverInterface
             )
             ->setDestination($telephone)
             ->setUserData(
-                $this->config->getOrderCanceledTpl()
+                $this->config->getOrderCanceledTemplate()
             );
         $this->_logger->info('Linkmobility: preparing request');
         try {

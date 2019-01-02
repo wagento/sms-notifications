@@ -32,12 +32,11 @@ interface ConfigInterface
     const XML_PATH_GATE_ID = 'sms_notifications/api/gate_id';
     const XML_PATH_SOURCE_NUMBER = 'sms_notifications/api/source_number';
     const XML_PATH_ENABLE_LOGGING = 'sms_notifications/developer/debug';
-    const XML_PATH_ORDER_SUCCESSFUL = 'sms_notifications/order_templates/successful';
-    const XML_PATH_ORDER_UPDATED = 'sms_notifications/order_templates/updated';
-    const XML_PATH_ORDER_SHIPPED = 'sms_notifications/order_templates/shipped';
-    const XML_PATH_ORDER_REFUNDED = 'sms_notifications/order_templates/refunded';
-    const XML_PATH_ORDER_CANCELED = 'sms_notifications/order_templates/canceled';
-
+    const XML_PATH_TEMPLATE_ORDER_PLACED = 'sms_notifications/templates/order_placed';
+    const XML_PATH_TEMPLATE_ORDER_UPDATED = 'sms_notifications/templates/order_updated';
+    const XML_PATH_TEMPLATE_ORDER_SHIPPED = 'sms_notifications/templates/order_shipped';
+    const XML_PATH_TEMPLATE_ORDER_REFUNDED = 'sms_notifications/templates/order_refunded';
+    const XML_PATH_TEMPLATE_ORDER_CANCELED = 'sms_notifications/templates/order_canceled';
 
     public function isEnabled(string $websiteId = null): bool;
 
@@ -55,14 +54,13 @@ interface ConfigInterface
 
     public function isLoggingEnabled(): bool;
 
-    public function getOrderSuccessfulTpl(string $websiteId = null) : ?string;
+    public function getOrderPlacedTemplate(string $websiteId = null) : ?string;
 
-    public function getOrderUpdatedTpl(string $websiteId = null) : ?string;
+    public function getOrderUpdatedTemplate(string $websiteId = null) : ?string;
 
-    public function getOrderShippedTpl(string $websiteId = null) : ?string;
+    public function getOrderShippedTemplate(string $websiteId = null) : ?string;
 
-    public function getOrderRefundedTpl(string $websiteId = null) : ?string;
+    public function getOrderRefundedTemplate(string $websiteId = null) : ?string;
 
-    public function getOrderCanceledTpl(string $websiteId = null) : ?string;
-
+    public function getOrderCanceledTemplate(string $websiteId = null) : ?string;
 }

@@ -41,7 +41,7 @@ class ShipOrder  implements \Magento\Framework\Event\ObserverInterface
             )
             ->setDestination($telephone)
             ->setUserData(
-                $this->config->getOrderShippedTpl()
+                $this->config->getOrderShippedTemplate()
             );
         $this->logger->info('Linkmobility: preparing request');
         try {

@@ -16,13 +16,13 @@
             <developer>
                 <debug>0</debug>
             </developer>
-            <order_templates>
-                <successful>Your order number {{order_incrementId}} was received successfully. Thank you.</successful>
-                <updated>Your order number {{order_incrementId}} has been updated to status: {{order_status}}, please verify in your account. Thank you.</updated>
-                <shipped>Your item(s) related to order number {{order_incrementId}} has been shipped. Thank you.</shipped>
-                <refunded>Your order number {{order_incrementId}} has one or more items refunded. Thank you.</refunded>
-                <canceled>Your order number {{order_incrementId}} has been canceled successfully. Thank you.</canceled>
-            </order_templates>
+            <templates>
+                <order_placed>Your order number {{order_incrementId}} was received successfully. Thank you.</order_placed>
+                <order_updated>Your order number {{order_incrementId}} has been updated to status: {{order_status}}, please verify in your account. Thank you.</order_updated>
+                <order_shipped>Your item(s) related to order number {{order_incrementId}} has been shipped. Thank you.</order_shipped>
+                <order_refunded>Your order number {{order_incrementId}} has one or more items refunded. Thank you.</order_refunded>
+                <order_canceled>Your order number {{order_incrementId}} has been canceled successfully. Thank you.</order_canceled>
+            </templates>
         </sms_notifications>
     </default>
 </config>

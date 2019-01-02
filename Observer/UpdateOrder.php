@@ -41,7 +41,7 @@ class UpdateOrder  implements \Magento\Framework\Event\ObserverInterface
                 )
                 ->setDestination($telephone)
                 ->setUserData(
-                    $this->config->getOrderUpdatedTpl()
+                    $this->config->getOrderUpdatedTemplate()
                 );
             $this->logger->info('Linkmobility: preparing request');
             try {

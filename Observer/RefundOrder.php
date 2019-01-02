@@ -39,7 +39,7 @@ class RefundOrder implements \Magento\Framework\Event\ObserverInterface
             )
             ->setDestination($telephone)
             ->setUserData(
-                $this->config->getOrderRefundedTpl()
+                $this->config->getOrderRefundedTemplate()
             );
         $this->logger->info('Linkmobility: preparing request');
         try {
