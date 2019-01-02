@@ -30,7 +30,7 @@ use Psr\Log\LoggerInterface;
  */
 class MassCreate extends Action
 {
-    const ADMIN_RESOURCE = 'Linkmobility_Notifications::sms_subscriptions';
+    const ADMIN_RESOURCE = 'Linkmobility_Notifications::manage_sms_subscriptions';
 
     /**
      * @var \Psr\Log\LoggerInterface

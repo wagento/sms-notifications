@@ -16,8 +16,9 @@
     <acl>
         <resources>
             <resource id="Magento_Backend::admin">
-                <resource id="Magento_Customer::customer">
-                    <resource id="Linkmobility_Notifications::sms_subscriptions" title="SMS Subscriptions" translate="title" sortOrder="1000"/>
+                <resource id="Linkmobility_Notifications::sms_subscriptions" title="SMS Subscriptions" translate="title" sortOrder="1000">
+                    <resource id="Linkmobility_Notifications::view_sms_subscription" title="View" translate="title" sortOrder="10"/>
+                    <resource id="Linkmobility_Notifications::manage_sms_subscription" title="Manage" translate="title" sortOrder="20"/>
                 </resource>
             </resource>
         </resources>
