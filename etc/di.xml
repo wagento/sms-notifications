@@ -6,7 +6,7 @@
     <preference for="Linkmobility\Notifications\Api\Data\SmsTypeInterface" type="Linkmobility\Notifications\Model\Data\SmsType"/>
     <preference for="Linkmobility\Notifications\Api\ConfigInterface" type="Linkmobility\Notifications\Model\Config"/>
     <preference for="Linkmobility\Notifications\Api\SmsSubscriptionValidatorInterface" type="Linkmobility\Notifications\Model\SmsSubscriptionValidator"/>
-    <preference for="Linkmobility\Notifications\Api\TemplateProcessorInterface" type="Linkmobility\Notifications\Model\TemplateProcessor"/>
+    <preference for="Linkmobility\Notifications\Util\TemplateProcessorInterface" type="Linkmobility\Notifications\Util\TemplateProcessor"/>
     <type name="Linkmobility\Notifications\Logger\Handler\FileHandler">
         <arguments>
             <argument name="filesystem" xsi:type="object">Magento\Framework\Filesystem\Driver\File</argument>
@@ -47,11 +47,6 @@
             <argument name="logger" xsi:type="object">Linkmobility\Notifications\Logger\Logger</argument>
         </arguments>
     </type>
-    <type name="Linkmobility\Notifications\Model\TemplateProcessor">
-        <arguments>
-            <argument name="converter" xsi:type="object">Zend\Filter\Word\SeparatorToCamelCase</argument>
-        </arguments>
-    </type>
     <type name="Linkmobility\Notifications\Observer\CancelOrder">
         <arguments>
             <argument name="logger" xsi:type="object">Linkmobility\Notifications\Logger\Logger</argument>
@@ -75,6 +70,11 @@
     <type name="Linkmobility\Notifications\Observer\UpdateOrder">
         <arguments>
             <argument name="logger" xsi:type="object">Linkmobility\Notifications\Logger\Logger</argument>
+        </arguments>
+    </type>
+    <type name="Linkmobility\Notifications\Util\TemplateProcessor">
+        <arguments>
+            <argument name="converter" xsi:type="object">Zend\Filter\Word\SeparatorToCamelCase</argument>
         </arguments>
     </type>
 </config>

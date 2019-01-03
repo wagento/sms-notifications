@@ -5,7 +5,7 @@
  * Sends transactional SMS notifications through the LINK Mobility messaging
  * service.
  *
- * @package Linkmobility\Notifications\Api
+ * @package Linkmobility\Notifications\Util
  * @author Joseph Leedy <joseph@wagento.com>
  * @author Yair García Torres <yair.garcia@wagento.com>
  * @copyright Copyright (c) LINK Mobility (https://www.linkmobility.com/)
@@ -13,12 +13,12 @@
  */
 declare(strict_types=1);
 
-namespace Linkmobility\Notifications\Api;
+namespace Linkmobility\Notifications\Util;
 
 /**
  * Template Processor Interface
  *
- * @package Linkmobility\Notifications\Api
+ * @package Linkmobility\Notifications\Util
  * @author Joseph Leedy <joseph@wagento.com>
  */
 interface TemplateProcessorInterface

@@ -5,7 +5,7 @@
  * Sends transactional SMS notifications through the LINK Mobility messaging
  * service.
  *
- * @package Linkmobility\Notifications\Test\Unit\Model
+ * @package Linkmobility\Notifications\Test\Unit\Util
  * @author Joseph Leedy <joseph@wagento.com>
  * @author Yair García Torres <yair.garcia@wagento.com>
  * @copyright Copyright (c) LINK Mobility (https://www.linkmobility.com/)
@@ -13,22 +13,22 @@
  */
 declare(strict_types=1);
 
-namespace Linkmobility\Notifications\Test\Unit\Model;
+namespace Linkmobility\Notifications\Test\Unit\Util;
 
-use Linkmobility\Notifications\Model\TemplateProcessor;
+use Linkmobility\Notifications\Util\TemplateProcessor;
 use PHPUnit\Framework\TestCase;
 use Zend\Filter\Word\SeparatorToCamelCase;
 
 /**
  * Template Processor Test
  *
- * @package Linkmobility\Notifications\Test\Unit\Model
+ * @package Linkmobility\Notifications\Test\Unit\Util
  * @author Joseph Leedy <joseph@wagento.com>
  */
 class TemplateProcessorTest extends TestCase
 {
     /**
-     * @var \Linkmobility\Notifications\Api\TemplateProcessorInterface
+     * @var \Linkmobility\Notifications\Util\TemplateProcessorInterface
      */
     private $templateProcessor;
 
