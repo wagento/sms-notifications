@@ -53,31 +53,6 @@
             <argument name="logger" xsi:type="object">Linkmobility\Notifications\Logger\Logger</argument>
         </arguments>
     </type>
-    <type name="Linkmobility\Notifications\Observer\CancelOrder">
-        <arguments>
-            <argument name="logger" xsi:type="object">Linkmobility\Notifications\Logger\Logger</argument>
-        </arguments>
-    </type>
-    <type name="Linkmobility\Notifications\Observer\CreateOrder">
-        <arguments>
-            <argument name="logger" xsi:type="object">Linkmobility\Notifications\Logger\Logger</argument>
-        </arguments>
-    </type>
-    <type name="Linkmobility\Notifications\Observer\RefundOrder">
-        <arguments>
-            <argument name="logger" xsi:type="object">Linkmobility\Notifications\Logger\Logger</argument>
-        </arguments>
-    </type>
-    <type name="Linkmobility\Notifications\Observer\ShipOrder">
-        <arguments>
-            <argument name="logger" xsi:type="object">Linkmobility\Notifications\Logger\Logger</argument>
-        </arguments>
-    </type>
-    <type name="Linkmobility\Notifications\Observer\UpdateOrder">
-        <arguments>
-            <argument name="logger" xsi:type="object">Linkmobility\Notifications\Logger\Logger</argument>
-        </arguments>
-    </type>
     <type name="Linkmobility\Notifications\Util\TemplateProcessor">
         <arguments>
             <argument name="converter" xsi:type="object">Zend\Filter\Word\SeparatorToCamelCase</argument>

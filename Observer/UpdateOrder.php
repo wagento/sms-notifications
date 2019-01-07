@@ -1,57 +1,46 @@
 <?php
+
 namespace Linkmobility\Notifications\Observer;
 
-
 use Linkmobility\Notifications\Api\ConfigInterface;
-use Linkmobility\Notifications\Logger\Logger;
-use Linkmobility\Notifications\Model\Api\Sms\Send;
+use Linkmobility\Notifications\Model\MessageService;
 
 class UpdateOrder  implements \Magento\Framework\Event\ObserverInterface
 {
-
-    protected $logger;
-    protected $sender;
-
     /**
      * @var \Linkmobility\Notifications\Api\ConfigInterface
      */
     private $config;
+    /**
+     * @var \Linkmobility\Notifications\Model\MessageService
+     */
+    private $messageService;
 
     public function __construct(
-        Logger $logger,
         ConfigInterface $config,
-        Send $sender
+        MessageService $messageService
     ) {
-        $this->logger = $logger;
-        $this->sender = $sender;
         $this->config = $config;
+        $this->messageService = $messageService;
     }
 
     public function execute(\Magento\Framework\Event\Observer $observer)
     {
         $event = $observer->getEvent();
         $order = $event->getOrder();
+        $address = ($order->getShippingAddress() ? : $order->getBillingAddress());
+        $telephone = ($address ? $address->getTelephone() : null);
 
-        if ($order->getStatus() !== "canceled") {
-            $address = ($order->getShippingAddress() ? : $order->getBillingAddress());
-            $telephone = ($address ? $address->getTelephone() : null);
-            $this->sender
-                ->setSource(
-                    $this->config->getSourceNumber()
-                )
-                ->setDestination($telephone)
-                ->setUserData(
-                    $this->config->getOrderUpdatedTemplate()
-                );
-            $this->logger->info('Linkmobility: preparing request');
-            try {
-                $response = $this->sender->execute();
-                $this->logger->info('Linkmobility: response received');
-                $this->logger->info(print_r($response, true));
-            } catch (\Exception $e) {
-                $this->logger->info($e->getMessage());
-            }
+        if ($order->getStatus() === 'canceled') {
+            return $this;
         }
+
+        if ($telephone === null) {
+            return $this;
+        }
+
+        $this->messageService->setOrder($order);
+        $this->messageService->sendMessage($this->config->getOrderUpdatedTemplate(), $telephone, 'order');
 
         return $this;
     }
