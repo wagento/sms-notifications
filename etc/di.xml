@@ -6,6 +6,7 @@
     <preference for="Linkmobility\Notifications\Api\Data\SmsTypeInterface" type="Linkmobility\Notifications\Model\Data\SmsType"/>
     <preference for="Linkmobility\Notifications\Api\ConfigInterface" type="Linkmobility\Notifications\Model\Config"/>
     <preference for="Linkmobility\Notifications\Api\SmsSubscriptionValidatorInterface" type="Linkmobility\Notifications\Model\SmsSubscriptionValidator"/>
+    <preference for="Linkmobility\Notifications\Gateway\ApiClientInterface" type="Linkmobility\Notifications\Gateway\ApiClient"/>
     <preference for="Linkmobility\Notifications\Util\TemplateProcessorInterface" type="Linkmobility\Notifications\Util\TemplateProcessor"/>
     <type name="Linkmobility\Notifications\Logger\Handler\FileHandler">
         <arguments>
