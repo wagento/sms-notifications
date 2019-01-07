@@ -43,11 +43,6 @@
             <argument name="logger" xsi:type="object">Linkmobility\Notifications\Logger\Logger</argument>
         </arguments>
     </type>
-    <type name="Linkmobility\Notifications\Model\Api\Client">
-        <arguments>
-            <argument name="logger" xsi:type="object">Linkmobility\Notifications\Logger\Logger</argument>
-        </arguments>
-    </type>
     <type name="Linkmobility\Notifications\Model\MessageService">
         <arguments>
             <argument name="logger" xsi:type="object">Linkmobility\Notifications\Logger\Logger</argument>
