@@ -15,15 +15,15 @@ declare(strict_types=1);
 
 namespace Linkmobility\Notifications\Gateway\Entity;
 
+use MyCLabs\Enum\Enum;
+
 /**
  * TON (Type of Number) Entity
  *
  * @package Linkmobility\Notifications\Gateway\Entity
  */
-class TON extends \SplEnum
+class TON extends Enum
 {
-    public const __default = self::MSISDN;
-
     /**
      * Short number; 1-14 digits depending on country.
      */

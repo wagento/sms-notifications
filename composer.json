@@ -9,7 +9,6 @@
     "require": {
         "php": "~7.1.3|~7.2.0",
         "ext-json": "*",
-        "ext-spltype": "*",
         "magento/framework": "101.0.*|102.0.*",
         "magento/module-backend": "100.2.*|101.0.*",
         "magento/module-checkout": "100.2.*|100.3.*",
@@ -19,7 +18,8 @@
         "magento/module-theme": "100.2.*|101.0.*",
         "magento/module-translation": "100.2.*|100.3.*",
         "magento/module-ui": "101.0.*|101.1.*",
-        "guzzlehttp/guzzle": "^6.0"
+        "guzzlehttp/guzzle": "^6.0",
+        "myclabs/php-enum": "^1.6"
     },
     "require-dev": {
         "linkmobility/module-sms-notifications-webapi": "*",

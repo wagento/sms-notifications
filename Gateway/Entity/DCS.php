@@ -15,15 +15,16 @@ declare(strict_types=1);
 
 namespace Linkmobility\Notifications\Gateway\Entity;
 
+use MyCLabs\Enum\Enum;
+
 /**
  * DCS Entity
  *
  * @package Linkmobility\Notifications\Gateway\Entity
  * @author Joseph Leedy <joseph@wagento.com>
  */
-class DCS extends \SplEnum
+class DCS extends Enum
 {
-    public const __default = self::TEXT;
     /**
      * GSM-7 default alphabet encoding
      */
