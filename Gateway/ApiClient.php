@@ -204,7 +204,7 @@ final class ApiClient implements ApiClientInterface
 
     private function setResult(ResponseInterface $response, string $type): void
     {
-        $responseBody = \json_decode($response->getBody(), true);
+        $responseBody = \json_decode((string)$response->getBody(), true);
 
         if ($responseBody === false) {
             return;
