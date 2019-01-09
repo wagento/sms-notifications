@@ -31,9 +31,9 @@ interface MessageInterface
      * @param \Linkmobility\Notifications\Gateway\Entity\TON|string $sourceTon
      * @return void
      */
-    public function setSourceTon($sourceTon): void;
+    public function setSourceTON($sourceTon): void;
 
-    public function getSourceTon(): TON;
+    public function getSourceTON(): TON;
 
     public function setDestination(string $destination): void;
 
@@ -42,9 +42,9 @@ interface MessageInterface
     /**
      * @param \Linkmobility\Notifications\Gateway\Entity\TON|string $destinationTon
      */
-    public function setDestinationTon($destinationTon): void;
+    public function setDestinationTON($destinationTon): void;
 
-    public function getDestinationTon(): TON;
+    public function getDestinationTON(): TON;
 
     /**
      * @param \Linkmobility\Notifications\Gateway\Entity\DCS|string $dcs

@@ -38,7 +38,7 @@ final class Message implements MessageInterface
      *
      * @var \Linkmobility\Notifications\Gateway\Entity\TON
      */
-    private $sourceTon;
+    private $sourceTON;
     /**
      * Phone number where the message should be sent
      *
@@ -50,7 +50,7 @@ final class Message implements MessageInterface
      *
      * @var \Linkmobility\Notifications\Gateway\Entity\TON
      */
-    private $destinationTon;
+    private $destinationTON;
     /**
      * Data Coding Scheme to use when sending messages
      *
@@ -196,21 +196,21 @@ final class Message implements MessageInterface
     }
 
     /**
-     * @param \Linkmobility\Notifications\Gateway\Entity\TON|string $sourceTon
+     * @param \Linkmobility\Notifications\Gateway\Entity\TON|string $sourceTON
      * @return void
      */
-    public function setSourceTon($sourceTon): void
+    public function setSourceTON($sourceTON): void
     {
-        if (!($sourceTon instanceof TON)) {
-            $sourceTon = new TON($sourceTon);
+        if (!($sourceTON instanceof TON)) {
+            $sourceTON = new TON($sourceTON);
         }
 
-        $this->sourceTon = $sourceTon;
+        $this->sourceTON = $sourceTON;
     }
 
-    public function getSourceTon(): TON
+    public function getSourceTON(): TON
     {
-        return $this->sourceTon;
+        return $this->sourceTON;
     }
 
     public function setDestination(string $destination): void
@@ -224,20 +224,20 @@ final class Message implements MessageInterface
     }
 
     /**
-     * @param \Linkmobility\Notifications\Gateway\Entity\TON|string $destinationTon
+     * @param \Linkmobility\Notifications\Gateway\Entity\TON|string $destinationTON
      */
-    public function setDestinationTon($destinationTon): void
+    public function setDestinationTON($destinationTON): void
     {
-        if (!($destinationTon instanceof TON)) {
-            $destinationTon = new TON($destinationTon);
+        if (!($destinationTON instanceof TON)) {
+            $destinationTON = new TON($destinationTON);
         }
 
-        $this->destinationTon = $destinationTon;
+        $this->destinationTON = $destinationTON;
     }
 
-    public function getDestinationTon(): TON
+    public function getDestinationTON(): TON
     {
-        return $this->destinationTon;
+        return $this->destinationTON;
     }
 
     /**
