@@ -141,6 +141,7 @@ class MessageService
             $this->apiClient->setUri('send');
             $this->apiClient->setUsername($this->config->getApiUser());
             $this->apiClient->setPassword($this->config->getApiPassword());
+            $this->apiClient->setHttpMethod(ApiClientInterface::HTTP_METHOD_POST);
             $this->apiClient->setData($messageData);
             $this->apiClient->sendRequest();
 
