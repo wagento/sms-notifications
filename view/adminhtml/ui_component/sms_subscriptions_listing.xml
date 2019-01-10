@@ -60,6 +60,7 @@
         <dataProvider class="Linkmobility\Notifications\Ui\DataProvider\SmsSubscriptions" name="sms_subscriptions_listing_data_source">
             <settings>
                 <primaryFieldName>sms_type</primaryFieldName>
+                <requestFieldName>sms_type</requestFieldName>
             </settings>
         </dataProvider>
     </dataSource>
