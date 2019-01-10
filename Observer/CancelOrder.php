@@ -1,30 +1,27 @@
 <?php
+
 namespace Linkmobility\Notifications\Observer;
 
-
 use Linkmobility\Notifications\Api\ConfigInterface;
-use Linkmobility\Notifications\Logger\Logger;
-use Linkmobility\Notifications\Model\Api\Sms\Send;
+use Linkmobility\Notifications\Model\MessageService;
 
 class CancelOrder implements \Magento\Framework\Event\ObserverInterface
 {
-
-    protected $logger;
-    protected $sender;
-
     /**
      * @var \Linkmobility\Notifications\Api\ConfigInterface
      */
     private $config;
+    /**
+     * @var \Linkmobility\Notifications\Model\MessageService
+     */
+    private $messageService;
 
     public function __construct(
-        Logger $logger,
         ConfigInterface $config,
-        Send $sender
+        MessageService $messageService
     ) {
-        $this->logger = $logger;
         $this->config = $config;
-        $this->sender = $sender;
+        $this->messageService = $messageService;
     }
 
     public function execute(\Magento\Framework\Event\Observer $observer)
@@ -34,22 +31,12 @@ class CancelOrder implements \Magento\Framework\Event\ObserverInterface
         $address = ($order->getShippingAddress() ? : $order->getBillingAddress());
         $telephone = ($address ? $address->getTelephone() : null);
 
-        $this->_sender
-            ->setSource(
-                $this->config->getSourceNumber()
-            )
-            ->setDestination($telephone)
-            ->setUserData(
-                $this->config->getOrderCanceledTemplate()
-            );
-        $this->_logger->info('Linkmobility: preparing request');
-        try {
-            $response = $this->_sender->execute();
-            $this->logger->info('Linkmobility: response received');
-            $this->logger->info(print_r($response, true));
-        } catch (\Exception $e) {
-            $this->logger->info($e->getMessage());
+        if ($telephone === null) {
+            return $this;
         }
+
+        $this->messageService->setOrder($order);
+        $this->messageService->sendMessage($this->config->getOrderCanceledTemplate(), $telephone, 'order');
 
         return $this;
     }

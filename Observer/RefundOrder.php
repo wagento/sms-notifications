@@ -1,28 +1,27 @@
 <?php
+
 namespace Linkmobility\Notifications\Observer;
 
-
 use Linkmobility\Notifications\Api\ConfigInterface;
+use Linkmobility\Notifications\Model\MessageService;
 
 class RefundOrder implements \Magento\Framework\Event\ObserverInterface
 {
-
-    protected $logger;
-    protected $sender;
-
     /**
      * @var \Linkmobility\Notifications\Observer\ConfigInterface
      */
     private $config;
+    /**
+     * @var \Linkmobility\Notifications\Model\MessageService
+     */
+    private $messageService;
 
     public function __construct(
-        \Psr\Log\LoggerInterface $logger,
         ConfigInterface $config,
-        \Linkmobility\Notifications\Model\Api\Sms\Send $sender
+        MessageService $messageService
     ) {
-        $this->logger = $logger;
-        $this->sender = $sender;
         $this->config = $config;
+        $this->messageService = $messageService;
     }
 
     public function execute(\Magento\Framework\Event\Observer $observer)
@@ -33,22 +32,12 @@ class RefundOrder implements \Magento\Framework\Event\ObserverInterface
         $address = ($order->getShippingAddress() ? : $order->getBillingAddress());
         $telephone = ($address ? $address->getTelephone() : null);
 
-        $this->sender
-            ->setSource(
-                $this->config->getSourceNumber()
-            )
-            ->setDestination($telephone)
-            ->setUserData(
-                $this->config->getOrderRefundedTemplate()
-            );
-        $this->logger->info('Linkmobility: preparing request');
-        try {
-            $response = $this->sender->execute();
-            $this->logger->info('Linkmobility: response received');
-            $this->logger->info(print_r($response, true));
-        } catch (\Exception $e) {
-            $this->logger->info($e->getMessage());
+        if ($telephone === null) {
+            return $this;
         }
+
+        $this->messageService->setOrder($order);
+        $this->messageService->sendMessage($this->config->getOrderRefundedTemplate(), $telephone, 'order');
 
         return $this;
     }

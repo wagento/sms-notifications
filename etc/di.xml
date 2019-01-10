@@ -6,6 +6,7 @@
     <preference for="Linkmobility\Notifications\Api\Data\SmsTypeInterface" type="Linkmobility\Notifications\Model\Data\SmsType"/>
     <preference for="Linkmobility\Notifications\Api\ConfigInterface" type="Linkmobility\Notifications\Model\Config"/>
     <preference for="Linkmobility\Notifications\Api\SmsSubscriptionValidatorInterface" type="Linkmobility\Notifications\Model\SmsSubscriptionValidator"/>
+    <preference for="Linkmobility\Notifications\Gateway\ApiClientInterface" type="Linkmobility\Notifications\Gateway\ApiClient"/>
     <preference for="Linkmobility\Notifications\Util\TemplateProcessorInterface" type="Linkmobility\Notifications\Util\TemplateProcessor"/>
     <type name="Linkmobility\Notifications\Logger\Handler\FileHandler">
         <arguments>
@@ -42,32 +43,7 @@
             <argument name="logger" xsi:type="object">Linkmobility\Notifications\Logger\Logger</argument>
         </arguments>
     </type>
-    <type name="Linkmobility\Notifications\Model\Api\Client">
-        <arguments>
-            <argument name="logger" xsi:type="object">Linkmobility\Notifications\Logger\Logger</argument>
-        </arguments>
-    </type>
-    <type name="Linkmobility\Notifications\Observer\CancelOrder">
-        <arguments>
-            <argument name="logger" xsi:type="object">Linkmobility\Notifications\Logger\Logger</argument>
-        </arguments>
-    </type>
-    <type name="Linkmobility\Notifications\Observer\CreateOrder">
-        <arguments>
-            <argument name="logger" xsi:type="object">Linkmobility\Notifications\Logger\Logger</argument>
-        </arguments>
-    </type>
-    <type name="Linkmobility\Notifications\Observer\RefundOrder">
-        <arguments>
-            <argument name="logger" xsi:type="object">Linkmobility\Notifications\Logger\Logger</argument>
-        </arguments>
-    </type>
-    <type name="Linkmobility\Notifications\Observer\ShipOrder">
-        <arguments>
-            <argument name="logger" xsi:type="object">Linkmobility\Notifications\Logger\Logger</argument>
-        </arguments>
-    </type>
-    <type name="Linkmobility\Notifications\Observer\UpdateOrder">
+    <type name="Linkmobility\Notifications\Model\MessageService">
         <arguments>
             <argument name="logger" xsi:type="object">Linkmobility\Notifications\Logger\Logger</argument>
         </arguments>

@@ -18,7 +18,8 @@
         "magento/module-theme": "100.2.*|101.0.*",
         "magento/module-translation": "100.2.*|100.3.*",
         "magento/module-ui": "101.0.*|101.1.*",
-        "guzzlehttp/guzzle": "^6.0"
+        "guzzlehttp/guzzle": "^6.0",
+        "myclabs/php-enum": "^1.6"
     },
     "require-dev": {
         "linkmobility/module-sms-notifications-webapi": "*",
