@@ -81,6 +81,8 @@ class MassDelete extends Action
             $collection = $this->filter->getCollection($this->collectionFactory->create());
             $deletedSubscriptions = 0;
 
+            $collection->addFieldToFilter('customer_id', ['eq' => $customerId]);
+
             /** @var \Linkmobility\Notifications\Model\SmsSubscription $subscription */
             foreach ($collection->getItems() as $subscription) {
                 try {
