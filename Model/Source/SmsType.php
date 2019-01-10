@@ -83,8 +83,8 @@ final class SmsType implements OptionSourceInterface
             ],
             [
                 'group' => 'order',
-                'code' => 'order_unheld',
-                'description' => __('Order hold removed')
+                'code' => 'order_released',
+                'description' => __('Order hold released')
             ],
         ];
     }
