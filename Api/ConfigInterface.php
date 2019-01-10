@@ -15,12 +15,16 @@ declare(strict_types=1);
 
 namespace Linkmobility\Notifications\Api;
 
+use Magento\Store\Model\ScopeInterface;
+
 /**
  * Configuration Model Interface
  *
  * @package Linkmobility\Notifications\Api
  * @author Joseph Leedy <joseph@wagento.com>
  * @api
+ *
+ * @phpcs:disable Generic.Files.LineLength.TooLong
  */
 interface ConfigInterface
 {
@@ -56,17 +60,17 @@ interface ConfigInterface
 
     public function isLoggingEnabled(): bool;
 
-    public function getOrderPlacedTemplate(string $websiteId = null) : ?string;
+    public function getOrderPlacedTemplate(string $scopeId = null, string $scopeType = ScopeInterface::SCOPE_STORE) : ?string;
 
-    public function getOrderUpdatedTemplate(string $websiteId = null) : ?string;
+    public function getOrderUpdatedTemplate(string $scopeId = null, string $scopeType = ScopeInterface::SCOPE_STORE) : ?string;
 
-    public function getOrderShippedTemplate(string $websiteId = null) : ?string;
+    public function getOrderShippedTemplate(string $scopeId = null, string $scopeType = ScopeInterface::SCOPE_STORE) : ?string;
 
-    public function getOrderRefundedTemplate(string $websiteId = null) : ?string;
+    public function getOrderRefundedTemplate(string $scopeId = null, string $scopeType = ScopeInterface::SCOPE_STORE) : ?string;
 
-    public function getOrderCanceledTemplate(string $websiteId = null) : ?string;
+    public function getOrderCanceledTemplate(string $scopeId = null, string $scopeType = ScopeInterface::SCOPE_STORE) : ?string;
 
-    public function getOrderHeldTemplate(string $websiteId = null): ?string;
+    public function getOrderHeldTemplate(string $scopeId = null, string $scopeType = ScopeInterface::SCOPE_STORE): ?string;
 
-    public function getOrderReleasedTemplate(string $websiteId = null): ?string;
+    public function getOrderReleasedTemplate(string $scopeId = null, string $scopeType = ScopeInterface::SCOPE_STORE): ?string;
 }

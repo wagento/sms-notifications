@@ -24,6 +24,8 @@ use Magento\Store\Model\ScopeInterface;
  *
  * @package Linkmobility\Notifications\Model
  * @author Joseph Leedy <joseph@wagento.com>
+ *
+ * @phpcs:disable Generic.Files.LineLength.TooLong
  */
 final class Config implements ConfigInterface
 {
@@ -91,52 +93,66 @@ final class Config implements ConfigInterface
         return $this->scopeConfig->isSetFlag(self::XML_PATH_ENABLE_LOGGING);
     }
 
-    public function getOrderPlacedTemplate(string $websiteId = null): ?string
+    public function getOrderPlacedTemplate(string $scopeId = null, string $scopeType = ScopeInterface::SCOPE_STORE): ?string
     {
-        $scope = $websiteId === null ? ScopeConfigInterface::SCOPE_TYPE_DEFAULT : ScopeInterface::SCOPE_WEBSITE;
+        if ($scopeId === null) {
+            $scopeType = ScopeConfigInterface::SCOPE_TYPE_DEFAULT;
+        }
 
-        return $this->scopeConfig->getValue(self::XML_PATH_TEMPLATE_ORDER_PLACED, $scope, $websiteId);
+        return $this->scopeConfig->getValue(self::XML_PATH_TEMPLATE_ORDER_PLACED, $scopeType, $scopeId);
     }
 
-    public function getOrderUpdatedTemplate(string $websiteId = null): ?string
+    public function getOrderUpdatedTemplate(string $scopeId = null, string $scopeType = ScopeInterface::SCOPE_STORE): ?string
     {
-        $scope = $websiteId === null ? ScopeConfigInterface::SCOPE_TYPE_DEFAULT : ScopeInterface::SCOPE_WEBSITE;
+        if ($scopeId === null) {
+            $scopeType = ScopeConfigInterface::SCOPE_TYPE_DEFAULT;
+        }
 
-        return $this->scopeConfig->getValue(self::XML_PATH_TEMPLATE_ORDER_UPDATED, $scope, $websiteId);
+        return $this->scopeConfig->getValue(self::XML_PATH_TEMPLATE_ORDER_UPDATED, $scopeType, $scopeId);
     }
 
-    public function getOrderShippedTemplate(string $websiteId = null): ?string
+    public function getOrderShippedTemplate(string $scopeId = null, string $scopeType = ScopeInterface::SCOPE_STORE): ?string
     {
-        $scope = $websiteId === null ? ScopeConfigInterface::SCOPE_TYPE_DEFAULT : ScopeInterface::SCOPE_WEBSITE;
+        if ($scopeId === null) {
+            $scopeType = ScopeConfigInterface::SCOPE_TYPE_DEFAULT;
+        }
 
-        return $this->scopeConfig->getValue(self::XML_PATH_TEMPLATE_ORDER_SHIPPED, $scope, $websiteId);
+        return $this->scopeConfig->getValue(self::XML_PATH_TEMPLATE_ORDER_SHIPPED, $scopeType, $scopeId);
     }
 
-    public function getOrderRefundedTemplate(string $websiteId = null): ?string
+    public function getOrderRefundedTemplate(string $scopeId = null, string $scopeType = ScopeInterface::SCOPE_STORE): ?string
     {
-        $scope = $websiteId === null ? ScopeConfigInterface::SCOPE_TYPE_DEFAULT : ScopeInterface::SCOPE_WEBSITE;
+        if ($scopeId === null) {
+            $scopeType = ScopeConfigInterface::SCOPE_TYPE_DEFAULT;
+        }
 
-        return $this->scopeConfig->getValue(self::XML_PATH_TEMPLATE_ORDER_REFUNDED, $scope, $websiteId);
+        return $this->scopeConfig->getValue(self::XML_PATH_TEMPLATE_ORDER_REFUNDED, $scopeType, $scopeId);
     }
 
-    public function getOrderCanceledTemplate(string $websiteId = null): ?string
+    public function getOrderCanceledTemplate(string $scopeId = null, string $scopeType = ScopeInterface::SCOPE_STORE): ?string
     {
-        $scope = $websiteId === null ? ScopeConfigInterface::SCOPE_TYPE_DEFAULT : ScopeInterface::SCOPE_WEBSITE;
+        if ($scopeId === null) {
+            $scopeType = ScopeConfigInterface::SCOPE_TYPE_DEFAULT;
+        }
 
-        return $this->scopeConfig->getValue(self::XML_PATH_TEMPLATE_ORDER_CANCELED, $scope, $websiteId);
+        return $this->scopeConfig->getValue(self::XML_PATH_TEMPLATE_ORDER_CANCELED, $scopeType, $scopeId);
     }
 
-    public function getOrderHeldTemplate(string $websiteId = null): ?string
+    public function getOrderHeldTemplate(string $scopeId = null, string $scopeType = ScopeInterface::SCOPE_STORE): ?string
     {
-        $scope = $websiteId === null ? ScopeConfigInterface::SCOPE_TYPE_DEFAULT : ScopeInterface::SCOPE_WEBSITE;
+        if ($scopeId === null) {
+            $scopeType = ScopeConfigInterface::SCOPE_TYPE_DEFAULT;
+        }
 
-        return $this->scopeConfig->getValue(self::XML_PATH_TEMPLATE_ORDER_HELD, $scope, $websiteId);
+        return $this->scopeConfig->getValue(self::XML_PATH_TEMPLATE_ORDER_HELD, $scopeType, $scopeId);
     }
 
-    public function getOrderReleasedTemplate(string $websiteId = null): ?string
+    public function getOrderReleasedTemplate(string $scopeId = null, string $scopeType = ScopeInterface::SCOPE_STORE): ?string
     {
-        $scope = $websiteId === null ? ScopeConfigInterface::SCOPE_TYPE_DEFAULT : ScopeInterface::SCOPE_WEBSITE;
+        if ($scopeId === null) {
+            $scopeType = ScopeConfigInterface::SCOPE_TYPE_DEFAULT;
+        }
 
-        return $this->scopeConfig->getValue(self::XML_PATH_TEMPLATE_ORDER_RELEASED, $scope, $websiteId);
+        return $this->scopeConfig->getValue(self::XML_PATH_TEMPLATE_ORDER_RELEASED, $scopeType, $scopeId);
     }
 }
