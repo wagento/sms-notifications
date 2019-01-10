@@ -15,6 +15,7 @@
     </type>
     <type name="Linkmobility\Notifications\Logger\Logger">
         <arguments>
+            <argument name="name" xsi:type="string">sms_notifications</argument>
             <argument name="handlers" xsi:type="array">
                 <item name="debug" xsi:type="object">Linkmobility\Notifications\Logger\Handler\FileHandler</item>
             </argument>
