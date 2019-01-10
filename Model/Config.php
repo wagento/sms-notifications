@@ -125,4 +125,18 @@ final class Config implements ConfigInterface
 
         return $this->scopeConfig->getValue(self::XML_PATH_TEMPLATE_ORDER_CANCELED, $scope, $websiteId);
     }
+
+    public function getOrderHeldTemplate(string $websiteId = null): ?string
+    {
+        $scope = $websiteId === null ? ScopeConfigInterface::SCOPE_TYPE_DEFAULT : ScopeInterface::SCOPE_WEBSITE;
+
+        return $this->scopeConfig->getValue(self::XML_PATH_TEMPLATE_ORDER_HELD, $scope, $websiteId);
+    }
+
+    public function getOrderReleasedTemplate(string $websiteId = null): ?string
+    {
+        $scope = $websiteId === null ? ScopeConfigInterface::SCOPE_TYPE_DEFAULT : ScopeInterface::SCOPE_WEBSITE;
+
+        return $this->scopeConfig->getValue(self::XML_PATH_TEMPLATE_ORDER_RELEASED, $scope, $websiteId);
+    }
 }

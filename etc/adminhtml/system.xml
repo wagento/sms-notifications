@@ -64,6 +64,12 @@
                 <field id="order_canceled" translate="label" type="text" sortOrder="50" showInDefault="1" showInWebsite="1" showInStore="0">
                     <label>Order Canceled</label>
                 </field>
+                <field id="order_held" translate="label" type="text" sortOrder="60" showInDefault="1" showInWebsite="1" showInStore="0">
+                    <label>Order Held</label>
+                </field>
+                <field id="order_released" translate="label" type="text" sortOrder="70" showInDefault="1" showInWebsite="1" showInStore="0">
+                    <label>Order Hold Released</label>
+                </field>
             </group>
         </section>
     </system>

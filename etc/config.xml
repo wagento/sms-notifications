@@ -22,6 +22,8 @@
                 <order_shipped>Your order (#{{order_id}}) has been shipped. Track it: {{order_url}}</order_shipped>
                 <order_refunded>Your order (#{{order_id}}) has been refunded. Details: {{order_url}}.</order_refunded>
                 <order_canceled>Your order (#{{order_id}}) has been canceled. Details: {{order_url}}.</order_canceled>
+                <order_held>Your order (#{{order_id}}) has been placed on hold. Details: {{order_url}}.</order_held>
+                <order_released>Your order (#{{order_id}}) has been released from its hold. Details: {{order_url}}.</order_released>
             </templates>
         </sms_notifications>
     </default>

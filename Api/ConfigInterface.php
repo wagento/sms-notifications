@@ -37,6 +37,8 @@ interface ConfigInterface
     const XML_PATH_TEMPLATE_ORDER_SHIPPED = 'sms_notifications/templates/order_shipped';
     const XML_PATH_TEMPLATE_ORDER_REFUNDED = 'sms_notifications/templates/order_refunded';
     const XML_PATH_TEMPLATE_ORDER_CANCELED = 'sms_notifications/templates/order_canceled';
+    const XML_PATH_TEMPLATE_ORDER_HELD = 'sms_notifications/templates/order_held';
+    const XML_PATH_TEMPLATE_ORDER_RELEASED = 'sms_notifications/templates/order_released';
 
     public function isEnabled(string $websiteId = null): bool;
 
@@ -63,4 +65,8 @@ interface ConfigInterface
     public function getOrderRefundedTemplate(string $websiteId = null) : ?string;
 
     public function getOrderCanceledTemplate(string $websiteId = null) : ?string;
+
+    public function getOrderHeldTemplate(string $websiteId = null): ?string;
+
+    public function getOrderReleasedTemplate(string $websiteId = null): ?string;
 }
