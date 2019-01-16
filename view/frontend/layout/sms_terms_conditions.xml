@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * LINK Mobility SMS Notifications
+ *
+ * Sends transactional SMS notifications through the LINK Mobility messaging
+ * service.
+ *
+ * @author Joseph Leedy <joseph@wagento.com>
+ * @author Yair García Torres <yair.garcia@wagento.com>
+ * @copyright Copyright (c) LINK Mobility (https://www.linkmobility.com/)
+ * @license https://opensource.org/licenses/OSL-3.0.php Open Software License 3.0
+ */
+-->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceContainer name="content">
+            <block class="Linkmobility\Notifications\Block\SmsTermsConditions" name="sms_notifications.terms_and_conditions" as="sms_terms_conditions" template="Linkmobility_Notifications::sms-terms-conditions.phtml">
+                <arguments>
+                    <argument name="terms_conditions_view_model" xsi:type="object">Linkmobility\Notifications\ViewModel\TermsConditions</argument>
+                </arguments>
+            </block>
+        </referenceContainer>
+    </body>
+</page>
