@@ -14,7 +14,7 @@
 <?php /** @var \Magento\Framework\View\Element\Template $block */ ?>
 <div class="field choice sms-notification-subscription">
     <input type="hidden" name="sms_notifications[sms_types]" id="sms-notifications-sms-types" value="">
-    <input type="checkbox" name="sms_notifications[subscribed]" title="<?= $block->escapeHtmlAttr(__('Send me text notifications about my order')) ?>" value="1" id="sms-notifications-subscribed" class="checkbox" >
-    <label for="sms-notifications-subscribe" class="label"><span><?php echo $block->escapeHtml(__('Send me text notifications about my order')) ?></span></label>
-    <span>(<a href="#subscription-preferences-modal" class="action" data-role="sms-subscription-preferences-modal-trigger" id="sms-subscription-preferences-modal-trigger"><?= $block->escapeHtml(__('Preferences')) ?></a>)</span>
+    <input type="checkbox" name="sms_notifications[subscribed]" title="<?= $block->escapeHtmlAttr(__('Send me text notifications about my order')) ?>" value="1" id="sms-notifications-subscribed" class="checkbox"/>
+    <label for="sms-notifications-subscribed" class="label"><span><?php echo $block->escapeHtml(__('Send me text notifications about my order')) ?></span></label>
+    <span>(<a href="#sms-subscription-preferences-modal" class="action" data-role="sms-subscription-preferences-modal-trigger" id="sms-subscription-preferences-modal-trigger"><?= $block->escapeHtml(__('Preferences')) ?></a>)</span>
 </div>
