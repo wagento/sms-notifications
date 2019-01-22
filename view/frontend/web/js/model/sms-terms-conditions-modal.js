@@ -30,6 +30,7 @@ define([
 
             const options = {
                 title: title,
+                modalClass: 'modal-popup-sms-terms-conditions',
                 responsive: true,
                 buttons: [
                     {

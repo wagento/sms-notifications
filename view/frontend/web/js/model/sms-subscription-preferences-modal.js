@@ -31,6 +31,7 @@ define([
 
             const options = {
                 title: title,
+                modalClass: 'modal-popup-sms-subscription-preferences',
                 responsive: true,
                 buttons: [
                     {
