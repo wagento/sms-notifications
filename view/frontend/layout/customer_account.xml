@@ -19,7 +19,7 @@
                 <arguments>
                     <argument name="label" xsi:type="string" translate="true">My SMS Notifications</argument>
                     <argument name="path" xsi:type="string">sms/customer/config</argument>
-                    <argument name="sortOrder" xsi:type="number">30</argument>
+                    <argument name="sortOrder" xsi:type="number">10</argument>
                 </arguments>
             </block>
         </referenceBlock>
