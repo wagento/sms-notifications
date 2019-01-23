@@ -14,8 +14,8 @@
 -->
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:App/etc/routes.xsd">
     <router id="standard">
-        <route id="sms" frontName="sms">
-            <module name="Linkmobility_Notifications" />
+        <route id="customer">
+            <module name="Linkmobility_Notifications" before="Magento_Customer"/>
         </route>
     </router>
 </config>
