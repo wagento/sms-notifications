@@ -17,7 +17,7 @@
     <body>
         <referenceBlock name="page.main.title">
             <action method="setPageTitle">
-                <argument translate="true" name="title" xsi:type="string">My SMS Notifications</argument>
+                <argument translate="true" name="title" xsi:type="string">My Text Notifications</argument>
             </action>
         </referenceBlock>
         <referenceContainer name="content">
