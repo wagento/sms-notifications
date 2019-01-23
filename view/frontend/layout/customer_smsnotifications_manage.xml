@@ -21,9 +21,7 @@
             </action>
         </referenceBlock>
         <referenceContainer name="content">
-            <block class="Magento\Framework\View\Element\Template" name="my_sms_notifications" template="Linkmobility_Notifications::customer/smsnotifications/manage.phtml">
-                <block class="Magento\Framework\View\Element\Template" name="my_sms_notifications_orders" as="sms.section.orders" template="Linkmobility_Notifications::customer/section/orders.phtml" />
-            </block>
+            <block class="Magento\Framework\View\Element\Template" name="my_sms_notifications" template="Linkmobility_Notifications::customer/smsnotifications/manage.phtml"/>
         </referenceContainer>
     </body>
 </page>
