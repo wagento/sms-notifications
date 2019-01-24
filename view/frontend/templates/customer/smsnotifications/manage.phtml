@@ -30,7 +30,7 @@ $groupedSmsTypes = $block->getData('sms_types_view_model')->getGroupedSmsTypes()
         <fieldset class="fieldset sms-types-<?= $block->escapeHtmlAttr($group['groupName']) ?>">
             <legend class="legend"><span><?= $block->escapeHtml(__($group['title'])) ?></span></legend>
             <?php foreach ($group['smsTypes'] as $smsType): ?>
-            <div class="field choice field-sms-type-">
+            <div class="field choice field-sms-type-<?= $block->escapeHtmlAttr($smsType['code']) ?>">
                 <input type="checkbox" name="sms_types[<?= $block->escapeHtmlAttr($smsType['code']) ?>]" value="1" id="sms-type-<?= $block->escapeHtmlAttr($smsType['code']) ?>" class="checkbox sms-type" title="<?= $block->escapeHtmlAttr($smsType['description']) ?>">
                 <label for="sms-type-<?= $block->escapeHtmlAttr($smsType['code']) ?>" class="label"><span><?= $block->escapeHtml($smsType['description']) ?></span></label>
             </div>
