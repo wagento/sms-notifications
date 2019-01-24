@@ -22,7 +22,7 @@ $groupedSmsTypes = $block->getData('sms_types_view_model')->getGroupedSmsTypes()
             <?= $block->getBlockHtml('formkey') ?>
             <legend class="legend" style="display: none;"><span><?= $block->escapeHtml(__('General Configuration')) ?></span></legend>
             <div class="field choice">
-                <input type="checkbox" id="select-all-sms-types" class="checkbox" title="<?= $block->escapeHtmlAttr(__('All notifications')) ?>" data-role="checkbox-toggle">
+                <input type="checkbox" id="select-all-sms-types" class="checkbox" title="<?= $block->escapeHtmlAttr(__('All notifications')) ?>" data-role="checkbox-toggle" data-mage-init='{"lmCheckboxToggler": {"checkboxSelector": ".checkbox.sms-type"}}'>
                 <label class="label" for="select-all-sms-types"><span><?= $block->escapeHtml(__('All notifications')) ?></span></label>
             </div>
         </fieldset>
