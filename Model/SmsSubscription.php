@@ -19,6 +19,7 @@ use Linkmobility\Notifications\Api\Data\SmsSubscriptionInterface;
 use Linkmobility\Notifications\Api\Data\SmsSubscriptionInterfaceFactory;
 use Linkmobility\Notifications\Api\SmsSubscriptionValidatorInterface;
 use Linkmobility\Notifications\Model\ResourceModel\SmsSubscription as SmsSubscriptionResource;
+use Linkmobility\Notifications\Traits\DataObjectMagicMethods;
 use Magento\Framework\Api\DataObjectHelper;
 use Magento\Framework\Data\Collection\AbstractDb;
 use Magento\Framework\Model\AbstractModel;
@@ -39,6 +40,8 @@ use Magento\Framework\Registry;
  */
 class SmsSubscription extends AbstractModel
 {
+    use DataObjectMagicMethods;
+
     /**
      * {@inheritdoc}
      */

@@ -13,7 +13,11 @@
 
 /** @var \Magento\Framework\View\Element\Template $block */
 
-$groupedSmsTypes = $block->getData('sms_types_view_model')->getGroupedSmsTypes();
+/** @var \Linkmobility\Notifications\ViewModel\SmsTypes $smsTypesViewModel */
+$smsTypesViewModel = $block->getData('sms_types_view_model');
+$smsTypes = $smsTypesViewModel->getSmsTypes('code');
+$groupedSmsTypes = $smsTypesViewModel->getGroupedSmsTypes();
+$subscribedSmsTypes = $block->getData('sms_subscriptions_view_model')->getSubscribedSmsTypes();
 ?>
 <div id="manage-sms-notification-subscriptions-content">
     <p><?= $block->escapeHtml(__('I wish to receive notifications about my:')) ?></p>
@@ -22,7 +26,7 @@ $groupedSmsTypes = $block->getData('sms_types_view_model')->getGroupedSmsTypes()
             <?= $block->getBlockHtml('formkey') ?>
             <legend class="legend" style="display: none;"><span><?= $block->escapeHtml(__('General Configuration')) ?></span></legend>
             <div class="field choice">
-                <input type="checkbox" id="select-all-sms-types" class="checkbox" title="<?= $block->escapeHtmlAttr(__('All notifications')) ?>" data-role="checkbox-toggle" data-mage-init='{"lmCheckboxToggler": {"checkboxSelector": ".checkbox.sms-type"}}'>
+                <input type="checkbox" id="select-all-sms-types" class="checkbox" title="<?= $block->escapeHtmlAttr(__('All notifications')) ?>" data-role="checkbox-toggle" data-mage-init='{"lmCheckboxToggler": {"checkboxSelector": ".checkbox.sms-type"}}'<?php if (count($smsTypes) === count($subscribedSmsTypes)): ?> checked<?php endif ?>>
                 <label class="label" for="select-all-sms-types"><span><?= $block->escapeHtml(__('All notifications')) ?></span></label>
             </div>
         </fieldset>
@@ -31,7 +35,7 @@ $groupedSmsTypes = $block->getData('sms_types_view_model')->getGroupedSmsTypes()
             <legend class="legend"><span><?= $block->escapeHtml(__($group['title'])) ?></span></legend>
             <?php foreach ($group['smsTypes'] as $smsType): ?>
             <div class="field choice field-sms-type-<?= $block->escapeHtmlAttr($smsType['code']) ?>">
-                <input type="checkbox" name="sms_types[<?= $block->escapeHtmlAttr($smsType['code']) ?>]" value="1" id="sms-type-<?= $block->escapeHtmlAttr($smsType['code']) ?>" class="checkbox sms-type" title="<?= $block->escapeHtmlAttr($smsType['description']) ?>">
+                <input type="checkbox" name="sms_types[<?= $block->escapeHtmlAttr($smsType['code']) ?>]" value="1" id="sms-type-<?= $block->escapeHtmlAttr($smsType['code']) ?>" class="checkbox sms-type" title="<?= $block->escapeHtmlAttr($smsType['description']) ?>"<?php if (in_array($smsType['code'], $subscribedSmsTypes, true)): ?> checked<?php endif ?>>
                 <label for="sms-type-<?= $block->escapeHtmlAttr($smsType['code']) ?>" class="label"><span><?= $block->escapeHtml($smsType['description']) ?></span></label>
             </div>
             <?php endforeach ?>
