@@ -170,17 +170,13 @@ class ManagePost extends Action implements ActionInterface, CsrfAwareActionInter
         $remainingSubscriptions = array_diff(array_column($subscribedSmsTypes, 'sms_type'), $selectedSmsTypes);
         $remainingSubscriptionCount = count($remainingSubscriptions) - $removedSubscriptions;
 
-        if ($remainingSubscriptionCount > 0 && $removedSubscriptions > 0) {
-            if ($remainingSubscriptionCount === 1) {
-                $errorMessage = __('You could not be unsubscribed from 1 text notification.');
-            } else {
-                $errorMessage = __('You could not be unsubscribed from %1 text notifications.', $remainingSubscriptionCount);
-            }
+        if ($remainingSubscriptionCount === 1) {
+            $this->messageManager->addErrorMessage(__('You could not be unsubscribed from 1 text notification.'));
+        }
 
-            $this->messageManager->addErrorMessage($errorMessage);
-        } elseif ($remainingSubscriptionCount > 0) {
+        if ($remainingSubscriptionCount > 1) {
             $this->messageManager->addErrorMessage(
-                __('You could not be unsubscribed from the selected text notifications.')
+                __('You could not be unsubscribed from %1 text notifications.', $remainingSubscriptionCount)
             );
         }
 
@@ -230,17 +226,13 @@ class ManagePost extends Action implements ActionInterface, CsrfAwareActionInter
 
         $remainingSubscriptions = count($selectedSmsTypes) - $createdSubscriptions;
 
-        if ($remainingSubscriptions > 0 && $createdSubscriptions > 0) {
-            if ($remainingSubscriptions === 1) {
-                $errorMessage = __('You could not be subscribed to 1 text notification.');
-            } else {
-                $errorMessage = __('You could not be subscribed to %1 text notifications.', $remainingSubscriptions);
-            }
+        if ($remainingSubscriptions === 1) {
+            $this->messageManager->addErrorMessage(__('You could not be subscribed to 1 text notification.'));
+        }
 
-            $this->messageManager->addErrorMessage($errorMessage);
-        } elseif ($remainingSubscriptions > 0) {
+        if ($remainingSubscriptions > 1)   {
             $this->messageManager->addErrorMessage(
-                __('You could not be subscribed to the selected text notifications.')
+                __('You could not be subscribed to %1 text notifications.', $remainingSubscriptions)
             );
         }
 
