@@ -40,6 +40,9 @@ class ManagePostTest extends AbstractControllerTestCase
     private const ACTION_URI = 'customer/smsnotifications/managePost';
     private const REDIRECT_URI = 'customer/smsnotifications/manage';
 
+    /**
+     * @magentoAppArea frontend
+     */
     public function testInvalidCustomerIdRetursErrorMessage()
     {
         $this->dispatch(self::ACTION_URI);
@@ -73,6 +76,7 @@ class ManagePostTest extends AbstractControllerTestCase
     }
 
     /**
+     * @magentoAppArea frontend
      * @magentoDataFixture Magento/Customer/_files/customer.php
      * @magentoDataFixture createSmsSubscriptionsFixtureProvider
      */
@@ -90,6 +94,7 @@ class ManagePostTest extends AbstractControllerTestCase
     }
 
     /**
+     * @magentoAppArea frontend
      * @magentoDataFixture Magento/Customer/_files/customer.php
      */
     public function testSubscribeAndUnsubscribeFromNotificationsReturnsSuccessMessages()
@@ -111,6 +116,7 @@ class ManagePostTest extends AbstractControllerTestCase
     }
 
     /**
+     * @magentoAppArea frontend
      * @magentoDataFixture Magento/Customer/_files/customer.php
      */
     public function testUnsubscribeFromNotificationsReturnsErrorMessage()
@@ -132,6 +138,7 @@ class ManagePostTest extends AbstractControllerTestCase
     }
 
     /**
+     * @magentoAppArea frontend
      * @magentoDataFixture Magento/Customer/_files/customer.php
      */
     public function testSubscribeAndUnsubscribeFromNotificationsReturnsSuccessAndErrorMessage()
