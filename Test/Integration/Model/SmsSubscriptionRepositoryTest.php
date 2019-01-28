@@ -67,18 +67,19 @@ class SmsSubscriptionRepositoryTest extends TestCase
 
     /**
      * @magentoDataFixture Magento/Customer/_files/customer.php
-     * @magentoDataFixture createDisabledSubscriptionsFixtureProvider
      */
     public function testGetListReturnsSearchResults()
     {
+        self::createSmsSubscriptionsFromSourceFixtureProvider(7);
+
         $searchCriteria = $this->objectManager->create(SearchCriteriaBuilderFactory::class)
             ->create()
-            ->addFilter('sms_type', 'order_placed')
+            ->addFilter('customer_id', '1')
             ->create();
         $results = $this->smsSubscriptionRepository->getList($searchCriteria);
 
         $this->assertInstanceOf(SearchResultsInterface::class, $results);
-        $this->assertEquals(10, $results->getTotalCount());
+        $this->assertEquals(7, $results->getTotalCount());
     }
 
     /**
@@ -166,9 +167,9 @@ class SmsSubscriptionRepositoryTest extends TestCase
         self::$smsSubscriptionFixture = require __DIR__ . '/../_files/create_sms_subscription.php';
     }
 
-    public static function createDisabledSubscriptionsFixtureProvider()
+    public static function createSmsSubscriptionsFromSourceFixtureProvider(int $count = null)
     {
-        require __DIR__ . '/../_files/create_sms_subscriptions.php';
+        require __DIR__ . '/../_files/create_sms_subscriptions_from_source.php';
     }
 
     protected function setUp()
