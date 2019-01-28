@@ -16,6 +16,7 @@ declare(strict_types=1);
 
 namespace Linkmobility\Notifications\Setup;
 
+use Magento\Framework\DB\Ddl\Table;
 use Magento\Framework\Setup\InstallSchemaInterface;
 use Magento\Framework\Setup\ModuleContextInterface;
 use Magento\Framework\Setup\SchemaSetupInterface;
@@ -36,23 +37,23 @@ class InstallSchema implements InstallSchemaInterface
      */
     public function install(SchemaSetupInterface $setup, ModuleContextInterface $context)
     {
-        $sms_subscription = $setup->getConnection()
+        $smsSubscriptionTable = $setup->getConnection()
             ->newTable($setup->getTable('sms_subscription'))
             ->addColumn(
                 'sms_subscription_id',
-                \Magento\Framework\DB\Ddl\Table::TYPE_INTEGER,
+                Table::TYPE_INTEGER,
                 null,
                 ['identity' => true, 'unsigned' => true, 'nullable' => false, 'primary' => true],
                 'SMS subscription ID'
             )->addColumn(
                 'customer_id',
-                \Magento\Framework\DB\Ddl\Table::TYPE_INTEGER,
+                Table::TYPE_INTEGER,
                 null,
                 ['nullable' => false, 'unsigned' => true],
                 'Customer ID'
             )->addColumn(
                 'sms_type',
-                \Magento\Framework\DB\Ddl\Table::TYPE_TEXT,
+                Table::TYPE_TEXT,
                 50,
                 ['nullable' => false],
                 'SMS type code (e.g. "order_placed")'
@@ -61,9 +62,9 @@ class InstallSchema implements InstallSchemaInterface
                 'customer_id',
                 $setup->getTable('customer_entity'),
                 'entity_id',
-                \Magento\Framework\DB\Ddl\Table::ACTION_CASCADE
-            )->setComment("SMS types table");
+                Table::ACTION_CASCADE
+            )->setComment('SMS types table');
 
-        $setup->getConnection()->createTable($sms_subscription);
+        $setup->getConnection()->createTable($smsSubscriptionTable);
     }
 }
