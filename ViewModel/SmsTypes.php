@@ -37,6 +37,17 @@ class SmsTypes implements ArgumentInterface
         $this->smsTypeSource = $smsTypeSource;
     }
 
+    public function getSmsTypes(string $field = ''): array
+    {
+        $smsTypes = $this->smsTypeSource->toArray();
+
+        if (trim($field) !== '') {
+            $smsTypes = array_column($smsTypes, $field);
+        }
+
+        return $smsTypes;
+    }
+
     public function getGroupedSmsTypes(): array
     {
         $groupedSmsTypes = [];

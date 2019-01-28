@@ -10,5 +10,10 @@
  * @license https://opensource.org/licenses/OSL-3.0.php Open Software License 3.0
  */
 
-@import "_sms-subscription-preferences";
-@import "customer/smsnotifications/_manage";
+var config = {
+    map: {
+        '*': {
+            lmCheckboxToggler: 'Linkmobility_Notifications/js/checkbox-toggler'
+        }
+    }
+};

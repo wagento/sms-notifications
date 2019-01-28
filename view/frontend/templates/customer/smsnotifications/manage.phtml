@@ -1,0 +1,50 @@
+<?php
+/**
+ * LINK Mobility SMS Notifications
+ *
+ * Sends transactional SMS notifications through the LINK Mobility messaging
+ * service.
+ *
+ * @author Joseph Leedy <joseph@wagento.com>
+ * @author Yair García Torres <yair.garcia@wagento.com>
+ * @copyright Copyright (c) LINK Mobility (https://www.linkmobility.com/)
+ * @license https://opensource.org/licenses/OSL-3.0.php Open Software License 3.0
+ */
+
+/** @var \Magento\Framework\View\Element\Template $block */
+
+/** @var \Linkmobility\Notifications\ViewModel\SmsTypes $smsTypesViewModel */
+$smsTypesViewModel = $block->getData('sms_types_view_model');
+$smsTypes = $smsTypesViewModel->getSmsTypes('code');
+$groupedSmsTypes = $smsTypesViewModel->getGroupedSmsTypes();
+$subscribedSmsTypes = $block->getData('sms_subscriptions_view_model')->getSubscribedSmsTypes();
+?>
+<div id="manage-sms-notification-subscriptions-content">
+    <p><?= $block->escapeHtml(__('I wish to receive notifications about my:')) ?></p>
+    <form action="<?= $block->escapeUrl($block->getUrl('customer/smsnotifications/managePost', ['_secure' => true])) ?>" method="post" enctype="multipart/form-data" id="form-smsnotifications-manage" class="form">
+        <fieldset class="fieldset general">
+            <?= $block->getBlockHtml('formkey') ?>
+            <legend class="legend" style="display: none;"><span><?= $block->escapeHtml(__('General Configuration')) ?></span></legend>
+            <div class="field choice">
+                <input type="checkbox" id="select-all-sms-types" class="checkbox" title="<?= $block->escapeHtmlAttr(__('All notifications')) ?>" data-role="checkbox-toggle" data-mage-init='{"lmCheckboxToggler": {"checkboxSelector": ".checkbox.sms-type"}}'<?php if (count($smsTypes) === count($subscribedSmsTypes)): ?> checked<?php endif ?>>
+                <label class="label" for="select-all-sms-types"><span><?= $block->escapeHtml(__('All notifications')) ?></span></label>
+            </div>
+        </fieldset>
+        <?php foreach ($groupedSmsTypes as $group): ?>
+        <fieldset class="fieldset sms-types-<?= $block->escapeHtmlAttr($group['groupName']) ?>">
+            <legend class="legend"><span><?= $block->escapeHtml(__($group['title'])) ?></span></legend>
+            <?php foreach ($group['smsTypes'] as $smsType): ?>
+            <div class="field choice field-sms-type-<?= $block->escapeHtmlAttr($smsType['code']) ?>">
+                <input type="checkbox" name="sms_types[<?= $block->escapeHtmlAttr($smsType['code']) ?>]" value="1" id="sms-type-<?= $block->escapeHtmlAttr($smsType['code']) ?>" class="checkbox sms-type" title="<?= $block->escapeHtmlAttr($smsType['description']) ?>"<?php if (in_array($smsType['code'], $subscribedSmsTypes, true)): ?> checked<?php endif ?>>
+                <label for="sms-type-<?= $block->escapeHtmlAttr($smsType['code']) ?>" class="label"><span><?= $block->escapeHtml($smsType['description']) ?></span></label>
+            </div>
+            <?php endforeach ?>
+        </fieldset>
+        <?php endforeach ?>
+        <div class="actions-toolbar">
+            <div class="primary">
+                <button type="submit" class="action save primary" title="<?= $block->escapeHtmlAttr(__('Save')) ?>"><span><?= $block->escapeHtml(__('Save')) ?></span></button>
+            </div>
+        </div>
+    </form>
+</div>
