@@ -93,21 +93,4 @@ final class SmsSubscription extends AbstractSimpleObject implements SmsSubscript
     {
         return $this->_get(self::SMS_TYPE);
     }
-
-    /**
-     * @param int $smsTypeId
-     * @return \Linkmobility\Notifications\Api\Data\SmsSubscriptionInterface
-     */
-    public function setSmsTypeId(int $smsTypeId): SmsSubscriptionInterface
-    {
-        return $this->setData(self::SMS_TYPE_ID, $smsTypeId);
-    }
-
-    /**
-     * @return int|null
-     */
-    public function getSmsTypeId(): ?int
-    {
-        return $this->_get(self::SMS_TYPE_ID);
-    }
 }

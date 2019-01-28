@@ -1,3 +1,17 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * LINK Mobility SMS Notifications
+ *
+ * Sends transactional SMS notifications through the LINK Mobility messaging
+ * service.
+ *
+ * @author Joseph Leedy <joseph@wagento.com>
+ * @author Yair García Torres <yair.garcia@wagento.com>
+ * @copyright Copyright (c) LINK Mobility (https://www.linkmobility.com/)
+ * @license https://opensource.org/licenses/OSL-3.0.php Open Software License 3.0
+ */
+-->
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
     <system>
         <section id="sms_notifications" translate="label" sortOrder="1200" showInDefault="1" showInWebsite="1" showInStore="1">
@@ -42,14 +56,7 @@
                     <comment>A mobile number, in international format, starting with +.</comment>
                 </field>
             </group>
-            <group id="developer" translate="label" type="text" sortOrder="30" showInDefault="1" showInWebsite="0" showInStore="0">
-                <label>Developer Settings</label>
-                <field id="debug" translate="label" type="select" sortOrder="10" showInDefault="1" showInWebsite="0" showInStore="0">
-                    <label>Enable Debug Logging</label>
-                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
-                </field>
-            </group>
-            <group id="templates" translate="label comment" type="text" sortOrder="40" showInDefault="1" showInWebsite="1" showInStore="1">
+            <group id="templates" translate="label comment" type="text" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1">
                 <label>Message Templates</label>
                 <comment><![CDATA[<strong>Note:</strong> Limit messages to 160 characters or less.]]></comment>
                 <field id="order_placed" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
@@ -72,6 +79,13 @@
                 </field>
                 <field id="order_released" translate="label" type="text" sortOrder="70" showInDefault="1" showInWebsite="1" showInStore="1">
                     <label>Order Hold Released</label>
+                </field>
+            </group>
+            <group id="developer" translate="label" type="text" sortOrder="40" showInDefault="1" showInWebsite="0" showInStore="0">
+                <label>Developer Settings</label>
+                <field id="debug" translate="label" type="select" sortOrder="10" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Enable Debug Logging</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
                 </field>
             </group>
         </section>

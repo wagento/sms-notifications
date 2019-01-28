@@ -1,4 +1,19 @@
 <?php
+/**
+ * LINK Mobility SMS Notifications
+ *
+ * Sends transactional SMS notifications through the LINK Mobility messaging
+ * service.
+ *
+ * @package Linkmobility\Notifications\Setup
+ * @author Joseph Leedy <joseph@wagento.com>
+ * @author Yair García Torres <yair.garcia@wagento.com>
+ * @copyright Copyright (c) LINK Mobility (https://www.linkmobility.com/)
+ * @license https://opensource.org/licenses/OSL-3.0.php Open Software License 3.0
+ */
+
+declare(strict_types=1);
+
 namespace Linkmobility\Notifications\Setup;
 
 use Magento\Framework\Setup\InstallDataInterface;
@@ -6,31 +21,20 @@ use Magento\Framework\Setup\ModuleContextInterface;
 use Magento\Framework\Setup\ModuleDataSetupInterface;
 
 /**
+ * Database Data Installer
+ *
+ * @package Linkmobility\Notifications\Setup
+ * @author Yair García Torres <yair.garcia@wagento.com>
+ * @author Joseph Leedy <joseph@wagento.com>
+ *
  * @codeCoverageIgnore
  */
 class InstallData implements InstallDataInterface
 {
-
     /**
      * {@inheritdoc}
-     * @SuppressWarnings(PHPMD.CyclomaticComplexity)
-     * @SuppressWarnings(PHPMD.ExcessiveMethodLength)
-     * @SuppressWarnings(PHPMD.NPathComplexity)
      */
     public function install(ModuleDataSetupInterface $setup, ModuleContextInterface $context)
     {
-        $data = [
-            ['name' => 'All', 'description' => 'All notifications'],
-            ['name' => 'Successful order', 'description' => 'Enables successful order creation notification, triggered when your order is created.'],
-            ['name' => 'Updated order', 'description' => 'Enables updated order notification, triggered when your order has some status change that is not listed below.'],
-            ['name' => 'Shipped order item(s)', 'description' => 'Enables shipped order items notification, triggered when one or more items in your order were shipped to the specified shipping address.'],
-            ['name' => 'Refunded order item(s)', 'description' => 'Enables refunded order items notification, triggered when one or more items in your order were refunded.'],
-            ['name' => 'Completed order', 'description' => 'Enables completed order notification, triggered when your order is fulfilled.'],
-            ['name' => 'On-hold status change', 'description' => 'Enables on-hold status change notification, triggered when your order has any problem and store can\'t fulfill.']
-        ];
-        foreach ($data as $row) {
-            $setup->getConnection()
-                ->insertForce($setup->getTable('sms_type'), $row);
-        }
     }
 }
