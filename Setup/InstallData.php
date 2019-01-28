@@ -16,6 +16,9 @@ declare(strict_types=1);
 
 namespace Linkmobility\Notifications\Setup;
 
+use Magento\Customer\Model\Customer;
+use Magento\Customer\Setup\CustomerSetupFactory;
+use Magento\Eav\Api\AttributeRepositoryInterface;
 use Magento\Framework\Setup\InstallDataInterface;
 use Magento\Framework\Setup\ModuleContextInterface;
 use Magento\Framework\Setup\ModuleDataSetupInterface;
@@ -32,9 +35,61 @@ use Magento\Framework\Setup\ModuleDataSetupInterface;
 class InstallData implements InstallDataInterface
 {
     /**
+     * @var \Magento\Customer\Setup\CustomerSetupFactory
+     */
+    private $customerSetupFactory;
+    /**
+     * @var \Magento\Eav\Api\AttributeRepositoryInterface
+     */
+    private $attributeRepository;
+
+    public function __construct(
+        CustomerSetupFactory $customerSetupFactory,
+        AttributeRepositoryInterface $attributeRepository
+    ) {
+        $this->customerSetupFactory = $customerSetupFactory;
+        $this->attributeRepository = $attributeRepository;
+    }
+
+    /**
      * {@inheritdoc}
      */
     public function install(ModuleDataSetupInterface $setup, ModuleContextInterface $context)
     {
+        /** @var \Magento\Customer\Setup\CustomerSetup $customerSetup */
+        $customerSetup = $this->customerSetupFactory->create(['setup' => $setup]);
+
+        $setup->startSetup();
+
+        $customerSetup->addAttribute(
+            Customer::ENTITY,
+            'sms_mobile_phone_number',
+            [
+                'type'             => 'varchar',
+                'label'            => 'Mobile Phone Number for SMS',
+                'input'            => 'text',
+                'required'         => false,
+                'visible'          => true,
+                'system'           => false,
+                'user_defined'     => false,
+                'visible_on_front' => true,
+                'position'         => 1000,
+            ]
+        );
+
+        $mobilePhoneNumberAttribute = $customerSetup->getEavConfig()->getAttribute(
+            Customer::ENTITY,
+            'sms_mobile_phone_number'
+        );
+
+        $mobilePhoneNumberAttribute->addData([
+            'attribute_set_id'   => $customerSetup->getDefaultAttributeSetId(Customer::ENTITY),
+            'attribute_group_id' => $customerSetup->getDefaultAttributeGroupId(Customer::ENTITY),
+            'used_in_forms'      => ['adminhtml_customer', 'customer_account_create', 'customer_account_edit'],
+        ]);
+
+        $this->attributeRepository->save($mobilePhoneNumberAttribute);
+
+        $setup->endSetup();
     }
 }
