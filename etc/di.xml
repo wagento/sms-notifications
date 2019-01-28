@@ -22,26 +22,6 @@
             </argument>
         </arguments>
     </type>
-    <type name="Linkmobility\Notifications\Controller\Adminhtml\Subscription\Create">
-        <arguments>
-            <argument name="logger" xsi:type="object">Linkmobility\Notifications\Logger\Logger</argument>
-        </arguments>
-    </type>
-    <type name="Linkmobility\Notifications\Controller\Adminhtml\Subscription\Delete">
-        <arguments>
-            <argument name="logger" xsi:type="object">Linkmobility\Notifications\Logger\Logger</argument>
-        </arguments>
-    </type>
-    <type name="Linkmobility\Notifications\Controller\Adminhtml\Subscription\MassCreate">
-        <arguments>
-            <argument name="logger" xsi:type="object">Linkmobility\Notifications\Logger\Logger</argument>
-        </arguments>
-    </type>
-    <type name="Linkmobility\Notifications\Controller\Adminhtml\Subscription\MassDelete">
-        <arguments>
-            <argument name="logger" xsi:type="object">Linkmobility\Notifications\Logger\Logger</argument>
-        </arguments>
-    </type>
     <type name="Linkmobility\Notifications\Model\MessageService">
         <arguments>
             <argument name="logger" xsi:type="object">Linkmobility\Notifications\Logger\Logger</argument>
