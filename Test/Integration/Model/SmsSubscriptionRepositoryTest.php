@@ -86,7 +86,6 @@ class SmsSubscriptionRepositoryTest extends TestCase
     {
         $smsSubscriptionEntity = $this->objectManager->create(SmsSubscriptionInterface::class)
             ->setCustomerId('1')
-            ->setSmsTypeId(1)
             ->setSmsType('order_placed');
 
         $result = $this->smsSubscriptionRepository->save($smsSubscriptionEntity);
