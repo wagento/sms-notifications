@@ -47,6 +47,7 @@ class SmsSubscriptionRepositoryTest extends TestCase
     private static $smsSubscriptionFixture;
 
     /**
+     * @magentoDataFixture Magento/Customer/_files/customer.php
      * @magentoDataFixture createSmsSubscriptionFixtureProvider
      */
     public function testGetReturnSmsSubscriptionEntity()
@@ -65,6 +66,7 @@ class SmsSubscriptionRepositoryTest extends TestCase
     }
 
     /**
+     * @magentoDataFixture Magento/Customer/_files/customer.php
      * @magentoDataFixture createDisabledSubscriptionsFixtureProvider
      */
     public function testGetListReturnsSearchResults()
@@ -81,6 +83,7 @@ class SmsSubscriptionRepositoryTest extends TestCase
 
     /**
      * @magentoDbIsolation enabled
+     * @magentoDataFixture Magento/Customer/_files/customer.php
      */
     public function testSaveCreatesSmsSubscriptionEntity()
     {
@@ -94,6 +97,7 @@ class SmsSubscriptionRepositoryTest extends TestCase
     }
 
     /**
+     * @magentoDataFixture Magento/Customer/_files/customer.php
      * @magentoDataFixture createSmsSubscriptionFixtureProvider
      */
     public function testSaveUpdatesSmsSubscriptionEntity()
@@ -109,6 +113,7 @@ class SmsSubscriptionRepositoryTest extends TestCase
     }
 
     /**
+     * @magentoDataFixture Magento/Customer/_files/customer.php
      * @magentoDataFixture createSmsSubscriptionFixtureProvider
      */
     public function testDeleteRemovesSmsSubscriptionEntity()
@@ -125,6 +130,7 @@ class SmsSubscriptionRepositoryTest extends TestCase
     }
 
     /**
+     * @magentoDataFixture Magento/Customer/_files/customer.php
      * @magentoDataFixture createSmsSubscriptionFixtureProvider
      */
     public function testDeleteThrowsCouldNotDeleteException()
@@ -145,6 +151,7 @@ class SmsSubscriptionRepositoryTest extends TestCase
     }
 
     /**
+     * @magentoDataFixture Magento/Customer/_files/customer.php
      * @magentoDataFixture createSmsSubscriptionFixtureProvider
      */
     public function testDeleteByIdRemovesSmsSubscriptionEntity()
