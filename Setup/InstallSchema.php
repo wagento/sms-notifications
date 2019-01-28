@@ -44,7 +44,7 @@ class InstallSchema implements InstallSchemaInterface
                 Table::TYPE_INTEGER,
                 null,
                 ['identity' => true, 'unsigned' => true, 'nullable' => false, 'primary' => true],
-                'SMS subscription ID'
+                'SMS Subscription ID'
             )->addColumn(
                 'customer_id',
                 Table::TYPE_INTEGER,
@@ -56,14 +56,14 @@ class InstallSchema implements InstallSchemaInterface
                 Table::TYPE_TEXT,
                 50,
                 ['nullable' => false],
-                'SMS type code (e.g. "order_placed")'
+                'SMS Type Code (e.g. "order_placed")'
             )->addForeignKey(
                 $setup->getFkName('sms_subscription', 'customer_id', 'customer_entity', 'entity_id'),
                 'customer_id',
                 $setup->getTable('customer_entity'),
                 'entity_id',
                 Table::ACTION_CASCADE
-            )->setComment('SMS types table');
+            )->setComment('SMS Notification Subscriptions');
 
         $setup->getConnection()->createTable($smsSubscriptionTable);
     }
