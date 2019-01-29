@@ -56,24 +56,35 @@ class InstallData implements InstallDataInterface
      */
     public function install(ModuleDataSetupInterface $setup, ModuleContextInterface $context)
     {
+        $setup->startSetup();
+
+        $this->createAttributes($setup);
+
+        $setup->endSetup();
+    }
+
+    /**
+     * @throws \Magento\Framework\Exception\LocalizedException
+     * @throws \Magento\Framework\Exception\StateException
+     */
+    private function createAttributes(ModuleDataSetupInterface $setup): void
+    {
         /** @var \Magento\Customer\Setup\CustomerSetup $customerSetup */
         $customerSetup = $this->customerSetupFactory->create(['setup' => $setup]);
-
-        $setup->startSetup();
 
         $customerSetup->addAttribute(
             Customer::ENTITY,
             'sms_mobile_phone_number',
             [
-                'type'             => 'varchar',
-                'label'            => 'Mobile Phone Number for SMS',
-                'input'            => 'text',
-                'required'         => false,
-                'visible'          => true,
-                'system'           => false,
-                'user_defined'     => false,
+                'type' => 'varchar',
+                'label' => 'Mobile Phone Number for SMS',
+                'input' => 'text',
+                'required' => false,
+                'visible' => true,
+                'system' => false,
+                'user_defined' => false,
                 'visible_on_front' => true,
-                'position'         => 1000,
+                'position' => 1000,
             ]
         );
 
@@ -83,13 +94,11 @@ class InstallData implements InstallDataInterface
         );
 
         $mobilePhoneNumberAttribute->addData([
-            'attribute_set_id'   => $customerSetup->getDefaultAttributeSetId(Customer::ENTITY),
+            'attribute_set_id' => $customerSetup->getDefaultAttributeSetId(Customer::ENTITY),
             'attribute_group_id' => $customerSetup->getDefaultAttributeGroupId(Customer::ENTITY),
-            'used_in_forms'      => ['adminhtml_customer', 'customer_account_create', 'customer_account_edit'],
+            'used_in_forms' => ['adminhtml_customer', 'customer_account_create', 'customer_account_edit'],
         ]);
 
         $this->attributeRepository->save($mobilePhoneNumberAttribute);
-
-        $setup->endSetup();
     }
 }
