@@ -140,11 +140,7 @@ class InstallData implements InstallDataInterface
         $countryPrefixesTable = $setup->getTable('directory_telephone_prefix');
 
         foreach ($countryPrefixes as $countryPrefix) {
-            $fields = [
-                'country_code' => $countryPrefix['country_code'],
-                'prefix' => $countryPrefix['prefix']
-            ];
-            $setup->getConnection()->insert($countryPrefixesTable, $fields);
+            $setup->getConnection()->insert($countryPrefixesTable, $countryPrefix);
         }
     }
 }

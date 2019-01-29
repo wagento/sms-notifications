@@ -74,6 +74,12 @@ class InstallSchema implements InstallSchemaInterface
                 ['nullable' => false, 'primary' => true, 'default' => false],
                 'Country Code, in ISO-2 Format'
             )->addColumn(
+                'country_name',
+                Table::TYPE_TEXT,
+                255,
+                ['nullable' => false, 'default' => false],
+                'Country Name'
+            )->addColumn(
                 'prefix',
                 Table::TYPE_INTEGER,
                 3,
