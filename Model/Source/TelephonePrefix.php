@@ -49,7 +49,7 @@ final class TelephonePrefix implements OptionSourceInterface
         foreach ($prefixes as $prefix) {
             $options[] = [
                 'value' => $prefix->getPrefix(),
-                'label' => '+' . $prefix->getPrefix() . ' (' . $prefix->getCountryName() . ')'
+                'label' => $prefix->getCountryName() . ' (+' . $prefix->getPrefix() . ')'
             ];
         }
 
