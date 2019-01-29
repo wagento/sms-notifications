@@ -40,6 +40,11 @@
             <argument name="logger" xsi:type="object">Linkmobility\Notifications\Logger\Logger</argument>
         </arguments>
     </type>
+    <type name="Linkmobility\Notifications\Setup\InstallData">
+        <arguments>
+            <argument name="logger" xsi:type="object">Linkmobility\Notifications\Logger\Logger</argument>
+        </arguments>
+    </type>
     <type name="Linkmobility\Notifications\Util\TemplateProcessor">
         <arguments>
             <argument name="converter" xsi:type="object">Zend\Filter\Word\SeparatorToCamelCase</argument>

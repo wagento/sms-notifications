@@ -22,6 +22,7 @@ use Magento\Eav\Api\AttributeRepositoryInterface;
 use Magento\Framework\Setup\InstallDataInterface;
 use Magento\Framework\Setup\ModuleContextInterface;
 use Magento\Framework\Setup\ModuleDataSetupInterface;
+use Psr\Log\LoggerInterface;
 
 /**
  * Database Data Installer
@@ -42,13 +43,20 @@ class InstallData implements InstallDataInterface
      * @var \Magento\Eav\Api\AttributeRepositoryInterface
      */
     private $attributeRepository;
+    /**
+     * @var \Psr\Log\LoggerInterface
+     */
+    private $logger;
 
     public function __construct(
         CustomerSetupFactory $customerSetupFactory,
-        AttributeRepositoryInterface $attributeRepository
+        AttributeRepositoryInterface $attributeRepository,
+
+        LoggerInterface $logger
     ) {
         $this->customerSetupFactory = $customerSetupFactory;
         $this->attributeRepository = $attributeRepository;
+        $this->logger = $logger;
     }
 
     /**
@@ -59,6 +67,7 @@ class InstallData implements InstallDataInterface
         $setup->startSetup();
 
         $this->createAttributes($setup);
+        $this->importCountryPhonePrefixes($setup);
 
         $setup->endSetup();
     }
@@ -100,5 +109,42 @@ class InstallData implements InstallDataInterface
         ]);
 
         $this->attributeRepository->save($mobilePhoneNumberAttribute);
+    }
+
+    /**
+     * @phpcs:disable Generic.Files.LineLength.TooLong
+     */
+    private function importCountryPhonePrefixes(ModuleDataSetupInterface $setup): void
+    {
+        $countryPrefixes = file_get_contents(__DIR__ . '/_data/country_telephone_prefixes.json');
+
+        if ($countryPrefixes === false) {
+            $this->logger->critical(__('Could not get JSON file of country telephone prefixes to import.'));
+
+            return;
+        }
+
+        $countryPrefixes = json_decode($countryPrefixes, true);
+
+        if (json_last_error() !== JSON_ERROR_NONE) {
+            $this->logger->critical(
+                __('Could not parse file containing country telephone prefixes as JSON. Error: "%1".', json_last_error_msg())
+            );
+
+            return;
+        }
+
+        // Strip header row
+        unset($countryPrefixes[0]);
+
+        $countryPrefixesTable = $setup->getTable('directory_telephone_prefix');
+
+        foreach ($countryPrefixes as $countryPrefix) {
+            $fields = [
+                'country_code' => $countryPrefix['country_code'],
+                'prefix' => $countryPrefix['prefix']
+            ];
+            $setup->getConnection()->insert($countryPrefixesTable, $fields);
+        }
     }
 }

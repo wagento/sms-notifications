@@ -16,6 +16,7 @@ declare(strict_types=1);
 
 namespace Linkmobility\Notifications\Setup;
 
+use Magento\Framework\DB\Adapter\AdapterInterface;
 use Magento\Framework\DB\Ddl\Table;
 use Magento\Framework\Setup\InstallSchemaInterface;
 use Magento\Framework\Setup\ModuleContextInterface;
@@ -64,7 +65,31 @@ class InstallSchema implements InstallSchemaInterface
                 'entity_id',
                 Table::ACTION_CASCADE
             )->setComment('SMS Notification Subscriptions');
+        $countryPhonePrefixTable = $setup->getConnection()
+            ->newTable($setup->getTable('directory_telephone_prefix'))
+            ->addColumn(
+                'country_code',
+                Table::TYPE_TEXT,
+                2,
+                ['nullable' => false, 'primary' => true, 'default' => false],
+                'Country Code, in ISO-2 Format'
+            )->addColumn(
+                'prefix',
+                Table::TYPE_INTEGER,
+                3,
+                ['nullable' => false, 'unsigned' => true],
+                'Numeric Telephone Prefix'
+            )->addIndex(
+                $setup->getIdxName(
+                    'directory_telephone_prefix',
+                    ['country_code'],
+                    AdapterInterface::INDEX_TYPE_UNIQUE
+                ),
+                ['country_code'],
+                ['type' => AdapterInterface::INDEX_TYPE_UNIQUE]
+            )->setComment('Telephone Prefix Directory for SMS Notifications');
 
         $setup->getConnection()->createTable($smsSubscriptionTable);
+        $setup->getConnection()->createTable($countryPhonePrefixTable);
     }
 }
