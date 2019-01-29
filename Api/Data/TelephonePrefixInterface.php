@@ -24,6 +24,10 @@ namespace Linkmobility\Notifications\Api\Data;
  */
 interface TelephonePrefixInterface
 {
+    public const COUNTRY_CODE = 'country_code';
+    public const COUNTRY_NAME = 'country_name';
+    public const PREFIX = 'prefix';
+
     public function setCountryCode(string $countryCode): TelephonePrefixInterface;
 
     public function getCountryCode(): string;

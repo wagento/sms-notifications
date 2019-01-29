@@ -27,10 +27,6 @@ use Magento\Framework\Api\AbstractSimpleObject;
  */
 class TelephonePrefix extends AbstractSimpleObject implements TelephonePrefixInterface
 {
-    public const COUNTRY_CODE = 'country_code';
-    public const COUNTRY_NAME = 'country_name';
-    public const PREFIX = 'prefix';
-
     public function setCountryCode(string $countryCode): TelephonePrefixInterface
     {
         return $this->setData(self::COUNTRY_CODE, $countryCode);
