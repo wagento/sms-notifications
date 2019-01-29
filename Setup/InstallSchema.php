@@ -81,7 +81,7 @@ class InstallSchema implements InstallSchemaInterface
                 'Country Name'
             )->addColumn(
                 'prefix',
-                Table::TYPE_INTEGER,
+                Table::TYPE_SMALLINT,
                 3,
                 ['nullable' => false, 'unsigned' => true],
                 'Numeric Telephone Prefix'
