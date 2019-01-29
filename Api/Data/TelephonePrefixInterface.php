@@ -28,6 +28,10 @@ interface TelephonePrefixInterface
 
     public function getCountryCode(): string;
 
+    public function setCountryName(string $countryName): TelephonePrefixInterface;
+
+    public function getCountryName(): string;
+
     public function setPrefix(int $prefix): TelephonePrefixInterface;
 
     public function getPrefix(): int;
