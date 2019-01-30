@@ -52,7 +52,7 @@ final class TelephonePrefix implements OptionSourceInterface
         /** @var \Linkmobility\Notifications\Model\TelephonePrefix $prefix */
         foreach ($prefixes as $prefix) {
             $options[] = [
-                'value' => $prefix->getPrefix(),
+                'value' => $prefix->getCountryCode() . '_' . $prefix->getPrefix(),
                 'label' => $prefix->getCountryName() . ' (+' . $prefix->getPrefix() . ')'
             ];
         }
