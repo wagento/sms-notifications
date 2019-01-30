@@ -16,7 +16,7 @@ declare(strict_types=1);
 
 namespace Linkmobility\Notifications\Model\Source;
 
-use Linkmobility\Notifications\Model\ResourceModel\TelephonePrefix\Collection as TelephonePrefixCollection;
+use Linkmobility\Notifications\Model\ResourceModel\TelephonePrefix\CollectionFactory as TelephonePrefixCollectionFactory;
 use Magento\Framework\Data\Collection;
 use Magento\Framework\Data\OptionSourceInterface;
 
@@ -29,13 +29,13 @@ use Magento\Framework\Data\OptionSourceInterface;
 final class TelephonePrefix implements OptionSourceInterface
 {
     /**
-     * @var \Linkmobility\Notifications\Model\ResourceModel\TelephonePrefix\Collection
+     * @var \Linkmobility\Notifications\Model\ResourceModel\TelephonePrefix\CollectionFactory
      */
-    private $prefixCollection;
+    private $prefixCollectionFactory;
 
-    public function __construct(TelephonePrefixCollection $prefixCollection)
+    public function __construct(TelephonePrefixCollectionFactory $prefixCollectionFactory)
     {
-        $this->prefixCollection = $prefixCollection;
+        $this->prefixCollectionFactory = $prefixCollectionFactory;
     }
 
     /**
@@ -43,7 +43,10 @@ final class TelephonePrefix implements OptionSourceInterface
      */
     public function toOptionArray(): array
     {
-        $prefixes = $this->prefixCollection->setOrder('country_name', Collection::SORT_ORDER_ASC)->load()->getItems();
+        $prefixes = $this->prefixCollectionFactory->create()
+            ->setOrder('country_name', Collection::SORT_ORDER_ASC)
+            ->load()
+            ->getItems();
         $options = [];
 
         /** @var \Linkmobility\Notifications\Model\TelephonePrefix $prefix */
