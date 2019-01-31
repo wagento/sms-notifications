@@ -23,4 +23,7 @@
             <argument name="logger" xsi:type="object">Linkmobility\Notifications\Logger\Logger</argument>
         </arguments>
     </type>
+    <type name="Magento\Customer\Block\Form\Register">
+        <plugin name="linkmobilityNotificationsRegister" type="Linkmobility\Notifications\Plugin\Block\Form\RegisterPlugin"/>
+    </type>
 </config>
