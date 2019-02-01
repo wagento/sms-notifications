@@ -19,7 +19,7 @@ define([
     'use strict';
 
     return {
-        open: ko.observable(false),
+        open: ko.observable(false).extend({notify: 'always'}),
         modalWindow: null,
         /**
          * Create pop-up window for provided element.
