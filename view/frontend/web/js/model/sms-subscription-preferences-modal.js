@@ -12,12 +12,14 @@
 
 define([
     'jquery',
+    'ko',
     'Magento_Ui/js/modal/modal',
     'mage/translate'
-], function ($, modal, $t) {
+], function ($, ko, modal, $t) {
     'use strict';
 
     return {
+        open: ko.observable(false),
         modalWindow: null,
         /**
          * Create pop-up window for provided element.

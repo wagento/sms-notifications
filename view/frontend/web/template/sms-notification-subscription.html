@@ -1,0 +1,19 @@
+<!--
+/**
+ * LINK Mobility SMS Notifications
+ *
+ * Sends transactional SMS notifications through the LINK Mobility messaging
+ * service.
+ *
+ * @author Joseph Leedy <joseph@wagento.com>
+ * @author Yair García Torres <yair.garcia@wagento.com>
+ * @copyright Copyright (c) LINK Mobility (https://www.linkmobility.com/)
+ * @license https://opensource.org/licenses/OSL-3.0.php Open Software License 3.0
+ */
+-->
+<div class="field choice sms-notification-subscription">
+    <input type="hidden" name="sms_notifications[sms_types]" id="sms-notifications-sms-types" data-bind="value: selectedSmsTypes">
+    <input type="checkbox" name="sms_notifications[subscribed]" value="1" id="sms-notifications-subscribed" class="checkbox" data-bind="attr: {title: $t('Send me text notifications about my order')}, click: handleCheckboxClick"/>
+    <label for="sms-notifications-subscribed" class="label"><span data-bind="i18n: 'Send me text notifications about my order'"></span></label>
+    <span>(<a href="#sms-subscription-preferences-modal" class="action" id="sms-subscription-preferences-modal-trigger" data-bind="i18n: 'Preferences', click: handlePreferencesClick"></a>)</span>
+</div>
