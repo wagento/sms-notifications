@@ -12,12 +12,12 @@
  */
 ?>
 <?php /** @var \Magento\Framework\View\Element\Template $block */ ?>
-<div class="field-sms-notification-subscription" id="sms-notification-subscription-container" data-bind="scope: 'sms-notification-subscription'">
+<div class="field choice sms-notification-subscription" id="sms-notification-subscription-field" data-bind="scope: 'sms-notification-subscription'">
     <!-- ko template: getTemplate() --><!-- /ko -->
 </div>
 <script type="text/x-magento-init">
     {
-        "#sms-notification-subscription-container": {
+        "#sms-notification-subscription-field": {
             "Magento_Ui/js/core/app": {
                 "components": {
                     "sms-notification-subscription": {
