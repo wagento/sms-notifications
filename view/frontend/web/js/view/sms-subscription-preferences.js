@@ -14,7 +14,7 @@ define([
     'jquery',
     'uiComponent',
     'Linkmobility_Notifications/js/model/sms-subscription-preferences-modal',
-    'Linkmobility_Notifications/js/model/sms-notifications'
+    'smsNotifications'
 ], function ($, Component, subscriptionPreferencesModal, smsNotifications) {
     'use strict';
 

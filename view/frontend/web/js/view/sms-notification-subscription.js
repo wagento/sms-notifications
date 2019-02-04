@@ -15,7 +15,7 @@ define([
     'ko',
     'uiComponent',
     'mage/translate',
-    'Linkmobility_Notifications/js/model/sms-notifications',
+    'smsNotifications',
     'Linkmobility_Notifications/js/model/sms-subscription-preferences-modal'
 ], function ($, ko, Component, $t, smsNotifications, subscriptionPreferencesModal) {
     'use strict';

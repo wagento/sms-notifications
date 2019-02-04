@@ -13,7 +13,8 @@
 var config = {
     map: {
         '*': {
-            lmCheckboxToggler: 'Linkmobility_Notifications/js/checkbox-toggler'
+            lmCheckboxToggler: 'Linkmobility_Notifications/js/checkbox-toggler',
+            smsNotifications: 'Linkmobility_Notifications/js/model/sms-notifications'
         }
     }
 };

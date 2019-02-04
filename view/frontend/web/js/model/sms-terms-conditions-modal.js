@@ -14,7 +14,7 @@ define([
     'jquery',
     'Magento_Ui/js/modal/modal',
     'mage/translate',
-    'Linkmobility_Notifications/js/model/sms-notifications'
+    'smsNotifications'
 ], function ($, modal, $t, smsNotifications) {
     'use strict';
 
