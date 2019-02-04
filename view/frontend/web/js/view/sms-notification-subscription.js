@@ -29,8 +29,8 @@ define([
         initObservable: function () {
             this._super();
 
-            smsNotifications.isSubscribed.subscribe(this.handleSubscribe.bind(this));
-            smsNotifications.selectedSmsTypes.subscribe(this.setSmsSelectedTypes.bind(this));
+            smsNotifications.isSubscribed.subscribe(this.handleSubscribe, this);
+            smsNotifications.selectedSmsTypes.subscribe(this.setSmsSelectedTypes, this);
 
             return this;
         },
