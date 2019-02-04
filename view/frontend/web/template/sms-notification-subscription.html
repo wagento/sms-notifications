@@ -11,7 +11,7 @@
  * @license https://opensource.org/licenses/OSL-3.0.php Open Software License 3.0
  */
 -->
-<div class="field choice sms-notification-subscription">
+<div class="sms-notification-subscription-container">
     <input type="hidden" name="sms_notifications[sms_types]" id="sms-notifications-sms-types" data-bind="value: selectedSmsTypes">
     <input type="checkbox" name="sms_notifications[subscribed]" value="1" id="sms-notifications-subscribed" class="checkbox" data-bind="attr: {title: $t('Send me text notifications about my order')}, click: handleCheckboxClick"/>
     <label for="sms-notifications-subscribed" class="label"><span data-bind="i18n: 'Send me text notifications about my order'"></span></label>
