@@ -48,7 +48,7 @@ define([
             $(this.checkboxSelector).prop('checked', isSubscribed);
         },
         setSmsSelectedTypes: function (selectedSmsTypes) {
-            this.selectedSmsTypes(selectedSmsTypes);
+            this.selectedSmsTypes(selectedSmsTypes.join(','));
         }
     });
 });

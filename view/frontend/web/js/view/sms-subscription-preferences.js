@@ -39,13 +39,11 @@ define([
             subscriptionPreferencesModal.showModal();
         },
         hideModal: function (context) {
-            let smsTypes = [];
+            smsNotifications.selectedSmsTypes.removeAll();
 
             $(context.element).find('.sms-type-checkbox:checked').each(function () {
-                smsTypes.push($(this).val());
+                smsNotifications.selectedSmsTypes.push($(this).val());
             });
-
-            smsNotifications.selectedSmsTypes(smsTypes.join(','));
         },
         selectAll: function () {
             $('.sms-type-checkbox').each(function () {

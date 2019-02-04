@@ -13,7 +13,7 @@
 define(['ko'], function (ko) {
     let isSubscribed = ko.observable(false),
         isSubscribing = ko.observable(false),
-        selectedSmsTypes = ko.observable('');
+        selectedSmsTypes = ko.observableArray();
 
     isSubscribed.extend({ notify: 'always' });
 
