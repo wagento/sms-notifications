@@ -18,7 +18,6 @@ namespace Linkmobility\Notifications\Setup;
 
 use Magento\Customer\Model\Customer;
 use Magento\Customer\Setup\CustomerSetupFactory;
-use Magento\Eav\Api\AttributeRepositoryInterface;
 use Magento\Framework\Setup\InstallDataInterface;
 use Magento\Framework\Setup\ModuleContextInterface;
 use Magento\Framework\Setup\ModuleDataSetupInterface;
@@ -40,22 +39,15 @@ class InstallData implements InstallDataInterface
      */
     private $customerSetupFactory;
     /**
-     * @var \Magento\Eav\Api\AttributeRepositoryInterface
-     */
-    private $attributeRepository;
-    /**
      * @var \Psr\Log\LoggerInterface
      */
     private $logger;
 
     public function __construct(
         CustomerSetupFactory $customerSetupFactory,
-        AttributeRepositoryInterface $attributeRepository,
-
         LoggerInterface $logger
     ) {
         $this->customerSetupFactory = $customerSetupFactory;
-        $this->attributeRepository = $attributeRepository;
         $this->logger = $logger;
     }
 
@@ -73,8 +65,7 @@ class InstallData implements InstallDataInterface
     }
 
     /**
-     * @throws \Magento\Framework\Exception\LocalizedException
-     * @throws \Magento\Framework\Exception\StateException
+     * @throws \Exception
      */
     private function createAttributes(ModuleDataSetupInterface $setup): void
     {
@@ -107,8 +98,7 @@ class InstallData implements InstallDataInterface
             'attribute_group_id' => $customerSetup->getDefaultAttributeGroupId(Customer::ENTITY),
             'used_in_forms' => ['adminhtml_customer', 'customer_account_create', 'customer_account_edit'],
         ]);
-
-        $this->attributeRepository->save($mobilePhoneNumberAttribute);
+        $mobilePhoneNumberAttribute->save();
     }
 
     /**
