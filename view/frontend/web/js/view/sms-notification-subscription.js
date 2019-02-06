@@ -36,6 +36,9 @@ define([
         },
         handleCheckboxClick: function (data, event) {
             if (!$(event.target).is(':checked')) {
+                smsNotifications.isSubscribing(false);
+                smsNotifications.isSubscribed(false);
+
                 return true;
             }
 
