@@ -29,7 +29,7 @@ use Magento\Framework\View\Element\Template;
  * @package Linkmobility\Notifications\Block
  * @author Joseph Leedy <joseph@wagento.com>
  */
-abstract class SmsNotifications extends Template
+abstract class AbstractBlock extends Template
 {
     /**
      * @var \Magento\Customer\Model\Session

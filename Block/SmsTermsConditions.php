@@ -22,6 +22,6 @@ namespace Linkmobility\Notifications\Block;
  * @package Linkmobility\Notifications\Block
  * @author Joseph Leedy <joseph@wagento.com>
  */
-class SmsTermsConditions extends SmsNotifications
+class SmsTermsConditions extends AbstractBlock
 {
 }

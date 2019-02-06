@@ -16,7 +16,7 @@ declare(strict_types=1);
 
 namespace Linkmobility\Notifications\Block\SmsNotifications;
 
-use Linkmobility\Notifications\Block\SmsNotifications;
+use Linkmobility\Notifications\Block\AbstractBlock;
 
 /**
  * SMS Notifications Subscribe Block
@@ -24,6 +24,6 @@ use Linkmobility\Notifications\Block\SmsNotifications;
  * @package Linkmobility\Notifications\Block\SmsNotifications
  * @author Joseph Leedy <joseph@wagento.com>
  */
-class Subscribe extends SmsNotifications
+class Subscribe extends AbstractBlock
 {
 }
