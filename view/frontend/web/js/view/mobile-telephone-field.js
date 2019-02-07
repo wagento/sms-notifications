@@ -60,16 +60,15 @@ define([
             }
         },
         setFullMobileTelephoneNumber: function () {
-            const mobileTelephonePrefix = this.mobileTelephonePrefix.substring(3),
-                mobileTelephoneNumber = this.mobileTelephoneNumber.replace(/\D/g, '');
+            if (this.mobileTelephonePrefix === undefined || this.mobileTelephonePrefix.length === 0
+                || this.mobileTelephoneNumber === undefined || this.mobileTelephoneNumber.length === 0) {
+                this.fullMobileTelephoneNumber = '';
 
-            if (mobileTelephonePrefix.length === 0 || mobileTelephoneNumber.length === 0) {
-                 this.fullMobileTelephoneNumber = '';
-
-                 return;
+                return;
             }
 
-            this.fullMobileTelephoneNumber = '+' + mobileTelephonePrefix + mobileTelephoneNumber;
+            this.fullMobileTelephoneNumber = '+' + this.mobileTelephonePrefix.substring(3)
+                + this.mobileTelephoneNumber.replace(/\D/g, '');
         }
     });
 });
