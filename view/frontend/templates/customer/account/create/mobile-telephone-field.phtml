@@ -15,6 +15,7 @@
 
 /** @var \Linkmobility\Notifications\ViewModel\TelephonePrefixes $telephonePrefixesViewModel */
 $telephonePrefixesViewModel = $this->getData('telephone_prefixes_view_model');
+$mobileTelephonePrefix = $block->getTelephonePrefix() ?? $telephonePrefixesViewModel->getDefaultPrefix();
 ?>
 <div class="field full-mobile-telephone-number" id="full-mobile-telephone-number-field" data-bind="scope: 'sms-mobile-telephone'">
     <!-- ko template: getTemplate() --><!-- /ko -->
@@ -30,7 +31,7 @@ $telephonePrefixesViewModel = $this->getData('telephone_prefixes_view_model');
                             "mobileTelephonePrefixOptions": <?= \json_encode($telephonePrefixesViewModel->getOptions()) ?>,
                             "fullMobileTelephoneNumber": "<?= $block->escapeJs($block->getFullMobileNumber()) ?>",
                             "mobileTelephoneNumber": "<?= $block->escapeJs($block->getTelephoneNumber()) ?>",
-                            "mobileTelephonePrefix": "<?= $block->escapeJs($block->getTelephonePrefix()) ?>",
+                            "mobileTelephonePrefix": "<?= $block->escapeJs($mobileTelephonePrefix) ?>",
                             "showField": <?= /** @noEscape */ $block->getFieldVisibility() ?>
                         }
                     }
