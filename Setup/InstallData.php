@@ -16,7 +16,7 @@ declare(strict_types=1);
 
 namespace Linkmobility\Notifications\Setup;
 
-use Linkmobility\Notifications\Model\Source\TelephonePrefix;
+use Linkmobility\Notifications\Model\Customer\Attribute\Source\TelephonePrefix;
 use Magento\Customer\Model\Customer;
 use Magento\Customer\Setup\CustomerSetupFactory;
 use Magento\Framework\Setup\InstallDataInterface;

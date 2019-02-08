@@ -5,7 +5,7 @@
  * Sends transactional SMS notifications through the LINK Mobility messaging
  * service.
  *
- * @package Linkmobility\Notifications\Model\Source
+ * @package Linkmobility\Notifications\Model\Customer\Attribute\Source
  * @author Joseph Leedy <joseph@wagento.com>
  * @author Yair García Torres <yair.garcia@wagento.com>
  * @copyright Copyright (c) LINK Mobility (https://www.linkmobility.com/)
@@ -14,7 +14,7 @@
 
 declare(strict_types=1);
 
-namespace Linkmobility\Notifications\Model\Source;
+namespace Linkmobility\Notifications\Model\Customer\Attribute\Source;
 
 use Linkmobility\Notifications\Model\ResourceModel\TelephonePrefix\CollectionFactory as TelephonePrefixCollectionFactory;
 use Magento\Eav\Model\Entity\Attribute\Source\AbstractSource;
@@ -23,7 +23,7 @@ use Magento\Framework\Data\Collection;
 /**
  * Telephone Prefix Source Model
  *
- * @package Linkmobility\Notifications\Model\Source
+ * @package Linkmobility\Notifications\Model\Customer\Attribute\Source
  * @author Joseph Leedy <joseph@wagento.com>
  */
 final class TelephonePrefix extends AbstractSource
