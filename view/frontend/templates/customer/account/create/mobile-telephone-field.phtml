@@ -28,10 +28,10 @@ $mobileTelephonePrefix = $block->getTelephonePrefix() ?? $telephonePrefixesViewM
                     "sms-mobile-telephone": {
                         "component": "Linkmobility_Notifications/js/view/mobile-telephone-field",
                         "config": {
+                            "showField": <?= /** @noEscape */ $block->getFieldVisibility() ?>,
                             "mobileTelephonePrefixOptions": <?= \json_encode($telephonePrefixesViewModel->getOptions()) ?>,
-                            "mobileTelephoneNumber": "<?= $block->escapeJs($block->getTelephoneNumber()) ?>",
                             "mobileTelephonePrefix": "<?= $block->escapeJs($mobileTelephonePrefix) ?>",
-                            "showField": <?= /** @noEscape */ $block->getFieldVisibility() ?>
+                            "mobileTelephoneNumber": "<?= $block->escapeJs($block->getTelephoneNumber()) ?>"
                         }
                     }
                 }
