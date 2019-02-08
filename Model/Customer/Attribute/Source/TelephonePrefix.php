@@ -41,7 +41,7 @@ final class TelephonePrefix extends AbstractSource
     /**
      * {@inheritdoc}
      */
-    public function getAllOptions(): array
+    public function getAllOptions(bool $withEmpty = true): array
     {
         $prefixes = $this->prefixCollectionFactory->create()
             ->setOrder('country_name', Collection::SORT_ORDER_ASC)
@@ -55,6 +55,10 @@ final class TelephonePrefix extends AbstractSource
                 'value' => $prefix->getCountryCode() . '_' . $prefix->getPrefix(),
                 'label' => $prefix->getCountryName() . ' (+' . $prefix->getPrefix() . ')'
             ];
+        }
+
+        if ($withEmpty) {
+            array_unshift($options, ['value' => '', 'label' => ' ']);
         }
 
         return $options;
