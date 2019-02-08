@@ -28,21 +28,15 @@ class MobileTelephoneField extends AbstractBlock
 {
     public function getFieldVisibility(): string
     {
-        return $this->getFullMobileNumber() !== '' && $this->getTelephonePrefix() !== null
-            && $this->getTelephonePrefix() !== '' ? 'true' : 'false';
+        return $this->getTelephonePrefix() !== null && $this->getTelephoneNumber() !== '' ? 'true' : 'false';
     }
 
     public function getTelephonePrefix(): ?string
     {
-        return $this->getFormData()->getMobileTelephonePrefix();
+        return $this->getFormData()->getSmsMobilePhonePrefix();
     }
 
     public function getTelephoneNumber(): string
-    {
-        return $this->getFormData()->getMobileTelephoneNumber() ?? '';
-    }
-
-    public function getFullMobileNumber(): string
     {
         return $this->getFormData()->getSmsMobilePhoneNumber() ?? '';
     }

@@ -17,19 +17,18 @@
 $telephonePrefixesViewModel = $this->getData('telephone_prefixes_view_model');
 $mobileTelephonePrefix = $block->getTelephonePrefix() ?? $telephonePrefixesViewModel->getDefaultPrefix();
 ?>
-<div class="field full-mobile-telephone-number" id="full-mobile-telephone-number-field" data-bind="scope: 'sms-mobile-telephone'">
+<div class="field mobile-telephone-number" id="mobile-telephone-number-field" data-bind="scope: 'sms-mobile-telephone'">
     <!-- ko template: getTemplate() --><!-- /ko -->
 </div>
 <script type="text/x-magento-init">
     {
-        "#full-mobile-telephone-number-field": {
+        "#mobile-telephone-number-field": {
             "Magento_Ui/js/core/app": {
                 "components": {
                     "sms-mobile-telephone": {
                         "component": "Linkmobility_Notifications/js/view/mobile-telephone-field",
                         "config": {
                             "mobileTelephonePrefixOptions": <?= \json_encode($telephonePrefixesViewModel->getOptions()) ?>,
-                            "fullMobileTelephoneNumber": "<?= $block->escapeJs($block->getFullMobileNumber()) ?>",
                             "mobileTelephoneNumber": "<?= $block->escapeJs($block->getTelephoneNumber()) ?>",
                             "mobileTelephonePrefix": "<?= $block->escapeJs($mobileTelephonePrefix) ?>",
                             "showField": <?= /** @noEscape */ $block->getFieldVisibility() ?>

@@ -23,18 +23,12 @@ define([
             template: 'Linkmobility_Notifications/mobile-telephone-field',
             showField: false,
             mobileTelephonePrefixOptions: [],
-            fullMobileTelephoneNumber: '',
             mobileTelephonePrefix: '',
             mobileTelephoneNumber: '',
             tracks: {
                 showField: true,
-                fullMobileTelephoneNumber: true,
                 mobileTelephonePrefix: true,
                 mobileTelephoneNumber: true
-            },
-            listens: {
-                mobileTelephonePrefix: 'setFullMobileTelephoneNumber',
-                mobileTelephoneNumber: 'setFullMobileTelephoneNumber'
             }
         },
         defaultMobileTelephonePrefix: '',
@@ -54,21 +48,9 @@ define([
             this.showField = isSubscribed;
 
             if (!isSubscribed) {
-                this.fullMobileTelephoneNumber = '';
                 this.mobileTelephonePrefix = this.defaultMobileTelephonePrefix;
                 this.mobileTelephoneNumber = '';
             }
-        },
-        setFullMobileTelephoneNumber: function () {
-            if (this.mobileTelephonePrefix === undefined || this.mobileTelephonePrefix.length === 0
-                || this.mobileTelephoneNumber === undefined || this.mobileTelephoneNumber.length === 0) {
-                this.fullMobileTelephoneNumber = '';
-
-                return;
-            }
-
-            this.fullMobileTelephoneNumber = '+' + this.mobileTelephonePrefix.substring(3)
-                + this.mobileTelephoneNumber.replace(/\D/g, '');
         }
     });
 });

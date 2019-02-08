@@ -17,8 +17,11 @@ declare(strict_types=1);
 namespace Linkmobility\Notifications\ViewModel;
 
 use Linkmobility\Notifications\Model\ResourceModel\TelephonePrefix\CollectionFactory as TelephonePrefixCollectionFactory;
-use Linkmobility\Notifications\Model\Source\TelephonePrefix as TelephonePrefixSource;
+use Magento\Customer\Model\Customer;
 use Magento\Directory\Helper\Data as DirectoryHelper;
+use Magento\Eav\Api\AttributeRepositoryInterface;
+use Magento\Framework\Exception\LocalizedException;
+use Magento\Framework\Exception\NoSuchEntityException;
 use Magento\Framework\View\Element\Block\ArgumentInterface;
 
 /**
@@ -34,9 +37,9 @@ class TelephonePrefixes implements ArgumentInterface
      */
     private $directoryHelper;
     /**
-     * @var \Linkmobility\Notifications\Model\Source\TelephonePrefix
+     * @var \Magento\Eav\Api\AttributeRepositoryInterface
      */
-    private $telephonePrefixSource;
+    private $attributeRepository;
     /**
      * @var \Linkmobility\Notifications\Model\ResourceModel\TelephonePrefix\CollectionFactory
      */
@@ -44,17 +47,25 @@ class TelephonePrefixes implements ArgumentInterface
 
     public function __construct(
         DirectoryHelper $directoryHelper,
-        TelephonePrefixSource $telephonePrefixSource,
+        AttributeRepositoryInterface $attributeRepository,
         TelephonePrefixCollectionFactory $telephonePrefixCollectionFactory
     ) {
         $this->directoryHelper = $directoryHelper;
-        $this->telephonePrefixSource = $telephonePrefixSource;
+        $this->attributeRepository = $attributeRepository;
         $this->telephonePrefixCollectionFactory = $telephonePrefixCollectionFactory;
     }
 
     public function getOptions(): array
     {
-        return $this->telephonePrefixSource->toOptionArray();
+        try {
+            $options = $this->attributeRepository->get(Customer::ENTITY, 'sms_mobile_phone_prefix')
+                ->getSource()
+                ->getAllOptions(false);
+        } catch (NoSuchEntityException | LocalizedException $e) {
+            $options = [];
+        }
+
+        return $options;
     }
 
     public function getDefaultPrefix(): string
