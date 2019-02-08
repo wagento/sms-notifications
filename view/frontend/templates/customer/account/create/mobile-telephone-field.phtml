@@ -14,7 +14,7 @@
 /** @var \Linkmobility\Notifications\Block\Customer\Account\Create\MobileTelephoneField $block */
 
 /** @var \Linkmobility\Notifications\ViewModel\TelephonePrefixes $telephonePrefixesViewModel */
-$telephonePrefixesViewModel = $this->getData('telephone_prefixes_view_model');
+$telephonePrefixesViewModel = $block->getData('telephone_prefixes_view_model');
 $mobileTelephonePrefix = $block->getTelephonePrefix() ?? $telephonePrefixesViewModel->getDefaultPrefix();
 ?>
 <div class="field mobile-telephone-number" id="mobile-telephone-number-field" data-bind="scope: 'sms-mobile-telephone'">
