@@ -16,5 +16,7 @@
     <section name="StorefrontCustomerCreateFormSection">
         <element name="smsSubscribeCheckbox" type="input" selector="#sms-notifications-subscribed"/>
         <element name="smsSubscriptionPreferencesLink" type="input" selector="#sms-subscription-preferences-modal-trigger"/>
+        <element name="smsMobilePhonePrefixDropdown" type="select" selector="#mobile-telephone-prefix"/>
+        <element name="smsMobilePhoneNumberField" type="input" selector="#mobile-telephone-number"/>
     </section>
 </sections>

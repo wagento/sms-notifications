@@ -40,11 +40,16 @@
         <amOnPage url="customer/account/index" stepKey="navigateToCustomerAccountPage"/>
         <click selector="{{StorefrontSmsSubscriptionPreferencesSection.accountLink}}" stepKey="openSmsSubscriptionPreferencesPage"/>
         <waitForPageLoad stepKey="waitForSmsSubscriptionsPageLoad"/>
+        <selectOption selector="{{StorefrontCustomerCreateFormSection.smsMobilePhonePrefixDropdown}}" parameterArray="['value' => 'GB_44']" stepKey="selectMobilePrefix"/>
+        <fillField selector="{{StorefrontCustomerCreateFormSection.smsMobilePhoneNumberField}}" userInput="7712 345678" stepKey="enterMobileNumber"/>
         <checkOption selector="{{StorefrontSmsSubscriptionPreferencesSection.selectAllCheckbox}}" stepKey="checkSelectAllCheckbox"/>
         <seeCheckboxIsChecked selector="{{StorefrontSmsSubscriptionPreferencesSection.smsTypeCheckboxes}}" stepKey="seeSmsTypeCheckboxesChecked"/>
         <click selector="{{StorefrontSmsSubscriptionPreferencesSection.saveButton}}" stepKey="clickSaveButton"/>
         <waitForPageLoad stepKey="waitForSmsSubscriptionsSave"/>
-        <see userInput="You have been subscribed to 7 text notifications." stepKey="seeSuccessMessage"/>
+        <see userInput="You have been subscribed to 7 text notifications." stepKey="seeSubscriptionSuccessMessage"/>
+        <see userInput="Your mobile telephone number has been updated." stepKey="seeMobilePhoneSuccessMessage"/>
+        <seeOptionIsSelected selector="{{StorefrontCustomerCreateFormSection.smsMobilePhonePrefixDropdown}}" userInput="United Kingdom (+44)" stepKey="seeSavedMobilePrefixSelected"/>
+        <seeInField selector="{{StorefrontCustomerCreateFormSection.smsMobilePhoneNumberField}}" userInput="7712 345678" stepKey="seeSavedMobileNumber"/>
         <seeCheckboxIsChecked selector="{{StorefrontSmsSubscriptionPreferencesSection.selectAllCheckbox}}" stepKey="seeSelectAllCheckboxChecked"/>
         <seeCheckboxIsChecked selector="{{StorefrontSmsSubscriptionPreferencesSection.smsTypeCheckboxes}}" stepKey="seeSmsTypeCheckboxesCheckedAgain"/>
     </test>
