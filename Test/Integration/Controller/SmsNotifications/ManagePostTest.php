@@ -15,7 +15,6 @@
 namespace Linkmobility\Notifications\Test\Integration\Controller\SmsNotifications;
 
 use Linkmobility\Notifications\Api\SmsSubscriptionRepositoryInterface;
-use Linkmobility\Notifications\Controller\SmsNotifications\ManagePost;
 use Linkmobility\Notifications\Model\SmsSubscription;
 use Linkmobility\Notifications\Model\SmsSubscriptionRepository;
 use Linkmobility\Notifications\Model\Source\SmsType as SmsTypeSource;
@@ -176,13 +175,10 @@ class ManagePostTest extends AbstractControllerTestCase
     {
         parent::setUp();
 
-        $this->_objectManager->configure([
-            ManagePost::class => [
-                'arguments' => [
-                    'logger' => ['instance' => TestLogger::class],
-                ]
-            ]
-        ]);
+        $this->_objectManager->addSharedInstance(
+            $this->_objectManager->get(TestLogger::class),
+            'Linkmobility\Notifications\Logger\Logger'
+        );
 
         $this->getRequest()->setMethod(HttpRequest::METHOD_POST);
     }
