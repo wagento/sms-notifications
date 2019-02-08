@@ -272,6 +272,10 @@ class ManagePost extends Action implements ActionInterface, CsrfAwareActionInter
             ->getCustomAttribute('sms_mobile_phone_number');
         $haveChanges = false;
 
+        if (!empty($newMobileTelephonePrefix) && empty($newMobileTelephoneNumber)) {
+            return;
+        }
+
         if ($existingMobileTelephonePrefix !== $newMobileTelephonePrefix) {
             $customer->setCustomAttribute('sms_mobile_phone_prefix', $newMobileTelephonePrefix);
 
