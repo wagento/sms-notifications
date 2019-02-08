@@ -16,6 +16,7 @@ declare(strict_types=1);
 
 namespace Linkmobility\Notifications\Setup;
 
+use Linkmobility\Notifications\Model\Source\TelephonePrefix;
 use Magento\Customer\Model\Customer;
 use Magento\Customer\Setup\CustomerSetupFactory;
 use Magento\Framework\Setup\InstallDataInterface;
@@ -74,11 +75,12 @@ class InstallData implements InstallDataInterface
 
         $customerSetup->addAttribute(
             Customer::ENTITY,
-            'sms_mobile_phone_number',
+            'sms_mobile_phone_prefix',
             [
                 'type' => 'varchar',
-                'label' => 'Mobile Phone Number for SMS',
-                'input' => 'text',
+                'label' => 'Mobile Phone Prefix (for SMS)',
+                'input' => 'select',
+                'source' => TelephonePrefix::class,
                 'required' => false,
                 'visible' => true,
                 'system' => false,
@@ -87,19 +89,42 @@ class InstallData implements InstallDataInterface
                 'position' => 1000,
             ]
         );
+        $customerSetup->addAttribute(
+            Customer::ENTITY,
+            'sms_mobile_phone_number',
+            [
+                'type' => 'varchar',
+                'label' => 'Mobile Phone Number (for SMS)',
+                'input' => 'text',
+                'required' => false,
+                'visible' => true,
+                'system' => false,
+                'user_defined' => false,
+                'visible_on_front' => true,
+                'position' => 1001,
+            ]
+        );
 
+        $mobilePhonePrefixAttribute = $customerSetup->getEavConfig()->getAttribute(
+            Customer::ENTITY,
+            'sms_mobile_phone_prefix'
+        );
         $mobilePhoneNumberAttribute = $customerSetup->getEavConfig()->getAttribute(
             Customer::ENTITY,
             'sms_mobile_phone_number'
         );
-
-        $mobilePhoneNumberAttribute->addData([
+        $attributeData = [
             'attribute_set_id' => $customerSetup->getDefaultAttributeSetId(Customer::ENTITY),
             'attribute_group_id' => $customerSetup->getDefaultAttributeGroupId(Customer::ENTITY),
-            'used_in_forms' => ['adminhtml_customer', 'customer_account_create', 'customer_account_edit'],
-        ]);
+            'used_in_forms' => ['adminhtml_customer', 'customer_account_create'],
+        ];
+
+        $mobilePhonePrefixAttribute->addData($attributeData);
+        $mobilePhonePrefixAttribute->save();
+
+        $mobilePhoneNumberAttribute->addData($attributeData);
         $mobilePhoneNumberAttribute->save();
-    }
+   }
 
     /**
      * @phpcs:disable Generic.Files.LineLength.TooLong
