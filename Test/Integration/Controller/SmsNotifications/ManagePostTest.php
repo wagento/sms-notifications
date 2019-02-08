@@ -18,10 +18,13 @@ use Linkmobility\Notifications\Api\SmsSubscriptionRepositoryInterface;
 use Linkmobility\Notifications\Model\SmsSubscription;
 use Linkmobility\Notifications\Model\SmsSubscriptionRepository;
 use Linkmobility\Notifications\Model\Source\SmsType as SmsTypeSource;
-use Magento\Customer\Model\Session;
+use Magento\Customer\Model\Session as CustomerSession;
+use Magento\Framework\Api\ImageProcessor;
+use Magento\Framework\Api\ImageProcessorInterface;
 use Magento\Framework\Api\SearchResultsInterface;
 use Magento\Framework\App\Request\Http as HttpRequest;
 use Magento\Framework\Exception\CouldNotDeleteException;
+use Magento\Framework\Exception\LocalizedException;
 use Magento\Framework\Message\MessageInterface;
 use Magento\TestFramework\TestCase\AbstractController as AbstractControllerTestCase;
 use Psr\Log\Test\TestLogger;
@@ -52,7 +55,7 @@ class ManagePostTest extends AbstractControllerTestCase
         );
         $this->assertTrue(
             $this->_objectManager->get(TestLogger::class)->hasCriticalThatPasses(function ($record) {
-                return (string)$record['message'] === (string)__('Could not get ID of customer to save SMS subscriptions for.');
+                return (string)$record['message'] === (string)__('Could not get ID of customer to save SMS preferences for.');
             })
         );
     }
@@ -164,6 +167,55 @@ class ManagePostTest extends AbstractControllerTestCase
     }
 
     /**
+     * @magentoAppArea frontend
+     * @magentoDataFixture Magento/Customer/_files/customer.php
+     */
+    public function testUpdateMobileNumberReturnsSuccessMessage()
+    {
+        $this->getRequest()->setPostValue('sms_mobile_phone_prefix', 'US_1');
+        $this->getRequest()->setPostValue('sms_mobile_phone_number', '5555551234');
+        $this->loginCustomer(1);
+        $this->dispatch(self::ACTION_URI);
+
+        $this->assertSessionMessages(
+            $this->equalTo([__('Your mobile telephone number has been updated.')]),
+            MessageInterface::TYPE_SUCCESS
+        );
+    }
+
+    /**
+     * @magentoAppArea frontend
+     * @magentoDataFixture Magento/Customer/_files/customer.php
+     */
+    public function testUpdateMobileNumberReturnsErrorMessage()
+    {
+        /** @var \PHPUnit\Framework\MockObject\MockObject|\Magento\Framework\Api\ImageProcessorInterface $imageProcessorMock */
+        $imageProcessorMock = $this->getMockBuilder(ImageProcessorInterface::class)
+            ->disableOriginalConstructor()
+            ->setMethods(['save'])
+            ->getMockForAbstractClass();
+
+        $imageProcessorMock->method('save')->willThrowException(new LocalizedException(__('Unknown error')));
+
+        $this->_objectManager->addSharedInstance($imageProcessorMock, ImageProcessor::class);
+
+        $this->getRequest()->setPostValue('sms_mobile_phone_prefix', 'US_1');
+        $this->getRequest()->setPostValue('sms_mobile_phone_number', '5555551234');
+        $this->loginCustomer(1);
+        $this->dispatch(self::ACTION_URI);
+
+        $this->assertSessionMessages(
+            $this->equalTo([__('Your mobile telephone number could not be updated.')]),
+            MessageInterface::TYPE_ERROR
+        );
+        $this->assertTrue(
+            $this->_objectManager->get(TestLogger::class)->hasCriticalThatPasses(function ($record) {
+                return (string)$record['message'] === (string)__('Could not save mobile telephone number. Error: %1', 'Unknown error');
+            })
+        );
+    }
+
+    /**
      * @SuppressWarnings(PHPMD.UnusedFormalParameter)
      */
     public static function createSmsSubscriptionsFixtureProvider(int $count = -1)
@@ -186,7 +238,7 @@ class ManagePostTest extends AbstractControllerTestCase
     private function loginCustomer(int $customerId)
     {
         /** @var \Magento\Customer\Model\Session $session */
-        $session = $this->_objectManager->get(Session::class);
+        $session = $this->_objectManager->get(CustomerSession::class);
 
         $session->loginById($customerId);
     }
