@@ -18,7 +18,11 @@ namespace Linkmobility\Notifications\Model\Customer\Attribute\Source;
 
 use Linkmobility\Notifications\Model\ResourceModel\TelephonePrefix\CollectionFactory as TelephonePrefixCollectionFactory;
 use Magento\Eav\Model\Entity\Attribute\Source\AbstractSource;
+use Magento\Framework\App\Config\ScopeConfigInterface;
 use Magento\Framework\Data\Collection;
+use Magento\Framework\Exception\NoSuchEntityException;
+use Magento\Store\Model\ScopeInterface;
+use Magento\Store\Model\StoreManagerInterface;
 
 /**
  * Telephone Prefix Source Model
@@ -29,12 +33,25 @@ use Magento\Framework\Data\Collection;
 final class TelephonePrefix extends AbstractSource
 {
     /**
+     * @var \Magento\Framework\App\Config\ScopeConfigInterface
+     */
+    private $scopeConfig;
+    /**
+     * @var \Magento\Store\Model\StoreManagerInterface
+     */
+    private $storeManager;
+    /**
      * @var \Linkmobility\Notifications\Model\ResourceModel\TelephonePrefix\CollectionFactory
      */
     private $prefixCollectionFactory;
 
-    public function __construct(TelephonePrefixCollectionFactory $prefixCollectionFactory)
-    {
+    public function __construct(
+        ScopeConfigInterface $scopeConfig,
+        StoreManagerInterface $storeManager,
+        TelephonePrefixCollectionFactory $prefixCollectionFactory
+    ) {
+        $this->scopeConfig = $scopeConfig;
+        $this->storeManager = $storeManager;
         $this->prefixCollectionFactory = $prefixCollectionFactory;
     }
 
@@ -43,9 +60,15 @@ final class TelephonePrefix extends AbstractSource
      */
     public function getAllOptions(bool $withEmpty = true): array
     {
-        $prefixes = $this->prefixCollectionFactory->create()
-            ->setOrder('country_name', Collection::SORT_ORDER_ASC)
-            ->load()
+        $prefixCollection = $this->prefixCollectionFactory->create()
+            ->setOrder('country_name', Collection::SORT_ORDER_ASC);
+        $allowedCountries = $this->getAllowedCountries();
+
+        if (count($allowedCountries) > 0) {
+            $prefixCollection->addFieldToFilter('country_code', ['in' => $allowedCountries]);
+        }
+
+        $prefixes = $prefixCollection->load()
             ->getItems();
         $options = [];
 
@@ -62,5 +85,24 @@ final class TelephonePrefix extends AbstractSource
         }
 
         return $options;
+    }
+
+    private function getAllowedCountries(): array
+    {
+        try {
+            $scopeCode = $this->storeManager->getStore()->getWebsiteId();
+            $scopeType = ScopeInterface::SCOPE_WEBSITE;
+        } catch (NoSuchEntityException $e) {
+            $scopeCode = null;
+            $scopeType = ScopeConfigInterface::SCOPE_TYPE_DEFAULT;
+        }
+
+        $allowedCountries = $this->scopeConfig->getValue('general/country/allow', $scopeType, $scopeCode);
+
+        if ($allowedCountries === null) {
+            return [];
+        }
+
+        return explode(',', $allowedCountries);
     }
 }
