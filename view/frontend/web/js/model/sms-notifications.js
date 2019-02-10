@@ -10,14 +10,16 @@
  * @license https://opensource.org/licenses/OSL-3.0.php Open Software License 3.0
  */
 
-#manage-sms-notification-subscriptions-content {
-  p {
-    font-size: 1.6rem;
-    margin-bottom: 2rem;
-  }
+define(['ko'], function (ko) {
+    let isSubscribed = ko.observable(false),
+        isSubscribing = ko.observable(false),
+        selectedSmsTypes = ko.observableArray();
 
-  .fieldset.notification-preferences .fieldset legend {
-    padding-bottom: 0;
-    border: none;
-  }
-}
+    isSubscribed.extend({ notify: 'always' });
+
+    return {
+        isSubscribed: isSubscribed,
+        isSubscribing: isSubscribing,
+        selectedSmsTypes: selectedSmsTypes
+    };
+});

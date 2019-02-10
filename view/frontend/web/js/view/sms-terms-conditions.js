@@ -13,8 +13,9 @@
 define([
     'jquery',
     'uiComponent',
-    'Linkmobility_Notifications/js/model/sms-terms-conditions-modal'
-], function ($, Component, termsConditionsModal) {
+    'Linkmobility_Notifications/js/model/sms-terms-conditions-modal',
+    'smsNotifications'
+], function ($, Component, termsConditionsModal, smsNotifications) {
     'use strict';
 
     return Component.extend({
@@ -23,29 +24,22 @@ define([
             modalTitle: null,
             modalContent: null
         },
-        initialize: function () {
+        initObservable: function () {
             this._super();
-            this.registerModalTrigger();
+
+            smsNotifications.isSubscribing.subscribe(this.showModal);
+
+            return this;
         },
         initModal: function(element) {
             termsConditionsModal.createModal(element, this.modalTitle);
         },
         showModal: function () {
+            if (!smsNotifications.isSubscribing()) {
+                return;
+            }
+
             termsConditionsModal.showModal();
-        },
-        registerModalTrigger: function () {
-            const $smsNotificationsSubscribed = $('#sms-notifications-subscribed'),
-                self = this;
-
-            $smsNotificationsSubscribed.on('click', function (event) {
-                if (!$smsNotificationsSubscribed.is(':checked')) {
-                    return;
-                }
-
-                self.showModal();
-
-                event.preventDefault();
-            });
         }
     });
 });

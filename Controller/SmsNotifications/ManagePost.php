@@ -18,6 +18,7 @@ namespace Linkmobility\Notifications\Controller\SmsNotifications;
 
 use Linkmobility\Notifications\Api\Data\SmsSubscriptionInterfaceFactory;
 use Linkmobility\Notifications\Api\SmsSubscriptionRepositoryInterface;
+use Magento\Customer\Api\CustomerRepositoryInterface;
 use Magento\Customer\Model\Session as CustomerSession;
 use Magento\Framework\Api\SearchCriteriaBuilder;
 use Magento\Framework\App\Action\Action;
@@ -28,7 +29,10 @@ use Magento\Framework\App\Request\InvalidRequestException;
 use Magento\Framework\App\RequestInterface;
 use Magento\Framework\Exception\CouldNotDeleteException;
 use Magento\Framework\Exception\CouldNotSaveException;
+use Magento\Framework\Exception\InputException;
+use Magento\Framework\Exception\LocalizedException;
 use Magento\Framework\Exception\NoSuchEntityException;
+use Magento\Framework\Exception\State\InputMismatchException;
 use Psr\Log\LoggerInterface;
 
 /**
@@ -43,6 +47,10 @@ class ManagePost extends Action implements ActionInterface, CsrfAwareActionInter
      * @var \Magento\Customer\Model\Session
      */
     private $customerSession;
+    /**
+     * @var \Magento\Customer\Api\CustomerRepositoryInterface
+     */
+    private $customerRepository;
     /**
      * @var \Psr\Log\LoggerInterface
      */
@@ -63,6 +71,7 @@ class ManagePost extends Action implements ActionInterface, CsrfAwareActionInter
     public function __construct(
         Context $context,
         CustomerSession $customerSession,
+        CustomerRepositoryInterface $customerRepository,
         LoggerInterface $logger,
         SearchCriteriaBuilder $searchCriteriaBuilder,
         SmsSubscriptionRepositoryInterface $smsSubscriptionRepository,
@@ -71,6 +80,7 @@ class ManagePost extends Action implements ActionInterface, CsrfAwareActionInter
         parent::__construct($context);
 
         $this->customerSession = $customerSession;
+        $this->customerRepository = $customerRepository;
         $this->logger = $logger;
         $this->searchCriteriaBuilder = $searchCriteriaBuilder;
         $this->smsSubscriptionRepository = $smsSubscriptionRepository;
@@ -93,7 +103,7 @@ class ManagePost extends Action implements ActionInterface, CsrfAwareActionInter
             $this->messageManager->addErrorMessage(
                 __('Something went wrong while saving your text notification preferences.')
             );
-            $this->logger->critical(__('Could not get ID of customer to save SMS subscriptions for.'));
+            $this->logger->critical(__('Could not get ID of customer to save SMS preferences for.'));
 
             return $resultRedirect;
         }
@@ -110,6 +120,8 @@ class ManagePost extends Action implements ActionInterface, CsrfAwareActionInter
         if (count($selectedSmsTypes) > 0) {
             $this->createSubscriptions($selectedSmsTypes, $customerId);
         }
+
+        $this->updateMobileTelephoneNumber();
 
         return $resultRedirect;
    }
@@ -247,5 +259,55 @@ class ManagePost extends Action implements ActionInterface, CsrfAwareActionInter
         }
 
         return $createdSubscriptions;
+    }
+
+    private function updateMobileTelephoneNumber(): void
+    {
+        $customer = $this->customerSession->getCustomerDataObject();
+        $newMobileTelephonePrefix = $this->getRequest()->getParam('sms_mobile_phone_prefix');
+        $existingMobileTelephonePrefix = $this->customerSession->getCustomerDataObject()
+            ->getCustomAttribute('sms_mobile_phone_prefix');
+        $newMobileTelephoneNumber = $this->getRequest()->getParam('sms_mobile_phone_number');
+        $existingMobileTelephoneNumber = $this->customerSession->getCustomerDataObject()
+            ->getCustomAttribute('sms_mobile_phone_number');
+        $haveChanges = false;
+
+        if (!empty($newMobileTelephonePrefix) && empty($newMobileTelephoneNumber)) {
+            return;
+        }
+
+        if ($existingMobileTelephonePrefix !== $newMobileTelephonePrefix) {
+            $customer->setCustomAttribute('sms_mobile_phone_prefix', $newMobileTelephonePrefix);
+
+            $haveChanges = true;
+        }
+
+        if ($existingMobileTelephoneNumber !== $newMobileTelephoneNumber) {
+            $customer->setCustomAttribute('sms_mobile_phone_number', $newMobileTelephoneNumber);
+
+            $haveChanges = true;
+        }
+
+        if (!$haveChanges) {
+            return;
+        }
+
+        try {
+            $this->customerRepository->save($customer);
+        } catch (InputException | InputMismatchException | LocalizedException $e) {
+            $this->messageManager->addErrorMessage(__('Your mobile telephone number could not be updated.'));
+            $this->logger->critical(
+                __('Could not save mobile telephone number. Error: %1', $e->getMessage()),
+                [
+                    'customer_id' => $customer->getId(),
+                    'mobile_phone_prefix' => $newMobileTelephonePrefix,
+                    'mobile_phone_number' => $newMobileTelephoneNumber
+                ]
+            );
+
+            return;
+        }
+
+        $this->messageManager->addSuccessMessage(__('Your mobile telephone number has been updated.'));
     }
 }

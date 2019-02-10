@@ -1,0 +1,35 @@
+<!--
+/**
+ * LINK Mobility SMS Notifications
+ *
+ * Sends transactional SMS notifications through the LINK Mobility messaging
+ * service.
+ *
+ * @author Joseph Leedy <joseph@wagento.com>
+ * @author Yair García Torres <yair.garcia@wagento.com>
+ * @copyright Copyright (c) LINK Mobility (https://www.linkmobility.com/)
+ * @license https://opensource.org/licenses/OSL-3.0.php Open Software License 3.0
+ */
+-->
+<!-- ko if: showField -->
+<label for="mobile-telephone-number" class="label"><span data-bind="i18n: 'Mobile Phone Number'"></span></label>
+<div class="control">
+    <fieldset class="fieldset fieldset-mobile-telephone-number">
+        <div class="fields">
+            <div class="field field-mobile-telephone-prefix required">
+                <label for="mobile-telephone-prefix" class="label"><span data-bind="i18n: 'Country'"></span></label>
+                <div class="control">
+                    <select name="sms_mobile_phone_prefix" id="mobile-telephone-prefix" class="validate-select required-entry" data-bind="attr: {title: $t('Country')}, options: mobileTelephonePrefixOptions, optionsCaption: $t('Please select a country.'), optionsValue: 'value', optionsText: 'label', value: mobileTelephonePrefix">
+                    </select>
+                </div>
+            </div>
+            <div class="field field-mobile-telephone-number required">
+                <label for="mobile-telephone-number" class="label"><span data-bind="i18n: 'Phone Number'"></span></label>
+                <div class="control">
+                    <input type="tel" name="sms_mobile_phone_number" id="mobile-telephone-number" class="input-text required-entry" data-bind="attr: {title: $t('Phone Number')}, value: mobileTelephoneNumber" autocomplete="tel" data-validate="{required:true}">
+                </div>
+            </div>
+        </div>
+    </fieldset>
+</div>
+<!-- /ko -->

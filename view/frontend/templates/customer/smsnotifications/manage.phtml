@@ -15,30 +15,42 @@
 
 /** @var \Linkmobility\Notifications\ViewModel\SmsTypes $smsTypesViewModel */
 $smsTypesViewModel = $block->getData('sms_types_view_model');
+/** @var \Linkmobility\Notifications\ViewModel\TelephonePrefixes $telephonePrefixesViewModel */
+$telephonePrefixesViewModel = $block->getData('telephone_prefixes_view_model');
+/** @var \Linkmobility\Notifications\ViewModel\MobileTelephone $mobileTelephoneViewModel */
+$mobileTelephoneViewModel = $block->getData('mobile_telephone_view_model');
 $smsTypes = $smsTypesViewModel->getSmsTypes('code');
 $groupedSmsTypes = $smsTypesViewModel->getGroupedSmsTypes();
 $subscribedSmsTypes = $block->getData('sms_subscriptions_view_model')->getSubscribedSmsTypes();
+$mobileTelephonePrefix = $mobileTelephoneViewModel->getPrefix() ?? $telephonePrefixesViewModel->getDefaultPrefix();
+$mobileTelephoneNumber = $mobileTelephoneViewModel->getNumber() ?? '';
 ?>
 <div id="manage-sms-notification-subscriptions-content">
-    <p><?= $block->escapeHtml(__('I wish to receive notifications about my:')) ?></p>
     <form action="<?= $block->escapeUrl($block->getUrl('customer/smsnotifications/managePost', ['_secure' => true])) ?>" method="post" enctype="multipart/form-data" id="form-smsnotifications-manage" class="form">
+        <?= $block->getBlockHtml('formkey') ?>
         <fieldset class="fieldset general">
-            <?= $block->getBlockHtml('formkey') ?>
-            <legend class="legend" style="display: none;"><span><?= $block->escapeHtml(__('General Configuration')) ?></span></legend>
+            <legend class="legend"><span><?= $block->escapeHtml(__('General Configuration')) ?></span></legend>
+            <div class="field mobile-telephone-number" id="mobile-telephone-number-field" data-bind="scope: 'sms-mobile-telephone'">
+                <!-- ko template: getTemplate() --><!-- /ko -->
+            </div>
+        </fieldset>
+        <fieldset class="fieldset notification-preferences">
+            <legend class="legend"><span><?= $block->escapeHtml(__('Notification Preferences')) ?></span></legend>
+            <p><?= $block->escapeHtml(__('I wish to receive notifications about my:')) ?></p>
             <div class="field choice">
                 <input type="checkbox" id="select-all-sms-types" class="checkbox" title="<?= $block->escapeHtmlAttr(__('All notifications')) ?>" data-role="checkbox-toggle" data-mage-init='{"lmCheckboxToggler": {"checkboxSelector": ".checkbox.sms-type"}}'<?php if (count($smsTypes) === count($subscribedSmsTypes)): ?> checked<?php endif ?>>
                 <label class="label" for="select-all-sms-types"><span><?= $block->escapeHtml(__('All notifications')) ?></span></label>
             </div>
-        </fieldset>
-        <?php foreach ($groupedSmsTypes as $group): ?>
-        <fieldset class="fieldset sms-types-<?= $block->escapeHtmlAttr($group['groupName']) ?>">
-            <legend class="legend"><span><?= $block->escapeHtml(__($group['title'])) ?></span></legend>
-            <?php foreach ($group['smsTypes'] as $smsType): ?>
-            <div class="field choice field-sms-type-<?= $block->escapeHtmlAttr($smsType['code']) ?>">
-                <input type="checkbox" name="sms_types[<?= $block->escapeHtmlAttr($smsType['code']) ?>]" value="1" id="sms-type-<?= $block->escapeHtmlAttr($smsType['code']) ?>" class="checkbox sms-type" title="<?= $block->escapeHtmlAttr($smsType['description']) ?>"<?php if (in_array($smsType['code'], $subscribedSmsTypes, true)): ?> checked<?php endif ?>>
-                <label for="sms-type-<?= $block->escapeHtmlAttr($smsType['code']) ?>" class="label"><span><?= $block->escapeHtml($smsType['description']) ?></span></label>
-            </div>
-            <?php endforeach ?>
+            <?php foreach ($groupedSmsTypes as $group): ?>
+            <fieldset class="fieldset sms-types-<?= $block->escapeHtmlAttr($group['groupName']) ?>">
+                <legend class="legend"><span><?= $block->escapeHtml(__($group['title'])) ?></span></legend>
+                <?php foreach ($group['smsTypes'] as $smsType): ?>
+                <div class="field choice field-sms-type-<?= $block->escapeHtmlAttr($smsType['code']) ?>">
+                    <input type="checkbox" name="sms_types[<?= $block->escapeHtmlAttr($smsType['code']) ?>]" value="1" id="sms-type-<?= $block->escapeHtmlAttr($smsType['code']) ?>" class="checkbox sms-type" title="<?= $block->escapeHtmlAttr($smsType['description']) ?>"<?php if (in_array($smsType['code'], $subscribedSmsTypes, true)): ?> checked<?php endif ?>>
+                    <label for="sms-type-<?= $block->escapeHtmlAttr($smsType['code']) ?>" class="label"><span><?= $block->escapeHtml($smsType['description']) ?></span></label>
+                </div>
+                <?php endforeach ?>
+            </fieldset>
         </fieldset>
         <?php endforeach ?>
         <div class="actions-toolbar">
@@ -48,3 +60,22 @@ $subscribedSmsTypes = $block->getData('sms_subscriptions_view_model')->getSubscr
         </div>
     </form>
 </div>
+<script type="text/x-magento-init">
+    {
+        "#mobile-telephone-number-field": {
+            "Magento_Ui/js/core/app": {
+                "components": {
+                    "sms-mobile-telephone": {
+                        "component": "Linkmobility_Notifications/js/view/mobile-telephone-field",
+                        "config": {
+                            "showField": true,
+                            "mobileTelephonePrefixOptions": <?= \json_encode($telephonePrefixesViewModel->getOptions()) ?>,
+                            "mobileTelephonePrefix": "<?= $block->escapeJs($mobileTelephonePrefix) ?>",
+                            "mobileTelephoneNumber": "<?= $block->escapeJs($mobileTelephoneNumber) ?>"
+                        }
+                    }
+                }
+            }
+        }
+    }
+</script>

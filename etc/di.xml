@@ -15,6 +15,7 @@
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
     <preference for="Linkmobility\Notifications\Api\SmsSubscriptionRepositoryInterface" type="Linkmobility\Notifications\Model\SmsSubscriptionRepository"/>
     <preference for="Linkmobility\Notifications\Api\Data\SmsSubscriptionInterface" type="Linkmobility\Notifications\Model\Data\SmsSubscription"/>
+    <preference for="Linkmobility\Notifications\Api\Data\TelephonePrefixInterface" type="Linkmobility\Notifications\Model\Data\TelephonePrefix"/>
     <preference for="Linkmobility\Notifications\Api\ConfigInterface" type="Linkmobility\Notifications\Model\Config"/>
     <preference for="Linkmobility\Notifications\Api\SmsSubscriptionValidatorInterface" type="Linkmobility\Notifications\Model\SmsSubscriptionValidator"/>
     <preference for="Linkmobility\Notifications\Gateway\ApiClientInterface" type="Linkmobility\Notifications\Gateway\ApiClient"/>
@@ -36,6 +37,11 @@
         </arguments>
     </type>
     <type name="Linkmobility\Notifications\Model\MessageService">
+        <arguments>
+            <argument name="logger" xsi:type="object">Linkmobility\Notifications\Logger\Logger</argument>
+        </arguments>
+    </type>
+    <type name="Linkmobility\Notifications\Setup\InstallData">
         <arguments>
             <argument name="logger" xsi:type="object">Linkmobility\Notifications\Logger\Logger</argument>
         </arguments>

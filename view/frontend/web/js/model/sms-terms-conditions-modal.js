@@ -13,8 +13,9 @@
 define([
     'jquery',
     'Magento_Ui/js/modal/modal',
-    'mage/translate'
-], function ($, modal, $t) {
+    'mage/translate',
+    'smsNotifications'
+], function ($, modal, $t, smsNotifications) {
     'use strict';
 
     return {
@@ -37,7 +38,8 @@ define([
                         text: $t('I Agree'),
                         class: 'action primary',
                         click: function () {
-                            $('#sms-notifications-subscribed').prop('checked', true);
+                            smsNotifications.isSubscribed(true);
+                            smsNotifications.isSubscribing(false);
 
                             this.closeModal();
                         }
@@ -46,7 +48,8 @@ define([
                         text: $t('Cancel'),
                         class: 'action secondary',
                         click: function () {
-                            $('#sms-notifications-subscribed').prop('checked', false);
+                            smsNotifications.isSubscribed(false);
+                            smsNotifications.isSubscribing(false);
 
                             this.closeModal();
                         }

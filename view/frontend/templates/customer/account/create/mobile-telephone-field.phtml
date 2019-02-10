@@ -1,0 +1,41 @@
+<?php
+/**
+ * LINK Mobility SMS Notifications
+ *
+ * Sends transactional SMS notifications through the LINK Mobility messaging
+ * service.
+ *
+ * @author Joseph Leedy <joseph@wagento.com>
+ * @author Yair García Torres <yair.garcia@wagento.com>
+ * @copyright Copyright (c) LINK Mobility (https://www.linkmobility.com/)
+ * @license https://opensource.org/licenses/OSL-3.0.php Open Software License 3.0
+ */
+
+/** @var \Linkmobility\Notifications\Block\Customer\Account\Create\MobileTelephoneField $block */
+
+/** @var \Linkmobility\Notifications\ViewModel\TelephonePrefixes $telephonePrefixesViewModel */
+$telephonePrefixesViewModel = $block->getData('telephone_prefixes_view_model');
+$mobileTelephonePrefix = $block->getTelephonePrefix() ?? $telephonePrefixesViewModel->getDefaultPrefix();
+?>
+<div class="field mobile-telephone-number" id="mobile-telephone-number-field" data-bind="scope: 'sms-mobile-telephone'">
+    <!-- ko template: getTemplate() --><!-- /ko -->
+</div>
+<script type="text/x-magento-init">
+    {
+        "#mobile-telephone-number-field": {
+            "Magento_Ui/js/core/app": {
+                "components": {
+                    "sms-mobile-telephone": {
+                        "component": "Linkmobility_Notifications/js/view/mobile-telephone-field",
+                        "config": {
+                            "showField": <?= /** @noEscape */ $block->getFieldVisibility() ?>,
+                            "mobileTelephonePrefixOptions": <?= \json_encode($telephonePrefixesViewModel->getOptions()) ?>,
+                            "mobileTelephonePrefix": "<?= $block->escapeJs($mobileTelephonePrefix) ?>",
+                            "mobileTelephoneNumber": "<?= $block->escapeJs($block->getTelephoneNumber()) ?>"
+                        }
+                    }
+                }
+            }
+        }
+    }
+</script>

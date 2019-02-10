@@ -42,6 +42,8 @@
         <waitForPageLoad stepKey="waitForSmsSubscriptionsPageLoad"/>
         <see userInput="My Text Notifications" selector="h1.page-title" stepKey="seePageTitle"/>
         <seeElement selector="{{StorefrontSmsSubscriptionPreferencesSection.preferencesForm}}" stepKey="seePreferencesForm"/>
+        <seeElement selector="{{StorefrontCustomerCreateFormSection.smsMobilePhonePrefixDropdown}}" stepKey="seeMobilePrefixDropdown"/>
+        <seeElement selector="{{StorefrontCustomerCreateFormSection.smsMobilePhoneNumberField}}" stepKey="seeMobileNumberField"/>
         <seeElement selector="{{StorefrontSmsSubscriptionPreferencesSection.selectAllCheckbox}}" stepKey="seeSelectAllCheckbox"/>
         <seeElement selector="{{StorefrontSmsSubscriptionPreferencesSection.smsTypeCheckboxes}}" stepKey="seeSmsTypeCheckboxes"/>
         <seeElement selector="{{StorefrontSmsSubscriptionPreferencesSection.saveButton}}" stepKey="seeSaveButton"/>

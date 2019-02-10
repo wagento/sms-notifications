@@ -13,40 +13,37 @@
 define([
     'jquery',
     'uiComponent',
-    'Linkmobility_Notifications/js/model/sms-subscription-preferences-modal'
-], function ($, Component, subscriptionPreferencesModal) {
+    'Linkmobility_Notifications/js/model/sms-subscription-preferences-modal',
+    'smsNotifications'
+], function ($, Component, subscriptionPreferencesModal, smsNotifications) {
     'use strict';
 
     return Component.extend({
         defaults: {
             template: 'Linkmobility_Notifications/sms-subscription-preferences',
             groupedSmsTypes: {},
-            modalTriggerSelector: '[data-role="sms-subscription-preferences-modal-trigger"]',
             modalTitle: null
         },
         modalTrigger: null,
-        initialize: function () {
+        initObservable: function () {
             this._super();
-            this.modalTrigger = $(this.modalTriggerSelector);
 
-            $(this.modalTrigger).on('click', $.proxy(this.showModal, this));
+            subscriptionPreferencesModal.open.subscribe(this.showModal);
+
+            return this;
         },
         initModal: function(element) {
             subscriptionPreferencesModal.createModal(element, this.modalTitle, this.hideModal);
         },
-        showModal: function (event) {
+        showModal: function () {
             subscriptionPreferencesModal.showModal();
-
-            event.preventDefault();
         },
         hideModal: function (context) {
-            let smsTypes = [];
+            smsNotifications.selectedSmsTypes.removeAll();
 
             $(context.element).find('.sms-type-checkbox:checked').each(function () {
-                smsTypes.push($(this).val());
+                smsNotifications.selectedSmsTypes.push($(this).val());
             });
-
-            $('#sms-notifications-sms-types').val(smsTypes.join(','));
         },
         selectAll: function () {
             $('.sms-type-checkbox').each(function () {

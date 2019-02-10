@@ -25,6 +25,8 @@
                 <arguments>
                     <argument name="sms_types_view_model" xsi:type="object">Linkmobility\Notifications\ViewModel\SmsTypes</argument>
                     <argument name="sms_subscriptions_view_model" xsi:type="object">Linkmobility\Notifications\ViewModel\CustomerSmsSubscriptions</argument>
+                    <argument name="mobile_telephone_view_model" xsi:type="object">Linkmobility\Notifications\ViewModel\MobileTelephone</argument>
+                    <argument name="telephone_prefixes_view_model" xsi:type="object">Linkmobility\Notifications\ViewModel\TelephonePrefixes</argument>
                 </arguments>
             </block>
         </referenceContainer>
