@@ -17,4 +17,7 @@
         <attribute code="is_sms_notification_sent" type="bool"/>
         <attribute code="is_order_hold_released" type="bool"/>
     </extension_attributes>
+    <extension_attributes for="Magento\Sales\Api\Data\ShipmentInterface">
+        <attribute code="is_sms_notification_sent" type="bool"/>
+    </extension_attributes>
 </config>
