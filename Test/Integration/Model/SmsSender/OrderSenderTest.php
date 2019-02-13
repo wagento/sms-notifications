@@ -16,12 +16,9 @@ declare(strict_types=1);
 
 namespace Linkmobility\Notifications\Test\Integration\Model\SmsSender;
 
-use Linkmobility\Notifications\Api\ConfigInterface;
-use Linkmobility\Notifications\Model\MessageService;
 use Linkmobility\Notifications\Model\SmsSender\OrderSender;
 use Linkmobility\Notifications\Test\Integration\SmsSenderTestCase;
 use Magento\Sales\Api\Data\OrderInterface;
-use PHPUnit\Framework\MockObject\MockObject;
 
 /**
  * Order SMS Sender Test
@@ -118,29 +115,5 @@ class OrderSenderTest extends SmsSenderTestCase
         $path .= '.php';
 
         return require $path;
-    }
-
-    private function getConfigMock(): MockObject
-    {
-        /** @var \Linkmobility\Notifications\Api\ConfigInterface|\PHPUnit\Framework\MockObject\MockObject $configMock */
-        $configMock = $this->getMockBuilder(ConfigInterface::class)
-            ->disableOriginalConstructor()
-            ->getMockForAbstractClass();
-
-        $configMock->method('isEnabled')->willReturn(true);
-
-        return $configMock;
-    }
-
-    private function getMessageServiceMock(): MockObject
-    {
-        $messageServiceMock = $this->getMockBuilder(MessageService::class)
-            ->disableOriginalConstructor()
-            ->getMock();
-
-        $messageServiceMock->method('setOrder')->willReturnSelf();
-        $messageServiceMock->method('sendMessage')->willReturn(true);
-
-        return $messageServiceMock;
     }
 }

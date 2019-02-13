@@ -16,8 +16,11 @@ declare(strict_types=1);
 
 namespace Linkmobility\Notifications\Test\Integration;
 
+use Linkmobility\Notifications\Api\ConfigInterface;
+use Linkmobility\Notifications\Model\MessageService;
 use Magento\Customer\Api\CustomerRepositoryInterface;
 use Magento\TestFramework\ObjectManager;
+use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -63,5 +66,30 @@ class SmsSenderTestCase extends TestCase
     public static function smsSubscriptionsFixtureProvider(int $count = -1)
     {
         return require __DIR__ . '/_files/create_sms_subscriptions_from_source.php';
+    }
+
+    protected function getConfigMock(): MockObject
+    {
+        /** @var \Linkmobility\Notifications\Api\ConfigInterface|\PHPUnit\Framework\MockObject\MockObject $configMock */
+        $configMock = $this->getMockBuilder(ConfigInterface::class)
+            ->disableOriginalConstructor()
+            ->getMockForAbstractClass();
+
+        $configMock->method('isEnabled')->willReturn(true);
+
+        return $configMock;
+    }
+
+    protected function getMessageServiceMock(): MockObject
+    {
+        $messageServiceMock = $this->getMockBuilder(MessageService::class)
+            ->disableOriginalConstructor()
+            ->getMock();
+
+        $messageServiceMock->method('setOrder')->willReturnSelf();
+        $messageServiceMock->method('setShipment')->willReturnSelf();
+        $messageServiceMock->method('sendMessage')->willReturn(true);
+
+        return $messageServiceMock;
     }
 }
