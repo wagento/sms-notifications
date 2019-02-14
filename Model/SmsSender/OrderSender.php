@@ -22,8 +22,8 @@ use Linkmobility\Notifications\Model\MessageService;
 use Linkmobility\Notifications\Model\SmsSender;
 use Magento\Customer\Api\CustomerRepositoryInterface;
 use Magento\Framework\Api\SearchCriteriaBuilder;
+use Magento\Framework\Model\AbstractModel;
 use Magento\Sales\Api\Data\OrderExtensionFactory;
-use Magento\Sales\Api\Data\OrderInterface;
 use Magento\Sales\Model\Order;
 use Magento\Store\Api\StoreRepositoryInterface;
 use Psr\Log\LoggerInterface;
@@ -65,7 +65,10 @@ final class OrderSender extends SmsSender
         $this->orderExtensionFactory = $orderExtensionFactory;
     }
 
-    public function send(OrderInterface $order): bool
+    /**
+     * @param \Magento\Framework\Model\AbstractModel|\Magento\Sales\Api\Data\OrderInterface|\Magento\Sales\Model\Order $order
+     */
+    public function send(AbstractModel $order): bool
     {
         $websiteId = $this->getWebsiteIdByStoreId($order->getStoreId());
         $orderExtensionAttributes = $order->getExtensionAttributes() ?? $this->orderExtensionFactory->create();

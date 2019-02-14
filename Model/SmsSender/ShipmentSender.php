@@ -22,8 +22,8 @@ use Linkmobility\Notifications\Model\MessageService;
 use Linkmobility\Notifications\Model\SmsSender;
 use Magento\Customer\Api\CustomerRepositoryInterface;
 use Magento\Framework\Api\SearchCriteriaBuilder;
+use Magento\Framework\Model\AbstractModel;
 use Magento\Sales\Api\Data\ShipmentExtensionFactory;
-use Magento\Sales\Api\Data\ShipmentInterface;
 use Magento\Store\Api\StoreRepositoryInterface;
 use Psr\Log\LoggerInterface;
 
@@ -64,7 +64,10 @@ final class ShipmentSender extends SmsSender
         $this->shipmentExtensionFactory = $shipmentExtensionFactory;
     }
 
-    public function send(ShipmentInterface $shipment): bool
+    /**
+     * @param \Magento\Framework\Model\AbstractModel|\Magento\Sales\Api\Data\ShipmentInterface|\Magento\Sales\Model\Order\Shipment $shipment
+     */
+    public function send(AbstractModel $shipment): bool
     {
         $websiteId = $this->getWebsiteIdByStoreId($shipment->getStoreId());
         /** @var \Magento\Sales\Api\Data\ShipmentExtensionInterface $shipmentExtension */

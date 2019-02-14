@@ -16,6 +16,8 @@ declare(strict_types=1);
 
 namespace Linkmobility\Notifications\Test\Integration\_stubs\Model;
 
+use Magento\Framework\Model\AbstractModel;
+
 /**
  * Concrete Implementation of SMS Sender
  *
@@ -25,6 +27,11 @@ namespace Linkmobility\Notifications\Test\Integration\_stubs\Model;
  */
 class SmsSender extends \Linkmobility\Notifications\Model\SmsSender
 {
+    public function send(AbstractModel $entity): bool
+    {
+        return true;
+    }
+
     public function getCustomerMobilePhoneNumber(int $customerId): ?string
     {
         return parent::getCustomerMobilePhoneNumber($customerId);

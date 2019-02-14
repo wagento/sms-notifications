@@ -22,6 +22,7 @@ use Magento\Customer\Api\CustomerRepositoryInterface;
 use Magento\Framework\Api\SearchCriteriaBuilder;
 use Magento\Framework\Exception\LocalizedException;
 use Magento\Framework\Exception\NoSuchEntityException;
+use Magento\Framework\Model\AbstractModel;
 use Magento\Store\Api\StoreRepositoryInterface;
 use Psr\Log\LoggerInterface;
 
@@ -79,6 +80,8 @@ abstract class SmsSender
         $this->subscriptionRepository = $subscriptionRepository;
         $this->messageService = $messageService;
     }
+
+    abstract public function send(AbstractModel $entity): bool;
 
     /**
      * @param string|int $storeId

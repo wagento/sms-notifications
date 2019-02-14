@@ -22,8 +22,8 @@ use Linkmobility\Notifications\Model\MessageService;
 use Linkmobility\Notifications\Model\SmsSender;
 use Magento\Customer\Api\CustomerRepositoryInterface;
 use Magento\Framework\Api\SearchCriteriaBuilder;
+use Magento\Framework\Model\AbstractModel;
 use Magento\Sales\Api\Data\CreditmemoExtensionFactory;
-use Magento\Sales\Api\Data\CreditmemoInterface;
 use Magento\Store\Api\StoreRepositoryInterface;
 use Psr\Log\LoggerInterface;
 
@@ -64,7 +64,10 @@ final class CreditmemoSender extends SmsSender
         $this->creditmemoExtensionFactory = $creditmemoExtensionFactory;
     }
 
-    public function send(CreditmemoInterface $creditmemo): bool
+    /**
+     * @param \Magento\Framework\Model\AbstractModel|\Magento\Sales\Api\Data\CreditmemoInterface|\Magento\Sales\Model\Order\Creditmemo $creditmemo
+     */
+    public function send(AbstractModel $creditmemo): bool
     {
         $websiteId = $this->getWebsiteIdByStoreId($creditmemo->getStoreId());
         /** @var \Magento\Sales\Api\Data\OrderInterface $order */
