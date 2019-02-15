@@ -74,4 +74,7 @@
     <type name="Magento\Sales\Api\OrderRepositoryInterface">
         <plugin name="sms_notifications_send_order_sms" type="Linkmobility\Notifications\Plugin\Sales\Api\OrderRepositoryInterfacePlugin"/>
     </type>
+    <type name="Magento\Sales\Model\Order">
+        <plugin name="sms_notifications_add_order_extension_attribute" type="Linkmobility\Notifications\Plugin\Sales\Model\OrderPlugin"/>
+    </type>
 </config>
