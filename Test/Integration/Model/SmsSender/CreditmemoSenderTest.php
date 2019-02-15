@@ -18,6 +18,8 @@ namespace Linkmobility\Notifications\Test\Integration\Model\SmsSender;
 
 use Linkmobility\Notifications\Model\SmsSender\CreditmemoSender;
 use Linkmobility\Notifications\Test\Integration\SmsSenderTestCase;
+use Magento\Sales\Api\Data\CreditmemoExtensionInterface;
+use Magento\Sales\Api\Data\CreditmemoInterface;
 use Magento\Sales\Model\Order;
 
 /**
@@ -31,12 +33,12 @@ class CreditmemoSenderTest extends SmsSenderTestCase
     /**
      * @magentoAppArea frontend
      * @magentoDataFixture Magento/Customer/_files/customer.php
-     * @magentoDataFixture creditmemoFixtureProvider
      * @magentoDataFixture smsSubscriptionsFixtureProvider
      * @magentoDataFixture smsMobileNumberFixtureProvider
      */
     public function testSendCreditmemoSmsForCustomer(): void
     {
+        $creditmemo = $this->getCreditmemoFixture();
         $configMock = $this->getConfigMock();
 
         $configMock->expects($this->once())
@@ -50,10 +52,6 @@ class CreditmemoSenderTest extends SmsSenderTestCase
                 'messageService' => $this->getMessageServiceMock()
             ]
         );
-
-        $order = $this->objectManager->create(Order::class)->loadByIncrementId('100000001');
-        /** @var \Magento\Sales\Api\Data\CreditmemoInterface $creditmemo */
-        $creditmemo = $order->getCreditmemosCollection()->getFirstItem();
 
         $this->assertTrue($creditmemoSender->send($creditmemo));
     }
@@ -79,13 +77,21 @@ class CreditmemoSenderTest extends SmsSenderTestCase
         $this->assertFalse($creditmemoSender->send($creditmemo));
     }
 
-    public static function creditmemoFixtureProvider(): void
-    {
-        require __DIR__ . '/../../_files/creditmemo.php';
-    }
-
     public static function guestCreditmemoFixtureProvider(): void
     {
         require __DIR__ . '/../../_files/creditmemo_guest.php';
+    }
+
+    private function getCreditmemoFixture(): CreditmemoInterface
+    {
+        $creditmemo = require __DIR__ . '/../../_files/creditmemo.php';
+        $creditmemoExtensionAttributes = $creditmemo->getExtensionAttributes()
+            ?? $this->objectManager->create(CreditmemoExtensionInterface::class);
+
+        $creditmemoExtensionAttributes->setIsSmsNotificationSent(false);
+
+        $creditmemo->setExtensionAttributes($creditmemoExtensionAttributes);
+
+        return $creditmemo;
     }
 }

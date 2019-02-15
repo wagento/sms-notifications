@@ -11,6 +11,7 @@
  * @license https://opensource.org/licenses/OSL-3.0.php Open Software License 3.0
  */
 
+use Magento\Sales\Api\Data\CreditmemoExtensionInterface;
 use Magento\Sales\Model\Order\Creditmemo;
 use Magento\Sales\Model\Order\CreditmemoFactory;
 
@@ -21,10 +22,16 @@ require __DIR__ . '/order.php';
 $creditmemoFactory = $objectManager->get(CreditmemoFactory::class);
 /** @var \Magento\Sales\Model\Order\Creditmemo $creditmemo */
 $creditmemo = $creditmemoFactory->createByOrder($order, $order->getData());
+$creditmemoExtensionAttributes = $creditmemo->getExtensionAttributes()
+    ?? $objectManager->create(CreditmemoExtensionInterface::class);
 
 $creditmemo->setOrder($order);
 $creditmemo->setState(Creditmemo::STATE_OPEN);
 $creditmemo->setIncrementId('100000001');
+
+$creditmemoExtensionAttributes->setIsSmsNotificationSent(true);
+
+$creditmemo->setExtensionAttributes($creditmemoExtensionAttributes);
 $creditmemo->save();
 
 /** @var \Magento\Sales\Model\Order\Item $orderItem */
@@ -45,3 +52,4 @@ $creditItem->setCreditmemo($creditmemo)
     ->setPrice(20)
     ->save();
 
+return $creditmemo;
