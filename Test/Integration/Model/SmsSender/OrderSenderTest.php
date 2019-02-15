@@ -18,6 +18,7 @@ namespace Linkmobility\Notifications\Test\Integration\Model\SmsSender;
 
 use Linkmobility\Notifications\Model\SmsSender\OrderSender;
 use Linkmobility\Notifications\Test\Integration\SmsSenderTestCase;
+use Magento\Sales\Api\Data\OrderExtensionInterface;
 use Magento\Sales\Api\Data\OrderInterface;
 
 /**
@@ -114,6 +115,14 @@ class OrderSenderTest extends SmsSenderTestCase
 
         $path .= '.php';
 
-        return require $path;
+        $order = require $path;
+        $orderExtensionAttributes = $order->getExtensionAttributes()
+            ?? $this->objectManager->create(OrderExtensionInterface::class);
+
+        $orderExtensionAttributes->setIsSmsNotificationSent(false);
+
+        $order->setExtensionAttributes($orderExtensionAttributes);
+
+        return $order;
     }
 }

@@ -11,6 +11,7 @@
  * @license https://opensource.org/licenses/OSL-3.0.php Open Software License 3.0
  */
 
+use Magento\Sales\Api\Data\OrderExtensionInterface;
 use Magento\Sales\Api\OrderRepositoryInterface;
 use Magento\Sales\Model\Order;
 use Magento\Sales\Model\Order\Address as OrderAddress;
@@ -74,6 +75,12 @@ $order->setIncrementId('100000001')
     ->setStoreId($objectManager->get(StoreManagerInterface::class)->getStore()->getId())
     ->addItem($orderItem)
     ->setPayment($payment);
+
+$orderExtensionAttributes = $order->getExtensionAttributes() ?? $objectManager->create(OrderExtensionInterface::class);
+
+$orderExtensionAttributes->setIsSmsNotificationSent(true);
+
+$order->setExtensionAttributes($orderExtensionAttributes);
 
 /** @var \Magento\Sales\Api\OrderRepositoryInterface $orderRepository */
 $orderRepository = $objectManager->create(OrderRepositoryInterface::class);
