@@ -41,6 +41,36 @@
             <argument name="logger" xsi:type="object">Linkmobility\Notifications\Logger\Logger</argument>
         </arguments>
     </type>
+    <type name="Linkmobility\Notifications\Model\SmsSender\CreditmemoSender">
+        <arguments>
+            <argument name="logger" xsi:type="object">Linkmobility\Notifications\Logger\Logger</argument>
+        </arguments>
+    </type>
+    <type name="Linkmobility\Notifications\Model\SmsSender\OrderSender">
+        <arguments>
+            <argument name="logger" xsi:type="object">Linkmobility\Notifications\Logger\Logger</argument>
+        </arguments>
+    </type>
+    <type name="Linkmobility\Notifications\Model\SmsSender\ShipmentSender">
+        <arguments>
+            <argument name="logger" xsi:type="object">Linkmobility\Notifications\Logger\Logger</argument>
+        </arguments>
+    </type>
+    <type name="Linkmobility\Notifications\Plugin\Sales\Api\CreditmemoRepositoryInterfacePlugin">
+        <arguments>
+            <argument name="smsSender" xsi:type="object">Linkmobility\Notifications\Model\SmsSender\CreditmemoSender</argument>
+        </arguments>
+    </type>
+    <type name="Linkmobility\Notifications\Plugin\Sales\Api\OrderRepositoryInterfacePlugin">
+        <arguments>
+            <argument name="smsSender" xsi:type="object">Linkmobility\Notifications\Model\SmsSender\OrderSender</argument>
+        </arguments>
+    </type>
+    <type name="Linkmobility\Notifications\Plugin\Sales\Model\ResourceModel\Order\ShipmentPlugin">
+        <arguments>
+            <argument name="smsSender" xsi:type="object">Linkmobility\Notifications\Model\SmsSender\ShipmentSender</argument>
+        </arguments>
+    </type>
     <type name="Linkmobility\Notifications\Setup\InstallData">
         <arguments>
             <argument name="logger" xsi:type="object">Linkmobility\Notifications\Logger\Logger</argument>
@@ -50,5 +80,17 @@
         <arguments>
             <argument name="converter" xsi:type="object">Zend\Filter\Word\SeparatorToCamelCase</argument>
         </arguments>
+    </type>
+    <type name="Magento\Sales\Api\CreditmemoRepositoryInterface">
+        <plugin name="sms_notifications_send_refund_sms" type="Linkmobility\Notifications\Plugin\Sales\Api\CreditmemoRepositoryInterfacePlugin"/>
+    </type>
+    <type name="Magento\Sales\Api\OrderRepositoryInterface">
+        <plugin name="sms_notifications_send_order_sms" type="Linkmobility\Notifications\Plugin\Sales\Api\OrderRepositoryInterfacePlugin"/>
+    </type>
+    <type name="Magento\Sales\Model\Order">
+        <plugin name="sms_notifications_add_order_extension_attribute" type="Linkmobility\Notifications\Plugin\Sales\Model\OrderPlugin"/>
+    </type>
+    <type name="Magento\Sales\Model\ResourceModel\Order\Shipment">
+        <plugin name="sms_notifications_send_shipment_sms" type="Linkmobility\Notifications\Plugin\Sales\Model\ResourceModel\Order\ShipmentPlugin"/>
     </type>
 </config>
