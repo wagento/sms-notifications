@@ -18,6 +18,8 @@ namespace Linkmobility\Notifications\Test\Integration\Model\SmsSender;
 
 use Linkmobility\Notifications\Model\SmsSender\ShipmentSender;
 use Linkmobility\Notifications\Test\Integration\SmsSenderTestCase;
+use Magento\Sales\Api\Data\ShipmentExtensionInterface;
+use Magento\Sales\Api\Data\ShipmentInterface;
 use Magento\Sales\Model\Order;
 
 /**
@@ -31,12 +33,12 @@ class ShipmentSenderTest extends SmsSenderTestCase
     /**
      * @magentoAppArea frontend
      * @magentoDataFixture Magento/Customer/_files/customer.php
-     * @magentoDataFixture shipmentFixtureProvider
      * @magentoDataFixture smsSubscriptionsFixtureProvider
      * @magentoDataFixture smsMobileNumberFixtureProvider
      */
     public function testSendShipmentSmsForCustomer(): void
     {
+        $shipment = $this->getShipmentFixture();
         $configMock = $this->getConfigMock();
 
         $configMock->expects($this->once())
@@ -50,10 +52,6 @@ class ShipmentSenderTest extends SmsSenderTestCase
                 'messageService' => $this->getMessageServiceMock()
             ]
         );
-
-        $order = $this->objectManager->create(Order::class)->loadByIncrementId('100000001');
-        /** @var \Magento\Sales\Api\Data\ShipmentInterface $shipment */
-        $shipment = $order->getShipmentsCollection()->getFirstItem();
 
         $this->assertTrue($shipmentSender->send($shipment));
     }
@@ -79,13 +77,21 @@ class ShipmentSenderTest extends SmsSenderTestCase
         $this->assertFalse($shipmentSender->send($shipment));
     }
 
-    public static function shipmentFixtureProvider(): void
-    {
-        require __DIR__ . '/../../_files/shipment.php';
-    }
-
     public static function guestShipmentFixtureProvider(): void
     {
         require __DIR__ . '/../../_files/shipment_guest.php';
+    }
+
+    private function getShipmentFixture(): ShipmentInterface
+    {
+        $shipment = require __DIR__ . '/../../_files/shipment.php';
+        $shipmentExtensionAttributes = $shipment->getExtensionAttributes()
+            ?? $this->objectManager->create(ShipmentExtensionInterface::class);
+
+        $shipmentExtensionAttributes->setIsSmsNotificationSent(false);
+
+        $shipment->setExtensionAttributes($shipmentExtensionAttributes);
+
+        return $shipment;
     }
 }

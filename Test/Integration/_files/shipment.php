@@ -12,6 +12,7 @@
  */
 
 use Magento\Payment\Helper\Data as PaymentDataHelper;
+use Magento\Sales\Api\Data\ShipmentExtensionInterface;
 use Magento\Sales\Model\Order\Shipment;
 use Magento\Sales\Model\Order\ShipmentFactory;
 
@@ -31,7 +32,15 @@ foreach ($order->getItems() as $orderItem) {
 
 /** @var \Magento\Sales\Api\Data\ShipmentInterface $shipment */
 $shipment = $objectManager->get(ShipmentFactory::class)->create($order, $items);
+$shipmentExtensionAttributes = $shipment->getExtensionAttributes()
+    ?? $objectManager->create(ShipmentExtensionInterface::class);
 
 $shipment->setPackages([['1'], ['2']]);
 $shipment->setShipmentStatus(Shipment::STATUS_NEW);
+
+$shipmentExtensionAttributes->setIsSmsNotificationSent(true);
+
+$shipment->setExtensionAttributes($shipmentExtensionAttributes);
 $shipment->save();
+
+return $shipment;
