@@ -5,7 +5,7 @@
  * Sends transactional SMS notifications through the LINK Mobility messaging
  * service.
  *
- * @package Linkmobility\Notifications\Controller\Adminhtml\Subscription
+ * @package LinkMobility\SMSNotifications\Controller\Adminhtml\Subscription
  * @author Joseph Leedy <joseph@wagento.com>
  * @author Yair García Torres <yair.garcia@wagento.com>
  * @copyright Copyright (c) LINK Mobility (https://www.linkmobility.com/)
@@ -13,9 +13,9 @@
  */
 declare(strict_types=1);
 
-namespace Linkmobility\Notifications\Controller\Adminhtml\Subscription;
+namespace LinkMobility\SMSNotifications\Controller\Adminhtml\Subscription;
 
-use Linkmobility\Notifications\Model\ResourceModel\SmsSubscription\CollectionFactory;
+use LinkMobility\SMSNotifications\Model\ResourceModel\SmsSubscription\CollectionFactory;
 use Magento\Backend\App\Action;
 use Magento\Backend\App\Action\Context;
 use Magento\Framework\Exception\LocalizedException;
@@ -25,12 +25,12 @@ use Psr\Log\LoggerInterface;
 /**
  * Bulk Delete SMS Subscription Action
  *
- * @package Linkmobility\Notifications\Controller\Adminhtml\Subscription
+ * @package LinkMobility\SMSNotifications\Controller\Adminhtml\Subscription
  * @author Joseph Leedy <joseph@wagento.com>
  */
 class MassDelete extends Action
 {
-    const ADMIN_RESOURCE = 'Linkmobility_Notifications::manage_sms_subscriptions';
+    const ADMIN_RESOURCE = 'LinkMobility_SMSNotifications::manage_sms_subscriptions';
 
     /**
      * @var \Magento\Ui\Component\MassAction\Filter
@@ -41,7 +41,7 @@ class MassDelete extends Action
      */
     private $logger;
     /**
-     * @var \Linkmobility\Notifications\Model\ResourceModel\SmsSubscription\CollectionFactory
+     * @var \LinkMobility\SMSNotifications\Model\ResourceModel\SmsSubscription\CollectionFactory
      */
     private $collectionFactory;
 
@@ -77,13 +77,13 @@ class MassDelete extends Action
         }
 
         try {
-            /** @var \Linkmobility\Notifications\Model\ResourceModel\SmsSubscription\Collection $collection */
+            /** @var \LinkMobility\SMSNotifications\Model\ResourceModel\SmsSubscription\Collection $collection */
             $collection = $this->filter->getCollection($this->collectionFactory->create());
             $deletedSubscriptions = 0;
 
             $collection->addFieldToFilter('customer_id', ['eq' => $customerId]);
 
-            /** @var \Linkmobility\Notifications\Model\SmsSubscription $subscription */
+            /** @var \LinkMobility\SMSNotifications\Model\SmsSubscription $subscription */
             foreach ($collection->getItems() as $subscription) {
                 try {
                     $subscription->getResource()->delete($subscription);

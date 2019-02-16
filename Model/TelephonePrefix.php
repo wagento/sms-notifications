@@ -5,7 +5,7 @@
  * Sends transactional SMS notifications through the LINK Mobility messaging
  * service.
  *
- * @package Linkmobility\Notifications\Model
+ * @package LinkMobility\SMSNotifications\Model
  * @author Joseph Leedy <joseph@wagento.com>
  * @author Yair García Torres <yair.garcia@wagento.com>
  * @copyright Copyright (c) LINK Mobility (https://www.linkmobility.com/)
@@ -14,14 +14,14 @@
 
 declare(strict_types=1);
 
-namespace Linkmobility\Notifications\Model;
+namespace LinkMobility\SMSNotifications\Model;
 
-use Linkmobility\Notifications\Api\Data\TelephonePrefixInterface;
-use Linkmobility\Notifications\Api\Data\TelephonePrefixInterfaceFactory;
+use LinkMobility\SMSNotifications\Api\Data\TelephonePrefixInterface;
+use LinkMobility\SMSNotifications\Api\Data\TelephonePrefixInterfaceFactory;
 use Magento\Framework\Api\DataObjectHelper;
 use Magento\Framework\Data\Collection\AbstractDb;
 use Magento\Framework\Model\AbstractModel;
-use Linkmobility\Notifications\Model\ResourceModel\TelephonePrefix as TelephonePrefixResource;
+use LinkMobility\SMSNotifications\Model\ResourceModel\TelephonePrefix as TelephonePrefixResource;
 use Magento\Framework\Model\Context;
 use Magento\Framework\Model\ResourceModel\AbstractResource;
 use Magento\Framework\Reflection\DataObjectProcessor;
@@ -30,7 +30,7 @@ use Magento\Framework\Registry;
 /**
  * Telephone Prefix Data Model
  *
- * @package Linkmobility\Notifications\Model
+ * @package LinkMobility\SMSNotifications\Model
  * @author Joseph Leedy <joseph@wagento.com>
  * @method $this setCountryCode(string $countryCode)
  * @method string getCountryCode()
@@ -61,7 +61,7 @@ class TelephonePrefix extends AbstractModel
      */
     private $dataObjectProcessor;
     /**
-     * @var \Linkmobility\Notifications\Api\Data\TelephonePrefixInterfaceFactory
+     * @var \LinkMobility\SMSNotifications\Api\Data\TelephonePrefixInterfaceFactory
      */
     private $telephonePrefixFactory;
 
@@ -85,7 +85,7 @@ class TelephonePrefix extends AbstractModel
     public function getDataModel(): TelephonePrefixInterface
     {
         $telephonePrefixData = $this->getData();
-        /** @var \Linkmobility\Notifications\Api\Data\TelephonePrefixInterface $telephonePrefix */
+        /** @var \LinkMobility\SMSNotifications\Api\Data\TelephonePrefixInterface $telephonePrefix */
         $telephonePrefix = $this->telephonePrefixFactory->create();
 
         $this->dataObjectHelper->populateWithArray(

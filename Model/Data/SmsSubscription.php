@@ -5,7 +5,7 @@
  * Sends transactional SMS notifications through the LINK Mobility messaging
  * service.
  *
- * @package Linkmobility\Notifications\Model\Data
+ * @package LinkMobility\SMSNotifications\Model\Data
  * @author Joseph Leedy <joseph@wagento.com>
  * @author Yair García Torres <yair.garcia@wagento.com>
  * @copyright Copyright (c) LINK Mobility (https://www.linkmobility.com/)
@@ -13,22 +13,22 @@
  */
 declare(strict_types=1);
 
-namespace Linkmobility\Notifications\Model\Data;
+namespace LinkMobility\SMSNotifications\Model\Data;
 
-use Linkmobility\Notifications\Api\Data\SmsSubscriptionInterface;
+use LinkMobility\SMSNotifications\Api\Data\SmsSubscriptionInterface;
 use Magento\Framework\Api\AbstractSimpleObject;
 
 /**
  * SMS Subscription Entity
  *
- * @package Linkmobility\Notifications\Model\Data
+ * @package LinkMobility\SMSNotifications\Model\Data
  * @author Joseph Leedy <joseph@wagento.com>
  */
 final class SmsSubscription extends AbstractSimpleObject implements SmsSubscriptionInterface
 {
     /**
      * @param int $id
-     * @return \Linkmobility\Notifications\Api\Data\SmsSubscriptionInterface
+     * @return \LinkMobility\SMSNotifications\Api\Data\SmsSubscriptionInterface
      */
     public function setId(int $id): SmsSubscriptionInterface
     {
@@ -45,7 +45,7 @@ final class SmsSubscription extends AbstractSimpleObject implements SmsSubscript
 
     /**
      * @param int $smsSubscriptionId
-     * @return \Linkmobility\Notifications\Api\Data\SmsSubscriptionInterface
+     * @return \LinkMobility\SMSNotifications\Api\Data\SmsSubscriptionInterface
      */
     public function setSmsSubscriptionId(int $smsSubscriptionId): SmsSubscriptionInterface
     {
@@ -62,7 +62,7 @@ final class SmsSubscription extends AbstractSimpleObject implements SmsSubscript
 
     /**
      * @param string $customerId
-     * @return \Linkmobility\Notifications\Api\Data\SmsSubscriptionInterface
+     * @return \LinkMobility\SMSNotifications\Api\Data\SmsSubscriptionInterface
      */
     public function setCustomerId(string $customerId): SmsSubscriptionInterface
     {
@@ -79,7 +79,7 @@ final class SmsSubscription extends AbstractSimpleObject implements SmsSubscript
 
     /**
      * @param string $smsType
-     * @return \Linkmobility\Notifications\Api\Data\SmsSubscriptionInterface
+     * @return \LinkMobility\SMSNotifications\Api\Data\SmsSubscriptionInterface
      */
     public function setSmsType(string $smsType): SmsSubscriptionInterface
     {

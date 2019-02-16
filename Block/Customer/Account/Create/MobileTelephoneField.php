@@ -5,7 +5,7 @@
  * Sends transactional SMS notifications through the LINK Mobility messaging
  * service.
  *
- * @package Linkmobility\Notifications\Block\Customer\Account\Create
+ * @package LinkMobility\SMSNotifications\Block\Customer\Account\Create
  * @author Joseph Leedy <joseph@wagento.com>
  * @author Yair García Torres <yair.garcia@wagento.com>
  * @copyright Copyright (c) LINK Mobility (https://www.linkmobility.com/)
@@ -14,14 +14,14 @@
 
 declare(strict_types=1);
 
-namespace Linkmobility\Notifications\Block\Customer\Account\Create;
+namespace LinkMobility\SMSNotifications\Block\Customer\Account\Create;
 
-use Linkmobility\Notifications\Block\AbstractBlock;
+use LinkMobility\SMSNotifications\Block\AbstractBlock;
 
 /**
  * SMS Notifications Mobile Telephone Block
  *
- * @package Linkmobility\Notifications\Block\Customer\Account\Create
+ * @package LinkMobility\SMSNotifications\Block\Customer\Account\Create
  * @author Joseph Leedy <joseph@wagento.com>
  */
 class MobileTelephoneField extends AbstractBlock

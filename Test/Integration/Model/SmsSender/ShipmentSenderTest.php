@@ -5,7 +5,7 @@
  * Sends transactional SMS notifications through the LINK Mobility messaging
  * service.
  *
- * @package Linkmobility\Notifications\Test\Integration\Model\SmsSender
+ * @package LinkMobility\SMSNotifications\Test\Integration\Model\SmsSender
  * @author Joseph Leedy <joseph@wagento.com>
  * @author Yair García Torres <yair.garcia@wagento.com>
  * @copyright Copyright (c) LINK Mobility (https://www.linkmobility.com/)
@@ -14,10 +14,10 @@
 
 declare(strict_types=1);
 
-namespace Linkmobility\Notifications\Test\Integration\Model\SmsSender;
+namespace LinkMobility\SMSNotifications\Test\Integration\Model\SmsSender;
 
-use Linkmobility\Notifications\Model\SmsSender\ShipmentSender;
-use Linkmobility\Notifications\Test\Integration\SmsSenderTestCase;
+use LinkMobility\SMSNotifications\Model\SmsSender\ShipmentSender;
+use LinkMobility\SMSNotifications\Test\Integration\SmsSenderTestCase;
 use Magento\Sales\Api\Data\ShipmentExtensionInterface;
 use Magento\Sales\Api\Data\ShipmentInterface;
 use Magento\Sales\Model\Order;
@@ -25,7 +25,7 @@ use Magento\Sales\Model\Order;
 /**
  * Shipment SMS Sender Test
  *
- * @package Linkmobility\Notifications\Test\Integration\Model\SmsSender
+ * @package LinkMobility\SMSNotifications\Test\Integration\Model\SmsSender
  * @author Joseph Leedy <joseph@wagento.com>
  */
 class ShipmentSenderTest extends SmsSenderTestCase

@@ -5,7 +5,7 @@
  * Sends transactional SMS notifications through the LINK Mobility messaging
  * service.
  *
- * @package Linkmobility\Notifications\Model\Customer\Attribute\Source
+ * @package LinkMobility\SMSNotifications\Model\Customer\Attribute\Source
  * @author Joseph Leedy <joseph@wagento.com>
  * @author Yair García Torres <yair.garcia@wagento.com>
  * @copyright Copyright (c) LINK Mobility (https://www.linkmobility.com/)
@@ -14,9 +14,9 @@
 
 declare(strict_types=1);
 
-namespace Linkmobility\Notifications\Model\Customer\Attribute\Source;
+namespace LinkMobility\SMSNotifications\Model\Customer\Attribute\Source;
 
-use Linkmobility\Notifications\Model\ResourceModel\TelephonePrefix\CollectionFactory as TelephonePrefixCollectionFactory;
+use LinkMobility\SMSNotifications\Model\ResourceModel\TelephonePrefix\CollectionFactory as TelephonePrefixCollectionFactory;
 use Magento\Eav\Model\Entity\Attribute\Source\AbstractSource;
 use Magento\Framework\App\Config\ScopeConfigInterface;
 use Magento\Framework\Data\Collection;
@@ -27,7 +27,7 @@ use Magento\Store\Model\StoreManagerInterface;
 /**
  * Telephone Prefix Source Model
  *
- * @package Linkmobility\Notifications\Model\Customer\Attribute\Source
+ * @package LinkMobility\SMSNotifications\Model\Customer\Attribute\Source
  * @author Joseph Leedy <joseph@wagento.com>
  */
 final class TelephonePrefix extends AbstractSource
@@ -41,7 +41,7 @@ final class TelephonePrefix extends AbstractSource
      */
     private $storeManager;
     /**
-     * @var \Linkmobility\Notifications\Model\ResourceModel\TelephonePrefix\CollectionFactory
+     * @var \LinkMobility\SMSNotifications\Model\ResourceModel\TelephonePrefix\CollectionFactory
      */
     private $prefixCollectionFactory;
 
@@ -72,7 +72,7 @@ final class TelephonePrefix extends AbstractSource
             ->getItems();
         $options = [];
 
-        /** @var \Linkmobility\Notifications\Model\TelephonePrefix $prefix */
+        /** @var \LinkMobility\SMSNotifications\Model\TelephonePrefix $prefix */
         foreach ($prefixes as $prefix) {
             $options[] = [
                 'value' => $prefix->getCountryCode() . '_' . $prefix->getPrefix(),

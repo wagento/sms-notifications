@@ -5,7 +5,7 @@
  * Sends transactional SMS notifications through the LINK Mobility messaging
  * service.
  *
- * @package Linkmobility\Notifications\Gateway\Entity
+ * @package LinkMobility\SMSNotifications\Gateway\Entity
  * @author Joseph Leedy <joseph@wagento.com>
  * @author Yair García Torres <yair.garcia@wagento.com>
  * @copyright Copyright (c) LINK Mobility (https://www.linkmobility.com/)
@@ -13,12 +13,12 @@
  */
 declare(strict_types=1);
 
-namespace Linkmobility\Notifications\Gateway\Entity;
+namespace LinkMobility\SMSNotifications\Gateway\Entity;
 
 /**
  * Message Entity
  *
- * @package Linkmobility\Notifications\Gateway\Entity
+ * @package LinkMobility\SMSNotifications\Gateway\Entity
  * @author Joseph Leedy <joseph@wagento.com>
  *
  * @SuppressWarnings(PHPMD.TooManyFields)
@@ -36,7 +36,7 @@ final class Message implements MessageInterface
     /**
      * Type of source phone number
      *
-     * @var \Linkmobility\Notifications\Gateway\Entity\TON
+     * @var \LinkMobility\SMSNotifications\Gateway\Entity\TON
      */
     private $sourceTON = TON::MSISDN;
     /**
@@ -48,13 +48,13 @@ final class Message implements MessageInterface
     /**
      * Type of destination phone number
      *
-     * @var \Linkmobility\Notifications\Gateway\Entity\TON
+     * @var \LinkMobility\SMSNotifications\Gateway\Entity\TON
      */
     private $destinationTON;
     /**
      * Data Coding Scheme to use when sending messages
      *
-     * @var \Linkmobility\Notifications\Gateway\Entity\DCS
+     * @var \LinkMobility\SMSNotifications\Gateway\Entity\DCS
      */
     private $dcs;
     /**
@@ -196,7 +196,7 @@ final class Message implements MessageInterface
     }
 
     /**
-     * @param \Linkmobility\Notifications\Gateway\Entity\TON|string $sourceTON
+     * @param \LinkMobility\SMSNotifications\Gateway\Entity\TON|string $sourceTON
      * @return void
      */
     public function setSourceTON($sourceTON): void
@@ -224,7 +224,7 @@ final class Message implements MessageInterface
     }
 
     /**
-     * @param \Linkmobility\Notifications\Gateway\Entity\TON|string $destinationTON
+     * @param \LinkMobility\SMSNotifications\Gateway\Entity\TON|string $destinationTON
      */
     public function setDestinationTON($destinationTON): void
     {
@@ -241,7 +241,7 @@ final class Message implements MessageInterface
     }
 
     /**
-     * @param \Linkmobility\Notifications\Gateway\Entity\DCS|string $dcs
+     * @param \LinkMobility\SMSNotifications\Gateway\Entity\DCS|string $dcs
      */
     public function setDcs($dcs): void
     {

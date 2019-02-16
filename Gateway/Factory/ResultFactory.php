@@ -5,7 +5,7 @@
  * Sends transactional SMS notifications through the LINK Mobility messaging
  * service.
  *
- * @package Linkmobility\Notifications\Gateway\Factory
+ * @package LinkMobility\SMSNotifications\Gateway\Factory
  * @author Joseph Leedy <joseph@wagento.com>
  * @author Yair García Torres <yair.garcia@wagento.com>
  * @copyright Copyright (c) LINK Mobility (https://www.linkmobility.com/)
@@ -13,16 +13,16 @@
  */
 declare(strict_types=1);
 
-namespace Linkmobility\Notifications\Gateway\Factory;
+namespace LinkMobility\SMSNotifications\Gateway\Factory;
 
-use Linkmobility\Notifications\Gateway\Entity\ErrorResult;
-use Linkmobility\Notifications\Gateway\Entity\ResultInterface;
-use Linkmobility\Notifications\Gateway\Entity\SuccessResult;
+use LinkMobility\SMSNotifications\Gateway\Entity\ErrorResult;
+use LinkMobility\SMSNotifications\Gateway\Entity\ResultInterface;
+use LinkMobility\SMSNotifications\Gateway\Entity\SuccessResult;
 
 /**
  * Result Factory
  *
- * @package Linkmobility\Notifications\Gateway\Factory
+ * @package LinkMobility\SMSNotifications\Gateway\Factory
  * @author Joseph Leedy <joseph@wagento.com>
  */
 class ResultFactory

@@ -5,7 +5,7 @@
  * Sends transactional SMS notifications through the LINK Mobility messaging
  * service.
  *
- * @package Linkmobility\Notifications\ViewModel
+ * @package LinkMobility\SMSNotifications\ViewModel
  * @author Joseph Leedy <joseph@wagento.com>
  * @author Yair García Torres <yair.garcia@wagento.com>
  * @copyright Copyright (c) LINK Mobility (https://www.linkmobility.com/)
@@ -14,9 +14,9 @@
 
 declare(strict_types=1);
 
-namespace Linkmobility\Notifications\ViewModel;
+namespace LinkMobility\SMSNotifications\ViewModel;
 
-use Linkmobility\Notifications\Model\ResourceModel\TelephonePrefix\CollectionFactory as TelephonePrefixCollectionFactory;
+use LinkMobility\SMSNotifications\Model\ResourceModel\TelephonePrefix\CollectionFactory as TelephonePrefixCollectionFactory;
 use Magento\Customer\Model\Customer;
 use Magento\Directory\Helper\Data as DirectoryHelper;
 use Magento\Eav\Api\AttributeRepositoryInterface;
@@ -27,7 +27,7 @@ use Magento\Framework\View\Element\Block\ArgumentInterface;
 /**
  * Telephone Prefixes View Model
  *
- * @package Linkmobility\Notifications\ViewModel
+ * @package LinkMobility\SMSNotifications\ViewModel
  * @author Joseph Leedy <joseph@wagento.com>
  */
 class TelephonePrefixes implements ArgumentInterface
@@ -41,7 +41,7 @@ class TelephonePrefixes implements ArgumentInterface
      */
     private $attributeRepository;
     /**
-     * @var \Linkmobility\Notifications\Model\ResourceModel\TelephonePrefix\CollectionFactory
+     * @var \LinkMobility\SMSNotifications\Model\ResourceModel\TelephonePrefix\CollectionFactory
      */
     private $telephonePrefixCollectionFactory;
 
@@ -70,7 +70,7 @@ class TelephonePrefixes implements ArgumentInterface
 
     public function getDefaultPrefix(): string
     {
-        /** @var \Linkmobility\Notifications\Model\TelephonePrefix $prefix */
+        /** @var \LinkMobility\SMSNotifications\Model\TelephonePrefix $prefix */
         $prefix = $this->telephonePrefixCollectionFactory->create()
             ->addFieldToFilter('country_code', ['eq' => $this->directoryHelper->getDefaultCountry()])
             ->setPageSize(1)

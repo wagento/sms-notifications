@@ -17,10 +17,10 @@
     <update handle="sms_subscription_preferences"/>
     <body>
         <referenceContainer name="form.additional.info">
-            <block class="Linkmobility\Notifications\Block\Customer\Account\Create\SubscribeField" name="customer.account.create.field.sms_notifications.subscribe" as="sms_notifications_subscribe_field" template="Linkmobility_Notifications::customer/account/create/subscribe-field.phtml"/>
-            <block class="Linkmobility\Notifications\Block\Customer\Account\Create\MobileTelephoneField" name="customer.account.create.field.mobile_telephone" as="sms_notifications_mobile_telephone_field" template="Linkmobility_Notifications::customer/account/create/mobile-telephone-field.phtml">
+            <block class="LinkMobility\SMSNotifications\Block\Customer\Account\Create\SubscribeField" name="customer.account.create.field.sms_notifications.subscribe" as="sms_notifications_subscribe_field" template="LinkMobility_SMSNotifications::customer/account/create/subscribe-field.phtml"/>
+            <block class="LinkMobility\SMSNotifications\Block\Customer\Account\Create\MobileTelephoneField" name="customer.account.create.field.mobile_telephone" as="sms_notifications_mobile_telephone_field" template="LinkMobility_SMSNotifications::customer/account/create/mobile-telephone-field.phtml">
                 <arguments>
-                    <argument name="telephone_prefixes_view_model" xsi:type="object">Linkmobility\Notifications\ViewModel\TelephonePrefixes</argument>
+                    <argument name="telephone_prefixes_view_model" xsi:type="object">LinkMobility\SMSNotifications\ViewModel\TelephonePrefixes</argument>
                 </arguments>
             </block>
         </referenceContainer>

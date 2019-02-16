@@ -5,7 +5,7 @@
  * Sends transactional SMS notifications through the LINK Mobility messaging
  * service.
  *
- * @package Linkmobility\Notifications\Controller\SmsNotifications
+ * @package LinkMobility\SMSNotifications\Controller\SmsNotifications
  * @author Joseph Leedy <joseph@wagento.com>
  * @author Yair García Torres <yair.garcia@wagento.com>
  * @copyright Copyright (c) LINK Mobility (https://www.linkmobility.com/)
@@ -13,14 +13,14 @@
  */
 declare(strict_types=1);
 
-namespace Linkmobility\Notifications\Controller\SmsNotifications;
+namespace LinkMobility\SMSNotifications\Controller\SmsNotifications;
 
 use Magento\Customer\Controller\AbstractAccount;
 
 /**
  * Manage SMS Subscriptions Controller
  *
- * @package Linkmobility\Notifications\Controller\SmsNotifications
+ * @package LinkMobility\SMSNotifications\Controller\SmsNotifications
  * @author Yair García Torres <yair.garcia@wagento.com>
  * @author Joseph Leedy <joseph@wagento.com>
  */

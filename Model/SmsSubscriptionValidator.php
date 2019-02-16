@@ -5,7 +5,7 @@
  * Sends transactional SMS notifications through the LINK Mobility messaging
  * service.
  *
- * @package Linkmobility\Notifications\Model
+ * @package LinkMobility\SMSNotifications\Model
  * @author Joseph Leedy <joseph@wagento.com>
  * @author Yair García Torres <yair.garcia@wagento.com>
  * @copyright Copyright (c) LINK Mobility (https://www.linkmobility.com/)
@@ -13,16 +13,16 @@
  */
 declare(strict_types=1);
 
-namespace Linkmobility\Notifications\Model;
+namespace LinkMobility\SMSNotifications\Model;
 
-use Linkmobility\Notifications\Api\SmsSubscriptionValidatorInterface;
+use LinkMobility\SMSNotifications\Api\SmsSubscriptionValidatorInterface;
 use Magento\Framework\Validator\DataObject;
 use Magento\Framework\Validator\DataObjectFactory as ValidatorObjectFactory;
 
 /**
  * SMS Subscription Validator
  *
- * @package Linkmobility\Notifications\Model
+ * @package LinkMobility\SMSNotifications\Model
  * @author Joseph Leedy <joseph@wagento.com>
  */
 final class SmsSubscriptionValidator implements SmsSubscriptionValidatorInterface
@@ -32,7 +32,7 @@ final class SmsSubscriptionValidator implements SmsSubscriptionValidatorInterfac
      */
     private $validatorObjectFactory;
     /**
-     * @var \Linkmobility\Notifications\Model\SmsSubscriptionValidationRules
+     * @var \LinkMobility\SMSNotifications\Model\SmsSubscriptionValidationRules
      */
     private $validationRules;
     private $isValid = true;

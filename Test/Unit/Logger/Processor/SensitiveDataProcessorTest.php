@@ -5,7 +5,7 @@
  * Sends transactional SMS notifications through the LINK Mobility messaging
  * service.
  *
- * @package Linkmobility\Notifications\Test\Unit\Logger\Processor
+ * @package LinkMobility\SMSNotifications\Test\Unit\Logger\Processor
  * @author Joseph Leedy <joseph@wagento.com>
  * @author Yair García Torres <yair.garcia@wagento.com>
  * @copyright Copyright (c) LINK Mobility (https://www.linkmobility.com/)
@@ -13,15 +13,15 @@
  */
 declare(strict_types=1);
 
-namespace Linkmobility\Notifications\Test\Unit\Logger\Processor;
+namespace LinkMobility\SMSNotifications\Test\Unit\Logger\Processor;
 
-use Linkmobility\Notifications\Logger\Processor\SensitiveDataProcessor;
+use LinkMobility\SMSNotifications\Logger\Processor\SensitiveDataProcessor;
 use PHPUnit\Framework\TestCase;
 
 /**
  * Sensitive Log Data Processor Test
  *
- * @package Linkmobility\Notifications\Test\Unit\Logger\Processor
+ * @package LinkMobility\SMSNotifications\Test\Unit\Logger\Processor
  * @author Joseph Leedy <joseph@wagento.com>
  */
 class SensitiveDataProcessorTest extends TestCase

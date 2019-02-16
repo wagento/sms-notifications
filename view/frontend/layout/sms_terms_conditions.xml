@@ -15,9 +15,9 @@
 <page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
     <body>
         <referenceContainer name="content">
-            <block class="Linkmobility\Notifications\Block\SmsTermsConditions" name="sms_notifications.terms_and_conditions" as="sms_terms_conditions" template="Linkmobility_Notifications::sms-terms-conditions.phtml">
+            <block class="LinkMobility\SMSNotifications\Block\SmsTermsConditions" name="sms_notifications.terms_and_conditions" as="sms_terms_conditions" template="LinkMobility_SMSNotifications::sms-terms-conditions.phtml">
                 <arguments>
-                    <argument name="terms_conditions_view_model" xsi:type="object">Linkmobility\Notifications\ViewModel\TermsConditions</argument>
+                    <argument name="terms_conditions_view_model" xsi:type="object">LinkMobility\SMSNotifications\ViewModel\TermsConditions</argument>
                 </arguments>
             </block>
         </referenceContainer>

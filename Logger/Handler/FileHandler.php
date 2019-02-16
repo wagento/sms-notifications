@@ -5,7 +5,7 @@
  * Sends transactional SMS notifications through the LINK Mobility messaging
  * service.
  *
- * @package Linkmobility\Notifications\Logger\Handler
+ * @package LinkMobility\SMSNotifications\Logger\Handler
  * @author Joseph Leedy <joseph@wagento.com>
  * @author Yair García Torres <yair.garcia@wagento.com>
  * @copyright Copyright (c) LINK Mobility (https://www.linkmobility.com/)
@@ -13,22 +13,22 @@
  */
 declare(strict_types=1);
 
-namespace Linkmobility\Notifications\Logger\Handler;
+namespace LinkMobility\SMSNotifications\Logger\Handler;
 
-use Linkmobility\Notifications\Api\ConfigInterface;
+use LinkMobility\SMSNotifications\Api\ConfigInterface;
 use Magento\Framework\Filesystem\DriverInterface;
 use Magento\Framework\Logger\Handler\Base;
 
 /**
  * Log File Handler
  *
- * @package Teamwork\Notifications\Logger\Handler
+ * @package Teamwork\SMSNotifications\Logger\Handler
  * @author Joseph Leedy <joseph@wagento.com>
  */
 class FileHandler extends Base
 {
     /**
-     * @var \Linkmobility\Notifications\Api\ConfigInterface
+     * @var \LinkMobility\SMSNotifications\Api\ConfigInterface
      */
     private $config;
 

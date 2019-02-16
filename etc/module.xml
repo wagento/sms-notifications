@@ -13,7 +13,7 @@
  */
 -->
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Module/etc/module.xsd">
-    <module name="Linkmobility_Notifications" setup_version="0.1.1">
+    <module name="LinkMobility_SMSNotifications" setup_version="0.1.1">
         <sequence>
             <module name="Magento_Customer" />
         </sequence>

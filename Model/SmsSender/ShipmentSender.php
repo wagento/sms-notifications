@@ -5,7 +5,7 @@
  * Sends transactional SMS notifications through the LINK Mobility messaging
  * service.
  *
- * @package Linkmobility\Notifications\Model
+ * @package LinkMobility\SMSNotifications\Model
  * @author Joseph Leedy <joseph@wagento.com>
  * @author Yair García Torres <yair.garcia@wagento.com>
  * @copyright Copyright (c) LINK Mobility (https://www.linkmobility.com/)
@@ -14,12 +14,12 @@
 
 declare(strict_types=1);
 
-namespace Linkmobility\Notifications\Model\SmsSender;
+namespace LinkMobility\SMSNotifications\Model\SmsSender;
 
-use Linkmobility\Notifications\Api\ConfigInterface;
-use Linkmobility\Notifications\Api\SmsSubscriptionRepositoryInterface;
-use Linkmobility\Notifications\Model\MessageService;
-use Linkmobility\Notifications\Model\SmsSender;
+use LinkMobility\SMSNotifications\Api\ConfigInterface;
+use LinkMobility\SMSNotifications\Api\SmsSubscriptionRepositoryInterface;
+use LinkMobility\SMSNotifications\Model\MessageService;
+use LinkMobility\SMSNotifications\Model\SmsSender;
 use Magento\Customer\Api\CustomerRepositoryInterface;
 use Magento\Framework\Api\SearchCriteriaBuilder;
 use Magento\Framework\Model\AbstractModel;
@@ -30,7 +30,7 @@ use Psr\Log\LoggerInterface;
 /**
  * Shipment SMS Sender
  *
- * @package Linkmobility\Notifications\Model\SmsSender
+ * @package LinkMobility\SMSNotifications\Model\SmsSender
  * @author Joseph Leedy <joseph@wagento.com>
  * @api
  */

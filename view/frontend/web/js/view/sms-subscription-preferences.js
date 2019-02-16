@@ -13,14 +13,14 @@
 define([
     'jquery',
     'uiComponent',
-    'Linkmobility_Notifications/js/model/sms-subscription-preferences-modal',
+    'LinkMobility_SMSNotifications/js/model/sms-subscription-preferences-modal',
     'smsNotifications'
 ], function ($, Component, subscriptionPreferencesModal, smsNotifications) {
     'use strict';
 
     return Component.extend({
         defaults: {
-            template: 'Linkmobility_Notifications/sms-subscription-preferences',
+            template: 'LinkMobility_SMSNotifications/sms-subscription-preferences',
             groupedSmsTypes: {},
             modalTitle: null
         },

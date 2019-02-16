@@ -5,7 +5,7 @@
  * Sends transactional SMS notifications through the LINK Mobility messaging
  * service.
  *
- * @package Linkmobility\Notifications\Api
+ * @package LinkMobility\SMSNotifications\Api
  * @author Joseph Leedy <joseph@wagento.com>
  * @author Yair García Torres <yair.garcia@wagento.com>
  * @copyright Copyright (c) LINK Mobility (https://www.linkmobility.com/)
@@ -13,23 +13,23 @@
  */
 declare(strict_types=1);
 
-namespace Linkmobility\Notifications\Api;
+namespace LinkMobility\SMSNotifications\Api;
 
-use Linkmobility\Notifications\Api\Data\SmsSubscriptionInterface;
+use LinkMobility\SMSNotifications\Api\Data\SmsSubscriptionInterface;
 use Magento\Framework\Api\SearchCriteriaInterface;
 use Magento\Framework\Api\SearchResultsInterface;
 
 /**
  * SMS Subscription Repository Interface
  *
- * @package Linkmobility\Notifications\Api
+ * @package LinkMobility\SMSNotifications\Api
  * @author Joseph Leedy <joseph@wagento.com>
  */
 interface SmsSubscriptionRepositoryInterface
 {
     /**
      * @param int $id
-     * @return \Linkmobility\Notifications\Api\Data\SmsSubscriptionInterface
+     * @return \LinkMobility\SMSNotifications\Api\Data\SmsSubscriptionInterface
      * @throws \Magento\Framework\Exception\NoSuchEntityException
      */
     public function get(int $id): SmsSubscriptionInterface;
@@ -41,14 +41,14 @@ interface SmsSubscriptionRepositoryInterface
     public function getList(SearchCriteriaInterface $searchCriteria): SearchResultsInterface;
 
     /**
-     * @param \Linkmobility\Notifications\Api\Data\SmsSubscriptionInterface $smsSubscription
-     * @return \Linkmobility\Notifications\Api\Data\SmsSubscriptionInterface
+     * @param \LinkMobility\SMSNotifications\Api\Data\SmsSubscriptionInterface $smsSubscription
+     * @return \LinkMobility\SMSNotifications\Api\Data\SmsSubscriptionInterface
      * @throws \Magento\Framework\Exception\CouldNotSaveException
      */
     public function save(SmsSubscriptionInterface $smsSubscription): SmsSubscriptionInterface;
 
     /**
-     * @param \Linkmobility\Notifications\Api\Data\SmsSubscriptionInterface $smsSubscription
+     * @param \LinkMobility\SMSNotifications\Api\Data\SmsSubscriptionInterface $smsSubscription
      * @return bool
      * @throws \Magento\Framework\Exception\CouldNotDeleteException
      */

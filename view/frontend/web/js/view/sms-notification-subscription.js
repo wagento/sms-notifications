@@ -16,13 +16,13 @@ define([
     'uiComponent',
     'mage/translate',
     'smsNotifications',
-    'Linkmobility_Notifications/js/model/sms-subscription-preferences-modal'
+    'LinkMobility_SMSNotifications/js/model/sms-subscription-preferences-modal'
 ], function ($, ko, Component, $t, smsNotifications, subscriptionPreferencesModal) {
     'use strict';
 
     return Component.extend({
         defaults: {
-            template: 'Linkmobility_Notifications/sms-notification-subscription',
+            template: 'LinkMobility_SMSNotifications/sms-notification-subscription',
             checkboxSelector: '#sms-notifications-subscribed',
             selectedSmsTypes: ko.observable('')
         },

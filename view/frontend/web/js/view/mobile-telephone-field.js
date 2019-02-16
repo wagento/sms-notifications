@@ -20,7 +20,7 @@ define([
 
     return Component.extend({
         defaults: {
-            template: 'Linkmobility_Notifications/mobile-telephone-field',
+            template: 'LinkMobility_SMSNotifications/mobile-telephone-field',
             showField: false,
             mobileTelephonePrefixOptions: [],
             mobileTelephonePrefix: '',

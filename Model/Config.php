@@ -5,7 +5,7 @@
  * Sends transactional SMS notifications through the LINK Mobility messaging
  * service.
  *
- * @package Linkmobility\Notifications\Model
+ * @package LinkMobility\SMSNotifications\Model
  * @author Joseph Leedy <joseph@wagento.com>
  * @author Yair García Torres <yair.garcia@wagento.com>
  * @copyright Copyright (c) LINK Mobility (https://www.linkmobility.com/)
@@ -13,16 +13,16 @@
  */
 declare(strict_types=1);
 
-namespace Linkmobility\Notifications\Model;
+namespace LinkMobility\SMSNotifications\Model;
 
-use Linkmobility\Notifications\Api\ConfigInterface;
+use LinkMobility\SMSNotifications\Api\ConfigInterface;
 use Magento\Framework\App\Config\ScopeConfigInterface;
 use Magento\Store\Model\ScopeInterface;
 
 /**
  * Configuration Model
  *
- * @package Linkmobility\Notifications\Model
+ * @package LinkMobility\SMSNotifications\Model
  * @author Joseph Leedy <joseph@wagento.com>
  *
  * @phpcs:disable Generic.Files.LineLength.TooLong

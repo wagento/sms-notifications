@@ -5,7 +5,7 @@
  * Sends transactional SMS notifications through the LINK Mobility messaging
  * service.
  *
- * @package Linkmobility\Notifications\Test\Integration
+ * @package LinkMobility\SMSNotifications\Test\Integration
  * @author Joseph Leedy <joseph@wagento.com>
  * @author Yair García Torres <yair.garcia@wagento.com>
  * @copyright Copyright (c) LINK Mobility (https://www.linkmobility.com/)
@@ -14,10 +14,10 @@
 
 declare(strict_types=1);
 
-namespace Linkmobility\Notifications\Test\Integration;
+namespace LinkMobility\SMSNotifications\Test\Integration;
 
-use Linkmobility\Notifications\Api\ConfigInterface;
-use Linkmobility\Notifications\Model\MessageService;
+use LinkMobility\SMSNotifications\Api\ConfigInterface;
+use LinkMobility\SMSNotifications\Model\MessageService;
 use Magento\Customer\Api\CustomerRepositoryInterface;
 use Magento\TestFramework\ObjectManager;
 use PHPUnit\Framework\MockObject\MockObject;
@@ -26,7 +26,7 @@ use PHPUnit\Framework\TestCase;
 /**
  * SMS Sender Test Case
  *
- * @package Linkmobility\Notifications\Test\Integration
+ * @package LinkMobility\SMSNotifications\Test\Integration
  * @author Joseph Leedy <joseph@wagento.com>
  */
 class SmsSenderTestCase extends TestCase
@@ -70,7 +70,7 @@ class SmsSenderTestCase extends TestCase
 
     protected function getConfigMock(): MockObject
     {
-        /** @var \Linkmobility\Notifications\Api\ConfigInterface|\PHPUnit\Framework\MockObject\MockObject $configMock */
+        /** @var \LinkMobility\SMSNotifications\Api\ConfigInterface|\PHPUnit\Framework\MockObject\MockObject $configMock */
         $configMock = $this->getMockBuilder(ConfigInterface::class)
             ->disableOriginalConstructor()
             ->getMockForAbstractClass();

@@ -11,9 +11,9 @@
  * @license https://opensource.org/licenses/OSL-3.0.php Open Software License 3.0
  */
 
-/** @var \Linkmobility\Notifications\Block\Customer\Account\Create\MobileTelephoneField $block */
+/** @var \LinkMobility\SMSNotifications\Block\Customer\Account\Create\MobileTelephoneField $block */
 
-/** @var \Linkmobility\Notifications\ViewModel\TelephonePrefixes $telephonePrefixesViewModel */
+/** @var \LinkMobility\SMSNotifications\ViewModel\TelephonePrefixes $telephonePrefixesViewModel */
 $telephonePrefixesViewModel = $block->getData('telephone_prefixes_view_model');
 $mobileTelephonePrefix = $block->getTelephonePrefix() ?? $telephonePrefixesViewModel->getDefaultPrefix();
 ?>
@@ -26,7 +26,7 @@ $mobileTelephonePrefix = $block->getTelephonePrefix() ?? $telephonePrefixesViewM
             "Magento_Ui/js/core/app": {
                 "components": {
                     "sms-mobile-telephone": {
-                        "component": "Linkmobility_Notifications/js/view/mobile-telephone-field",
+                        "component": "LinkMobility_SMSNotifications/js/view/mobile-telephone-field",
                         "config": {
                             "showField": <?= /** @noEscape */ $block->getFieldVisibility() ?>,
                             "mobileTelephonePrefixOptions": <?= \json_encode($telephonePrefixesViewModel->getOptions()) ?>,

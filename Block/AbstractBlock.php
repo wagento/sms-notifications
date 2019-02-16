@@ -5,7 +5,7 @@
  * Sends transactional SMS notifications through the LINK Mobility messaging
  * service.
  *
- * @package Linkmobility\Notifications\Block
+ * @package LinkMobility\SMSNotifications\Block
  * @author Joseph Leedy <joseph@wagento.com>
  * @author Yair García Torres <yair.garcia@wagento.com>
  * @copyright Copyright (c) LINK Mobility (https://www.linkmobility.com/)
@@ -14,9 +14,9 @@
 
 declare(strict_types=1);
 
-namespace Linkmobility\Notifications\Block;
+namespace LinkMobility\SMSNotifications\Block;
 
-use Linkmobility\Notifications\Api\ConfigInterface;
+use LinkMobility\SMSNotifications\Api\ConfigInterface;
 use Magento\Customer\Model\Session as CustomerSession;
 use Magento\Framework\DataObject;
 use Magento\Framework\Exception\NoSuchEntityException;
@@ -26,7 +26,7 @@ use Magento\Framework\View\Element\Template;
 /**
  * SMS Notifications Base Block
  *
- * @package Linkmobility\Notifications\Block
+ * @package LinkMobility\SMSNotifications\Block
  * @author Joseph Leedy <joseph@wagento.com>
  */
 abstract class AbstractBlock extends Template
@@ -36,7 +36,7 @@ abstract class AbstractBlock extends Template
      */
     protected $customerSession;
     /**
-     * @var \Linkmobility\Notifications\Api\ConfigInterface
+     * @var \LinkMobility\SMSNotifications\Api\ConfigInterface
      */
     private $config;
 

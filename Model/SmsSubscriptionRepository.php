@@ -5,7 +5,7 @@
  * Sends transactional SMS notifications through the LINK Mobility messaging
  * service.
  *
- * @package Linkmobility\Notifications\Model
+ * @package LinkMobility\SMSNotifications\Model
  * @author Joseph Leedy <joseph@wagento.com>
  * @author Yair García Torres <yair.garcia@wagento.com>
  * @copyright Copyright (c) LINK Mobility (https://www.linkmobility.com/)
@@ -13,13 +13,13 @@
  */
 declare(strict_types=1);
 
-namespace Linkmobility\Notifications\Model;
+namespace LinkMobility\SMSNotifications\Model;
 
-use Linkmobility\Notifications\Api\Data\SmsSubscriptionInterface;
-use Linkmobility\Notifications\Api\SmsSubscriptionRepositoryInterface;
-use Linkmobility\Notifications\Model\SmsSubscriptionFactory as SmsSubscriptionModelFactory;
-use Linkmobility\Notifications\Model\ResourceModel\SmsSubscription as SmsSubscriptionResourceModel;
-use Linkmobility\Notifications\Model\ResourceModel\SmsSubscription\CollectionFactory as SmsSubscriptionCollectionFactory;
+use LinkMobility\SMSNotifications\Api\Data\SmsSubscriptionInterface;
+use LinkMobility\SMSNotifications\Api\SmsSubscriptionRepositoryInterface;
+use LinkMobility\SMSNotifications\Model\SmsSubscriptionFactory as SmsSubscriptionModelFactory;
+use LinkMobility\SMSNotifications\Model\ResourceModel\SmsSubscription as SmsSubscriptionResourceModel;
+use LinkMobility\SMSNotifications\Model\ResourceModel\SmsSubscription\CollectionFactory as SmsSubscriptionCollectionFactory;
 use Magento\Framework\Api\SearchCriteriaInterface;
 use Magento\Framework\Api\SearchResultsInterface;
 use Magento\Framework\Api\SearchResultsInterfaceFactory;
@@ -30,7 +30,7 @@ use Magento\Framework\Exception\NoSuchEntityException;
 /**
  * SMS Subscription Repository
  *
- * @package Linkmobility\Notifications\Model
+ * @package LinkMobility\SMSNotifications\Model
  * @author Joseph Leedy <joseph@wagento.com>
  */
 class SmsSubscriptionRepository implements SmsSubscriptionRepositoryInterface
@@ -40,15 +40,15 @@ class SmsSubscriptionRepository implements SmsSubscriptionRepositoryInterface
      */
     private $searchResultsFactory;
     /**
-     * @var \Linkmobility\Notifications\Model\SmsSubscriptionFactory
+     * @var \LinkMobility\SMSNotifications\Model\SmsSubscriptionFactory
      */
     private $smsSubscriptionModelFactory;
     /**
-     * @var \Linkmobility\Notifications\Model\ResourceModel\SmsSubscription\CollectionFactory
+     * @var \LinkMobility\SMSNotifications\Model\ResourceModel\SmsSubscription\CollectionFactory
      */
     private $smsSubscriptionCollectionFactory;
     /**
-     * @var \Linkmobility\Notifications\Model\ResourceModel\SmsSubscription
+     * @var \LinkMobility\SMSNotifications\Model\ResourceModel\SmsSubscription
      */
     private $smsSubscriptionResourceModel;
 
@@ -66,12 +66,12 @@ class SmsSubscriptionRepository implements SmsSubscriptionRepositoryInterface
 
     /**
      * @param int $id
-     * @return \Linkmobility\Notifications\Api\Data\SmsSubscriptionInterface
+     * @return \LinkMobility\SMSNotifications\Api\Data\SmsSubscriptionInterface
      * @throws \Magento\Framework\Exception\NoSuchEntityException
      */
     public function get(int $id): SmsSubscriptionInterface
     {
-        /** @var \Linkmobility\Notifications\Model\SmsSubscription $smsSubscriptionModel */
+        /** @var \LinkMobility\SMSNotifications\Model\SmsSubscription $smsSubscriptionModel */
         $smsSubscriptionModel = $this->smsSubscriptionModelFactory->create();
 
         $this->smsSubscriptionResourceModel->load($smsSubscriptionModel, $id);
@@ -94,7 +94,7 @@ class SmsSubscriptionRepository implements SmsSubscriptionRepositoryInterface
 
         $searchResults->setSearchCriteria($searchCriteria);
 
-        /** @var \Linkmobility\Notifications\Model\ResourceModel\SmsSubscription\Collection $smsSubscriptionCollection */
+        /** @var \LinkMobility\SMSNotifications\Model\ResourceModel\SmsSubscription\Collection $smsSubscriptionCollection */
         $smsSubscriptionCollection = $this->smsSubscriptionCollectionFactory->create();
         $filterGroups = $searchCriteria->getFilterGroups();
 
@@ -144,14 +144,14 @@ class SmsSubscriptionRepository implements SmsSubscriptionRepositoryInterface
     }
 
     /**
-     * @param \Linkmobility\Notifications\Api\Data\SmsSubscriptionInterface $smsSubscription
-     * @return \Linkmobility\Notifications\Api\Data\SmsSubscriptionInterface
+     * @param \LinkMobility\SMSNotifications\Api\Data\SmsSubscriptionInterface $smsSubscription
+     * @return \LinkMobility\SMSNotifications\Api\Data\SmsSubscriptionInterface
      * @throws \Magento\Framework\Exception\CouldNotSaveException
      */
     public function save(SmsSubscriptionInterface $smsSubscription): SmsSubscriptionInterface
     {
         try {
-            /** @var \Linkmobility\Notifications\Model\SmsSubscription $smsSubscriptionModel */
+            /** @var \LinkMobility\SMSNotifications\Model\SmsSubscription $smsSubscriptionModel */
             $smsSubscriptionModel = $this->smsSubscriptionModelFactory->create();
 
             $smsSubscriptionModel->updateData($smsSubscription);
@@ -167,14 +167,14 @@ class SmsSubscriptionRepository implements SmsSubscriptionRepositoryInterface
     }
 
     /**
-     * @param \Linkmobility\Notifications\Api\Data\SmsSubscriptionInterface $smsSubscription
+     * @param \LinkMobility\SMSNotifications\Api\Data\SmsSubscriptionInterface $smsSubscription
      * @return bool
      * @throws \Magento\Framework\Exception\CouldNotDeleteException
      */
     public function delete(SmsSubscriptionInterface $smsSubscription): bool
     {
         try {
-            /** @var \Linkmobility\Notifications\Model\SmsSubscription $smsSubscriptionModel */
+            /** @var \LinkMobility\SMSNotifications\Model\SmsSubscription $smsSubscriptionModel */
             $smsSubscriptionModel = $this->smsSubscriptionModelFactory->create();
 
             $smsSubscriptionModel->updateData($smsSubscription);

@@ -5,7 +5,7 @@
  * Sends transactional SMS notifications through the LINK Mobility messaging
  * service.
  *
- * @package Linkmobility\Notifications\Plugin\Block\Form
+ * @package LinkMobility\SMSNotifications\Plugin\Block\Form
  * @author Joseph Leedy <joseph@wagento.com>
  * @author Yair García Torres <yair.garcia@wagento.com>
  * @copyright Copyright (c) LINK Mobility (https://www.linkmobility.com/)
@@ -14,9 +14,9 @@
 
 declare(strict_types=1);
 
-namespace Linkmobility\Notifications\Plugin\Block\Form;
+namespace LinkMobility\SMSNotifications\Plugin\Block\Form;
 
-use Linkmobility\Notifications\Api\ConfigInterface;
+use LinkMobility\SMSNotifications\Api\ConfigInterface;
 use Magento\Customer\Block\Form\Register;
 use Magento\Customer\Model\Session as CustomerSession;
 use Magento\Framework\Exception\NoSuchEntityException;
@@ -25,7 +25,7 @@ use Magento\Store\Model\StoreManagerInterface;
 /**
  * Plug-in for {@see \Magento\Customer\Block\Form\Register::getFormData()}
  *
- * @package Linkmobility\Notifications\Plugin\Block\Form
+ * @package LinkMobility\SMSNotifications\Plugin\Block\Form
  * @author Joseph Leedy <joseph@wagento.com>
  */
 class RegisterPlugin
@@ -35,7 +35,7 @@ class RegisterPlugin
      */
     private $customerSession;
     /**
-     * @var \Linkmobility\Notifications\Api\ConfigInterface
+     * @var \LinkMobility\SMSNotifications\Api\ConfigInterface
      */
     private $config;
     /**

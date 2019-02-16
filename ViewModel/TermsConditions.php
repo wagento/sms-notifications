@@ -5,7 +5,7 @@
  * Sends transactional SMS notifications through the LINK Mobility messaging
  * service.
  *
- * @package Linkmobility\Notifications\ViewModel
+ * @package LinkMobility\SMSNotifications\ViewModel
  * @author Joseph Leedy <joseph@wagento.com>
  * @author Yair García Torres <yair.garcia@wagento.com>
  * @copyright Copyright (c) LINK Mobility (https://www.linkmobility.com/)
@@ -14,9 +14,9 @@
 
 declare(strict_types=1);
 
-namespace Linkmobility\Notifications\ViewModel;
+namespace LinkMobility\SMSNotifications\ViewModel;
 
-use Linkmobility\Notifications\Api\ConfigInterface;
+use LinkMobility\SMSNotifications\Api\ConfigInterface;
 use Magento\Framework\Exception\NoSuchEntityException;
 use Magento\Framework\View\Element\Block\ArgumentInterface;
 use Magento\Store\Model\StoreManagerInterface;
@@ -24,7 +24,7 @@ use Magento\Store\Model\StoreManagerInterface;
 /**
  * Terms & Conditions View Model
  *
- * @package Linkmobility\Notifications\ViewModel
+ * @package LinkMobility\SMSNotifications\ViewModel
  * @author Joseph Leedy <joseph@wagento.com>
  */
 class TermsConditions implements ArgumentInterface
@@ -34,7 +34,7 @@ class TermsConditions implements ArgumentInterface
      */
     private $storeManager;
     /**
-     * @var \Linkmobility\Notifications\Api\ConfigInterface
+     * @var \LinkMobility\SMSNotifications\Api\ConfigInterface
      */
     private $config;
 

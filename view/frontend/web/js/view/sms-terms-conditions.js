@@ -13,14 +13,14 @@
 define([
     'jquery',
     'uiComponent',
-    'Linkmobility_Notifications/js/model/sms-terms-conditions-modal',
+    'LinkMobility_SMSNotifications/js/model/sms-terms-conditions-modal',
     'smsNotifications'
 ], function ($, Component, termsConditionsModal, smsNotifications) {
     'use strict';
 
     return Component.extend({
         defaults: {
-            template: 'Linkmobility_Notifications/sms-terms-conditions',
+            template: 'LinkMobility_SMSNotifications/sms-terms-conditions',
             modalTitle: null,
             modalContent: null
         },

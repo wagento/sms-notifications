@@ -5,7 +5,7 @@
  * Sends transactional SMS notifications through the LINK Mobility messaging
  * service.
  *
- * @package Linkmobility\Notifications\Model\Data
+ * @package LinkMobility\SMSNotifications\Model\Data
  * @author Joseph Leedy <joseph@wagento.com>
  * @author Yair García Torres <yair.garcia@wagento.com>
  * @copyright Copyright (c) LINK Mobility (https://www.linkmobility.com/)
@@ -14,15 +14,15 @@
 
 declare(strict_types=1);
 
-namespace Linkmobility\Notifications\Model\Data;
+namespace LinkMobility\SMSNotifications\Model\Data;
 
-use Linkmobility\Notifications\Api\Data\TelephonePrefixInterface;
+use LinkMobility\SMSNotifications\Api\Data\TelephonePrefixInterface;
 use Magento\Framework\Api\AbstractSimpleObject;
 
 /**
  * Telephone Prefix Entity
  *
- * @package Linkmobility\Notifications\Model\Data
+ * @package LinkMobility\SMSNotifications\Model\Data
  * @author Joseph Leedy <joseph@wagento.com>
  */
 class TelephonePrefix extends AbstractSimpleObject implements TelephonePrefixInterface

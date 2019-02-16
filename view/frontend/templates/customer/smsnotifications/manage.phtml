@@ -13,11 +13,11 @@
 
 /** @var \Magento\Framework\View\Element\Template $block */
 
-/** @var \Linkmobility\Notifications\ViewModel\SmsTypes $smsTypesViewModel */
+/** @var \LinkMobility\SMSNotifications\ViewModel\SmsTypes $smsTypesViewModel */
 $smsTypesViewModel = $block->getData('sms_types_view_model');
-/** @var \Linkmobility\Notifications\ViewModel\TelephonePrefixes $telephonePrefixesViewModel */
+/** @var \LinkMobility\SMSNotifications\ViewModel\TelephonePrefixes $telephonePrefixesViewModel */
 $telephonePrefixesViewModel = $block->getData('telephone_prefixes_view_model');
-/** @var \Linkmobility\Notifications\ViewModel\MobileTelephone $mobileTelephoneViewModel */
+/** @var \LinkMobility\SMSNotifications\ViewModel\MobileTelephone $mobileTelephoneViewModel */
 $mobileTelephoneViewModel = $block->getData('mobile_telephone_view_model');
 $smsTypes = $smsTypesViewModel->getSmsTypes('code');
 $groupedSmsTypes = $smsTypesViewModel->getGroupedSmsTypes();
@@ -66,7 +66,7 @@ $mobileTelephoneNumber = $mobileTelephoneViewModel->getNumber() ?? '';
             "Magento_Ui/js/core/app": {
                 "components": {
                     "sms-mobile-telephone": {
-                        "component": "Linkmobility_Notifications/js/view/mobile-telephone-field",
+                        "component": "LinkMobility_SMSNotifications/js/view/mobile-telephone-field",
                         "config": {
                             "showField": true,
                             "mobileTelephonePrefixOptions": <?= \json_encode($telephonePrefixesViewModel->getOptions()) ?>,

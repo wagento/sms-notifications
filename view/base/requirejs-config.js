@@ -13,7 +13,7 @@ var config = {
     config: {
         mixins: {
             'Magento_Ui/js/grid/massactions': {
-                'Linkmobility_Notifications/js/grid/massactions-mixin': true
+                'LinkMobility_SMSNotifications/js/grid/massactions-mixin': true
             }
         }
     }

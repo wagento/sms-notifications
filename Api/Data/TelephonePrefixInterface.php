@@ -5,7 +5,7 @@
  * Sends transactional SMS notifications through the LINK Mobility messaging
  * service.
  *
- * @package Linkmobility\Notifications\Api\Data
+ * @package LinkMobility\SMSNotifications\Api\Data
  * @author Joseph Leedy <joseph@wagento.com>
  * @author Yair García Torres <yair.garcia@wagento.com>
  * @copyright Copyright (c) LINK Mobility (https://www.linkmobility.com/)
@@ -14,12 +14,12 @@
 
 declare(strict_types=1);
 
-namespace Linkmobility\Notifications\Api\Data;
+namespace LinkMobility\SMSNotifications\Api\Data;
 
 /**
  * Telephone Prefix Entity Interface
  *
- * @package Linkmobility\Notifications\Api\Data
+ * @package LinkMobility\SMSNotifications\Api\Data
  * @author Joseph Leedy <joseph@wagento.com>
  */
 interface TelephonePrefixInterface

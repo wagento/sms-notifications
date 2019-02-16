@@ -5,7 +5,7 @@
  * Sends transactional SMS notifications through the LINK Mobility messaging
  * service.
  *
- * @package Linkmobility\Notifications\Controller\Adminhtml\Subscription
+ * @package LinkMobility\SMSNotifications\Controller\Adminhtml\Subscription
  * @author Joseph Leedy <joseph@wagento.com>
  * @author Yair García Torres <yair.garcia@wagento.com>
  * @copyright Copyright (c) LINK Mobility (https://www.linkmobility.com/)
@@ -13,10 +13,10 @@
  */
 declare(strict_types=1);
 
-namespace Linkmobility\Notifications\Controller\Adminhtml\Subscription;
+namespace LinkMobility\SMSNotifications\Controller\Adminhtml\Subscription;
 
-use Linkmobility\Notifications\Api\Data\SmsSubscriptionInterfaceFactory;
-use Linkmobility\Notifications\Api\SmsSubscriptionRepositoryInterface;
+use LinkMobility\SMSNotifications\Api\Data\SmsSubscriptionInterfaceFactory;
+use LinkMobility\SMSNotifications\Api\SmsSubscriptionRepositoryInterface;
 use Magento\Backend\App\Action;
 use Magento\Backend\App\Action\Context;
 use Magento\Framework\Exception\CouldNotSaveException;
@@ -25,23 +25,23 @@ use Psr\Log\LoggerInterface;
 /**
  * Bulk Create SMS Subscription Action
  *
- * @package Linkmobility\Notifications\Controller\Adminhtml\Subscription
+ * @package LinkMobility\SMSNotifications\Controller\Adminhtml\Subscription
  * @author Joseph Leedy <joseph@wagento.com>
  */
 class MassCreate extends Action
 {
-    const ADMIN_RESOURCE = 'Linkmobility_Notifications::manage_sms_subscriptions';
+    const ADMIN_RESOURCE = 'LinkMobility_SMSNotifications::manage_sms_subscriptions';
 
     /**
      * @var \Psr\Log\LoggerInterface
      */
     private $logger;
     /**
-     * @var \Linkmobility\Notifications\Api\Data\SmsSubscriptionInterfaceFactory
+     * @var \LinkMobility\SMSNotifications\Api\Data\SmsSubscriptionInterfaceFactory
      */
     private $smsSubscriptionFactory;
     /**
-     * @var \Linkmobility\Notifications\Api\SmsSubscriptionRepositoryInterface
+     * @var \LinkMobility\SMSNotifications\Api\SmsSubscriptionRepositoryInterface
      */
     private $smsSubscriptionRepository;
 
@@ -90,7 +90,7 @@ class MassCreate extends Action
         try {
             foreach ($selectedSmsTypes as $smsType) {
                 try {
-                    /** @var \Linkmobility\Notifications\Api\Data\SmsSubscriptionInterface $subscription */
+                    /** @var \LinkMobility\SMSNotifications\Api\Data\SmsSubscriptionInterface $subscription */
                     $subscription = $this->smsSubscriptionFactory->create();
 
                     $subscription->setSmsType($smsType);

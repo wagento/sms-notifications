@@ -5,7 +5,7 @@
  * Sends transactional SMS notifications through the LINK Mobility messaging
  * service.
  *
- * @package Linkmobility\Notifications\Ui\DataProvider
+ * @package LinkMobility\SMSNotifications\Ui\DataProvider
  * @author Joseph Leedy <joseph@wagento.com>
  * @author Yair García Torres <yair.garcia@wagento.com>
  * @copyright Copyright (c) LINK Mobility (https://www.linkmobility.com/)
@@ -13,10 +13,10 @@
  */
 declare(strict_types=1);
 
-namespace Linkmobility\Notifications\Ui\DataProvider;
+namespace LinkMobility\SMSNotifications\Ui\DataProvider;
 
-use Linkmobility\Notifications\Model\ResourceModel\SmsSubscription\CollectionFactory;
-use Linkmobility\Notifications\Model\Source\SmsType;
+use LinkMobility\SMSNotifications\Model\ResourceModel\SmsSubscription\CollectionFactory;
+use LinkMobility\SMSNotifications\Model\Source\SmsType;
 use Magento\Backend\Model\Session as BackendSession;
 use Magento\Framework\Api\FilterBuilder;
 use Magento\Framework\Exception\LocalizedException;
@@ -25,7 +25,7 @@ use Magento\Ui\DataProvider\AbstractDataProvider;
 /**
  * SMS Subscriptions Data Provider
  *
- * @package Linkmobility\Notifications\Ui\DataProvider
+ * @package LinkMobility\SMSNotifications\Ui\DataProvider
  */
 final class SmsSubscriptions extends AbstractDataProvider
 {
@@ -38,7 +38,7 @@ final class SmsSubscriptions extends AbstractDataProvider
      */
     private $filterBuilder;
     /**
-     * @var \Linkmobility\Notifications\Model\Source\SmsType
+     * @var \LinkMobility\SMSNotifications\Model\Source\SmsType
      */
     private $smsTypeSource;
 
@@ -46,7 +46,7 @@ final class SmsSubscriptions extends AbstractDataProvider
      * @param string $name
      * @param string $primaryFieldName
      * @param string $requestFieldName
-     * @param \Linkmobility\Notifications\Model\ResourceModel\SmsSubscription\CollectionFactory $collectionFactory
+     * @param \LinkMobility\SMSNotifications\Model\ResourceModel\SmsSubscription\CollectionFactory $collectionFactory
      * @param \Magento\Backend\Model\Session $backendSession
      * @param \Magento\Framework\Api\FilterBuilder $filterBuilder
      * @param array $meta

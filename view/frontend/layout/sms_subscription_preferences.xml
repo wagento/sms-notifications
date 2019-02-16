@@ -15,9 +15,9 @@
 <page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
     <body>
         <referenceContainer name="content">
-            <block class="Linkmobility\Notifications\Block\SmsSubscriptionPreferences" name="sms_notifications.subscription_preferences" as="sms_subscription_preferences" template="Linkmobility_Notifications::sms-subscription-preferences.phtml">
+            <block class="LinkMobility\SMSNotifications\Block\SmsSubscriptionPreferences" name="sms_notifications.subscription_preferences" as="sms_subscription_preferences" template="LinkMobility_SMSNotifications::sms-subscription-preferences.phtml">
                 <arguments>
-                    <argument name="sms_types_view_model" xsi:type="object">Linkmobility\Notifications\ViewModel\SmsTypes</argument>
+                    <argument name="sms_types_view_model" xsi:type="object">LinkMobility\SMSNotifications\ViewModel\SmsTypes</argument>
                 </arguments>
             </block>
         </referenceContainer>

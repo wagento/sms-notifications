@@ -5,7 +5,7 @@
  * Sends transactional SMS notifications through the LINK Mobility messaging
  * service.
  *
- * @package Linkmobility\Notifications\ViewModel
+ * @package LinkMobility\SMSNotifications\ViewModel
  * @author Joseph Leedy <joseph@wagento.com>
  * @author Yair García Torres <yair.garcia@wagento.com>
  * @copyright Copyright (c) LINK Mobility (https://www.linkmobility.com/)
@@ -14,7 +14,7 @@
 
 declare(strict_types=1);
 
-namespace Linkmobility\Notifications\ViewModel;
+namespace LinkMobility\SMSNotifications\ViewModel;
 
 use Magento\Customer\Model\Session as CustomerSession;
 use Magento\Framework\View\Element\Block\ArgumentInterface;
@@ -22,7 +22,7 @@ use Magento\Framework\View\Element\Block\ArgumentInterface;
 /**
  * Mobile Telephone View Model
  *
- * @package Linkmobility\Notifications\ViewModel
+ * @package LinkMobility\SMSNotifications\ViewModel
  * @author Joseph Leedy <joseph@wagento.com>
  */
 final class MobileTelephone implements ArgumentInterface

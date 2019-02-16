@@ -5,7 +5,7 @@
  * Sends transactional SMS notifications through the LINK Mobility messaging
  * service.
  *
- * @package Linkmobility\Notifications\Logger\Handler
+ * @package LinkMobility\SMSNotifications\Logger\Handler
  * @author Joseph Leedy <joseph@wagento.com>
  * @author Yair García Torres <yair.garcia@wagento.com>
  * @copyright Copyright (c) LINK Mobility (https://www.linkmobility.com/)
@@ -13,14 +13,14 @@
  */
 declare(strict_types=1);
 
-namespace Linkmobility\Notifications\Logger\Processor;
+namespace LinkMobility\SMSNotifications\Logger\Processor;
 
 /**
  * Sensitive Data Log Processor
  *
  * Removes sensitive information from the log file.
  *
- * @package Linkmobility\Notifications\Logger\Processor
+ * @package LinkMobility\SMSNotifications\Logger\Processor
  * @author Joseph Leedy <joseph@wagento.com>
  */
 class SensitiveDataProcessor

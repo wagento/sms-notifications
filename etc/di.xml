@@ -13,84 +13,84 @@
  */
 -->
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
-    <preference for="Linkmobility\Notifications\Api\SmsSubscriptionRepositoryInterface" type="Linkmobility\Notifications\Model\SmsSubscriptionRepository"/>
-    <preference for="Linkmobility\Notifications\Api\Data\SmsSubscriptionInterface" type="Linkmobility\Notifications\Model\Data\SmsSubscription"/>
-    <preference for="Linkmobility\Notifications\Api\Data\TelephonePrefixInterface" type="Linkmobility\Notifications\Model\Data\TelephonePrefix"/>
-    <preference for="Linkmobility\Notifications\Api\ConfigInterface" type="Linkmobility\Notifications\Model\Config"/>
-    <preference for="Linkmobility\Notifications\Api\SmsSubscriptionValidatorInterface" type="Linkmobility\Notifications\Model\SmsSubscriptionValidator"/>
-    <preference for="Linkmobility\Notifications\Gateway\ApiClientInterface" type="Linkmobility\Notifications\Gateway\ApiClient"/>
-    <preference for="Linkmobility\Notifications\Util\TemplateProcessorInterface" type="Linkmobility\Notifications\Util\TemplateProcessor"/>
-    <type name="Linkmobility\Notifications\Logger\Handler\FileHandler">
+    <preference for="LinkMobility\SMSNotifications\Api\SmsSubscriptionRepositoryInterface" type="LinkMobility\SMSNotifications\Model\SmsSubscriptionRepository"/>
+    <preference for="LinkMobility\SMSNotifications\Api\Data\SmsSubscriptionInterface" type="LinkMobility\SMSNotifications\Model\Data\SmsSubscription"/>
+    <preference for="LinkMobility\SMSNotifications\Api\Data\TelephonePrefixInterface" type="LinkMobility\SMSNotifications\Model\Data\TelephonePrefix"/>
+    <preference for="LinkMobility\SMSNotifications\Api\ConfigInterface" type="LinkMobility\SMSNotifications\Model\Config"/>
+    <preference for="LinkMobility\SMSNotifications\Api\SmsSubscriptionValidatorInterface" type="LinkMobility\SMSNotifications\Model\SmsSubscriptionValidator"/>
+    <preference for="LinkMobility\SMSNotifications\Gateway\ApiClientInterface" type="LinkMobility\SMSNotifications\Gateway\ApiClient"/>
+    <preference for="LinkMobility\SMSNotifications\Util\TemplateProcessorInterface" type="LinkMobility\SMSNotifications\Util\TemplateProcessor"/>
+    <type name="LinkMobility\SMSNotifications\Logger\Handler\FileHandler">
         <arguments>
             <argument name="filesystem" xsi:type="object">Magento\Framework\Filesystem\Driver\File</argument>
         </arguments>
     </type>
-    <type name="Linkmobility\Notifications\Logger\Logger">
+    <type name="LinkMobility\SMSNotifications\Logger\Logger">
         <arguments>
             <argument name="name" xsi:type="string">sms_notifications</argument>
             <argument name="handlers" xsi:type="array">
-                <item name="debug" xsi:type="object">Linkmobility\Notifications\Logger\Handler\FileHandler</item>
+                <item name="debug" xsi:type="object">LinkMobility\SMSNotifications\Logger\Handler\FileHandler</item>
             </argument>
             <argument name="processors" xsi:type="array">
-                <item name="sensitiveDataProcessor" xsi:type="object">Linkmobility\Notifications\Logger\Processor\SensitiveDataProcessor</item>
+                <item name="sensitiveDataProcessor" xsi:type="object">LinkMobility\SMSNotifications\Logger\Processor\SensitiveDataProcessor</item>
             </argument>
         </arguments>
     </type>
-    <type name="Linkmobility\Notifications\Model\MessageService">
+    <type name="LinkMobility\SMSNotifications\Model\MessageService">
         <arguments>
-            <argument name="logger" xsi:type="object">Linkmobility\Notifications\Logger\Logger</argument>
+            <argument name="logger" xsi:type="object">LinkMobility\SMSNotifications\Logger\Logger</argument>
         </arguments>
     </type>
-    <type name="Linkmobility\Notifications\Model\SmsSender\CreditmemoSender">
+    <type name="LinkMobility\SMSNotifications\Model\SmsSender\CreditmemoSender">
         <arguments>
-            <argument name="logger" xsi:type="object">Linkmobility\Notifications\Logger\Logger</argument>
+            <argument name="logger" xsi:type="object">LinkMobility\SMSNotifications\Logger\Logger</argument>
         </arguments>
     </type>
-    <type name="Linkmobility\Notifications\Model\SmsSender\OrderSender">
+    <type name="LinkMobility\SMSNotifications\Model\SmsSender\OrderSender">
         <arguments>
-            <argument name="logger" xsi:type="object">Linkmobility\Notifications\Logger\Logger</argument>
+            <argument name="logger" xsi:type="object">LinkMobility\SMSNotifications\Logger\Logger</argument>
         </arguments>
     </type>
-    <type name="Linkmobility\Notifications\Model\SmsSender\ShipmentSender">
+    <type name="LinkMobility\SMSNotifications\Model\SmsSender\ShipmentSender">
         <arguments>
-            <argument name="logger" xsi:type="object">Linkmobility\Notifications\Logger\Logger</argument>
+            <argument name="logger" xsi:type="object">LinkMobility\SMSNotifications\Logger\Logger</argument>
         </arguments>
     </type>
-    <type name="Linkmobility\Notifications\Plugin\Sales\Api\CreditmemoRepositoryInterfacePlugin">
+    <type name="LinkMobility\SMSNotifications\Plugin\Sales\Api\CreditmemoRepositoryInterfacePlugin">
         <arguments>
-            <argument name="smsSender" xsi:type="object">Linkmobility\Notifications\Model\SmsSender\CreditmemoSender</argument>
+            <argument name="smsSender" xsi:type="object">LinkMobility\SMSNotifications\Model\SmsSender\CreditmemoSender</argument>
         </arguments>
     </type>
-    <type name="Linkmobility\Notifications\Plugin\Sales\Api\OrderRepositoryInterfacePlugin">
+    <type name="LinkMobility\SMSNotifications\Plugin\Sales\Api\OrderRepositoryInterfacePlugin">
         <arguments>
-            <argument name="smsSender" xsi:type="object">Linkmobility\Notifications\Model\SmsSender\OrderSender</argument>
+            <argument name="smsSender" xsi:type="object">LinkMobility\SMSNotifications\Model\SmsSender\OrderSender</argument>
         </arguments>
     </type>
-    <type name="Linkmobility\Notifications\Plugin\Sales\Model\ResourceModel\Order\ShipmentPlugin">
+    <type name="LinkMobility\SMSNotifications\Plugin\Sales\Model\ResourceModel\Order\ShipmentPlugin">
         <arguments>
-            <argument name="smsSender" xsi:type="object">Linkmobility\Notifications\Model\SmsSender\ShipmentSender</argument>
+            <argument name="smsSender" xsi:type="object">LinkMobility\SMSNotifications\Model\SmsSender\ShipmentSender</argument>
         </arguments>
     </type>
-    <type name="Linkmobility\Notifications\Setup\InstallData">
+    <type name="LinkMobility\SMSNotifications\Setup\InstallData">
         <arguments>
-            <argument name="logger" xsi:type="object">Linkmobility\Notifications\Logger\Logger</argument>
+            <argument name="logger" xsi:type="object">LinkMobility\SMSNotifications\Logger\Logger</argument>
         </arguments>
     </type>
-    <type name="Linkmobility\Notifications\Util\TemplateProcessor">
+    <type name="LinkMobility\SMSNotifications\Util\TemplateProcessor">
         <arguments>
             <argument name="converter" xsi:type="object">Zend\Filter\Word\SeparatorToCamelCase</argument>
         </arguments>
     </type>
     <type name="Magento\Sales\Api\CreditmemoRepositoryInterface">
-        <plugin name="sms_notifications_send_refund_sms" type="Linkmobility\Notifications\Plugin\Sales\Api\CreditmemoRepositoryInterfacePlugin"/>
+        <plugin name="sms_notifications_send_refund_sms" type="LinkMobility\SMSNotifications\Plugin\Sales\Api\CreditmemoRepositoryInterfacePlugin"/>
     </type>
     <type name="Magento\Sales\Api\OrderRepositoryInterface">
-        <plugin name="sms_notifications_send_order_sms" type="Linkmobility\Notifications\Plugin\Sales\Api\OrderRepositoryInterfacePlugin"/>
+        <plugin name="sms_notifications_send_order_sms" type="LinkMobility\SMSNotifications\Plugin\Sales\Api\OrderRepositoryInterfacePlugin"/>
     </type>
     <type name="Magento\Sales\Model\Order">
-        <plugin name="sms_notifications_add_order_extension_attribute" type="Linkmobility\Notifications\Plugin\Sales\Model\OrderPlugin"/>
+        <plugin name="sms_notifications_add_order_extension_attribute" type="LinkMobility\SMSNotifications\Plugin\Sales\Model\OrderPlugin"/>
     </type>
     <type name="Magento\Sales\Model\ResourceModel\Order\Shipment">
-        <plugin name="sms_notifications_send_shipment_sms" type="Linkmobility\Notifications\Plugin\Sales\Model\ResourceModel\Order\ShipmentPlugin"/>
+        <plugin name="sms_notifications_send_shipment_sms" type="LinkMobility\SMSNotifications\Plugin\Sales\Model\ResourceModel\Order\ShipmentPlugin"/>
     </type>
 </config>

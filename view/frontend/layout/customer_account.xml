@@ -20,7 +20,7 @@
                     <argument name="sortOrder" xsi:type="number">20</argument>
                 </arguments>
             </block>
-            <block class="Magento\Customer\Block\Account\SortLinkInterface" name="customer-account-navigation-sms-notifications-link" template="Linkmobility_Notifications::customer/account/link.phtml" ifconfig="sms_notifications/general/enabled">
+            <block class="Magento\Customer\Block\Account\SortLinkInterface" name="customer-account-navigation-sms-notifications-link" template="LinkMobility_SMSNotifications::customer/account/link.phtml" ifconfig="sms_notifications/general/enabled">
                 <arguments>
                     <argument name="label" xsi:type="string" translate="true">My Text Notifications</argument>
                     <argument name="path" xsi:type="string">customer/smsnotifications/manage</argument>

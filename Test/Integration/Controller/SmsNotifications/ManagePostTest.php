@@ -5,19 +5,19 @@
  * Sends transactional SMS notifications through the LINK Mobility messaging
  * service.
  *
- * @package Linkmobility\Notifications\Test\Integration\Controller\SmsNotifications
+ * @package LinkMobility\SMSNotifications\Test\Integration\Controller\SmsNotifications
  * @author Joseph Leedy <joseph@wagento.com>
  * @author Yair García Torres <yair.garcia@wagento.com>
  * @copyright Copyright (c) LINK Mobility (https://www.linkmobility.com/)
  * @license https://opensource.org/licenses/OSL-3.0.php Open Software License 3.0
  */
 
-namespace Linkmobility\Notifications\Test\Integration\Controller\SmsNotifications;
+namespace LinkMobility\SMSNotifications\Test\Integration\Controller\SmsNotifications;
 
-use Linkmobility\Notifications\Api\SmsSubscriptionRepositoryInterface;
-use Linkmobility\Notifications\Model\SmsSubscription;
-use Linkmobility\Notifications\Model\SmsSubscriptionRepository;
-use Linkmobility\Notifications\Model\Source\SmsType as SmsTypeSource;
+use LinkMobility\SMSNotifications\Api\SmsSubscriptionRepositoryInterface;
+use LinkMobility\SMSNotifications\Model\SmsSubscription;
+use LinkMobility\SMSNotifications\Model\SmsSubscriptionRepository;
+use LinkMobility\SMSNotifications\Model\Source\SmsType as SmsTypeSource;
 use Magento\Customer\Model\Session as CustomerSession;
 use Magento\Framework\Api\ImageProcessor;
 use Magento\Framework\Api\ImageProcessorInterface;
@@ -32,7 +32,7 @@ use Psr\Log\Test\TestLogger;
 /**
  * Manage SMS Subscriptions POST Action Controller Test
  *
- * @package Linkmobility\Notifications\Test\Integration\Controller\SmsNotifications
+ * @package LinkMobility\SMSNotifications\Test\Integration\Controller\SmsNotifications
  * @author Joseph Leedy <joseph@wagento.com>
  *
  * @phpcs:disable Generic.Files.LineLength.TooLong
@@ -229,7 +229,7 @@ class ManagePostTest extends AbstractControllerTestCase
 
         $this->_objectManager->addSharedInstance(
             $this->_objectManager->get(TestLogger::class),
-            'Linkmobility\Notifications\Logger\Logger'
+            'LinkMobility\SMSNotifications\Logger\Logger'
         );
 
         $this->getRequest()->setMethod(HttpRequest::METHOD_POST);

@@ -5,7 +5,7 @@
  * Sends transactional SMS notifications through the LINK Mobility messaging
  * service.
  *
- * @package Linkmobility\Notifications\Controller\SmsNotifications
+ * @package LinkMobility\SMSNotifications\Controller\SmsNotifications
  * @author Joseph Leedy <joseph@wagento.com>
  * @author Yair García Torres <yair.garcia@wagento.com>
  * @copyright Copyright (c) LINK Mobility (https://www.linkmobility.com/)
@@ -14,10 +14,10 @@
 
 declare(strict_types=1);
 
-namespace Linkmobility\Notifications\Controller\SmsNotifications;
+namespace LinkMobility\SMSNotifications\Controller\SmsNotifications;
 
-use Linkmobility\Notifications\Api\Data\SmsSubscriptionInterfaceFactory;
-use Linkmobility\Notifications\Api\SmsSubscriptionRepositoryInterface;
+use LinkMobility\SMSNotifications\Api\Data\SmsSubscriptionInterfaceFactory;
+use LinkMobility\SMSNotifications\Api\SmsSubscriptionRepositoryInterface;
 use Magento\Customer\Api\CustomerRepositoryInterface;
 use Magento\Customer\Model\Session as CustomerSession;
 use Magento\Framework\Api\SearchCriteriaBuilder;
@@ -38,7 +38,7 @@ use Psr\Log\LoggerInterface;
 /**
  * Manage SMS Subscriptions POST Action Controller
  *
- * @package Linkmobility\Notifications\Controller\SmsNotifications
+ * @package LinkMobility\SMSNotifications\Controller\SmsNotifications
  * @author Joseph Leedy <joseph@wagento.com>
  */
 class ManagePost extends Action implements ActionInterface, CsrfAwareActionInterface
@@ -60,11 +60,11 @@ class ManagePost extends Action implements ActionInterface, CsrfAwareActionInter
      */
     private $searchCriteriaBuilder;
     /**
-     * @var \Linkmobility\Notifications\Api\SmsSubscriptionRepositoryInterface
+     * @var \LinkMobility\SMSNotifications\Api\SmsSubscriptionRepositoryInterface
      */
     private $smsSubscriptionRepository;
     /**
-     * @var \Linkmobility\Notifications\Api\Data\SmsSubscriptionInterfaceFactory
+     * @var \LinkMobility\SMSNotifications\Api\Data\SmsSubscriptionInterfaceFactory
      */
     private $smsSubscriptionFactory;
 
@@ -148,7 +148,7 @@ class ManagePost extends Action implements ActionInterface, CsrfAwareActionInter
     }
 
     /**
-     * @param \Linkmobility\Notifications\Model\SmsSubscription[] $subscribedSmsTypes
+     * @param \LinkMobility\SMSNotifications\Model\SmsSubscription[] $subscribedSmsTypes
      * @param string[] $selectedSmsTypes
      * @param string|int $customerId
      */
@@ -214,7 +214,7 @@ class ManagePost extends Action implements ActionInterface, CsrfAwareActionInter
         $createdSubscriptions = 0;
 
         foreach ($selectedSmsTypes as $smsType) {
-            /** @var \Linkmobility\Notifications\Api\Data\SmsSubscriptionInterface $smsSubscription */
+            /** @var \LinkMobility\SMSNotifications\Api\Data\SmsSubscriptionInterface $smsSubscription */
             $smsSubscription = $this->smsSubscriptionFactory->create();
 
             $smsSubscription->setCustomerId((string)$customerId);

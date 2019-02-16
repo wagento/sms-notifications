@@ -5,7 +5,7 @@
  * Sends transactional SMS notifications through the LINK Mobility messaging
  * service.
  *
- * @package Linkmobility\Notifications\Ui\Component\Listing\Column
+ * @package LinkMobility\SMSNotifications\Ui\Component\Listing\Column
  * @author Joseph Leedy <joseph@wagento.com>
  * @author Yair García Torres <yair.garcia@wagento.com>
  * @copyright Copyright (c) LINK Mobility (https://www.linkmobility.com/)
@@ -13,7 +13,7 @@
  */
 declare(strict_types=1);
 
-namespace Linkmobility\Notifications\Ui\Component\Listing\Column;
+namespace LinkMobility\SMSNotifications\Ui\Component\Listing\Column;
 
 use Magento\Framework\UrlInterface;
 use Magento\Framework\View\Element\UiComponent\ContextInterface;
@@ -23,7 +23,7 @@ use Magento\Ui\Component\Listing\Columns\Column;
 /**
  * SMS Subscription Actions Listing Column
  *
- * @package Linkmobility\Notifications\Ui\Component\Listing\Column
+ * @package LinkMobility\SMSNotifications\Ui\Component\Listing\Column
  * @author Joseph Leedy <joseph@wagento.com>
  */
 final class SmsSubscriptionActions extends Column

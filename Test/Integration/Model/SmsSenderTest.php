@@ -5,7 +5,7 @@
  * Sends transactional SMS notifications through the LINK Mobility messaging
  * service.
  *
- * @package Linkmobility\Notifications\Test\Integration\Model
+ * @package LinkMobility\SMSNotifications\Test\Integration\Model
  * @author Joseph Leedy <joseph@wagento.com>
  * @author Yair García Torres <yair.garcia@wagento.com>
  * @copyright Copyright (c) LINK Mobility (https://www.linkmobility.com/)
@@ -14,16 +14,16 @@
 
 declare(strict_types=1);
 
-namespace Linkmobility\Notifications\Test\Integration\Model;
+namespace LinkMobility\SMSNotifications\Test\Integration\Model;
 
-use Linkmobility\Notifications\Test\Integration\_stubs\Model\SmsSender;
-use Linkmobility\Notifications\Test\Integration\SmsSenderTestCase;
+use LinkMobility\SMSNotifications\Test\Integration\_stubs\Model\SmsSender;
+use LinkMobility\SMSNotifications\Test\Integration\SmsSenderTestCase;
 use Psr\Log\Test\TestLogger;
 
 /**
  * SMS Sender Test
  *
- * @package Linkmobility\Notifications\Test\Integration\Model
+ * @package LinkMobility\SMSNotifications\Test\Integration\Model
  * @author Joseph Leedy <joseph@wagento.com>
  *
  * @phpcs:disable Generic.Files.LineLength.TooLong
@@ -31,7 +31,7 @@ use Psr\Log\Test\TestLogger;
 class SmsSenderTest extends SmsSenderTestCase
 {
     /**
-     * @var \Linkmobility\Notifications\Model\SmsSender
+     * @var \LinkMobility\SMSNotifications\Model\SmsSender
      */
     private $smsSender;
 

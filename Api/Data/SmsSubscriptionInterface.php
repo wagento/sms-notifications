@@ -5,7 +5,7 @@
  * Sends transactional SMS notifications through the LINK Mobility messaging
  * service.
  *
- * @package Linkmobility\Notifications\Api\Data
+ * @package LinkMobility\SMSNotifications\Api\Data
  * @author Joseph Leedy <joseph@wagento.com>
  * @author Yair García Torres <yair.garcia@wagento.com>
  * @copyright Copyright (c) LINK Mobility (https://www.linkmobility.com/)
@@ -13,12 +13,12 @@
  */
 declare(strict_types=1);
 
-namespace Linkmobility\Notifications\Api\Data;
+namespace LinkMobility\SMSNotifications\Api\Data;
 
 /**
  * SMS Subscription Entity Interface
  *
- * @package Linkmobility\Notifications\Api\Data
+ * @package LinkMobility\SMSNotifications\Api\Data
  * @author Joseph Leedy <joseph@wagento.com>
  */
 interface SmsSubscriptionInterface
@@ -29,7 +29,7 @@ interface SmsSubscriptionInterface
 
     /**
      * @param int $id
-     * @return \Linkmobility\Notifications\Api\Data\SmsSubscriptionInterface
+     * @return \LinkMobility\SMSNotifications\Api\Data\SmsSubscriptionInterface
      */
     public function setId(int $id): SmsSubscriptionInterface;
 
@@ -40,7 +40,7 @@ interface SmsSubscriptionInterface
 
     /**
      * @param int $smsSubscriptionId
-     * @return \Linkmobility\Notifications\Api\Data\SmsSubscriptionInterface
+     * @return \LinkMobility\SMSNotifications\Api\Data\SmsSubscriptionInterface
      */
     public function setSmsSubscriptionId(int $smsSubscriptionId): SmsSubscriptionInterface;
 
@@ -51,7 +51,7 @@ interface SmsSubscriptionInterface
 
     /**
      * @param string $customerId
-     * @return \Linkmobility\Notifications\Api\Data\SmsSubscriptionInterface
+     * @return \LinkMobility\SMSNotifications\Api\Data\SmsSubscriptionInterface
      */
     public function setCustomerId(string $customerId): SmsSubscriptionInterface;
 
@@ -62,7 +62,7 @@ interface SmsSubscriptionInterface
 
     /**
      * @param string $smsType
-     * @return \Linkmobility\Notifications\Api\Data\SmsSubscriptionInterface
+     * @return \LinkMobility\SMSNotifications\Api\Data\SmsSubscriptionInterface
      */
     public function setSmsType(string $smsType): SmsSubscriptionInterface;
 

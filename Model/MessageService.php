@@ -5,7 +5,7 @@
  * Sends transactional SMS notifications through the LINK Mobility messaging
  * service.
  *
- * @package Linkmobility\Notifications\Model
+ * @package LinkMobility\SMSNotifications\Model
  * @author Joseph Leedy <joseph@wagento.com>
  * @author Yair García Torres <yair.garcia@wagento.com>
  * @copyright Copyright (c) LINK Mobility (https://www.linkmobility.com/)
@@ -13,13 +13,13 @@
  */
 declare(strict_types=1);
 
-namespace Linkmobility\Notifications\Model;
+namespace LinkMobility\SMSNotifications\Model;
 
-use Linkmobility\Notifications\Api\ConfigInterface;
-use Linkmobility\Notifications\Gateway\ApiClientInterface;
-use Linkmobility\Notifications\Gateway\ApiException;
-use Linkmobility\Notifications\Gateway\Factory\MessageFactory;
-use Linkmobility\Notifications\Util\TemplateProcessorInterface;
+use LinkMobility\SMSNotifications\Api\ConfigInterface;
+use LinkMobility\SMSNotifications\Gateway\ApiClientInterface;
+use LinkMobility\SMSNotifications\Gateway\ApiException;
+use LinkMobility\SMSNotifications\Gateway\Factory\MessageFactory;
+use LinkMobility\SMSNotifications\Util\TemplateProcessorInterface;
 use Magento\Framework\App\Config\ScopeConfigInterface;
 use Magento\Framework\UrlInterface;
 use Magento\Sales\Api\Data\OrderInterface;
@@ -32,7 +32,7 @@ use Zend\Hydrator\Reflection as MessageHydrator;
 /**
  * Message Service
  *
- * @package Linkmobility\Notifications\Model
+ * @package LinkMobility\SMSNotifications\Model
  * @author Joseph Leedy <joseph@wagento.com>
  * @api
  *
@@ -61,19 +61,19 @@ class MessageService
      */
     private $shippingHelper;
     /**
-     * @var \Linkmobility\Notifications\Api\ConfigInterface
+     * @var \LinkMobility\SMSNotifications\Api\ConfigInterface
      */
     private $config;
     /**
-     * @var \Linkmobility\Notifications\Gateway\Factory\MessageFactory
+     * @var \LinkMobility\SMSNotifications\Gateway\Factory\MessageFactory
      */
     private $messageFactory;
     /**
-     * @var \Linkmobility\Notifications\Util\TemplateProcessorInterface
+     * @var \LinkMobility\SMSNotifications\Util\TemplateProcessorInterface
      */
     private $templateProcessor;
     /**
-     * @var \Linkmobility\Notifications\Gateway\ApiClientInterface
+     * @var \LinkMobility\SMSNotifications\Gateway\ApiClientInterface
      */
     private $apiClient;
     /**

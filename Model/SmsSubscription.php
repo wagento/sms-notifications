@@ -5,7 +5,7 @@
  * Sends transactional SMS notifications through the LINK Mobility messaging
  * service.
  *
- * @package Linkmobility\Notifications\Model
+ * @package LinkMobility\SMSNotifications\Model
  * @author Joseph Leedy <joseph@wagento.com>
  * @author Yair García Torres <yair.garcia@wagento.com>
  * @copyright Copyright (c) LINK Mobility (https://www.linkmobility.com/)
@@ -13,13 +13,13 @@
  */
 declare(strict_types=1);
 
-namespace Linkmobility\Notifications\Model;
+namespace LinkMobility\SMSNotifications\Model;
 
-use Linkmobility\Notifications\Api\Data\SmsSubscriptionInterface;
-use Linkmobility\Notifications\Api\Data\SmsSubscriptionInterfaceFactory;
-use Linkmobility\Notifications\Api\SmsSubscriptionValidatorInterface;
-use Linkmobility\Notifications\Model\ResourceModel\SmsSubscription as SmsSubscriptionResource;
-use Linkmobility\Notifications\Traits\DataObjectMagicMethods;
+use LinkMobility\SMSNotifications\Api\Data\SmsSubscriptionInterface;
+use LinkMobility\SMSNotifications\Api\Data\SmsSubscriptionInterfaceFactory;
+use LinkMobility\SMSNotifications\Api\SmsSubscriptionValidatorInterface;
+use LinkMobility\SMSNotifications\Model\ResourceModel\SmsSubscription as SmsSubscriptionResource;
+use LinkMobility\SMSNotifications\Traits\DataObjectMagicMethods;
 use Magento\Framework\Api\DataObjectHelper;
 use Magento\Framework\Data\Collection\AbstractDb;
 use Magento\Framework\Model\AbstractModel;
@@ -31,7 +31,7 @@ use Magento\Framework\Registry;
 /**
  * SMS Subscription Model
  *
- * @package Linkmobility\Notifications\Model
+ * @package LinkMobility\SMSNotifications\Model
  * @author Yair García Torres <yair.garcia@wagento.com>
  * @author Joseph Leedy <joseph@wagento.com>
  * @method int getSmsSubscriptionId()
@@ -59,11 +59,11 @@ class SmsSubscription extends AbstractModel
      */
     private $dataObjectProcessor;
     /**
-     * @var \Linkmobility\Notifications\Api\Data\SmsSubscriptionInterfaceFactory
+     * @var \LinkMobility\SMSNotifications\Api\Data\SmsSubscriptionInterfaceFactory
      */
     private $smsSubscriptionFactory;
     /**
-     * @var \Linkmobility\Notifications\Api\SmsSubscriptionValidatorInterface
+     * @var \LinkMobility\SMSNotifications\Api\SmsSubscriptionValidatorInterface
      */
     private $validator;
 
@@ -89,7 +89,7 @@ class SmsSubscription extends AbstractModel
     public function getDataModel(): SmsSubscriptionInterface
     {
         $smsSubscriptionData = $this->getData();
-        /** @var \Linkmobility\Notifications\Api\Data\SmsSubscriptionInterface $smsSubscription */
+        /** @var \LinkMobility\SMSNotifications\Api\Data\SmsSubscriptionInterface $smsSubscription */
         $smsSubscription = $this->smsSubscriptionFactory->create();
 
         $this->dataObjectHelper->populateWithArray(

@@ -13,17 +13,17 @@
  */
 -->
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
-    <type name="Linkmobility\Notifications\Controller\SmsNotifications\ManagePost">
+    <type name="LinkMobility\SMSNotifications\Controller\SmsNotifications\ManagePost">
         <arguments>
-            <argument name="logger" xsi:type="object">Linkmobility\Notifications\Logger\Logger</argument>
+            <argument name="logger" xsi:type="object">LinkMobility\SMSNotifications\Logger\Logger</argument>
         </arguments>
     </type>
-    <type name="Linkmobility\Notifications\Observer\CustomerRegisterSuccessObserver">
+    <type name="LinkMobility\SMSNotifications\Observer\CustomerRegisterSuccessObserver">
         <arguments>
-            <argument name="logger" xsi:type="object">Linkmobility\Notifications\Logger\Logger</argument>
+            <argument name="logger" xsi:type="object">LinkMobility\SMSNotifications\Logger\Logger</argument>
         </arguments>
     </type>
     <type name="Magento\Customer\Block\Form\Register">
-        <plugin name="linkmobilityNotificationsRegister" type="Linkmobility\Notifications\Plugin\Block\Form\RegisterPlugin"/>
+        <plugin name="linkmobilityNotificationsRegister" type="LinkMobility\SMSNotifications\Plugin\Block\Form\RegisterPlugin"/>
     </type>
 </config>

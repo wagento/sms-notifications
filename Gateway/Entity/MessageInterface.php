@@ -5,7 +5,7 @@
  * Sends transactional SMS notifications through the LINK Mobility messaging
  * service.
  *
- * @package Linkmobility\Notifications\Gateway\Entity
+ * @package LinkMobility\SMSNotifications\Gateway\Entity
  * @author Joseph Leedy <joseph@wagento.com>
  * @author Yair García Torres <yair.garcia@wagento.com>
  * @copyright Copyright (c) LINK Mobility (https://www.linkmobility.com/)
@@ -13,12 +13,12 @@
  */
 declare(strict_types=1);
 
-namespace Linkmobility\Notifications\Gateway\Entity;
+namespace LinkMobility\SMSNotifications\Gateway\Entity;
 
 /**
  * Message Entity Interface
  *
- * @package Linkmobility\Notifications\Gateway\Entity
+ * @package LinkMobility\SMSNotifications\Gateway\Entity
  * @author Joseph Leedy <joseph@wagento.com>
  */
 interface MessageInterface
@@ -28,7 +28,7 @@ interface MessageInterface
     public function getSource(): string;
 
     /**
-     * @param \Linkmobility\Notifications\Gateway\Entity\TON|string $sourceTon
+     * @param \LinkMobility\SMSNotifications\Gateway\Entity\TON|string $sourceTon
      * @return void
      */
     public function setSourceTON($sourceTon): void;
@@ -40,14 +40,14 @@ interface MessageInterface
     public function getDestination(): string;
 
     /**
-     * @param \Linkmobility\Notifications\Gateway\Entity\TON|string $destinationTon
+     * @param \LinkMobility\SMSNotifications\Gateway\Entity\TON|string $destinationTon
      */
     public function setDestinationTON($destinationTon): void;
 
     public function getDestinationTON(): TON;
 
     /**
-     * @param \Linkmobility\Notifications\Gateway\Entity\DCS|string $dcs
+     * @param \LinkMobility\SMSNotifications\Gateway\Entity\DCS|string $dcs
      */
     public function setDcs($dcs): void;
 

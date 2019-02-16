@@ -5,7 +5,7 @@
  * Sends transactional SMS notifications through the LINK Mobility messaging
  * service.
  *
- * @package Linkmobility\Notifications\Test\Integration\Model
+ * @package LinkMobility\SMSNotifications\Test\Integration\Model
  * @author Joseph Leedy <joseph@wagento.com>
  * @author Yair García Torres <yair.garcia@wagento.com>
  * @copyright Copyright (c) LINK Mobility (https://www.linkmobility.com/)
@@ -13,21 +13,21 @@
  */
 declare(strict_types=1);
 
-namespace Linkmobility\Notifications\Test\Integration\Model;
+namespace LinkMobility\SMSNotifications\Test\Integration\Model;
 
-use Linkmobility\Notifications\Model\Config;
+use LinkMobility\SMSNotifications\Model\Config;
 use Magento\TestFramework\Helper\Bootstrap;
 use PHPUnit\Framework\TestCase;
 
 /**
  * Configuration Model Test
  *
- * @package Linkmobility\Notifications\Test\Integration\Model
+ * @package LinkMobility\SMSNotifications\Test\Integration\Model
  * @author Joseph Leedy <joseph@wagento.com>
  */
 class ConfigTest extends TestCase
 {
-    /** @var \Linkmobility\Notifications\Model\Config */
+    /** @var \LinkMobility\SMSNotifications\Model\Config */
     private $config;
 
     /**

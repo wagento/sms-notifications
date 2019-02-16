@@ -5,7 +5,7 @@
  * Sends transactional SMS notifications through the LINK Mobility messaging
  * service.
  *
- * @package Linkmobility\Notifications\Gateway
+ * @package LinkMobility\SMSNotifications\Gateway
  * @author Joseph Leedy <joseph@wagento.com>
  * @author Yair García Torres <yair.garcia@wagento.com>
  * @copyright Copyright (c) LINK Mobility (https://www.linkmobility.com/)
@@ -13,18 +13,18 @@
  */
 declare(strict_types=1);
 
-namespace Linkmobility\Notifications\Gateway;
+namespace LinkMobility\SMSNotifications\Gateway;
 
 use GuzzleHttp\Exception\GuzzleException;
-use Linkmobility\Notifications\Gateway\Entity\ResultInterface;
-use Linkmobility\Notifications\Gateway\Factory\ClientFactory;
-use Linkmobility\Notifications\Gateway\Factory\ResultFactory;
+use LinkMobility\SMSNotifications\Gateway\Entity\ResultInterface;
+use LinkMobility\SMSNotifications\Gateway\Factory\ClientFactory;
+use LinkMobility\SMSNotifications\Gateway\Factory\ResultFactory;
 use Psr\Http\Message\ResponseInterface;
 
 /**
  * API Client
  *
- * @package Linkmobility\Notifications\Gateway
+ * @package LinkMobility\SMSNotifications\Gateway
  * @author Joseph Leedy <joseph@wagento.com>
  */
 final class ApiClient implements ApiClientInterface
@@ -32,11 +32,11 @@ final class ApiClient implements ApiClientInterface
     private const BASE_URL = 'https://wsx.sp247.net/sms/';
 
     /**
-     * @var \Linkmobility\Notifications\Gateway\Factory\ClientFactory
+     * @var \LinkMobility\SMSNotifications\Gateway\Factory\ClientFactory
      */
     private $clientFactory;
     /**
-     * @var \Linkmobility\Notifications\Gateway\Factory\ResultFactory
+     * @var \LinkMobility\SMSNotifications\Gateway\Factory\ResultFactory
      */
     private $resultFactory;
     /**
@@ -68,7 +68,7 @@ final class ApiClient implements ApiClientInterface
      */
     private $errors = [];
     /**
-     * @var \Linkmobility\Notifications\Gateway\Entity\ResultInterface
+     * @var \LinkMobility\SMSNotifications\Gateway\Entity\ResultInterface
      */
     private $result;
 
@@ -113,7 +113,7 @@ final class ApiClient implements ApiClientInterface
     }
 
     /**
-     * @throws \Linkmobility\Notifications\Gateway\ApiException
+     * @throws \LinkMobility\SMSNotifications\Gateway\ApiException
      */
     public function sendRequest(): void
     {

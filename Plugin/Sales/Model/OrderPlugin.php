@@ -5,7 +5,7 @@
  * Sends transactional SMS notifications through the LINK Mobility messaging
  * service.
  *
- * @package Linkmobility\Notifications\Plugin\Sales\Model
+ * @package LinkMobility\SMSNotifications\Plugin\Sales\Model
  * @author Joseph Leedy <joseph@wagento.com>
  * @author Yair García Torres <yair.garcia@wagento.com>
  * @copyright Copyright (c) LINK Mobility (https://www.linkmobility.com/)
@@ -14,7 +14,7 @@
 
 declare(strict_types=1);
 
-namespace Linkmobility\Notifications\Plugin\Sales\Model;
+namespace LinkMobility\SMSNotifications\Plugin\Sales\Model;
 
 use Magento\Sales\Api\Data\OrderExtensionFactory;
 use Magento\Sales\Model\Order;
@@ -22,7 +22,7 @@ use Magento\Sales\Model\Order;
 /**
  * Plug-in for {@see \Magento\Sales\Model\Order}
  *
- * @package Linkmobility\Notifications\Plugin\Sales\Model
+ * @package LinkMobility\SMSNotifications\Plugin\Sales\Model
  * @author Joseph Leedy <joseph@wagento.com>
  */
 class OrderPlugin

@@ -5,7 +5,7 @@
  * Sends transactional SMS notifications through the LINK Mobility messaging
  * service.
  *
- * @package Linkmobility\Notifications\Observer
+ * @package LinkMobility\SMSNotifications\Observer
  * @author Joseph Leedy <joseph@wagento.com>
  * @author Yair García Torres <yair.garcia@wagento.com>
  * @copyright Copyright (c) LINK Mobility (https://www.linkmobility.com/)
@@ -14,12 +14,12 @@
 
 declare(strict_types=1);
 
-namespace Linkmobility\Notifications\Observer;
+namespace LinkMobility\SMSNotifications\Observer;
 
-use Linkmobility\Notifications\Api\ConfigInterface;
-use Linkmobility\Notifications\Api\Data\SmsSubscriptionInterfaceFactory;
-use Linkmobility\Notifications\Api\SmsSubscriptionRepositoryInterface;
-use Linkmobility\Notifications\Model\Source\SmsType as SmsTypeSource;
+use LinkMobility\SMSNotifications\Api\ConfigInterface;
+use LinkMobility\SMSNotifications\Api\Data\SmsSubscriptionInterfaceFactory;
+use LinkMobility\SMSNotifications\Api\SmsSubscriptionRepositoryInterface;
+use LinkMobility\SMSNotifications\Model\Source\SmsType as SmsTypeSource;
 use Magento\Framework\App\RequestInterface;
 use Magento\Framework\Event\Observer;
 use Magento\Framework\Event\ObserverInterface;
@@ -31,7 +31,7 @@ use Psr\Log\LoggerInterface;
 /**
  * Observer for customer_register_success event
  *
- * @package Linkmobility\Notifications\Observer
+ * @package LinkMobility\SMSNotifications\Observer
  * @author Joseph Leedy <joseph@wagento.com>
  * @see \Magento\Customer\Controller\Account\CreatePost::execute()
  */
@@ -50,19 +50,19 @@ class CustomerRegisterSuccessObserver implements ObserverInterface
      */
     private $storeManager;
     /**
-     * @var \Linkmobility\Notifications\Api\ConfigInterface
+     * @var \LinkMobility\SMSNotifications\Api\ConfigInterface
      */
     private $config;
     /**
-     * @var \Linkmobility\Notifications\Model\Source\SmsType
+     * @var \LinkMobility\SMSNotifications\Model\Source\SmsType
      */
     private $smsTypeSource;
     /**
-     * @var \Linkmobility\Notifications\Model\SmsSubscriptionFactory
+     * @var \LinkMobility\SMSNotifications\Model\SmsSubscriptionFactory
      */
     private $smsSubscriptionFactory;
     /**
-     * @var \Linkmobility\Notifications\Api\SmsSubscriptionRepositoryInterface
+     * @var \LinkMobility\SMSNotifications\Api\SmsSubscriptionRepositoryInterface
      */
     private $smsSubscriptionRepository;
 
@@ -118,7 +118,7 @@ class CustomerRegisterSuccessObserver implements ObserverInterface
 
         foreach ($smsTypes as $smsType) {
             try {
-                /** @var \Linkmobility\Notifications\Api\Data\SmsSubscriptionInterface $subscription */
+                /** @var \LinkMobility\SMSNotifications\Api\Data\SmsSubscriptionInterface $subscription */
                 $subscription = $this->smsSubscriptionFactory->create();
 
                 $subscription->setSmsType($smsType);

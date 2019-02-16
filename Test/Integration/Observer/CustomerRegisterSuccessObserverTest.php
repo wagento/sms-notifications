@@ -5,7 +5,7 @@
  * Sends transactional SMS notifications through the LINK Mobility messaging
  * service.
  *
- * @package Linkmobility\Notifications\Test\Integration\Observer
+ * @package LinkMobility\SMSNotifications\Test\Integration\Observer
  * @author Joseph Leedy <joseph@wagento.com>
  * @author Yair García Torres <yair.garcia@wagento.com>
  * @copyright Copyright (c) LINK Mobility (https://www.linkmobility.com/)
@@ -14,12 +14,12 @@
 
 declare(strict_types=1);
 
-namespace Linkmobility\Notifications\Test\Integration\Observer;
+namespace LinkMobility\SMSNotifications\Test\Integration\Observer;
 
-use Linkmobility\Notifications\Api\ConfigInterface;
-use Linkmobility\Notifications\Api\SmsSubscriptionRepositoryInterface;
-use Linkmobility\Notifications\Model\SmsSubscription;
-use Linkmobility\Notifications\Observer\CustomerRegisterSuccessObserver;
+use LinkMobility\SMSNotifications\Api\ConfigInterface;
+use LinkMobility\SMSNotifications\Api\SmsSubscriptionRepositoryInterface;
+use LinkMobility\SMSNotifications\Model\SmsSubscription;
+use LinkMobility\SMSNotifications\Observer\CustomerRegisterSuccessObserver;
 use Magento\Customer\Api\CustomerRepositoryInterface;
 use Magento\Framework\Api\SearchCriteriaBuilder;
 use Magento\Framework\App\RequestInterface;
@@ -31,7 +31,7 @@ use Psr\Log\Test\TestLogger;
 /**
  * customer_register_success Event Observer Test
  *
- * @package Linkmobility\Notifications\Test\Integration\Observer
+ * @package LinkMobility\SMSNotifications\Test\Integration\Observer
  * @author Joseph Leedy <joseph@wagento.com>
  */
 class CustomerRegisterSuccessObserverTest extends TestCase
@@ -61,7 +61,7 @@ class CustomerRegisterSuccessObserverTest extends TestCase
         $eventManager = $objectManager->create(ManagerInterface::class);
         /** @var \Magento\Customer\Api\Data\CustomerInterface $customer */
         $customer = $objectManager->create(CustomerRepositoryInterface::class)->getById(1);
-        /** @var \Linkmobility\Notifications\Api\SmsSubscriptionRepositoryInterface $smsSubscriptionRepository */
+        /** @var \LinkMobility\SMSNotifications\Api\SmsSubscriptionRepositoryInterface $smsSubscriptionRepository */
         $smsSubscriptionRepository = $objectManager->create(SmsSubscriptionRepositoryInterface::class);
         /** @var \Magento\Framework\Api\SearchCriteriaInterface $searchCriteria */
         $searchCriteria = $objectManager->create(SearchCriteriaBuilder::class)->addFilter('customer_id', '1')->create();

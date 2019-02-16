@@ -5,7 +5,7 @@
  * Sends transactional SMS notifications through the LINK Mobility messaging
  * service.
  *
- * @package Linkmobility\Notifications\Test\Integration\etc\frontend
+ * @package LinkMobility\SMSNotifications\Test\Integration\etc\frontend
  * @author Joseph Leedy <joseph@wagento.com>
  * @author Yair García Torres <yair.garcia@wagento.com>
  * @copyright Copyright (c) LINK Mobility (https://www.linkmobility.com/)
@@ -14,9 +14,9 @@
 
 declare(strict_types=1);
 
-namespace Linkmobility\Notifications\Test\Integration\etc\frontend;
+namespace LinkMobility\SMSNotifications\Test\Integration\etc\frontend;
 
-use Linkmobility\Notifications\Observer\CustomerRegisterSuccessObserver;
+use LinkMobility\SMSNotifications\Observer\CustomerRegisterSuccessObserver;
 use Magento\Framework\Event\ConfigInterface as EventObserverConfig;
 use Magento\TestFramework\ObjectManager;
 use PHPUnit\Framework\TestCase;
@@ -24,7 +24,7 @@ use PHPUnit\Framework\TestCase;
 /**
  * Event Observer Configuration Test
  *
- * @package Linkmobility\Notifications\Test\Integration\etc\frontend
+ * @package LinkMobility\SMSNotifications\Test\Integration\etc\frontend
  * @author Joseph Leedy <joseph@wagento.com>
  */
 class EventObserverConfigurationTest extends TestCase
