@@ -51,7 +51,7 @@ class TelephonePrefix extends AbstractModel
     /**
      * {@inheritdoc}
      */
-    protected $_eventObject = ' telephone_prefix';
+    protected $_eventObject = 'telephone_prefix';
     /**
      * @var \Magento\Framework\Api\DataObjectHelper
      */
