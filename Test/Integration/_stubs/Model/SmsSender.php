@@ -5,7 +5,7 @@
  * Sends transactional SMS notifications through the LINK Mobility messaging
  * service.
  *
- * @package LinkMobility\SMSNotifications\Model
+ * @package LinkMobility\SMSNotifications\Test\Integration\_stubs\Model
  * @author Joseph Leedy <joseph@wagento.com>
  * @author Yair García Torres <yair.garcia@wagento.com>
  * @copyright Copyright (c) LINK Mobility (https://www.linkmobility.com/)
@@ -22,6 +22,7 @@ use Magento\Framework\Model\AbstractModel;
  * Concrete Implementation of SMS Sender
  *
  * @package LinkMobility\SMSNotifications\Test\Integration\_stubs\Model
+ * @author Joseph Leedy <joseph@wagento.com>
  *
  * @codeCoverageIgnore
  */
