@@ -40,6 +40,14 @@ class ConfigTest extends TestCase
     }
 
     /**
+     * @magentoConfigFixture default/sms_notifications/general/terms_and_conditions Test
+     */
+    public function testGetTermsAndConditions(): void
+    {
+        $this->assertEquals('Test', $this->config->getTermsAndConditions());
+    }
+
+    /**
      * @magentoConfigFixture default/sms_notifications/api/username LINKMOBILITY
      */
     public function testGetApiUser(): void
@@ -93,6 +101,62 @@ class ConfigTest extends TestCase
     public function testIsLoggingEnabled(): void
     {
         $this->assertTrue($this->config->isLoggingEnabled());
+    }
+
+    /**
+     * @magentoConfigFixture default/sms_notifications/templates/order_placed Test template
+     */
+    public function testGetOrderPlacedTemplate(): void
+    {
+        $this->assertEquals('Test template', $this->config->getOrderPlacedTemplate());
+    }
+
+    /**
+     * @magentoConfigFixture default/sms_notifications/templates/order_updated Test template
+     */
+    public function testGetOrderUpdatedTemplate(): void
+    {
+        $this->assertEquals('Test template', $this->config->getOrderUpdatedTemplate());
+    }
+
+    /**
+     * @magentoConfigFixture default/sms_notifications/templates/order_shipped Test template
+     */
+    public function testGetOrderShippedTemplate(): void
+    {
+        $this->assertEquals('Test template', $this->config->getOrderShippedTemplate());
+    }
+
+    /**
+     * @magentoConfigFixture default/sms_notifications/templates/order_refunded Test template
+     */
+    public function testGetOrderRefundedTemplate(): void
+    {
+        $this->assertEquals('Test template', $this->config->getOrderRefundedTemplate());
+    }
+
+    /**
+     * @magentoConfigFixture default/sms_notifications/templates/order_canceled Test template
+     */
+    public function testGetOrderCanceledTemplate(): void
+    {
+        $this->assertEquals('Test template', $this->config->getOrderCanceledTemplate());
+    }
+
+    /**
+     * @magentoConfigFixture default/sms_notifications/templates/order_held Test template
+     */
+    public function testGetOrderHeldTemplate(): void
+    {
+        $this->assertEquals('Test template', $this->config->getOrderHeldTemplate());
+    }
+
+    /**
+     * @magentoConfigFixture default/sms_notifications/templates/order_released Test template
+     */
+    public function testGetOrderReleasedTemplate(): void
+    {
+        $this->assertEquals('Test template', $this->config->getOrderReleasedTemplate());
     }
 
     protected function setUp()
