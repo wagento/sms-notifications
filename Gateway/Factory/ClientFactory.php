@@ -25,7 +25,7 @@ use GuzzleHttp\ClientInterface;
  * @package LinkMobility\SMSNotifications\Gateway\Factory
  * @author Joseph Leedy <joseph@wagento.com>
  */
-class ClientFactory
+final class ClientFactory
 {
     public function create(array $config): ClientInterface
     {

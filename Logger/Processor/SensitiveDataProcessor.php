@@ -24,7 +24,7 @@ namespace LinkMobility\SMSNotifications\Logger\Processor;
  * @package LinkMobility\SMSNotifications\Logger\Processor
  * @author Joseph Leedy <joseph@wagento.com>
  */
-class SensitiveDataProcessor
+final class SensitiveDataProcessor
 {
     /**
      * @var string[]

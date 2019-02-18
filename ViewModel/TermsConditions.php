@@ -27,7 +27,7 @@ use Magento\Store\Model\StoreManagerInterface;
  * @package LinkMobility\SMSNotifications\ViewModel
  * @author Joseph Leedy <joseph@wagento.com>
  */
-class TermsConditions implements ArgumentInterface
+final class TermsConditions implements ArgumentInterface
 {
     /**
      * @var \Magento\Store\Model\StoreManagerInterface

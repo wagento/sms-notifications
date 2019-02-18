@@ -24,7 +24,7 @@ use MyCLabs\Enum\Enum;
  * @package LinkMobility\SMSNotifications\Gateway\Entity
  * @author Joseph Leedy <joseph@wagento.com>
  */
-class DCS extends Enum
+final class DCS extends Enum
 {
     /**
      * GSM-7 default alphabet encoding

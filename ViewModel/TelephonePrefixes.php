@@ -30,7 +30,7 @@ use Magento\Framework\View\Element\Block\ArgumentInterface;
  * @package LinkMobility\SMSNotifications\ViewModel
  * @author Joseph Leedy <joseph@wagento.com>
  */
-class TelephonePrefixes implements ArgumentInterface
+final class TelephonePrefixes implements ArgumentInterface
 {
     /**
      * @var \Magento\Directory\Helper\Data

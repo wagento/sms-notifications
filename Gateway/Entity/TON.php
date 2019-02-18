@@ -23,7 +23,7 @@ use MyCLabs\Enum\Enum;
  *
  * @package LinkMobility\SMSNotifications\Gateway\Entity
  */
-class TON extends Enum
+final class TON extends Enum
 {
     /**
      * Short number; 1-14 digits depending on country.

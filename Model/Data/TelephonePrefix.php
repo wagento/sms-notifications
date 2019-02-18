@@ -25,7 +25,7 @@ use Magento\Framework\Api\AbstractSimpleObject;
  * @package LinkMobility\SMSNotifications\Model\Data
  * @author Joseph Leedy <joseph@wagento.com>
  */
-class TelephonePrefix extends AbstractSimpleObject implements TelephonePrefixInterface
+final class TelephonePrefix extends AbstractSimpleObject implements TelephonePrefixInterface
 {
     public function setCountryCode(string $countryCode): TelephonePrefixInterface
     {

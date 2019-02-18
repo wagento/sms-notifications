@@ -23,6 +23,6 @@ namespace LinkMobility\SMSNotifications\Logger;
  * @package LinkMobility\SMSNotifications\Logger
  * @author Joseph Leedy <joseph@wagento.com>
  */
-class Logger extends \Monolog\Logger
+final class Logger extends \Monolog\Logger
 {
 }

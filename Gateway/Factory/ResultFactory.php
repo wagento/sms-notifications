@@ -26,7 +26,7 @@ use LinkMobility\SMSNotifications\Gateway\Entity\SuccessResult;
  * @package LinkMobility\SMSNotifications\Gateway\Factory
  * @author Joseph Leedy <joseph@wagento.com>
  */
-class ResultFactory
+final class ResultFactory
 {
     public function create(string $type, array $data = []): ResultInterface
     {

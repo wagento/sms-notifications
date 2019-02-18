@@ -27,7 +27,7 @@ use Magento\Framework\View\Element\Block\ArgumentInterface;
  * @package LinkMobility\SMSNotifications\ViewModel
  * @author Joseph Leedy <joseph@wagento.com>
  */
-class CustomerSmsSubscriptions implements ArgumentInterface
+final class CustomerSmsSubscriptions implements ArgumentInterface
 {
     /**
      * @var \Magento\Customer\Model\Session

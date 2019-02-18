@@ -26,7 +26,7 @@ use Magento\Ui\Component\Form\Fieldset;
  * @package LinkMobility\SMSNotifications\Ui\Component\Form\Fieldset
  * @author Joseph Leedy <joseph@wagento.com>
  */
-class SmsSubscriptionListingFieldset extends Fieldset
+final class SmsSubscriptionListingFieldset extends Fieldset
 {
     /**
      * @var \LinkMobility\SMSNotifications\Api\ConfigInterface

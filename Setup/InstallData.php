@@ -33,7 +33,7 @@ use Psr\Log\LoggerInterface;
  *
  * @codeCoverageIgnore
  */
-class InstallData implements InstallDataInterface
+final class InstallData implements InstallDataInterface
 {
     /**
      * @var \Magento\Customer\Setup\CustomerSetupFactory

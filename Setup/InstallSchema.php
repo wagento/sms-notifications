@@ -31,7 +31,7 @@ use Magento\Framework\Setup\SchemaSetupInterface;
  *
  * @codeCoverageIgnore
  */
-class InstallSchema implements InstallSchemaInterface
+final class InstallSchema implements InstallSchemaInterface
 {
     /**
      * {@inheritdoc}

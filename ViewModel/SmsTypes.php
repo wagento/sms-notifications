@@ -25,7 +25,7 @@ use Magento\Framework\View\Element\Block\ArgumentInterface;
  * @package LinkMobility\SMSNotifications\ViewModel
  * @author Joseph Leedy <joseph@wagento.com>
  */
-class SmsTypes implements ArgumentInterface
+final class SmsTypes implements ArgumentInterface
 {
     /**
      * @var \LinkMobility\SMSNotifications\Model\Source\SmsType

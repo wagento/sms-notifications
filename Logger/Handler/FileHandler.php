@@ -26,7 +26,7 @@ use Magento\Framework\Logger\Handler\Base;
  * @package Teamwork\SMSNotifications\Logger\Handler
  * @author Joseph Leedy <joseph@wagento.com>
  */
-class FileHandler extends Base
+final class FileHandler extends Base
 {
     /**
      * @var \LinkMobility\SMSNotifications\Api\ConfigInterface
