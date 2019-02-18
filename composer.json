@@ -11,9 +11,9 @@
         "ext-json": "*",
         "magento/framework": "101.0.*|102.0.*",
         "magento/module-backend": "100.2.*|101.0.*",
-        "magento/module-checkout": "100.2.*|100.3.*",
         "magento/module-config": "101.0.*|101.1.*",
         "magento/module-customer": "101.0.*|102.0.*",
+        "magento/module-sales": "101.0.*|102.0.*",
         "magento/module-store": "100.2.*|101.0.*",
         "magento/module-theme": "100.2.*|101.0.*",
         "magento/module-translation": "100.2.*|100.3.*",
@@ -22,8 +22,9 @@
         "myclabs/php-enum": "^1.6"
     },
     "require-dev": {
-        "linkmobility/module-sms-notifications-webapi": "*",
-        "phpunit/phpunit": "^6.2"
+        "linkmobility/module-sms-notifications-webapi": "1.0.0",
+        "phpunit/phpunit": "^6.5",
+        "magento/magento2-functional-testing-framework": "~2.3.12"
     },
     "autoload": {
         "files": [
