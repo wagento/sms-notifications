@@ -23,6 +23,7 @@ use LinkMobility\SMSNotifications\Observer\CustomerRegisterSuccessObserver;
 use Magento\Customer\Api\CustomerRepositoryInterface;
 use Magento\Framework\Api\SearchCriteriaBuilder;
 use Magento\Framework\App\RequestInterface;
+use Magento\Framework\Event\ConfigInterface as EventObserverConfig;
 use Magento\Framework\Event\ManagerInterface;
 use Magento\TestFramework\Helper\Bootstrap;
 use PHPUnit\Framework\TestCase;
@@ -37,14 +38,32 @@ use Psr\Log\Test\TestLogger;
 class CustomerRegisterSuccessObserverTest extends TestCase
 {
     /**
+     * @var \Magento\TestFramework\ObjectManager
+     */
+    private $objectManager;
+
+    /**
+     * @magentoAppArea frontend
+     */
+    public function testEventObserverIsConfigured(): void
+    {
+        /** @var \Magento\Framework\Event\ConfigInterface $observerConfig */
+        $observerConfig = $this->objectManager->create(EventObserverConfig::class);
+        $observers = $observerConfig->getObservers('customer_register_success');
+
+        $this->assertArrayHasKey('sms_notifications_save_subscriptions', $observers);
+        $this->assertSame(
+            ltrim(CustomerRegisterSuccessObserver::class, '\\'),
+            $observers['sms_notifications_save_subscriptions']['instance']
+        );
+    }
+
+    /**
      * @magentoAppArea frontend
      * @magentoDataFixture Magento/Customer/_files/customer.php
      */
     public function testObserverSavesSmsSubscriptions(): void
     {
-        /** @var \Magento\TestFramework\ObjectManager $objectManager */
-        $objectManager = Bootstrap::getObjectManager();
-
         $requestMock = $this->getMockForAbstractClass(RequestInterface::class, [], '', false, false, true, ['isPost']);
         $configMock = $this->getMockBuilder(ConfigInterface::class)
             ->disableOriginalConstructor()
@@ -58,15 +77,17 @@ class CustomerRegisterSuccessObserverTest extends TestCase
         $configMock->method('isEnabled')->willReturn(true);
 
         /** @var \Magento\Framework\Event\ManagerInterface $eventManager */
-        $eventManager = $objectManager->create(ManagerInterface::class);
+        $eventManager = $this->objectManager->create(ManagerInterface::class);
         /** @var \Magento\Customer\Api\Data\CustomerInterface $customer */
-        $customer = $objectManager->create(CustomerRepositoryInterface::class)->getById(1);
+        $customer = $this->objectManager->create(CustomerRepositoryInterface::class)->getById(1);
         /** @var \LinkMobility\SMSNotifications\Api\SmsSubscriptionRepositoryInterface $smsSubscriptionRepository */
-        $smsSubscriptionRepository = $objectManager->create(SmsSubscriptionRepositoryInterface::class);
+        $smsSubscriptionRepository = $this->objectManager->create(SmsSubscriptionRepositoryInterface::class);
         /** @var \Magento\Framework\Api\SearchCriteriaInterface $searchCriteria */
-        $searchCriteria = $objectManager->create(SearchCriteriaBuilder::class)->addFilter('customer_id', '1')->create();
+        $searchCriteria = $this->objectManager->create(SearchCriteriaBuilder::class)
+            ->addFilter('customer_id', '1')
+            ->create();
 
-        $objectManager->configure([
+        $this->objectManager->configure([
             get_class($requestMock) => ['shared' => true],
             get_class($configMock) => ['shared' => true],
             CustomerRegisterSuccessObserver::class => [
@@ -77,8 +98,8 @@ class CustomerRegisterSuccessObserverTest extends TestCase
                 ]
             ]
         ]);
-        $objectManager->addSharedInstance($requestMock, get_class($requestMock));
-        $objectManager->addSharedInstance($configMock, get_class($configMock));
+        $this->objectManager->addSharedInstance($requestMock, get_class($requestMock));
+        $this->objectManager->addSharedInstance($configMock, get_class($configMock));
 
         $eventManager->dispatch('customer_register_success', ['customer' => $customer]);
 
@@ -94,5 +115,12 @@ class CustomerRegisterSuccessObserverTest extends TestCase
         $this->assertEquals(2, $smsSubscriptionSearchResults->getTotalCount());
         $this->assertContains('order_placed', $createdSmsSubscriptions);
         $this->assertContains('order_shipped', $createdSmsSubscriptions);
+    }
+
+    protected function setUp()
+    {
+        parent::setUp();
+
+        $this->objectManager = Bootstrap::getObjectManager();
     }
 }
