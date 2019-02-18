@@ -19,7 +19,7 @@
     </div>
     <!-- ko foreach: groupedSmsTypes -->
     <div class="sms-type-group" data-bind="attr: {id: 'sms-type-group-' + groupName}">
-        <h2 data-bind="i18n: title"></h2>
+        <h2 data-bind="text: $t(title)"></h2>
         <ul class="sms-type-list">
             <!-- ko foreach: smsTypes -->
             <li class="field choice sms-type">
