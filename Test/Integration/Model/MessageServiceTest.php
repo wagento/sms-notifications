@@ -45,7 +45,7 @@ class MessageServiceTest extends TestCase
      * @magentoConfigFixture default/sms_notifications/api/source_number +15555551234
      * @magentoConfigFixture default/general/store_information/name Example Store
      */
-    public function testSendMessage()
+    public function testSendMessage(): void
     {
         $this->messageService->setOrder($this->getOrderMock());
 

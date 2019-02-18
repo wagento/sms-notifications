@@ -32,7 +32,7 @@ class EventObserverConfigurationTest extends TestCase
     /**
      * @magentoAppArea frontend
      */
-    public function testCustomerRegisterSuccessEventObserverIsConfigured()
+    public function testCustomerRegisterSuccessEventObserverIsConfigured(): void
     {
         /** @var \Magento\Framework\Event\ConfigInterface $observerConfig */
         $observerConfig = ObjectManager::getInstance()->create(EventObserverConfig::class);

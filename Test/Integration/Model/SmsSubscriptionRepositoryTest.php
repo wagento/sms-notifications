@@ -52,7 +52,7 @@ class SmsSubscriptionRepositoryTest extends TestCase
      * @magentoDataFixture Magento/Customer/_files/customer.php
      * @magentoDataFixture createSmsSubscriptionFixtureProvider
      */
-    public function testGetReturnSmsSubscriptionEntity()
+    public function testGetReturnSmsSubscriptionEntity(): void
     {
         $result = $this->smsSubscriptionRepository->get(self::$smsSubscriptionFixture->getId());
 
@@ -60,7 +60,7 @@ class SmsSubscriptionRepositoryTest extends TestCase
         $this->assertEquals(self::$smsSubscriptionFixture->getDataModel()->__toArray(), $result->__toArray());
     }
 
-    public function testGetThrowsNoSuchEntityException()
+    public function testGetThrowsNoSuchEntityException(): void
     {
         $this->expectException(NoSuchEntityException::class);
 
@@ -70,7 +70,7 @@ class SmsSubscriptionRepositoryTest extends TestCase
     /**
      * @magentoDataFixture Magento/Customer/_files/customer.php
      */
-    public function testGetListReturnsSearchResults()
+    public function testGetListReturnsSearchResults(): void
     {
         self::createSmsSubscriptionsFromSourceFixtureProvider(7);
 
@@ -88,7 +88,7 @@ class SmsSubscriptionRepositoryTest extends TestCase
      * @magentoDbIsolation enabled
      * @magentoDataFixture Magento/Customer/_files/customer.php
      */
-    public function testSaveCreatesSmsSubscriptionEntity()
+    public function testSaveCreatesSmsSubscriptionEntity(): void
     {
         $smsSubscriptionEntity = $this->objectManager->create(SmsSubscriptionInterface::class)
             ->setCustomerId('1')
@@ -103,7 +103,7 @@ class SmsSubscriptionRepositoryTest extends TestCase
      * @magentoDataFixture Magento/Customer/_files/customer.php
      * @magentoDataFixture createSmsSubscriptionFixtureProvider
      */
-    public function testSaveUpdatesSmsSubscriptionEntity()
+    public function testSaveUpdatesSmsSubscriptionEntity(): void
     {
         $smsSubscriptionEntity = $this->objectManager->create(SmsSubscriptionInterface::class)
             ->setCustomerId('1')
@@ -119,7 +119,7 @@ class SmsSubscriptionRepositoryTest extends TestCase
      * @magentoDataFixture Magento/Customer/_files/customer.php
      * @magentoDataFixture createSmsSubscriptionFixtureProvider
      */
-    public function testDeleteRemovesSmsSubscriptionEntity()
+    public function testDeleteRemovesSmsSubscriptionEntity(): void
     {
         $smsSubscriptionResource = $this->objectManager->create(SmsSubscriptionResource::class);
         /** @var \LinkMobility\SMSNotifications\Model\SmsSubscription $smsSubscriptionModel */
@@ -136,7 +136,7 @@ class SmsSubscriptionRepositoryTest extends TestCase
      * @magentoDataFixture Magento/Customer/_files/customer.php
      * @magentoDataFixture createSmsSubscriptionFixtureProvider
      */
-    public function testDeleteThrowsCouldNotDeleteException()
+    public function testDeleteThrowsCouldNotDeleteException(): void
     {
         $this->expectException(CouldNotDeleteException::class);
 
@@ -157,19 +157,19 @@ class SmsSubscriptionRepositoryTest extends TestCase
      * @magentoDataFixture Magento/Customer/_files/customer.php
      * @magentoDataFixture createSmsSubscriptionFixtureProvider
      */
-    public function testDeleteByIdRemovesSmsSubscriptionEntity()
+    public function testDeleteByIdRemovesSmsSubscriptionEntity(): void
     {
         $result = $this->smsSubscriptionRepository->deleteById(self::$smsSubscriptionFixture->getId());
 
         $this->assertTrue($result);
     }
 
-    public static function createSmsSubscriptionFixtureProvider()
+    public static function createSmsSubscriptionFixtureProvider(): void
     {
         self::$smsSubscriptionFixture = require __DIR__ . '/../_files/create_sms_subscription.php';
     }
 
-    public static function createSmsSubscriptionsFromSourceFixtureProvider(int $count = null)
+    public static function createSmsSubscriptionsFromSourceFixtureProvider(int $count = null): void
     {
         require __DIR__ . '/../_files/create_sms_subscriptions_from_source.php';
     }

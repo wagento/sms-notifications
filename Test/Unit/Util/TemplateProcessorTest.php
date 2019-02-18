@@ -33,7 +33,7 @@ class TemplateProcessorTest extends TestCase
      */
     private $templateProcessor;
 
-    public function testProcessString()
+    public function testProcessString(): void
     {
         $message = 'The quick brown {{prey}} jumps over the lazy {{predator}}.';
         $data = [
@@ -46,7 +46,7 @@ class TemplateProcessorTest extends TestCase
         $this->assertEquals($expected, $actual);
     }
 
-    public function testProcessArray()
+    public function testProcessArray(): void
     {
         $message = 'There are {{count}} fruits available: {{fruits}}.';
         $data = [
@@ -66,7 +66,7 @@ class TemplateProcessorTest extends TestCase
     /**
      * @dataProvider processObjectDataProvider
      */
-    public function testProcessObject($message, $data, $expected)
+    public function testProcessObject($message, $data, $expected): void
     {
         $actual = $this->templateProcessor->process($message, $data);
 

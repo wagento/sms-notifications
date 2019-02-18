@@ -47,7 +47,7 @@ class ManagePostTest extends AbstractControllerTestCase
     /**
      * @magentoAppArea frontend
      */
-    public function testInvalidCustomerIdRetursErrorMessage()
+    public function testInvalidCustomerIdRetursErrorMessage(): void
     {
         $this->dispatch(self::ACTION_URI);
 
@@ -65,7 +65,7 @@ class ManagePostTest extends AbstractControllerTestCase
     /**
      * @magentoDataFixture Magento/Customer/_files/customer.php
      */
-    public function testSubscribeToAllNotificationsReturnsSuccessMessage()
+    public function testSubscribeToAllNotificationsReturnsSuccessMessage(): void
     {
         $smsTypes = array_column((new SmsTypeSource())->toArray(), 'code');
 
@@ -84,7 +84,7 @@ class ManagePostTest extends AbstractControllerTestCase
      * @magentoDataFixture Magento/Customer/_files/customer.php
      * @magentoDataFixture createSmsSubscriptionsFixtureProvider
      */
-    public function testUnsubscribeFromAllNotificationsReturnsSuccessMessage()
+    public function testUnsubscribeFromAllNotificationsReturnsSuccessMessage(): void
     {
         $smsTypes = array_column((new SmsTypeSource())->toArray(), 'code');
 
@@ -101,7 +101,7 @@ class ManagePostTest extends AbstractControllerTestCase
      * @magentoAppArea frontend
      * @magentoDataFixture Magento/Customer/_files/customer.php
      */
-    public function testSubscribeAndUnsubscribeFromNotificationsReturnsSuccessMessages()
+    public function testSubscribeAndUnsubscribeFromNotificationsReturnsSuccessMessages(): void
     {
         $existingSubscriptions = self::createSmsSubscriptionsFixtureProvider(3);
         $smsTypes = array_slice(array_column((new SmsTypeSource())->toArray(), 'code'), 4);
@@ -123,7 +123,7 @@ class ManagePostTest extends AbstractControllerTestCase
      * @magentoAppArea frontend
      * @magentoDataFixture Magento/Customer/_files/customer.php
      */
-    public function testUnsubscribeFromNotificationsReturnsErrorMessage()
+    public function testUnsubscribeFromNotificationsReturnsErrorMessage(): void
     {
         $this->createDeletedSubcriptionMocks();
 
@@ -145,7 +145,7 @@ class ManagePostTest extends AbstractControllerTestCase
      * @magentoAppArea frontend
      * @magentoDataFixture Magento/Customer/_files/customer.php
      */
-    public function testSubscribeAndUnsubscribeFromNotificationsReturnsSuccessAndErrorMessage()
+    public function testSubscribeAndUnsubscribeFromNotificationsReturnsSuccessAndErrorMessage(): void
     {
         $this->createDeletedSubcriptionMocks();
 
@@ -172,7 +172,7 @@ class ManagePostTest extends AbstractControllerTestCase
      * @magentoAppArea frontend
      * @magentoDataFixture Magento/Customer/_files/customer.php
      */
-    public function testUpdateMobileNumberReturnsSuccessMessage()
+    public function testUpdateMobileNumberReturnsSuccessMessage(): void
     {
         $this->getRequest()->setPostValue('sms_mobile_phone_prefix', 'US_1');
         $this->getRequest()->setPostValue('sms_mobile_phone_number', '5555551234');
@@ -189,7 +189,7 @@ class ManagePostTest extends AbstractControllerTestCase
      * @magentoAppArea frontend
      * @magentoDataFixture Magento/Customer/_files/customer.php
      */
-    public function testUpdateMobileNumberReturnsErrorMessage()
+    public function testUpdateMobileNumberReturnsErrorMessage(): void
     {
         /** @var \PHPUnit\Framework\MockObject\MockObject|\Magento\Framework\Api\ImageProcessorInterface $imageProcessorMock */
         $imageProcessorMock = $this->getMockBuilder(ImageProcessorInterface::class)
@@ -220,7 +220,7 @@ class ManagePostTest extends AbstractControllerTestCase
     /**
      * @SuppressWarnings(PHPMD.UnusedFormalParameter)
      */
-    public static function createSmsSubscriptionsFixtureProvider(int $count = -1)
+    public static function createSmsSubscriptionsFixtureProvider(int $count = -1): array
     {
         return require __DIR__ . '/../../_files/create_sms_subscriptions_from_source.php';
     }
@@ -237,7 +237,7 @@ class ManagePostTest extends AbstractControllerTestCase
         $this->getRequest()->setMethod(HttpRequest::METHOD_POST);
     }
 
-    private function loginCustomer(int $customerId)
+    private function loginCustomer(int $customerId): void
     {
         /** @var \Magento\Customer\Model\Session $session */
         $session = $this->_objectManager->get(CustomerSession::class);
@@ -245,7 +245,7 @@ class ManagePostTest extends AbstractControllerTestCase
         $session->loginById($customerId);
     }
 
-    private function createDeletedSubcriptionMocks()
+    private function createDeletedSubcriptionMocks(): void
     {
         $smsSubscriptionMock = $this->getMockBuilder(SmsSubscription::class)
             ->disableOriginalConstructor()

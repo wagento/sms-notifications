@@ -37,7 +37,7 @@ class SmsSubscriptionValidatorTest extends TestCase
     /** @var \LinkMobility\SMSNotifications\Model\SmsSubscriptionValidator */
     private $validator;
 
-    public function testValidateValidSubscription()
+    public function testValidateValidSubscription(): void
     {
         $smsSubscription = $this->getMockBuilder(SmsSubscription::class)
             ->disableOriginalConstructor()
@@ -56,7 +56,7 @@ class SmsSubscriptionValidatorTest extends TestCase
         $this->assertEmpty($this->validator->getMessages());
     }
 
-    public function testValidateInvalidSubscription()
+    public function testValidateInvalidSubscription(): void
     {
         $smsSubscription = $this->getMockBuilder(SmsSubscription::class)
             ->disableOriginalConstructor()
@@ -68,7 +68,7 @@ class SmsSubscriptionValidatorTest extends TestCase
         $this->assertNotEmpty($this->validator->getMessages());
     }
 
-    public function testGetValidator()
+    public function testGetValidator(): void
     {
         $this->assertInstanceOf(\Zend_Validate_Interface::class, $this->validator->getValidator());
     }

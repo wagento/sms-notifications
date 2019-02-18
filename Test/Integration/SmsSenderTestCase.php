@@ -17,6 +17,7 @@ declare(strict_types=1);
 namespace LinkMobility\SMSNotifications\Test\Integration;
 
 use LinkMobility\SMSNotifications\Api\ConfigInterface;
+use LinkMobility\SMSNotifications\Api\Data\SmsSubscriptionInterface;
 use LinkMobility\SMSNotifications\Model\MessageService;
 use Magento\Customer\Api\CustomerRepositoryInterface;
 use Magento\TestFramework\ObjectManager;
@@ -58,12 +59,12 @@ class SmsSenderTestCase extends TestCase
         $customerRepository->save($customer);
     }
 
-    public static function smsSubscriptionFixtureProvider()
+    public static function smsSubscriptionFixtureProvider(): SmsSubscriptionInterface
     {
         return require __DIR__ . '/_files/create_sms_subscription.php';
     }
 
-    public static function smsSubscriptionsFixtureProvider(int $count = -1)
+    public static function smsSubscriptionsFixtureProvider(int $count = -1): array
     {
         return require __DIR__ . '/_files/create_sms_subscriptions_from_source.php';
     }

@@ -38,7 +38,7 @@ class ApiClientTest extends TestCase
      */
     private $apiClient;
 
-    public function testSendRequestWithValidRequestReturnsSuccessResult()
+    public function testSendRequestWithValidRequestReturnsSuccessResult(): void
     {
         /** @var \LinkMobility\SMSNotifications\Model\Config $config */
         $config = Bootstrap::getObjectManager()->create(Config::class);
@@ -60,7 +60,7 @@ class ApiClientTest extends TestCase
         $this->assertInstanceOf(SuccessResultInterface::class, $this->apiClient->getResult());
     }
 
-    public function testSendRequestWithInvaliRequestThrowsApiException()
+    public function testSendRequestWithInvaliRequestThrowsApiException(): void
     {
         $this->expectException(ApiException::class);
 

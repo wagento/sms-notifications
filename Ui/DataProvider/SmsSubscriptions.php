@@ -131,7 +131,7 @@ final class SmsSubscriptions extends AbstractDataProvider
     /**
      * @throws \Magento\Framework\Exception\LocalizedException
      */
-    private function addCustomerFilter()
+    private function addCustomerFilter(): void
     {
         $customerData = $this->backendSession->getCustomerData() ?? [];
 

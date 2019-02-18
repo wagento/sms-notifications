@@ -34,7 +34,7 @@ class SensitiveDataProcessorTest extends TestCase
         $this->assertTrue(is_callable($sensitiveDataProcessor));
     }
 
-    public function testRedactsSensitiveDataInRecordContext()
+    public function testRedactsSensitiveDataInRecordContext(): void
     {
         $testObject = new \stdClass();
         $testObject->field0 = 'foo';

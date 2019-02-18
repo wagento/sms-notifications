@@ -34,7 +34,7 @@ class ConfigTest extends TestCase
     /**
      * @magentoConfigFixture default/sms_notifications/general/enabled 1
      */
-    public function testIsEnabled()
+    public function testIsEnabled(): void
     {
         $this->assertTrue($this->config->isEnabled());
     }
@@ -42,7 +42,7 @@ class ConfigTest extends TestCase
     /**
      * @magentoConfigFixture default/sms_notifications/api/username LINKMOBILITY
      */
-    public function testGetApiUser()
+    public function testGetApiUser(): void
     {
         $this->assertEquals('LINKMOBILITY', $this->config->getApiUser());
     }
@@ -50,7 +50,7 @@ class ConfigTest extends TestCase
     /**
      * @magentoConfigFixture default/sms_notifications/api/password P@55w0rd
      */
-    public function testGetApiPassword()
+    public function testGetApiPassword(): void
     {
         $this->assertEquals('P@55w0rd', $this->config->getApiPassword());
     }
@@ -58,7 +58,7 @@ class ConfigTest extends TestCase
     /**
      * @magentoConfigFixture default/sms_notifications/api/platform_id ABCDE
      */
-    public function testGetPlatformId()
+    public function testGetPlatformId(): void
     {
         $this->assertEquals('ABCDE', $this->config->getPlatformId());
     }
@@ -66,7 +66,7 @@ class ConfigTest extends TestCase
     /**
      * @magentoConfigFixture default/sms_notifications/api/platform_partner_id 123
      */
-    public function testGetPlatformPartnerId()
+    public function testGetPlatformPartnerId(): void
     {
         $this->assertEquals('123', $this->config->getPlatformPartnerId());
     }
@@ -74,7 +74,7 @@ class ConfigTest extends TestCase
     /**
      * @magentoConfigFixture default/sms_notifications/api/gate_id ABCD123
      */
-    public function testGetGateId()
+    public function testGetGateId(): void
     {
         $this->assertEquals('ABCD123', $this->config->getGateId());
     }
@@ -82,7 +82,7 @@ class ConfigTest extends TestCase
     /**
      * @magentoConfigFixture default/sms_notifications/api/source_number +15555551234
      */
-    public function testGetSourceNumber()
+    public function testGetSourceNumber(): void
     {
         $this->assertEquals('+15555551234', $this->config->getSourceNumber());
     }
@@ -90,7 +90,7 @@ class ConfigTest extends TestCase
     /**
      * @magentoConfigFixture default/sms_notifications/developer/debug 1
      */
-    public function testIsLoggingEnabled()
+    public function testIsLoggingEnabled(): void
     {
         $this->assertTrue($this->config->isLoggingEnabled());
     }
