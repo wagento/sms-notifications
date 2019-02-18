@@ -12,6 +12,8 @@
  * @license https://opensource.org/licenses/OSL-3.0.php Open Software License 3.0
  */
 
+declare(strict_types=1);
+
 namespace LinkMobility\SMSNotifications\Test\Integration\Gateway;
 
 use LinkMobility\SMSNotifications\Gateway\ApiClient;
