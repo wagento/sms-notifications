@@ -36,7 +36,7 @@ interface ConfigInterface
     const XML_PATH_PLATFORM_ID = 'sms_notifications/api/platform_id';
     const XML_PATH_PLATFORM_PARTNER_ID = 'sms_notifications/api/platform_partner_id';
     const XML_PATH_GATE_ID = 'sms_notifications/api/gate_id';
-    const XML_PATH_SOURCE_NUMBER = 'sms_notifications/api/source_number';
+    const XML_PATH_SOURCE = 'sms_notifications/api/source';
     const XML_PATH_ENABLE_LOGGING = 'sms_notifications/developer/debug';
     const XML_PATH_TEMPLATE_ORDER_PLACED = 'sms_notifications/templates/order_placed';
     const XML_PATH_TEMPLATE_ORDER_UPDATED = 'sms_notifications/templates/order_updated';
@@ -60,7 +60,7 @@ interface ConfigInterface
 
     public function getGateId(string $websiteId = null): ?string;
 
-    public function getSourceNumber(string $websiteId = null): ?string;
+    public function getSource(string $websiteId = null): ?string;
 
     public function isLoggingEnabled(): bool;
 

@@ -89,11 +89,11 @@ final class Config implements ConfigInterface
         return $this->scopeConfig->getValue(self::XML_PATH_GATE_ID, $scope, $websiteId);
     }
 
-    public function getSourceNumber(string $websiteId = null): ?string
+    public function getSource(string $websiteId = null): ?string
     {
         $scope = $websiteId === null ? ScopeConfigInterface::SCOPE_TYPE_DEFAULT : ScopeInterface::SCOPE_WEBSITE;
 
-        return $this->scopeConfig->getValue(self::XML_PATH_SOURCE_NUMBER, $scope, $websiteId);
+        return $this->scopeConfig->getValue(self::XML_PATH_SOURCE, $scope, $websiteId);
     }
 
     public function isLoggingEnabled(): bool

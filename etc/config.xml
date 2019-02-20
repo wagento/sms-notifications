@@ -25,7 +25,7 @@
                 <platform_id backend_model="Magento\Config\Model\Config\Backend\Encrypted"/>
                 <platform_partner_id backend_model="Magento\Config\Model\Config\Backend\Encrypted"/>
                 <gate_id backend_model="Magento\Config\Model\Config\Backend\Encrypted"/>
-                <source_number>+</source_number>
+                <source/>
             </api>
             <templates>
                 <order_placed>Thank you for placing your order at {{store_name}}, {{customer_first_name}} (#{{order_id}}). We'll let you know when it ships or changes.</order_placed>

@@ -125,12 +125,12 @@ class MessageService
     public function sendMessage(string $message, string $to, string $messageType): bool
     {
         $messageEntity = $this->messageFactory->create();
-        $sourceNumber = $this->config->getSourceNumber();
+        $source = $this->config->getSource();
         $platformId = $this->config->getPlatformId();
         $platformPartnerId = $this->config->getPlatformPartnerId();
         $processedMessage = $this->processMessage($message, $messageType);
 
-        $messageEntity->setSource($sourceNumber);
+        $messageEntity->setSource($source);
         $messageEntity->setDestination($to);
         $messageEntity->setUserData($processedMessage);
         $messageEntity->setPlatformId($platformId);

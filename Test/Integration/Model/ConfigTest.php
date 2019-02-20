@@ -88,11 +88,11 @@ class ConfigTest extends TestCase
     }
 
     /**
-     * @magentoConfigFixture default/sms_notifications/api/source_number +15555551234
+     * @magentoConfigFixture default/sms_notifications/api/source +15555551234
      */
-    public function testGetSourceNumber(): void
+    public function testGetSource(): void
     {
-        $this->assertEquals('+15555551234', $this->config->getSourceNumber());
+        $this->assertEquals('+15555551234', $this->config->getSource());
     }
 
     /**
