@@ -1,0 +1,63 @@
+/**
+ * LINK Mobility SMS Notifications
+ *
+ * Sends transactional SMS notifications through the LINK Mobility messaging
+ * service.
+ *
+ * @package LinkMobility\SMSNotifications\Block\System\Config\Form\Fieldset
+ * @author Joseph Leedy <joseph@wagento.com>
+ * @author Yair García Torres <yair.garcia@wagento.com>
+ * @copyright Copyright (c) LINK Mobility (https://www.linkmobility.com/)
+ * @license https://opensource.org/licenses/OSL-3.0.php Open Software License 3.0
+ */
+
+#linkmobility-sms-notifications-info {
+  header {
+    .logo-title-container {
+      .lib-clearfix();
+
+      .logo, h1 {
+        float: left;
+      }
+
+      h1 {
+        margin-bottom: 0;
+        margin-left: @indent__base;
+        line-height: 46px;
+      }
+    }
+  }
+
+  nav {
+    margin: 14px 0;
+
+    ul {
+      .lib-clearfix();
+
+      li {
+        float: left;
+        padding: 2px 10px;
+        border-right: 1px solid @color-gray80;
+
+        &:first-child {
+          padding-left: 0;
+        }
+
+        &:last-child {
+          padding-right: 0;
+          border-right: none;
+        }
+      }
+    }
+  }
+
+  main {
+    p, ul {
+      margin: @indent__base 0;
+    }
+
+    ul {
+      padding-left: @indent__xl;
+    }
+  }
+}
