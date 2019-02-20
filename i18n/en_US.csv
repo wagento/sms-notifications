@@ -61,6 +61,10 @@ Subscribe,Subscribe
 Subscribed,Subscribed
 "Not Subscribed","Not Subscribed"
 "Could not get ID of customer to retrieve SMS subscriptions for.","Could not get ID of customer to retrieve SMS subscriptions for."
+"User Guide","User Guide"
+"Plans and Pricing","Plans and Pricing"
+"Sign Up For An Account","Sign Up For An Account"
+"Learn more about our SMS services","Learn more about our SMS services"
 "General Configuration","General Configuration"
 "Notification Preferences","Notification Preferences"
 "I wish to receive notifications about my:","I wish to receive notifications about my:"
@@ -80,6 +84,19 @@ View,View
 Manage,Manage
 Configuration,Configuration
 "SMS Notifications","SMS Notifications"
+"<p>LINK Mobility SMS Notifications allows your customers to subscribe to transactional text messages regarding their order and receive them on their mobile telephone. Keep your customers engaged by <a href=""https://www.linkmobility.com/"" target=""_blank"">signing up for an account</a> today.</p>
+<p><strong>Benefits:</strong></p>
+<ul>
+				<li>Provide your customer with confidence in knowing that they've successfully placed their order</li>
+				<li>Notify your customer once their order has been shipped</li>
+				<li>Instantly alert your customer as soon as you update, refund or cancel their order</li>
+</ul>","<p>LINK Mobility SMS Notifications allows your customers to subscribe to transactional text messages regarding their order and receive them on their mobile telephone. Keep your customers engaged by <a href=""https://www.linkmobility.com/"" target=""_blank"">signing up for an account</a> today.</p>
+<p><strong>Benefits:</strong></p>
+<ul>
+				<li>Provide your customer with confidence in knowing that they've successfully placed their order</li>
+				<li>Notify your customer once their order has been shipped</li>
+				<li>Instantly alert your customer as soon as you update, refund or cancel their order</li>
+</ul>"
 "General Settings","General Settings"
 Enabled,Enabled
 "API Configuration","API Configuration"
