@@ -61,6 +61,7 @@ Subscribe,Subscribe
 Subscribed,Subscribed
 "Not Subscribed","Not Subscribed"
 "Could not get ID of customer to retrieve SMS subscriptions for.","Could not get ID of customer to retrieve SMS subscriptions for."
+"Version %1","Version %1"
 "User Guide","User Guide"
 "Plans and Pricing","Plans and Pricing"
 "Sign Up For An Account","Sign Up For An Account"

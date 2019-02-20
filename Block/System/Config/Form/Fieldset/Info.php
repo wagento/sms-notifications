@@ -16,9 +16,13 @@ declare(strict_types=1);
 
 namespace LinkMobility\SMSNotifications\Block\System\Config\Form\Fieldset;
 
+use Magento\Backend\Block\Context;
 use Magento\Backend\Block\Template;
+use Magento\Backend\Model\Auth\Session;
 use Magento\Config\Block\System\Config\Form\Fieldset;
 use Magento\Framework\Data\Form\Element\AbstractElement;
+use Magento\Framework\Module\ResourceInterface as ModuleResource;
+use Magento\Framework\View\Helper\Js;
 
 /**
  * Extension Information Configuration Fieldset Block
@@ -29,6 +33,23 @@ use Magento\Framework\Data\Form\Element\AbstractElement;
 class Info extends Fieldset
 {
     private const TEMPLATE = 'LinkMobility_SMSNotifications::system/config/form/fieldset/info.phtml';
+
+    /**
+     * @var \Magento\Framework\Module\ResourceInterface
+     */
+    private $moduleResource;
+
+    public function __construct(
+        Context $context,
+        Session $authSession,
+        Js $jsHelper,
+        ModuleResource $moduleResource,
+        array $data = []
+    ) {
+        parent::__construct($context, $authSession, $jsHelper, $data);
+
+        $this->moduleResource = $moduleResource;
+    }
 
     /**
      * {@inheritdoc}
@@ -45,6 +66,7 @@ class Info extends Fieldset
                 'documentation_url' => $group['help_url'] ?: '#',
                 'overview_url' => $group['more_url'] ?: '#',
                 'signup_url' => $group['demo_link'] ?: '#',
+                'module_version' => $this->moduleResource->getDbVersion('LinkMobility_SMSNotifications') ?: ''
             ]);
 
         return $block->_toHtml();
