@@ -21,7 +21,7 @@ use Magento\Config\Block\System\Config\Form\Fieldset;
 use Magento\Framework\Data\Form\Element\AbstractElement;
 
 /**
- * Header Configuration Fieldset Block
+ * Extension Information Configuration Fieldset Block
  *
  * @package LinkMobility\SMSNotifications\Block\System\Config\Form\Fieldset
  * @author Joseph Leedy <joseph@wagento.com>
