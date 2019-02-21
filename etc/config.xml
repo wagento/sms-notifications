@@ -25,6 +25,7 @@
                 <platform_id backend_model="Magento\Config\Model\Config\Backend\Encrypted"/>
                 <platform_partner_id backend_model="Magento\Config\Model\Config\Backend\Encrypted"/>
                 <gate_id backend_model="Magento\Config\Model\Config\Backend\Encrypted"/>
+                <source_type>MSISDN</source_type>
                 <source/>
             </api>
             <templates>

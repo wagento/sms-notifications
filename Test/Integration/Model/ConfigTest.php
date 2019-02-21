@@ -88,6 +88,14 @@ class ConfigTest extends TestCase
     }
 
     /**
+     * @magentoConfigFixture default/sms_notifications/api/source_type MSISDN
+     */
+    public function testGetSourceType(): void
+    {
+        $this->assertEquals('MSISDN', $this->config->getSource());
+    }
+
+    /**
      * @magentoConfigFixture default/sms_notifications/api/source +15555551234
      */
     public function testGetSource(): void

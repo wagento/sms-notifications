@@ -68,7 +68,11 @@
                     <label>Gate ID</label>
                     <backend_model>Magento\Config\Model\Config\Backend\Encrypted</backend_model>
                 </field>
-                <field id="source" translate="label" type="text" sortOrder="60" showInDefault="1" showInWebsite="1" showInStore="0">
+                <field id="source_type" translate="label" type="select" sortOrder="60" showInDefault="1" showInWebsite="1" showInStore="0">
+                    <label>Source Type</label>
+                    <source_model>LinkMobility\SMSNotifications\Model\Config\Source\SourceType</source_model>
+                </field>
+                <field id="source" translate="label comment" type="text" sortOrder="70" showInDefault="1" showInWebsite="1" showInStore="0">
                     <label>Source</label>
                 </field>
             </group>

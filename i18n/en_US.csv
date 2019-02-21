@@ -106,8 +106,11 @@ Enabled,Enabled
 "Platform ID","Platform ID"
 "Platform Partner ID","Platform Partner ID"
 "Gate ID","Gate ID"
-"Source Phone Number","Source Phone Number"
-"A mobile number, in international format, starting with +.","A mobile number, in international format, starting with +."
+"Source Type","Source Type"
+Source,Source
+"Short Number","Short Number"
+Alphanumeric,Alphanumeric
+"Phone Number","Phone Number"
 "Message Templates","Message Templates"
 "<strong>Note:</strong> Limit messages to 160 characters or less.","<strong>Note:</strong> Limit messages to 160 characters or less."
 "Order Placed","Order Placed"
