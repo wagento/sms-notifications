@@ -39,7 +39,7 @@ final class Message implements MessageInterface
      *
      * @var \LinkMobility\SMSNotifications\Gateway\Entity\TON
      */
-    private $sourceTON = TON::MSISDN;
+    private $sourceTON;
     /**
      * Phone number where the message should be sent
      *
