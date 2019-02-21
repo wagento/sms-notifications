@@ -202,7 +202,7 @@ final class Message implements MessageInterface
      */
     public function setSourceTON($sourceTON): void
     {
-        if (!($sourceTON instanceof TON)) {
+        if ($sourceTON !== null && !($sourceTON instanceof TON)) {
             $sourceTON = new TON($sourceTON);
         }
 
@@ -229,7 +229,7 @@ final class Message implements MessageInterface
      */
     public function setDestinationTON($destinationTON): void
     {
-        if (!($destinationTON instanceof TON)) {
+        if ($destinationTON !== null && !($destinationTON instanceof TON)) {
             $destinationTON = new TON($destinationTON);
         }
 
@@ -246,7 +246,7 @@ final class Message implements MessageInterface
      */
     public function setDcs($dcs): void
     {
-        if (!($dcs instanceof DCS)) {
+        if ($dcs !== null && !($dcs instanceof DCS)) {
             $dcs = new DCS($dcs);
         }
 
