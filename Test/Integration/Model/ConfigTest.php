@@ -92,7 +92,7 @@ class ConfigTest extends TestCase
      */
     public function testGetSourceType(): void
     {
-        $this->assertEquals('MSISDN', $this->config->getSource());
+        $this->assertEquals('MSISDN', $this->config->getSourceType());
     }
 
     /**
