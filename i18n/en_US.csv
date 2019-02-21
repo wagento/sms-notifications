@@ -111,6 +111,17 @@ Source,Source
 "Short Number","Short Number"
 Alphanumeric,Alphanumeric
 "Phone Number","Phone Number"
+"Source format is based on selected Source Type:
+<ul type=""none"" class=""note"">
+    <li><strong>Short Number:</strong> 1-14 digit numeric code (length depends on country, e.g. ""12345"")</li>
+    <li><strong>Alphanumeric:</strong> Up to 11 letters or numbers (A-Z, a-z and 0-9, e.g. ""ABC123"")</li>
+    <li><strong>Phone number:</strong> Mobile number in international format (starting with ""+"", e.g. ""+1-555-555-1234"")</li>
+</ul>","Source format is based on selected Source Type:
+<ul type=""none"" class=""note"">
+    <li><strong>Short Number:</strong> 1-14 digit numeric code (length depends on country, e.g. ""12345"")</li>
+    <li><strong>Alphanumeric:</strong> Up to 11 letters or numbers (A-Z, a-z and 0-9, e.g. ""ABC123"")</li>
+    <li><strong>Phone number:</strong> Mobile number in international format (starting with ""+"", e.g. ""+1-555-555-1234"")</li>
+</ul>"
 "Message Templates","Message Templates"
 "<strong>Note:</strong> Limit messages to 160 characters or less.","<strong>Note:</strong> Limit messages to 160 characters or less."
 "Order Placed","Order Placed"
