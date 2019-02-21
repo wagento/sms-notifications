@@ -126,14 +126,14 @@ class MessageService
     {
         $messageEntity = $this->messageFactory->create();
         $messageEntityHydrator = $this->messageEntityHydratorFactory->create();
-        $sourceType = $this->config->getSourceType();
         $source = $this->config->getSource();
+        $sourceType = $this->config->getSourceType();
         $platformId = $this->config->getPlatformId();
         $platformPartnerId = $this->config->getPlatformPartnerId();
         $processedMessage = $this->processMessage($message, $messageType);
 
-        $messageEntity->setSourceTON($sourceType);
         $messageEntity->setSource($source);
+        $messageEntity->setSourceTON($sourceType);
         $messageEntity->setDestination($to);
         $messageEntity->setUserData($processedMessage);
         $messageEntity->setPlatformId($platformId);
