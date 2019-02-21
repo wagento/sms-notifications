@@ -174,11 +174,14 @@ final class Message implements MessageInterface
 
     public function __construct(
         string $source = null,
+        string $sourceTON = null,
         string $destination = null,
         string $userData = null,
         string $platformId = null,
         string $platformPartnerId = null
     ) {
+        $this->setSourceTON($sourceTON);
+
         $this->source = $source;
         $this->destination = $destination;
         $this->userData = $userData;
