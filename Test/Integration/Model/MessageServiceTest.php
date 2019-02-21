@@ -42,6 +42,7 @@ class MessageServiceTest extends TestCase
     private $messageService;
 
     /**
+     * @magentoConfigFixture default/sms_notifications/api/source_type MSISDN
      * @magentoConfigFixture default/sms_notifications/api/source +15555551234
      * @magentoConfigFixture default/general/store_information/name Example Store
      */
