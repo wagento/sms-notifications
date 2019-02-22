@@ -91,5 +91,5 @@ abstract class Validator implements ValidatorInterface
         return $validator;
     }
 
-    abstract protected function addValidationRules(ValidatorObject $validator);
+    abstract protected function addValidationRules(ValidatorObject $validator): void;
 }
