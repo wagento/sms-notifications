@@ -16,6 +16,7 @@ declare(strict_types=1);
 
 namespace LinkMobility\SMSNotifications\Model;
 
+use LinkMobility\SMSNotifications\Api\ValidationRulesInterface;
 use LinkMobility\SMSNotifications\Model\Source\SmsType as SmsTypeSource;
 use Magento\Framework\Validator\DataObject;
 use Magento\Framework\Validator\NotEmpty;
@@ -27,7 +28,7 @@ use Magento\Framework\Validator\NotEmptyFactory;
  * @package LinkMobility\SMSNotifications\Model
  * @author Joseph Leedy <joseph@wagento.com>
  */
-final class SmsSubscriptionValidationRules
+final class SmsSubscriptionValidationRules implements ValidationRulesInterface
 {
     /**
      * @var \Magento\Framework\Validator\NotEmptyFactory

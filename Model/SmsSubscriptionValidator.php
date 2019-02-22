@@ -16,82 +16,52 @@ declare(strict_types=1);
 
 namespace LinkMobility\SMSNotifications\Model;
 
-use LinkMobility\SMSNotifications\Api\SmsSubscriptionValidatorInterface;
-use Magento\Framework\Validator\DataObject;
+use LinkMobility\SMSNotifications\Api\ValidationRulesInterface;
+use Magento\Framework\Model\AbstractModel;
+use Magento\Framework\Validator\DataObject as ValidatorObject;
 use Magento\Framework\Validator\DataObjectFactory as ValidatorObjectFactory;
 
 /**
- * SMS Subscription Validator
+ * SMS Subscription Model Validator
  *
  * @package LinkMobility\SMSNotifications\Model
  * @author Joseph Leedy <joseph@wagento.com>
  */
-final class SmsSubscriptionValidator implements SmsSubscriptionValidatorInterface
+final class SmsSubscriptionValidator extends Validator
 {
-    /**
-     * @var \Magento\Framework\Validator\DataObjectFactory
-     */
-    private $validatorObjectFactory;
-    /**
-     * @var \LinkMobility\SMSNotifications\Model\SmsSubscriptionValidationRules
-     */
-    private $validationRules;
-    private $isValid = true;
-    /**
-     * @var string[]
-     */
-    private $messages = [];
-
     public function __construct(
         ValidatorObjectFactory $validatorObjectFactory,
-        SmsSubscriptionValidationRules $validationRules
+        ValidationRulesInterface $validationRules
     ) {
-        $this->validatorObjectFactory = $validatorObjectFactory;
-        $this->validationRules = $validationRules;
+        if (!$validationRules instanceof SmsSubscriptionValidationRules) {
+            throw new \InvalidArgumentException(
+                (string)__('Validation Rules object must be an instance of SmsSubscriptionValidationRules.')
+            );
+        }
+
+        parent::__construct($validatorObjectFactory, $validationRules);
     }
 
     /**
+     * @throws \InvalidArgumentException
      * @throws \Exception
      * @throws \Zend_Validate_Exception
      */
-    public function validate(SmsSubscription $smsSubscription): void
+    public function validate(AbstractModel $model): void
     {
-        /** @var \Magento\Framework\Validator\DataObject $validator */
-        $validator = $this->getValidator();
-
-        if (!$validator->isValid($smsSubscription)) {
-            $this->messages = $validator->getMessages();
-            $this->isValid = false;
+        if (!$model instanceof SmsSubscription) {
+            throw new \InvalidArgumentException(
+                (string)__('Model to validate must be an instance of SmsSubscription.')
+            );
         }
-    }
 
-    public function isValid(): bool
-    {
-        return $this->isValid;
-    }
-
-    public function getMessages(): array
-    {
-        return $this->messages;
+        parent::validate($model);
     }
 
     /**
      * @throws \Zend_Validate_Exception
      */
-    public function getValidator(): \Zend_Validate_Interface
-    {
-        /** @var \Magento\Framework\Validator\DataObject $validator */
-        $validator = $this->validatorObjectFactory->create();
-
-        $this->addValidationRules($validator);
-
-        return $validator;
-    }
-
-    /**
-     * @throws \Zend_Validate_Exception
-     */
-    private function addValidationRules(DataObject $validator): void
+    protected function addValidationRules(ValidatorObject $validator): void
     {
         $this->validationRules->addRequiredFieldRules($validator);
         $this->validationRules->addSmsTypeIsValidRule($validator);
