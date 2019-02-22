@@ -65,6 +65,11 @@
             <argument name="validationRules" xsi:type="object">LinkMobility\SMSNotifications\Model\SmsSubscriptionValidationRules</argument>
         </arguments>
     </type>
+    <type name="LinkMobility\SMSNotifications\Model\SourceValidator">
+        <arguments>
+            <argument name="validationRules" xsi:type="object">LinkMobility\SMSNotifications\Model\SourceValidationRules</argument>
+        </arguments>
+    </type>
     <type name="LinkMobility\SMSNotifications\Plugin\Sales\Api\CreditmemoRepositoryInterfacePlugin">
         <arguments>
             <argument name="smsSender" xsi:type="object">LinkMobility\SMSNotifications\Model\SmsSender\CreditmemoSender</argument>
