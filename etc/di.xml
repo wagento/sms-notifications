@@ -35,6 +35,11 @@
             </argument>
         </arguments>
     </type>
+    <type name="LinkMobility\SMSNotifications\Model\Config\Backend\Source">
+        <arguments>
+            <argument name="validator" xsi:type="object">LinkMobility\SMSNotifications\Model\SourceValidator</argument>
+        </arguments>
+    </type>
     <type name="LinkMobility\SMSNotifications\Model\MessageService">
         <arguments>
             <argument name="logger" xsi:type="object">LinkMobility\SMSNotifications\Logger\Logger</argument>

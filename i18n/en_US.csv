@@ -43,6 +43,7 @@
 "Validator must be an instance of SmsSubscriptionValidator.","Validator must be an instance of SmsSubscriptionValidator."
 "Validation Rules object must be an instance of SmsSubscriptionValidationRules.","Validation Rules object must be an instance of SmsSubscriptionValidationRules."
 "Model to validate must be an instance of SmsSubscription.","Model to validate must be an instance of SmsSubscription."
+"Validator must be an instance of SourceValidator.","Validator must be an instance of SourceValidator."
 "Validation Rules object must be an instance of SourceValidationRules.","Validation Rules object must be an instance of SourceValidationRules."
 "Model to validate must be an instance of Source.","Model to validate must be an instance of Source."
 "Customer ID is required.","Customer ID is required."

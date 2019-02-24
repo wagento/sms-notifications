@@ -74,6 +74,7 @@
                 </field>
                 <field id="source" translate="label comment" type="text" sortOrder="70" showInDefault="1" showInWebsite="1" showInStore="0">
                     <label>Source</label>
+                    <backend_model>LinkMobility\SMSNotifications\Model\Config\Backend\Source</backend_model>
                     <comment>
                         <![CDATA[
 Source format is based on selected Source Type:
