@@ -26,4 +26,8 @@ use LinkMobility\SMSNotifications\Block\AbstractBlock;
  */
 class SubscribeField extends AbstractBlock
 {
+    public function isOptinRequired(): bool
+    {
+        return $this->config->isOptinRequired();
+    }
 }
