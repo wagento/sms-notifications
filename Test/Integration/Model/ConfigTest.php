@@ -40,6 +40,14 @@ class ConfigTest extends TestCase
     }
 
     /**
+     * @magentoConfigFixture default/sms_notifications/general/require_optin 1
+     */
+    public function testIsOptinRequired(): void
+    {
+        $this->assertTrue($this->config->isOptinRequired());
+    }
+
+    /**
      * @magentoConfigFixture default/sms_notifications/general/terms_and_conditions Test
      */
     public function testGetTermsAndConditions(): void
