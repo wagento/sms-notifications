@@ -38,7 +38,7 @@ abstract class AbstractBlock extends Template
     /**
      * @var \LinkMobility\SMSNotifications\Api\ConfigInterface
      */
-    private $config;
+    protected $config;
 
     public function __construct(
         Context $context,
