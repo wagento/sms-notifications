@@ -39,7 +39,7 @@ final class Message implements MessageInterface
      *
      * @var \LinkMobility\SMSNotifications\Gateway\Entity\TON
      */
-    private $sourceTON = TON::MSISDN;
+    private $sourceTON;
     /**
      * Phone number where the message should be sent
      *
@@ -174,11 +174,14 @@ final class Message implements MessageInterface
 
     public function __construct(
         string $source = null,
+        string $sourceTON = null,
         string $destination = null,
         string $userData = null,
         string $platformId = null,
         string $platformPartnerId = null
     ) {
+        $this->setSourceTON($sourceTON);
+
         $this->source = $source;
         $this->destination = $destination;
         $this->userData = $userData;
@@ -202,7 +205,7 @@ final class Message implements MessageInterface
      */
     public function setSourceTON($sourceTON): void
     {
-        if (!($sourceTON instanceof TON)) {
+        if ($sourceTON !== null && !($sourceTON instanceof TON)) {
             $sourceTON = new TON($sourceTON);
         }
 
@@ -229,7 +232,7 @@ final class Message implements MessageInterface
      */
     public function setDestinationTON($destinationTON): void
     {
-        if (!($destinationTON instanceof TON)) {
+        if ($destinationTON !== null && !($destinationTON instanceof TON)) {
             $destinationTON = new TON($destinationTON);
         }
 
@@ -246,7 +249,7 @@ final class Message implements MessageInterface
      */
     public function setDcs($dcs): void
     {
-        if (!($dcs instanceof DCS)) {
+        if ($dcs !== null && !($dcs instanceof DCS)) {
             $dcs = new DCS($dcs);
         }
 

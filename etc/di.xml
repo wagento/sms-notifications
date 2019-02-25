@@ -17,7 +17,6 @@
     <preference for="LinkMobility\SMSNotifications\Api\Data\SmsSubscriptionInterface" type="LinkMobility\SMSNotifications\Model\Data\SmsSubscription"/>
     <preference for="LinkMobility\SMSNotifications\Api\Data\TelephonePrefixInterface" type="LinkMobility\SMSNotifications\Model\Data\TelephonePrefix"/>
     <preference for="LinkMobility\SMSNotifications\Api\ConfigInterface" type="LinkMobility\SMSNotifications\Model\Config"/>
-    <preference for="LinkMobility\SMSNotifications\Api\SmsSubscriptionValidatorInterface" type="LinkMobility\SMSNotifications\Model\SmsSubscriptionValidator"/>
     <preference for="LinkMobility\SMSNotifications\Gateway\ApiClientInterface" type="LinkMobility\SMSNotifications\Gateway\ApiClient"/>
     <preference for="LinkMobility\SMSNotifications\Util\TemplateProcessorInterface" type="LinkMobility\SMSNotifications\Util\TemplateProcessor"/>
     <type name="LinkMobility\SMSNotifications\Logger\Handler\FileHandler">
@@ -34,6 +33,11 @@
             <argument name="processors" xsi:type="array">
                 <item name="sensitiveDataProcessor" xsi:type="object">LinkMobility\SMSNotifications\Logger\Processor\SensitiveDataProcessor</item>
             </argument>
+        </arguments>
+    </type>
+    <type name="LinkMobility\SMSNotifications\Model\Config\Backend\Source">
+        <arguments>
+            <argument name="validator" xsi:type="object">LinkMobility\SMSNotifications\Model\SourceValidator</argument>
         </arguments>
     </type>
     <type name="LinkMobility\SMSNotifications\Model\MessageService">
@@ -54,6 +58,21 @@
     <type name="LinkMobility\SMSNotifications\Model\SmsSender\ShipmentSender">
         <arguments>
             <argument name="logger" xsi:type="object">LinkMobility\SMSNotifications\Logger\Logger</argument>
+        </arguments>
+    </type>
+    <type name="LinkMobility\SMSNotifications\Model\SmsSubscription">
+        <arguments>
+            <argument name="validator" xsi:type="object">LinkMobility\SMSNotifications\Model\SmsSubscriptionValidator</argument>
+        </arguments>
+    </type>
+    <type name="LinkMobility\SMSNotifications\Model\SmsSubscriptionValidator">
+        <arguments>
+            <argument name="validationRules" xsi:type="object">LinkMobility\SMSNotifications\Model\SmsSubscriptionValidationRules</argument>
+        </arguments>
+    </type>
+    <type name="LinkMobility\SMSNotifications\Model\SourceValidator">
+        <arguments>
+            <argument name="validationRules" xsi:type="object">LinkMobility\SMSNotifications\Model\SourceValidationRules</argument>
         </arguments>
     </type>
     <type name="LinkMobility\SMSNotifications\Plugin\Sales\Api\CreditmemoRepositoryInterfacePlugin">

@@ -17,25 +17,31 @@ declare(strict_types=1);
 namespace LinkMobility\SMSNotifications\Model;
 
 use LinkMobility\SMSNotifications\Api\ValidationRulesInterface;
+use LinkMobility\SMSNotifications\Model\Config\Backend\Source;
 use Magento\Framework\Model\AbstractModel;
 use Magento\Framework\Validator\DataObject as ValidatorObject;
 use Magento\Framework\Validator\DataObjectFactory as ValidatorObjectFactory;
 
 /**
- * SMS Subscription Model Validator
+ * Source Configuration Field Validator
  *
  * @package LinkMobility\SMSNotifications\Model
  * @author Joseph Leedy <joseph@wagento.com>
  */
-final class SmsSubscriptionValidator extends Validator
+final class SourceValidator extends Validator
 {
+    /**
+     * @var string
+     */
+    private $sourceType;
+
     public function __construct(
         ValidatorObjectFactory $validatorObjectFactory,
         ValidationRulesInterface $validationRules
     ) {
-        if (!$validationRules instanceof SmsSubscriptionValidationRules) {
+        if (!$validationRules instanceof SourceValidationRules) {
             throw new \InvalidArgumentException(
-                (string)__('Validation Rules object must be an instance of SmsSubscriptionValidationRules.')
+                (string)__('Validation Rules object must be an instance of SourceValidationRules.')
             );
         }
 
@@ -49,13 +55,18 @@ final class SmsSubscriptionValidator extends Validator
      */
     public function validate(AbstractModel $model): void
     {
-        if (!$model instanceof SmsSubscription) {
-            throw new \InvalidArgumentException(
-                (string)__('Model to validate must be an instance of SmsSubscription.')
-            );
+        if (!$model instanceof Source) {
+            throw new \InvalidArgumentException((string)__('Model to validate must be an instance of Source.'));
         }
 
         parent::validate($model);
+    }
+
+    public function setSourceType(string $sourceType): self
+    {
+        $this->sourceType = $sourceType;
+
+        return $this;
     }
 
     /**
@@ -63,7 +74,6 @@ final class SmsSubscriptionValidator extends Validator
      */
     protected function addValidationRules(ValidatorObject $validator): void
     {
-        $this->validationRules->addRequiredFieldRules($validator);
-        $this->validationRules->addSmsTypeIsValidRule($validator);
+        $this->validationRules->addSourceIsValidRules($validator, $this->sourceType);
     }
 }

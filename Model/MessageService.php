@@ -19,6 +19,7 @@ namespace LinkMobility\SMSNotifications\Model;
 use LinkMobility\SMSNotifications\Api\ConfigInterface;
 use LinkMobility\SMSNotifications\Gateway\ApiClientInterface;
 use LinkMobility\SMSNotifications\Gateway\ApiException;
+use LinkMobility\SMSNotifications\Gateway\Factory\MessageEntityHydratorFactory;
 use LinkMobility\SMSNotifications\Gateway\Factory\MessageFactory;
 use LinkMobility\SMSNotifications\Util\TemplateProcessorInterface;
 use Magento\Framework\App\Config\ScopeConfigInterface;
@@ -28,7 +29,6 @@ use Magento\Sales\Api\Data\ShipmentInterface;
 use Magento\Shipping\Helper\Data as ShippingHelper;
 use Magento\Store\Model\ScopeInterface;
 use Psr\Log\LoggerInterface;
-use Zend\Hydrator\Reflection as MessageHydrator;
 
 /**
  * Message Service
@@ -46,9 +46,9 @@ class MessageService
      */
     private $logger;
     /**
-     * @var \Zend\Hydrator\Reflection
+     * @var \LinkMobility\SMSNotifications\Gateway\Factory\MessageEntityHydratorFactory
      */
-    private $messageHydrator;
+    private $messageEntityHydratorFactory;
     /**
      * @var \Magento\Framework\UrlInterface
      */
@@ -88,7 +88,7 @@ class MessageService
 
     public function __construct(
         LoggerInterface $logger,
-        MessageHydrator $messageHydrator,
+        MessageEntityHydratorFactory $messageEntityHydratorFactory,
         UrlInterface $urlBuilder,
         ScopeConfigInterface $scopeConfig,
         ShippingHelper $shippingHelper,
@@ -98,7 +98,7 @@ class MessageService
         ApiClientInterface $apiClient
     ) {
         $this->logger = $logger;
-        $this->messageHydrator = $messageHydrator;
+        $this->messageEntityHydratorFactory = $messageEntityHydratorFactory;
         $this->urlBuilder = $urlBuilder;
         $this->scopeConfig = $scopeConfig;
         $this->shippingHelper = $shippingHelper;
@@ -125,18 +125,21 @@ class MessageService
     public function sendMessage(string $message, string $to, string $messageType): bool
     {
         $messageEntity = $this->messageFactory->create();
-        $sourceNumber = $this->config->getSourceNumber();
+        $messageEntityHydrator = $this->messageEntityHydratorFactory->create();
+        $source = $this->config->getSource();
+        $sourceType = $this->config->getSourceType();
         $platformId = $this->config->getPlatformId();
         $platformPartnerId = $this->config->getPlatformPartnerId();
         $processedMessage = $this->processMessage($message, $messageType);
 
-        $messageEntity->setSource($sourceNumber);
+        $messageEntity->setSource($source);
+        $messageEntity->setSourceTON($sourceType);
         $messageEntity->setDestination($to);
         $messageEntity->setUserData($processedMessage);
         $messageEntity->setPlatformId($platformId);
         $messageEntity->setPlatformPartnerId($platformPartnerId);
 
-        $messageData = array_filter($this->messageHydrator->extract($messageEntity));
+        $messageData = array_filter($messageEntityHydrator->extract($messageEntity));
 
         try {
             $this->apiClient->setUri('send');

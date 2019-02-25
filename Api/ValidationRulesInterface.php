@@ -1,6 +1,5 @@
 <?php
 /**
-/**
  * LINK Mobility SMS Notifications
  *
  * Sends transactional SMS notifications through the LINK Mobility messaging
@@ -17,29 +16,13 @@ declare(strict_types=1);
 
 namespace LinkMobility\SMSNotifications\Api;
 
-use LinkMobility\SMSNotifications\Model\SmsSubscription;
-
 /**
- * SMS Subscription Validator Interface
+ * Validation Rules Interface
  *
- * @package LinkMobility\SMSNotifications\Model
+ * @package LinkMobility\SMSNotifications\Api
  * @author Joseph Leedy <joseph@wagento.com>
  * @api
  */
-interface SmsSubscriptionValidatorInterface
+interface ValidationRulesInterface
 {
-    /**
-     * @throws \Exception
-     * @throws \Zend_Validate_Exception
-     */
-    public function validate(SmsSubscription $smsSubscription): void;
-
-    public function isValid(): bool;
-
-    public function getMessages(): array;
-
-    /**
-     * @throws \Zend_Validate_Exception
-     */
-    public function getValidator(): \Zend_Validate_Interface;
 }

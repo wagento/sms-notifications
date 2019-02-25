@@ -68,9 +68,23 @@
                     <label>Gate ID</label>
                     <backend_model>Magento\Config\Model\Config\Backend\Encrypted</backend_model>
                 </field>
-                <field id="source_number" translate="label comment" type="text" sortOrder="60" showInDefault="1" showInWebsite="1" showInStore="0">
-                    <label>Source Phone Number</label>
-                    <comment>A mobile number, in international format, starting with +.</comment>
+                <field id="source_type" translate="label" type="select" sortOrder="60" showInDefault="1" showInWebsite="1" showInStore="0">
+                    <label>Source Type</label>
+                    <source_model>LinkMobility\SMSNotifications\Model\Config\Source\SourceType</source_model>
+                </field>
+                <field id="source" translate="label comment" type="text" sortOrder="70" showInDefault="1" showInWebsite="1" showInStore="0">
+                    <label>Source</label>
+                    <backend_model>LinkMobility\SMSNotifications\Model\Config\Backend\Source</backend_model>
+                    <comment>
+                        <![CDATA[
+Source format is based on selected Source Type:
+<ul type="none" class="note">
+    <li><strong>Short Number:</strong> 1-14 digit numeric code (length depends on country, e.g. "12345")</li>
+    <li><strong>Alphanumeric:</strong> Up to 11 letters or numbers (A-Z, a-z and 0-9, e.g. "ABC123")</li>
+    <li><strong>Phone number:</strong> Mobile number in international format (starting with "+", e.g. "+1-555-555-1234")</li>
+</ul>
+                        ]]>
+                    </comment>
                 </field>
             </group>
             <group id="templates" translate="label comment" type="text" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1">

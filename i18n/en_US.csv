@@ -40,9 +40,21 @@
 "Customer with ID %1 is already subscribed to ""%2"" SMS notification.","Customer with ID %1 is already subscribed to ""%2"" SMS notification."
 "Could not get mobile telephone number for customer. Error: %1","Could not get mobile telephone number for customer. Error: %1"
 "SMS Notification Subscription with ID ""%1"" does not exist.","SMS Notification Subscription with ID ""%1"" does not exist."
+"Validator must be an instance of SmsSubscriptionValidator.","Validator must be an instance of SmsSubscriptionValidator."
+"Validation Rules object must be an instance of SmsSubscriptionValidationRules.","Validation Rules object must be an instance of SmsSubscriptionValidationRules."
+"Model to validate must be an instance of SmsSubscription.","Model to validate must be an instance of SmsSubscription."
+"Validator must be an instance of SourceValidator.","Validator must be an instance of SourceValidator."
+"Validation Rules object must be an instance of SourceValidationRules.","Validation Rules object must be an instance of SourceValidationRules."
+"Model to validate must be an instance of Source.","Model to validate must be an instance of Source."
 "Customer ID is required.","Customer ID is required."
 "SMS Type is required.","SMS Type is required."
 """%value%"" is not a valid type of SMS notification.","""%value%"" is not a valid type of SMS notification."
+"Source is required.","Source is required."
+"Source must be a numeric short number.","Source must be a numeric short number."
+"Source is too short.","Source is too short."
+"Source is too long.","Source is too long."
+"Source may only contain the characters A-Z or a-z, or digits 0-9.","Source may only contain the characters A-Z or a-z, or digits 0-9."
+"Source must start with a plus (""+"").","Source must start with a plus (""+"")."
 "Order placed successfully","Order placed successfully"
 "Order updated","Order updated"
 "Order shipped","Order shipped"
@@ -106,8 +118,22 @@ Enabled,Enabled
 "Platform ID","Platform ID"
 "Platform Partner ID","Platform Partner ID"
 "Gate ID","Gate ID"
-"Source Phone Number","Source Phone Number"
-"A mobile number, in international format, starting with +.","A mobile number, in international format, starting with +."
+"Source Type","Source Type"
+Source,Source
+"Short Number","Short Number"
+Alphanumeric,Alphanumeric
+"Phone Number","Phone Number"
+"Source format is based on selected Source Type:
+<ul type=""none"" class=""note"">
+    <li><strong>Short Number:</strong> 1-14 digit numeric code (length depends on country, e.g. ""12345"")</li>
+    <li><strong>Alphanumeric:</strong> Up to 11 letters or numbers (A-Z, a-z and 0-9, e.g. ""ABC123"")</li>
+    <li><strong>Phone number:</strong> Mobile number in international format (starting with ""+"", e.g. ""+1-555-555-1234"")</li>
+</ul>","Source format is based on selected Source Type:
+<ul type=""none"" class=""note"">
+    <li><strong>Short Number:</strong> 1-14 digit numeric code (length depends on country, e.g. ""12345"")</li>
+    <li><strong>Alphanumeric:</strong> Up to 11 letters or numbers (A-Z, a-z and 0-9, e.g. ""ABC123"")</li>
+    <li><strong>Phone number:</strong> Mobile number in international format (starting with ""+"", e.g. ""+1-555-555-1234"")</li>
+</ul>"
 "Message Templates","Message Templates"
 "<strong>Note:</strong> Limit messages to 160 characters or less.","<strong>Note:</strong> Limit messages to 160 characters or less."
 "Order Placed","Order Placed"

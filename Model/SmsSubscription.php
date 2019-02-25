@@ -18,7 +18,7 @@ namespace LinkMobility\SMSNotifications\Model;
 
 use LinkMobility\SMSNotifications\Api\Data\SmsSubscriptionInterface;
 use LinkMobility\SMSNotifications\Api\Data\SmsSubscriptionInterfaceFactory;
-use LinkMobility\SMSNotifications\Api\SmsSubscriptionValidatorInterface;
+use LinkMobility\SMSNotifications\Api\ValidatorInterface;
 use LinkMobility\SMSNotifications\Model\ResourceModel\SmsSubscription as SmsSubscriptionResource;
 use LinkMobility\SMSNotifications\Traits\DataObjectMagicMethods;
 use Magento\Framework\Api\DataObjectHelper;
@@ -64,7 +64,7 @@ class SmsSubscription extends AbstractModel
      */
     private $smsSubscriptionFactory;
     /**
-     * @var \LinkMobility\SMSNotifications\Api\SmsSubscriptionValidatorInterface
+     * @var \LinkMobility\SMSNotifications\Api\ValidatorInterface
      */
     private $validator;
 
@@ -74,11 +74,17 @@ class SmsSubscription extends AbstractModel
         DataObjectHelper $dataObjectHelper,
         DataObjectProcessor $dataObjectProcessor,
         SmsSubscriptionInterfaceFactory $smsSubscriptionFactory,
-        SmsSubscriptionValidatorInterface $validator,
+        ValidatorInterface $validator,
         AbstractResource $resource = null,
         AbstractDb $resourceCollection = null,
         array $data = []
     ) {
+        if (!$validator instanceof SmsSubscriptionValidator) {
+            throw new \InvalidArgumentException(
+                (string)__('Validator must be an instance of SmsSubscriptionValidator.')
+            );
+        }
+
         parent::__construct($context, $registry, $resource, $resourceCollection, $data);
 
         $this->dataObjectHelper = $dataObjectHelper;
