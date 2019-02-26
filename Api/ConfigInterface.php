@@ -32,6 +32,7 @@ interface ConfigInterface
     const XML_PATH_ENABLED = 'sms_notifications/general/enabled';
     const XML_PATH_REQUIRE_OPTIN = 'sms_notifications/general/require_optin';
     const XML_PATH_TERMS_AND_CONDITIONS = 'sms_notifications/general/terms_and_conditions';
+    const XML_PATH_SHOW_TERMS_AFTER_OPTIN = 'sms_notifications/general/show_terms_after_optin';
     const XML_PATH_API_USER = 'sms_notifications/api/username';
     const XML_PATH_API_PASSWORD = 'sms_notifications/api/password';
     const XML_PATH_PLATFORM_ID = 'sms_notifications/api/platform_id';
@@ -53,6 +54,8 @@ interface ConfigInterface
     public function isOptinRequired(string $websiteId = null): bool;
 
     public function getTermsAndConditions(string $websiteId = null): ?string;
+
+    public function isTermsAndConditionsShownAfterOptin(string $websiteId = null): bool;
 
     public function getApiUser(string $websiteId = null): ?string;
 

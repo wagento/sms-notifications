@@ -61,6 +61,13 @@ final class Config implements ConfigInterface
         return $this->scopeConfig->getValue(self::XML_PATH_TERMS_AND_CONDITIONS, $scope, $websiteId);
     }
 
+    public function isTermsAndConditionsShownAfterOptin(string $websiteId = null): bool
+    {
+        $scope = $websiteId === null ? ScopeConfigInterface::SCOPE_TYPE_DEFAULT : ScopeInterface::SCOPE_WEBSITE;
+
+        return $this->scopeConfig->isSetFlag(self::XML_PATH_SHOW_TERMS_AFTER_OPTIN, $scope, $websiteId);
+    }
+
     public function getApiUser(string $websiteId = null): ?string
     {
         $scope = $websiteId === null ? ScopeConfigInterface::SCOPE_TYPE_DEFAULT : ScopeInterface::SCOPE_WEBSITE;
