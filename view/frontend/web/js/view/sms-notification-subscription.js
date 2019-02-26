@@ -16,15 +16,26 @@ define([
     'uiComponent',
     'mage/translate',
     'smsNotifications',
-    'LinkMobility_SMSNotifications/js/model/sms-subscription-preferences-modal'
-], function ($, ko, Component, $t, smsNotifications, subscriptionPreferencesModal) {
+    'LinkMobility_SMSNotifications/js/model/sms-subscription-preferences-modal',
+    'LinkMobility_SMSNotifications/js/model/sms-terms-conditions-modal'
+], function ($, ko, Component, $t, smsNotifications, subscriptionPreferencesModal, termsConditionsModal) {
     'use strict';
 
     return Component.extend({
         defaults: {
             template: 'LinkMobility_SMSNotifications/sms-notification-subscription',
-            checkboxSelector: '#sms-notifications-subscribed',
+            isOptinRequired: true,
             selectedSmsTypes: ko.observable('')
+        },
+        isSubscribeChecked: ko.observable(false),
+        initialize: function () {
+            this._super();
+
+            if (!this.isOptinRequired) {
+                this.isSubscribeChecked(true);
+
+                smsNotifications.isSubscribed(true);
+            }
         },
         initObservable: function () {
             this._super();
@@ -42,13 +53,27 @@ define([
                 return true;
             }
 
-            smsNotifications.isSubscribing(true);
+            if (data.isOptinRequired) {
+                smsNotifications.isSubscribing(true);
+
+                event.stopImmediatePropagation();
+
+                return false;
+            }
+
+            smsNotifications.isSubscribing(false);
+            smsNotifications.isSubscribed(true);
+
+            return true;
         },
         handlePreferencesClick: function () {
             subscriptionPreferencesModal.open(true);
         },
+        handleTermsConditionsClick: function () {
+            termsConditionsModal.showModal();
+        },
         handleSubscribe: function (isSubscribed) {
-            $(this.checkboxSelector).prop('checked', isSubscribed);
+            this.isSubscribeChecked(isSubscribed);
         },
         setSmsSelectedTypes: function (selectedSmsTypes) {
             this.selectedSmsTypes(selectedSmsTypes.join(','));

@@ -43,7 +43,12 @@
                     <label>Enabled</label>
                     <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
                 </field>
-                <field id="terms_and_conditions" translate="label" type="textarea" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="0">
+                <field id="require_optin" translate="label comment" type="select" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="0">
+                    <label>Require Opt-in</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <comment><![CDATA[If "No," "Subscribe to text notifications" will automatically be checked on customer registration page.]]></comment>
+                </field>
+                <field id="terms_and_conditions" translate="label" type="textarea" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="0">
                     <label>Terms and Conditions</label>
                 </field>
             </group>

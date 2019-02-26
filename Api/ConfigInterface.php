@@ -30,6 +30,7 @@ use Magento\Store\Model\ScopeInterface;
 interface ConfigInterface
 {
     const XML_PATH_ENABLED = 'sms_notifications/general/enabled';
+    const XML_PATH_REQUIRE_OPTIN = 'sms_notifications/general/require_optin';
     const XML_PATH_TERMS_AND_CONDITIONS = 'sms_notifications/general/terms_and_conditions';
     const XML_PATH_API_USER = 'sms_notifications/api/username';
     const XML_PATH_API_PASSWORD = 'sms_notifications/api/password';
@@ -48,6 +49,8 @@ interface ConfigInterface
     const XML_PATH_TEMPLATE_ORDER_RELEASED = 'sms_notifications/templates/order_released';
 
     public function isEnabled(string $websiteId = null): bool;
+
+    public function isOptinRequired(string $websiteId = null): bool;
 
     public function getTermsAndConditions(string $websiteId = null): ?string;
 

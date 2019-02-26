@@ -47,6 +47,13 @@ final class Config implements ConfigInterface
         return $this->scopeConfig->isSetFlag(self::XML_PATH_ENABLED, $scope, $websiteId);
     }
 
+    public function isOptinRequired(string $websiteId = null): bool
+    {
+        $scope = $websiteId === null ? ScopeConfigInterface::SCOPE_TYPE_DEFAULT : ScopeInterface::SCOPE_WEBSITE;
+
+        return $this->scopeConfig->isSetFlag(self::XML_PATH_REQUIRE_OPTIN, $scope, $websiteId);
+    }
+
     public function getTermsAndConditions(string $websiteId = null): ?string
     {
         $scope = $websiteId === null ? ScopeConfigInterface::SCOPE_TYPE_DEFAULT : ScopeInterface::SCOPE_WEBSITE;

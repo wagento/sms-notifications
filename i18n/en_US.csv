@@ -112,6 +112,8 @@ Configuration,Configuration
 </ul>"
 "General Settings","General Settings"
 Enabled,Enabled
+"Require Opt-in","Require Opt-in"
+"If ""No,"" ""Subscribe to text notifications"" checkbox will automatically be checked on customer registration page.","If ""No,"" ""Subscribe to text notifications"" checkbox will automatically be checked on customer registration page."
 "API Configuration","API Configuration"
 "API Username","API Username"
 "API Password","API Password"
