@@ -51,6 +51,13 @@
                 <field id="terms_and_conditions" translate="label" type="textarea" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="0">
                     <label>Terms and Conditions</label>
                 </field>
+                <field id="show_terms_after_optin" translate="label" type="select" sortOrder="40" showInDefault="1" showInWebsite="1" showInStore="0">
+                    <label>Show Terms After Opt-in</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <depends>
+                        <field id="require_optin">1</field>
+                    </depends>
+                </field>
             </group>
             <group id="api" translate="label" type="text" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="0">
                 <label>API Configuration</label>
