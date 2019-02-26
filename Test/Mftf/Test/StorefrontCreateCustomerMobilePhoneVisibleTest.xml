@@ -29,6 +29,7 @@
         </annotations>
         <before>
             <actionGroup ref="EnableSmsNotificationsActionGroup" stepKey="enableSmsNotifications"/>
+            <actionGroup ref="AllowSmsNotificationsOptinActionGroup" stepKey="allowSmsNotificationOptin"/>
         </before>
         <amOnPage stepKey="amOnStorefrontPage" url="/"/>
         <waitForPageLoad stepKey="waitForStorefrontPage"/>
