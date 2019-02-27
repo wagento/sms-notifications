@@ -141,6 +141,20 @@ class MessageService
         $platformPartnerId = $this->config->getPlatformPartnerId($websiteId);
         $processedMessage = $this->processMessage($message, $messageType);
 
+        if ($source === null || $sourceType === null || $platformId === null || $platformPartnerId === null) {
+            $this->logger->critical(
+                __('The API settings are not configured properly.'),
+                [
+                    'source' => $source,
+                    'sourceType' => $sourceType,
+                    'platformId' => $platformId,
+                    'platformPartnerId' => $platformPartnerId
+                ]
+            );
+
+            return false;
+        }
+
         $messageEntity->setSource($source);
         $messageEntity->setSourceTON($sourceType);
         $messageEntity->setDestination($to);

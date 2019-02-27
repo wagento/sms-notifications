@@ -36,6 +36,7 @@
 "Your mobile telephone number could not be updated.","Your mobile telephone number could not be updated."
 "Could not save mobile telephone number. Error: %1","Could not save mobile telephone number. Error: %1"
 "Your mobile telephone number has been updated.","Your mobile telephone number has been updated."
+"The API settings are not configured properly.","The API settings are not configured properly."
 "The SMS message was sent successfully.","The SMS message was sent successfully."
 "Customer with ID %1 is already subscribed to ""%2"" SMS notification.","Customer with ID %1 is already subscribed to ""%2"" SMS notification."
 "Could not get mobile telephone number for customer. Error: %1","Could not get mobile telephone number for customer. Error: %1"
