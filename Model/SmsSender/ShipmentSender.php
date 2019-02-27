@@ -94,7 +94,7 @@ final class ShipmentSender extends SmsSender
         $this->messageService->setShipment($shipment);
         $this->messageService->setOrder($shipment->getOrder());
 
-        $messageTemplate = $this->config->getOrderShippedTemplate($websiteId);
+        $messageTemplate = $this->config->getOrderShippedTemplate($shipment->getStoreId());
         $messageSent = $this->messageService->sendMessage($messageTemplate, $messageRecipient, 'order');
 
         $shipmentExtension->setIsSmsNotificationSent(true);

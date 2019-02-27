@@ -95,7 +95,7 @@ final class CreditmemoSender extends SmsSender
 
         $this->messageService->setOrder($order);
 
-        $messageTemplate = $this->config->getOrderRefundedTemplate($websiteId);
+        $messageTemplate = $this->config->getOrderRefundedTemplate($creditmemo->getStoreId());
         $messageSent = $this->messageService->sendMessage($messageTemplate, $messageRecipient, 'order');
 
         $creditmemoExtensionAttributes->setIsSmsNotificationSent(true);

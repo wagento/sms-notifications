@@ -91,24 +91,24 @@ final class OrderSender extends SmsSender
 
         switch ($orderState) {
             case Order::STATE_NEW:
-                $messageTemplate = $this->config->getOrderPlacedTemplate($websiteId);
+                $messageTemplate = $this->config->getOrderPlacedTemplate($order->getStoreId());
                 $smsType = 'order_placed';
                 break;
             case Order::STATE_CANCELED:
-                $messageTemplate = $this->config->getOrderCanceledTemplate($websiteId);
+                $messageTemplate = $this->config->getOrderCanceledTemplate($order->getStoreId());
                 $smsType = 'order_canceled';
                 break;
             case Order::STATE_HOLDED:
-                $messageTemplate = $this->config->getOrderHeldTemplate($websiteId);
+                $messageTemplate = $this->config->getOrderHeldTemplate($order->getStoreId());
                 $smsType = 'order_held';
                 break;
             case 'released':
-                $messageTemplate = $this->config->getOrderReleasedTemplate($websiteId);
+                $messageTemplate = $this->config->getOrderReleasedTemplate($order->getStoreId());
                 $smsType = 'order_released';
                 break;
             case Order::STATE_PROCESSING:
             default:
-                $messageTemplate = $this->config->getOrderUpdatedTemplate($websiteId);
+                $messageTemplate = $this->config->getOrderUpdatedTemplate($order->getStoreId());
                 $smsType = 'order_updated';
         }
 
