@@ -17,18 +17,15 @@ declare(strict_types=1);
 namespace LinkMobility\SMSNotifications\Model;
 
 use LinkMobility\SMSNotifications\Api\ConfigInterface;
+use LinkMobility\SMSNotifications\Factory\MessageVariablesFactory;
 use LinkMobility\SMSNotifications\Gateway\ApiClientInterface;
 use LinkMobility\SMSNotifications\Gateway\ApiException;
 use LinkMobility\SMSNotifications\Gateway\Factory\MessageEntityHydratorFactory;
 use LinkMobility\SMSNotifications\Gateway\Factory\MessageFactory;
 use LinkMobility\SMSNotifications\Util\TemplateProcessorInterface;
-use Magento\Framework\App\Config\ScopeConfigInterface;
 use Magento\Framework\Exception\NoSuchEntityException;
-use Magento\Framework\UrlInterface;
 use Magento\Sales\Api\Data\OrderInterface;
 use Magento\Sales\Api\Data\ShipmentInterface;
-use Magento\Shipping\Helper\Data as ShippingHelper;
-use Magento\Store\Model\ScopeInterface;
 use Magento\Store\Model\StoreManagerInterface;
 use Psr\Log\LoggerInterface;
 
@@ -38,8 +35,6 @@ use Psr\Log\LoggerInterface;
  * @package LinkMobility\SMSNotifications\Model
  * @author Joseph Leedy <joseph@wagento.com>
  * @api
- *
- * @SuppressWarnings(PHPMD.CouplingBetweenObjects)
  */
 class MessageService
 {
@@ -52,18 +47,6 @@ class MessageService
      */
     private $storeManager;
     /**
-     * @var \Magento\Framework\UrlInterface
-     */
-    private $urlBuilder;
-    /**
-     * @var \Magento\Framework\App\Config\ScopeConfigInterface
-     */
-    private $scopeConfig;
-    /**
-     * @var \Magento\Shipping\Helper\Data
-     */
-    private $shippingHelper;
-    /**
      * @var \LinkMobility\SMSNotifications\Api\ConfigInterface
      */
     private $config;
@@ -75,6 +58,10 @@ class MessageService
      * @var \LinkMobility\SMSNotifications\Gateway\Factory\MessageEntityHydratorFactory
      */
     private $messageEntityHydratorFactory;
+    /**
+     * @var \LinkMobility\SMSNotifications\Factory\MessageVariablesFactory
+     */
+    private $messageVariablesFactory;
     /**
      * @var \LinkMobility\SMSNotifications\Util\TemplateProcessorInterface
      */
@@ -95,23 +82,19 @@ class MessageService
     public function __construct(
         LoggerInterface $logger,
         StoreManagerInterface $storeManager,
-        UrlInterface $urlBuilder,
-        ScopeConfigInterface $scopeConfig,
-        ShippingHelper $shippingHelper,
         ConfigInterface $config,
         MessageFactory $messageFactory,
         MessageEntityHydratorFactory $messageEntityHydratorFactory,
+        MessageVariablesFactory $messageVariablesFactory,
         TemplateProcessorInterface $templateProcessor,
         ApiClientInterface $apiClient
     ) {
         $this->logger = $logger;
         $this->storeManager = $storeManager;
-        $this->urlBuilder = $urlBuilder;
-        $this->scopeConfig = $scopeConfig;
-        $this->shippingHelper = $shippingHelper;
         $this->config = $config;
         $this->messageFactory = $messageFactory;
         $this->messageEntityHydratorFactory = $messageEntityHydratorFactory;
+        $this->messageVariablesFactory = $messageVariablesFactory;
         $this->templateProcessor = $templateProcessor;
         $this->apiClient = $apiClient;
     }
@@ -198,70 +181,25 @@ class MessageService
 
     private function processMessage(string $message, string $type): string
     {
-        $variables = [];
+        $messageVariables = $this->messageVariablesFactory->create(
+            $type,
+            [
+                'order' => $this->order,
+                'shipment' => $this->shipment
+            ]
+        );
 
-        if ($type === 'order') {
-            $variables = $this->getOrderMessageVariables();
-        } else {
+        if ($messageVariables === null) {
+            return $message;
+        }
+
+        $variables = $messageVariables->getVariables();
+
+        if (count($variables) === 0) {
             return $message;
         }
 
         return $this->templateProcessor->process($message, $variables);
-    }
-
-    private function getOrderMessageVariables(): array
-    {
-        if ($this->order === null) {
-            return [];
-        }
-
-        return [
-            'order_id' => $this->order->getIncrementId(),
-            'order_url' => $this->urlBuilder->getUrl('sales/order/view', ['order_id' => $this->order->getEntityId()]),
-            'tracking_url' => $this->getShipmentTrackingUrl(),
-            'customer_name' => $this->order->getCustomerFirstname() . ' ' . $this->order->getCustomerLastname(),
-            'customer_first_name' => $this->order->getCustomerFirstname(),
-            'customer_last_name' => $this->order->getCustomerLastname(),
-            'store_name' => $this->getStoreNameById((int)$this->order->getStoreId(), $this->order->getStoreName()),
-        ];
-    }
-
-    private function getStoreNameById(int $storeId, string $default): string
-    {
-        try {
-            $storeName = $this->scopeConfig->getValue(
-                'general/store_information/name',
-                ScopeInterface::SCOPE_STORE,
-                $storeId
-            );
-        } catch (\Exception $e) {
-            $storeName = null;
-        }
-
-        if ($storeName === null) {
-            if (strpos($default, "\n") !== false) {
-                $default = explode("\n", $default)[1];
-            }
-
-            $storeName = $default;
-        }
-
-        return $storeName;
-    }
-
-    private function getShipmentTrackingUrl(): string
-    {
-        if ($this->shipment !== null) {
-            $salesModel = $this->shipment;
-        } else {
-            $salesModel = $this->order;
-        }
-
-        if ($salesModel === null) {
-            return '';
-        }
-
-        return $this->shippingHelper->getTrackingPopupUrlBySalesModel($salesModel);
     }
 
     private function getWebsiteId(): ?int
