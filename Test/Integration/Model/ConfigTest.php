@@ -56,6 +56,14 @@ class ConfigTest extends TestCase
     }
 
     /**
+     * @magentoConfigFixture default/sms_notifications/general/show_terms_after_optin 1
+     */
+    public function testIsTermsAndConditionsShownAfterOptin(): void
+    {
+        $this->assertTrue($this->config->isTermsAndConditionsShownAfterOptin());
+    }
+
+    /**
      * @magentoConfigFixture default/sms_notifications/api/username LINKMOBILITY
      */
     public function testGetApiUser(): void

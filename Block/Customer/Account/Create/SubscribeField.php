@@ -30,4 +30,9 @@ class SubscribeField extends AbstractBlock
     {
         return $this->config->isOptinRequired();
     }
+
+    public function isTermsAndConditionsShownAfterOptin(): bool
+    {
+        return $this->config->isTermsAndConditionsShownAfterOptin();
+    }
 }

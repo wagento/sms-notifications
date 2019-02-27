@@ -25,9 +25,11 @@ define([
         defaults: {
             template: 'LinkMobility_SMSNotifications/sms-notification-subscription',
             isOptinRequired: true,
+            isTermsAndConditionsShownAfterOptin: true,
             selectedSmsTypes: ko.observable('')
         },
         isSubscribeChecked: ko.observable(false),
+        showTermsAndConditions: null,
         initialize: function () {
             this._super();
 
@@ -38,7 +40,13 @@ define([
             }
         },
         initObservable: function () {
+            const self = this;
+
             this._super();
+
+            this.showTermsAndConditions = ko.computed(function () {
+                return self.isOptinRequired && self.isTermsAndConditionsShownAfterOptin;
+            });
 
             smsNotifications.isSubscribed.subscribe(this.handleSubscribe, this);
             smsNotifications.selectedSmsTypes.subscribe(this.setSmsSelectedTypes, this);
@@ -53,7 +61,7 @@ define([
                 return true;
             }
 
-            if (data.isOptinRequired) {
+            if (data.showTermsAndConditions()) {
                 smsNotifications.isSubscribing(true);
 
                 event.stopImmediatePropagation();

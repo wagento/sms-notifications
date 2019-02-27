@@ -114,6 +114,7 @@ Configuration,Configuration
 Enabled,Enabled
 "Require Opt-in","Require Opt-in"
 "If ""No,"" ""Subscribe to text notifications"" checkbox will automatically be checked on customer registration page.","If ""No,"" ""Subscribe to text notifications"" checkbox will automatically be checked on customer registration page."
+"Show Terms After Opt-in","Show Terms After Opt-in"
 "API Configuration","API Configuration"
 "API Username","API Username"
 "API Password","API Password"
