@@ -46,10 +46,6 @@ class MessageService
      */
     private $logger;
     /**
-     * @var \LinkMobility\SMSNotifications\Gateway\Factory\MessageEntityHydratorFactory
-     */
-    private $messageEntityHydratorFactory;
-    /**
      * @var \Magento\Framework\UrlInterface
      */
     private $urlBuilder;
@@ -70,6 +66,10 @@ class MessageService
      */
     private $messageFactory;
     /**
+     * @var \LinkMobility\SMSNotifications\Gateway\Factory\MessageEntityHydratorFactory
+     */
+    private $messageEntityHydratorFactory;
+    /**
      * @var \LinkMobility\SMSNotifications\Util\TemplateProcessorInterface
      */
     private $templateProcessor;
@@ -88,22 +88,22 @@ class MessageService
 
     public function __construct(
         LoggerInterface $logger,
-        MessageEntityHydratorFactory $messageEntityHydratorFactory,
         UrlInterface $urlBuilder,
         ScopeConfigInterface $scopeConfig,
         ShippingHelper $shippingHelper,
         ConfigInterface $config,
         MessageFactory $messageFactory,
+        MessageEntityHydratorFactory $messageEntityHydratorFactory,
         TemplateProcessorInterface $templateProcessor,
         ApiClientInterface $apiClient
     ) {
         $this->logger = $logger;
-        $this->messageEntityHydratorFactory = $messageEntityHydratorFactory;
         $this->urlBuilder = $urlBuilder;
         $this->scopeConfig = $scopeConfig;
         $this->shippingHelper = $shippingHelper;
         $this->config = $config;
         $this->messageFactory = $messageFactory;
+        $this->messageEntityHydratorFactory = $messageEntityHydratorFactory;
         $this->templateProcessor = $templateProcessor;
         $this->apiClient = $apiClient;
     }
