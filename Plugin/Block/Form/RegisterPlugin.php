@@ -65,7 +65,7 @@ class RegisterPlugin
         }
 
         try {
-            $websiteId = $this->storeManager->getStore()->getWebsiteId();
+            $websiteId = (int)$this->storeManager->getStore()->getWebsiteId();
         } catch (NoSuchEntityException $e) {
             $websiteId = null;
         }

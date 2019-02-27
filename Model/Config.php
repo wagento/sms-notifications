@@ -40,77 +40,77 @@ final class Config implements ConfigInterface
         $this->scopeConfig = $scopeConfig;
     }
 
-    public function isEnabled(string $websiteId = null): bool
+    public function isEnabled(?int $websiteId = null): bool
     {
         $scope = $websiteId === null ? ScopeConfigInterface::SCOPE_TYPE_DEFAULT : ScopeInterface::SCOPE_WEBSITE;
 
         return $this->scopeConfig->isSetFlag(self::XML_PATH_ENABLED, $scope, $websiteId);
     }
 
-    public function isOptinRequired(string $websiteId = null): bool
+    public function isOptinRequired(?int $websiteId = null): bool
     {
         $scope = $websiteId === null ? ScopeConfigInterface::SCOPE_TYPE_DEFAULT : ScopeInterface::SCOPE_WEBSITE;
 
         return $this->scopeConfig->isSetFlag(self::XML_PATH_REQUIRE_OPTIN, $scope, $websiteId);
     }
 
-    public function getTermsAndConditions(string $websiteId = null): ?string
+    public function getTermsAndConditions(?int $websiteId = null): ?string
     {
         $scope = $websiteId === null ? ScopeConfigInterface::SCOPE_TYPE_DEFAULT : ScopeInterface::SCOPE_WEBSITE;
 
         return $this->scopeConfig->getValue(self::XML_PATH_TERMS_AND_CONDITIONS, $scope, $websiteId);
     }
 
-    public function isTermsAndConditionsShownAfterOptin(string $websiteId = null): bool
+    public function isTermsAndConditionsShownAfterOptin(?int $websiteId = null): bool
     {
         $scope = $websiteId === null ? ScopeConfigInterface::SCOPE_TYPE_DEFAULT : ScopeInterface::SCOPE_WEBSITE;
 
         return $this->scopeConfig->isSetFlag(self::XML_PATH_SHOW_TERMS_AFTER_OPTIN, $scope, $websiteId);
     }
 
-    public function getApiUser(string $websiteId = null): ?string
+    public function getApiUser(?int $websiteId = null): ?string
     {
         $scope = $websiteId === null ? ScopeConfigInterface::SCOPE_TYPE_DEFAULT : ScopeInterface::SCOPE_WEBSITE;
 
         return $this->scopeConfig->getValue(self::XML_PATH_API_USER, $scope, $websiteId);
     }
 
-    public function getApiPassword(string $websiteId = null): ?string
+    public function getApiPassword(?int $websiteId = null): ?string
     {
         $scope = $websiteId === null ? ScopeConfigInterface::SCOPE_TYPE_DEFAULT : ScopeInterface::SCOPE_WEBSITE;
 
         return $this->scopeConfig->getValue(self::XML_PATH_API_PASSWORD, $scope, $websiteId);
     }
 
-    public function getPlatformId(string $websiteId = null): ?string
+    public function getPlatformId(?int $websiteId = null): ?string
     {
         $scope = $websiteId === null ? ScopeConfigInterface::SCOPE_TYPE_DEFAULT : ScopeInterface::SCOPE_WEBSITE;
 
         return $this->scopeConfig->getValue(self::XML_PATH_PLATFORM_ID, $scope, $websiteId);
     }
 
-    public function getPlatformPartnerId(string $websiteId = null): ?string
+    public function getPlatformPartnerId(?int $websiteId = null): ?string
     {
         $scope = $websiteId === null ? ScopeConfigInterface::SCOPE_TYPE_DEFAULT : ScopeInterface::SCOPE_WEBSITE;
 
         return $this->scopeConfig->getValue(self::XML_PATH_PLATFORM_PARTNER_ID, $scope, $websiteId);
     }
 
-    public function getGateId(string $websiteId = null): ?string
+    public function getGateId(?int $websiteId = null): ?string
     {
         $scope = $websiteId === null ? ScopeConfigInterface::SCOPE_TYPE_DEFAULT : ScopeInterface::SCOPE_WEBSITE;
 
         return $this->scopeConfig->getValue(self::XML_PATH_GATE_ID, $scope, $websiteId);
     }
 
-    public function getSourceType(string $websiteId = null): ?string
+    public function getSourceType(?int $websiteId = null): ?string
     {
         $scope = $websiteId === null ? ScopeConfigInterface::SCOPE_TYPE_DEFAULT : ScopeInterface::SCOPE_WEBSITE;
 
         return $this->scopeConfig->getValue(self::XML_PATH_SOURCE_TYPE, $scope, $websiteId);
     }
 
-    public function getSource(string $websiteId = null): ?string
+    public function getSource(?int $websiteId = null): ?string
     {
         $scope = $websiteId === null ? ScopeConfigInterface::SCOPE_TYPE_DEFAULT : ScopeInterface::SCOPE_WEBSITE;
 
@@ -122,7 +122,7 @@ final class Config implements ConfigInterface
         return $this->scopeConfig->isSetFlag(self::XML_PATH_ENABLE_LOGGING);
     }
 
-    public function getOrderPlacedTemplate(string $scopeId = null, string $scopeType = ScopeInterface::SCOPE_STORE): ?string
+    public function getOrderPlacedTemplate(?int $scopeId = null, string $scopeType = ScopeInterface::SCOPE_STORE): ?string
     {
         if ($scopeId === null) {
             $scopeType = ScopeConfigInterface::SCOPE_TYPE_DEFAULT;
@@ -131,7 +131,7 @@ final class Config implements ConfigInterface
         return $this->scopeConfig->getValue(self::XML_PATH_TEMPLATE_ORDER_PLACED, $scopeType, $scopeId);
     }
 
-    public function getOrderUpdatedTemplate(string $scopeId = null, string $scopeType = ScopeInterface::SCOPE_STORE): ?string
+    public function getOrderUpdatedTemplate(?int $scopeId = null, string $scopeType = ScopeInterface::SCOPE_STORE): ?string
     {
         if ($scopeId === null) {
             $scopeType = ScopeConfigInterface::SCOPE_TYPE_DEFAULT;
@@ -140,7 +140,7 @@ final class Config implements ConfigInterface
         return $this->scopeConfig->getValue(self::XML_PATH_TEMPLATE_ORDER_UPDATED, $scopeType, $scopeId);
     }
 
-    public function getOrderShippedTemplate(string $scopeId = null, string $scopeType = ScopeInterface::SCOPE_STORE): ?string
+    public function getOrderShippedTemplate(?int $scopeId = null, string $scopeType = ScopeInterface::SCOPE_STORE): ?string
     {
         if ($scopeId === null) {
             $scopeType = ScopeConfigInterface::SCOPE_TYPE_DEFAULT;
@@ -149,7 +149,7 @@ final class Config implements ConfigInterface
         return $this->scopeConfig->getValue(self::XML_PATH_TEMPLATE_ORDER_SHIPPED, $scopeType, $scopeId);
     }
 
-    public function getOrderRefundedTemplate(string $scopeId = null, string $scopeType = ScopeInterface::SCOPE_STORE): ?string
+    public function getOrderRefundedTemplate(?int $scopeId = null, string $scopeType = ScopeInterface::SCOPE_STORE): ?string
     {
         if ($scopeId === null) {
             $scopeType = ScopeConfigInterface::SCOPE_TYPE_DEFAULT;
@@ -158,7 +158,7 @@ final class Config implements ConfigInterface
         return $this->scopeConfig->getValue(self::XML_PATH_TEMPLATE_ORDER_REFUNDED, $scopeType, $scopeId);
     }
 
-    public function getOrderCanceledTemplate(string $scopeId = null, string $scopeType = ScopeInterface::SCOPE_STORE): ?string
+    public function getOrderCanceledTemplate(?int $scopeId = null, string $scopeType = ScopeInterface::SCOPE_STORE): ?string
     {
         if ($scopeId === null) {
             $scopeType = ScopeConfigInterface::SCOPE_TYPE_DEFAULT;
@@ -167,7 +167,7 @@ final class Config implements ConfigInterface
         return $this->scopeConfig->getValue(self::XML_PATH_TEMPLATE_ORDER_CANCELED, $scopeType, $scopeId);
     }
 
-    public function getOrderHeldTemplate(string $scopeId = null, string $scopeType = ScopeInterface::SCOPE_STORE): ?string
+    public function getOrderHeldTemplate(?int $scopeId = null, string $scopeType = ScopeInterface::SCOPE_STORE): ?string
     {
         if ($scopeId === null) {
             $scopeType = ScopeConfigInterface::SCOPE_TYPE_DEFAULT;
@@ -176,7 +176,7 @@ final class Config implements ConfigInterface
         return $this->scopeConfig->getValue(self::XML_PATH_TEMPLATE_ORDER_HELD, $scopeType, $scopeId);
     }
 
-    public function getOrderReleasedTemplate(string $scopeId = null, string $scopeType = ScopeInterface::SCOPE_STORE): ?string
+    public function getOrderReleasedTemplate(?int $scopeId = null, string $scopeType = ScopeInterface::SCOPE_STORE): ?string
     {
         if ($scopeId === null) {
             $scopeType = ScopeConfigInterface::SCOPE_TYPE_DEFAULT;

@@ -93,7 +93,7 @@ class CustomerRegisterSuccessObserver implements ObserverInterface
         $smsNotificationsParameters = $this->request->getParam('sms_notifications', []);
 
         try {
-            $websiteId = (string)$this->storeManager->getStore()->getWebsiteId();
+            $websiteId = (int)$this->storeManager->getStore()->getWebsiteId();
         } catch (NoSuchEntityException $e) {
             $websiteId = null;
         }

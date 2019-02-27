@@ -49,41 +49,41 @@ interface ConfigInterface
     const XML_PATH_TEMPLATE_ORDER_HELD = 'sms_notifications/templates/order_held';
     const XML_PATH_TEMPLATE_ORDER_RELEASED = 'sms_notifications/templates/order_released';
 
-    public function isEnabled(string $websiteId = null): bool;
+    public function isEnabled(?int $websiteId = null): bool;
 
-    public function isOptinRequired(string $websiteId = null): bool;
+    public function isOptinRequired(?int $websiteId = null): bool;
 
-    public function getTermsAndConditions(string $websiteId = null): ?string;
+    public function getTermsAndConditions(?int $websiteId = null): ?string;
 
-    public function isTermsAndConditionsShownAfterOptin(string $websiteId = null): bool;
+    public function isTermsAndConditionsShownAfterOptin(?int $websiteId = null): bool;
 
-    public function getApiUser(string $websiteId = null): ?string;
+    public function getApiUser(?int $websiteId = null): ?string;
 
-    public function getApiPassword(string $websiteId = null): ?string;
+    public function getApiPassword(?int $websiteId = null): ?string;
 
-    public function getPlatformId(string $websiteId = null): ?string;
+    public function getPlatformId(?int $websiteId = null): ?string;
 
-    public function getPlatformPartnerId(string $websiteId = null): ?string;
+    public function getPlatformPartnerId(?int $websiteId = null): ?string;
 
-    public function getGateId(string $websiteId = null): ?string;
+    public function getGateId(?int $websiteId = null): ?string;
 
-    public function getSourceType(string $websiteId = null): ?string;
+    public function getSourceType(?int $websiteId = null): ?string;
 
-    public function getSource(string $websiteId = null): ?string;
+    public function getSource(?int $websiteId = null): ?string;
 
     public function isLoggingEnabled(): bool;
 
-    public function getOrderPlacedTemplate(string $scopeId = null, string $scopeType = ScopeInterface::SCOPE_STORE) : ?string;
+    public function getOrderPlacedTemplate(?int $scopeId = null, string $scopeType = ScopeInterface::SCOPE_STORE) : ?string;
 
-    public function getOrderUpdatedTemplate(string $scopeId = null, string $scopeType = ScopeInterface::SCOPE_STORE) : ?string;
+    public function getOrderUpdatedTemplate(?int $scopeId = null, string $scopeType = ScopeInterface::SCOPE_STORE) : ?string;
 
-    public function getOrderShippedTemplate(string $scopeId = null, string $scopeType = ScopeInterface::SCOPE_STORE) : ?string;
+    public function getOrderShippedTemplate(?int $scopeId = null, string $scopeType = ScopeInterface::SCOPE_STORE) : ?string;
 
-    public function getOrderRefundedTemplate(string $scopeId = null, string $scopeType = ScopeInterface::SCOPE_STORE) : ?string;
+    public function getOrderRefundedTemplate(?int $scopeId = null, string $scopeType = ScopeInterface::SCOPE_STORE) : ?string;
 
-    public function getOrderCanceledTemplate(string $scopeId = null, string $scopeType = ScopeInterface::SCOPE_STORE) : ?string;
+    public function getOrderCanceledTemplate(?int $scopeId = null, string $scopeType = ScopeInterface::SCOPE_STORE) : ?string;
 
-    public function getOrderHeldTemplate(string $scopeId = null, string $scopeType = ScopeInterface::SCOPE_STORE): ?string;
+    public function getOrderHeldTemplate(?int $scopeId = null, string $scopeType = ScopeInterface::SCOPE_STORE): ?string;
 
-    public function getOrderReleasedTemplate(string $scopeId = null, string $scopeType = ScopeInterface::SCOPE_STORE): ?string;
+    public function getOrderReleasedTemplate(?int $scopeId = null, string $scopeType = ScopeInterface::SCOPE_STORE): ?string;
 }

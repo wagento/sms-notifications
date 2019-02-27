@@ -77,7 +77,7 @@ abstract class AbstractBlock extends Template
     public function toHtml()
     {
         try {
-            $websiteId = (string)$this->_storeManager->getStore()->getWebsiteId();
+            $websiteId = (int)$this->_storeManager->getStore()->getWebsiteId();
         } catch (NoSuchEntityException $e) {
             $websiteId = null;
         }

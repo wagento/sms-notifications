@@ -85,12 +85,11 @@ abstract class SmsSender
 
     /**
      * @param string|int $storeId
-     * @return string|int|null
      */
-    protected function getWebsiteIdByStoreId($storeId)
+    protected function getWebsiteIdByStoreId($storeId): ?int
     {
         try {
-            $websiteId = $this->storeRepository->getById($storeId)->getWebsiteId();
+            $websiteId = (int)$this->storeRepository->getById($storeId)->getWebsiteId();
         } catch (NoSuchEntityException $e) {
             $websiteId = null;
         }
@@ -98,10 +97,7 @@ abstract class SmsSender
         return $websiteId;
     }
 
-    /**
-     * @param string|int|null $websiteId
-     */
-    protected function isModuleEnabled($websiteId): bool
+    protected function isModuleEnabled(?int $websiteId = null): bool
     {
         return $this->config->isEnabled($websiteId);
     }
