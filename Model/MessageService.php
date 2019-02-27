@@ -206,7 +206,7 @@ class MessageService
     {
         $storeId = null;
 
-        if ($this->order !== null && $this->order->getStoreId()) {
+        if ($this->order !== null && $this->order->getStoreId() !== null) {
             $storeId = $this->order->getStoreId();
         }
 
