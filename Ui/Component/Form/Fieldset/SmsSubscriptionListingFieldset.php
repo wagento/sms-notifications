@@ -17,7 +17,9 @@ declare(strict_types=1);
 namespace LinkMobility\SMSNotifications\Ui\Component\Form\Fieldset;
 
 use LinkMobility\SMSNotifications\Api\ConfigInterface;
+use Magento\Framework\Exception\NoSuchEntityException;
 use Magento\Framework\View\Element\UiComponent\ContextInterface;
+use Magento\Store\Model\StoreManagerInterface;
 use Magento\Ui\Component\Form\Fieldset;
 
 /**
@@ -29,18 +31,24 @@ use Magento\Ui\Component\Form\Fieldset;
 final class SmsSubscriptionListingFieldset extends Fieldset
 {
     /**
+     * @var \Magento\Store\Model\StoreManagerInterface
+     */
+    private $storeManager;
+    /**
      * @var \LinkMobility\SMSNotifications\Api\ConfigInterface
      */
     private $config;
 
     public function __construct(
         ContextInterface $context,
+        StoreManagerInterface $storeManager,
         ConfigInterface $config,
         $components = [],
         array $data = []
     ) {
         parent::__construct($context, $components, $data);
 
+        $this->storeManager = $storeManager;
         $this->config = $config;
     }
 
@@ -51,7 +59,13 @@ final class SmsSubscriptionListingFieldset extends Fieldset
     {
         parent::prepare();
 
-        if (!$this->config->isEnabled()) {
+        try {
+            $websiteId = (int)$this->storeManager->getStore()->getWebsiteId();
+        } catch (NoSuchEntityException $e) {
+            $websiteId = null;
+        }
+
+        if (!$this->config->isEnabled($websiteId)) {
             $this->_data['config']['componentDisabled'] = true;
         }
     }
