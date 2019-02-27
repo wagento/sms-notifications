@@ -22,6 +22,8 @@ use Magento\Framework\Api\FilterBuilder;
 use Magento\Framework\App\RequestInterface;
 use Magento\Framework\Data\Collection\AbstractDb;
 use Magento\Framework\Exception\LocalizedException;
+use Magento\Framework\Exception\NoSuchEntityException;
+use Magento\Store\Model\StoreManagerInterface;
 use Magento\Ui\Component\MassAction\Filter;
 
 /**
@@ -44,6 +46,10 @@ class FilterPlugin
      */
     private $filterBuilder;
     /**
+     * @var \Magento\Store\Model\StoreManagerInterface
+     */
+    private $storeManager;
+    /**
      * @var \LinkMobility\SMSNotifications\Api\ConfigInterface
      */
     private $config;
@@ -59,10 +65,12 @@ class FilterPlugin
     public function __construct(
         RequestInterface $request,
         FilterBuilder $filterBuilder,
+        StoreManagerInterface $storeManager,
         ConfigInterface $config
     ) {
         $this->request = $request;
         $this->filterBuilder = $filterBuilder;
+        $this->storeManager = $storeManager;
         $this->config = $config;
     }
 
@@ -106,7 +114,13 @@ class FilterPlugin
 
     private function isModuleEnabled(): bool
     {
-        return $this->config->isEnabled();
+        try {
+            $websiteId = (int)$this->storeManager->getStore()->getWebsiteId();
+        } catch (NoSuchEntityException $e) {
+            $websiteId = null;
+        }
+
+        return $this->config->isEnabled($websiteId);
     }
 
     /**
