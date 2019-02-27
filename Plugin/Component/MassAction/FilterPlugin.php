@@ -36,10 +36,6 @@ use Magento\Ui\Component\MassAction\Filter;
 class FilterPlugin
 {
     /**
-     * @var \Magento\Ui\Component\MassAction\Filter
-     */
-    private $filter;
-    /**
      * @var \Magento\Framework\App\RequestInterface
      */
     private $request;
@@ -48,13 +44,17 @@ class FilterPlugin
      */
     private $filterBuilder;
     /**
-     * @var \Magento\Framework\View\Element\UiComponent\DataProvider\DataProviderInterface
-     */
-    private $dataProvider;
-    /**
      * @var \LinkMobility\SMSNotifications\Api\ConfigInterface
      */
     private $config;
+    /**
+     * @var \Magento\Ui\Component\MassAction\Filter
+     */
+    private $filter;
+    /**
+     * @var \Magento\Framework\View\Element\UiComponent\DataProvider\DataProviderInterface
+     */
+    private $dataProvider;
 
     public function __construct(
         RequestInterface $request,
