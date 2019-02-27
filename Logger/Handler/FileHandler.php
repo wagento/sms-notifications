@@ -23,7 +23,7 @@ use Magento\Framework\Logger\Handler\Base;
 /**
  * Log File Handler
  *
- * @package Teamwork\SMSNotifications\Logger\Handler
+ * @package LinkMobility\SMSNotifications\Logger\Handler
  * @author Joseph Leedy <joseph@wagento.com>
  */
 final class FileHandler extends Base
