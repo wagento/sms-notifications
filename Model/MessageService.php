@@ -23,11 +23,13 @@ use LinkMobility\SMSNotifications\Gateway\Factory\MessageEntityHydratorFactory;
 use LinkMobility\SMSNotifications\Gateway\Factory\MessageFactory;
 use LinkMobility\SMSNotifications\Util\TemplateProcessorInterface;
 use Magento\Framework\App\Config\ScopeConfigInterface;
+use Magento\Framework\Exception\NoSuchEntityException;
 use Magento\Framework\UrlInterface;
 use Magento\Sales\Api\Data\OrderInterface;
 use Magento\Sales\Api\Data\ShipmentInterface;
 use Magento\Shipping\Helper\Data as ShippingHelper;
 use Magento\Store\Model\ScopeInterface;
+use Magento\Store\Model\StoreManagerInterface;
 use Psr\Log\LoggerInterface;
 
 /**
@@ -45,6 +47,10 @@ class MessageService
      * @var \Psr\Log\LoggerInterface
      */
     private $logger;
+    /**
+     * @var \Magento\Store\Model\StoreManagerInterface
+     */
+    private $storeManager;
     /**
      * @var \Magento\Framework\UrlInterface
      */
@@ -88,6 +94,7 @@ class MessageService
 
     public function __construct(
         LoggerInterface $logger,
+        StoreManagerInterface $storeManager,
         UrlInterface $urlBuilder,
         ScopeConfigInterface $scopeConfig,
         ShippingHelper $shippingHelper,
@@ -98,6 +105,7 @@ class MessageService
         ApiClientInterface $apiClient
     ) {
         $this->logger = $logger;
+        $this->storeManager = $storeManager;
         $this->urlBuilder = $urlBuilder;
         $this->scopeConfig = $scopeConfig;
         $this->shippingHelper = $shippingHelper;
@@ -124,12 +132,13 @@ class MessageService
 
     public function sendMessage(string $message, string $to, string $messageType): bool
     {
+        $websiteId = $this->getWebsiteId();
         $messageEntity = $this->messageFactory->create();
         $messageEntityHydrator = $this->messageEntityHydratorFactory->create();
-        $source = $this->config->getSource();
-        $sourceType = $this->config->getSourceType();
-        $platformId = $this->config->getPlatformId();
-        $platformPartnerId = $this->config->getPlatformPartnerId();
+        $source = $this->config->getSource($websiteId);
+        $sourceType = $this->config->getSourceType($websiteId);
+        $platformId = $this->config->getPlatformId($websiteId);
+        $platformPartnerId = $this->config->getPlatformPartnerId($websiteId);
         $processedMessage = $this->processMessage($message, $messageType);
 
         $messageEntity->setSource($source);
@@ -143,8 +152,8 @@ class MessageService
 
         try {
             $this->apiClient->setUri('send');
-            $this->apiClient->setUsername($this->config->getApiUser());
-            $this->apiClient->setPassword($this->config->getApiPassword());
+            $this->apiClient->setUsername($this->config->getApiUser($websiteId));
+            $this->apiClient->setPassword($this->config->getApiPassword($websiteId));
             $this->apiClient->setHttpMethod(ApiClientInterface::HTTP_METHOD_POST);
             $this->apiClient->setData($messageData);
             $this->apiClient->sendRequest();
@@ -239,5 +248,22 @@ class MessageService
         }
 
         return $this->shippingHelper->getTrackingPopupUrlBySalesModel($salesModel);
+    }
+
+    private function getWebsiteId(): ?int
+    {
+        $storeId = null;
+
+        if ($this->order !== null && $this->order->getStoreId()) {
+            $storeId = $this->order->getStoreId();
+        }
+
+        try {
+            $websiteId = (int)$this->storeManager->getStore($storeId)->getWebsiteId();
+        } catch (NoSuchEntityException $e) {
+            $websiteId = null;
+        }
+
+        return $websiteId;
     }
 }
