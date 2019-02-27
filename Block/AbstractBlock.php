@@ -76,16 +76,21 @@ abstract class AbstractBlock extends Template
      */
     public function toHtml()
     {
+        if (!$this->config->isEnabled($this->getWebsiteId())) {
+            return '';
+        }
+
+        return parent::toHtml();
+    }
+
+    protected function getWebsiteId(): ?int
+    {
         try {
             $websiteId = (int)$this->_storeManager->getStore()->getWebsiteId();
         } catch (NoSuchEntityException $e) {
             $websiteId = null;
         }
 
-        if (!$this->config->isEnabled($websiteId)) {
-            return '';
-        }
-
-        return parent::toHtml();
+        return $websiteId;
     }
 }
