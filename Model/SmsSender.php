@@ -83,10 +83,7 @@ abstract class SmsSender
 
     abstract public function send(AbstractModel $entity): bool;
 
-    /**
-     * @param string|int $storeId
-     */
-    protected function getWebsiteIdByStoreId($storeId): ?int
+    protected function getWebsiteIdByStoreId(?int $storeId): ?int
     {
         try {
             $websiteId = (int)$this->storeRepository->getById($storeId)->getWebsiteId();

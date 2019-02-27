@@ -70,7 +70,8 @@ final class OrderSender extends SmsSender
      */
     public function send(AbstractModel $order): bool
     {
-        $websiteId = $this->getWebsiteIdByStoreId($order->getStoreId());
+        $storeId = (int)$order->getStoreId();
+        $websiteId = $this->getWebsiteIdByStoreId($storeId);
         $orderExtensionAttributes = $order->getExtensionAttributes() ?? $this->orderExtensionFactory->create();
 
         if ($orderExtensionAttributes->getIsOrderHoldReleased() === true) {
@@ -91,24 +92,24 @@ final class OrderSender extends SmsSender
 
         switch ($orderState) {
             case Order::STATE_NEW:
-                $messageTemplate = $this->config->getOrderPlacedTemplate($order->getStoreId());
+                $messageTemplate = $this->config->getOrderPlacedTemplate($storeId);
                 $smsType = 'order_placed';
                 break;
             case Order::STATE_CANCELED:
-                $messageTemplate = $this->config->getOrderCanceledTemplate($order->getStoreId());
+                $messageTemplate = $this->config->getOrderCanceledTemplate($storeId);
                 $smsType = 'order_canceled';
                 break;
             case Order::STATE_HOLDED:
-                $messageTemplate = $this->config->getOrderHeldTemplate($order->getStoreId());
+                $messageTemplate = $this->config->getOrderHeldTemplate($storeId);
                 $smsType = 'order_held';
                 break;
             case 'released':
-                $messageTemplate = $this->config->getOrderReleasedTemplate($order->getStoreId());
+                $messageTemplate = $this->config->getOrderReleasedTemplate($storeId);
                 $smsType = 'order_released';
                 break;
             case Order::STATE_PROCESSING:
             default:
-                $messageTemplate = $this->config->getOrderUpdatedTemplate($order->getStoreId());
+                $messageTemplate = $this->config->getOrderUpdatedTemplate($storeId);
                 $smsType = 'order_updated';
         }
 

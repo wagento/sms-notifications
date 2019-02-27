@@ -69,7 +69,8 @@ final class CreditmemoSender extends SmsSender
      */
     public function send(AbstractModel $creditmemo): bool
     {
-        $websiteId = $this->getWebsiteIdByStoreId($creditmemo->getStoreId());
+        $storeId = (int)$creditmemo->getStoreId();
+        $websiteId = $this->getWebsiteIdByStoreId($storeId);
         /** @var \Magento\Sales\Api\Data\OrderInterface $order */
         $order = $creditmemo->getOrder();
         $creditmemoExtensionAttributes = $creditmemo->getExtensionAttributes() ?? $this->creditmemoExtensionFactory
@@ -95,7 +96,7 @@ final class CreditmemoSender extends SmsSender
 
         $this->messageService->setOrder($order);
 
-        $messageTemplate = $this->config->getOrderRefundedTemplate($creditmemo->getStoreId());
+        $messageTemplate = $this->config->getOrderRefundedTemplate($storeId);
         $messageSent = $this->messageService->sendMessage($messageTemplate, $messageRecipient, 'order');
 
         $creditmemoExtensionAttributes->setIsSmsNotificationSent(true);
