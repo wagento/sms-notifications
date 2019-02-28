@@ -76,7 +76,7 @@ class Create extends Action
             return $resultRedirect;
         }
 
-        $customerId = (string)$this->_getSession()->getCustomerData()['customer_id'];
+        $customerId = (int)$this->_getSession()->getCustomerData()['customer_id'];
         $smsType = $this->getRequest()->getParam('sms_type');
 
         $resultRedirect->setPath('customer/index/edit', ['id' => $customerId, '_current' => true]);

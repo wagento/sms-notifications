@@ -122,7 +122,7 @@ class CustomerRegisterSuccessObserver implements ObserverInterface
                 $subscription = $this->smsSubscriptionFactory->create();
 
                 $subscription->setSmsType($smsType);
-                $subscription->setCustomerId($customer->getId());
+                $subscription->setCustomerId((int)$customer->getId());
 
                 $this->smsSubscriptionRepository->save($subscription);
             } catch (CouldNotSaveException $e) {

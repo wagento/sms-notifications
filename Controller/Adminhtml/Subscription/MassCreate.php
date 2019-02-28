@@ -76,7 +76,7 @@ class MassCreate extends Action
             return $resultRedirect;
         }
 
-        $customerId = (string)$this->_getSession()->getCustomerData()['customer_id'];
+        $customerId = (int)$this->_getSession()->getCustomerData()['customer_id'];
         $selectedSmsTypes = $this->getRequest()->getParam('selected', []);
         $createdSubscriptions = 0;
 

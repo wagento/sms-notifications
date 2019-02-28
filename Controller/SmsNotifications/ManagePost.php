@@ -217,7 +217,7 @@ class ManagePost extends Action implements ActionInterface, CsrfAwareActionInter
             /** @var \LinkMobility\SMSNotifications\Api\Data\SmsSubscriptionInterface $smsSubscription */
             $smsSubscription = $this->smsSubscriptionFactory->create();
 
-            $smsSubscription->setCustomerId((string)$customerId);
+            $smsSubscription->setCustomerId((int)$customerId);
             $smsSubscription->setSmsType($smsType);
 
             try {

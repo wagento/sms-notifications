@@ -62,18 +62,18 @@ final class SmsSubscription extends AbstractSimpleObject implements SmsSubscript
     }
 
     /**
-     * @param string $customerId
+     * @param int $customerId
      * @return \LinkMobility\SMSNotifications\Api\Data\SmsSubscriptionInterface
      */
-    public function setCustomerId(string $customerId): SmsSubscriptionInterface
+    public function setCustomerId(int $customerId): SmsSubscriptionInterface
     {
         return $this->setData(self::CUSTOMER_ID, $customerId);
     }
 
     /**
-     * @return string|null
+     * @return int|null
      */
-    public function getCustomerId(): ?string
+    public function getCustomerId(): ?int
     {
         return $this->_get(self::CUSTOMER_ID);
     }

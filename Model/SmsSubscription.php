@@ -36,7 +36,7 @@ use Magento\Framework\Registry;
  * @author Yair García Torres <yair.garcia@wagento.com>
  * @author Joseph Leedy <joseph@wagento.com>
  * @method int getSmsSubscriptionId()
- * @method string getCustomerId()
+ * @method int getCustomerId()
  * @method string getSmsType()
  */
 class SmsSubscription extends AbstractModel

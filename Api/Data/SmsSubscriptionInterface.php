@@ -51,15 +51,15 @@ interface SmsSubscriptionInterface
     public function getSmsSubscriptionId(): ?int;
 
     /**
-     * @param string $customerId
+     * @param int $customerId
      * @return \LinkMobility\SMSNotifications\Api\Data\SmsSubscriptionInterface
      */
-    public function setCustomerId(string $customerId): SmsSubscriptionInterface;
+    public function setCustomerId(int $customerId): SmsSubscriptionInterface;
 
     /**
-     * @return string|null
+     * @return int|null
      */
-    public function getCustomerId(): ?string;
+    public function getCustomerId(): ?int;
 
     /**
      * @param string $smsType

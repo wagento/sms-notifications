@@ -70,7 +70,7 @@ class MassDelete extends Action
             $this->_getSession()->hasCustomerData()
             && array_key_exists('customer_id', $this->_getSession()->getCustomerData())
         ) {
-            $customerId = (string)$this->_getSession()->getCustomerData()['customer_id'];
+            $customerId = (int)$this->_getSession()->getCustomerData()['customer_id'];
             $resultRedirect->setPath('customer/index/edit', ['id' => $customerId, '_current' => true]);
         } else {
             $customerId = null;

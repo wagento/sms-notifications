@@ -47,7 +47,7 @@ class SmsSubscriptionValidatorTest extends TestCase
             ])
             ->getMock();
 
-        $smsSubscription->method('getCustomerId')->willReturn('1');
+        $smsSubscription->method('getCustomerId')->willReturn(1);
         $smsSubscription->method('getSmsType')->willReturn('order_placed');
 
         $this->validator->validate($smsSubscription);

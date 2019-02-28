@@ -54,7 +54,7 @@ class SmsSubscriptionRepositoryTest extends TestCase
      */
     public function testGetReturnSmsSubscriptionEntity(): void
     {
-        $result = $this->smsSubscriptionRepository->get(self::$smsSubscriptionFixture->getId());
+        $result = $this->smsSubscriptionRepository->get((int)self::$smsSubscriptionFixture->getId());
 
         $this->assertInstanceOf(SmsSubscriptionInterface::class, $result);
         $this->assertEquals(self::$smsSubscriptionFixture->getDataModel()->__toArray(), $result->__toArray());
@@ -76,7 +76,7 @@ class SmsSubscriptionRepositoryTest extends TestCase
 
         $searchCriteria = $this->objectManager->create(SearchCriteriaBuilderFactory::class)
             ->create()
-            ->addFilter('customer_id', '1')
+            ->addFilter('customer_id', 1)
             ->create();
         $results = $this->smsSubscriptionRepository->getList($searchCriteria);
 
@@ -91,7 +91,7 @@ class SmsSubscriptionRepositoryTest extends TestCase
     public function testSaveCreatesSmsSubscriptionEntity(): void
     {
         $smsSubscriptionEntity = $this->objectManager->create(SmsSubscriptionInterface::class)
-            ->setCustomerId('1')
+            ->setCustomerId(1)
             ->setSmsType('order_placed');
 
         $result = $this->smsSubscriptionRepository->save($smsSubscriptionEntity);
@@ -106,8 +106,8 @@ class SmsSubscriptionRepositoryTest extends TestCase
     public function testSaveUpdatesSmsSubscriptionEntity(): void
     {
         $smsSubscriptionEntity = $this->objectManager->create(SmsSubscriptionInterface::class)
-            ->setCustomerId('1')
-            ->setSmsSubscriptionId(self::$smsSubscriptionFixture->getId())
+            ->setCustomerId(1)
+            ->setSmsSubscriptionId((int)self::$smsSubscriptionFixture->getId())
             ->setSmsType('order_shipped');
 
         $result = $this->smsSubscriptionRepository->save($smsSubscriptionEntity);
@@ -159,7 +159,7 @@ class SmsSubscriptionRepositoryTest extends TestCase
      */
     public function testDeleteByIdRemovesSmsSubscriptionEntity(): void
     {
-        $result = $this->smsSubscriptionRepository->deleteById(self::$smsSubscriptionFixture->getId());
+        $result = $this->smsSubscriptionRepository->deleteById((int)self::$smsSubscriptionFixture->getId());
 
         $this->assertTrue($result);
     }
