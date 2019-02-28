@@ -108,6 +108,7 @@ class MessageService
 
     public function sendMessage(string $message, string $to, string $messageType): bool
     {
+        $to = preg_replace('/[^\+\d]+/', '', $to);
         $websiteId = $this->getWebsiteId();
         $messageEntity = $this->messageFactory->create();
         $source = $this->config->getSource($websiteId);
