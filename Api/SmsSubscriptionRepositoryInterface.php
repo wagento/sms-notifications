@@ -25,6 +25,7 @@ use Magento\Framework\Api\SearchResultsInterface;
  *
  * @package LinkMobility\SMSNotifications\Api
  * @author Joseph Leedy <joseph@wagento.com>
+ * @api
  */
 interface SmsSubscriptionRepositoryInterface
 {

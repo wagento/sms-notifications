@@ -21,6 +21,7 @@ namespace LinkMobility\SMSNotifications\Api\Data;
  *
  * @package LinkMobility\SMSNotifications\Api\Data
  * @author Joseph Leedy <joseph@wagento.com>
+ * @api
  */
 interface TelephonePrefixInterface
 {
