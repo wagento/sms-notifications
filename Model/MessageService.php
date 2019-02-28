@@ -20,7 +20,6 @@ use LinkMobility\SMSNotifications\Api\ConfigInterface;
 use LinkMobility\SMSNotifications\Factory\MessageVariablesFactory;
 use LinkMobility\SMSNotifications\Gateway\ApiClientInterface;
 use LinkMobility\SMSNotifications\Gateway\ApiException;
-use LinkMobility\SMSNotifications\Gateway\Factory\MessageEntityHydratorFactory;
 use LinkMobility\SMSNotifications\Gateway\Factory\MessageFactory;
 use LinkMobility\SMSNotifications\Util\TemplateProcessorInterface;
 use Magento\Framework\Exception\NoSuchEntityException;
@@ -55,10 +54,6 @@ class MessageService
      */
     private $messageFactory;
     /**
-     * @var \LinkMobility\SMSNotifications\Gateway\Factory\MessageEntityHydratorFactory
-     */
-    private $messageEntityHydratorFactory;
-    /**
      * @var \LinkMobility\SMSNotifications\Factory\MessageVariablesFactory
      */
     private $messageVariablesFactory;
@@ -84,7 +79,6 @@ class MessageService
         StoreManagerInterface $storeManager,
         ConfigInterface $config,
         MessageFactory $messageFactory,
-        MessageEntityHydratorFactory $messageEntityHydratorFactory,
         MessageVariablesFactory $messageVariablesFactory,
         TemplateProcessorInterface $templateProcessor,
         ApiClientInterface $apiClient
@@ -93,7 +87,6 @@ class MessageService
         $this->storeManager = $storeManager;
         $this->config = $config;
         $this->messageFactory = $messageFactory;
-        $this->messageEntityHydratorFactory = $messageEntityHydratorFactory;
         $this->messageVariablesFactory = $messageVariablesFactory;
         $this->templateProcessor = $templateProcessor;
         $this->apiClient = $apiClient;
@@ -117,7 +110,6 @@ class MessageService
     {
         $websiteId = $this->getWebsiteId();
         $messageEntity = $this->messageFactory->create();
-        $messageEntityHydrator = $this->messageEntityHydratorFactory->create();
         $source = $this->config->getSource($websiteId);
         $sourceType = $this->config->getSourceType($websiteId);
         $platformId = $this->config->getPlatformId($websiteId);
@@ -145,14 +137,12 @@ class MessageService
         $messageEntity->setPlatformId($platformId);
         $messageEntity->setPlatformPartnerId($platformPartnerId);
 
-        $messageData = array_filter($messageEntityHydrator->extract($messageEntity));
-
         try {
             $this->apiClient->setUri('send');
             $this->apiClient->setUsername($this->config->getApiUser($websiteId));
             $this->apiClient->setPassword($this->config->getApiPassword($websiteId));
             $this->apiClient->setHttpMethod(ApiClientInterface::HTTP_METHOD_POST);
-            $this->apiClient->setData($messageData);
+            $this->apiClient->setData($messageEntity);
             $this->apiClient->sendRequest();
 
             $result = $this->apiClient->getResult();

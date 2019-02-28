@@ -17,8 +17,10 @@ declare(strict_types=1);
 namespace LinkMobility\SMSNotifications\Gateway;
 
 use GuzzleHttp\Exception\GuzzleException;
+use LinkMobility\SMSNotifications\Gateway\Entity\Message;
 use LinkMobility\SMSNotifications\Gateway\Entity\ResultInterface;
 use LinkMobility\SMSNotifications\Gateway\Factory\ClientFactory;
+use LinkMobility\SMSNotifications\Gateway\Factory\MessageEntityHydratorFactory;
 use LinkMobility\SMSNotifications\Gateway\Factory\ResultFactory;
 use Psr\Http\Message\ResponseInterface;
 
@@ -94,8 +96,15 @@ final class ApiClient implements ApiClientInterface
         $this->password = $password;
     }
 
-    public function setData(array $data): void
+    /**
+     * @param string[]|\LinkMobility\SMSNotifications\Gateway\Entity\Message
+     */
+    public function setData($data): void
     {
+        if ($data instanceof Message) {
+            $data = array_filter($this->extractMessage($data));
+        }
+
         $this->data = $data;
     }
 
@@ -148,6 +157,13 @@ final class ApiClient implements ApiClientInterface
     public function getResult(): ResultInterface
     {
         return $this->result;
+    }
+
+    private function extractMessage(Message $message): array
+    {
+        $messageHydrator = (new MessageEntityHydratorFactory())->create();
+
+        return $messageHydrator->extract($message);
     }
 
     private function isValid(): bool

@@ -35,7 +35,10 @@ interface ApiClientInterface
 
     public function setPassword(string $password): void;
 
-    public function setData(array $data): void;
+    /**
+     * @param string[]|\LinkMobility\SMSNotifications\Gateway\Entity\Message
+     */
+    public function setData($data): void;
 
     public function setHeaders(array $headers): void;
 
