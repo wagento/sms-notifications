@@ -16,6 +16,8 @@ declare(strict_types=1);
 
 namespace LinkMobility\SMSNotifications\Api\Data;
 
+use \Magento\Framework\Api\ExtensibleDataInterface;
+
 /**
  * SMS Subscription Entity Interface
  *
@@ -23,7 +25,7 @@ namespace LinkMobility\SMSNotifications\Api\Data;
  * @author Joseph Leedy <joseph@wagento.com>
  * @api
  */
-interface SmsSubscriptionInterface
+interface SmsSubscriptionInterface extends ExtensibleDataInterface
 {
     const SMS_SUBSCRIPTION_ID = 'sms_subscription_id';
     const CUSTOMER_ID = 'customer_id';
@@ -72,4 +74,17 @@ interface SmsSubscriptionInterface
      * @return string|null
      */
     public function getSmsType(): ?string;
+
+    /**
+     * @param \LinkMobility\SMSNotifications\Api\Data\SmsSubscriptionExtensionInterface $smsSubscriptionExtension
+     * @return \LinkMobility\SMSNotifications\Api\Data\SmsSubscriptionInterface
+     *
+     * @phpcs:disable Generic.Files.LineLength.TooLong
+     */
+    public function setExtensionAttributes(SmsSubscriptionExtensionInterface $smsSubscriptionExtension): SmsSubscriptionInterface;
+
+    /**
+     * @return \LinkMobility\SMSNotifications\Api\Data\SmsSubscriptionExtensionInterface|null
+     */
+    public function getExtensionAttributes(): ?SmsSubscriptionExtensionInterface;
 }

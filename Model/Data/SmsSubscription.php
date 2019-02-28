@@ -16,8 +16,9 @@ declare(strict_types=1);
 
 namespace LinkMobility\SMSNotifications\Model\Data;
 
+use LinkMobility\SMSNotifications\Api\Data\SmsSubscriptionExtensionInterface;
 use LinkMobility\SMSNotifications\Api\Data\SmsSubscriptionInterface;
-use Magento\Framework\Api\AbstractSimpleObject;
+use Magento\Framework\Api\AbstractExtensibleObject;
 
 /**
  * SMS Subscription Entity
@@ -25,7 +26,7 @@ use Magento\Framework\Api\AbstractSimpleObject;
  * @package LinkMobility\SMSNotifications\Model\Data
  * @author Joseph Leedy <joseph@wagento.com>
  */
-final class SmsSubscription extends AbstractSimpleObject implements SmsSubscriptionInterface
+final class SmsSubscription extends AbstractExtensibleObject implements SmsSubscriptionInterface
 {
     /**
      * @param int $id
@@ -93,5 +94,24 @@ final class SmsSubscription extends AbstractSimpleObject implements SmsSubscript
     public function getSmsType(): ?string
     {
         return $this->_get(self::SMS_TYPE);
+    }
+
+    /**
+     * @param \LinkMobility\SMSNotifications\Api\Data\SmsSubscriptionExtensionInterface $smsSubscriptionExtension
+     * @return \LinkMobility\SMSNotifications\Api\Data\SmsSubscriptionInterface
+     *
+     * @phpcs:disable Generic.Files.LineLength.TooLong
+     */
+    public function setExtensionAttributes(SmsSubscriptionExtensionInterface $smsSubscriptionExtension): SmsSubscriptionInterface
+    {
+        return $this->_setExtensionAttributes($smsSubscriptionExtension);
+    }
+
+    /**
+     * @return \LinkMobility\SMSNotifications\Api\Data\SmsSubscriptionExtensionInterface|null
+     */
+    public function getExtensionAttributes(): ?SmsSubscriptionExtensionInterface
+    {
+        return $this->_getExtensionAttributes();
     }
 }
