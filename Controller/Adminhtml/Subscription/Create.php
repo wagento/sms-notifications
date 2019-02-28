@@ -88,6 +88,7 @@ class Create extends Action
         }
 
         try {
+            /** @var \LinkMobility\SMSNotifications\Api\Data\SmsSubscriptionInterface $smsSubscription */
             $smsSubscription = $this->smsSubscriptionFactory->create();
 
             $smsSubscription->setCustomerId($customerId);
