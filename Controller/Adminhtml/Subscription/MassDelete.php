@@ -102,20 +102,15 @@ class MassDelete extends Action
 
             $remainingSubscriptions = $collection->count() - $deletedSubscriptions;
 
-            if ($remainingSubscriptions > 0 && $deletedSubscriptions > 0) {
-                if ($remainingSubscriptions === 1) {
-                    $errorMessage = __('The customer could not be unsubscribed from 1 SMS notification.');
-                } else {
-                    $errorMessage = __(
-                        'The customer could not be unsubscribed from %1 SMS notifications.',
-                        $remainingSubscriptions
-                    );
-                }
-
-                $this->messageManager->addErrorMessage($errorMessage);
-            } elseif ($remainingSubscriptions > 0) {
+            if ($remainingSubscriptions === 1) {
                 $this->messageManager->addErrorMessage(
-                    __('The customer could not be unsubscribed from the SMS notifications.')
+                    __('The customer could not be unsubscribed from 1 SMS notification.')
+                );
+            }
+
+            if ($remainingSubscriptions > 1) {
+                $this->messageManager->addErrorMessage(
+                    __('The customer could not be unsubscribed from %1 SMS notifications.', $remainingSubscriptions)
                 );
             }
 

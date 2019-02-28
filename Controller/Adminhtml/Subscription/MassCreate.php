@@ -113,20 +113,15 @@ class MassCreate extends Action
 
             $remainingSubscriptions = count($selectedSmsTypes) - $createdSubscriptions;
 
-            if ($remainingSubscriptions > 0 && $createdSubscriptions > 0) {
-                if ($remainingSubscriptions === 1) {
-                    $errorMessage = __('The customer could not be subscribed to 1 SMS notification.');
-                } else {
-                    $errorMessage = __(
-                        'The customer could not be subscribed to %1 SMS notifications.',
-                        $remainingSubscriptions
-                    );
-                }
-
-                $this->messageManager->addErrorMessage($errorMessage);
-            } elseif ($remainingSubscriptions > 0) {
+            if ($remainingSubscriptions === 1) {
                 $this->messageManager->addErrorMessage(
-                    __('The customer could not be subscribed to the SMS notifications.')
+                    __('The customer could not be subscribed to 1 SMS notification.')
+                );
+            }
+
+            if ($remainingSubscriptions > 1) {
+                $this->messageManager->addErrorMessage(
+                    __('The customer could not be subscribed to %1 SMS notifications.', $remainingSubscriptions)
                 );
             }
 
