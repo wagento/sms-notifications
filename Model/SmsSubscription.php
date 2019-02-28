@@ -35,8 +35,11 @@ use Magento\Framework\Registry;
  * @package LinkMobility\SMSNotifications\Model
  * @author Yair García Torres <yair.garcia@wagento.com>
  * @author Joseph Leedy <joseph@wagento.com>
+ * @method $this setSmsSubscriptionId(int $smsSubscriptionId)
  * @method int getSmsSubscriptionId()
+ * @method $this setCustomerId(int $customerId)
  * @method int getCustomerId()
+ * @method $this setSmsType(string $smsType)
  * @method string getSmsType()
  */
 class SmsSubscription extends AbstractModel
