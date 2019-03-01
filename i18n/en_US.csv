@@ -137,7 +137,7 @@ Alphanumeric,Alphanumeric
     <li><strong>Phone number:</strong> Mobile number in international format (starting with ""+"", e.g. ""+1-555-555-1234"")</li>
 </ul>"
 "Message Templates","Message Templates"
-"<strong>Note:</strong> Limit messages to 160 characters or less.","<strong>Note:</strong> Limit messages to 160 characters or less."
+"<strong>Note:</strong> We recommend limiting messages to 160 characters or less.","<strong>Note:</strong> We recommend limiting messages to 160 characters or less."
 "Order Placed","Order Placed"
 "Order Updated","Order Updated"
 "Order Shipped","Order Shipped"
