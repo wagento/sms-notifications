@@ -73,15 +73,15 @@ interface ConfigInterface
 
     public function isLoggingEnabled(): bool;
 
-    public function getOrderPlacedTemplate(?int $scopeId = null, string $scopeType = ScopeInterface::SCOPE_STORE) : ?string;
+    public function getOrderPlacedTemplate(?int $scopeId = null, string $scopeType = ScopeInterface::SCOPE_STORE): ?string;
 
-    public function getOrderUpdatedTemplate(?int $scopeId = null, string $scopeType = ScopeInterface::SCOPE_STORE) : ?string;
+    public function getOrderUpdatedTemplate(?int $scopeId = null, string $scopeType = ScopeInterface::SCOPE_STORE): ?string;
 
-    public function getOrderShippedTemplate(?int $scopeId = null, string $scopeType = ScopeInterface::SCOPE_STORE) : ?string;
+    public function getOrderShippedTemplate(?int $scopeId = null, string $scopeType = ScopeInterface::SCOPE_STORE): ?string;
 
-    public function getOrderRefundedTemplate(?int $scopeId = null, string $scopeType = ScopeInterface::SCOPE_STORE) : ?string;
+    public function getOrderRefundedTemplate(?int $scopeId = null, string $scopeType = ScopeInterface::SCOPE_STORE): ?string;
 
-    public function getOrderCanceledTemplate(?int $scopeId = null, string $scopeType = ScopeInterface::SCOPE_STORE) : ?string;
+    public function getOrderCanceledTemplate(?int $scopeId = null, string $scopeType = ScopeInterface::SCOPE_STORE): ?string;
 
     public function getOrderHeldTemplate(?int $scopeId = null, string $scopeType = ScopeInterface::SCOPE_STORE): ?string;
 
