@@ -94,9 +94,9 @@ class TemplateProcessorTest extends TestCase
             }
         };
         $customerWithProperties = new class() {
-            public  $id = 1;
-            public  $name = 'John Smith';
-            public  $email = 'jsmith@example.com';
+            public $id = 1;
+            public $name = 'John Smith';
+            public $email = 'jsmith@example.com';
         };
 
         return [
