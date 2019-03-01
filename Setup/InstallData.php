@@ -124,7 +124,7 @@ final class InstallData implements InstallDataInterface
 
         $mobilePhoneNumberAttribute->addData($attributeData);
         $mobilePhoneNumberAttribute->save();
-   }
+    }
 
     /**
      * @phpcs:disable Generic.Files.LineLength.TooLong
