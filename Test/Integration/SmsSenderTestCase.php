@@ -61,7 +61,9 @@ class SmsSenderTestCase extends TestCase
 
     public static function smsSubscriptionFixtureProvider(): SmsSubscriptionInterface
     {
-        return require __DIR__ . '/_files/create_sms_subscription.php';
+        $smsSubscription = require __DIR__ . '/_files/create_sms_subscription.php';
+
+        return $smsSubscription->getDataModel();
     }
 
     public static function smsSubscriptionsFixtureProvider(int $count = -1): array
