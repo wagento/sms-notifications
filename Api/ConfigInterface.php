@@ -33,6 +33,7 @@ interface ConfigInterface
     const XML_PATH_REQUIRE_OPTIN = 'sms_notifications/general/require_optin';
     const XML_PATH_TERMS_AND_CONDITIONS = 'sms_notifications/general/terms_and_conditions';
     const XML_PATH_SHOW_TERMS_AFTER_OPTIN = 'sms_notifications/general/show_terms_after_optin';
+    const XML_PATH_SEND_WELCOME_MESSAGE = 'sms_notifications/general/send_welcome_message';
     const XML_PATH_API_USER = 'sms_notifications/api/username';
     const XML_PATH_API_PASSWORD = 'sms_notifications/api/password';
     const XML_PATH_PLATFORM_ID = 'sms_notifications/api/platform_id';
@@ -41,6 +42,7 @@ interface ConfigInterface
     const XML_PATH_SOURCE_TYPE = 'sms_notifications/api/source_type';
     const XML_PATH_SOURCE = 'sms_notifications/api/source';
     const XML_PATH_ENABLE_LOGGING = 'sms_notifications/developer/debug';
+    const XML_PATH_TEMPLATE_WELCOME = 'sms_notifications/templates/welcome';
     const XML_PATH_TEMPLATE_ORDER_PLACED = 'sms_notifications/templates/order_placed';
     const XML_PATH_TEMPLATE_ORDER_UPDATED = 'sms_notifications/templates/order_updated';
     const XML_PATH_TEMPLATE_ORDER_SHIPPED = 'sms_notifications/templates/order_shipped';
@@ -57,6 +59,8 @@ interface ConfigInterface
 
     public function isTermsAndConditionsShownAfterOptin(?int $websiteId = null): bool;
 
+    public function sendWelcomeMessage(?int $websiteId = null): bool;
+
     public function getApiUser(?int $websiteId = null): ?string;
 
     public function getApiPassword(?int $websiteId = null): ?string;
@@ -72,6 +76,8 @@ interface ConfigInterface
     public function getSource(?int $websiteId = null): ?string;
 
     public function isLoggingEnabled(): bool;
+
+    public function getWelcomeMessageTemplate(?int $scopeId = null, string $scopeType = ScopeInterface::SCOPE_STORE): ?string;
 
     public function getOrderPlacedTemplate(?int $scopeId = null, string $scopeType = ScopeInterface::SCOPE_STORE): ?string;
 

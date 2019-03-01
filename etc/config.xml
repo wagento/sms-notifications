@@ -20,6 +20,7 @@
                 <require_optin>1</require_optin>
                 <terms_and_conditions><![CDATA[By subscribing to our SMS notifications and providing your mobile number, you agree to allow us to send text messages to a phone number that you provide. We will only contact you regarding changes to your account and any orders that you place. You may choose which types of alerts to receive or opt-out at any time by visiting your Customer Account Dashboard after registration. We will not use your mobile number for marketing purposes nor will we sell it or give it away. We do not charge you to receive these messages, but message and data rates may be applied by your carrier.]]></terms_and_conditions>
                 <show_terms_after_optin>1</show_terms_after_optin>
+                <send_welcome_message>1</send_welcome_message>
             </general>
             <api>
                 <username/>
@@ -31,6 +32,7 @@
                 <source/>
             </api>
             <templates>
+                <welcome>Thank you for subscribing to text notifications at {{store_name}}, {{customer_first_name}}. Reply HELP for help, STOP to cancel. Msg&amp;data rates may apply.</welcome>
                 <order_placed>Thank you for placing your order at {{store_name}}, {{customer_first_name}} (#{{order_id}}). We'll let you know when it ships or changes.</order_placed>
                 <order_updated>Your order (#{{order_id}}) has been updated. Details: {{order_url}}.</order_updated>
                 <order_shipped>Your order (#{{order_id}}) has been shipped. Track it: {{tracking_url}}</order_shipped>

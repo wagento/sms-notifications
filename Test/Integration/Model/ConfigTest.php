@@ -64,6 +64,14 @@ class ConfigTest extends TestCase
     }
 
     /**
+     * @magentoConfigFixture default/sms_notifications/general/send_welcome_message 1
+     */
+    public function testSendWelcomeMessage(): void
+    {
+        $this->assertTrue($this->config->sendWelcomeMessage());
+    }
+
+    /**
      * @magentoConfigFixture default/sms_notifications/api/username LINKMOBILITY
      */
     public function testGetApiUser(): void
@@ -125,6 +133,14 @@ class ConfigTest extends TestCase
     public function testIsLoggingEnabled(): void
     {
         $this->assertTrue($this->config->isLoggingEnabled());
+    }
+
+    /**
+     * @magentoConfigFixture default/sms_notifications/templates/welcome Test template
+     */
+    public function testGetWelcomeMessageTemplate(): void
+    {
+        $this->assertEquals('Test template', $this->config->getWelcomeMessageTemplate());
     }
 
     /**
