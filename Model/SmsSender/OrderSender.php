@@ -114,7 +114,13 @@ final class OrderSender extends SmsSender
         }
 
         $customerId = (int)$order->getCustomerId();
-        $messageRecipient = $this->getCustomerMobilePhoneNumber($customerId);
+        $customer = $this->getCustomerById($customerId);
+
+        if ($customer === null) {
+            return false;
+        }
+
+        $messageRecipient = $this->getCustomerMobilePhoneNumber($customer);
 
         if (!in_array($smsType, $this->getCustomerSmsSubscriptions($customerId), true) || $messageRecipient === null) {
             return false;

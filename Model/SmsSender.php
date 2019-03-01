@@ -19,6 +19,7 @@ namespace LinkMobility\SMSNotifications\Model;
 use LinkMobility\SMSNotifications\Api\ConfigInterface;
 use LinkMobility\SMSNotifications\Api\SmsSubscriptionRepositoryInterface;
 use Magento\Customer\Api\CustomerRepositoryInterface;
+use Magento\Customer\Api\Data\CustomerInterface;
 use Magento\Framework\Api\SearchCriteriaBuilder;
 use Magento\Framework\Exception\LocalizedException;
 use Magento\Framework\Exception\NoSuchEntityException;
@@ -99,21 +100,23 @@ abstract class SmsSender
         return $this->config->isEnabled($websiteId);
     }
 
-    protected function getCustomerMobilePhoneNumber(int $customerId): ?string
+    protected function getCustomerById(int $customerId): ?CustomerInterface
     {
         try {
             $customer = $this->customerRepository->getById($customerId);
         } catch (NoSuchEntityException | LocalizedException $e) {
             $this->logger->critical(
-                __('Could not get mobile telephone number for customer. Error: %1', $e->getMessage()),
-                [
-                    'customer_id' => $customerId
-                ]
+                __('Could not get customer by ID. Error: %1', $e->getMessage()), ['customer_id' => $customerId]
             );
 
             return null;
         }
 
+        return $customer;
+    }
+
+    protected function getCustomerMobilePhoneNumber(CustomerInterface $customer): ?string
+    {
         $mobilePhonePrefixAttribute = $customer->getCustomAttribute('sms_mobile_phone_prefix');
         $mobilePhoneNumberAttribute = $customer->getCustomAttribute('sms_mobile_phone_number');
 

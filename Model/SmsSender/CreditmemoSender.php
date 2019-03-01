@@ -85,7 +85,13 @@ final class CreditmemoSender extends SmsSender
         }
 
         $customerId = (int)$order->getCustomerId();
-        $messageRecipient = $this->getCustomerMobilePhoneNumber($customerId);
+        $customer = $this->getCustomerById($customerId);
+
+        if ($customer === null) {
+            return false;
+        }
+
+        $messageRecipient = $this->getCustomerMobilePhoneNumber($customer);
 
         if (
             !in_array('order_refunded', $this->getCustomerSmsSubscriptions($customerId), true)

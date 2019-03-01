@@ -18,6 +18,8 @@ namespace LinkMobility\SMSNotifications\Test\Integration\Model;
 
 use LinkMobility\SMSNotifications\Test\Integration\_stubs\Model\SmsSender;
 use LinkMobility\SMSNotifications\Test\Integration\SmsSenderTestCase;
+use Magento\Customer\Api\Data\CustomerInterface;
+use Magento\Customer\Model\Customer;
 use Psr\Log\Test\TestLogger;
 
 /**
@@ -37,22 +39,52 @@ class SmsSenderTest extends SmsSenderTestCase
 
     /**
      * @magentoDataFixture Magento/Customer/_files/customer.php
-     * @magentoDataFixture smsMobileNumberFixtureProvider
      */
-    public function testGetCustomerMobilePhoneNumberReturnsPhoneNumber(): void
+    public function testGetCustomerByIdReturnsCustomer(): void
     {
-        $this->assertSame('+15555551234', $this->smsSender->getCustomerMobilePhoneNumber(1));
+        $this->assertInstanceOf(CustomerInterface::class, $this->smsSender->getCustomerById(1));
     }
 
-    public function testGetCustomerMobilePhoneNumberWithInvalidCustomerIdReturnsNullAndLogsError(): void
+    public function testGetCustomerByIdWithInvalidCustomerIdReturnsNullAndLogsError(): void
     {
-        $this->assertNull($this->smsSender->getCustomerMobilePhoneNumber(100));
+        $this->assertNull($this->smsSender->getCustomerById(100));
         $this->assertTrue(
             $this->objectManager->get(TestLogger::class)->hasCriticalThatPasses(function ($record) {
                 return (string)$record['message'] ===
-                    (string)__('Could not get mobile telephone number for customer. Error: %1', 'No such entity with customerId = 100');
+                    (string)__('Could not get customer by ID. Error: %1', 'No such entity with customerId = 100');
             })
         );
+    }
+
+    /**
+     * @magentoDataFixture Magento/Customer/_files/customer.php
+     * @magentoDataFixture smsMobileNumberFixtureProvider
+     */
+    public function testGetCustomerMobilePhoneNumberWithSubscribedCustomerReturnsPhoneNumber(): void
+    {
+        $customer = $this->objectManager->create(Customer::class)->load(1)->getDataModel();
+
+        $this->assertSame('+15555551234', $this->smsSender->getCustomerMobilePhoneNumber($customer));
+    }
+
+    public function testGetCustomerMobilePhoneNumberWithUnsubscribedCustomerReturnsNull(): void
+    {
+        /** @var \PHPUnit\Framework\MockObject\MockObject|\Magento\Customer\Api\Data\CustomerInterface $customerMock */
+        $customerMock = $this->getMockBuilder(CustomerInterface::class)
+            ->disableOriginalConstructor()
+            ->setMethods(['getCustomAttribute'])
+            ->getMockForAbstractClass();
+
+        $customerMock->expects($this->at(0))
+            ->method('getCustomAttribute')
+            ->with('sms_mobile_phone_prefix')
+            ->willReturn(null);
+        $customerMock->expects($this->at(1))
+            ->method('getCustomAttribute')
+            ->with('sms_mobile_phone_number')
+            ->willReturn(null);
+
+        $this->assertNull($this->smsSender->getCustomerMobilePhoneNumber($customerMock));
     }
 
     /**

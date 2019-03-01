@@ -37,7 +37,7 @@
 "The API settings are not configured properly.","The API settings are not configured properly."
 "The SMS message was sent successfully.","The SMS message was sent successfully."
 "Customer with ID %1 is already subscribed to ""%2"" SMS notification.","Customer with ID %1 is already subscribed to ""%2"" SMS notification."
-"Could not get mobile telephone number for customer. Error: %1","Could not get mobile telephone number for customer. Error: %1"
+"Could not get customer by ID. Error: %1","Could not get customer by ID. Error: %1"
 "SMS Notification Subscription with ID ""%1"" does not exist.","SMS Notification Subscription with ID ""%1"" does not exist."
 "Validator must be an instance of SmsSubscriptionValidator.","Validator must be an instance of SmsSubscriptionValidator."
 "Validation Rules object must be an instance of SmsSubscriptionValidationRules.","Validation Rules object must be an instance of SmsSubscriptionValidationRules."
