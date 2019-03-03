@@ -263,17 +263,27 @@ class ManagePost extends Action implements ActionInterface, CsrfAwareActionInter
 
     private function updateMobileTelephoneNumber(): void
     {
-        $customer = $this->customerSession->getCustomerDataObject();
         $newMobileTelephonePrefix = $this->getRequest()->getParam('sms_mobile_phone_prefix');
-        $existingMobileTelephonePrefix = $this->customerSession->getCustomerDataObject()
-            ->getCustomAttribute('sms_mobile_phone_prefix');
         $newMobileTelephoneNumber = $this->getRequest()->getParam('sms_mobile_phone_number');
-        $existingMobileTelephoneNumber = $this->customerSession->getCustomerDataObject()
-            ->getCustomAttribute('sms_mobile_phone_number');
+        $customer = $this->customerSession->getCustomerDataObject();
+        $mobilePhonePrefixAttribute = $customer->getCustomAttribute('sms_mobile_phone_prefix');
+        $mobilePhoneNumberAttribute = $customer->getCustomAttribute('sms_mobile_phone_number');
         $haveChanges = false;
 
         if (!empty($newMobileTelephonePrefix) && empty($newMobileTelephoneNumber)) {
             return;
+        }
+
+        if ($mobilePhonePrefixAttribute !== null) {
+            $existingMobileTelephonePrefix = $mobilePhonePrefixAttribute->getValue() ?? '';
+        } else {
+            $existingMobileTelephonePrefix = '';
+        }
+
+        if ($mobilePhoneNumberAttribute !== null) {
+            $existingMobileTelephoneNumber = $mobilePhoneNumberAttribute->getValue() ?? '';
+        } else {
+            $existingMobileTelephoneNumber = '';
         }
 
         if ($existingMobileTelephonePrefix !== $newMobileTelephonePrefix) {
