@@ -35,7 +35,9 @@ final class WelcomeSender extends SmsSender
      */
     public function send(AbstractModel $customer): bool
     {
-        if (!$this->isModuleEnabled((int)$customer->getWebsiteId())) {
+        $websiteId = (int)$customer->getWebsiteId();
+
+        if (!$this->isModuleEnabled($websiteId) || !$this->config->sendWelcomeMessage($websiteId)) {
             return false;
         }
 
