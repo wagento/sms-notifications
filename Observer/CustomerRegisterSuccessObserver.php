@@ -19,6 +19,7 @@ namespace LinkMobility\SMSNotifications\Observer;
 use LinkMobility\SMSNotifications\Api\ConfigInterface;
 use LinkMobility\SMSNotifications\Api\Data\SmsSubscriptionInterfaceFactory;
 use LinkMobility\SMSNotifications\Api\SmsSubscriptionRepositoryInterface;
+use LinkMobility\SMSNotifications\Model\SmsSender\WelcomeSender as WelcomeSmsSender;
 use LinkMobility\SMSNotifications\Model\Source\SmsType as SmsTypeSource;
 use Magento\Framework\App\RequestInterface;
 use Magento\Framework\Event\Observer;
@@ -65,6 +66,10 @@ class CustomerRegisterSuccessObserver implements ObserverInterface
      * @var \LinkMobility\SMSNotifications\Api\SmsSubscriptionRepositoryInterface
      */
     private $smsSubscriptionRepository;
+    /**
+     * @var \LinkMobility\SMSNotifications\Model\SmsSender\WelcomeSender
+     */
+    private $welcomeSmsSender;
 
     public function __construct(
         LoggerInterface $logger,
@@ -73,7 +78,8 @@ class CustomerRegisterSuccessObserver implements ObserverInterface
         ConfigInterface $config,
         SmsTypeSource $smsTypeSource,
         SmsSubscriptionInterfaceFactory $smsSubscriptionFactory,
-        SmsSubscriptionRepositoryInterface $smsSubscriptionRepository
+        SmsSubscriptionRepositoryInterface $smsSubscriptionRepository,
+        WelcomeSmsSender $welcomeSmsSender
     ) {
         $this->logger = $logger;
         $this->storeManager = $storeManager;
@@ -82,6 +88,7 @@ class CustomerRegisterSuccessObserver implements ObserverInterface
         $this->smsTypeSource = $smsTypeSource;
         $this->smsSubscriptionFactory = $smsSubscriptionFactory;
         $this->smsSubscriptionRepository = $smsSubscriptionRepository;
+        $this->welcomeSmsSender = $welcomeSmsSender;
     }
 
     /**
@@ -91,6 +98,7 @@ class CustomerRegisterSuccessObserver implements ObserverInterface
     {
         $customer = $observer->getData('customer');
         $smsNotificationsParameters = $this->request->getParam('sms_notifications', []);
+        $createdSmsSubscriptions = 0;
 
         try {
             $websiteId = (int)$this->storeManager->getStore()->getWebsiteId();
@@ -125,6 +133,8 @@ class CustomerRegisterSuccessObserver implements ObserverInterface
                 $subscription->setCustomerId((int)$customer->getId());
 
                 $this->smsSubscriptionRepository->save($subscription);
+
+                $createdSmsSubscriptions++;
             } catch (CouldNotSaveException $e) {
                 $this->logger->critical(
                     __('Could not subscribe customer to SMS notification. Error: %1', $e->getMessage()),
@@ -135,6 +145,10 @@ class CustomerRegisterSuccessObserver implements ObserverInterface
                     ]
                 );
             }
+        }
+
+        if ($createdSmsSubscriptions > 0) {
+            $this->welcomeSmsSender->send($customer);
         }
     }
 }
