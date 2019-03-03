@@ -18,6 +18,7 @@ namespace LinkMobility\SMSNotifications\Controller\SmsNotifications;
 
 use LinkMobility\SMSNotifications\Api\Data\SmsSubscriptionInterfaceFactory;
 use LinkMobility\SMSNotifications\Api\SmsSubscriptionRepositoryInterface;
+use LinkMobility\SMSNotifications\Model\SmsSender\WelcomeSender as WelcomeSmsSender;
 use Magento\Customer\Api\CustomerRepositoryInterface;
 use Magento\Customer\Model\Session as CustomerSession;
 use Magento\Framework\Api\SearchCriteriaBuilder;
@@ -67,6 +68,10 @@ class ManagePost extends Action implements ActionInterface, CsrfAwareActionInter
      * @var \LinkMobility\SMSNotifications\Api\Data\SmsSubscriptionInterfaceFactory
      */
     private $smsSubscriptionFactory;
+    /**
+     * @var \LinkMobility\SMSNotifications\Model\SmsSender\WelcomeSender
+     */
+    private $welcomeSmsSender;
 
     public function __construct(
         Context $context,
@@ -75,7 +80,8 @@ class ManagePost extends Action implements ActionInterface, CsrfAwareActionInter
         LoggerInterface $logger,
         SearchCriteriaBuilder $searchCriteriaBuilder,
         SmsSubscriptionRepositoryInterface $smsSubscriptionRepository,
-        SmsSubscriptionInterfaceFactory $smsSubscriptionFactory
+        SmsSubscriptionInterfaceFactory $smsSubscriptionFactory,
+        WelcomeSmsSender $welcomeSmsSender
     ) {
         parent::__construct($context);
 
@@ -85,6 +91,7 @@ class ManagePost extends Action implements ActionInterface, CsrfAwareActionInter
         $this->searchCriteriaBuilder = $searchCriteriaBuilder;
         $this->smsSubscriptionRepository = $smsSubscriptionRepository;
         $this->smsSubscriptionFactory = $smsSubscriptionFactory;
+        $this->welcomeSmsSender = $welcomeSmsSender;
     }
 
     /**
@@ -319,5 +326,9 @@ class ManagePost extends Action implements ActionInterface, CsrfAwareActionInter
         }
 
         $this->messageManager->addSuccessMessage(__('Your mobile telephone number has been updated.'));
+
+        if ($existingMobileTelephonePrefix === '' && $existingMobileTelephoneNumber === '') {
+            $this->welcomeSmsSender->send($this->customerSession->getCustomer());
+        }
     }
 }
