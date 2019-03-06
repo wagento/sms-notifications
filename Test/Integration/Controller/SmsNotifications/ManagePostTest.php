@@ -47,7 +47,7 @@ class ManagePostTest extends AbstractControllerTestCase
     /**
      * @magentoAppArea frontend
      */
-    public function testInvalidCustomerIdRetursErrorMessage(): void
+    public function testInvalidCustomerIdReturnsErrorMessage(): void
     {
         $this->dispatch(self::ACTION_URI);
 
@@ -125,7 +125,7 @@ class ManagePostTest extends AbstractControllerTestCase
      */
     public function testUnsubscribeFromNotificationsReturnsErrorMessage(): void
     {
-        $this->createDeletedSubcriptionMocks();
+        $this->createDeletedSubscriptionMocks();
 
         $this->loginCustomer(1);
         $this->dispatch(self::ACTION_URI);
@@ -147,7 +147,7 @@ class ManagePostTest extends AbstractControllerTestCase
      */
     public function testSubscribeAndUnsubscribeFromNotificationsReturnsSuccessAndErrorMessage(): void
     {
-        $this->createDeletedSubcriptionMocks();
+        $this->createDeletedSubscriptionMocks();
 
         $this->getRequest()->setPostValue('sms_types', ['order_shipped' => '1']);
         $this->loginCustomer(1);
@@ -245,7 +245,7 @@ class ManagePostTest extends AbstractControllerTestCase
         $session->loginById($customerId);
     }
 
-    private function createDeletedSubcriptionMocks(): void
+    private function createDeletedSubscriptionMocks(): void
     {
         $smsSubscriptionMock = $this->getMockBuilder(SmsSubscription::class)
             ->disableOriginalConstructor()
