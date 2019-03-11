@@ -18,7 +18,10 @@ namespace LinkMobility\SMSNotifications\Controller\SmsNotifications;
 
 use LinkMobility\SMSNotifications\Api\Data\SmsSubscriptionInterfaceFactory;
 use LinkMobility\SMSNotifications\Api\SmsSubscriptionRepositoryInterface;
+use LinkMobility\SMSNotifications\Model\SmsSender\WelcomeSender as WelcomeSmsSender;
 use Magento\Customer\Api\CustomerRepositoryInterface;
+use Magento\Customer\Api\Data\CustomerInterface;
+use Magento\Customer\Model\CustomerFactory;
 use Magento\Customer\Model\Session as CustomerSession;
 use Magento\Framework\Api\SearchCriteriaBuilder;
 use Magento\Framework\App\Action\Action;
@@ -52,6 +55,10 @@ class ManagePost extends Action implements ActionInterface, CsrfAwareActionInter
      */
     private $customerRepository;
     /**
+     * @var \Magento\Customer\Model\CustomerFactory
+     */
+    private $customerFactory;
+    /**
      * @var \Psr\Log\LoggerInterface
      */
     private $logger;
@@ -67,24 +74,32 @@ class ManagePost extends Action implements ActionInterface, CsrfAwareActionInter
      * @var \LinkMobility\SMSNotifications\Api\Data\SmsSubscriptionInterfaceFactory
      */
     private $smsSubscriptionFactory;
+    /**
+     * @var \LinkMobility\SMSNotifications\Model\SmsSender\WelcomeSender
+     */
+    private $welcomeSmsSender;
 
     public function __construct(
         Context $context,
         CustomerSession $customerSession,
         CustomerRepositoryInterface $customerRepository,
+        CustomerFactory $customerFactory,
         LoggerInterface $logger,
         SearchCriteriaBuilder $searchCriteriaBuilder,
         SmsSubscriptionRepositoryInterface $smsSubscriptionRepository,
-        SmsSubscriptionInterfaceFactory $smsSubscriptionFactory
+        SmsSubscriptionInterfaceFactory $smsSubscriptionFactory,
+        WelcomeSmsSender $welcomeSmsSender
     ) {
         parent::__construct($context);
 
         $this->customerSession = $customerSession;
         $this->customerRepository = $customerRepository;
+        $this->customerFactory = $customerFactory;
         $this->logger = $logger;
         $this->searchCriteriaBuilder = $searchCriteriaBuilder;
         $this->smsSubscriptionRepository = $smsSubscriptionRepository;
         $this->smsSubscriptionFactory = $smsSubscriptionFactory;
+        $this->welcomeSmsSender = $welcomeSmsSender;
     }
 
     /**
@@ -263,17 +278,27 @@ class ManagePost extends Action implements ActionInterface, CsrfAwareActionInter
 
     private function updateMobileTelephoneNumber(): void
     {
-        $customer = $this->customerSession->getCustomerDataObject();
         $newMobileTelephonePrefix = $this->getRequest()->getParam('sms_mobile_phone_prefix');
-        $existingMobileTelephonePrefix = $this->customerSession->getCustomerDataObject()
-            ->getCustomAttribute('sms_mobile_phone_prefix');
         $newMobileTelephoneNumber = $this->getRequest()->getParam('sms_mobile_phone_number');
-        $existingMobileTelephoneNumber = $this->customerSession->getCustomerDataObject()
-            ->getCustomAttribute('sms_mobile_phone_number');
+        $customer = $this->customerSession->getCustomerDataObject();
+        $mobilePhonePrefixAttribute = $customer->getCustomAttribute('sms_mobile_phone_prefix');
+        $mobilePhoneNumberAttribute = $customer->getCustomAttribute('sms_mobile_phone_number');
         $haveChanges = false;
 
         if (!empty($newMobileTelephonePrefix) && empty($newMobileTelephoneNumber)) {
             return;
+        }
+
+        if ($mobilePhonePrefixAttribute !== null) {
+            $existingMobileTelephonePrefix = $mobilePhonePrefixAttribute->getValue() ?? '';
+        } else {
+            $existingMobileTelephonePrefix = '';
+        }
+
+        if ($mobilePhoneNumberAttribute !== null) {
+            $existingMobileTelephoneNumber = $mobilePhoneNumberAttribute->getValue() ?? '';
+        } else {
+            $existingMobileTelephoneNumber = '';
         }
 
         if ($existingMobileTelephonePrefix !== $newMobileTelephonePrefix) {
@@ -309,5 +334,19 @@ class ManagePost extends Action implements ActionInterface, CsrfAwareActionInter
         }
 
         $this->messageManager->addSuccessMessage(__('Your mobile telephone number has been updated.'));
+
+        if ($existingMobileTelephonePrefix === '' && $existingMobileTelephoneNumber === '') {
+            $this->sendWelcomeMessage($customer);
+        }
+    }
+
+    private function sendWelcomeMessage(CustomerInterface $customer): bool
+    {
+        /** @var \Magento\Customer\Model\Customer $customerModel */
+        $customerModel = $this->customerFactory->create();
+
+        $customerModel->updateData($customer);
+
+        return $this->welcomeSmsSender->send($customerModel);
     }
 }

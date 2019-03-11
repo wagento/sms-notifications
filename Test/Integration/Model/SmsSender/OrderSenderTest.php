@@ -57,6 +57,7 @@ class OrderSenderTest extends SmsSenderTestCase
     }
 
     /**
+     * @magentoDbIsolation enabled
      * @magentoAppArea frontend
      */
     public function testSendOrderSmsForGuest(): void

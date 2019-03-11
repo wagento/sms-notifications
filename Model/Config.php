@@ -68,6 +68,13 @@ final class Config implements ConfigInterface
         return $this->scopeConfig->isSetFlag(self::XML_PATH_SHOW_TERMS_AFTER_OPTIN, $scope, $websiteId);
     }
 
+    public function sendWelcomeMessage(?int $websiteId = null): bool
+    {
+        $scope = $websiteId === null ? ScopeConfigInterface::SCOPE_TYPE_DEFAULT : ScopeInterface::SCOPE_WEBSITE;
+
+        return $this->scopeConfig->isSetFlag(self::XML_PATH_SEND_WELCOME_MESSAGE, $scope, $websiteId);
+    }
+
     public function getApiUser(?int $websiteId = null): ?string
     {
         $scope = $websiteId === null ? ScopeConfigInterface::SCOPE_TYPE_DEFAULT : ScopeInterface::SCOPE_WEBSITE;
@@ -120,6 +127,15 @@ final class Config implements ConfigInterface
     public function isLoggingEnabled(): bool
     {
         return $this->scopeConfig->isSetFlag(self::XML_PATH_ENABLE_LOGGING);
+    }
+
+    public function getWelcomeMessageTemplate(?int $scopeId = null, string $scopeType = ScopeInterface::SCOPE_STORE): ?string
+    {
+        if ($scopeId === null) {
+            $scopeType = ScopeConfigInterface::SCOPE_TYPE_DEFAULT;
+        }
+
+        return $this->scopeConfig->getValue(self::XML_PATH_TEMPLATE_WELCOME, $scopeType, $scopeId);
     }
 
     public function getOrderPlacedTemplate(?int $scopeId = null, string $scopeType = ScopeInterface::SCOPE_STORE): ?string

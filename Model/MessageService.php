@@ -22,6 +22,7 @@ use LinkMobility\SMSNotifications\Gateway\ApiClientInterface;
 use LinkMobility\SMSNotifications\Gateway\ApiException;
 use LinkMobility\SMSNotifications\Gateway\Factory\MessageFactory;
 use LinkMobility\SMSNotifications\Util\TemplateProcessorInterface;
+use Magento\Customer\Api\Data\CustomerInterface;
 use Magento\Framework\Exception\NoSuchEntityException;
 use Magento\Sales\Api\Data\OrderInterface;
 use Magento\Sales\Api\Data\ShipmentInterface;
@@ -73,6 +74,10 @@ class MessageService
      * @var \Magento\Sales\Api\Data\ShipmentInterface
      */
     private $shipment;
+    /**
+     * @var \Magento\Customer\Api\Data\CustomerInterface
+     */
+    private $customer;
 
     public function __construct(
         LoggerInterface $logger,
@@ -102,6 +107,13 @@ class MessageService
     public function setShipment(ShipmentInterface $shipment): MessageService
     {
         $this->shipment = $shipment;
+
+        return $this;
+    }
+
+    public function setCustomer(CustomerInterface $customer): MessageService
+    {
+        $this->customer = $customer;
 
         return $this;
     }
@@ -176,7 +188,8 @@ class MessageService
             $type,
             [
                 'order' => $this->order,
-                'shipment' => $this->shipment
+                'shipment' => $this->shipment,
+                'customer' => $this->customer,
             ]
         );
 

@@ -16,6 +16,7 @@ declare(strict_types=1);
 
 namespace LinkMobility\SMSNotifications\Test\Integration\_stubs\Model;
 
+use Magento\Customer\Api\Data\CustomerInterface;
 use Magento\Framework\Model\AbstractModel;
 
 /**
@@ -33,9 +34,14 @@ class SmsSender extends \LinkMobility\SMSNotifications\Model\SmsSender
         return true;
     }
 
-    public function getCustomerMobilePhoneNumber(int $customerId): ?string
+    public function getCustomerById(int $customerId): ?CustomerInterface
     {
-        return parent::getCustomerMobilePhoneNumber($customerId);
+        return parent::getCustomerById($customerId);
+    }
+
+    public function getCustomerMobilePhoneNumber(CustomerInterface $customer): ?string
+    {
+        return parent::getCustomerMobilePhoneNumber($customer);
     }
 
     public function getCustomerSmsSubscriptions(int $customerId): array
