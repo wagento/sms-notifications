@@ -278,8 +278,8 @@ class ManagePost extends Action implements ActionInterface, CsrfAwareActionInter
 
     private function updateMobileTelephoneNumber(): void
     {
-        $newMobileTelephonePrefix = $this->getRequest()->getParam('sms_mobile_phone_prefix');
-        $newMobileTelephoneNumber = $this->getRequest()->getParam('sms_mobile_phone_number');
+        $newMobileTelephonePrefix = $this->getRequest()->getParam('sms_mobile_phone_prefix', '');
+        $newMobileTelephoneNumber = $this->getRequest()->getParam('sms_mobile_phone_number', '');
         $customer = $this->customerSession->getCustomerDataObject();
         $mobilePhonePrefixAttribute = $customer->getCustomAttribute('sms_mobile_phone_prefix');
         $mobilePhoneNumberAttribute = $customer->getCustomAttribute('sms_mobile_phone_number');
