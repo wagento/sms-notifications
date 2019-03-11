@@ -20,6 +20,8 @@ use LinkMobility\SMSNotifications\Api\Data\SmsSubscriptionInterfaceFactory;
 use LinkMobility\SMSNotifications\Api\SmsSubscriptionRepositoryInterface;
 use LinkMobility\SMSNotifications\Model\SmsSender\WelcomeSender as WelcomeSmsSender;
 use Magento\Customer\Api\CustomerRepositoryInterface;
+use Magento\Customer\Api\Data\CustomerInterface;
+use Magento\Customer\Model\CustomerFactory;
 use Magento\Customer\Model\Session as CustomerSession;
 use Magento\Framework\Api\SearchCriteriaBuilder;
 use Magento\Framework\App\Action\Action;
@@ -53,6 +55,10 @@ class ManagePost extends Action implements ActionInterface, CsrfAwareActionInter
      */
     private $customerRepository;
     /**
+     * @var \Magento\Customer\Model\CustomerFactory
+     */
+    private $customerFactory;
+    /**
      * @var \Psr\Log\LoggerInterface
      */
     private $logger;
@@ -77,6 +83,7 @@ class ManagePost extends Action implements ActionInterface, CsrfAwareActionInter
         Context $context,
         CustomerSession $customerSession,
         CustomerRepositoryInterface $customerRepository,
+        CustomerFactory $customerFactory,
         LoggerInterface $logger,
         SearchCriteriaBuilder $searchCriteriaBuilder,
         SmsSubscriptionRepositoryInterface $smsSubscriptionRepository,
@@ -87,6 +94,7 @@ class ManagePost extends Action implements ActionInterface, CsrfAwareActionInter
 
         $this->customerSession = $customerSession;
         $this->customerRepository = $customerRepository;
+        $this->customerFactory = $customerFactory;
         $this->logger = $logger;
         $this->searchCriteriaBuilder = $searchCriteriaBuilder;
         $this->smsSubscriptionRepository = $smsSubscriptionRepository;
@@ -328,7 +336,17 @@ class ManagePost extends Action implements ActionInterface, CsrfAwareActionInter
         $this->messageManager->addSuccessMessage(__('Your mobile telephone number has been updated.'));
 
         if ($existingMobileTelephonePrefix === '' && $existingMobileTelephoneNumber === '') {
-            $this->welcomeSmsSender->send($this->customerSession->getCustomer());
+            $this->sendWelcomeMessage($customer);
         }
+    }
+
+    private function sendWelcomeMessage(CustomerInterface $customer): bool
+    {
+        /** @var \Magento\Customer\Model\Customer $customerModel */
+        $customerModel = $this->customerFactory->create();
+
+        $customerModel->updateData($customer);
+
+        return $this->welcomeSmsSender->send($customerModel);
     }
 }
