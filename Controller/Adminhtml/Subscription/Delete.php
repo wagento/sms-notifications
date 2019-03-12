@@ -52,16 +52,18 @@ class Delete extends Action
         $resultRedirect = $this->resultRedirectFactory->create();
 
         if (
-            $this->_getSession()->hasCustomerData()
-            && array_key_exists('customer_id', $this->_getSession()->getCustomerData())
+            !$this->_getSession()->hasCustomerData()
+            || !array_key_exists('customer_id', $this->_getSession()->getCustomerData())
         ) {
-            $customerId = (int)$this->_getSession()->getCustomerData()['customer_id'];
-            $resultRedirect->setPath('customer/index/edit', ['id' => $customerId, '_current' => true]);
-        } else {
-            $resultRedirect->setPath('customer/index/index');
+            $this->messageManager->addErrorMessage(__('Could not get customer to unsubscribe from SMS notification.'));
+
+            return $resultRedirect->setPath('customer/index/index');
         }
 
+        $customerId = (int)$this->_getSession()->getCustomerData()['customer_id'];
         $smsSubscriptionId = (int)$this->getRequest()->getParam('sms_subscription_id');
+
+        $resultRedirect->setPath('customer/index/edit', ['id' => $customerId, '_current' => true]);
 
         if ($this->smsSubscriptionManagement->removeSubscription($smsSubscriptionId, $customerId)) {
             $this->messageManager->addSuccessMessage(

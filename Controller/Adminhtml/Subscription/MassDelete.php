@@ -74,15 +74,17 @@ class MassDelete extends Action
         $resultRedirect = $this->resultRedirectFactory->create();
 
         if (
-            $this->_getSession()->hasCustomerData()
-            && array_key_exists('customer_id', $this->_getSession()->getCustomerData())
+            !$this->_getSession()->hasCustomerData()
+            || !array_key_exists('customer_id', $this->_getSession()->getCustomerData())
         ) {
-            $customerId = (int)$this->_getSession()->getCustomerData()['customer_id'];
-            $resultRedirect->setPath('customer/index/edit', ['id' => $customerId, '_current' => true]);
-        } else {
-            $customerId = null;
-            $resultRedirect->setPath('customer/index/index');
+            $this->messageManager->addErrorMessage(__('Could not get customer to unsubscribe from SMS notifications.'));
+
+            return $resultRedirect->setPath('customer/index/index');
         }
+
+        $customerId = (int)$this->_getSession()->getCustomerData()['customer_id'];
+
+        $resultRedirect->setPath('customer/index/edit', ['id' => $customerId, '_current' => true]);
 
         try {
             /** @var \LinkMobility\SMSNotifications\Model\ResourceModel\SmsSubscription\Collection $collection */

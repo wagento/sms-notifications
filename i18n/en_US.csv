@@ -1,4 +1,6 @@
 "Could not get customer to subscribe SMS notification to.","Could not get customer to subscribe SMS notification to."
+"Could not get customer to unsubscribe from SMS notification.","Could not get customer to unsubscribe from SMS notification."
+"Could not get customer to unsubscribe from SMS notifications.","Could not get customer to unsubscribe from SMS notifications."
 "Please select an SMS notification to subscribe the customer to.","Please select an SMS notification to subscribe the customer to."
 "The customer has been subscribed to the SMS notification.","The customer has been subscribed to the SMS notification."
 "Something went wrong while subscribing the customer to the SMS notification.","Something went wrong while subscribing the customer to the SMS notification."
