@@ -106,7 +106,8 @@ abstract class SmsSender
             $customer = $this->customerRepository->getById($customerId);
         } catch (NoSuchEntityException | LocalizedException $e) {
             $this->logger->critical(
-                __('Could not get customer by ID. Error: %1', $e->getMessage()), ['customer_id' => $customerId]
+                __('Could not get customer by ID. Error: %1', $e->getMessage()),
+                ['customer_id' => $customerId]
             );
 
             return null;
