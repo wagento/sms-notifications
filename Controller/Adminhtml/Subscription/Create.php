@@ -55,7 +55,7 @@ class Create extends Action
             !$this->_getSession()->hasCustomerData()
             || !array_key_exists('customer_id', $this->_getSession()->getCustomerData())
         ) {
-            $this->messageManager->addErrorMessage(__('Could not get customer to subscribe SMS notification to.'));
+            $this->messageManager->addErrorMessage(__('Could not get customer to subscribe to SMS notification.'));
             $resultRedirect->setPath('customer/index/index');
 
             return $resultRedirect;
