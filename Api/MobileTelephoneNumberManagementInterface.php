@@ -27,9 +27,5 @@ use Magento\Customer\Api\Data\CustomerInterface;
  */
 interface MobileTelephoneNumberManagementInterface
 {
-    public function updateNumber(
-        string $newMobileTelephonePrefix,
-        string $newMobileTelephoneNumber,
-        CustomerInterface $customer
-    ): ?bool;
+    public function updateNumber(string $newPrefix, string $newNumber, CustomerInterface $customer): ?bool;
 }
