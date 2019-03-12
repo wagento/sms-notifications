@@ -129,7 +129,7 @@ class ManagePost extends Action implements ActionInterface, CsrfAwareActionInter
         }
 
         return $resultRedirect;
-   }
+    }
 
     /**
      * {@inheritdoc}
