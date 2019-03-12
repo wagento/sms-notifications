@@ -20,7 +20,6 @@ use LinkMobility\SMSNotifications\Api\MobileTelephoneNumberManagementInterface;
 use LinkMobility\SMSNotifications\Api\SmsSubscriptionManagementInterface;
 use LinkMobility\SMSNotifications\Api\SmsSubscriptionRepositoryInterface;
 use LinkMobility\SMSNotifications\Model\SmsSender\WelcomeSender as WelcomeSmsSender;
-use Magento\Customer\Model\CustomerFactory;
 use Magento\Customer\Model\Session as CustomerSession;
 use Magento\Framework\Api\SearchCriteriaBuilder;
 use Magento\Framework\App\Action\Action;
@@ -43,10 +42,6 @@ class ManagePost extends Action implements ActionInterface, CsrfAwareActionInter
      * @var \Magento\Customer\Model\Session
      */
     private $customerSession;
-    /**
-     * @var \Magento\Customer\Model\CustomerFactory
-     */
-    private $customerFactory;
     /**
      * @var \Psr\Log\LoggerInterface
      */
@@ -75,7 +70,6 @@ class ManagePost extends Action implements ActionInterface, CsrfAwareActionInter
     public function __construct(
         Context $context,
         CustomerSession $customerSession,
-        CustomerFactory $customerFactory,
         LoggerInterface $logger,
         SearchCriteriaBuilder $searchCriteriaBuilder,
         SmsSubscriptionRepositoryInterface $smsSubscriptionRepository,
@@ -86,7 +80,6 @@ class ManagePost extends Action implements ActionInterface, CsrfAwareActionInter
         parent::__construct($context);
 
         $this->customerSession = $customerSession;
-        $this->customerFactory = $customerFactory;
         $this->logger = $logger;
         $this->searchCriteriaBuilder = $searchCriteriaBuilder;
         $this->smsSubscriptionRepository = $smsSubscriptionRepository;
@@ -227,11 +220,6 @@ class ManagePost extends Action implements ActionInterface, CsrfAwareActionInter
 
     private function sendWelcomeMessage(): bool
     {
-        /** @var \Magento\Customer\Model\Customer $customerModel */
-        $customerModel = $this->customerFactory->create();
-
-        $customerModel->updateData($this->customerSession->getCustomerDataObject());
-
-        return $this->welcomeSmsSender->send($customerModel);
+        return $this->welcomeSmsSender->send($this->customerSession->getCustomer());
     }
 }
