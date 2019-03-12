@@ -26,7 +26,7 @@ $mobileTelephonePrefix = $mobileTelephoneViewModel->getPrefix() ?? $telephonePre
 $mobileTelephoneNumber = $mobileTelephoneViewModel->getNumber() ?? '';
 ?>
 <div id="manage-sms-notification-subscriptions-content">
-    <form action="<?= $block->escapeUrl($block->getUrl('customer/smsnotifications/managePost', ['_secure' => true])) ?>" method="post" enctype="multipart/form-data" id="form-smsnotifications-manage" class="form">
+    <form action="<?= $block->escapeUrl($block->getUrl('customer/smsnotifications/managePost', ['_secure' => true])) ?>" method="post" enctype="multipart/form-data" id="form-smsnotifications-manage" class="form" data-mage-init='{"validation":{}}' data-hasrequired="<?= $block->escapeHtmlAttr(__('* Required Fields')) ?>">
         <?= $block->getBlockHtml('formkey') ?>
         <fieldset class="fieldset general">
             <legend class="legend"><span><?= $block->escapeHtml(__('General Configuration')) ?></span></legend>
