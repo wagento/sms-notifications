@@ -160,7 +160,7 @@ class SmsSubscriptionRepository implements SmsSubscriptionRepositoryInterface
             $this->smsSubscriptionResourceModel->save($smsSubscriptionModel);
 
             $savedSmsSubscription = $this->get((int)$smsSubscriptionModel->getId());
-        } catch(\Exception $e) {
+        } catch (\Exception $e) {
             throw new CouldNotSaveException(__($e->getMessage()));
         }
 
@@ -181,7 +181,7 @@ class SmsSubscriptionRepository implements SmsSubscriptionRepositoryInterface
             $smsSubscriptionModel->updateData($smsSubscription);
 
             $this->smsSubscriptionResourceModel->delete($smsSubscriptionModel);
-        } catch(\Exception $e) {
+        } catch (\Exception $e) {
             throw new CouldNotDeleteException(__($e->getMessage()));
         }
 
