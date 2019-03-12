@@ -20,7 +20,6 @@ use LinkMobility\SMSNotifications\Api\MobileTelephoneNumberManagementInterface;
 use LinkMobility\SMSNotifications\Api\SmsSubscriptionManagementInterface;
 use LinkMobility\SMSNotifications\Api\SmsSubscriptionRepositoryInterface;
 use LinkMobility\SMSNotifications\Model\SmsSender\WelcomeSender as WelcomeSmsSender;
-use Magento\Customer\Api\Data\CustomerInterface;
 use Magento\Customer\Model\CustomerFactory;
 use Magento\Customer\Model\Session as CustomerSession;
 use Magento\Framework\Api\SearchCriteriaBuilder;
@@ -130,7 +129,11 @@ class ManagePost extends Action implements ActionInterface, CsrfAwareActionInter
             $this->createSubscriptions($selectedSmsTypes, $customerId);
         }
 
-        $this->updateMobileTelephoneNumber();
+        $mobileNumberUpdated = $this->updateMobileTelephoneNumber();
+
+        if ($mobileNumberUpdated) {
+            $this->sendWelcomeMessage();
+        }
 
         return $resultRedirect;
    }
@@ -202,7 +205,7 @@ class ManagePost extends Action implements ActionInterface, CsrfAwareActionInter
         return $this->smsSubscriptionManagement->createSubscriptions($selectedSmsTypes, (int)$customerId, $messages);
     }
 
-    private function updateMobileTelephoneNumber(): void
+    private function updateMobileTelephoneNumber(): bool
     {
         $newPrefix = $this->getRequest()->getParam('sms_mobile_phone_prefix', '');
         $newNumber = $this->getRequest()->getParam('sms_mobile_phone_number', '');
@@ -214,19 +217,20 @@ class ManagePost extends Action implements ActionInterface, CsrfAwareActionInter
                 $this->messageManager->addErrorMessage(__('Your mobile telephone number could not be updated.'));
             }
 
-            return;
+            return false;
         }
 
         $this->messageManager->addSuccessMessage(__('Your mobile telephone number has been updated.'));
-        $this->sendWelcomeMessage($customer);
+
+        return true;
     }
 
-    private function sendWelcomeMessage(CustomerInterface $customer): bool
+    private function sendWelcomeMessage(): bool
     {
         /** @var \Magento\Customer\Model\Customer $customerModel */
         $customerModel = $this->customerFactory->create();
 
-        $customerModel->updateData($customer);
+        $customerModel->updateData($this->customerSession->getCustomerDataObject());
 
         return $this->welcomeSmsSender->send($customerModel);
     }
