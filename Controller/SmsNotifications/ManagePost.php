@@ -16,10 +16,10 @@ declare(strict_types=1);
 
 namespace LinkMobility\SMSNotifications\Controller\SmsNotifications;
 
+use LinkMobility\SMSNotifications\Api\MobileTelephoneNumberManagementInterface;
 use LinkMobility\SMSNotifications\Api\SmsSubscriptionManagementInterface;
 use LinkMobility\SMSNotifications\Api\SmsSubscriptionRepositoryInterface;
 use LinkMobility\SMSNotifications\Model\SmsSender\WelcomeSender as WelcomeSmsSender;
-use Magento\Customer\Api\CustomerRepositoryInterface;
 use Magento\Customer\Api\Data\CustomerInterface;
 use Magento\Customer\Model\CustomerFactory;
 use Magento\Customer\Model\Session as CustomerSession;
@@ -30,9 +30,6 @@ use Magento\Framework\App\ActionInterface;
 use Magento\Framework\App\CsrfAwareActionInterface;
 use Magento\Framework\App\Request\InvalidRequestException;
 use Magento\Framework\App\RequestInterface;
-use Magento\Framework\Exception\InputException;
-use Magento\Framework\Exception\LocalizedException;
-use Magento\Framework\Exception\State\InputMismatchException;
 use Psr\Log\LoggerInterface;
 
 /**
@@ -47,10 +44,6 @@ class ManagePost extends Action implements ActionInterface, CsrfAwareActionInter
      * @var \Magento\Customer\Model\Session
      */
     private $customerSession;
-    /**
-     * @var \Magento\Customer\Api\CustomerRepositoryInterface
-     */
-    private $customerRepository;
     /**
      * @var \Magento\Customer\Model\CustomerFactory
      */
@@ -75,28 +68,32 @@ class ManagePost extends Action implements ActionInterface, CsrfAwareActionInter
      * @var \LinkMobility\SMSNotifications\Model\SmsSender\WelcomeSender
      */
     private $welcomeSmsSender;
+    /**
+     * @var \LinkMobility\SMSNotifications\Api\MobileTelephoneNumberManagementInterface
+     */
+    private $mobileTelephoneNumberManagement;
 
     public function __construct(
         Context $context,
         CustomerSession $customerSession,
-        CustomerRepositoryInterface $customerRepository,
         CustomerFactory $customerFactory,
         LoggerInterface $logger,
         SearchCriteriaBuilder $searchCriteriaBuilder,
         SmsSubscriptionRepositoryInterface $smsSubscriptionRepository,
         SmsSubscriptionManagementInterface $smsSubscriptionManagement,
+        MobileTelephoneNumberManagementInterface $mobileTelephoneNumberManagement,
         WelcomeSmsSender $welcomeSmsSender
     ) {
         parent::__construct($context);
 
         $this->customerSession = $customerSession;
-        $this->customerRepository = $customerRepository;
         $this->customerFactory = $customerFactory;
         $this->logger = $logger;
         $this->searchCriteriaBuilder = $searchCriteriaBuilder;
         $this->smsSubscriptionRepository = $smsSubscriptionRepository;
         $this->smsSubscriptionManagement = $smsSubscriptionManagement;
         $this->welcomeSmsSender = $welcomeSmsSender;
+        $this->mobileTelephoneNumberManagement = $mobileTelephoneNumberManagement;
     }
 
     /**
@@ -207,66 +204,21 @@ class ManagePost extends Action implements ActionInterface, CsrfAwareActionInter
 
     private function updateMobileTelephoneNumber(): void
     {
-        $newMobileTelephonePrefix = $this->getRequest()->getParam('sms_mobile_phone_prefix', '');
-        $newMobileTelephoneNumber = $this->getRequest()->getParam('sms_mobile_phone_number', '');
+        $newPrefix = $this->getRequest()->getParam('sms_mobile_phone_prefix', '');
+        $newNumber = $this->getRequest()->getParam('sms_mobile_phone_number', '');
         $customer = $this->customerSession->getCustomerDataObject();
-        $mobilePhonePrefixAttribute = $customer->getCustomAttribute('sms_mobile_phone_prefix');
-        $mobilePhoneNumberAttribute = $customer->getCustomAttribute('sms_mobile_phone_number');
-        $haveChanges = false;
+        $numberUpdated = $this->mobileTelephoneNumberManagement->updateNumber($newPrefix, $newNumber, $customer);
 
-        if (!empty($newMobileTelephonePrefix) && empty($newMobileTelephoneNumber)) {
-            return;
-        }
-
-        if ($mobilePhonePrefixAttribute !== null) {
-            $existingMobileTelephonePrefix = $mobilePhonePrefixAttribute->getValue() ?? '';
-        } else {
-            $existingMobileTelephonePrefix = '';
-        }
-
-        if ($mobilePhoneNumberAttribute !== null) {
-            $existingMobileTelephoneNumber = $mobilePhoneNumberAttribute->getValue() ?? '';
-        } else {
-            $existingMobileTelephoneNumber = '';
-        }
-
-        if ($existingMobileTelephonePrefix !== $newMobileTelephonePrefix) {
-            $customer->setCustomAttribute('sms_mobile_phone_prefix', $newMobileTelephonePrefix);
-
-            $haveChanges = true;
-        }
-
-        if ($existingMobileTelephoneNumber !== $newMobileTelephoneNumber) {
-            $customer->setCustomAttribute('sms_mobile_phone_number', $newMobileTelephoneNumber);
-
-            $haveChanges = true;
-        }
-
-        if (!$haveChanges) {
-            return;
-        }
-
-        try {
-            $this->customerRepository->save($customer);
-        } catch (InputException | InputMismatchException | LocalizedException $e) {
-            $this->messageManager->addErrorMessage(__('Your mobile telephone number could not be updated.'));
-            $this->logger->critical(
-                __('Could not save mobile telephone number. Error: %1', $e->getMessage()),
-                [
-                    'customer_id' => $customer->getId(),
-                    'mobile_phone_prefix' => $newMobileTelephonePrefix,
-                    'mobile_phone_number' => $newMobileTelephoneNumber
-                ]
-            );
+        if (!$numberUpdated) {
+            if ($numberUpdated === false) {
+                $this->messageManager->addErrorMessage(__('Your mobile telephone number could not be updated.'));
+            }
 
             return;
         }
 
         $this->messageManager->addSuccessMessage(__('Your mobile telephone number has been updated.'));
-
-        if ($existingMobileTelephonePrefix === '' && $existingMobileTelephoneNumber === '') {
-            $this->sendWelcomeMessage($customer);
-        }
+        $this->sendWelcomeMessage($customer);
     }
 
     private function sendWelcomeMessage(CustomerInterface $customer): bool
