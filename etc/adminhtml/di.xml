@@ -23,6 +23,11 @@
             <argument name="logger" xsi:type="object">LinkMobility\SMSNotifications\Logger\Logger</argument>
         </arguments>
     </type>
+    <type name="LinkMobility\SMSNotifications\Ui\DataProvider\SmsSubscriptions">
+        <arguments>
+            <argument name="backendSession" xsi:type="object">Magento\Backend\Model\Session\Proxy</argument>
+        </arguments>
+    </type>
     <type name="Magento\Ui\Component\MassAction\Filter">
         <plugin name="smsTypeFilter" type="LinkMobility\SMSNotifications\Plugin\Component\MassAction\FilterPlugin"/>
     </type>

@@ -112,6 +112,16 @@
             <argument name="converter" xsi:type="object">Zend\Filter\Word\SeparatorToCamelCase</argument>
         </arguments>
     </type>
+    <type name="LinkMobility\SMSNotifications\ViewModel\CustomerSmsSubscriptions">
+        <arguments>
+            <argument name="customerSession" xsi:type="object">Magento\Customer\Model\Session\Proxy</argument>
+        </arguments>
+    </type>
+    <type name="LinkMobility\SMSNotifications\ViewModel\MobileTelephone">
+        <arguments>
+            <argument name="customerSession" xsi:type="object">Magento\Customer\Model\Session\Proxy</argument>
+        </arguments>
+    </type>
     <type name="Magento\Sales\Api\CreditmemoRepositoryInterface">
         <plugin name="sms_notifications_send_refund_sms" type="LinkMobility\SMSNotifications\Plugin\Sales\Api\CreditmemoRepositoryInterfacePlugin"/>
     </type>
