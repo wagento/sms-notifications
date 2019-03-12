@@ -136,7 +136,7 @@ class ManagePostTest extends AbstractControllerTestCase
         );
         $this->assertTrue(
             $this->_objectManager->get(TestLogger::class)->hasCriticalThatPasses(function ($record) {
-                return (string)$record['message'] === (string)__('Could not delete SMS subscription for customer. Error: %1', 'Unknown error');
+                return (string)$record['message'] === (string)__('Could not unsubscribe customer from SMS notification. Error: %1', 'Unknown error');
             })
         );
     }
@@ -163,7 +163,7 @@ class ManagePostTest extends AbstractControllerTestCase
         );
         $this->assertTrue(
             $this->_objectManager->get(TestLogger::class)->hasCriticalThatPasses(function ($record) {
-                return (string)$record['message'] === (string)__('Could not delete SMS subscription for customer. Error: %1', 'Unknown error');
+                return (string)$record['message'] === (string)__('Could not unsubscribe customer from SMS notification. Error: %1', 'Unknown error');
             })
         );
     }

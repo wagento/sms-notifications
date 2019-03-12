@@ -16,12 +16,9 @@ declare(strict_types=1);
 
 namespace LinkMobility\SMSNotifications\Controller\Adminhtml\Subscription;
 
-use LinkMobility\SMSNotifications\Api\Data\SmsSubscriptionInterfaceFactory;
-use LinkMobility\SMSNotifications\Api\SmsSubscriptionRepositoryInterface;
+use LinkMobility\SMSNotifications\Api\SmsSubscriptionManagementInterface;
 use Magento\Backend\App\Action;
 use Magento\Backend\App\Action\Context;
-use Magento\Framework\Exception\CouldNotSaveException;
-use Psr\Log\LoggerInterface;
 
 /**
  * Create SMS Subscription Action
@@ -34,29 +31,17 @@ class Create extends Action
     const ADMIN_RESOURCE = 'LinkMobility_SMSNotifications::manage_sms_subscriptions';
 
     /**
-     * @var \Psr\Log\LoggerInterface
+     * @var \LinkMobility\SMSNotifications\Api\SmsSubscriptionManagementInterface
      */
-    private $logger;
-    /**
-     * @var \LinkMobility\SMSNotifications\Api\SmsSubscriptionRepositoryInterface
-     */
-    private $smsSubscriptionRepository;
-    /**
-     * @var \LinkMobility\SMSNotifications\Api\Data\SmsSubscriptionInterfaceFactory
-     */
-    private $smsSubscriptionFactory;
+    private $smsSubscriptionManagement;
 
     public function __construct(
         Context $context,
-        LoggerInterface $logger,
-        SmsSubscriptionRepositoryInterface $smsSubscriptionRepository,
-        SmsSubscriptionInterfaceFactory $smsSubscriptionFactory
+        SmsSubscriptionManagementInterface $smsSubscriptionManagement
     ) {
         parent::__construct($context);
 
-        $this->logger = $logger;
-        $this->smsSubscriptionRepository = $smsSubscriptionRepository;
-        $this->smsSubscriptionFactory = $smsSubscriptionFactory;
+        $this->smsSubscriptionManagement = $smsSubscriptionManagement;
     }
 
     /**
@@ -87,27 +72,13 @@ class Create extends Action
             return $resultRedirect;
         }
 
-        try {
-            /** @var \LinkMobility\SMSNotifications\Api\Data\SmsSubscriptionInterface $smsSubscription */
-            $smsSubscription = $this->smsSubscriptionFactory->create();
-
-            $smsSubscription->setCustomerId($customerId);
-            $smsSubscription->setSmsType($smsType);
-
-            $this->smsSubscriptionRepository->save($smsSubscription);
+        if ($this->smsSubscriptionManagement->createSubscription($smsType, $customerId)) {
             $this->messageManager->addSuccessMessage(
                 __('The customer has been subscribed to the SMS notification.')
             );
-        } catch (CouldNotSaveException $e) {
+        } else {
             $this->messageManager->addErrorMessage(
                 __('Something went wrong while subscribing the customer to the SMS notification.')
-            );
-            $this->logger->critical(
-                __('Could not subscribe customer to SMS notification. Error: %1', $e->getMessage()),
-                [
-                    'sms_type' => $smsType,
-                    'customer_id' => $customerId
-                ]
             );
         }
 

@@ -16,7 +16,7 @@ declare(strict_types=1);
 
 namespace LinkMobility\SMSNotifications\Controller\SmsNotifications;
 
-use LinkMobility\SMSNotifications\Api\Data\SmsSubscriptionInterfaceFactory;
+use LinkMobility\SMSNotifications\Api\SmsSubscriptionManagementInterface;
 use LinkMobility\SMSNotifications\Api\SmsSubscriptionRepositoryInterface;
 use LinkMobility\SMSNotifications\Model\SmsSender\WelcomeSender as WelcomeSmsSender;
 use Magento\Customer\Api\CustomerRepositoryInterface;
@@ -30,11 +30,8 @@ use Magento\Framework\App\ActionInterface;
 use Magento\Framework\App\CsrfAwareActionInterface;
 use Magento\Framework\App\Request\InvalidRequestException;
 use Magento\Framework\App\RequestInterface;
-use Magento\Framework\Exception\CouldNotDeleteException;
-use Magento\Framework\Exception\CouldNotSaveException;
 use Magento\Framework\Exception\InputException;
 use Magento\Framework\Exception\LocalizedException;
-use Magento\Framework\Exception\NoSuchEntityException;
 use Magento\Framework\Exception\State\InputMismatchException;
 use Psr\Log\LoggerInterface;
 
@@ -71,9 +68,9 @@ class ManagePost extends Action implements ActionInterface, CsrfAwareActionInter
      */
     private $smsSubscriptionRepository;
     /**
-     * @var \LinkMobility\SMSNotifications\Api\Data\SmsSubscriptionInterfaceFactory
+     * @var \LinkMobility\SMSNotifications\Api\SmsSubscriptionManagementInterface
      */
-    private $smsSubscriptionFactory;
+    private $smsSubscriptionManagement;
     /**
      * @var \LinkMobility\SMSNotifications\Model\SmsSender\WelcomeSender
      */
@@ -87,7 +84,7 @@ class ManagePost extends Action implements ActionInterface, CsrfAwareActionInter
         LoggerInterface $logger,
         SearchCriteriaBuilder $searchCriteriaBuilder,
         SmsSubscriptionRepositoryInterface $smsSubscriptionRepository,
-        SmsSubscriptionInterfaceFactory $smsSubscriptionFactory,
+        SmsSubscriptionManagementInterface $smsSubscriptionManagement,
         WelcomeSmsSender $welcomeSmsSender
     ) {
         parent::__construct($context);
@@ -98,7 +95,7 @@ class ManagePost extends Action implements ActionInterface, CsrfAwareActionInter
         $this->logger = $logger;
         $this->searchCriteriaBuilder = $searchCriteriaBuilder;
         $this->smsSubscriptionRepository = $smsSubscriptionRepository;
-        $this->smsSubscriptionFactory = $smsSubscriptionFactory;
+        $this->smsSubscriptionManagement = $smsSubscriptionManagement;
         $this->welcomeSmsSender = $welcomeSmsSender;
     }
 
@@ -169,55 +166,23 @@ class ManagePost extends Action implements ActionInterface, CsrfAwareActionInter
      */
     private function removeSubscriptions(array &$subscribedSmsTypes, array $selectedSmsTypes, $customerId): int
     {
-        $removedSubscriptions = 0;
+        $messages = [
+            'error' => [
+                'one' => 'You could not be unsubscribed from 1 text notification.',
+                'multiple' => 'You could not be unsubscribed from %1 text notifications.'
+            ],
+            'success' => [
+                'one' => 'You have been unsubscribed from 1 text notification.',
+                'multiple' => 'You have been unsubscribed from %1 text notifications.'
+            ]
+        ];
 
-        foreach ($subscribedSmsTypes as $key => $subscribedSmsType) {
-            if (in_array($subscribedSmsType->getSmsType(), $selectedSmsTypes, true)) {
-                continue;
-            }
-
-            try {
-                $this->smsSubscriptionRepository->deleteById((int)$subscribedSmsType->getId());
-
-                ++$removedSubscriptions;
-
-                unset($subscribedSmsTypes[$key]);
-            } catch (NoSuchEntityException | CouldNotDeleteException $e) {
-                $this->logger->critical(
-                    __('Could not delete SMS subscription for customer. Error: %1', $e->getMessage()),
-                    [
-                        'customer_id' => $customerId,
-                        'sms_type' => $subscribedSmsType->getSmsType(),
-                        'area' => 'frontend'
-                    ]
-                );
-            }
-        }
-
-        $remainingSubscriptions = array_diff(array_column($subscribedSmsTypes, 'sms_type'), $selectedSmsTypes);
-        $remainingSubscriptionCount = count($remainingSubscriptions) - $removedSubscriptions;
-
-        if ($remainingSubscriptionCount === 1) {
-            $this->messageManager->addErrorMessage(__('You could not be unsubscribed from 1 text notification.'));
-        }
-
-        if ($remainingSubscriptionCount > 1) {
-            $this->messageManager->addErrorMessage(
-                __('You could not be unsubscribed from %1 text notifications.', $remainingSubscriptionCount)
-            );
-        }
-
-        if ($removedSubscriptions === 1) {
-            $this->messageManager->addSuccessMessage(__('You have been unsubscribed from 1 text notification.'));
-        }
-
-        if ($removedSubscriptions > 1) {
-            $this->messageManager->addSuccessMessage(
-                __('You have been unsubscribed from %1 text notifications.', $removedSubscriptions)
-            );
-        }
-
-        return $removedSubscriptions;
+        return $this->smsSubscriptionManagement->removeSubscriptions(
+            $subscribedSmsTypes,
+            $selectedSmsTypes,
+            (int)$customerId,
+            $messages
+        );
     }
 
     /**
@@ -226,54 +191,18 @@ class ManagePost extends Action implements ActionInterface, CsrfAwareActionInter
      */
     private function createSubscriptions(array $selectedSmsTypes, $customerId): int
     {
-        $createdSubscriptions = 0;
+        $messages = [
+            'error' => [
+                'one' => 'You could not be subscribed to 1 text notification.',
+                'multiple' => 'You could not be subscribed to %1 text notifications.'
+            ],
+            'success' => [
+                'one' => 'You have been subscribed to 1 text notification.',
+                'multiple' => 'You have been subscribed to %1 text notifications.'
+            ]
+        ];
 
-        foreach ($selectedSmsTypes as $smsType) {
-            /** @var \LinkMobility\SMSNotifications\Api\Data\SmsSubscriptionInterface $smsSubscription */
-            $smsSubscription = $this->smsSubscriptionFactory->create();
-
-            $smsSubscription->setCustomerId((int)$customerId);
-            $smsSubscription->setSmsType($smsType);
-
-            try {
-                $this->smsSubscriptionRepository->save($smsSubscription);
-
-                ++$createdSubscriptions;
-            } catch (CouldNotSaveException $e) {
-                $this->logger->critical(
-                    __('Could not subscribe customer to SMS notification. Error: %1', $e->getMessage()),
-                    [
-                        'customer_id' => $customerId,
-                        'sms_type' => $smsType,
-                        'area' => 'frontend'
-                    ]
-                );
-            }
-        }
-
-        $remainingSubscriptions = count($selectedSmsTypes) - $createdSubscriptions;
-
-        if ($remainingSubscriptions === 1) {
-            $this->messageManager->addErrorMessage(__('You could not be subscribed to 1 text notification.'));
-        }
-
-        if ($remainingSubscriptions > 1)   {
-            $this->messageManager->addErrorMessage(
-                __('You could not be subscribed to %1 text notifications.', $remainingSubscriptions)
-            );
-        }
-
-        if ($createdSubscriptions === 1) {
-            $this->messageManager->addSuccessMessage(__('You have been subscribed to 1 text notification.'));
-        }
-
-        if ($createdSubscriptions > 1) {
-            $this->messageManager->addSuccessMessage(
-                __('You have been subscribed to %1 text notifications.', $createdSubscriptions)
-            );
-        }
-
-        return $createdSubscriptions;
+        return $this->smsSubscriptionManagement->createSubscriptions($selectedSmsTypes, (int)$customerId, $messages);
     }
 
     private function updateMobileTelephoneNumber(): void

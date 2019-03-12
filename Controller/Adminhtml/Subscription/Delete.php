@@ -16,12 +16,9 @@ declare(strict_types=1);
 
 namespace LinkMobility\SMSNotifications\Controller\Adminhtml\Subscription;
 
-use LinkMobility\SMSNotifications\Api\SmsSubscriptionRepositoryInterface;
+use LinkMobility\SMSNotifications\Api\SmsSubscriptionManagementInterface;
 use Magento\Backend\App\Action;
 use Magento\Backend\App\Action\Context;
-use Magento\Framework\Exception\CouldNotDeleteException;
-use Magento\Framework\Exception\NoSuchEntityException;
-use Psr\Log\LoggerInterface;
 
 /**
  * Delete SMS Subscription Action
@@ -34,23 +31,17 @@ class Delete extends Action
     const ADMIN_RESOURCE = 'LinkMobility_SMSNotifications::manage_sms_subscriptions';
 
     /**
-     * @var \Psr\Log\LoggerInterface
+     * @var \LinkMobility\SMSNotifications\Api\SmsSubscriptionManagementInterface
      */
-    private $logger;
-    /**
-     * @var \LinkMobility\SMSNotifications\Api\SmsSubscriptionRepositoryInterface
-     */
-    private $smsSubscriptionRepository;
+    private $smsSubscriptionManagement;
 
     public function __construct(
         Context $context,
-        LoggerInterface $logger,
-        SmsSubscriptionRepositoryInterface $smsSubscriptionRepository
+        SmsSubscriptionManagementInterface $smsSubscriptionManagement
     ) {
         parent::__construct($context);
 
-        $this->logger = $logger;
-        $this->smsSubscriptionRepository = $smsSubscriptionRepository;
+        $this->smsSubscriptionManagement = $smsSubscriptionManagement;
     }
 
     /**
@@ -64,27 +55,21 @@ class Delete extends Action
             $this->_getSession()->hasCustomerData()
             && array_key_exists('customer_id', $this->_getSession()->getCustomerData())
         ) {
-            $customerId = $this->_getSession()->getCustomerData()['customer_id'];
+            $customerId = (int)$this->_getSession()->getCustomerData()['customer_id'];
             $resultRedirect->setPath('customer/index/edit', ['id' => $customerId, '_current' => true]);
         } else {
             $resultRedirect->setPath('customer/index/index');
         }
 
-        try {
-            $this->smsSubscriptionRepository->deleteById((int)$this->getRequest()->getParam('sms_subscription_id'));
+        $smsSubscriptionId = (int)$this->getRequest()->getParam('sms_subscription_id');
+
+        if ($this->smsSubscriptionManagement->removeSubscription($smsSubscriptionId, $customerId)) {
             $this->messageManager->addSuccessMessage(
                 __('The customer has been unsubscribed from the SMS notification.')
             );
-        } catch (CouldNotDeleteException | NoSuchEntityException $e) {
+        } else {
             $this->messageManager->addErrorMessage(
                 __('Something went wrong while unsubscribing the customer from the SMS notification.')
-            );
-            $this->logger->critical(
-                __(
-                    'Could not unsubscribe SMS notification for customer with ID "%1". Error: %2',
-                    $customerId,
-                    $e->getMessage()
-                )
             );
         }
 

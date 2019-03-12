@@ -16,6 +16,7 @@ declare(strict_types=1);
 
 namespace LinkMobility\SMSNotifications\Controller\Adminhtml\Subscription;
 
+use LinkMobility\SMSNotifications\Api\SmsSubscriptionManagementInterface;
 use LinkMobility\SMSNotifications\Model\ResourceModel\SmsSubscription\CollectionFactory;
 use Magento\Backend\App\Action;
 use Magento\Backend\App\Action\Context;
@@ -45,18 +46,24 @@ class MassDelete extends Action
      * @var \LinkMobility\SMSNotifications\Model\ResourceModel\SmsSubscription\CollectionFactory
      */
     private $collectionFactory;
+    /**
+     * @var \LinkMobility\SMSNotifications\Api\SmsSubscriptionManagementInterface
+     */
+    private $smsSubscriptionManagement;
 
     public function __construct(
         Context $context,
         Filter $filter,
         LoggerInterface $logger,
-        CollectionFactory $collectionFactory
+        CollectionFactory $collectionFactory,
+        SmsSubscriptionManagementInterface $smsSubscriptionManagement
     ) {
         parent::__construct($context);
 
         $this->filter = $filter;
         $this->logger = $logger;
         $this->collectionFactory = $collectionFactory;
+        $this->smsSubscriptionManagement = $smsSubscriptionManagement;
     }
 
     /**
@@ -80,51 +87,23 @@ class MassDelete extends Action
         try {
             /** @var \LinkMobility\SMSNotifications\Model\ResourceModel\SmsSubscription\Collection $collection */
             $collection = $this->filter->getCollection($this->collectionFactory->create());
-            $deletedSubscriptions = 0;
 
             $collection->addFieldToFilter('customer_id', ['eq' => $customerId]);
 
-            /** @var \LinkMobility\SMSNotifications\Model\SmsSubscription $subscription */
-            foreach ($collection->getItems() as $subscription) {
-                try {
-                    $subscription->getResource()->delete($subscription);
-                    ++$deletedSubscriptions;
-                } catch (\Exception $e) {
-                    $this->logger->critical(
-                        __('Could not unsubscribe customer from SMS notification. Error: %1', $e->getMessage()),
-                        [
-                            'sms_type' => $subscription->getSmsType(),
-                            'customer_id' => $subscription->getCustomerId(),
-                        ]
-                    );
-                }
-            }
+            /** @var \LinkMobility\SMSNotifications\Model\SmsSubscription[] $subscribedSmsTypes */
+            $subscribedSmsTypes = $collection->getItems();
+            $messages = [
+                'error' => [
+                    'one' => 'The customer could not be unsubscribed from 1 SMS notification.',
+                    'multiple' => 'The customer could not be unsubscribed from %1 SMS notifications.'
+                ],
+                'success' => [
+                    'one' => 'The customer has been unsubscribed from 1 SMS notification.',
+                    'multiple' => 'The customer has been unsubscribed from %1 SMS notifications.'
+                ]
+            ];
 
-            $remainingSubscriptions = $collection->count() - $deletedSubscriptions;
-
-            if ($remainingSubscriptions === 1) {
-                $this->messageManager->addErrorMessage(
-                    __('The customer could not be unsubscribed from 1 SMS notification.')
-                );
-            }
-
-            if ($remainingSubscriptions > 1) {
-                $this->messageManager->addErrorMessage(
-                    __('The customer could not be unsubscribed from %1 SMS notifications.', $remainingSubscriptions)
-                );
-            }
-
-            if ($deletedSubscriptions === 1) {
-                $this->messageManager->addSuccessMessage(
-                    __('The customer has been unsubscribed from 1 SMS notification.')
-                );
-            }
-
-            if ($deletedSubscriptions > 1) {
-                $this->messageManager->addSuccessMessage(
-                    __('The customer has been unsubscribed from %1 SMS notifications.', $deletedSubscriptions)
-                );
-            }
+            $this->smsSubscriptionManagement->removeSubscriptions($subscribedSmsTypes, [], $customerId, $messages);
         } catch (LocalizedException $e) {
             $this->messageManager->addErrorMessage(
                 __('Something went wrong while unsubscribing the customer from the SMS notifications.')

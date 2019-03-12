@@ -16,11 +16,9 @@ declare(strict_types=1);
 
 namespace LinkMobility\SMSNotifications\Controller\Adminhtml\Subscription;
 
-use LinkMobility\SMSNotifications\Api\Data\SmsSubscriptionInterfaceFactory;
-use LinkMobility\SMSNotifications\Api\SmsSubscriptionRepositoryInterface;
+use LinkMobility\SMSNotifications\Api\SmsSubscriptionManagementInterface;
 use Magento\Backend\App\Action;
 use Magento\Backend\App\Action\Context;
-use Magento\Framework\Exception\CouldNotSaveException;
 use Psr\Log\LoggerInterface;
 
 /**
@@ -38,25 +36,19 @@ class MassCreate extends Action
      */
     private $logger;
     /**
-     * @var \LinkMobility\SMSNotifications\Api\Data\SmsSubscriptionInterfaceFactory
+     * @var \LinkMobility\SMSNotifications\Api\SmsSubscriptionManagementInterface
      */
-    private $smsSubscriptionFactory;
-    /**
-     * @var \LinkMobility\SMSNotifications\Api\SmsSubscriptionRepositoryInterface
-     */
-    private $smsSubscriptionRepository;
+    private $smsSubscriptionManagement;
 
     public function __construct(
         Context $context,
         LoggerInterface $logger,
-        SmsSubscriptionInterfaceFactory $smsSubscriptionFactory,
-        SmsSubscriptionRepositoryInterface $smsSubscriptionRepository
+        SmsSubscriptionManagementInterface $smsSubscriptionManagement
     ) {
         parent::__construct($context);
 
         $this->logger = $logger;
-        $this->smsSubscriptionFactory = $smsSubscriptionFactory;
-        $this->smsSubscriptionRepository = $smsSubscriptionRepository;
+        $this->smsSubscriptionManagement = $smsSubscriptionManagement;
     }
 
     /**
@@ -78,7 +70,6 @@ class MassCreate extends Action
 
         $customerId = (int)$this->_getSession()->getCustomerData()['customer_id'];
         $selectedSmsTypes = $this->getRequest()->getParam('selected', []);
-        $createdSubscriptions = 0;
 
         $resultRedirect->setPath('customer/index/edit', ['id' => $customerId, '_current' => true]);
 
@@ -88,52 +79,19 @@ class MassCreate extends Action
             return $resultRedirect;
         }
 
+        $messages = [
+            'error' => [
+                'one' => 'The customer could not be subscribed to 1 SMS notification.',
+                'multiple' => 'The customer could not be subscribed to %1 SMS notifications.'
+            ],
+            'success' => [
+                'one' => 'The customer has been subscribed to 1 SMS notification.',
+                'multiple' => 'The customer has been subscribed to %1 SMS notifications.'
+            ]
+        ];
+
         try {
-            foreach ($selectedSmsTypes as $smsType) {
-                try {
-                    /** @var \LinkMobility\SMSNotifications\Api\Data\SmsSubscriptionInterface $subscription */
-                    $subscription = $this->smsSubscriptionFactory->create();
-
-                    $subscription->setSmsType($smsType);
-                    $subscription->setCustomerId($customerId);
-
-                    $this->smsSubscriptionRepository->save($subscription);
-
-                    ++$createdSubscriptions;
-                } catch (CouldNotSaveException $e) {
-                    $this->logger->critical(
-                        __('Could not subscribe customer to SMS notification. Error: %1', $e->getMessage()),
-                        [
-                            'sms_type' => $smsType,
-                            'customer_id' => $customerId
-                        ]
-                    );
-                }
-            }
-
-            $remainingSubscriptions = count($selectedSmsTypes) - $createdSubscriptions;
-
-            if ($remainingSubscriptions === 1) {
-                $this->messageManager->addErrorMessage(
-                    __('The customer could not be subscribed to 1 SMS notification.')
-                );
-            }
-
-            if ($remainingSubscriptions > 1) {
-                $this->messageManager->addErrorMessage(
-                    __('The customer could not be subscribed to %1 SMS notifications.', $remainingSubscriptions)
-                );
-            }
-
-            if ($createdSubscriptions === 1) {
-                $this->messageManager->addSuccessMessage(__('The customer has been subscribed to 1 SMS notification.'));
-            }
-
-            if ($createdSubscriptions > 1) {
-                $this->messageManager->addSuccessMessage(
-                    __('The customer has been subscribed to %1 SMS notifications.', $createdSubscriptions)
-                );
-            }
+            $this->smsSubscriptionManagement->createSubscriptions($selectedSmsTypes, $customerId, $messages);
         } catch (\Exception $e) {
             $this->messageManager->addErrorMessage(
                 __('Something went wrong while subscribing the customer to the SMS notifications.')
