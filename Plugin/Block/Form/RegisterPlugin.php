@@ -70,7 +70,7 @@ class RegisterPlugin
             $websiteId = null;
         }
 
-        if (!$this->config->isEnabled($websiteId) ) {
+        if (!$this->config->isEnabled($websiteId)) {
             return $proceed();
         }
 
