@@ -86,6 +86,7 @@ final class OrderSender extends SmsSender
             || $orderExtensionAttributes->getIsSmsNotificationSent() === true
             || $orderState === null
             || $orderState === Order::STATE_CLOSED
+            || $orderState === Order::STATE_COMPLETE
         ) {
             return false;
         }
