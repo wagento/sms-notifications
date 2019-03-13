@@ -35,7 +35,7 @@
                 <welcome>Thank you for subscribing to text notifications at {{store_name}}, {{customer_first_name}}. Reply HELP for help, STOP to cancel. Msg&amp;data rates may apply.</welcome>
                 <order_placed>Thank you for placing your order at {{store_name}}, {{customer_first_name}} (#{{order_id}}). We'll let you know when it ships or changes.</order_placed>
                 <order_updated>Your order (#{{order_id}}) has been updated. Details: {{order_url}}.</order_updated>
-                <order_shipped>Your order (#{{order_id}}) has been shipped. Track it: {{tracking_url}}</order_shipped>
+                <order_shipped>Your order (#{{order_id}}) has been shipped. Tracking: {{tracking_numbers}}</order_shipped>
                 <order_refunded>Your order (#{{order_id}}) has been refunded. Details: {{order_url}}.</order_refunded>
                 <order_canceled>Your order (#{{order_id}}) has been canceled. Details: {{order_url}}.</order_canceled>
                 <order_held>Your order (#{{order_id}}) has been placed on hold. Details: {{order_url}}.</order_held>

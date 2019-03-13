@@ -72,7 +72,7 @@ final class OrderVariables implements MessageVariablesInterface
         return [
             'order_id' => $this->order->getIncrementId(),
             'order_url' => $this->urlBuilder->getUrl('sales/order/view', ['order_id' => $this->order->getEntityId()]),
-            'tracking_url' => $this->getShipmentTrackingUrl(),
+            'tracking_numbers' => $this->getShipmentTrackingNumbers(),
             'customer_name' => $this->order->getCustomerFirstname() . ' ' . $this->order->getCustomerLastname(),
             'customer_first_name' => $this->order->getCustomerFirstname(),
             'customer_last_name' => $this->order->getCustomerLastname(),
@@ -117,18 +117,21 @@ final class OrderVariables implements MessageVariablesInterface
         return $storeName;
     }
 
-    private function getShipmentTrackingUrl(): string
+    private function getShipmentTrackingNumbers(): string
     {
-        if ($this->shipment !== null) {
-            $salesModel = $this->shipment;
-        } else {
-            $salesModel = $this->order;
-        }
+        $trackingNumbers = [];
 
-        if ($salesModel === null) {
+        if ($this->shipment === null) {
             return '';
         }
 
-        return $this->shippingHelper->getTrackingPopupUrlBySalesModel($salesModel);
+        $tracks = $this->shipment->getAllTracks();
+
+        /** @var \Magento\Shipping\Model\Order\Track $track */
+        foreach ($tracks as $track) {
+            $trackingNumbers[] = $track->getTitle() . ': ' . $track->getNumber();
+        }
+
+        return implode($trackingNumbers, ', ');
     }
 }
