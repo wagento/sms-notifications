@@ -19,16 +19,16 @@ namespace LinkMobility\SMSNotifications\Model\MessageVariables;
 use LinkMobility\SMSNotifications\Api\MessageVariablesInterface;
 use Magento\Framework\App\Config\ScopeConfigInterface;
 use Magento\Framework\UrlInterface as UrlBuilder;
-use Magento\Sales\Model\Order;
+use Magento\Sales\Model\Order\Shipment;
 use Magento\Store\Model\ScopeInterface;
 
 /**
- * Order Message Variables
+ * Shipment Message Variables
  *
  * @package LinkMobility\SMSNotifications\Model\MessageVariables
  * @author Joseph Leedy <joseph@wagento.com>
  */
-final class OrderVariables implements MessageVariablesInterface
+final class ShipmentVariables implements MessageVariablesInterface
 {
     /**
      * @var \Magento\Framework\UrlInterface
@@ -39,37 +39,38 @@ final class OrderVariables implements MessageVariablesInterface
      */
     private $scopeConfig;
     /**
-     * @var \Magento\Sales\Model\Order
+     * @var \Magento\Sales\Model\Order\Shipment
      */
-    private $order;
+    private $shipment;
 
-    public function __construct(
-        UrlBuilder $urlBuilder,
-        ScopeConfigInterface $scopeConfig
-    ) {
+    public function __construct(UrlBuilder $urlBuilder, ScopeConfigInterface $scopeConfig)
+    {
         $this->urlBuilder = $urlBuilder;
         $this->scopeConfig = $scopeConfig;
     }
 
     public function getVariables(): array
     {
-        if ($this->order === null) {
+        if ($this->shipment === null) {
             return [];
         }
 
+        $order = $this->shipment->getOrder();
+
         return [
-            'order_id' => $this->order->getIncrementId(),
-            'order_url' => $this->urlBuilder->getUrl('sales/order/view', ['order_id' => $this->order->getEntityId()]),
-            'customer_name' => $this->order->getCustomerFirstname() . ' ' . $this->order->getCustomerLastname(),
-            'customer_first_name' => $this->order->getCustomerFirstname(),
-            'customer_last_name' => $this->order->getCustomerLastname(),
-            'store_name' => $this->getStoreNameById((int)$this->order->getStoreId(), $this->order->getStoreName()),
+            'order_id' => $order->getIncrementId(),
+            'order_url' => $this->urlBuilder->getUrl('sales/order/view', ['order_id' => $order->getEntityId()]),
+            'tracking_numbers' => $this->getShipmentTrackingNumbers(),
+            'customer_name' => $order->getCustomerFirstname() . ' ' . $order->getCustomerLastname(),
+            'customer_first_name' => $order->getCustomerFirstname(),
+            'customer_last_name' => $order->getCustomerLastname(),
+            'store_name' => $this->getStoreNameById((int)$order->getStoreId(), $order->getStoreName()),
         ];
     }
 
-    public function setOrder(Order $order): self
+    public function setShipment(Shipment $shipment): self
     {
-        $this->order = $order;
+        $this->shipment = $shipment;
 
         return $this;
     }
@@ -95,5 +96,23 @@ final class OrderVariables implements MessageVariablesInterface
         }
 
         return $storeName;
+    }
+
+    private function getShipmentTrackingNumbers(): string
+    {
+        $trackingNumbers = [];
+
+        if ($this->shipment === null) {
+            return '';
+        }
+
+        $tracks = $this->shipment->getAllTracks();
+
+        /** @var \Magento\Shipping\Model\Order\Track $track */
+        foreach ($tracks as $track) {
+            $trackingNumbers[] = $track->getTitle() . ': ' . $track->getNumber();
+        }
+
+        return implode($trackingNumbers, ', ');
     }
 }

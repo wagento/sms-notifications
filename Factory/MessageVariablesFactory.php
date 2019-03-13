@@ -19,6 +19,7 @@ namespace LinkMobility\SMSNotifications\Factory;
 use LinkMobility\SMSNotifications\Api\MessageVariablesInterface;
 use LinkMobility\SMSNotifications\Model\MessageVariables\OrderVariables;
 use LinkMobility\SMSNotifications\Model\MessageVariables\CustomerVariables;
+use LinkMobility\SMSNotifications\Model\MessageVariables\ShipmentVariables;
 use Magento\Customer\Api\Data\CustomerInterface;
 use Magento\Framework\ObjectManagerInterface;
 use Magento\Sales\Model\Order;
@@ -54,6 +55,9 @@ final class MessageVariablesFactory
             case 'order':
                 $messageVariables = $this->createOrderVariables($arguments);
                 break;
+            case 'shipment':
+                $messageVariables = $this->createShipmentVariables($arguments);
+                break;
             default:
                 break;
         }
@@ -80,10 +84,17 @@ final class MessageVariablesFactory
             $orderVariables->setOrder($arguments['order']);
         }
 
+        return $orderVariables;
+    }
+
+    private function createShipmentVariables(array $arguments = []): ShipmentVariables
+    {
+        $shipmentVariables = $this->objectManager->create(ShipmentVariables::class);
+
         if (array_key_exists('shipment', $arguments) && ($arguments['shipment'] instanceof Shipment)) {
-            $orderVariables->setShipment($arguments['shipment']);
+            $shipmentVariables->setShipment($arguments['shipment']);
         }
 
-        return $orderVariables;
+        return $shipmentVariables;
     }
 }
