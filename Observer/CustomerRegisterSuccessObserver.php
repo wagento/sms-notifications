@@ -18,7 +18,7 @@ namespace LinkMobility\SMSNotifications\Observer;
 
 use LinkMobility\SMSNotifications\Api\ConfigInterface;
 use LinkMobility\SMSNotifications\Api\SmsSubscriptionManagementInterface;
-use LinkMobility\SMSNotifications\Model\SmsSender\WelcomeSender as WelcomeSmsSender;
+use LinkMobility\SMSNotifications\Model\SmsSender;
 use LinkMobility\SMSNotifications\Model\Source\SmsType as SmsTypeSource;
 use Magento\Framework\App\RequestInterface;
 use Magento\Framework\Event\Observer;
@@ -58,7 +58,7 @@ class CustomerRegisterSuccessObserver implements ObserverInterface
     /**
      * @var \LinkMobility\SMSNotifications\Model\SmsSender\WelcomeSender
      */
-    private $welcomeSmsSender;
+    private $smsSender;
 
     public function __construct(
         RequestInterface $request,
@@ -66,14 +66,14 @@ class CustomerRegisterSuccessObserver implements ObserverInterface
         ConfigInterface $config,
         SmsTypeSource $smsTypeSource,
         SmsSubscriptionManagementInterface $smsSubscriptionManagement,
-        WelcomeSmsSender $welcomeSmsSender
+        SmsSender $smsSender
     ) {
         $this->storeManager = $storeManager;
         $this->request = $request;
         $this->config = $config;
         $this->smsTypeSource = $smsTypeSource;
         $this->smsSubscriptionManagement = $smsSubscriptionManagement;
-        $this->welcomeSmsSender = $welcomeSmsSender;
+        $this->smsSender = $smsSender;
     }
 
     /**
@@ -114,7 +114,7 @@ class CustomerRegisterSuccessObserver implements ObserverInterface
         );
 
         if ($createdSmsSubscriptions > 0) {
-            $this->welcomeSmsSender->send($customer);
+            $this->smsSender->send($customer);
         }
     }
 }

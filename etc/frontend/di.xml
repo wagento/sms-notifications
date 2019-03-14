@@ -39,6 +39,11 @@
             <argument name="customerSession" xsi:type="object">Magento\Customer\Model\Session\Proxy</argument>
         </arguments>
     </type>
+    <type name="LinkMobility\SMSNotifications\Observer\CustomerRegisterSuccessObserver">
+        <arguments>
+            <argument name="smsSender" xsi:type="object">LinkMobility\SMSNotifications\Model\SmsSender\WelcomeSender</argument>
+        </arguments>
+    </type>
     <type name="LinkMobility\SMSNotifications\Plugin\Block\Form\RegisterPlugin">
         <arguments>
             <argument name="customerSession" xsi:type="object">Magento\Customer\Model\Session\Proxy</argument>
