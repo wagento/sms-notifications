@@ -18,9 +18,11 @@ namespace LinkMobility\SMSNotifications\Test\Integration\Observer;
 
 use LinkMobility\SMSNotifications\Api\ConfigInterface;
 use LinkMobility\SMSNotifications\Api\SmsSubscriptionRepositoryInterface;
+use LinkMobility\SMSNotifications\Model\SmsSender\WelcomeSender;
 use LinkMobility\SMSNotifications\Model\SmsSubscription;
 use LinkMobility\SMSNotifications\Observer\CustomerRegisterSuccessObserver;
-use Magento\Customer\Api\CustomerRepositoryInterface;
+use LinkMobility\SMSNotifications\Test\Integration\_stubs\Model\SmsSender;
+use Magento\Customer\Model\Customer;
 use Magento\Framework\Api\SearchCriteriaBuilder;
 use Magento\Framework\App\RequestInterface;
 use Magento\Framework\Event\ConfigInterface as EventObserverConfig;
@@ -61,11 +63,15 @@ class CustomerRegisterSuccessObserverTest extends TestCase
      * @magentoAppArea frontend
      * @magentoDataFixture Magento/Customer/_files/customer.php
      */
-    public function testObserverSavesSmsSubscriptions(): void
+    public function testObserverSavesSmsSubscriptionsAndSendsWelcomeSms(): void
     {
         $requestMock = $this->getMockForAbstractClass(RequestInterface::class, [], '', false, false, true, ['isPost']);
         $configMock = $this->getMockBuilder(ConfigInterface::class)
             ->disableOriginalConstructor()
+            ->getMock();
+        $smsSenderMock = $this->getMockBuilder(SmsSender::class)
+            ->disableOriginalConstructor()
+            ->setMethods(['send'])
             ->getMock();
 
         $requestMock->method('getParam')->with('sms_notifications')->willReturn([
@@ -77,8 +83,8 @@ class CustomerRegisterSuccessObserverTest extends TestCase
 
         /** @var \Magento\Framework\Event\ManagerInterface $eventManager */
         $eventManager = $this->objectManager->create(ManagerInterface::class);
-        /** @var \Magento\Customer\Api\Data\CustomerInterface $customer */
-        $customer = $this->objectManager->create(CustomerRepositoryInterface::class)->getById(1);
+        /** @var \Magento\Customer\Model\Customer $customer */
+        $customer = $this->objectManager->create(Customer::class)->load(1);
         /** @var \LinkMobility\SMSNotifications\Api\SmsSubscriptionRepositoryInterface $smsSubscriptionRepository */
         $smsSubscriptionRepository = $this->objectManager->create(SmsSubscriptionRepositoryInterface::class);
         /** @var \Magento\Framework\Api\SearchCriteriaInterface $searchCriteria */
@@ -86,9 +92,12 @@ class CustomerRegisterSuccessObserverTest extends TestCase
             ->addFilter('customer_id', '1')
             ->create();
 
+        $smsSenderMock->expects($this->once())->method('send')->with($customer)->willReturn(true);
+
         $this->objectManager->configure([
             get_class($requestMock) => ['shared' => true],
             get_class($configMock) => ['shared' => true],
+            WelcomeSender::class => ['shared' => true],
             CustomerRegisterSuccessObserver::class => [
                 'arguments' => [
                     'request' => ['instance' => get_class($requestMock)],
@@ -98,8 +107,9 @@ class CustomerRegisterSuccessObserverTest extends TestCase
         ]);
         $this->objectManager->addSharedInstance($requestMock, get_class($requestMock));
         $this->objectManager->addSharedInstance($configMock, get_class($configMock));
+        $this->objectManager->addSharedInstance($smsSenderMock, WelcomeSender::class);
 
-        $eventManager->dispatch('customer_register_success', ['customer' => $customer]);
+        $eventManager->dispatch('customer_register_success', ['customer' => $customer->getDataModel()]);
 
         $smsSubscriptionSearchResults = $smsSubscriptionRepository->getList($searchCriteria);
         $createdSmsSubscriptions = [];
