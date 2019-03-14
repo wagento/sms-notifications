@@ -91,7 +91,7 @@ class SmsSubscriptionManagement implements SmsSubscriptionManagementInterface
      * @param string[] $smsTypes
      * @param string[] $messages
      */
-    public function createSubscriptions(array $smsTypes, int $customerId, array $messages): int
+    public function createSubscriptions(array $smsTypes, int $customerId, array $messages = []): int
     {
         $createdSubscriptions = 0;
 
@@ -101,6 +101,10 @@ class SmsSubscriptionManagement implements SmsSubscriptionManagementInterface
             }
 
             ++$createdSubscriptions;
+        }
+
+        if (count($messages) === 0) {
+            return $createdSubscriptions;
         }
 
         $remainingSubscriptions = count($smsTypes) - $createdSubscriptions;
@@ -152,7 +156,7 @@ class SmsSubscriptionManagement implements SmsSubscriptionManagementInterface
         array &$subscribedSmsTypes,
         array $selectedSmsTypes,
         int $customerId,
-        array $messages
+        array $messages = []
     ): int {
         $removedSubscriptions = 0;
 
@@ -168,6 +172,10 @@ class SmsSubscriptionManagement implements SmsSubscriptionManagementInterface
             ++$removedSubscriptions;
 
             unset($subscribedSmsTypes[$key]);
+        }
+
+        if (count($messages) === 0) {
+            return $removedSubscriptions;
         }
 
         $remainingSubscriptions = array_diff(array_column($subscribedSmsTypes, 'sms_type'), $selectedSmsTypes);

@@ -31,7 +31,7 @@ interface SmsSubscriptionManagementInterface
      * @param string[] $smsTypes
      * @param string[] $messages
      */
-    public function createSubscriptions(array $smsTypes, int $customerId, array $messages): int;
+    public function createSubscriptions(array $smsTypes, int $customerId, array $messages = []): int;
 
     public function removeSubscription(int $subscriptionId, int $customerId): bool;
 
@@ -44,6 +44,6 @@ interface SmsSubscriptionManagementInterface
         array &$subscribedSmsTypes,
         array $selectedSmsTypes,
         int $customerId,
-        array $messages
+        array $messages = []
     ): int;
 }
