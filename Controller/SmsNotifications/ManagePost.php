@@ -19,7 +19,7 @@ namespace LinkMobility\SMSNotifications\Controller\SmsNotifications;
 use LinkMobility\SMSNotifications\Api\MobileTelephoneNumberManagementInterface;
 use LinkMobility\SMSNotifications\Api\SmsSubscriptionManagementInterface;
 use LinkMobility\SMSNotifications\Api\SmsSubscriptionRepositoryInterface;
-use LinkMobility\SMSNotifications\Model\SmsSender\WelcomeSender as WelcomeSmsSender;
+use LinkMobility\SMSNotifications\Model\SmsSender;
 use Magento\Customer\Model\Session as CustomerSession;
 use Magento\Framework\Api\SearchCriteriaBuilder;
 use Magento\Framework\App\Action\Action;
@@ -61,7 +61,7 @@ class ManagePost extends Action implements ActionInterface, CsrfAwareActionInter
     /**
      * @var \LinkMobility\SMSNotifications\Model\SmsSender\WelcomeSender
      */
-    private $welcomeSmsSender;
+    private $smsSender;
     /**
      * @var \LinkMobility\SMSNotifications\Api\MobileTelephoneNumberManagementInterface
      */
@@ -75,7 +75,7 @@ class ManagePost extends Action implements ActionInterface, CsrfAwareActionInter
         SmsSubscriptionRepositoryInterface $smsSubscriptionRepository,
         SmsSubscriptionManagementInterface $smsSubscriptionManagement,
         MobileTelephoneNumberManagementInterface $mobileTelephoneNumberManagement,
-        WelcomeSmsSender $welcomeSmsSender
+        SmsSender $smsSender
     ) {
         parent::__construct($context);
 
@@ -84,7 +84,7 @@ class ManagePost extends Action implements ActionInterface, CsrfAwareActionInter
         $this->searchCriteriaBuilder = $searchCriteriaBuilder;
         $this->smsSubscriptionRepository = $smsSubscriptionRepository;
         $this->smsSubscriptionManagement = $smsSubscriptionManagement;
-        $this->welcomeSmsSender = $welcomeSmsSender;
+        $this->smsSender = $smsSender;
         $this->mobileTelephoneNumberManagement = $mobileTelephoneNumberManagement;
     }
 
@@ -220,6 +220,6 @@ class ManagePost extends Action implements ActionInterface, CsrfAwareActionInter
 
     private function sendWelcomeMessage(): bool
     {
-        return $this->welcomeSmsSender->send($this->customerSession->getCustomer());
+        return $this->smsSender->send($this->customerSession->getCustomer());
     }
 }
