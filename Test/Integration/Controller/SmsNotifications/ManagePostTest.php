@@ -17,9 +17,11 @@ declare(strict_types=1);
 namespace LinkMobility\SMSNotifications\Test\Integration\Controller\SmsNotifications;
 
 use LinkMobility\SMSNotifications\Api\SmsSubscriptionRepositoryInterface;
+use LinkMobility\SMSNotifications\Model\SmsSender\WelcomeSender;
 use LinkMobility\SMSNotifications\Model\SmsSubscription;
 use LinkMobility\SMSNotifications\Model\SmsSubscriptionRepository;
 use LinkMobility\SMSNotifications\Model\Source\SmsType as SmsTypeSource;
+use LinkMobility\SMSNotifications\Test\Integration\_stubs\Model\SmsSender;
 use Magento\Customer\Model\Session as CustomerSession;
 use Magento\Framework\Api\ImageProcessor;
 use Magento\Framework\Api\ImageProcessorInterface;
@@ -174,6 +176,16 @@ class ManagePostTest extends AbstractControllerTestCase
      */
     public function testUpdateMobileNumberReturnsSuccessMessage(): void
     {
+        $smsSenderMock = $this->getMockBuilder(SmsSender::class)
+            ->disableOriginalConstructor()
+            ->setMethods(['send'])
+            ->getMock();
+
+        $smsSenderMock->expects($this->once())->method('send')->willReturn(true);
+
+        $this->_objectManager->configure([WelcomeSender::class => ['shared' => true]]);
+        $this->_objectManager->addSharedInstance($smsSenderMock, WelcomeSender::class);
+
         $this->getRequest()->setPostValue('sms_mobile_phone_prefix', 'US_1');
         $this->getRequest()->setPostValue('sms_mobile_phone_number', '5555551234');
         $this->loginCustomer(1);
