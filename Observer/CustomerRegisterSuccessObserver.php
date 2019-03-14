@@ -17,17 +17,14 @@ declare(strict_types=1);
 namespace LinkMobility\SMSNotifications\Observer;
 
 use LinkMobility\SMSNotifications\Api\ConfigInterface;
-use LinkMobility\SMSNotifications\Api\Data\SmsSubscriptionInterfaceFactory;
-use LinkMobility\SMSNotifications\Api\SmsSubscriptionRepositoryInterface;
+use LinkMobility\SMSNotifications\Api\SmsSubscriptionManagementInterface;
 use LinkMobility\SMSNotifications\Model\SmsSender\WelcomeSender as WelcomeSmsSender;
 use LinkMobility\SMSNotifications\Model\Source\SmsType as SmsTypeSource;
 use Magento\Framework\App\RequestInterface;
 use Magento\Framework\Event\Observer;
 use Magento\Framework\Event\ObserverInterface;
-use Magento\Framework\Exception\CouldNotSaveException;
 use Magento\Framework\Exception\NoSuchEntityException;
 use Magento\Store\Model\StoreManagerInterface;
-use Psr\Log\LoggerInterface;
 
 /**
  * Observer for customer_register_success event
@@ -38,10 +35,6 @@ use Psr\Log\LoggerInterface;
  */
 class CustomerRegisterSuccessObserver implements ObserverInterface
 {
-    /**
-     * @var \Psr\Log\LoggerInterface
-     */
-    private $logger;
     /**
      * @var \Magento\Framework\App\RequestInterface
      */
@@ -59,35 +52,27 @@ class CustomerRegisterSuccessObserver implements ObserverInterface
      */
     private $smsTypeSource;
     /**
-     * @var \LinkMobility\SMSNotifications\Model\SmsSubscriptionFactory
+     * @var \LinkMobility\SMSNotifications\Api\SmsSubscriptionManagementInterface
      */
-    private $smsSubscriptionFactory;
-    /**
-     * @var \LinkMobility\SMSNotifications\Api\SmsSubscriptionRepositoryInterface
-     */
-    private $smsSubscriptionRepository;
+    private $smsSubscriptionManagement;
     /**
      * @var \LinkMobility\SMSNotifications\Model\SmsSender\WelcomeSender
      */
     private $welcomeSmsSender;
 
     public function __construct(
-        LoggerInterface $logger,
         RequestInterface $request,
         StoreManagerInterface $storeManager,
         ConfigInterface $config,
         SmsTypeSource $smsTypeSource,
-        SmsSubscriptionInterfaceFactory $smsSubscriptionFactory,
-        SmsSubscriptionRepositoryInterface $smsSubscriptionRepository,
+        SmsSubscriptionManagementInterface $smsSubscriptionManagement,
         WelcomeSmsSender $welcomeSmsSender
     ) {
-        $this->logger = $logger;
         $this->storeManager = $storeManager;
         $this->request = $request;
         $this->config = $config;
         $this->smsTypeSource = $smsTypeSource;
-        $this->smsSubscriptionFactory = $smsSubscriptionFactory;
-        $this->smsSubscriptionRepository = $smsSubscriptionRepository;
+        $this->smsSubscriptionManagement = $smsSubscriptionManagement;
         $this->welcomeSmsSender = $welcomeSmsSender;
     }
 
@@ -98,7 +83,6 @@ class CustomerRegisterSuccessObserver implements ObserverInterface
     {
         $customer = $observer->getData('customer');
         $smsNotificationsParameters = $this->request->getParam('sms_notifications', []);
-        $createdSmsSubscriptions = 0;
 
         try {
             $websiteId = (int)$this->storeManager->getStore()->getWebsiteId();
@@ -124,28 +108,10 @@ class CustomerRegisterSuccessObserver implements ObserverInterface
             $smsTypes = array_column($this->smsTypeSource->toArray(), 'code');
         }
 
-        foreach ($smsTypes as $smsType) {
-            try {
-                /** @var \LinkMobility\SMSNotifications\Api\Data\SmsSubscriptionInterface $subscription */
-                $subscription = $this->smsSubscriptionFactory->create();
-
-                $subscription->setSmsType($smsType);
-                $subscription->setCustomerId((int)$customer->getId());
-
-                $this->smsSubscriptionRepository->save($subscription);
-
-                $createdSmsSubscriptions++;
-            } catch (CouldNotSaveException $e) {
-                $this->logger->critical(
-                    __('Could not subscribe customer to SMS notification. Error: %1', $e->getMessage()),
-                    [
-                        'sms_type' => $smsType,
-                        'customer_id' => $customer->getId(),
-                        'action' => 'register'
-                    ]
-                );
-            }
-        }
+        $createdSmsSubscriptions = $this->smsSubscriptionManagement->createSubscriptions(
+            $smsTypes,
+            (int)$customer->getId()
+        );
 
         if ($createdSmsSubscriptions > 0) {
             $this->welcomeSmsSender->send($customer);

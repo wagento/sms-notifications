@@ -27,7 +27,6 @@ use Magento\Framework\Event\ConfigInterface as EventObserverConfig;
 use Magento\Framework\Event\ManagerInterface;
 use Magento\TestFramework\Helper\Bootstrap;
 use PHPUnit\Framework\TestCase;
-use Psr\Log\Test\TestLogger;
 
 /**
  * customer_register_success Event Observer Test
@@ -92,7 +91,6 @@ class CustomerRegisterSuccessObserverTest extends TestCase
             get_class($configMock) => ['shared' => true],
             CustomerRegisterSuccessObserver::class => [
                 'arguments' => [
-                    'logger' => ['instance' => TestLogger::class],
                     'request' => ['instance' => get_class($requestMock)],
                     'config' => ['instance' => get_class($configMock)],
                 ]
