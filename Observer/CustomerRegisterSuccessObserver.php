@@ -20,6 +20,8 @@ use LinkMobility\SMSNotifications\Api\ConfigInterface;
 use LinkMobility\SMSNotifications\Api\SmsSubscriptionManagementInterface;
 use LinkMobility\SMSNotifications\Model\SmsSender;
 use LinkMobility\SMSNotifications\Model\Source\SmsType as SmsTypeSource;
+use Magento\Customer\Api\Data\CustomerInterface;
+use Magento\Customer\Model\CustomerFactory;
 use Magento\Framework\App\RequestInterface;
 use Magento\Framework\Event\Observer;
 use Magento\Framework\Event\ObserverInterface;
@@ -44,6 +46,10 @@ class CustomerRegisterSuccessObserver implements ObserverInterface
      */
     private $storeManager;
     /**
+     * @var \Magento\Customer\Model\CustomerFactory
+     */
+    private $customerFactory;
+    /**
      * @var \LinkMobility\SMSNotifications\Api\ConfigInterface
      */
     private $config;
@@ -63,6 +69,7 @@ class CustomerRegisterSuccessObserver implements ObserverInterface
     public function __construct(
         RequestInterface $request,
         StoreManagerInterface $storeManager,
+        CustomerFactory $customerFactory,
         ConfigInterface $config,
         SmsTypeSource $smsTypeSource,
         SmsSubscriptionManagementInterface $smsSubscriptionManagement,
@@ -70,6 +77,7 @@ class CustomerRegisterSuccessObserver implements ObserverInterface
     ) {
         $this->storeManager = $storeManager;
         $this->request = $request;
+        $this->customerFactory = $customerFactory;
         $this->config = $config;
         $this->smsTypeSource = $smsTypeSource;
         $this->smsSubscriptionManagement = $smsSubscriptionManagement;
@@ -81,6 +89,7 @@ class CustomerRegisterSuccessObserver implements ObserverInterface
      */
     public function execute(Observer $observer)
     {
+        /** @var \Magento\Customer\Api\Data\CustomerInterface $customer */
         $customer = $observer->getData('customer');
         $smsNotificationsParameters = $this->request->getParam('sms_notifications', []);
 
@@ -114,7 +123,15 @@ class CustomerRegisterSuccessObserver implements ObserverInterface
         );
 
         if ($createdSmsSubscriptions > 0) {
-            $this->smsSender->send($customer);
+            $this->sendWelcomeMessage($customer);
         }
+    }
+
+    private function sendWelcomeMessage(CustomerInterface $customerData): void
+    {
+        /** @var \Magento\Customer\Model\Customer $customer */
+        $customer = $this->customerFactory->create()->updateData($customerData);
+
+        $this->smsSender->send($customer);
     }
 }

@@ -23,6 +23,7 @@ use LinkMobility\SMSNotifications\Model\SmsSubscription;
 use LinkMobility\SMSNotifications\Observer\CustomerRegisterSuccessObserver;
 use LinkMobility\SMSNotifications\Test\Integration\_stubs\Model\SmsSender;
 use Magento\Customer\Model\Customer;
+use Magento\Customer\Model\CustomerFactory;
 use Magento\Framework\Api\SearchCriteriaBuilder;
 use Magento\Framework\App\RequestInterface;
 use Magento\Framework\Event\ConfigInterface as EventObserverConfig;
@@ -73,6 +74,9 @@ class CustomerRegisterSuccessObserverTest extends TestCase
             ->disableOriginalConstructor()
             ->setMethods(['send'])
             ->getMock();
+        $customerFactoryMock = $this->getMockBuilder(CustomerFactory::class)
+            ->disableOriginalConstructor()
+            ->getMock();
 
         $requestMock->method('getParam')->with('sms_notifications')->willReturn([
             'subscribed' => 1,
@@ -93,20 +97,24 @@ class CustomerRegisterSuccessObserverTest extends TestCase
             ->create();
 
         $smsSenderMock->expects($this->once())->method('send')->with($customer)->willReturn(true);
+        $customerFactoryMock->expects($this->once())->method('create')->willReturn($customer);
 
         $this->objectManager->configure([
             get_class($requestMock) => ['shared' => true],
             get_class($configMock) => ['shared' => true],
+            get_class($customerFactoryMock) => ['shared' => true],
             WelcomeSender::class => ['shared' => true],
             CustomerRegisterSuccessObserver::class => [
                 'arguments' => [
                     'request' => ['instance' => get_class($requestMock)],
                     'config' => ['instance' => get_class($configMock)],
+                    'customerFactory' => ['instance' => get_class($customerFactoryMock)],
                 ]
             ]
         ]);
         $this->objectManager->addSharedInstance($requestMock, get_class($requestMock));
         $this->objectManager->addSharedInstance($configMock, get_class($configMock));
+        $this->objectManager->addSharedInstance($customerFactoryMock, get_class($customerFactoryMock));
         $this->objectManager->addSharedInstance($smsSenderMock, WelcomeSender::class);
 
         $eventManager->dispatch('customer_register_success', ['customer' => $customer->getDataModel()]);
