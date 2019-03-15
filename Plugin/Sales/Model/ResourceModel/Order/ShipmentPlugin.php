@@ -29,7 +29,7 @@ use Magento\Sales\Model\ResourceModel\Order\Shipment as ShipmentResource;
 class ShipmentPlugin
 {
     /**
-     * @var \LinkMobility\SMSNotifications\Model\SmsSender\ShipmentSender
+     * @var \LinkMobility\SMSNotifications\Model\SmsSender|\LinkMobility\SMSNotifications\Model\SmsSender\ShipmentSender
      */
     private $smsSender;
 

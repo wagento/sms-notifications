@@ -59,7 +59,7 @@ class ManagePost extends Action implements ActionInterface, CsrfAwareActionInter
      */
     private $smsSubscriptionManagement;
     /**
-     * @var \LinkMobility\SMSNotifications\Model\SmsSender\WelcomeSender
+     * @var \LinkMobility\SMSNotifications\Model\SmsSender|\LinkMobility\SMSNotifications\Model\SmsSender\WelcomeSender
      */
     private $smsSender;
     /**

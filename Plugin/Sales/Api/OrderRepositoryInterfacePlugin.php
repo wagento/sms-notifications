@@ -29,7 +29,7 @@ use Magento\Sales\Api\OrderRepositoryInterface;
 class OrderRepositoryInterfacePlugin
 {
     /**
-     * @var \LinkMobility\SMSNotifications\Model\SmsSender\OrderSender
+     * @var \LinkMobility\SMSNotifications\Model\SmsSender|\LinkMobility\SMSNotifications\Model\SmsSender\OrderSender
      */
     private $smsSender;
 

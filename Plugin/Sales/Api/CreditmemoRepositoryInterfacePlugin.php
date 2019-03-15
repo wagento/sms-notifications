@@ -29,7 +29,7 @@ use Magento\Sales\Api\Data\CreditmemoInterface;
 class CreditmemoRepositoryInterfacePlugin
 {
     /**
-     * @var \LinkMobility\SMSNotifications\Model\SmsSender\CreditmemoSender
+     * @var \LinkMobility\SMSNotifications\Model\SmsSender|\LinkMobility\SMSNotifications\Model\SmsSender\CreditmemoSender
      */
     private $smsSender;
 
