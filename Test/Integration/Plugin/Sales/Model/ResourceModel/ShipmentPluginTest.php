@@ -5,7 +5,7 @@
  * Sends transactional SMS notifications through the LINK Mobility messaging
  * service.
  *
- * @package LinkMobility\SMSNotifications\Test\Integration\Plugin\Sales\Model\ResourceModel\Order
+ * @package LinkMobility\SMSNotifications\Test\Integration\Plugin\Sales\Model\ResourceModel
  * @author Joseph Leedy <joseph@wagento.com>
  * @author Yair García Torres <yair.garcia@wagento.com>
  * @copyright Copyright (c) LINK Mobility (https://www.linkmobility.com/)
@@ -14,7 +14,7 @@
 
 declare(strict_types=1);
 
-namespace LinkMobility\SMSNotifications\Test\Integration\Plugin\Sales\Model\ResourceModel\Order;
+namespace LinkMobility\SMSNotifications\Test\Integration\Plugin\Sales\Model\ResourceModel;
 
 use LinkMobility\SMSNotifications\Model\SmsSender\ShipmentSender;
 use LinkMobility\SMSNotifications\Plugin\Sales\Model\ResourceModel\Order\ShipmentPlugin;
@@ -28,7 +28,7 @@ use PHPUnit\Framework\TestCase;
 /**
  * Shipment Plug-in Test
  *
- * @package LinkMobility\SMSNotifications\Test\Integration\Plugin\Sales\Model\ResourceModel\Order
+ * @package LinkMobility\SMSNotifications\Test\Integration\Plugin\Sales\Model\ResourceModel
  * @author Joseph Leedy <joseph@wagento.com>
  */
 class ShipmentPluginTest extends TestCase
