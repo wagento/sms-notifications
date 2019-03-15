@@ -97,7 +97,7 @@ final class ApiClient implements ApiClientInterface
     }
 
     /**
-     * @param string[]|\LinkMobility\SMSNotifications\Gateway\Entity\Message
+     * @param string[]|\LinkMobility\SMSNotifications\Gateway\Entity\Message $data
      */
     public function setData($data): void
     {
