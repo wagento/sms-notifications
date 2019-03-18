@@ -73,22 +73,18 @@ final class OrderSender extends SmsSender
         $storeId = (int)$order->getStoreId();
         $websiteId = $this->getWebsiteIdByStoreId($storeId);
         $orderExtensionAttributes = $order->getExtensionAttributes() ?? $this->orderExtensionFactory->create();
-
-        if ($orderExtensionAttributes->getIsOrderHoldReleased() === true) {
-            $orderState = 'released';
-        } else {
-            $orderState = $order->getState();
-        }
+        $orderState = $order->getState();
 
         if (
             !$this->isModuleEnabled($websiteId)
             || $order->getCustomerIsGuest()
             || $orderExtensionAttributes->getIsSmsNotificationSent() === true
-            || $orderState === null
-            || $orderState === Order::STATE_CLOSED
-            || $orderState === Order::STATE_COMPLETE
         ) {
             return false;
+        }
+
+        if ($orderExtensionAttributes->getIsOrderHoldReleased() === true) {
+            $orderState = 'released';
         }
 
         switch ($orderState) {
@@ -110,8 +106,7 @@ final class OrderSender extends SmsSender
                 $smsType = 'order_released';
                 break;
             default:
-                $messageTemplate = $this->config->getOrderUpdatedTemplate($storeId);
-                $smsType = 'order_updated';
+                return false;
         }
 
         $customerId = (int)$order->getCustomerId();

@@ -152,14 +152,6 @@ class ConfigTest extends TestCase
     }
 
     /**
-     * @magentoConfigFixture default/sms_notifications/templates/order_updated Test template
-     */
-    public function testGetOrderUpdatedTemplate(): void
-    {
-        $this->assertEquals('Test template', $this->config->getOrderUpdatedTemplate());
-    }
-
-    /**
      * @magentoConfigFixture default/sms_notifications/templates/order_shipped Test template
      */
     public function testGetOrderShippedTemplate(): void

@@ -44,7 +44,6 @@ interface ConfigInterface
     const XML_PATH_ENABLE_LOGGING = 'sms_notifications/developer/debug';
     const XML_PATH_TEMPLATE_WELCOME = 'sms_notifications/templates/welcome';
     const XML_PATH_TEMPLATE_ORDER_PLACED = 'sms_notifications/templates/order_placed';
-    const XML_PATH_TEMPLATE_ORDER_UPDATED = 'sms_notifications/templates/order_updated';
     const XML_PATH_TEMPLATE_ORDER_SHIPPED = 'sms_notifications/templates/order_shipped';
     const XML_PATH_TEMPLATE_ORDER_REFUNDED = 'sms_notifications/templates/order_refunded';
     const XML_PATH_TEMPLATE_ORDER_CANCELED = 'sms_notifications/templates/order_canceled';
@@ -80,8 +79,6 @@ interface ConfigInterface
     public function getWelcomeMessageTemplate(?int $scopeId = null, string $scopeType = ScopeInterface::SCOPE_STORE): ?string;
 
     public function getOrderPlacedTemplate(?int $scopeId = null, string $scopeType = ScopeInterface::SCOPE_STORE): ?string;
-
-    public function getOrderUpdatedTemplate(?int $scopeId = null, string $scopeType = ScopeInterface::SCOPE_STORE): ?string;
 
     public function getOrderShippedTemplate(?int $scopeId = null, string $scopeType = ScopeInterface::SCOPE_STORE): ?string;
 

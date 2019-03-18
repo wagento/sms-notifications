@@ -46,7 +46,7 @@
         <seeCheckboxIsChecked selector="{{StorefrontSmsSubscriptionPreferencesSection.smsTypeCheckboxes}}" stepKey="seeSmsTypeCheckboxesChecked"/>
         <click selector="{{StorefrontSmsSubscriptionPreferencesSection.saveButton}}" stepKey="clickSaveButton"/>
         <waitForPageLoad stepKey="waitForSmsSubscriptionsSave"/>
-        <see userInput="You have been subscribed to 7 text notifications." stepKey="seeSubscriptionSuccessMessage"/>
+        <see userInput="You have been subscribed to 6 text notifications." stepKey="seeSubscriptionSuccessMessage"/>
         <see userInput="Your mobile telephone number has been updated." stepKey="seeMobilePhoneSuccessMessage"/>
         <seeOptionIsSelected selector="{{StorefrontCustomerCreateFormSection.smsMobilePhonePrefixDropdown}}" userInput="United Kingdom (+44)" stepKey="seeSavedMobilePrefixSelected"/>
         <seeInField selector="{{StorefrontCustomerCreateFormSection.smsMobilePhoneNumberField}}" userInput="7712 345678" stepKey="seeSavedMobileNumber"/>
