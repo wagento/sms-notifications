@@ -24,6 +24,7 @@ use LinkMobility\SMSNotifications\Gateway\Factory\MessageFactory;
 use LinkMobility\SMSNotifications\Util\TemplateProcessorInterface;
 use Magento\Customer\Api\Data\CustomerInterface;
 use Magento\Framework\Exception\NoSuchEntityException;
+use Magento\Sales\Api\Data\InvoiceInterface;
 use Magento\Sales\Api\Data\OrderInterface;
 use Magento\Sales\Api\Data\ShipmentInterface;
 use Magento\Store\Model\StoreManagerInterface;
@@ -67,6 +68,10 @@ class MessageService
      */
     private $apiClient;
     /**
+     * @var \Magento\Sales\Api\Data\InvoiceInterface
+     */
+    private $invoice;
+    /**
      * @var \Magento\Sales\Api\Data\OrderInterface
      */
     private $order;
@@ -95,6 +100,13 @@ class MessageService
         $this->messageVariablesFactory = $messageVariablesFactory;
         $this->templateProcessor = $templateProcessor;
         $this->apiClient = $apiClient;
+    }
+
+    public function setInvoice(InvoiceInterface $invoice): MessageService
+    {
+        $this->invoice = $invoice;
+
+        return $this;
     }
 
     public function setOrder(OrderInterface $order): MessageService

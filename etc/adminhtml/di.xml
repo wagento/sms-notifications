@@ -23,6 +23,11 @@
             <argument name="logger" xsi:type="object">LinkMobility\SMSNotifications\Logger\Logger</argument>
         </arguments>
     </type>
+    <type name="LinkMobility\SMSNotifications\Model\MessageVariables\InvoiceVariables">
+        <arguments>
+            <argument name="urlBuilder" xsi:type="object">Magento\Framework\Url</argument>
+        </arguments>
+    </type>
     <type name="LinkMobility\SMSNotifications\Model\MessageVariables\OrderVariables">
         <arguments>
             <argument name="urlBuilder" xsi:type="object">Magento\Framework\Url</argument>

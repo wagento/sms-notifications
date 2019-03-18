@@ -17,11 +17,13 @@ declare(strict_types=1);
 namespace LinkMobility\SMSNotifications\Factory;
 
 use LinkMobility\SMSNotifications\Api\MessageVariablesInterface;
+use LinkMobility\SMSNotifications\Model\MessageVariables\InvoiceVariables;
 use LinkMobility\SMSNotifications\Model\MessageVariables\OrderVariables;
 use LinkMobility\SMSNotifications\Model\MessageVariables\CustomerVariables;
 use LinkMobility\SMSNotifications\Model\MessageVariables\ShipmentVariables;
 use Magento\Customer\Api\Data\CustomerInterface;
 use Magento\Framework\ObjectManagerInterface;
+use Magento\Sales\Api\Data\InvoiceInterface;
 use Magento\Sales\Model\Order;
 use Magento\Sales\Model\Order\Shipment;
 
@@ -52,6 +54,9 @@ final class MessageVariablesFactory
             case 'customer':
                 $messageVariables = $this->createCustomerVariables($arguments);
                 break;
+            case 'invoice':
+                $messageVariables = $this->createInvoiceVariables($arguments);
+                break;
             case 'order':
                 $messageVariables = $this->createOrderVariables($arguments);
                 break;
@@ -74,6 +79,17 @@ final class MessageVariablesFactory
         }
 
         return $customerVariables;
+    }
+
+    private function createInvoiceVariables(array $arguments = []): InvoiceVariables
+    {
+        $invoiceVariables = $this->objectManager->create(InvoiceVariables::class);
+
+        if (array_key_exists('invoice', $arguments) && ($arguments['invoice'] instanceof InvoiceInterface)) {
+            $invoiceVariables->setInvoice($arguments['invoice']);
+        }
+
+        return $invoiceVariables;
     }
 
     private function createOrderVariables(array $arguments = []): OrderVariables
