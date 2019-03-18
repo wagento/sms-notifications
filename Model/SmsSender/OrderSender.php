@@ -93,6 +93,7 @@ final class OrderSender extends SmsSender
 
         switch ($orderState) {
             case Order::STATE_NEW:
+            case Order::STATE_PROCESSING:
                 $messageTemplate = $this->config->getOrderPlacedTemplate($storeId);
                 $smsType = 'order_placed';
                 break;
@@ -108,7 +109,6 @@ final class OrderSender extends SmsSender
                 $messageTemplate = $this->config->getOrderReleasedTemplate($storeId);
                 $smsType = 'order_released';
                 break;
-            case Order::STATE_PROCESSING:
             default:
                 $messageTemplate = $this->config->getOrderUpdatedTemplate($storeId);
                 $smsType = 'order_updated';

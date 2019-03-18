@@ -78,15 +78,15 @@ class OrderSenderTest extends SmsSenderTestCase
     public static function orderSmsSenderDataProvider(): array
     {
         return [
-            'order_placed' => [
+            'order_placed_new' => [
                 'type' => 'new',
                 'configMethod' => 'getOrderPlacedTemplate',
-                'template' => 'Order placed'
+                'template' => 'Order placed (state: new)'
             ],
-            'order_updated' => [
+            'order_placed_processing' => [
                 'type' => null,
-                'configMethod' => 'getOrderUpdatedTemplate',
-                'template' => 'Order updated'
+                'configMethod' => 'getOrderPlacedTemplate',
+                'template' => 'Order placed (state: processing)'
             ],
             'order_canceled' => [
                 'type' => 'canceled',
