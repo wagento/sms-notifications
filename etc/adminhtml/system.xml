@@ -116,6 +116,9 @@ Source format is based on selected Source Type:
                 <field id="order_placed" translate="label" type="textarea" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
                     <label>Order Placed</label>
                 </field>
+                <field id="order_invoiced" translate="label" type="textarea" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Order Invoiced</label>
+                </field>
                 <field id="order_shipped" translate="label" type="textarea" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1">
                     <label>Order Shipped</label>
                 </field>

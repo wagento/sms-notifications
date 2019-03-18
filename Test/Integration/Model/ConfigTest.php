@@ -152,6 +152,14 @@ class ConfigTest extends TestCase
     }
 
     /**
+     * @magentoConfigFixture default/sms_notifications/templates/order_invoiced Test template
+     */
+    public function testGetOrderInvoicedTemplate(): void
+    {
+        $this->assertEquals('Test template', $this->config->getOrderInvoicedTemplate());
+    }
+
+    /**
      * @magentoConfigFixture default/sms_notifications/templates/order_shipped Test template
      */
     public function testGetOrderShippedTemplate(): void

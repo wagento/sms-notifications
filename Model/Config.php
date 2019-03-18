@@ -147,6 +147,15 @@ final class Config implements ConfigInterface
         return $this->scopeConfig->getValue(self::XML_PATH_TEMPLATE_ORDER_PLACED, $scopeType, $scopeId);
     }
 
+    public function getOrderInvoicedTemplate(?int $scopeId = null, string $scopeType = ScopeInterface::SCOPE_STORE): ?string
+    {
+        if ($scopeId === null) {
+            $scopeType = ScopeConfigInterface::SCOPE_TYPE_DEFAULT;
+        }
+
+        return $this->scopeConfig->getValue(self::XML_PATH_TEMPLATE_ORDER_INVOICED, $scopeType, $scopeId);
+    }
+
     public function getOrderShippedTemplate(?int $scopeId = null, string $scopeType = ScopeInterface::SCOPE_STORE): ?string
     {
         if ($scopeId === null) {

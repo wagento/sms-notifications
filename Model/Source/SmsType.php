@@ -59,6 +59,11 @@ final class SmsType implements OptionSourceInterface
             ],
             [
                 'group' => 'order',
+                'code' => 'order_invoiced',
+                'description' => __('Order invoiced')
+            ],
+            [
+                'group' => 'order',
                 'code' => 'order_shipped',
                 'description' => __('Order shipped')
             ],
