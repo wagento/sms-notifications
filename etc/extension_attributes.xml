@@ -16,6 +16,9 @@
     <extension_attributes for="Magento\Sales\Api\Data\CreditmemoInterface">
         <attribute code="is_sms_notification_sent" type="bool"/>
     </extension_attributes>
+    <extension_attributes for="Magento\Sales\Api\Data\InvoiceInterface">
+        <attribute code="is_sms_notification_sent" type="bool"/>
+    </extension_attributes>
     <extension_attributes for="Magento\Sales\Api\Data\OrderInterface">
         <attribute code="is_sms_notification_sent" type="bool"/>
         <attribute code="is_order_hold_released" type="bool"/>
