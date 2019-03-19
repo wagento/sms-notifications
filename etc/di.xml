@@ -97,6 +97,11 @@
             <argument name="smsSender" xsi:type="object">LinkMobility\SMSNotifications\Model\SmsSender\OrderSender</argument>
         </arguments>
     </type>
+    <type name="LinkMobility\SMSNotifications\Plugin\Sales\Model\Order\InvoicePlugin">
+        <arguments>
+            <argument name="smsSender" xsi:type="object">LinkMobility\SMSNotifications\Model\SmsSender\InvoiceSender</argument>
+        </arguments>
+    </type>
     <type name="LinkMobility\SMSNotifications\Plugin\Sales\Model\ResourceModel\Order\ShipmentPlugin">
         <arguments>
             <argument name="smsSender" xsi:type="object">LinkMobility\SMSNotifications\Model\SmsSender\ShipmentSender</argument>
@@ -130,6 +135,9 @@
     </type>
     <type name="Magento\Sales\Model\Order">
         <plugin name="sms_notifications_add_order_extension_attribute" type="LinkMobility\SMSNotifications\Plugin\Sales\Model\OrderPlugin"/>
+    </type>
+    <type name="Magento\Sales\Model\Order\Invoice">
+        <plugin name="sms_notifications_send_order_invoiced_sms" type="LinkMobility\SMSNotifications\Plugin\Sales\Model\Order\InvoicePlugin"/>
     </type>
     <type name="Magento\Sales\Model\ResourceModel\Order\Shipment">
         <plugin name="sms_notifications_send_shipment_sms" type="LinkMobility\SMSNotifications\Plugin\Sales\Model\ResourceModel\Order\ShipmentPlugin"/>
