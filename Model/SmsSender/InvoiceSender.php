@@ -24,7 +24,6 @@ use Magento\Customer\Api\CustomerRepositoryInterface;
 use Magento\Framework\Api\SearchCriteriaBuilder;
 use Magento\Framework\Model\AbstractModel;
 use Magento\Sales\Api\Data\InvoiceExtensionFactory;
-use Magento\Sales\Api\Data\OrderExtensionFactory;
 use Magento\Store\Api\StoreRepositoryInterface;
 use Psr\Log\LoggerInterface;
 
@@ -41,10 +40,6 @@ final class InvoiceSender extends SmsSender
      * @var \Magento\Sales\Api\Data\InvoiceExtensionFactory
      */
     private $invoiceExtensionFactory;
-    /**
-     * @var \Magento\Sales\Api\Data\OrderExtensionFactory
-     */
-    private $orderExtensionFactory;
 
     public function __construct(
         LoggerInterface $logger,
@@ -54,8 +49,7 @@ final class InvoiceSender extends SmsSender
         ConfigInterface $config,
         SmsSubscriptionRepositoryInterface $subscriptionRepository,
         MessageService $messageService,
-        InvoiceExtensionFactory $invoiceExtensionFactory,
-        OrderExtensionFactory $orderExtensionFactory
+        InvoiceExtensionFactory $invoiceExtensionFactory
     ) {
         parent::__construct(
             $logger,
@@ -68,7 +62,6 @@ final class InvoiceSender extends SmsSender
         );
 
         $this->invoiceExtensionFactory = $invoiceExtensionFactory;
-        $this->orderExtensionFactory = $orderExtensionFactory;
     }
 
     /**
@@ -80,15 +73,12 @@ final class InvoiceSender extends SmsSender
         $websiteId = $this->getWebsiteIdByStoreId($storeId);
         /** @var \Magento\Sales\Model\Order $order */
         $order = $invoice->getOrder();
-        /** @var \Magento\Sales\Api\Data\OrderExtensionInterface $orderExtension */
-        $orderExtension = $order->getExtensionAttributes() ?? $this->orderExtensionFactory->create();
         /** @var \Magento\Sales\Api\Data\InvoiceExtensionInterface $invoiceExtension */
         $invoiceExtension = $invoice->getExtensionAttributes() ?? $this->invoiceExtensionFactory->create();
 
         if (
             !$this->isModuleEnabled($websiteId)
             || (bool)$order->getCustomerIsGuest()
-            || $orderExtension->getIsSmsNotificationSent() === true
             || $invoiceExtension->getIsSmsNotificationSent() === true
         ) {
             return false;
