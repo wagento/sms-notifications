@@ -199,6 +199,7 @@ class MessageService
         $messageVariables = $this->messageVariablesFactory->create(
             $type,
             [
+                'invoice' => $this->invoice,
                 'order' => $this->order,
                 'shipment' => $this->shipment,
                 'customer' => $this->customer,
