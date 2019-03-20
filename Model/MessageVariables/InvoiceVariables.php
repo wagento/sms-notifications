@@ -19,7 +19,7 @@ namespace LinkMobility\SMSNotifications\Model\MessageVariables;
 use LinkMobility\SMSNotifications\Api\MessageVariablesInterface;
 use Magento\Framework\App\Config\ScopeConfigInterface;
 use Magento\Framework\UrlInterface as UrlBuilder;
-use Magento\Sales\Model\Order\Invoice;
+use Magento\Sales\Api\Data\InvoiceInterface;
 use Magento\Store\Model\ScopeInterface;
 
 /**
@@ -39,7 +39,7 @@ final class InvoiceVariables implements MessageVariablesInterface
      */
     private $scopeConfig;
     /**
-     * @var \Magento\Sales\Model\Order\Invoice
+     * @var \Magento\Sales\Api\Data\InvoiceInterface|\Magento\Sales\Model\Order\Invoice
      */
     private $invoice;
 
@@ -55,6 +55,7 @@ final class InvoiceVariables implements MessageVariablesInterface
             return [];
         }
 
+        /** @var \Magento\Sales\Api\Data\OrderInterface $order */
         $order = $this->invoice->getOrder();
 
         return [
@@ -68,7 +69,7 @@ final class InvoiceVariables implements MessageVariablesInterface
         ];
     }
 
-    public function setInvoice(Invoice $invoice): self
+    public function setInvoice(InvoiceInterface $invoice): self
     {
         $this->invoice = $invoice;
 

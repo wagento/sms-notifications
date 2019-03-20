@@ -17,7 +17,7 @@ declare(strict_types=1);
 namespace LinkMobility\SMSNotifications\Gateway;
 
 use GuzzleHttp\Exception\GuzzleException;
-use LinkMobility\SMSNotifications\Gateway\Entity\Message;
+use LinkMobility\SMSNotifications\Gateway\Entity\MessageInterface;
 use LinkMobility\SMSNotifications\Gateway\Entity\ResultInterface;
 use LinkMobility\SMSNotifications\Gateway\Factory\ClientFactory;
 use LinkMobility\SMSNotifications\Gateway\Factory\MessageEntityHydratorFactory;
@@ -97,11 +97,11 @@ final class ApiClient implements ApiClientInterface
     }
 
     /**
-     * @param string[]|\LinkMobility\SMSNotifications\Gateway\Entity\Message $data
+     * @param string[]|\LinkMobility\SMSNotifications\Gateway\Entity\MessageInterface $data
      */
     public function setData($data): void
     {
-        if ($data instanceof Message) {
+        if ($data instanceof MessageInterface) {
             $data = array_filter($this->extractMessage($data));
         }
 
@@ -124,6 +124,8 @@ final class ApiClient implements ApiClientInterface
 
     /**
      * @throws \LinkMobility\SMSNotifications\Gateway\ApiException
+     *
+     * @phpcs:disable Generic.Files.LineLength.TooLong
      */
     public function sendRequest(): void
     {
@@ -159,7 +161,7 @@ final class ApiClient implements ApiClientInterface
         return $this->result;
     }
 
-    private function extractMessage(Message $message): array
+    private function extractMessage(MessageInterface $message): array
     {
         $messageHydrator = (new MessageEntityHydratorFactory())->create();
 
