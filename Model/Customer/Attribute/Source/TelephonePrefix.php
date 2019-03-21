@@ -32,7 +32,7 @@ use Magento\Store\Model\StoreManagerInterface;
  * @package LinkMobility\SMSNotifications\Model\Customer\Attribute\Source
  * @author Joseph Leedy <joseph@wagento.com>
  */
-final class TelephonePrefix extends AbstractSource
+class TelephonePrefix extends AbstractSource
 {
     /**
      * @var \Magento\Framework\App\Config\ScopeConfigInterface

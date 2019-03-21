@@ -24,7 +24,7 @@ use Magento\Framework\Data\OptionSourceInterface;
  * @package LinkMobility\SMSNotifications\Model\Source
  * @author Joseph Leedy <joseph@wagento.com>
  */
-final class SmsType implements OptionSourceInterface
+class SmsType implements OptionSourceInterface
 {
     /**
      * {@inheritdoc}
