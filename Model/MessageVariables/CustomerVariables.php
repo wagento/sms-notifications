@@ -29,7 +29,7 @@ use Magento\Store\Model\StoreManagerInterface;
  * @package LinkMobility\SMSNotifications\Model\MessageVariables
  * @author Joseph Leedy <joseph@wagento.com>
  */
-final class CustomerVariables implements MessageVariablesInterface
+class CustomerVariables implements MessageVariablesInterface
 {
     /**
      * @var \Magento\Framework\App\Config\ScopeConfigInterface

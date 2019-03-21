@@ -28,7 +28,7 @@ use Magento\Store\Model\ScopeInterface;
  * @package LinkMobility\SMSNotifications\Model\MessageVariables
  * @author Joseph Leedy <joseph@wagento.com>
  */
-final class OrderVariables implements MessageVariablesInterface
+class OrderVariables implements MessageVariablesInterface
 {
     /**
      * @var \Magento\Framework\UrlInterface
