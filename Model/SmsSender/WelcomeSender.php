@@ -26,7 +26,7 @@ use Magento\Framework\Model\AbstractModel;
  * @author Joseph Leedy <joseph@wagento.com>
  * @api
  */
-final class WelcomeSender extends SmsSender
+class WelcomeSender extends SmsSender
 {
     /**
      * @phpcs:disable Generic.Files.LineLength.TooLong

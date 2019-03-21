@@ -35,7 +35,7 @@ use Psr\Log\LoggerInterface;
  * @author Joseph Leedy <joseph@wagento.com>
  * @api
  */
-final class OrderSender extends SmsSender
+class OrderSender extends SmsSender
 {
     /**
      * @var \Magento\Sales\Api\Data\OrderExtensionFactory

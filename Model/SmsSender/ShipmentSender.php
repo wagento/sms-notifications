@@ -36,7 +36,7 @@ use Psr\Log\LoggerInterface;
  *
  * @phpcs:disable Generic.Files.LineLength.TooLong
  */
-final class ShipmentSender extends SmsSender
+class ShipmentSender extends SmsSender
 {
     /**
      * @var \Magento\Sales\Api\Data\ShipmentExtensionFactory

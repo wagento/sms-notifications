@@ -36,7 +36,7 @@ use Psr\Log\LoggerInterface;
  *
  * @phpcs:disable Generic.Files.LineLength.TooLong
  */
-final class CreditmemoSender extends SmsSender
+class CreditmemoSender extends SmsSender
 {
     /**
      * @var \Magento\Sales\Api\Data\CreditmemoExtensionFactory
