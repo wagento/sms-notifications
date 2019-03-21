@@ -142,7 +142,7 @@ class SmsSubscriptionRepositoryTest extends TestCase
 
         $mockSmsSubscriptionResource = $this->createMock(SmsSubscriptionResource::class);
 
-        $mockSmsSubscriptionResource->method('delete')->will($this->throwException(new \Exception));
+        $mockSmsSubscriptionResource->method('delete')->will($this->throwException(new \Exception()));
 
         $smsSubscriptionEntity = $this->objectManager->create(SmsSubscriptionInterface::class);
         $smsSubscriptionRepository = $this->objectManager->create(
