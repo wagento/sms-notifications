@@ -23,7 +23,7 @@ use Magento\Sales\Model\ResourceModel\Order\Shipment as ShipmentResource;
 /**
  * Plug-in for {@see \Magento\Sales\Model\ResourceModel\Order\Shipment}
  *
- * @package LinkMobility\SMSNotifications\Plugin\Sales\Model\Order
+ * @package LinkMobility\SMSNotifications\Plugin\Sales\Model\ResourceModel\Order
  * @author Joseph Leedy <joseph@wagento.com>
  */
 class ShipmentPlugin
