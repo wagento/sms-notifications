@@ -33,7 +33,7 @@ final class DCS extends Enum
     /**
      * 8-bit binary data
      */
-    public const BINARY= 'BINARY';
+    public const BINARY = 'BINARY';
     /**
      * UCS-2 encoding
      */
