@@ -66,6 +66,8 @@ final class OrderSender extends SmsSender
     }
 
     /**
+     * @phpcs:disable Generic.Files.LineLength.TooLong
+     *
      * @param \Magento\Framework\Model\AbstractModel|\Magento\Sales\Api\Data\OrderInterface|\Magento\Sales\Model\Order $order
      */
     public function send(AbstractModel $order): bool

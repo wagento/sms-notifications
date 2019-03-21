@@ -46,6 +46,8 @@ class MessageServiceTest extends TestCase
      * @magentoConfigFixture current_store sms_notifications/api/source_type MSISDN
      * @magentoConfigFixture current_store sms_notifications/api/source +15555551234
      * @magentoConfigFixture current_store general/store_information/name Example Store
+     *
+     * @phpcs:disable Generic.Files.LineLength.TooLong
      */
     public function testSendMessage(): void
     {

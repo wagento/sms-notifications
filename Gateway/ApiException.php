@@ -25,6 +25,9 @@ class ApiException extends \Exception
 {
     private $responseData = [];
 
+    /**
+     * @phpcs:disable Generic.Files.LineLength.TooLong
+     */
     public function __construct(string $message = '', int $code = 0, \Throwable $previous = null, array $responseData = [])
     {
         parent::__construct($message, $code, $previous);

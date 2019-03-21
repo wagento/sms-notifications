@@ -46,6 +46,8 @@ class Create extends Action
 
     /**
      * {@inheritdoc}
+     *
+     * @phpcs:disable Generic.Files.LineLength.TooLong
      */
     public function execute()
     {

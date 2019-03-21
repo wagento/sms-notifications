@@ -71,6 +71,9 @@ class SmsSenderTestCase extends TestCase
         return require __DIR__ . '/_files/create_sms_subscriptions_from_source.php';
     }
 
+    /**
+     * @phpcs:disable Generic.Files.LineLength.TooLong
+     */
     protected function getConfigMock(): MockObject
     {
         /** @var \LinkMobility\SMSNotifications\Api\ConfigInterface|\PHPUnit\Framework\MockObject\MockObject $configMock */

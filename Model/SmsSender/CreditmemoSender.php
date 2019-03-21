@@ -33,6 +33,8 @@ use Psr\Log\LoggerInterface;
  * @package LinkMobility\SMSNotifications\Model\SmsSender
  * @author Joseph Leedy <joseph@wagento.com>
  * @api
+ *
+ * @phpcs:disable Generic.Files.LineLength.TooLong
  */
 final class CreditmemoSender extends SmsSender
 {

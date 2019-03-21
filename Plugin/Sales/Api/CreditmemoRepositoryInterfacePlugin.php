@@ -25,6 +25,8 @@ use Magento\Sales\Api\Data\CreditmemoInterface;
  *
  * @package LinkMobility\SMSNotifications\Plugin\Sales\Api
  * @author Joseph Leedy <joseph@wagento.com>
+ *
+ * @phpcs:disable Generic.Files.LineLength.TooLong
  */
 class CreditmemoRepositoryInterfacePlugin
 {
