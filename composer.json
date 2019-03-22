@@ -30,7 +30,7 @@
     "autoload": {
         "files": [
             "registration.php",
-            "compat.php"
+            "compat.inc"
         ],
         "psr-4": {
             "LinkMobility\\SMSNotifications\\": ""
