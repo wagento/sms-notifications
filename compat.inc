@@ -18,10 +18,12 @@
  * to be parsed as a class, causing a "Class does not exist" exception.
  */
 
-use Magento\Framework\App\CsrfAwareActionInterface;
-use Magento\Framework\App\Request\InvalidRequestException;
+namespace LinkMobility\SMSNotifications;
 
-if (!interface_exists(CsrfAwareActionInterface::class)) {
+if (interface_exists(\Magento\Framework\App\CsrfAwareActionInterface::class)) {
+    class_alias(\Magento\Framework\App\CsrfAwareActionInterface::class, CsrfAwareActionInterface::class);
+    class_alias(\Magento\Framework\App\Request\InvalidRequestException::class, InvalidRequestException::class);
+} else {
     class_alias(\LinkMobility\SMSNotifications\Compat\CsrfAwareActionInterface::class, CsrfAwareActionInterface::class);
     class_alias(\LinkMobility\SMSNotifications\Compat\InvalidRequestException::class, InvalidRequestException::class);
 }
