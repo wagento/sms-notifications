@@ -50,6 +50,19 @@ class ManagePostTest extends AbstractControllerTestCase
 
     /**
      * @magentoAppArea frontend
+     * @magentoDataFixture Magento/Customer/_files/customer.php
+     */
+    public function testRedirectAfterPost(): void
+    {
+        $this->getRequest()->setPostValue('sms_types', ['order_created' => '1']);
+        $this->loginCustomer(1);
+        $this->dispatch(self::ACTION_URI);
+
+        $this->assertRedirect($this->stringContains(self::REDIRECT_URI));
+    }
+
+    /**
+     * @magentoAppArea frontend
      */
     public function testInvalidCustomerIdReturnsErrorMessage(): void
     {
