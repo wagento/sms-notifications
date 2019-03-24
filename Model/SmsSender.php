@@ -43,10 +43,6 @@ abstract class SmsSender
      */
     protected $storeRepository;
     /**
-     * @var \Magento\Customer\Api\CustomerRepositoryInterface
-     */
-    private $customerRepository;
-    /**
      * @var \LinkMobility\SMSNotifications\Api\ConfigInterface
      */
     protected $config;
@@ -54,6 +50,10 @@ abstract class SmsSender
      * @var \LinkMobility\SMSNotifications\Model\MessageService
      */
     protected $messageService;
+    /**
+     * @var \Magento\Customer\Api\CustomerRepositoryInterface
+     */
+    private $customerRepository;
     /**
      * @var \LinkMobility\SMSNotifications\Api\SmsSubscriptionRepositoryInterface
      */
