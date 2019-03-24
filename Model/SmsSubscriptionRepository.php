@@ -23,6 +23,7 @@ use LinkMobility\SMSNotifications\Api\SmsSubscriptionRepositoryInterface;
 use LinkMobility\SMSNotifications\Model\SmsSubscriptionFactory as SmsSubscriptionModelFactory;
 use LinkMobility\SMSNotifications\Model\ResourceModel\SmsSubscription as SmsSubscriptionResourceModel;
 use LinkMobility\SMSNotifications\Model\ResourceModel\SmsSubscription\CollectionFactory as SmsSubscriptionCollectionFactory;
+use Magento\Framework\Api\SearchCriteriaBuilder;
 use Magento\Framework\Api\SearchCriteriaInterface;
 use Magento\Framework\Api\SearchResultsInterface;
 use Magento\Framework\Api\SearchResultsInterfaceFactory;
@@ -43,6 +44,10 @@ class SmsSubscriptionRepository implements SmsSubscriptionRepositoryInterface
      */
     private $searchResultsFactory;
     /**
+     * @var \Magento\Framework\Api\SearchCriteriaBuilder
+     */
+    private $searchCriteriaBuilder;
+    /**
      * @var \LinkMobility\SMSNotifications\Model\SmsSubscriptionFactory
      */
     private $smsSubscriptionModelFactory;
@@ -57,6 +62,7 @@ class SmsSubscriptionRepository implements SmsSubscriptionRepositoryInterface
 
     public function __construct(
         SearchResultsInterfaceFactory $searchResultsFactory,
+        SearchCriteriaBuilder $searchCriteriaBuilder,
         SmsSubscriptionModelFactory $smsSubscriptionModelFactory,
         SmsSubscriptionCollectionFactory $smsSubscriptionCollectionFactory,
         SmsSubscriptionResourceModel $smsSubscriptionResourceModel
@@ -65,6 +71,7 @@ class SmsSubscriptionRepository implements SmsSubscriptionRepositoryInterface
         $this->smsSubscriptionModelFactory = $smsSubscriptionModelFactory;
         $this->smsSubscriptionCollectionFactory = $smsSubscriptionCollectionFactory;
         $this->smsSubscriptionResourceModel = $smsSubscriptionResourceModel;
+        $this->searchCriteriaBuilder = $searchCriteriaBuilder;
     }
 
     /**
@@ -144,6 +151,15 @@ class SmsSubscriptionRepository implements SmsSubscriptionRepositoryInterface
         $searchResults->setItems($smsSubscriptions);
 
         return $searchResults;
+    }
+
+    /**
+     * @param int $customerId
+     * @return \Magento\Framework\Api\SearchResultsInterface
+     */
+    public function getListByCustomerId(int $customerId): SearchResultsInterface
+    {
+        return $this->getList($this->searchCriteriaBuilder->addFilter('customer_id', $customerId)->create());
     }
 
     /**

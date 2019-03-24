@@ -43,6 +43,12 @@ interface SmsSubscriptionRepositoryInterface
     public function getList(SearchCriteriaInterface $searchCriteria): SearchResultsInterface;
 
     /**
+     * @param int $customerId
+     * @return \Magento\Framework\Api\SearchResultsInterface
+     */
+    public function getListByCustomerId(int $customerId): SearchResultsInterface;
+
+    /**
      * @param \LinkMobility\SMSNotifications\Api\Data\SmsSubscriptionInterface $smsSubscription
      * @return \LinkMobility\SMSNotifications\Api\Data\SmsSubscriptionInterface
      * @throws \Magento\Framework\Exception\CouldNotSaveException

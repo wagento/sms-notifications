@@ -85,6 +85,19 @@ class SmsSubscriptionRepositoryTest extends TestCase
     }
 
     /**
+     * @magentoDataFixture Magento/Customer/_files/customer.php
+     */
+    public function testGetListByCustomerIdReturnsSearchResults(): void
+    {
+        self::createSmsSubscriptionsFromSourceFixtureProvider(7);
+
+        $results = $this->smsSubscriptionRepository->getListByCustomerId(1);
+
+        $this->assertInstanceOf(SearchResultsInterface::class, $results);
+        $this->assertEquals(7, $results->getTotalCount());
+    }
+
+    /**
      * @magentoDbIsolation enabled
      * @magentoDataFixture Magento/Customer/_files/customer.php
      */
