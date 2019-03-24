@@ -85,4 +85,11 @@ class ApiClientTest extends TestCase
 
         $this->apiClient = new ApiClient(new ClientFactory(), new ResultFactory());
     }
+
+    protected function tearDown()
+    {
+        parent::tearDown();
+
+        $this->apiClient = null;
+    }
 }

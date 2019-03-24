@@ -204,4 +204,9 @@ class ConfigTest extends TestCase
         $objectManager = Bootstrap::getObjectManager();
         $this->config = $objectManager->create(Config::class);
     }
+
+    protected function tearDown()
+    {
+        $this->config = null;
+    }
 }

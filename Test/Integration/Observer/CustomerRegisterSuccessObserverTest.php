@@ -139,4 +139,11 @@ class CustomerRegisterSuccessObserverTest extends TestCase
 
         $this->objectManager = Bootstrap::getObjectManager();
     }
+
+    protected function tearDown()
+    {
+        parent::tearDown();
+
+        $this->objectManager = null;
+    }
 }
