@@ -278,7 +278,7 @@ class ManagePostTest extends AbstractControllerTestCase
             ->setMethods(['getItems'])
             ->getMockForAbstractClass();
         $smsSubscriptionRepositoryMock = $this->getMockBuilder(SmsSubscriptionRepositoryInterface::class)
-            ->setMethods(['getList', 'deleteById'])
+            ->setMethods(['getListByCustomerId', 'deleteById'])
             ->getMockForAbstractClass();
 
         $smsSubscriptionMock->method('getId')->willReturn(1);
@@ -288,7 +288,7 @@ class ManagePostTest extends AbstractControllerTestCase
 
         $searchResultsMock->method('getItems')->willReturn([$smsSubscriptionMock]);
 
-        $smsSubscriptionRepositoryMock->method('getList')->willReturn($searchResultsMock);
+        $smsSubscriptionRepositoryMock->method('getListByCustomerId')->willReturn($searchResultsMock);
         $smsSubscriptionRepositoryMock->method('deleteById')->willThrowException(
             new CouldNotDeleteException(__('Unknown error'))
         );

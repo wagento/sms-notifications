@@ -23,7 +23,6 @@ use LinkMobility\SMSNotifications\CsrfAwareActionInterface;
 use LinkMobility\SMSNotifications\InvalidRequestException;
 use LinkMobility\SMSNotifications\Model\SmsSender;
 use Magento\Customer\Model\Session as CustomerSession;
-use Magento\Framework\Api\SearchCriteriaBuilder;
 use Magento\Framework\App\Action\Action;
 use Magento\Framework\App\Action\Context;
 use Magento\Framework\App\ActionInterface;
@@ -48,10 +47,6 @@ class ManagePost extends Action implements ActionInterface, CsrfAwareActionInter
      * @var \Psr\Log\LoggerInterface
      */
     private $logger;
-    /**
-     * @var \Magento\Framework\Api\SearchCriteriaBuilder
-     */
-    private $searchCriteriaBuilder;
     /**
      * @var \Magento\Framework\App\ProductMetadataInterface
      */
@@ -81,7 +76,6 @@ class ManagePost extends Action implements ActionInterface, CsrfAwareActionInter
         Context $context,
         CustomerSession $customerSession,
         LoggerInterface $logger,
-        SearchCriteriaBuilder $searchCriteriaBuilder,
         ProductMetadataInterface $productMetadata,
         FormKeyValidator $formKeyValidator,
         SmsSubscriptionRepositoryInterface $smsSubscriptionRepository,
@@ -93,7 +87,6 @@ class ManagePost extends Action implements ActionInterface, CsrfAwareActionInter
 
         $this->customerSession = $customerSession;
         $this->logger = $logger;
-        $this->searchCriteriaBuilder = $searchCriteriaBuilder;
         $this->productMetadata = $productMetadata;
         $this->formKeyValidator = $formKeyValidator;
         $this->smsSubscriptionRepository = $smsSubscriptionRepository;
@@ -133,8 +126,7 @@ class ManagePost extends Action implements ActionInterface, CsrfAwareActionInter
             return $resultRedirect;
         }
 
-        $searchCriteria = $this->searchCriteriaBuilder->addFilter('customer_id', $customerId)->create();
-        $subscribedSmsTypes = $this->smsSubscriptionRepository->getList($searchCriteria)->getItems();
+        $subscribedSmsTypes = $this->smsSubscriptionRepository->getListByCustomerId((int)$customerId)->getItems();
 
         if (count($subscribedSmsTypes) > 0) {
             $this->removeSubscriptions($subscribedSmsTypes, $selectedSmsTypes, $customerId);

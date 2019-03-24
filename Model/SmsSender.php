@@ -20,7 +20,6 @@ use LinkMobility\SMSNotifications\Api\ConfigInterface;
 use LinkMobility\SMSNotifications\Api\SmsSubscriptionRepositoryInterface;
 use Magento\Customer\Api\CustomerRepositoryInterface;
 use Magento\Customer\Api\Data\CustomerInterface;
-use Magento\Framework\Api\SearchCriteriaBuilder;
 use Magento\Framework\Exception\LocalizedException;
 use Magento\Framework\Exception\NoSuchEntityException;
 use Magento\Framework\Model\AbstractModel;
@@ -44,10 +43,6 @@ abstract class SmsSender
      */
     protected $storeRepository;
     /**
-     * @var \Magento\Framework\Api\SearchCriteriaBuilder
-     */
-    private $searchCriteriaBuilder;
-    /**
      * @var \Magento\Customer\Api\CustomerRepositoryInterface
      */
     private $customerRepository;
@@ -67,7 +62,6 @@ abstract class SmsSender
     public function __construct(
         LoggerInterface $logger,
         StoreRepositoryInterface $storeRepository,
-        SearchCriteriaBuilder $searchCriteriaBuilder,
         CustomerRepositoryInterface $customerRepository,
         ConfigInterface $config,
         SmsSubscriptionRepositoryInterface $subscriptionRepository,
@@ -75,7 +69,6 @@ abstract class SmsSender
     ) {
         $this->logger = $logger;
         $this->storeRepository = $storeRepository;
-        $this->searchCriteriaBuilder = $searchCriteriaBuilder;
         $this->customerRepository = $customerRepository;
         $this->config = $config;
         $this->subscriptionRepository = $subscriptionRepository;
@@ -138,8 +131,7 @@ abstract class SmsSender
 
     protected function getCustomerSmsSubscriptions(int $customerId): array
     {
-        $searchCriteria = $this->searchCriteriaBuilder->addFilter('customer_id', $customerId)->create();
-        $searchResults = $this->subscriptionRepository->getList($searchCriteria);
+        $searchResults = $this->subscriptionRepository->getListByCustomerId($customerId);
 
         if ($searchResults->getTotalCount() === 0) {
             return [];

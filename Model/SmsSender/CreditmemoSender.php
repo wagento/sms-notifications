@@ -21,7 +21,6 @@ use LinkMobility\SMSNotifications\Api\SmsSubscriptionRepositoryInterface;
 use LinkMobility\SMSNotifications\Model\MessageService;
 use LinkMobility\SMSNotifications\Model\SmsSender;
 use Magento\Customer\Api\CustomerRepositoryInterface;
-use Magento\Framework\Api\SearchCriteriaBuilder;
 use Magento\Framework\Model\AbstractModel;
 use Magento\Sales\Api\Data\CreditmemoExtensionFactory;
 use Magento\Store\Api\StoreRepositoryInterface;
@@ -46,7 +45,6 @@ class CreditmemoSender extends SmsSender
     public function __construct(
         LoggerInterface $logger,
         StoreRepositoryInterface $storeRepository,
-        SearchCriteriaBuilder $searchCriteriaBuilder,
         CustomerRepositoryInterface $customerRepository,
         ConfigInterface $config,
         SmsSubscriptionRepositoryInterface $subscriptionRepository,
@@ -56,7 +54,6 @@ class CreditmemoSender extends SmsSender
         parent::__construct(
             $logger,
             $storeRepository,
-            $searchCriteriaBuilder,
             $customerRepository,
             $config,
             $subscriptionRepository,
