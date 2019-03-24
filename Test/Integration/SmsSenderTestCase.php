@@ -37,13 +37,6 @@ class SmsSenderTestCase extends TestCase
      */
     protected $objectManager;
 
-    protected function setUp()
-    {
-        parent::setUp();
-
-        $this->objectManager = ObjectManager::getInstance();
-    }
-
     /**
      * @throws \Magento\Framework\Exception\LocalizedException
      * @throws \Magento\Framework\Exception\NoSuchEntityException
@@ -69,6 +62,13 @@ class SmsSenderTestCase extends TestCase
     public static function smsSubscriptionsFixtureProvider(int $count = -1): array
     {
         return require __DIR__ . '/_files/create_sms_subscriptions_from_source.php';
+    }
+
+    protected function setUp()
+    {
+        parent::setUp();
+
+        $this->objectManager = ObjectManager::getInstance();
     }
 
     /**
