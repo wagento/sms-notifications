@@ -20,6 +20,7 @@ use LinkMobility\SMSNotifications\Api\MessageVariablesInterface;
 use Magento\Customer\Api\Data\CustomerInterface;
 use Magento\Framework\App\Config\ScopeConfigInterface;
 use Magento\Framework\Exception\NoSuchEntityException;
+use Magento\Store\Model\GroupRepository as StoreGroupRepository;
 use Magento\Store\Model\ScopeInterface;
 use Magento\Store\Model\StoreManagerInterface;
 
@@ -43,11 +44,19 @@ class CustomerVariables implements MessageVariablesInterface
      * @var \Magento\Customer\Api\Data\CustomerInterface
      */
     private $customer;
+    /**
+     * @var \Magento\Store\Model\GroupRepository
+     */
+    private $storeGoupRepository;
 
-    public function __construct(ScopeConfigInterface $scopeConfig, StoreManagerInterface $storeManager)
-    {
+    public function __construct(
+        ScopeConfigInterface $scopeConfig,
+        StoreManagerInterface $storeManager,
+        StoreGroupRepository $storeGroupRepository
+    ) {
         $this->scopeConfig = $scopeConfig;
         $this->storeManager = $storeManager;
+        $this->storeGoupRepository = $storeGroupRepository;
     }
 
     public function setCustomer(CustomerInterface $customer): self
@@ -90,7 +99,8 @@ class CustomerVariables implements MessageVariablesInterface
 
         if ($storeName === null) {
             try {
-                $storeName = $this->storeManager->getStore()->getName();
+                $storeName = $this->storeGoupRepository->get($this->storeManager->getStore()->getStoreGroupId())
+                    ->getName();
             } catch (NoSuchEntityException $e) {
                 $storeName = null;
             }
