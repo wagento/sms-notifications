@@ -47,20 +47,22 @@ define([
                     {
                         text: $t('Cancel'),
                         class: 'action secondary',
-                        click: function () {
-                            smsNotifications.isSubscribed(false);
-                            smsNotifications.isSubscribing(false);
-
-                            this.closeModal();
-                        }
+                        click: this.handleDisagree
                     }
-                ]
+                ],
+                modalCloseBtnHandler: this.handleDisagree
             };
 
             modal(options, $(this.modalWindow));
         },
         showModal: function () {
             $(this.modalWindow).modal('openModal');
+        },
+        handleDisagree: function () {
+            smsNotifications.isSubscribed(false);
+            smsNotifications.isSubscribing(false);
+
+            this.closeModal();
         }
     };
 });
