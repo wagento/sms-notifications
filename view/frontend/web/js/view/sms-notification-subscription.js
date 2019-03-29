@@ -41,11 +41,11 @@ define([
         initialize: function () {
             this._super();
 
-            if (!this.isOptinRequired) {
+            if (!this.isOptinRequired && !this.isSubscribeChecked) {
                 this.isSubscribeChecked = true;
-
-                smsNotifications.isSubscribed(true);
             }
+
+            smsNotifications.isSubscribed(this.isSubscribeChecked);
 
             if (this.selectedSmsTypes.length > 0) {
                 smsNotifications.selectedSmsTypes(this.selectedSmsTypes.split(','));

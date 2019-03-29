@@ -21,5 +21,9 @@ define(['Magento_Ui/js/lib/core/storage/local'], function (storage) {
         if (storage.get('sms-notification-subscription.selectedSmsTypes') !== undefined) {
             storage.remove('sms-notification-subscription.selectedSmsTypes');
         }
+
+        if (storage.get('sms-mobile-telephone') !== undefined) {
+            storage.remove('sms-mobile-telephone');
+        }
     };
 });

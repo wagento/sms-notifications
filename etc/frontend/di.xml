@@ -13,26 +13,6 @@
  */
 -->
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
-    <type name="LinkMobility\SMSNotifications\Block\Customer\Account\Create\MobileTelephoneField">
-        <arguments>
-            <argument name="customerSession" xsi:type="object">Magento\Customer\Model\Session\Proxy</argument>
-        </arguments>
-    </type>
-    <type name="LinkMobility\SMSNotifications\Block\Customer\Account\Create\SubscribeField">
-        <arguments>
-            <argument name="customerSession" xsi:type="object">Magento\Customer\Model\Session\Proxy</argument>
-        </arguments>
-    </type>
-    <type name="LinkMobility\SMSNotifications\Block\SmsSubscriptionPreferences">
-        <arguments>
-            <argument name="customerSession" xsi:type="object">Magento\Customer\Model\Session\Proxy</argument>
-        </arguments>
-    </type>
-    <type name="LinkMobility\SMSNotifications\Block\SmsTermsConditions">
-        <arguments>
-            <argument name="customerSession" xsi:type="object">Magento\Customer\Model\Session\Proxy</argument>
-        </arguments>
-    </type>
     <type name="LinkMobility\SMSNotifications\Controller\SmsNotifications\ManagePost">
         <arguments>
             <argument name="logger" xsi:type="object">LinkMobility\SMSNotifications\Logger\Logger</argument>
@@ -44,13 +24,5 @@
         <arguments>
             <argument name="smsSender" xsi:type="object">LinkMobility\SMSNotifications\Model\SmsSender\WelcomeSender</argument>
         </arguments>
-    </type>
-    <type name="LinkMobility\SMSNotifications\Plugin\Block\Form\RegisterPlugin">
-        <arguments>
-            <argument name="customerSession" xsi:type="object">Magento\Customer\Model\Session\Proxy</argument>
-        </arguments>
-    </type>
-    <type name="Magento\Customer\Block\Form\Register">
-        <plugin name="linkmobilityNotificationsRegister" type="LinkMobility\SMSNotifications\Plugin\Block\Form\RegisterPlugin"/>
     </type>
 </config>

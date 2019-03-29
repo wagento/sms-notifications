@@ -21,21 +21,26 @@ define([
     return Component.extend({
         defaults: {
             template: 'LinkMobility_SMSNotifications/mobile-telephone-field',
-            showField: false,
             mobileTelephonePrefixOptions: [],
+            defaultMobileTelephonePrefix: '',
             mobileTelephonePrefix: '',
             mobileTelephoneNumber: '',
             tracks: {
-                showField: true,
+                mobileTelephonePrefix: true,
+                mobileTelephoneNumber: true
+            },
+            statefull: {
                 mobileTelephonePrefix: true,
                 mobileTelephoneNumber: true
             }
         },
-        defaultMobileTelephonePrefix: '',
+        showField: ko.observable(false),
         initialize: function () {
             this._super();
 
-            this.defaultMobileTelephonePrefix = this.mobileTelephonePrefix;
+            if (this.mobileTelephonePrefix.length === 0 && this.defaultMobileTelephonePrefix.length > 0) {
+                this.mobileTelephonePrefix = this.defaultMobileTelephonePrefix;
+            }
         },
         initObservable: function () {
             this._super();
@@ -45,7 +50,7 @@ define([
             return this;
         },
         toggleFieldVisibility: function (isSubscribed) {
-            this.showField = isSubscribed;
+            this.showField(isSubscribed);
 
             if (!isSubscribed) {
                 this.mobileTelephonePrefix = this.defaultMobileTelephonePrefix;

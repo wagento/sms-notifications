@@ -17,8 +17,6 @@ declare(strict_types=1);
 namespace LinkMobility\SMSNotifications\Block;
 
 use LinkMobility\SMSNotifications\Api\ConfigInterface;
-use Magento\Customer\Model\Session as CustomerSession;
-use Magento\Framework\DataObject;
 use Magento\Framework\Exception\NoSuchEntityException;
 use Magento\Framework\View\Element\Template\Context;
 use Magento\Framework\View\Element\Template;
@@ -32,43 +30,18 @@ use Magento\Framework\View\Element\Template;
 abstract class AbstractBlock extends Template
 {
     /**
-     * @var \Magento\Customer\Model\Session
-     */
-    protected $customerSession;
-    /**
      * @var \LinkMobility\SMSNotifications\Api\ConfigInterface
      */
     protected $config;
 
     public function __construct(
         Context $context,
-        CustomerSession $customerSession,
         ConfigInterface $config,
         array $data = []
     ) {
         parent::__construct($context, $data);
 
-        $this->customerSession = $customerSession;
         $this->config = $config;
-    }
-
-    public function getFormData(): DataObject
-    {
-        $data = $this->getData('form_data');
-
-        if ($data === null) {
-            $formData = $this->customerSession->getCustomerFormData(true);
-            $data = new DataObject();
-
-            if ($formData) {
-                $data->addData($formData);
-                $data->setCustomerData(1);
-            }
-
-            $this->setData('form_data', $data);
-        }
-
-        return $data;
     }
 
     /**

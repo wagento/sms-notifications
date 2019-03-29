@@ -26,18 +26,4 @@ use LinkMobility\SMSNotifications\Block\AbstractBlock;
  */
 class MobileTelephoneField extends AbstractBlock
 {
-    public function getFieldVisibility(): string
-    {
-        return $this->getTelephonePrefix() !== null && $this->getTelephoneNumber() !== '' ? 'true' : 'false';
-    }
-
-    public function getTelephonePrefix(): ?string
-    {
-        return $this->getFormData()->getSmsMobilePhonePrefix();
-    }
-
-    public function getTelephoneNumber(): string
-    {
-        return $this->getFormData()->getSmsMobilePhoneNumber() ?? '';
-    }
 }
