@@ -96,7 +96,11 @@ define([
             this.isSubscribeChecked = isSubscribed;
         },
         setSmsSelectedTypes: function (selectedSmsTypes) {
-            this.selectedSmsTypes = selectedSmsTypes.join(',');
+            selectedSmsTypes = selectedSmsTypes.join(',');
+
+            if (selectedSmsTypes !== this.selectedSmsTypes) {
+                this.selectedSmsTypes = selectedSmsTypes;
+            }
         }
     });
 });
