@@ -34,6 +34,11 @@ define([
             this._super();
 
             subscriptionPreferencesModal.open.subscribe(this.showModal);
+            smsNotifications.selectedSmsTypes.subscribe(smsTypes => {
+                if (smsTypes !== this.selectedSmsTypes) {
+                    this.selectedSmsTypes = smsTypes;
+                }
+            }, this);
 
             const smsTypeCodes = this.groupedSmsTypes.map(groupedSmsType => groupedSmsType.smsTypes)
                 .reduce(

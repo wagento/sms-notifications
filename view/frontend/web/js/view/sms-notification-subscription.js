@@ -26,13 +26,15 @@ define([
             template: 'LinkMobility_SMSNotifications/sms-notification-subscription',
             isOptinRequired: true,
             isTermsAndConditionsShownAfterOptin: true,
-            selectedSmsTypes: ko.observable(''),
+            selectedSmsTypes: '',
             isSubscribeChecked: false,
             tracks: {
-                isSubscribeChecked: true
+                isSubscribeChecked: true,
+                selectedSmsTypes: true
             },
             statefull: {
-                isSubscribeChecked: true
+                isSubscribeChecked: true,
+                selectedSmsTypes: true
             }
         },
         showTermsAndConditions: null,
@@ -43,6 +45,10 @@ define([
                 this.isSubscribeChecked = true;
 
                 smsNotifications.isSubscribed(true);
+            }
+
+            if (this.selectedSmsTypes.length > 0) {
+                smsNotifications.selectedSmsTypes(this.selectedSmsTypes.split(','));
             }
         },
         initObservable: function () {
@@ -90,7 +96,7 @@ define([
             this.isSubscribeChecked = isSubscribed;
         },
         setSmsSelectedTypes: function (selectedSmsTypes) {
-            this.selectedSmsTypes(selectedSmsTypes.join(','));
+            this.selectedSmsTypes = selectedSmsTypes.join(',');
         }
     });
 });
