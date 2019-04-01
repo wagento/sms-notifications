@@ -5,7 +5,7 @@
  * Sends transactional SMS notifications through the LINK Mobility messaging
  * service.
  *
- * @package LinkMobility\SMSNotifications\ViewModel
+ * @package Wagento\LinkMobilitySMSNotifications\ViewModel
  * @author Joseph Leedy <joseph@wagento.com>
  * @author Yair García Torres <yair.garcia@wagento.com>
  * @copyright Copyright (c) Wagento (https://wagento.com/)
@@ -14,9 +14,9 @@
 
 declare(strict_types=1);
 
-namespace LinkMobility\SMSNotifications\ViewModel;
+namespace Wagento\LinkMobilitySMSNotifications\ViewModel;
 
-use LinkMobility\SMSNotifications\Api\SmsSubscriptionRepositoryInterface;
+use Wagento\LinkMobilitySMSNotifications\Api\SmsSubscriptionRepositoryInterface;
 use Magento\Customer\Model\Session as CustomerSession;
 use Magento\Framework\Api\SearchCriteriaBuilder;
 use Magento\Framework\View\Element\Block\ArgumentInterface;
@@ -24,7 +24,7 @@ use Magento\Framework\View\Element\Block\ArgumentInterface;
 /**
  * Customer SMS Subscriptions View Model
  *
- * @package LinkMobility\SMSNotifications\ViewModel
+ * @package Wagento\LinkMobilitySMSNotifications\ViewModel
  * @author Joseph Leedy <joseph@wagento.com>
  */
 final class CustomerSmsSubscriptions implements ArgumentInterface
@@ -38,7 +38,7 @@ final class CustomerSmsSubscriptions implements ArgumentInterface
      */
     private $searchCriteriaBuilder;
     /**
-     * @var \LinkMobility\SMSNotifications\Api\SmsSubscriptionRepositoryInterface
+     * @var \Wagento\LinkMobilitySMSNotifications\Api\SmsSubscriptionRepositoryInterface
      */
     private $smsSubscriptionRepository;
     /**

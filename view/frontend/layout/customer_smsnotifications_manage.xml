@@ -21,12 +21,12 @@
             </action>
         </referenceBlock>
         <referenceContainer name="content">
-            <block class="Magento\Framework\View\Element\Template" name="customer.sms_notifications.manage" as="customer_smsnotifications_manage" template="LinkMobility_SMSNotifications::customer/smsnotifications/manage.phtml" cacheable="false">
+            <block class="Magento\Framework\View\Element\Template" name="customer.sms_notifications.manage" as="customer_smsnotifications_manage" template="Wagento_LinkMobilitySMSNotifications::customer/smsnotifications/manage.phtml" cacheable="false">
                 <arguments>
-                    <argument name="sms_types_view_model" xsi:type="object">LinkMobility\SMSNotifications\ViewModel\SmsTypes</argument>
-                    <argument name="sms_subscriptions_view_model" xsi:type="object">LinkMobility\SMSNotifications\ViewModel\CustomerSmsSubscriptions</argument>
-                    <argument name="mobile_telephone_view_model" xsi:type="object">LinkMobility\SMSNotifications\ViewModel\MobileTelephone</argument>
-                    <argument name="telephone_prefixes_view_model" xsi:type="object">LinkMobility\SMSNotifications\ViewModel\TelephonePrefixes</argument>
+                    <argument name="sms_types_view_model" xsi:type="object">Wagento\LinkMobilitySMSNotifications\ViewModel\SmsTypes</argument>
+                    <argument name="sms_subscriptions_view_model" xsi:type="object">Wagento\LinkMobilitySMSNotifications\ViewModel\CustomerSmsSubscriptions</argument>
+                    <argument name="mobile_telephone_view_model" xsi:type="object">Wagento\LinkMobilitySMSNotifications\ViewModel\MobileTelephone</argument>
+                    <argument name="telephone_prefixes_view_model" xsi:type="object">Wagento\LinkMobilitySMSNotifications\ViewModel\TelephonePrefixes</argument>
                 </arguments>
             </block>
         </referenceContainer>

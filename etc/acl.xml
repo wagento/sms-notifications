@@ -16,10 +16,10 @@
     <acl>
         <resources>
             <resource id="Magento_Backend::admin">
-                <resource id="LinkMobility_SMSNotifications::sms_subscriptions" title="SMS Subscriptions" translate="title" sortOrder="1000">
-                    <resource id="LinkMobility_SMSNotifications::view_sms_subscription" title="View" translate="title" sortOrder="10"/>
-                    <resource id="LinkMobility_SMSNotifications::manage_sms_subscription" title="Manage" translate="title" sortOrder="20"/>
-                    <resource id="LinkMobility_SMSNotifications::sms_configuration" title="Configuration" translate="title" sortOrder="30"/>
+                <resource id="Wagento_LinkMobilitySMSNotifications::sms_subscriptions" title="SMS Subscriptions" translate="title" sortOrder="1000">
+                    <resource id="Wagento_LinkMobilitySMSNotifications::view_sms_subscription" title="View" translate="title" sortOrder="10"/>
+                    <resource id="Wagento_LinkMobilitySMSNotifications::manage_sms_subscription" title="Manage" translate="title" sortOrder="20"/>
+                    <resource id="Wagento_LinkMobilitySMSNotifications::sms_configuration" title="Configuration" translate="title" sortOrder="30"/>
                 </resource>
             </resource>
         </resources>

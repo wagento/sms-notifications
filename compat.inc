@@ -5,7 +5,7 @@
  * Sends transactional SMS notifications through the LINK Mobility messaging
  * service.
  *
- * @package LinkMobility\SMSNotifications\Controller\SmsNotifications
+ * @package Wagento\LinkMobilitySMSNotifications\Controller\SmsNotifications
  * @author Joseph Leedy <joseph@wagento.com>
  * @author Yair García Torres <yair.garcia@wagento.com>
  * @copyright Copyright (c) Wagento (https://wagento.com/)
@@ -22,6 +22,6 @@ use Magento\Framework\App\CsrfAwareActionInterface;
 use Magento\Framework\App\Request\InvalidRequestException;
 
 if (!interface_exists(CsrfAwareActionInterface::class)) {
-    class_alias(\LinkMobility\SMSNotifications\Compat\CsrfAwareActionInterface::class, CsrfAwareActionInterface::class);
-    class_alias(\LinkMobility\SMSNotifications\Compat\InvalidRequestException::class, InvalidRequestException::class);
+    class_alias(\Wagento\LinkMobilitySMSNotifications\Compat\CsrfAwareActionInterface::class, CsrfAwareActionInterface::class);
+    class_alias(\Wagento\LinkMobilitySMSNotifications\Compat\InvalidRequestException::class, InvalidRequestException::class);
 }

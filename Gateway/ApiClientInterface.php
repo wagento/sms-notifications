@@ -5,7 +5,7 @@
  * Sends transactional SMS notifications through the LINK Mobility messaging
  * service.
  *
- * @package LinkMobility\SMSNotifications\Gateway
+ * @package Wagento\LinkMobilitySMSNotifications\Gateway
  * @author Joseph Leedy <joseph@wagento.com>
  * @author Yair García Torres <yair.garcia@wagento.com>
  * @copyright Copyright (c) Wagento (https://wagento.com/)
@@ -14,14 +14,14 @@
 
 declare(strict_types=1);
 
-namespace LinkMobility\SMSNotifications\Gateway;
+namespace Wagento\LinkMobilitySMSNotifications\Gateway;
 
-use LinkMobility\SMSNotifications\Gateway\Entity\ResultInterface;
+use Wagento\LinkMobilitySMSNotifications\Gateway\Entity\ResultInterface;
 
 /**
  * API Client Interface
  *
- * @package LinkMobility\SMSNotifications\Gateway
+ * @package Wagento\LinkMobilitySMSNotifications\Gateway
  * @author Joseph Leedy <joseph@wagento.com>
  */
 interface ApiClientInterface
@@ -36,7 +36,7 @@ interface ApiClientInterface
     public function setPassword(string $password): void;
 
     /**
-     * @param string[]|\LinkMobility\SMSNotifications\Gateway\Entity\MessageInterface $data
+     * @param string[]|\Wagento\LinkMobilitySMSNotifications\Gateway\Entity\MessageInterface $data
      */
     public function setData($data): void;
 
@@ -45,7 +45,7 @@ interface ApiClientInterface
     public function setHttpMethod(string $httpMethod): void;
 
     /**
-     * @throws \LinkMobility\SMSNotifications\Gateway\ApiException
+     * @throws \Wagento\LinkMobilitySMSNotifications\Gateway\ApiException
      */
     public function sendRequest(): void;
 

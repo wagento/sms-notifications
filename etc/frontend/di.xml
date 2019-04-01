@@ -13,16 +13,16 @@
  */
 -->
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
-    <type name="LinkMobility\SMSNotifications\Controller\SmsNotifications\ManagePost">
+    <type name="Wagento\LinkMobilitySMSNotifications\Controller\SmsNotifications\ManagePost">
         <arguments>
-            <argument name="logger" xsi:type="object">LinkMobility\SMSNotifications\Logger\Logger</argument>
+            <argument name="logger" xsi:type="object">Wagento\LinkMobilitySMSNotifications\Logger\Logger</argument>
             <argument name="customerSession" xsi:type="object">Magento\Customer\Model\Session\Proxy</argument>
-            <argument name="smsSender" xsi:type="object">LinkMobility\SMSNotifications\Model\SmsSender\WelcomeSender</argument>
+            <argument name="smsSender" xsi:type="object">Wagento\LinkMobilitySMSNotifications\Model\SmsSender\WelcomeSender</argument>
         </arguments>
     </type>
-    <type name="LinkMobility\SMSNotifications\Observer\CustomerRegisterSuccessObserver">
+    <type name="Wagento\LinkMobilitySMSNotifications\Observer\CustomerRegisterSuccessObserver">
         <arguments>
-            <argument name="smsSender" xsi:type="object">LinkMobility\SMSNotifications\Model\SmsSender\WelcomeSender</argument>
+            <argument name="smsSender" xsi:type="object">Wagento\LinkMobilitySMSNotifications\Model\SmsSender\WelcomeSender</argument>
         </arguments>
     </type>
 </config>

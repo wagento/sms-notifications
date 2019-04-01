@@ -5,7 +5,7 @@
  * Sends transactional SMS notifications through the LINK Mobility messaging
  * service.
  *
- * @package LinkMobility\SMSNotifications\Plugin\Component\MassAction
+ * @package Wagento\LinkMobilitySMSNotifications\Plugin\Component\MassAction
  * @author Joseph Leedy <joseph@wagento.com>
  * @author Yair García Torres <yair.garcia@wagento.com>
  * @copyright Copyright (c) Wagento (https://wagento.com/)
@@ -14,10 +14,10 @@
 
 declare(strict_types=1);
 
-namespace LinkMobility\SMSNotifications\Plugin\Component\MassAction;
+namespace Wagento\LinkMobilitySMSNotifications\Plugin\Component\MassAction;
 
-use LinkMobility\SMSNotifications\Api\ConfigInterface;
-use LinkMobility\SMSNotifications\Model\ResourceModel\SmsSubscription\Collection as SmsSubscriptionCollection;
+use Wagento\LinkMobilitySMSNotifications\Api\ConfigInterface;
+use Wagento\LinkMobilitySMSNotifications\Model\ResourceModel\SmsSubscription\Collection as SmsSubscriptionCollection;
 use Magento\Framework\Api\FilterBuilder;
 use Magento\Framework\App\RequestInterface;
 use Magento\Framework\Data\Collection\AbstractDb;
@@ -31,7 +31,7 @@ use Magento\Ui\Component\MassAction\Filter;
  *
  * Replaces core logic to filter by SMS notification type instead of entity ID.
  *
- * @package LinkMobility\SMSNotifications\Plugin\Component\MassAction
+ * @package Wagento\LinkMobilitySMSNotifications\Plugin\Component\MassAction
  * @author Joseph Leedy <joseph@wagento.com>
  * @see \Magento\Ui\Component\MassAction\Filter
  */
@@ -50,7 +50,7 @@ class FilterPlugin
      */
     private $storeManager;
     /**
-     * @var \LinkMobility\SMSNotifications\Api\ConfigInterface
+     * @var \Wagento\LinkMobilitySMSNotifications\Api\ConfigInterface
      */
     private $config;
     /**

@@ -5,7 +5,7 @@
  * Sends transactional SMS notifications through the LINK Mobility messaging
  * service.
  *
- * @package LinkMobility\SMSNotifications\Plugin\Sales\Api
+ * @package Wagento\LinkMobilitySMSNotifications\Plugin\Sales\Api
  * @author Joseph Leedy <joseph@wagento.com>
  * @author Yair García Torres <yair.garcia@wagento.com>
  * @copyright Copyright (c) Wagento (https://wagento.com/)
@@ -14,16 +14,16 @@
 
 declare(strict_types=1);
 
-namespace LinkMobility\SMSNotifications\Plugin\Sales\Api;
+namespace Wagento\LinkMobilitySMSNotifications\Plugin\Sales\Api;
 
-use LinkMobility\SMSNotifications\Model\SmsSender;
+use Wagento\LinkMobilitySMSNotifications\Model\SmsSender;
 use Magento\Sales\Api\CreditmemoRepositoryInterface;
 use Magento\Sales\Api\Data\CreditmemoInterface;
 
 /**
  * Plug-in for {@see \Magento\Sales\Api\CreditmemoRepositoryInterface}
  *
- * @package LinkMobility\SMSNotifications\Plugin\Sales\Api
+ * @package Wagento\LinkMobilitySMSNotifications\Plugin\Sales\Api
  * @author Joseph Leedy <joseph@wagento.com>
  *
  * @phpcs:disable Generic.Files.LineLength.TooLong
@@ -31,7 +31,7 @@ use Magento\Sales\Api\Data\CreditmemoInterface;
 class CreditmemoRepositoryInterfacePlugin
 {
     /**
-     * @var \LinkMobility\SMSNotifications\Model\SmsSender|\LinkMobility\SMSNotifications\Model\SmsSender\CreditmemoSender
+     * @var \Wagento\LinkMobilitySMSNotifications\Model\SmsSender|\Wagento\LinkMobilitySMSNotifications\Model\SmsSender\CreditmemoSender
      */
     private $smsSender;
 

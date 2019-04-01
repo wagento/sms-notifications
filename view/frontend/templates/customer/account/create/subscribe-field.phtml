@@ -11,7 +11,7 @@
  * @license https://opensource.org/licenses/OSL-3.0.php Open Software License 3.0
  */
 ?>
-<?php /** @var \LinkMobility\SMSNotifications\Block\Customer\Account\Create\SubscribeField $block */ ?>
+<?php /** @var \Wagento\LinkMobilitySMSNotifications\Block\Customer\Account\Create\SubscribeField $block */ ?>
 <div class="field choice sms-notification-subscription" id="sms-notification-subscription-field" data-bind="scope: 'sms-notification-subscription'">
     <!-- ko template: getTemplate() --><!-- /ko -->
 </div>
@@ -21,7 +21,7 @@
             "Magento_Ui/js/core/app": {
                 "components": {
                     "sms-notification-subscription": {
-                        "component": "LinkMobility_SMSNotifications/js/view/sms-notification-subscription",
+                        "component": "Wagento_LinkMobilitySMSNotifications/js/view/sms-notification-subscription",
                         "isOptinRequired": <?= /* @noEscape */ $block->isOptinRequired() ? 'true' : 'false' ?>,
                         "isTermsAndConditionsShownAfterOptin": <?= /* @noEscape */ $block->isTermsAndConditionsShownAfterOptin() ? 'true' : 'false' ?>
                     }

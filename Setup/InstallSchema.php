@@ -5,7 +5,7 @@
  * Sends transactional SMS notifications through the LINK Mobility messaging
  * service.
  *
- * @package LinkMobility\SMSNotifications\Setup
+ * @package Wagento\LinkMobilitySMSNotifications\Setup
  * @author Joseph Leedy <joseph@wagento.com>
  * @author Yair García Torres <yair.garcia@wagento.com>
  * @copyright Copyright (c) Wagento (https://wagento.com/)
@@ -14,7 +14,7 @@
 
 declare(strict_types=1);
 
-namespace LinkMobility\SMSNotifications\Setup;
+namespace Wagento\LinkMobilitySMSNotifications\Setup;
 
 use Magento\Framework\DB\Adapter\AdapterInterface;
 use Magento\Framework\DB\Ddl\Table;
@@ -25,7 +25,7 @@ use Magento\Framework\Setup\SchemaSetupInterface;
 /**
  * Database Schema Installer
  *
- * @package LinkMobility\SMSNotifications\Setup
+ * @package Wagento\LinkMobilitySMSNotifications\Setup
  * @author Yair García Torres <yair.garcia@wagento.com>
  * @author Joseph Leedy <joseph@wagento.com>
  *

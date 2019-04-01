@@ -5,7 +5,7 @@
  * Sends transactional SMS notifications through the LINK Mobility messaging
  * service.
  *
- * @package LinkMobility\SMSNotifications\Api
+ * @package Wagento\LinkMobilitySMSNotifications\Api
  * @author Joseph Leedy <joseph@wagento.com>
  * @author Yair García Torres <yair.garcia@wagento.com>
  * @copyright Copyright (c) Wagento (https://wagento.com/)
@@ -14,12 +14,12 @@
 
 declare(strict_types=1);
 
-namespace LinkMobility\SMSNotifications\Api;
+namespace Wagento\LinkMobilitySMSNotifications\Api;
 
 /**
  * Validation Rules Interface
  *
- * @package LinkMobility\SMSNotifications\Api
+ * @package Wagento\LinkMobilitySMSNotifications\Api
  * @author Joseph Leedy <joseph@wagento.com>
  * @api
  */

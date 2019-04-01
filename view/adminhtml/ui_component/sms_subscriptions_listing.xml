@@ -56,8 +56,8 @@
             </storageConfig>
             <updateUrl path="mui/index/render"/>
         </settings>
-        <aclResource>LinkMobility_SMSNotifications::sms_subscriptions</aclResource>
-        <dataProvider class="LinkMobility\SMSNotifications\Ui\DataProvider\SmsSubscriptions" name="sms_subscriptions_listing_data_source">
+        <aclResource>Wagento_LinkMobilitySMSNotifications::sms_subscriptions</aclResource>
+        <dataProvider class="Wagento\LinkMobilitySMSNotifications\Ui\DataProvider\SmsSubscriptions" name="sms_subscriptions_listing_data_source">
             <settings>
                 <primaryFieldName>sms_type</primaryFieldName>
                 <requestFieldName>sms_type</requestFieldName>
@@ -78,17 +78,17 @@
                 <sortable>false</sortable>
             </settings>
         </column>
-        <column name="status" sortOrder="20" class="LinkMobility\SMSNotifications\Ui\Component\Listing\Column\SmsSubscriptionStatus">
+        <column name="status" sortOrder="20" class="Wagento\LinkMobilitySMSNotifications\Ui\Component\Listing\Column\SmsSubscriptionStatus">
             <settings>
                 <label translate="true">Status</label>
                 <sortable>false</sortable>
                 <dataType>select</dataType>
-                <options class="LinkMobility\SMSNotifications\Ui\Component\Listing\Column\SmsSubscriptionStatus"/>
+                <options class="Wagento\LinkMobilitySMSNotifications\Ui\Component\Listing\Column\SmsSubscriptionStatus"/>
                 <resizeEnabled>false</resizeEnabled>
                 <resizeDefaultWidth>130</resizeDefaultWidth>
             </settings>
         </column>
-        <actionsColumn name="actions" sortOrder="30" class="LinkMobility\SMSNotifications\Ui\Component\Listing\Column\SmsSubscriptionActions">
+        <actionsColumn name="actions" sortOrder="30" class="Wagento\LinkMobilitySMSNotifications\Ui\Component\Listing\Column\SmsSubscriptionActions">
             <settings>
                 <indexField>sms_subscription_id</indexField>
             </settings>

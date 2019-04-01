@@ -5,7 +5,7 @@
  * Sends transactional SMS notifications through the LINK Mobility messaging
  * service.
  *
- * @package LinkMobility\SMSNotifications\Model
+ * @package Wagento\LinkMobilitySMSNotifications\Model
  * @author Joseph Leedy <joseph@wagento.com>
  * @author Yair García Torres <yair.garcia@wagento.com>
  * @copyright Copyright (c) Wagento (https://wagento.com/)
@@ -14,10 +14,10 @@
 
 declare(strict_types=1);
 
-namespace LinkMobility\SMSNotifications\Model;
+namespace Wagento\LinkMobilitySMSNotifications\Model;
 
-use LinkMobility\SMSNotifications\Api\ConfigInterface;
-use LinkMobility\SMSNotifications\Api\SmsSubscriptionRepositoryInterface;
+use Wagento\LinkMobilitySMSNotifications\Api\ConfigInterface;
+use Wagento\LinkMobilitySMSNotifications\Api\SmsSubscriptionRepositoryInterface;
 use Magento\Customer\Api\CustomerRepositoryInterface;
 use Magento\Customer\Api\Data\CustomerInterface;
 use Magento\Framework\Exception\LocalizedException;
@@ -29,7 +29,7 @@ use Psr\Log\LoggerInterface;
 /**
  * SMS Sender
  *
- * @package LinkMobility\SMSNotifications\Model
+ * @package Wagento\LinkMobilitySMSNotifications\Model
  * @author Joseph Leedy <joseph@wagento.com>
  */
 abstract class SmsSender
@@ -43,11 +43,11 @@ abstract class SmsSender
      */
     protected $storeRepository;
     /**
-     * @var \LinkMobility\SMSNotifications\Api\ConfigInterface
+     * @var \Wagento\LinkMobilitySMSNotifications\Api\ConfigInterface
      */
     protected $config;
     /**
-     * @var \LinkMobility\SMSNotifications\Model\MessageService
+     * @var \Wagento\LinkMobilitySMSNotifications\Model\MessageService
      */
     protected $messageService;
     /**
@@ -55,7 +55,7 @@ abstract class SmsSender
      */
     private $customerRepository;
     /**
-     * @var \LinkMobility\SMSNotifications\Api\SmsSubscriptionRepositoryInterface
+     * @var \Wagento\LinkMobilitySMSNotifications\Api\SmsSubscriptionRepositoryInterface
      */
     private $subscriptionRepository;
 

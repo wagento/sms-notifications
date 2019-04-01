@@ -5,7 +5,7 @@
  * Sends transactional SMS notifications through the LINK Mobility messaging
  * service.
  *
- * @package LinkMobility\SMSNotifications\ViewModel
+ * @package Wagento\LinkMobilitySMSNotifications\ViewModel
  * @author Joseph Leedy <joseph@wagento.com>
  * @author Yair García Torres <yair.garcia@wagento.com>
  * @copyright Copyright (c) Wagento (https://wagento.com/)
@@ -16,9 +16,9 @@
 
 declare(strict_types=1);
 
-namespace LinkMobility\SMSNotifications\ViewModel;
+namespace Wagento\LinkMobilitySMSNotifications\ViewModel;
 
-use LinkMobility\SMSNotifications\Model\ResourceModel\TelephonePrefix\CollectionFactory as TelephonePrefixCollectionFactory;
+use Wagento\LinkMobilitySMSNotifications\Model\ResourceModel\TelephonePrefix\CollectionFactory as TelephonePrefixCollectionFactory;
 use Magento\Customer\Model\Customer;
 use Magento\Directory\Helper\Data as DirectoryHelper;
 use Magento\Eav\Api\AttributeRepositoryInterface;
@@ -29,7 +29,7 @@ use Magento\Framework\View\Element\Block\ArgumentInterface;
 /**
  * Telephone Prefixes View Model
  *
- * @package LinkMobility\SMSNotifications\ViewModel
+ * @package Wagento\LinkMobilitySMSNotifications\ViewModel
  * @author Joseph Leedy <joseph@wagento.com>
  */
 final class TelephonePrefixes implements ArgumentInterface
@@ -43,7 +43,7 @@ final class TelephonePrefixes implements ArgumentInterface
      */
     private $attributeRepository;
     /**
-     * @var \LinkMobility\SMSNotifications\Model\ResourceModel\TelephonePrefix\CollectionFactory
+     * @var \Wagento\LinkMobilitySMSNotifications\Model\ResourceModel\TelephonePrefix\CollectionFactory
      */
     private $telephonePrefixCollectionFactory;
 
@@ -72,7 +72,7 @@ final class TelephonePrefixes implements ArgumentInterface
 
     public function getDefaultPrefix(): string
     {
-        /** @var \LinkMobility\SMSNotifications\Model\TelephonePrefix $prefix */
+        /** @var \Wagento\LinkMobilitySMSNotifications\Model\TelephonePrefix $prefix */
         $prefix = $this->telephonePrefixCollectionFactory->create()
             ->addFieldToFilter('country_code', ['eq' => $this->directoryHelper->getDefaultCountry()])
             ->setPageSize(1)

@@ -5,7 +5,7 @@
  * Sends transactional SMS notifications through the LINK Mobility messaging
  * service.
  *
- * @package LinkMobility\SMSNotifications\Model
+ * @package Wagento\LinkMobilitySMSNotifications\Model
  * @author Joseph Leedy <joseph@wagento.com>
  * @author Yair García Torres <yair.garcia@wagento.com>
  * @copyright Copyright (c) Wagento (https://wagento.com/)
@@ -14,9 +14,9 @@
 
 declare(strict_types=1);
 
-namespace LinkMobility\SMSNotifications\Model;
+namespace Wagento\LinkMobilitySMSNotifications\Model;
 
-use LinkMobility\SMSNotifications\Api\ValidationRulesInterface;
+use Wagento\LinkMobilitySMSNotifications\Api\ValidationRulesInterface;
 use Magento\Framework\Validator\AlnumFactory as AlphanumericValidatorFactory;
 use Magento\Framework\Validator\DataObject as ValidatorObject;
 use Magento\Framework\Validator\IntUtilsFactory as IntegerValidatorFactory;
@@ -30,7 +30,7 @@ use Magento\Framework\Validator\StringLengthFactory as LengthValidatorFactory;
 /**
  * Source Configuration Field Validation Rules
  *
- * @package LinkMobility\SMSNotifications\Model
+ * @package Wagento\LinkMobilitySMSNotifications\Model
  * @author Joseph Leedy <joseph@wagento.com>
  */
 final class SourceValidationRules implements ValidationRulesInterface

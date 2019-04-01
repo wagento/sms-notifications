@@ -24,7 +24,7 @@ $groupedSmsTypes = $block->getData('sms_types_view_model')->getGroupedSmsTypes()
             "Magento_Ui/js/core/app": {
                 "components": {
                     "sms-subscription-preferences-component": {
-                        "component": "LinkMobility_SMSNotifications/js/view/sms-subscription-preferences",
+                        "component": "Wagento_LinkMobilitySMSNotifications/js/view/sms-subscription-preferences",
                         "groupedSmsTypes": <?= /* @noEscape */ \json_encode($groupedSmsTypes) ?>,
                         "modalTitle": "<?= $block->escapeJs(__('Text Notification Preferences')) ?>"
                     }

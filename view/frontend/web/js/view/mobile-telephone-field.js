@@ -20,7 +20,7 @@ define([
 
     return Component.extend({
         defaults: {
-            template: 'LinkMobility_SMSNotifications/mobile-telephone-field',
+            template: 'Wagento_LinkMobilitySMSNotifications/mobile-telephone-field',
             mobileTelephonePrefixOptions: [],
             defaultMobileTelephonePrefix: '',
             mobileTelephonePrefix: '',

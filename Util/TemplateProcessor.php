@@ -5,7 +5,7 @@
  * Sends transactional SMS notifications through the LINK Mobility messaging
  * service.
  *
- * @package LinkMobility\SMSNotifications\Util
+ * @package Wagento\LinkMobilitySMSNotifications\Util
  * @author Joseph Leedy <joseph@wagento.com>
  * @author Yair García Torres <yair.garcia@wagento.com>
  * @copyright Copyright (c) Wagento (https://wagento.com/)
@@ -14,14 +14,14 @@
 
 declare(strict_types=1);
 
-namespace LinkMobility\SMSNotifications\Util;
+namespace Wagento\LinkMobilitySMSNotifications\Util;
 
 use Zend\Filter\FilterInterface;
 
 /**
  * Template Processor
  *
- * @package LinkMobility\SMSNotifications\Util
+ * @package Wagento\LinkMobilitySMSNotifications\Util
  * @author Joseph Leedy <joseph@wagento.com>
  */
 final class TemplateProcessor implements TemplateProcessorInterface

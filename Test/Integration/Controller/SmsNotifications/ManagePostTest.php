@@ -5,7 +5,7 @@
  * Sends transactional SMS notifications through the LINK Mobility messaging
  * service.
  *
- * @package LinkMobility\SMSNotifications\Test\Integration\Controller\SmsNotifications
+ * @package Wagento\LinkMobilitySMSNotifications\Test\Integration\Controller\SmsNotifications
  * @author Joseph Leedy <joseph@wagento.com>
  * @author Yair García Torres <yair.garcia@wagento.com>
  * @copyright Copyright (c) Wagento (https://wagento.com/)
@@ -14,14 +14,14 @@
 
 declare(strict_types=1);
 
-namespace LinkMobility\SMSNotifications\Test\Integration\Controller\SmsNotifications;
+namespace Wagento\LinkMobilitySMSNotifications\Test\Integration\Controller\SmsNotifications;
 
-use LinkMobility\SMSNotifications\Api\SmsSubscriptionRepositoryInterface;
-use LinkMobility\SMSNotifications\Model\SmsSender\WelcomeSender;
-use LinkMobility\SMSNotifications\Model\SmsSubscription;
-use LinkMobility\SMSNotifications\Model\SmsSubscriptionRepository;
-use LinkMobility\SMSNotifications\Model\Source\SmsType as SmsTypeSource;
-use LinkMobility\SMSNotifications\Test\Integration\_stubs\Model\SmsSender;
+use Wagento\LinkMobilitySMSNotifications\Api\SmsSubscriptionRepositoryInterface;
+use Wagento\LinkMobilitySMSNotifications\Model\SmsSender\WelcomeSender;
+use Wagento\LinkMobilitySMSNotifications\Model\SmsSubscription;
+use Wagento\LinkMobilitySMSNotifications\Model\SmsSubscriptionRepository;
+use Wagento\LinkMobilitySMSNotifications\Model\Source\SmsType as SmsTypeSource;
+use Wagento\LinkMobilitySMSNotifications\Test\Integration\_stubs\Model\SmsSender;
 use Magento\Customer\Model\Session as CustomerSession;
 use Magento\Framework\Api\ImageProcessor;
 use Magento\Framework\Api\ImageProcessorInterface;
@@ -38,7 +38,7 @@ use Psr\Log\Test\TestLogger;
 /**
  * Manage SMS Subscriptions POST Action Controller Test
  *
- * @package LinkMobility\SMSNotifications\Test\Integration\Controller\SmsNotifications
+ * @package Wagento\LinkMobilitySMSNotifications\Test\Integration\Controller\SmsNotifications
  * @author Joseph Leedy <joseph@wagento.com>
  *
  * @phpcs:disable Generic.Files.LineLength.TooLong
@@ -254,7 +254,7 @@ class ManagePostTest extends AbstractControllerTestCase
 
         $this->_objectManager->addSharedInstance(
             $this->_objectManager->get(TestLogger::class),
-            'LinkMobility\SMSNotifications\Logger\Logger'
+            'Wagento\LinkMobilitySMSNotifications\Logger\Logger'
         );
 
         $this->getRequest()->setMethod(HttpRequest::METHOD_POST);

@@ -5,7 +5,7 @@
  * Sends transactional SMS notifications through the LINK Mobility messaging
  * service.
  *
- * @package LinkMobility\SMSNotifications\Model\Customer\Attribute\Source
+ * @package Wagento\LinkMobilitySMSNotifications\Model\Customer\Attribute\Source
  * @author Joseph Leedy <joseph@wagento.com>
  * @author Yair García Torres <yair.garcia@wagento.com>
  * @copyright Copyright (c) Wagento (https://wagento.com/)
@@ -16,9 +16,9 @@
 
 declare(strict_types=1);
 
-namespace LinkMobility\SMSNotifications\Model\Customer\Attribute\Source;
+namespace Wagento\LinkMobilitySMSNotifications\Model\Customer\Attribute\Source;
 
-use LinkMobility\SMSNotifications\Model\ResourceModel\TelephonePrefix\CollectionFactory as TelephonePrefixCollectionFactory;
+use Wagento\LinkMobilitySMSNotifications\Model\ResourceModel\TelephonePrefix\CollectionFactory as TelephonePrefixCollectionFactory;
 use Magento\Eav\Model\Entity\Attribute\Source\AbstractSource;
 use Magento\Framework\App\Config\ScopeConfigInterface;
 use Magento\Framework\Data\Collection;
@@ -29,7 +29,7 @@ use Magento\Store\Model\StoreManagerInterface;
 /**
  * Telephone Prefix Source Model
  *
- * @package LinkMobility\SMSNotifications\Model\Customer\Attribute\Source
+ * @package Wagento\LinkMobilitySMSNotifications\Model\Customer\Attribute\Source
  * @author Joseph Leedy <joseph@wagento.com>
  */
 class TelephonePrefix extends AbstractSource
@@ -43,7 +43,7 @@ class TelephonePrefix extends AbstractSource
      */
     private $storeManager;
     /**
-     * @var \LinkMobility\SMSNotifications\Model\ResourceModel\TelephonePrefix\CollectionFactory
+     * @var \Wagento\LinkMobilitySMSNotifications\Model\ResourceModel\TelephonePrefix\CollectionFactory
      */
     private $prefixCollectionFactory;
 
@@ -74,7 +74,7 @@ class TelephonePrefix extends AbstractSource
             ->getItems();
         $options = [];
 
-        /** @var \LinkMobility\SMSNotifications\Model\TelephonePrefix $prefix */
+        /** @var \Wagento\LinkMobilitySMSNotifications\Model\TelephonePrefix $prefix */
         foreach ($prefixes as $prefix) {
             $options[] = [
                 'value' => $prefix->getCountryCode() . '_' . $prefix->getPrefix(),

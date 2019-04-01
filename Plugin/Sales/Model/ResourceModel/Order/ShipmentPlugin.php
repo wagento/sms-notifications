@@ -5,7 +5,7 @@
  * Sends transactional SMS notifications through the LINK Mobility messaging
  * service.
  *
- * @package LinkMobility\SMSNotifications\Plugin\Sales\Model\ResourceModel\Order
+ * @package Wagento\LinkMobilitySMSNotifications\Plugin\Sales\Model\ResourceModel\Order
  * @author Joseph Leedy <joseph@wagento.com>
  * @author Yair García Torres <yair.garcia@wagento.com>
  * @copyright Copyright (c) Wagento (https://wagento.com/)
@@ -14,22 +14,22 @@
 
 declare(strict_types=1);
 
-namespace LinkMobility\SMSNotifications\Plugin\Sales\Model\ResourceModel\Order;
+namespace Wagento\LinkMobilitySMSNotifications\Plugin\Sales\Model\ResourceModel\Order;
 
-use LinkMobility\SMSNotifications\Model\SmsSender;
+use Wagento\LinkMobilitySMSNotifications\Model\SmsSender;
 use Magento\Sales\Model\Order\Shipment;
 use Magento\Sales\Model\ResourceModel\Order\Shipment as ShipmentResource;
 
 /**
  * Plug-in for {@see \Magento\Sales\Model\ResourceModel\Order\Shipment}
  *
- * @package LinkMobility\SMSNotifications\Plugin\Sales\Model\ResourceModel\Order
+ * @package Wagento\LinkMobilitySMSNotifications\Plugin\Sales\Model\ResourceModel\Order
  * @author Joseph Leedy <joseph@wagento.com>
  */
 class ShipmentPlugin
 {
     /**
-     * @var \LinkMobility\SMSNotifications\Model\SmsSender|\LinkMobility\SMSNotifications\Model\SmsSender\ShipmentSender
+     * @var \Wagento\LinkMobilitySMSNotifications\Model\SmsSender|\Wagento\LinkMobilitySMSNotifications\Model\SmsSender\ShipmentSender
      */
     private $smsSender;
 

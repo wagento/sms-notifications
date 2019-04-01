@@ -5,7 +5,7 @@
  * Sends transactional SMS notifications through the LINK Mobility messaging
  * service.
  *
- * @package LinkMobility\SMSNotifications\Block\System\Config\Form\Fieldset
+ * @package Wagento\LinkMobilitySMSNotifications\Block\System\Config\Form\Fieldset
  * @author Joseph Leedy <joseph@wagento.com>
  * @author Yair García Torres <yair.garcia@wagento.com>
  * @copyright Copyright (c) Wagento (https://wagento.com/)
@@ -14,7 +14,7 @@
 
 declare(strict_types=1);
 
-namespace LinkMobility\SMSNotifications\Block\System\Config\Form\Fieldset;
+namespace Wagento\LinkMobilitySMSNotifications\Block\System\Config\Form\Fieldset;
 
 use Magento\Backend\Block\Context;
 use Magento\Backend\Block\Template;
@@ -27,12 +27,12 @@ use Magento\Framework\View\Helper\Js;
 /**
  * Extension Information Configuration Fieldset Block
  *
- * @package LinkMobility\SMSNotifications\Block\System\Config\Form\Fieldset
+ * @package Wagento\LinkMobilitySMSNotifications\Block\System\Config\Form\Fieldset
  * @author Joseph Leedy <joseph@wagento.com>
  */
 class Info extends Fieldset
 {
-    private const TEMPLATE = 'LinkMobility_SMSNotifications::system/config/form/fieldset/info.phtml';
+    private const TEMPLATE = 'Wagento_LinkMobilitySMSNotifications::system/config/form/fieldset/info.phtml';
 
     /**
      * @var \Magento\Framework\Module\ResourceInterface
@@ -59,14 +59,14 @@ class Info extends Fieldset
     {
         $group = $element->getGroup() ?? [];
         $block = $this->getLayout()
-            ->createBlock(Template::class, 'linkmobility_sms_notifications_config_header')
+            ->createBlock(Template::class, 'sms_notifications_config_header')
             ->setTemplate(self::TEMPLATE)
             ->setData([
                 'info_text' => $element->getComment() ?? '',
                 'documentation_url' => $group['help_url'] ?: '#',
                 'overview_url' => $group['more_url'] ?: '#',
                 'signup_url' => $group['demo_link'] ?: '#',
-                'module_version' => $this->moduleResource->getDbVersion('LinkMobility_SMSNotifications') ?: ''
+                'module_version' => $this->moduleResource->getDbVersion('Wagento_LinkMobilitySMSNotifications') ?: ''
             ]);
 
         return $block->_toHtml();

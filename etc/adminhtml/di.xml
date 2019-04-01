@@ -13,37 +13,37 @@
  */
 -->
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
-    <type name="LinkMobility\SMSNotifications\Controller\Adminhtml\Subscription\MassCreate">
+    <type name="Wagento\LinkMobilitySMSNotifications\Controller\Adminhtml\Subscription\MassCreate">
         <arguments>
-            <argument name="logger" xsi:type="object">LinkMobility\SMSNotifications\Logger\Logger</argument>
+            <argument name="logger" xsi:type="object">Wagento\LinkMobilitySMSNotifications\Logger\Logger</argument>
         </arguments>
     </type>
-    <type name="LinkMobility\SMSNotifications\Controller\Adminhtml\Subscription\MassDelete">
+    <type name="Wagento\LinkMobilitySMSNotifications\Controller\Adminhtml\Subscription\MassDelete">
         <arguments>
-            <argument name="logger" xsi:type="object">LinkMobility\SMSNotifications\Logger\Logger</argument>
+            <argument name="logger" xsi:type="object">Wagento\LinkMobilitySMSNotifications\Logger\Logger</argument>
         </arguments>
     </type>
-    <type name="LinkMobility\SMSNotifications\Model\MessageVariables\InvoiceVariables">
-        <arguments>
-            <argument name="urlBuilder" xsi:type="object">Magento\Framework\Url</argument>
-        </arguments>
-    </type>
-    <type name="LinkMobility\SMSNotifications\Model\MessageVariables\OrderVariables">
+    <type name="Wagento\LinkMobilitySMSNotifications\Model\MessageVariables\InvoiceVariables">
         <arguments>
             <argument name="urlBuilder" xsi:type="object">Magento\Framework\Url</argument>
         </arguments>
     </type>
-    <type name="LinkMobility\SMSNotifications\Model\MessageVariables\ShipmentVariables">
+    <type name="Wagento\LinkMobilitySMSNotifications\Model\MessageVariables\OrderVariables">
         <arguments>
             <argument name="urlBuilder" xsi:type="object">Magento\Framework\Url</argument>
         </arguments>
     </type>
-    <type name="LinkMobility\SMSNotifications\Ui\DataProvider\SmsSubscriptions">
+    <type name="Wagento\LinkMobilitySMSNotifications\Model\MessageVariables\ShipmentVariables">
+        <arguments>
+            <argument name="urlBuilder" xsi:type="object">Magento\Framework\Url</argument>
+        </arguments>
+    </type>
+    <type name="Wagento\LinkMobilitySMSNotifications\Ui\DataProvider\SmsSubscriptions">
         <arguments>
             <argument name="backendSession" xsi:type="object">Magento\Backend\Model\Session\Proxy</argument>
         </arguments>
     </type>
     <type name="Magento\Ui\Component\MassAction\Filter">
-        <plugin name="smsTypeFilter" type="LinkMobility\SMSNotifications\Plugin\Component\MassAction\FilterPlugin"/>
+        <plugin name="smsTypeFilter" type="Wagento\LinkMobilitySMSNotifications\Plugin\Component\MassAction\FilterPlugin"/>
     </type>
 </config>

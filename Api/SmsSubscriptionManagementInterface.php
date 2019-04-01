@@ -5,7 +5,7 @@
  * Sends transactional SMS notifications through the LINK Mobility messaging
  * service.
  *
- * @package LinkMobility\SMSNotifications\Api
+ * @package Wagento\LinkMobilitySMSNotifications\Api
  * @author Joseph Leedy <joseph@wagento.com>
  * @author Yair García Torres <yair.garcia@wagento.com>
  * @copyright Copyright (c) Wagento (https://wagento.com/)
@@ -14,12 +14,12 @@
 
 declare(strict_types=1);
 
-namespace LinkMobility\SMSNotifications\Api;
+namespace Wagento\LinkMobilitySMSNotifications\Api;
 
 /**
  * SMS Subscription Management Service Interface
  *
- * @package LinkMobility\SMSNotifications\Api
+ * @package Wagento\LinkMobilitySMSNotifications\Api
  * @author Joseph Leedy <joseph@wagento.com>
  * @api
  */
@@ -36,7 +36,7 @@ interface SmsSubscriptionManagementInterface
     public function removeSubscription(int $subscriptionId, int $customerId): bool;
 
     /**
-     * @param \LinkMobility\SMSNotifications\Model\SmsSubscription[] $subscribedSmsTypes
+     * @param \Wagento\LinkMobilitySMSNotifications\Model\SmsSubscription[] $subscribedSmsTypes
      * @param string[] $selectedSmsTypes
      * @param string[] $messages
      */

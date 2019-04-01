@@ -5,7 +5,7 @@
  * Sends transactional SMS notifications through the LINK Mobility messaging
  * service.
  *
- * @package LinkMobility\SMSNotifications\Api\Data
+ * @package Wagento\LinkMobilitySMSNotifications\Api\Data
  * @author Joseph Leedy <joseph@wagento.com>
  * @author Yair García Torres <yair.garcia@wagento.com>
  * @copyright Copyright (c) Wagento (https://wagento.com/)
@@ -14,14 +14,14 @@
 
 declare(strict_types=1);
 
-namespace LinkMobility\SMSNotifications\Api\Data;
+namespace Wagento\LinkMobilitySMSNotifications\Api\Data;
 
 use \Magento\Framework\Api\ExtensibleDataInterface;
 
 /**
  * SMS Subscription Entity Interface
  *
- * @package LinkMobility\SMSNotifications\Api\Data
+ * @package Wagento\LinkMobilitySMSNotifications\Api\Data
  * @author Joseph Leedy <joseph@wagento.com>
  * @api
  */
@@ -33,7 +33,7 @@ interface SmsSubscriptionInterface extends ExtensibleDataInterface
 
     /**
      * @param int $id
-     * @return \LinkMobility\SMSNotifications\Api\Data\SmsSubscriptionInterface
+     * @return \Wagento\LinkMobilitySMSNotifications\Api\Data\SmsSubscriptionInterface
      */
     public function setId(int $id): SmsSubscriptionInterface;
 
@@ -44,7 +44,7 @@ interface SmsSubscriptionInterface extends ExtensibleDataInterface
 
     /**
      * @param int $smsSubscriptionId
-     * @return \LinkMobility\SMSNotifications\Api\Data\SmsSubscriptionInterface
+     * @return \Wagento\LinkMobilitySMSNotifications\Api\Data\SmsSubscriptionInterface
      */
     public function setSmsSubscriptionId(int $smsSubscriptionId): SmsSubscriptionInterface;
 
@@ -55,7 +55,7 @@ interface SmsSubscriptionInterface extends ExtensibleDataInterface
 
     /**
      * @param int $customerId
-     * @return \LinkMobility\SMSNotifications\Api\Data\SmsSubscriptionInterface
+     * @return \Wagento\LinkMobilitySMSNotifications\Api\Data\SmsSubscriptionInterface
      */
     public function setCustomerId(int $customerId): SmsSubscriptionInterface;
 
@@ -66,7 +66,7 @@ interface SmsSubscriptionInterface extends ExtensibleDataInterface
 
     /**
      * @param string $smsType
-     * @return \LinkMobility\SMSNotifications\Api\Data\SmsSubscriptionInterface
+     * @return \Wagento\LinkMobilitySMSNotifications\Api\Data\SmsSubscriptionInterface
      */
     public function setSmsType(string $smsType): SmsSubscriptionInterface;
 
@@ -76,15 +76,15 @@ interface SmsSubscriptionInterface extends ExtensibleDataInterface
     public function getSmsType(): ?string;
 
     /**
-     * @param \LinkMobility\SMSNotifications\Api\Data\SmsSubscriptionExtensionInterface $smsSubscriptionExtension
-     * @return \LinkMobility\SMSNotifications\Api\Data\SmsSubscriptionInterface
+     * @param \Wagento\LinkMobilitySMSNotifications\Api\Data\SmsSubscriptionExtensionInterface $smsSubscriptionExtension
+     * @return \Wagento\LinkMobilitySMSNotifications\Api\Data\SmsSubscriptionInterface
      *
      * @phpcs:disable Generic.Files.LineLength.TooLong
      */
     public function setExtensionAttributes(SmsSubscriptionExtensionInterface $smsSubscriptionExtension): SmsSubscriptionInterface;
 
     /**
-     * @return \LinkMobility\SMSNotifications\Api\Data\SmsSubscriptionExtensionInterface|null
+     * @return \Wagento\LinkMobilitySMSNotifications\Api\Data\SmsSubscriptionExtensionInterface|null
      */
     public function getExtensionAttributes(): ?SmsSubscriptionExtensionInterface;
 }

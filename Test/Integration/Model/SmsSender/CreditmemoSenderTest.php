@@ -5,7 +5,7 @@
  * Sends transactional SMS notifications through the LINK Mobility messaging
  * service.
  *
- * @package LinkMobility\SMSNotifications\Test\Integration\Model\SmsSender
+ * @package Wagento\LinkMobilitySMSNotifications\Test\Integration\Model\SmsSender
  * @author Joseph Leedy <joseph@wagento.com>
  * @author Yair García Torres <yair.garcia@wagento.com>
  * @copyright Copyright (c) Wagento (https://wagento.com/)
@@ -14,10 +14,10 @@
 
 declare(strict_types=1);
 
-namespace LinkMobility\SMSNotifications\Test\Integration\Model\SmsSender;
+namespace Wagento\LinkMobilitySMSNotifications\Test\Integration\Model\SmsSender;
 
-use LinkMobility\SMSNotifications\Model\SmsSender\CreditmemoSender;
-use LinkMobility\SMSNotifications\Test\Integration\SmsSenderTestCase;
+use Wagento\LinkMobilitySMSNotifications\Model\SmsSender\CreditmemoSender;
+use Wagento\LinkMobilitySMSNotifications\Test\Integration\SmsSenderTestCase;
 use Magento\Sales\Api\Data\CreditmemoExtensionInterface;
 use Magento\Sales\Api\Data\CreditmemoInterface;
 use Magento\Sales\Model\Order;
@@ -25,7 +25,7 @@ use Magento\Sales\Model\Order;
 /**
  * Credit Memo SMS Sender Test
  *
- * @package LinkMobility\SMSNotifications\Test\Integration\Model\SmsSender
+ * @package Wagento\LinkMobilitySMSNotifications\Test\Integration\Model\SmsSender
  * @author Joseph Leedy <joseph@wagento.com>
  */
 class CreditmemoSenderTest extends SmsSenderTestCase

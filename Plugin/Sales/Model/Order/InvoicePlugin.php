@@ -5,7 +5,7 @@
  * Sends transactional SMS notifications through the LINK Mobility messaging
  * service.
  *
- * @package LinkMobility\SMSNotifications\Plugin\Sales\Model\Order
+ * @package Wagento\LinkMobilitySMSNotifications\Plugin\Sales\Model\Order
  * @author Joseph Leedy <joseph@wagento.com>
  * @author Yair García Torres <yair.garcia@wagento.com>
  * @copyright Copyright (c) Wagento (https://wagento.com/)
@@ -14,21 +14,21 @@
 
 declare(strict_types=1);
 
-namespace LinkMobility\SMSNotifications\Plugin\Sales\Model\Order;
+namespace Wagento\LinkMobilitySMSNotifications\Plugin\Sales\Model\Order;
 
-use LinkMobility\SMSNotifications\Model\SmsSender;
+use Wagento\LinkMobilitySMSNotifications\Model\SmsSender;
 use Magento\Sales\Model\Order\Invoice;
 
 /**
  * Plug-in for {@see \Magento\Sales\Model\Order\Invoice}
  *
- * @package LinkMobility\SMSNotifications\Plugin\Sales\Model\Order
+ * @package Wagento\LinkMobilitySMSNotifications\Plugin\Sales\Model\Order
  * @author Joseph Leedy <joseph@wagento.com>
  */
 class InvoicePlugin
 {
     /**
-     * @var \LinkMobility\SMSNotifications\Model\SmsSender|\LinkMobility\SMSNotifications\Model\SmsSender\InvoiceSender
+     * @var \Wagento\LinkMobilitySMSNotifications\Model\SmsSender|\Wagento\LinkMobilitySMSNotifications\Model\SmsSender\InvoiceSender
      */
     private $smsSender;
 

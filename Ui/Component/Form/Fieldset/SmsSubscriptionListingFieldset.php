@@ -5,7 +5,7 @@
  * Sends transactional SMS notifications through the LINK Mobility messaging
  * service.
  *
- * @package LinkMobility\SMSNotifications\Ui\Component\Form\Fieldset
+ * @package Wagento\LinkMobilitySMSNotifications\Ui\Component\Form\Fieldset
  * @author Joseph Leedy <joseph@wagento.com>
  * @author Yair García Torres <yair.garcia@wagento.com>
  * @copyright Copyright (c) Wagento (https://wagento.com/)
@@ -14,9 +14,9 @@
 
 declare(strict_types=1);
 
-namespace LinkMobility\SMSNotifications\Ui\Component\Form\Fieldset;
+namespace Wagento\LinkMobilitySMSNotifications\Ui\Component\Form\Fieldset;
 
-use LinkMobility\SMSNotifications\Api\ConfigInterface;
+use Wagento\LinkMobilitySMSNotifications\Api\ConfigInterface;
 use Magento\Framework\Exception\NoSuchEntityException;
 use Magento\Framework\View\Element\UiComponent\ContextInterface;
 use Magento\Store\Model\StoreManagerInterface;
@@ -25,7 +25,7 @@ use Magento\Ui\Component\Form\Fieldset;
 /**
  * SMS Subscription Listing Fieldset UI Component
  *
- * @package LinkMobility\SMSNotifications\Ui\Component\Form\Fieldset
+ * @package Wagento\LinkMobilitySMSNotifications\Ui\Component\Form\Fieldset
  * @author Joseph Leedy <joseph@wagento.com>
  */
 final class SmsSubscriptionListingFieldset extends Fieldset
@@ -35,7 +35,7 @@ final class SmsSubscriptionListingFieldset extends Fieldset
      */
     private $storeManager;
     /**
-     * @var \LinkMobility\SMSNotifications\Api\ConfigInterface
+     * @var \Wagento\LinkMobilitySMSNotifications\Api\ConfigInterface
      */
     private $config;
 

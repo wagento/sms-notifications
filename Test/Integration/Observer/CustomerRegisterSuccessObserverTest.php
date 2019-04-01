@@ -5,7 +5,7 @@
  * Sends transactional SMS notifications through the LINK Mobility messaging
  * service.
  *
- * @package LinkMobility\SMSNotifications\Test\Integration\Observer
+ * @package Wagento\LinkMobilitySMSNotifications\Test\Integration\Observer
  * @author Joseph Leedy <joseph@wagento.com>
  * @author Yair García Torres <yair.garcia@wagento.com>
  * @copyright Copyright (c) Wagento (https://wagento.com/)
@@ -14,14 +14,14 @@
 
 declare(strict_types=1);
 
-namespace LinkMobility\SMSNotifications\Test\Integration\Observer;
+namespace Wagento\LinkMobilitySMSNotifications\Test\Integration\Observer;
 
-use LinkMobility\SMSNotifications\Api\ConfigInterface;
-use LinkMobility\SMSNotifications\Api\SmsSubscriptionRepositoryInterface;
-use LinkMobility\SMSNotifications\Model\SmsSender\WelcomeSender;
-use LinkMobility\SMSNotifications\Model\SmsSubscription;
-use LinkMobility\SMSNotifications\Observer\CustomerRegisterSuccessObserver;
-use LinkMobility\SMSNotifications\Test\Integration\_stubs\Model\SmsSender;
+use Wagento\LinkMobilitySMSNotifications\Api\ConfigInterface;
+use Wagento\LinkMobilitySMSNotifications\Api\SmsSubscriptionRepositoryInterface;
+use Wagento\LinkMobilitySMSNotifications\Model\SmsSender\WelcomeSender;
+use Wagento\LinkMobilitySMSNotifications\Model\SmsSubscription;
+use Wagento\LinkMobilitySMSNotifications\Observer\CustomerRegisterSuccessObserver;
+use Wagento\LinkMobilitySMSNotifications\Test\Integration\_stubs\Model\SmsSender;
 use Magento\Customer\Model\Customer;
 use Magento\Customer\Model\CustomerFactory;
 use Magento\Framework\Api\SearchCriteriaBuilder;
@@ -34,7 +34,7 @@ use PHPUnit\Framework\TestCase;
 /**
  * customer_register_success Event Observer Test
  *
- * @package LinkMobility\SMSNotifications\Test\Integration\Observer
+ * @package Wagento\LinkMobilitySMSNotifications\Test\Integration\Observer
  * @author Joseph Leedy <joseph@wagento.com>
  */
 class CustomerRegisterSuccessObserverTest extends TestCase
@@ -89,7 +89,7 @@ class CustomerRegisterSuccessObserverTest extends TestCase
         $eventManager = $this->objectManager->create(ManagerInterface::class);
         /** @var \Magento\Customer\Model\Customer $customer */
         $customer = $this->objectManager->create(Customer::class)->load(1);
-        /** @var \LinkMobility\SMSNotifications\Api\SmsSubscriptionRepositoryInterface $smsSubscriptionRepository */
+        /** @var \Wagento\LinkMobilitySMSNotifications\Api\SmsSubscriptionRepositoryInterface $smsSubscriptionRepository */
         $smsSubscriptionRepository = $this->objectManager->create(SmsSubscriptionRepositoryInterface::class);
         /** @var \Magento\Framework\Api\SearchCriteriaInterface $searchCriteria */
         $searchCriteria = $this->objectManager->create(SearchCriteriaBuilder::class)

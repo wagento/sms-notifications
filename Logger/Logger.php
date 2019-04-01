@@ -6,7 +6,7 @@
  * Sends transactional SMS notifications through the LINK Mobility messaging
  * service.
  *
- * @package LinkMobility\SMSNotifications\Logger
+ * @package Wagento\LinkMobilitySMSNotifications\Logger
  * @author Joseph Leedy <joseph@wagento.com>
  * @author Yair García Torres <yair.garcia@wagento.com>
  * @copyright Copyright (c) Wagento (https://wagento.com/)
@@ -15,12 +15,12 @@
 
 declare(strict_types=1);
 
-namespace LinkMobility\SMSNotifications\Logger;
+namespace Wagento\LinkMobilitySMSNotifications\Logger;
 
 /**
  * Logger
  *
- * @package LinkMobility\SMSNotifications\Logger
+ * @package Wagento\LinkMobilitySMSNotifications\Logger
  * @author Joseph Leedy <joseph@wagento.com>
  */
 final class Logger extends \Monolog\Logger

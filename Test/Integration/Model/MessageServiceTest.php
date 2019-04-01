@@ -5,7 +5,7 @@
  * Sends transactional SMS notifications through the LINK Mobility messaging
  * service.
  *
- * @package LinkMobility\SMSNotifications\Test\Integration\Model
+ * @package Wagento\LinkMobilitySMSNotifications\Test\Integration\Model
  * @author Joseph Leedy <joseph@wagento.com>
  * @author Yair García Torres <yair.garcia@wagento.com>
  * @copyright Copyright (c) Wagento (https://wagento.com/)
@@ -14,11 +14,11 @@
 
 declare(strict_types=1);
 
-namespace LinkMobility\SMSNotifications\Test\Integration\Model;
+namespace Wagento\LinkMobilitySMSNotifications\Test\Integration\Model;
 
-use LinkMobility\SMSNotifications\Gateway\ApiClientInterface;
-use LinkMobility\SMSNotifications\Gateway\Entity\SuccessResult;
-use LinkMobility\SMSNotifications\Model\MessageService;
+use Wagento\LinkMobilitySMSNotifications\Gateway\ApiClientInterface;
+use Wagento\LinkMobilitySMSNotifications\Gateway\Entity\SuccessResult;
+use Wagento\LinkMobilitySMSNotifications\Model\MessageService;
 use Magento\Sales\Model\Order;
 use Magento\TestFramework\Helper\Bootstrap;
 use PHPUnit\Framework\MockObject\MockObject;
@@ -27,7 +27,7 @@ use PHPUnit\Framework\TestCase;
 /**
  * Message Service Test
  *
- * @package LinkMobility\SMSNotifications\Test\Integration\Model
+ * @package Wagento\LinkMobilitySMSNotifications\Test\Integration\Model
  * @author Joseph Leedy <joseph@wagento.com>
  */
 class MessageServiceTest extends TestCase
@@ -37,7 +37,7 @@ class MessageServiceTest extends TestCase
      */
     private $objectManager;
     /**
-     * @var \LinkMobility\SMSNotifications\Model\MessageService
+     * @var \Wagento\LinkMobilitySMSNotifications\Model\MessageService
      */
     private $messageService;
 

@@ -5,7 +5,7 @@
  * Sends transactional SMS notifications through the LINK Mobility messaging
  * service.
  *
- * @package LinkMobility\SMSNotifications\Model
+ * @package Wagento\LinkMobilitySMSNotifications\Model
  * @author Joseph Leedy <joseph@wagento.com>
  * @author Yair García Torres <yair.garcia@wagento.com>
  * @copyright Copyright (c) Wagento (https://wagento.com/)
@@ -14,14 +14,14 @@
 
 declare(strict_types=1);
 
-namespace LinkMobility\SMSNotifications\Model;
+namespace Wagento\LinkMobilitySMSNotifications\Model;
 
-use LinkMobility\SMSNotifications\Api\ConfigInterface;
-use LinkMobility\SMSNotifications\Factory\MessageVariablesFactory;
-use LinkMobility\SMSNotifications\Gateway\ApiClientInterface;
-use LinkMobility\SMSNotifications\Gateway\ApiException;
-use LinkMobility\SMSNotifications\Gateway\Factory\MessageFactory;
-use LinkMobility\SMSNotifications\Util\TemplateProcessorInterface;
+use Wagento\LinkMobilitySMSNotifications\Api\ConfigInterface;
+use Wagento\LinkMobilitySMSNotifications\Factory\MessageVariablesFactory;
+use Wagento\LinkMobilitySMSNotifications\Gateway\ApiClientInterface;
+use Wagento\LinkMobilitySMSNotifications\Gateway\ApiException;
+use Wagento\LinkMobilitySMSNotifications\Gateway\Factory\MessageFactory;
+use Wagento\LinkMobilitySMSNotifications\Util\TemplateProcessorInterface;
 use Magento\Customer\Api\Data\CustomerInterface;
 use Magento\Framework\Exception\NoSuchEntityException;
 use Magento\Sales\Api\Data\InvoiceInterface;
@@ -33,7 +33,7 @@ use Psr\Log\LoggerInterface;
 /**
  * Message Service
  *
- * @package LinkMobility\SMSNotifications\Model
+ * @package Wagento\LinkMobilitySMSNotifications\Model
  * @author Joseph Leedy <joseph@wagento.com>
  * @api
  */
@@ -48,23 +48,23 @@ class MessageService
      */
     private $storeManager;
     /**
-     * @var \LinkMobility\SMSNotifications\Api\ConfigInterface
+     * @var \Wagento\LinkMobilitySMSNotifications\Api\ConfigInterface
      */
     private $config;
     /**
-     * @var \LinkMobility\SMSNotifications\Gateway\Factory\MessageFactory
+     * @var \Wagento\LinkMobilitySMSNotifications\Gateway\Factory\MessageFactory
      */
     private $messageFactory;
     /**
-     * @var \LinkMobility\SMSNotifications\Factory\MessageVariablesFactory
+     * @var \Wagento\LinkMobilitySMSNotifications\Factory\MessageVariablesFactory
      */
     private $messageVariablesFactory;
     /**
-     * @var \LinkMobility\SMSNotifications\Util\TemplateProcessorInterface
+     * @var \Wagento\LinkMobilitySMSNotifications\Util\TemplateProcessorInterface
      */
     private $templateProcessor;
     /**
-     * @var \LinkMobility\SMSNotifications\Gateway\ApiClientInterface
+     * @var \Wagento\LinkMobilitySMSNotifications\Gateway\ApiClientInterface
      */
     private $apiClient;
     /**

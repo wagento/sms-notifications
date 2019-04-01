@@ -5,7 +5,7 @@
  * Sends transactional SMS notifications through the LINK Mobility messaging
  * service.
  *
- * @package LinkMobility\SMSNotifications\Observer
+ * @package Wagento\LinkMobilitySMSNotifications\Observer
  * @author Joseph Leedy <joseph@wagento.com>
  * @author Yair García Torres <yair.garcia@wagento.com>
  * @copyright Copyright (c) Wagento (https://wagento.com/)
@@ -14,12 +14,12 @@
 
 declare(strict_types=1);
 
-namespace LinkMobility\SMSNotifications\Observer;
+namespace Wagento\LinkMobilitySMSNotifications\Observer;
 
-use LinkMobility\SMSNotifications\Api\ConfigInterface;
-use LinkMobility\SMSNotifications\Api\SmsSubscriptionManagementInterface;
-use LinkMobility\SMSNotifications\Model\SmsSender;
-use LinkMobility\SMSNotifications\Model\Source\SmsType as SmsTypeSource;
+use Wagento\LinkMobilitySMSNotifications\Api\ConfigInterface;
+use Wagento\LinkMobilitySMSNotifications\Api\SmsSubscriptionManagementInterface;
+use Wagento\LinkMobilitySMSNotifications\Model\SmsSender;
+use Wagento\LinkMobilitySMSNotifications\Model\Source\SmsType as SmsTypeSource;
 use Magento\Customer\Api\Data\CustomerInterface;
 use Magento\Customer\Model\CustomerFactory;
 use Magento\Framework\App\RequestInterface;
@@ -31,7 +31,7 @@ use Magento\Store\Model\StoreManagerInterface;
 /**
  * Observer for customer_register_success event
  *
- * @package LinkMobility\SMSNotifications\Observer
+ * @package Wagento\LinkMobilitySMSNotifications\Observer
  * @author Joseph Leedy <joseph@wagento.com>
  * @see \Magento\Customer\Controller\Account\CreatePost::execute()
  */
@@ -50,19 +50,19 @@ class CustomerRegisterSuccessObserver implements ObserverInterface
      */
     private $customerFactory;
     /**
-     * @var \LinkMobility\SMSNotifications\Api\ConfigInterface
+     * @var \Wagento\LinkMobilitySMSNotifications\Api\ConfigInterface
      */
     private $config;
     /**
-     * @var \LinkMobility\SMSNotifications\Model\Source\SmsType
+     * @var \Wagento\LinkMobilitySMSNotifications\Model\Source\SmsType
      */
     private $smsTypeSource;
     /**
-     * @var \LinkMobility\SMSNotifications\Api\SmsSubscriptionManagementInterface
+     * @var \Wagento\LinkMobilitySMSNotifications\Api\SmsSubscriptionManagementInterface
      */
     private $smsSubscriptionManagement;
     /**
-     * @var \LinkMobility\SMSNotifications\Model\SmsSender\WelcomeSender
+     * @var \Wagento\LinkMobilitySMSNotifications\Model\SmsSender\WelcomeSender
      */
     private $smsSender;
 

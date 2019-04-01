@@ -14,14 +14,14 @@ define([
     'jquery',
     'ko',
     'uiComponent',
-    'LinkMobility_SMSNotifications/js/model/sms-subscription-preferences-modal',
+    'Wagento_LinkMobilitySMSNotifications/js/model/sms-subscription-preferences-modal',
     'smsNotifications'
 ], function ($, ko, Component, subscriptionPreferencesModal, smsNotifications) {
     'use strict';
 
     return Component.extend({
         defaults: {
-            template: 'LinkMobility_SMSNotifications/sms-subscription-preferences',
+            template: 'Wagento_LinkMobilitySMSNotifications/sms-subscription-preferences',
             groupedSmsTypes: {},
             selectedSmsTypes: [],
             modalTitle: null,

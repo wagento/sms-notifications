@@ -5,7 +5,7 @@
  * Sends transactional SMS notifications through the LINK Mobility messaging
  * service.
  *
- * @package LinkMobility\SMSNotifications\Model
+ * @package Wagento\LinkMobilitySMSNotifications\Model
  * @author Joseph Leedy <joseph@wagento.com>
  * @author Yair García Torres <yair.garcia@wagento.com>
  * @copyright Copyright (c) Wagento (https://wagento.com/)
@@ -14,10 +14,10 @@
 
 declare(strict_types=1);
 
-namespace LinkMobility\SMSNotifications\Model;
+namespace Wagento\LinkMobilitySMSNotifications\Model;
 
-use LinkMobility\SMSNotifications\Api\ValidationRulesInterface;
-use LinkMobility\SMSNotifications\Api\ValidatorInterface;
+use Wagento\LinkMobilitySMSNotifications\Api\ValidationRulesInterface;
+use Wagento\LinkMobilitySMSNotifications\Api\ValidatorInterface;
 use Magento\Framework\Model\AbstractModel;
 use Magento\Framework\Validator\DataObject as ValidatorObject;
 use Magento\Framework\Validator\DataObjectFactory as ValidatorObjectFactory;
@@ -25,7 +25,7 @@ use Magento\Framework\Validator\DataObjectFactory as ValidatorObjectFactory;
 /**
  * Base Model Validator
  *
- * @package LinkMobility\SMSNotifications\Model
+ * @package Wagento\LinkMobilitySMSNotifications\Model
  * @author Joseph Leedy <joseph@wagento.com>
  * @api
  */
@@ -36,7 +36,7 @@ abstract class Validator implements ValidatorInterface
      */
     protected $validatorObjectFactory;
     /**
-     * @var \LinkMobility\SMSNotifications\Api\ValidationRulesInterface
+     * @var \Wagento\LinkMobilitySMSNotifications\Api\ValidationRulesInterface
      */
     protected $validationRules;
     protected $isValid = true;

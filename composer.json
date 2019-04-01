@@ -1,5 +1,5 @@
 {
-    "name": "linkmobility/module-sms-notifications",
+    "name": "wagento/module-linkmobility-sms-notifications",
     "description": "Sends transactional SMS notifications through the LINK Mobility messaging service",
     "type": "magento2-module",
     "version": "0.1.1",
@@ -33,7 +33,7 @@
             "compat.inc"
         ],
         "psr-4": {
-            "LinkMobility\\SMSNotifications\\": ""
+            "Wagento\\LinkMobilitySMSNotifications\\": ""
         }
     }
 }

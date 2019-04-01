@@ -5,7 +5,7 @@
  * Sends transactional SMS notifications through the LINK Mobility messaging
  * service.
  *
- * @package LinkMobility\SMSNotifications\Test\Integration\Gateway
+ * @package Wagento\LinkMobilitySMSNotifications\Test\Integration\Gateway
  * @author Joseph Leedy <joseph@wagento.com>
  * @author Yair García Torres <yair.garcia@wagento.com>
  * @copyright Copyright (c) Wagento (https://wagento.com/)
@@ -14,33 +14,33 @@
 
 declare(strict_types=1);
 
-namespace LinkMobility\SMSNotifications\Test\Integration\Gateway;
+namespace Wagento\LinkMobilitySMSNotifications\Test\Integration\Gateway;
 
-use LinkMobility\SMSNotifications\Gateway\ApiClient;
-use LinkMobility\SMSNotifications\Gateway\ApiException;
-use LinkMobility\SMSNotifications\Gateway\Entity\SuccessResultInterface;
-use LinkMobility\SMSNotifications\Gateway\Factory\ClientFactory;
-use LinkMobility\SMSNotifications\Gateway\Factory\ResultFactory;
-use LinkMobility\SMSNotifications\Model\Config;
+use Wagento\LinkMobilitySMSNotifications\Gateway\ApiClient;
+use Wagento\LinkMobilitySMSNotifications\Gateway\ApiException;
+use Wagento\LinkMobilitySMSNotifications\Gateway\Entity\SuccessResultInterface;
+use Wagento\LinkMobilitySMSNotifications\Gateway\Factory\ClientFactory;
+use Wagento\LinkMobilitySMSNotifications\Gateway\Factory\ResultFactory;
+use Wagento\LinkMobilitySMSNotifications\Model\Config;
 use Magento\TestFramework\Helper\Bootstrap;
 use PHPUnit\Framework\TestCase;
 
 /**
  * API Client Test
  *
- * @package LinkMobility\SMSNotifications\Test\Integration\Gateway
+ * @package Wagento\LinkMobilitySMSNotifications\Test\Integration\Gateway
  * @author Joseph Leedy <joseph@wagento.com>
  */
 class ApiClientTest extends TestCase
 {
     /**
-     * @var \LinkMobility\SMSNotifications\Gateway\ApiClient
+     * @var \Wagento\LinkMobilitySMSNotifications\Gateway\ApiClient
      */
     private $apiClient;
 
     public function testSendRequestWithValidRequestReturnsSuccessResult(): void
     {
-        /** @var \LinkMobility\SMSNotifications\Model\Config $config */
+        /** @var \Wagento\LinkMobilitySMSNotifications\Model\Config $config */
         $config = Bootstrap::getObjectManager()->create(Config::class);
 
         $this->apiClient->setUri('send');

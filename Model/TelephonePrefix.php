@@ -5,7 +5,7 @@
  * Sends transactional SMS notifications through the LINK Mobility messaging
  * service.
  *
- * @package LinkMobility\SMSNotifications\Model
+ * @package Wagento\LinkMobilitySMSNotifications\Model
  * @author Joseph Leedy <joseph@wagento.com>
  * @author Yair García Torres <yair.garcia@wagento.com>
  * @copyright Copyright (c) Wagento (https://wagento.com/)
@@ -14,14 +14,14 @@
 
 declare(strict_types=1);
 
-namespace LinkMobility\SMSNotifications\Model;
+namespace Wagento\LinkMobilitySMSNotifications\Model;
 
-use LinkMobility\SMSNotifications\Api\Data\TelephonePrefixInterface;
-use LinkMobility\SMSNotifications\Api\Data\TelephonePrefixInterfaceFactory;
+use Wagento\LinkMobilitySMSNotifications\Api\Data\TelephonePrefixInterface;
+use Wagento\LinkMobilitySMSNotifications\Api\Data\TelephonePrefixInterfaceFactory;
 use Magento\Framework\Api\DataObjectHelper;
 use Magento\Framework\Data\Collection\AbstractDb;
 use Magento\Framework\Model\AbstractModel;
-use LinkMobility\SMSNotifications\Model\ResourceModel\TelephonePrefix as TelephonePrefixResource;
+use Wagento\LinkMobilitySMSNotifications\Model\ResourceModel\TelephonePrefix as TelephonePrefixResource;
 use Magento\Framework\Model\Context;
 use Magento\Framework\Model\ResourceModel\AbstractResource;
 use Magento\Framework\Reflection\DataObjectProcessor;
@@ -30,7 +30,7 @@ use Magento\Framework\Registry;
 /**
  * Telephone Prefix Data Model
  *
- * @package LinkMobility\SMSNotifications\Model
+ * @package Wagento\LinkMobilitySMSNotifications\Model
  * @author Joseph Leedy <joseph@wagento.com>
  * @method $this setCountryCode(string $countryCode)
  * @method string getCountryCode()
@@ -47,7 +47,7 @@ class TelephonePrefix extends AbstractModel
     /**
      * {@inheritdoc}
      */
-    protected $_eventPrefix = 'linkmobility_notifications_telephone_prefix';
+    protected $_eventPrefix = 'sms_notifications_telephone_prefix';
     /**
      * {@inheritdoc}
      */
@@ -61,7 +61,7 @@ class TelephonePrefix extends AbstractModel
      */
     private $dataObjectProcessor;
     /**
-     * @var \LinkMobility\SMSNotifications\Api\Data\TelephonePrefixInterfaceFactory
+     * @var \Wagento\LinkMobilitySMSNotifications\Api\Data\TelephonePrefixInterfaceFactory
      */
     private $telephonePrefixFactory;
 
@@ -85,7 +85,7 @@ class TelephonePrefix extends AbstractModel
     public function getDataModel(): TelephonePrefixInterface
     {
         $telephonePrefixData = $this->getData();
-        /** @var \LinkMobility\SMSNotifications\Api\Data\TelephonePrefixInterface $telephonePrefix */
+        /** @var \Wagento\LinkMobilitySMSNotifications\Api\Data\TelephonePrefixInterface $telephonePrefix */
         $telephonePrefix = $this->telephonePrefixFactory->create();
 
         $this->dataObjectHelper->populateWithArray(

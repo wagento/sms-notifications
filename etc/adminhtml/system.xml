@@ -17,10 +17,10 @@
         <section id="sms_notifications" translate="label" sortOrder="1200" showInDefault="1" showInWebsite="1" showInStore="1">
             <class>separator-top</class>
             <label>SMS Notifications</label>
-            <resource>LinkMobility_SMSNotifications::sms_configuration</resource>
+            <resource>Wagento_LinkMobilitySMSNotifications::sms_configuration</resource>
             <tab>general</tab>
             <group id="info" translate="comment" type="text" sortOrder="5" showInDefault="1" showInWebsite="1" showInStore="0">
-                <frontend_model>LinkMobility\SMSNotifications\Block\System\Config\Form\Fieldset\Info</frontend_model>
+                <frontend_model>Wagento\LinkMobilitySMSNotifications\Block\System\Config\Form\Fieldset\Info</frontend_model>
                 <comment>
                     <![CDATA[
 <p>LINK Mobility SMS Notifications allows your customers to subscribe to transactional text messages regarding their order and receive them on their mobile telephone. Keep your customers engaged by <a href="https://www.linkmobility.com/" target="_blank">signing up for an account</a> today.</p>
@@ -87,11 +87,11 @@
                 </field>
                 <field id="source_type" translate="label" type="select" sortOrder="60" showInDefault="1" showInWebsite="1" showInStore="0">
                     <label>Source Type</label>
-                    <source_model>LinkMobility\SMSNotifications\Model\Config\Source\SourceType</source_model>
+                    <source_model>Wagento\LinkMobilitySMSNotifications\Model\Config\Source\SourceType</source_model>
                 </field>
                 <field id="source" translate="label comment" type="text" sortOrder="70" showInDefault="1" showInWebsite="1" showInStore="0">
                     <label>Source</label>
-                    <backend_model>LinkMobility\SMSNotifications\Model\Config\Backend\Source</backend_model>
+                    <backend_model>Wagento\LinkMobilitySMSNotifications\Model\Config\Backend\Source</backend_model>
                     <comment>
                         <![CDATA[
 Source format is based on selected Source Type:

@@ -13,7 +13,7 @@
  */
 -->
 <form xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
-    <fieldset name="sms_subscriptions" class="LinkMobility\SMSNotifications\Ui\Component\Form\Fieldset\SmsSubscriptionListingFieldset" sortOrder="1000">
+    <fieldset name="sms_subscriptions" class="Wagento\LinkMobilitySMSNotifications\Ui\Component\Form\Fieldset\SmsSubscriptionListingFieldset" sortOrder="1000">
         <settings>
             <label translate="true">SMS Subscriptions</label>
         </settings>
