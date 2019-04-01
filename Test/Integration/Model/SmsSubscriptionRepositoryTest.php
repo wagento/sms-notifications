@@ -8,7 +8,7 @@
  * @package LinkMobility\SMSNotifications\Test\Integration\Model
  * @author Joseph Leedy <joseph@wagento.com>
  * @author Yair García Torres <yair.garcia@wagento.com>
- * @copyright Copyright (c) LINK Mobility (https://www.linkmobility.com/)
+ * @copyright Copyright (c) Wagento (https://wagento.com/)
  * @license https://opensource.org/licenses/OSL-3.0.php Open Software License 3.0
  */
 
