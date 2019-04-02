@@ -33,15 +33,6 @@ use PHPUnit\Framework\TestCase;
 class MessageServiceTest extends TestCase
 {
     /**
-     * @var \Magento\Framework\App\ObjectManager
-     */
-    private $objectManager;
-    /**
-     * @var \Wagento\LinkMobilitySMSNotifications\Model\MessageService
-     */
-    private $messageService;
-
-    /**
      * @magentoAppArea frontend
      * @magentoConfigFixture current_store sms_notifications/api/source_type MSISDN
      * @magentoConfigFixture current_store sms_notifications/api/source +15555551234
@@ -51,25 +42,20 @@ class MessageServiceTest extends TestCase
      */
     public function testSendMessage(): void
     {
-        $this->messageService->setOrder($this->getOrderMock());
-
-        $message = 'Order #{{order_id}} has been placed at {{store_name}} by {{customer_name}}. View order: {{order_url}}';
-
-        $this->assertTrue($this->messageService->sendMessage($message, '+15555555678', 'order'));
-    }
-
-    protected function setUp()
-    {
-        parent::setUp();
-
-        $this->objectManager = Bootstrap::getObjectManager();
-        $this->messageService = $this->objectManager->create(
+        $objectManager = Bootstrap::getObjectManager();
+        $messageService = $objectManager->create(
             MessageService::class,
             [
                 'logger' => new \Psr\Log\Test\TestLogger(),
                 'apiClient' => $this->getApiClientMock(),
             ]
         );
+
+        $messageService->setOrder($this->getOrderMock());
+
+        $message = 'Order #{{order_id}} has been placed at {{store_name}} by {{customer_name}}. View order: {{order_url}}';
+
+        $this->assertTrue($this->messageService->sendMessage($message, '+15555555678', 'order'));
     }
 
     private function getApiClientMock(): MockObject

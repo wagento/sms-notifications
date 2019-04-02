@@ -194,4 +194,12 @@ class SmsSubscriptionRepositoryTest extends TestCase
         $this->objectManager = Bootstrap::getObjectManager();
         $this->smsSubscriptionRepository = $this->objectManager->create(SmsSubscriptionRepository::class);
     }
+
+    protected function tearDown()
+    {
+        parent::tearDown();
+
+        $this->objectManager = null;
+        $this->smsSubscriptionRepository = null;
+    }
 }

@@ -90,4 +90,11 @@ class OrderRepositoryInterfacePluginTest extends TestCase
 
         $this->objectManager = ObjectManager::getInstance();
     }
+
+    protected function tearDown()
+    {
+        parent::tearDown();
+
+        $this->objectManager = null;
+    }
 }

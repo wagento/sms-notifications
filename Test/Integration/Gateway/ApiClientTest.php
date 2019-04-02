@@ -60,7 +60,7 @@ class ApiClientTest extends TestCase
         $this->assertInstanceOf(SuccessResultInterface::class, $this->apiClient->getResult());
     }
 
-    public function testSendRequestWithInvaliRequestThrowsApiException(): void
+    public function testSendRequestWithInvalidRequestThrowsApiException(): void
     {
         $this->expectException(ApiException::class);
 
@@ -84,5 +84,12 @@ class ApiClientTest extends TestCase
         parent::setUp();
 
         $this->apiClient = new ApiClient(new ClientFactory(), new ResultFactory());
+    }
+
+    protected function tearDown()
+    {
+        parent::tearDown();
+
+        $this->apiClient = null;
     }
 }

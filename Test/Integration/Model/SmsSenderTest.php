@@ -107,4 +107,11 @@ class SmsSenderTest extends SmsSenderTestCase
             ]
         );
     }
+
+    protected function tearDown()
+    {
+        parent::tearDown();
+
+        $this->smsSender = null;
+    }
 }
