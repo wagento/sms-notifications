@@ -77,7 +77,7 @@ your terminal or command prompt to update it:
     cd /path/to/your/site/app/code/Wagento/LinkMobilitySMSNotifications
     git pull
 
-## <a name="post-install-update"></a> Post-Install or Post-Update
+## <a name="post-install-update"></a>Post-Install or Post-Update
 
 To complete the installation or update process, please run these commands:
 
