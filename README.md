@@ -49,6 +49,17 @@ experience compatibility issues and/or degraded site performance. If this
 occurs, please [open a support ticket][Support] and let us know the vendor and
 extension name so that we can work with them on a solution.
 
+### Post-Install
+
+After installing the extension for the first time, please run this command to
+enable it:
+
+    cd /path/to/your/site && php bin/magento module:enable Wagento_LinkMobilitySMSNotifications
+
+Once you have enabled the extension, please follow the instructions in the
+[Post-Install or Post-Update](#post-install-update) section to complete the
+installation process.
+
 ## Updating
 
 ### Composer
@@ -66,7 +77,7 @@ your terminal or command prompt to update it:
     cd /path/to/your/site/app/code/Wagento/LinkMobilitySMSNotifications
     git pull
 
-## Post-Install or Post-Update
+## <a name="post-install-update"></a> Post-Install or Post-Update
 
 To complete the installation or update process, please run these commands:
 
