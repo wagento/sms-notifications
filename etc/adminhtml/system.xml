@@ -61,7 +61,7 @@
                 <field id="send_welcome_message" translate="label comment" type="select" sortOrder="50" showInDefault="1" showInWebsite="1" showInStore="0">
                     <label>Send Welcome Message</label>
                     <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
-                    <comment><![CDATA[If "Yes," a welcome message will sent after the customer subscribes to SMS notifications.]]></comment>
+                    <comment><![CDATA[If "Yes," a welcome message will be sent after the customer subscribes to SMS notifications.]]></comment>
                 </field>
             </group>
             <group id="api" translate="label" type="text" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="0">
