@@ -56,8 +56,8 @@ enable it:
     $ cd /path/to/your/site && php bin/magento module:enable Wagento_SMSNotifications
 
 Once you have enabled the extension, please follow the instructions in the
-[Post-Install or Post-Update](#post-install-update) section to complete the
-installation process.
+[Post-Install, Post-Update, or Post-Uninstall](#post-install-update-uninstall)
+section to complete the installation process.
 
 ## Updating
 
@@ -102,9 +102,10 @@ terminal or command prompt to remove its data:
     DELETE FROM `setup_module` WHERE `module` = 'Wagento_SMSNotifications';
     SQL
 
-## <a name="post-install-update"></a>Post-Install or Post-Update
+## <a name="post-install-update-uninstall"></a>Post-Install, Post-Update, or Post-Uninstall
 
-To complete the installation or update process, please run these commands:
+To complete the installation, update, or uninstall process, please run these
+commands:
 
     $ cd /path/to/your/site
     $ php bin/magento setup:upgrade
