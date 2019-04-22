@@ -129,4 +129,4 @@ This extension was developed by Joseph Leedy and Yair García Torres of
 [LICENSE.txt]: ./LICENSE.txt
 [CHANGELOG.md]: ./CHANGELOG.md
 [CONTRIBUTING.md]: ./CONTRIBUTING.md
-[Support]: mailto:support@wagento.com
+[Support]: mailto:support@wagento.com?subject=[SMS%20Notifications]%20
