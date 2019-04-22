@@ -1,7 +1,6 @@
-# LINK Mobility SMS Notifications
-by [Wagento]
+# Wagento SMS Notifications powered by LINK Mobility
 
-LINK Mobility SMS Notifications integrates Magento 2 with the LINK Mobility
+Wagento SMS Notifications integrates Magento 2 with the LINK Mobility
 mobile messaging service to send transactional text notifications. Customers can
 be notified when their order is successfully placed as well as when it is
 invoiced, shipped, canceled, refunded, held, or released.
