@@ -76,6 +76,31 @@ your terminal or command prompt to update it:
     cd /path/to/your/site/app/code/Wagento/SMSNotifications
     git pull
 
+## Uninstalling
+
+### Composer
+
+If you've installed the extension from the Magento Marketplace using Composer,
+run this command from your terminal or command prompt to remove its data and
+package:
+
+    cd /path/to/your/site && php bin/magento module:uninstall -r Wagento_SMSNotifications
+
+### Manual
+
+If you've installed the extension manually, run these commands from your
+terminal or command prompt to remove its data:
+
+    cd /path/to/your/site/app/code
+    rm -rf Wagento/SMSNotifications
+    mysql -u your_user -p your_database <<'SQL'
+    DROP TABLE `directory_telephone_prefix`;
+    DROP TABLE `sms_notification_subscription`;
+    DELETE FROM `eav_attribute` WHERE `attribute_code` LIKE 'sms_mobile%';
+    DELETE FROM `core_config_data` WHERE `path` LIKE 'sms_notifications/%';
+    DELETE FROM `setup_module` WHERE `module` = 'Wagento_SMSNotifications';
+    SQL
+
 ## <a name="post-install-update"></a>Post-Install or Post-Update
 
 To complete the installation or update process, please run these commands:
