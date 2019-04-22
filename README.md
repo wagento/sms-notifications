@@ -35,7 +35,7 @@ This extension can be downloaded from [GitHub] and installed into the
     cd /path/to/your/site/app/code
     mkdir Wagento
     cd Wagento
-    git clone git@github.com:wagento/sms-notifications.git LinkMobilitySMSNotifications
+    git clone git@github.com:wagento/sms-notifications.git SMSNotifications
 
 For Magento 2.2, you will need to append this line to `registration.php`:
 
@@ -53,7 +53,7 @@ extension name so that we can work with them on a solution.
 After installing the extension for the first time, please run this command to
 enable it:
 
-    cd /path/to/your/site && php bin/magento module:enable Wagento_LinkMobilitySMSNotifications
+    cd /path/to/your/site && php bin/magento module:enable Wagento_SMSNotifications
 
 Once you have enabled the extension, please follow the instructions in the
 [Post-Install or Post-Update](#post-install-update) section to complete the
@@ -73,7 +73,7 @@ run this command from your terminal or command prompt to update it:
 If you've installed the extension from GitHub manually, run these commands from
 your terminal or command prompt to update it:
 
-    cd /path/to/your/site/app/code/Wagento/LinkMobilitySMSNotifications
+    cd /path/to/your/site/app/code/Wagento/SMSNotifications
     git pull
 
 ## <a name="post-install-update"></a>Post-Install or Post-Update
