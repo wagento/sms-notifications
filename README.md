@@ -35,7 +35,7 @@ This extension can be downloaded from [GitHub] and installed into the
     cd /path/to/your/site/app/code
     mkdir Wagento
     cd Wagento
-    git clone git@github.com:wagento/linkmobility-sms-notifications.git LinkMobilitySMSNotifications
+    git clone git@github.com:wagento/sms-notifications.git LinkMobilitySMSNotifications
 
 For Magento 2.2, you will need to append this line to `registration.php`:
 
@@ -124,7 +124,7 @@ This extension was developed by Joseph Leedy and Yair García Torres of
 [LINK Mobility]: https://www.linkmobility.com
 [User Guide]: https://docs.wagento.com/extensions/sms-notifications/UserGuide.pdf
 [Magento Marketplace]: https://marketplace.magento.com/wagento-module-sms-notifications.html
-[GitHub]: https://github.com/wagento/linkmobility-sms-notifications
+[GitHub]: https://github.com/wagento/sms-notifications
 [OSL]: https://opensource.org/licenses/OSL-3.0.php
 [LICENSE.txt]: ./LICENSE.txt
 [CHANGELOG.md]: ./CHANGELOG.md
