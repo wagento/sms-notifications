@@ -123,7 +123,7 @@ This extension was developed by Joseph Leedy and Yair García Torres of
 [Wagento]: https://wagento.com
 [LINK Mobility]: https://www.linkmobility.com
 [User Guide]: https://docs.wagento.com/linkmobility/sms-notifications/UserGuide.pdf
-[Magento Marketplace]: https://marketplace.magento.com/wagento-module-linkmobility-sms-notifications.html
+[Magento Marketplace]: https://marketplace.magento.com/wagento-module-sms-notifications.html
 [GitHub]: https://github.com/wagento/linkmobility-sms-notifications
 [OSL]: https://opensource.org/licenses/OSL-3.0.php
 [LICENSE.txt]: ./LICENSE.txt
