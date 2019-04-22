@@ -22,7 +22,7 @@ We highly recommend purchasing the extension from the [Magento Marketplace],
 where you can receive the latest version for free. Once purchased, you can use
 the following command to install it from a terminal or command prompt:
 
-    cd /path/to/your/site && composer require wagento/module-linkmobility-sms-notifications
+    cd /path/to/your/site && composer require wagento/module-sms-notifications
 
 **Note:** The Marketplace version is compatible with both Magento 2.3 and 2.2.
 For 2.2, PHP 7.1 is required, while 7.2 is recommended for 2.3.
@@ -66,7 +66,7 @@ installation process.
 If you've installed the extension from the Magento Marketplace using Composer,
 run this command from your terminal or command prompt to update it:
 
-    cd /path/to/your/site && composer update wagento/module-linkmobility-sms-notifications
+    cd /path/to/your/site && composer update wagento/module-sms-notifications
 
 ### Manual
 
