@@ -1,4 +1,4 @@
-# Changelog for LINK Mobility SMS Notifications
+# Changelog for Wagento SMS Notifications
 
 All notable changes to this extension will be documented in this file.
 
