@@ -22,7 +22,7 @@ We highly recommend purchasing the extension from the [Magento Marketplace],
 where you can receive the latest version for free. Once purchased, you can use
 the following command to install it from a terminal or command prompt:
 
-    cd /path/to/your/site && composer require wagento/module-sms-notifications
+    $ cd /path/to/your/site && composer require wagento/module-sms-notifications
 
 **Note:** The Marketplace version is compatible with both Magento 2.3 and 2.2.
 For 2.2, PHP 7.1 is required, while 7.2 is recommended for 2.3.
@@ -32,10 +32,10 @@ For 2.2, PHP 7.1 is required, while 7.2 is recommended for 2.3.
 This extension can be downloaded from [GitHub] and installed into the
 `app/code` directory of your Magento installation with these commands:
 
-    cd /path/to/your/site/app/code
-    mkdir Wagento
-    cd Wagento
-    git clone git@github.com:wagento/sms-notifications.git SMSNotifications
+    $ cd /path/to/your/site/app/code
+    $ mkdir Wagento
+    $ cd Wagento
+    $ git clone git@github.com:wagento/sms-notifications.git SMSNotifications
 
 For Magento 2.2, you will need to append this line to `registration.php`:
 
@@ -53,7 +53,7 @@ extension name so that we can work with them on a solution.
 After installing the extension for the first time, please run this command to
 enable it:
 
-    cd /path/to/your/site && php bin/magento module:enable Wagento_SMSNotifications
+    $ cd /path/to/your/site && php bin/magento module:enable Wagento_SMSNotifications
 
 Once you have enabled the extension, please follow the instructions in the
 [Post-Install or Post-Update](#post-install-update) section to complete the
@@ -66,34 +66,35 @@ installation process.
 If you've installed the extension from the Magento Marketplace using Composer,
 run this command from your terminal or command prompt to update it:
 
-    cd /path/to/your/site && composer update wagento/module-sms-notifications
+    $ cd /path/to/your/site && composer update wagento/module-sms-notifications
 
 ### Manual
 
 If you've installed the extension from GitHub manually, run these commands from
 your terminal or command prompt to update it:
 
-    cd /path/to/your/site/app/code/Wagento/SMSNotifications
-    git pull
+    $ cd /path/to/your/site/app/code/Wagento/SMSNotifications
+    $ git pull
 
 ## Uninstalling
 
 ### Composer
 
 If you've installed the extension from the Magento Marketplace using Composer,
-run this command from your terminal or command prompt to remove its data and
+run these commands from your terminal or command prompt to remove its data and
 package:
 
-    cd /path/to/your/site && php bin/magento module:uninstall -r Wagento_SMSNotifications
+    $ cd /path/to/your/site
+    $ php bin/magento module:uninstall -r Wagento_SMSNotifications
 
 ### Manual
 
 If you've installed the extension manually, run these commands from your
 terminal or command prompt to remove its data:
 
-    cd /path/to/your/site/app/code
-    rm -rf Wagento/SMSNotifications
-    mysql -u your_user -p your_database <<'SQL'
+    $ cd /path/to/your/site/app/code
+    $ rm -rf Wagento/SMSNotifications
+    $ mysql -u your_user -p your_database <<'SQL'
     DROP TABLE `directory_telephone_prefix`;
     DROP TABLE `sms_notification_subscription`;
     DELETE FROM `eav_attribute` WHERE `attribute_code` LIKE 'sms_mobile%';
@@ -105,10 +106,10 @@ terminal or command prompt to remove its data:
 
 To complete the installation or update process, please run these commands:
 
-    cd /path/to/your/site
-    php bin/magento setup:upgrade
-    php bin/magento setup:di:compile
-    php bin/magento setup:static-content:deploy
+    $ cd /path/to/your/site
+    $ php bin/magento setup:upgrade
+    $ php bin/magento setup:di:compile
+    $ php bin/magento setup:static-content:deploy
 
 ## Configuration
 
