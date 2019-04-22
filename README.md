@@ -20,9 +20,10 @@ the [User Guide].
 
 We highly recommend purchasing the extension from the [Magento Marketplace],
 where you can receive the latest version for free. Once purchased, you can use
-the following command to install it from a terminal or command prompt:
+the following commands to install it from a terminal or command prompt:
 
-    $ cd /path/to/your/site && composer require wagento/module-sms-notifications
+    $ cd /path/to/your/site
+    $ composer require wagento/module-sms-notifications
 
 **Note:** The Marketplace version is compatible with both Magento 2.3 and 2.2.
 For 2.2, PHP 7.1 is required, while 7.2 is recommended for 2.3.
@@ -50,10 +51,11 @@ extension name so that we can work with them on a solution.
 
 ### Post-Install
 
-After installing the extension for the first time, please run this command to
+After installing the extension for the first time, please run these commands to
 enable it:
 
-    $ cd /path/to/your/site && php bin/magento module:enable Wagento_SMSNotifications
+    $ cd /path/to/your/site
+    $ php bin/magento module:enable Wagento_SMSNotifications
 
 Once you have enabled the extension, please follow the instructions in the
 [Post-Install, Post-Update, or Post-Uninstall](#post-install-update-uninstall)
@@ -64,9 +66,10 @@ section to complete the installation process.
 ### Composer
 
 If you've installed the extension from the Magento Marketplace using Composer,
-run this command from your terminal or command prompt to update it:
+run these commands from your terminal or command prompt to update it:
 
-    $ cd /path/to/your/site && composer update wagento/module-sms-notifications
+    $ cd /path/to/your/site
+    $ composer update wagento/module-sms-notifications
 
 ### Manual
 
