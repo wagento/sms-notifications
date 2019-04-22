@@ -124,16 +124,16 @@ descriptions of the available options, please refer to the [User Guide].
 ## Support
 
 If you experience any issues or errors while using the extension, please open a
-ticket by sending an e-mail to [support@wagento.com][Support]. Be sure to include
-your domain, PHP version, Magento version, a detailed description of the problem
-including steps to reproduce it, and any other relevant information. We do
-our best to respond to all legitimate inquires within 48 business hours.
+ticket by sending an e-mail to [support@wagento.com][Support]. Be sure to
+include your domain, PHP version, Magento version, a detailed description of the
+problem including steps to reproduce it, and any other relevant information. We
+do our best to respond to all legitimate inquires within 48 business hours.
 
 ## License
 
 The source code contained in this extension is licensed under [version 3.0 of
-the Open Software License (OSL-3.0)][OSL]. A full copy of the license can be found
-in the [LICENSE.txt] file.
+the Open Software License (OSL-3.0)][OSL]. A full copy of the license can be
+found in the [LICENSE.txt] file.
 
 ## History
 
@@ -147,8 +147,8 @@ issues and pull requests on [GitHub]. For guidelines, please see the
 
 ## Credits
 
-This extension was developed by Joseph Leedy and Yair García Torres of
-[Wagento] in co-operation with LINK Mobility.
+This extension was developed by Joseph Leedy and Yair García Torres of [Wagento]
+in co-operation with LINK Mobility.
 
 [Wagento]: https://wagento.com
 [LINK Mobility]: https://www.linkmobility.com
