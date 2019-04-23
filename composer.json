@@ -1,5 +1,5 @@
 {
-    "name": "wagento/module-linkmobility-sms-notifications",
+    "name": "wagento/module-sms-notifications",
     "description": "Sends transactional SMS notifications through the LINK Mobility messaging service",
     "type": "magento2-module",
     "version": "0.1.1",
@@ -23,7 +23,7 @@
         "zendframework/zend-hydrator": "^1.1"
     },
     "require-dev": {
-        "linkmobility/module-sms-notifications-webapi": "1.0.0",
+        "wagento/module-sms-notifications-webapi": "1.0.0",
         "phpunit/phpunit": "^6.5",
         "magento/magento2-functional-testing-framework": "~2.3.12"
     },
