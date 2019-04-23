@@ -14,7 +14,7 @@ For more information about this extension, please see the [README] document.
 - Support for sending mobile text notifications when an order is placed,
 shipped, cancelled, refunded, held, or released from hold
 
-[Unreleased]: https://github.com/wagento/linkmobility-sms-notifications
+[Unreleased]: https://github.com/wagento/sms-notifications
 [Keep a Changelog]: https://keepachangelog.com/en/1.0.0/
 [Semantic Versioning]: https://semver.org/spec/v2.0.0.html
 [README]: ./README.md
