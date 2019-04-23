@@ -5,7 +5,7 @@
  * Sends transactional SMS notifications through the LINK Mobility messaging
  * service.
  *
- * @package Wagento\LinkMobilitySMSNotifications\Controller\Adminhtml\Subscription
+ * @package Wagento\SMSNotifications\Controller\Adminhtml\Subscription
  * @author Joseph Leedy <joseph@wagento.com>
  * @author Yair García Torres <yair.garcia@wagento.com>
  * @copyright Copyright (c) Wagento (https://wagento.com/)
@@ -14,10 +14,10 @@
 
 declare(strict_types=1);
 
-namespace Wagento\LinkMobilitySMSNotifications\Controller\Adminhtml\Subscription;
+namespace Wagento\SMSNotifications\Controller\Adminhtml\Subscription;
 
-use Wagento\LinkMobilitySMSNotifications\Api\SmsSubscriptionManagementInterface;
-use Wagento\LinkMobilitySMSNotifications\Model\ResourceModel\SmsSubscription\CollectionFactory;
+use Wagento\SMSNotifications\Api\SmsSubscriptionManagementInterface;
+use Wagento\SMSNotifications\Model\ResourceModel\SmsSubscription\CollectionFactory;
 use Magento\Backend\App\Action;
 use Magento\Backend\App\Action\Context;
 use Magento\Framework\Exception\LocalizedException;
@@ -27,12 +27,12 @@ use Psr\Log\LoggerInterface;
 /**
  * Bulk Delete SMS Subscription Action
  *
- * @package Wagento\LinkMobilitySMSNotifications\Controller\Adminhtml\Subscription
+ * @package Wagento\SMSNotifications\Controller\Adminhtml\Subscription
  * @author Joseph Leedy <joseph@wagento.com>
  */
 class MassDelete extends Action
 {
-    const ADMIN_RESOURCE = 'Wagento_LinkMobilitySMSNotifications::manage_sms_subscriptions';
+    const ADMIN_RESOURCE = 'Wagento_SMSNotifications::manage_sms_subscriptions';
 
     /**
      * @var \Magento\Ui\Component\MassAction\Filter
@@ -43,11 +43,11 @@ class MassDelete extends Action
      */
     private $logger;
     /**
-     * @var \Wagento\LinkMobilitySMSNotifications\Model\ResourceModel\SmsSubscription\CollectionFactory
+     * @var \Wagento\SMSNotifications\Model\ResourceModel\SmsSubscription\CollectionFactory
      */
     private $collectionFactory;
     /**
-     * @var \Wagento\LinkMobilitySMSNotifications\Api\SmsSubscriptionManagementInterface
+     * @var \Wagento\SMSNotifications\Api\SmsSubscriptionManagementInterface
      */
     private $smsSubscriptionManagement;
 
@@ -87,12 +87,12 @@ class MassDelete extends Action
         $resultRedirect->setPath('customer/index/edit', ['id' => $customerId, '_current' => true]);
 
         try {
-            /** @var \Wagento\LinkMobilitySMSNotifications\Model\ResourceModel\SmsSubscription\Collection $collection */
+            /** @var \Wagento\SMSNotifications\Model\ResourceModel\SmsSubscription\Collection $collection */
             $collection = $this->filter->getCollection($this->collectionFactory->create());
 
             $collection->addFieldToFilter('customer_id', ['eq' => $customerId]);
 
-            /** @var \Wagento\LinkMobilitySMSNotifications\Model\SmsSubscription[] $subscribedSmsTypes */
+            /** @var \Wagento\SMSNotifications\Model\SmsSubscription[] $subscribedSmsTypes */
             $subscribedSmsTypes = $collection->getItems();
             $messages = [
                 'error' => [

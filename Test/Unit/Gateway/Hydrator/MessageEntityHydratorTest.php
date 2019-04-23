@@ -5,7 +5,7 @@
  * Sends transactional SMS notifications through the LINK Mobility messaging
  * service.
  *
- * @package Wagento\LinkMobilitySMSNotifications\Test\Unit\Gateway\Hydrator
+ * @package Wagento\SMSNotifications\Test\Unit\Gateway\Hydrator
  * @author Joseph Leedy <joseph@wagento.com>
  * @author Yair García Torres <yair.garcia@wagento.com>
  * @copyright Copyright (c) Wagento (https://wagento.com/)
@@ -14,22 +14,22 @@
 
 declare(strict_types=1);
 
-namespace Wagento\LinkMobilitySMSNotifications\Test\Unit\Gateway\Hydrator;
+namespace Wagento\SMSNotifications\Test\Unit\Gateway\Hydrator;
 
-use Wagento\LinkMobilitySMSNotifications\Gateway\Entity\Message as MessageEntity;
-use Wagento\LinkMobilitySMSNotifications\Gateway\Factory\MessageEntityHydratorFactory;
+use Wagento\SMSNotifications\Gateway\Entity\Message as MessageEntity;
+use Wagento\SMSNotifications\Gateway\Factory\MessageEntityHydratorFactory;
 use PHPUnit\Framework\TestCase;
 
 /**
  * Message Entity Hydrator Test
  *
- * @package Wagento\LinkMobilitySMSNotifications\Test\Unit\Gateway\Hydrator
+ * @package Wagento\SMSNotifications\Test\Unit\Gateway\Hydrator
  * @author Joseph Leedy <joseph@wagento.com>
  */
 class MessageEntityHydratorTest extends TestCase
 {
     /**
-     * @var \Wagento\LinkMobilitySMSNotifications\Gateway\Factory\MessageEntityHydratorFactory
+     * @var \Wagento\SMSNotifications\Gateway\Factory\MessageEntityHydratorFactory
      */
     private $messageEntityHydratorFactory;
     /**
@@ -37,7 +37,7 @@ class MessageEntityHydratorTest extends TestCase
      */
     private $messageData;
     /**
-     * @var \Wagento\LinkMobilitySMSNotifications\Gateway\Entity\MessageInterface
+     * @var \Wagento\SMSNotifications\Gateway\Entity\MessageInterface
      */
     private $messageEntity;
 

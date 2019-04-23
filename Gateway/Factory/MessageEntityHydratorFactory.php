@@ -5,7 +5,7 @@
  * Sends transactional SMS notifications through the LINK Mobility messaging
  * service.
  *
- * @package Wagento\LinkMobilitySMSNotifications\Gateway\Factory
+ * @package Wagento\SMSNotifications\Gateway\Factory
  * @author Joseph Leedy <joseph@wagento.com>
  * @author Yair García Torres <yair.garcia@wagento.com>
  * @copyright Copyright (c) Wagento (https://wagento.com/)
@@ -14,17 +14,17 @@
 
 declare(strict_types=1);
 
-namespace Wagento\LinkMobilitySMSNotifications\Gateway\Factory;
+namespace Wagento\SMSNotifications\Gateway\Factory;
 
-use Wagento\LinkMobilitySMSNotifications\Gateway\Entity\DCS;
-use Wagento\LinkMobilitySMSNotifications\Gateway\Entity\TON;
-use Wagento\LinkMobilitySMSNotifications\Gateway\Hydrator\MessageEntity as MessageEntityHydrator;
-use Wagento\LinkMobilitySMSNotifications\Gateway\Hydrator\Strategy\Enum as EnumStrategy;
+use Wagento\SMSNotifications\Gateway\Entity\DCS;
+use Wagento\SMSNotifications\Gateway\Entity\TON;
+use Wagento\SMSNotifications\Gateway\Hydrator\MessageEntity as MessageEntityHydrator;
+use Wagento\SMSNotifications\Gateway\Hydrator\Strategy\Enum as EnumStrategy;
 
 /**
  * Message Entity Hydrator Factory
  *
- * @package Wagento\LinkMobilitySMSNotifications\Gateway\Factory
+ * @package Wagento\SMSNotifications\Gateway\Factory
  * @author Joseph Leedy <joseph@wagento.com>
  */
 final class MessageEntityHydratorFactory

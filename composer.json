@@ -33,7 +33,7 @@
             "compat.inc"
         ],
         "psr-4": {
-            "Wagento\\LinkMobilitySMSNotifications\\": ""
+            "Wagento\\SMSNotifications\\": ""
         }
     }
 }

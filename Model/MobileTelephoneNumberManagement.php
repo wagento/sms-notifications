@@ -5,7 +5,7 @@
  * Sends transactional SMS notifications through the LINK Mobility messaging
  * service.
  *
- * @package Wagento\LinkMobilitySMSNotifications\Model
+ * @package Wagento\SMSNotifications\Model
  * @author Joseph Leedy <joseph@wagento.com>
  * @author Yair García Torres <yair.garcia@wagento.com>
  * @copyright Copyright (c) Wagento (https://wagento.com/)
@@ -14,9 +14,9 @@
 
 declare(strict_types=1);
 
-namespace Wagento\LinkMobilitySMSNotifications\Model;
+namespace Wagento\SMSNotifications\Model;
 
-use Wagento\LinkMobilitySMSNotifications\Api\MobileTelephoneNumberManagementInterface;
+use Wagento\SMSNotifications\Api\MobileTelephoneNumberManagementInterface;
 use Magento\Customer\Api\CustomerRepositoryInterface;
 use Magento\Customer\Api\Data\CustomerInterface;
 use Magento\Framework\Exception\InputException;
@@ -27,7 +27,7 @@ use Psr\Log\LoggerInterface;
 /**
  * Mobile Telephone Number Management Service
  *
- * @package Wagento\LinkMobilitySMSNotifications\Model
+ * @package Wagento\SMSNotifications\Model
  * @author Joseph Leedy <joseph@wagento.com>
  */
 class MobileTelephoneNumberManagement implements MobileTelephoneNumberManagementInterface

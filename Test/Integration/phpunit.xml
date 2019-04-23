@@ -22,7 +22,7 @@
 >
     <!-- Test suites definition -->
     <testsuites>
-        <testsuite name="Wagento_LinkMobilitySMSNotifications Integration Tests">
+        <testsuite name="Wagento_SMSNotifications Integration Tests">
             <directory suffix="Test.php">.</directory>
         </testsuite>
     </testsuites>

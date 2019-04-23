@@ -5,7 +5,7 @@
  * Sends transactional SMS notifications through the LINK Mobility messaging
  * service.
  *
- * @package Wagento\LinkMobilitySMSNotifications\Model\Config\Backend
+ * @package Wagento\SMSNotifications\Model\Config\Backend
  * @author Joseph Leedy <joseph@wagento.com>
  * @author Yair García Torres <yair.garcia@wagento.com>
  * @copyright Copyright (c) Wagento (https://wagento.com/)
@@ -14,10 +14,10 @@
 
 declare(strict_types=1);
 
-namespace Wagento\LinkMobilitySMSNotifications\Model\Config\Backend;
+namespace Wagento\SMSNotifications\Model\Config\Backend;
 
-use Wagento\LinkMobilitySMSNotifications\Api\ValidatorInterface;
-use Wagento\LinkMobilitySMSNotifications\Model\SourceValidator;
+use Wagento\SMSNotifications\Api\ValidatorInterface;
+use Wagento\SMSNotifications\Model\SourceValidator;
 use Magento\Framework\App\Cache\TypeListInterface;
 use Magento\Framework\App\Config\ScopeConfigInterface;
 use Magento\Framework\App\Config\Value;
@@ -29,13 +29,13 @@ use Magento\Framework\Registry;
 /**
  * Source Configuration Field Backend Model
  *
- * @package Wagento\LinkMobilitySMSNotifications\Model\Config\Backend
+ * @package Wagento\SMSNotifications\Model\Config\Backend
  * @author Joseph Leedy <joseph@wagento.com>
  */
 class Source extends Value
 {
     /**
-     * @var \Wagento\LinkMobilitySMSNotifications\Api\ValidatorInterface
+     * @var \Wagento\SMSNotifications\Api\ValidatorInterface
      */
     private $validator;
 

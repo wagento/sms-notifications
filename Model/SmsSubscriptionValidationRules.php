@@ -5,7 +5,7 @@
  * Sends transactional SMS notifications through the LINK Mobility messaging
  * service.
  *
- * @package Wagento\LinkMobilitySMSNotifications\Model
+ * @package Wagento\SMSNotifications\Model
  * @author Joseph Leedy <joseph@wagento.com>
  * @author Yair García Torres <yair.garcia@wagento.com>
  * @copyright Copyright (c) Wagento (https://wagento.com/)
@@ -14,10 +14,10 @@
 
 declare(strict_types=1);
 
-namespace Wagento\LinkMobilitySMSNotifications\Model;
+namespace Wagento\SMSNotifications\Model;
 
-use Wagento\LinkMobilitySMSNotifications\Api\ValidationRulesInterface;
-use Wagento\LinkMobilitySMSNotifications\Model\Source\SmsType as SmsTypeSource;
+use Wagento\SMSNotifications\Api\ValidationRulesInterface;
+use Wagento\SMSNotifications\Model\Source\SmsType as SmsTypeSource;
 use Magento\Framework\Validator\DataObject;
 use Magento\Framework\Validator\NotEmpty;
 use Magento\Framework\Validator\NotEmptyFactory;
@@ -25,7 +25,7 @@ use Magento\Framework\Validator\NotEmptyFactory;
 /**
  * SMS Subscription Validation Rules
  *
- * @package Wagento\LinkMobilitySMSNotifications\Model
+ * @package Wagento\SMSNotifications\Model
  * @author Joseph Leedy <joseph@wagento.com>
  */
 final class SmsSubscriptionValidationRules implements ValidationRulesInterface
@@ -39,7 +39,7 @@ final class SmsSubscriptionValidationRules implements ValidationRulesInterface
      */
     private $inArrayFactory;
     /**
-     * @var \Wagento\LinkMobilitySMSNotifications\Model\Source\SmsType
+     * @var \Wagento\SMSNotifications\Model\Source\SmsType
      */
     private $smsType;
 

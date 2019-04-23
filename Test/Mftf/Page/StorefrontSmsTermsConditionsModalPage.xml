@@ -13,7 +13,7 @@
  */
 -->
 <pages xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:mftf:Page/etc/PageObject.xsd">
-    <page name="StorefrontSmsTermsConditionsModalPage" url="customer/account/create#sms-terms-conditions-modal" area="storefront" module="Wagento_LinkMobilitySMSNotifications">
+    <page name="StorefrontSmsTermsConditionsModalPage" url="customer/account/create#sms-terms-conditions-modal" area="storefront" module="Wagento_SMSNotifications">
         <section name="StorefrontSmsTermsConditionsModalSection"/>
     </page>
 </pages>

@@ -5,7 +5,7 @@
  * Sends transactional SMS notifications through the LINK Mobility messaging
  * service.
  *
- * @package Wagento\LinkMobilitySMSNotifications\Factory
+ * @package Wagento\SMSNotifications\Factory
  * @author Joseph Leedy <joseph@wagento.com>
  * @author Yair García Torres <yair.garcia@wagento.com>
  * @copyright Copyright (c) Wagento (https://wagento.com/)
@@ -14,13 +14,13 @@
 
 declare(strict_types=1);
 
-namespace Wagento\LinkMobilitySMSNotifications\Factory;
+namespace Wagento\SMSNotifications\Factory;
 
-use Wagento\LinkMobilitySMSNotifications\Api\MessageVariablesInterface;
-use Wagento\LinkMobilitySMSNotifications\Model\MessageVariables\InvoiceVariables;
-use Wagento\LinkMobilitySMSNotifications\Model\MessageVariables\OrderVariables;
-use Wagento\LinkMobilitySMSNotifications\Model\MessageVariables\CustomerVariables;
-use Wagento\LinkMobilitySMSNotifications\Model\MessageVariables\ShipmentVariables;
+use Wagento\SMSNotifications\Api\MessageVariablesInterface;
+use Wagento\SMSNotifications\Model\MessageVariables\InvoiceVariables;
+use Wagento\SMSNotifications\Model\MessageVariables\OrderVariables;
+use Wagento\SMSNotifications\Model\MessageVariables\CustomerVariables;
+use Wagento\SMSNotifications\Model\MessageVariables\ShipmentVariables;
 use Magento\Customer\Api\Data\CustomerInterface;
 use Magento\Framework\ObjectManagerInterface;
 use Magento\Sales\Api\Data\InvoiceInterface;
@@ -30,7 +30,7 @@ use Magento\Sales\Model\Order\Shipment;
 /**
  * Message Variables Factory
  *
- * @package Wagento\LinkMobilitySMSNotifications\Factory
+ * @package Wagento\SMSNotifications\Factory
  * @author Joseph Leedy <joseph@wagento.com>
  * @api
  */

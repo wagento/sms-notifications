@@ -17,10 +17,10 @@
     <update handle="sms_subscription_preferences"/>
     <body>
         <referenceContainer name="form.additional.info">
-            <block class="Wagento\LinkMobilitySMSNotifications\Block\Customer\Account\Create\SubscribeField" name="customer.account.create.field.sms_notifications.subscribe" as="sms_notifications_subscribe_field" template="Wagento_LinkMobilitySMSNotifications::customer/account/create/subscribe-field.phtml"/>
-            <block class="Wagento\LinkMobilitySMSNotifications\Block\Customer\Account\Create\MobileTelephoneField" name="customer.account.create.field.mobile_telephone" as="sms_notifications_mobile_telephone_field" template="Wagento_LinkMobilitySMSNotifications::customer/account/create/mobile-telephone-field.phtml">
+            <block class="Wagento\SMSNotifications\Block\Customer\Account\Create\SubscribeField" name="customer.account.create.field.sms_notifications.subscribe" as="sms_notifications_subscribe_field" template="Wagento_SMSNotifications::customer/account/create/subscribe-field.phtml"/>
+            <block class="Wagento\SMSNotifications\Block\Customer\Account\Create\MobileTelephoneField" name="customer.account.create.field.mobile_telephone" as="sms_notifications_mobile_telephone_field" template="Wagento_SMSNotifications::customer/account/create/mobile-telephone-field.phtml">
                 <arguments>
-                    <argument name="telephone_prefixes_view_model" xsi:type="object">Wagento\LinkMobilitySMSNotifications\ViewModel\TelephonePrefixes</argument>
+                    <argument name="telephone_prefixes_view_model" xsi:type="object">Wagento\SMSNotifications\ViewModel\TelephonePrefixes</argument>
                 </arguments>
             </block>
         </referenceContainer>

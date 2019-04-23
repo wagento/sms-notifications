@@ -5,7 +5,7 @@
  * Sends transactional SMS notifications through the LINK Mobility messaging
  * service.
  *
- * @package Wagento\LinkMobilitySMSNotifications\Model
+ * @package Wagento\SMSNotifications\Model
  * @author Joseph Leedy <joseph@wagento.com>
  * @author Yair García Torres <yair.garcia@wagento.com>
  * @copyright Copyright (c) Wagento (https://wagento.com/)
@@ -14,11 +14,11 @@
 
 declare(strict_types=1);
 
-namespace Wagento\LinkMobilitySMSNotifications\Model;
+namespace Wagento\SMSNotifications\Model;
 
-use Wagento\LinkMobilitySMSNotifications\Api\Data\SmsSubscriptionInterfaceFactory;
-use Wagento\LinkMobilitySMSNotifications\Api\SmsSubscriptionManagementInterface;
-use Wagento\LinkMobilitySMSNotifications\Api\SmsSubscriptionRepositoryInterface;
+use Wagento\SMSNotifications\Api\Data\SmsSubscriptionInterfaceFactory;
+use Wagento\SMSNotifications\Api\SmsSubscriptionManagementInterface;
+use Wagento\SMSNotifications\Api\SmsSubscriptionRepositoryInterface;
 use Magento\Framework\Exception\CouldNotDeleteException;
 use Magento\Framework\Exception\CouldNotSaveException;
 use Magento\Framework\Exception\NoSuchEntityException;
@@ -28,7 +28,7 @@ use Psr\Log\LoggerInterface;
 /**
  * SMS Subscription Management Service
  *
- * @package Wagento\LinkMobilitySMSNotifications\Model
+ * @package Wagento\SMSNotifications\Model
  * @author Joseph Leedy <joseph@wagento.com>
  */
 class SmsSubscriptionManagement implements SmsSubscriptionManagementInterface
@@ -42,11 +42,11 @@ class SmsSubscriptionManagement implements SmsSubscriptionManagementInterface
      */
     private $messageManager;
     /**
-     * @var \Wagento\LinkMobilitySMSNotifications\Api\Data\SmsSubscriptionInterfaceFactory
+     * @var \Wagento\SMSNotifications\Api\Data\SmsSubscriptionInterfaceFactory
      */
     private $smsSubscriptionFactory;
     /**
-     * @var \Wagento\LinkMobilitySMSNotifications\Api\SmsSubscriptionRepositoryInterface
+     * @var \Wagento\SMSNotifications\Api\SmsSubscriptionRepositoryInterface
      */
     private $smsSubscriptionRepository;
 
@@ -64,7 +64,7 @@ class SmsSubscriptionManagement implements SmsSubscriptionManagementInterface
 
     public function createSubscription(string $smsType, int $customerId): bool
     {
-        /** @var \Wagento\LinkMobilitySMSNotifications\Api\Data\SmsSubscriptionInterface $smsSubscription */
+        /** @var \Wagento\SMSNotifications\Api\Data\SmsSubscriptionInterface $smsSubscription */
         $smsSubscription = $this->smsSubscriptionFactory->create();
 
         $smsSubscription->setCustomerId($customerId);
@@ -148,7 +148,7 @@ class SmsSubscriptionManagement implements SmsSubscriptionManagementInterface
     }
 
     /**
-     * @param \Wagento\LinkMobilitySMSNotifications\Model\SmsSubscription[] $subscribedSmsTypes
+     * @param \Wagento\SMSNotifications\Model\SmsSubscription[] $subscribedSmsTypes
      * @param string[] $selectedSmsTypes
      * @param string[] $messages
      */

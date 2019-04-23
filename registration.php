@@ -13,6 +13,6 @@
 
 \Magento\Framework\Component\ComponentRegistrar::register(
     \Magento\Framework\Component\ComponentRegistrar::MODULE,
-    'Wagento_LinkMobilitySMSNotifications',
+    'Wagento_SMSNotifications',
     __DIR__
 );

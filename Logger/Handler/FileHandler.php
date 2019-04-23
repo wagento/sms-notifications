@@ -5,7 +5,7 @@
  * Sends transactional SMS notifications through the LINK Mobility messaging
  * service.
  *
- * @package Wagento\LinkMobilitySMSNotifications\Logger\Handler
+ * @package Wagento\SMSNotifications\Logger\Handler
  * @author Joseph Leedy <joseph@wagento.com>
  * @author Yair García Torres <yair.garcia@wagento.com>
  * @copyright Copyright (c) Wagento (https://wagento.com/)
@@ -14,9 +14,9 @@
 
 declare(strict_types=1);
 
-namespace Wagento\LinkMobilitySMSNotifications\Logger\Handler;
+namespace Wagento\SMSNotifications\Logger\Handler;
 
-use Wagento\LinkMobilitySMSNotifications\Api\ConfigInterface;
+use Wagento\SMSNotifications\Api\ConfigInterface;
 use Magento\Framework\Exception\NoSuchEntityException;
 use Magento\Framework\Filesystem\DriverInterface;
 use Magento\Framework\Logger\Handler\Base;
@@ -25,7 +25,7 @@ use Magento\Store\Model\StoreManagerInterface;
 /**
  * Log File Handler
  *
- * @package Wagento\LinkMobilitySMSNotifications\Logger\Handler
+ * @package Wagento\SMSNotifications\Logger\Handler
  * @author Joseph Leedy <joseph@wagento.com>
  */
 final class FileHandler extends Base
@@ -35,7 +35,7 @@ final class FileHandler extends Base
      */
     private $storeManager;
     /**
-     * @var \Wagento\LinkMobilitySMSNotifications\Api\ConfigInterface
+     * @var \Wagento\SMSNotifications\Api\ConfigInterface
      */
     private $config;
 

@@ -13,14 +13,14 @@
 define([
     'jquery',
     'uiComponent',
-    'Wagento_LinkMobilitySMSNotifications/js/model/sms-terms-conditions-modal',
+    'Wagento_SMSNotifications/js/model/sms-terms-conditions-modal',
     'smsNotifications'
 ], function ($, Component, termsConditionsModal, smsNotifications) {
     'use strict';
 
     return Component.extend({
         defaults: {
-            template: 'Wagento_LinkMobilitySMSNotifications/sms-terms-conditions',
+            template: 'Wagento_SMSNotifications/sms-terms-conditions',
             modalTitle: null,
             modalContent: null
         },

@@ -5,7 +5,7 @@
  * Sends transactional SMS notifications through the LINK Mobility messaging
  * service.
  *
- * @package Wagento\LinkMobilitySMSNotifications\Controller\Adminhtml\Subscription
+ * @package Wagento\SMSNotifications\Controller\Adminhtml\Subscription
  * @author Joseph Leedy <joseph@wagento.com>
  * @author Yair García Torres <yair.garcia@wagento.com>
  * @copyright Copyright (c) Wagento (https://wagento.com/)
@@ -14,24 +14,24 @@
 
 declare(strict_types=1);
 
-namespace Wagento\LinkMobilitySMSNotifications\Controller\Adminhtml\Subscription;
+namespace Wagento\SMSNotifications\Controller\Adminhtml\Subscription;
 
-use Wagento\LinkMobilitySMSNotifications\Api\SmsSubscriptionManagementInterface;
+use Wagento\SMSNotifications\Api\SmsSubscriptionManagementInterface;
 use Magento\Backend\App\Action;
 use Magento\Backend\App\Action\Context;
 
 /**
  * Delete SMS Subscription Action
  *
- * @package Wagento\LinkMobilitySMSNotifications\Controller\Adminhtml\Subscription
+ * @package Wagento\SMSNotifications\Controller\Adminhtml\Subscription
  * @author Joseph Leedy <joseph@wagento.com>
  */
 class Delete extends Action
 {
-    const ADMIN_RESOURCE = 'Wagento_LinkMobilitySMSNotifications::manage_sms_subscriptions';
+    const ADMIN_RESOURCE = 'Wagento_SMSNotifications::manage_sms_subscriptions';
 
     /**
-     * @var \Wagento\LinkMobilitySMSNotifications\Api\SmsSubscriptionManagementInterface
+     * @var \Wagento\SMSNotifications\Api\SmsSubscriptionManagementInterface
      */
     private $smsSubscriptionManagement;
 

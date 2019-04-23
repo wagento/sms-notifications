@@ -5,7 +5,7 @@
  * Sends transactional SMS notifications through the LINK Mobility messaging
  * service.
  *
- * @package Wagento\LinkMobilitySMSNotifications\Gateway\Factory
+ * @package Wagento\SMSNotifications\Gateway\Factory
  * @author Joseph Leedy <joseph@wagento.com>
  * @author Yair García Torres <yair.garcia@wagento.com>
  * @copyright Copyright (c) Wagento (https://wagento.com/)
@@ -14,15 +14,15 @@
 
 declare(strict_types=1);
 
-namespace Wagento\LinkMobilitySMSNotifications\Gateway\Factory;
+namespace Wagento\SMSNotifications\Gateway\Factory;
 
-use Wagento\LinkMobilitySMSNotifications\Gateway\Entity\Message;
-use Wagento\LinkMobilitySMSNotifications\Gateway\Entity\MessageInterface;
+use Wagento\SMSNotifications\Gateway\Entity\Message;
+use Wagento\SMSNotifications\Gateway\Entity\MessageInterface;
 
 /**
  * Message Entity Factory
  *
- * @package Wagento\LinkMobilitySMSNotifications\Gateway\Factory
+ * @package Wagento\SMSNotifications\Gateway\Factory
  * @author Joseph Leedy <joseph@wagento.com>
  */
 final class MessageFactory

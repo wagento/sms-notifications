@@ -13,8 +13,8 @@
 var config = {
     map: {
         '*': {
-            lmCheckboxToggler: 'Wagento_LinkMobilitySMSNotifications/js/checkbox-toggler',
-            smsNotifications: 'Wagento_LinkMobilitySMSNotifications/js/model/sms-notifications'
+            lmCheckboxToggler: 'Wagento_SMSNotifications/js/checkbox-toggler',
+            smsNotifications: 'Wagento_SMSNotifications/js/model/sms-notifications'
         }
     }
 };

@@ -5,7 +5,7 @@
  * Sends transactional SMS notifications through the LINK Mobility messaging
  * service.
  *
- * @package Wagento\LinkMobilitySMSNotifications\Model\ResourceModel\TelephonePrefix
+ * @package Wagento\SMSNotifications\Model\ResourceModel\TelephonePrefix
  * @author Joseph Leedy <joseph@wagento.com>
  * @author Yair García Torres <yair.garcia@wagento.com>
  * @copyright Copyright (c) Wagento (https://wagento.com/)
@@ -14,16 +14,16 @@
 
 declare(strict_types=1);
 
-namespace Wagento\LinkMobilitySMSNotifications\Model\ResourceModel\TelephonePrefix;
+namespace Wagento\SMSNotifications\Model\ResourceModel\TelephonePrefix;
 
 use Magento\Framework\Model\ResourceModel\Db\Collection\AbstractCollection;
-use Wagento\LinkMobilitySMSNotifications\Model\TelephonePrefix as TelephonePrefixModel;
-use Wagento\LinkMobilitySMSNotifications\Model\ResourceModel\TelephonePrefix as TelephonePrefixResource;
+use Wagento\SMSNotifications\Model\TelephonePrefix as TelephonePrefixModel;
+use Wagento\SMSNotifications\Model\ResourceModel\TelephonePrefix as TelephonePrefixResource;
 
 /**
  * Telephone Prefix Data Collection
  *
- * @package Wagento\LinkMobilitySMSNotifications\Model\ResourceModel\TelephonePrefix
+ * @package Wagento\SMSNotifications\Model\ResourceModel\TelephonePrefix
  * @author Joseph Leedy <joseph@wagento.com>
  */
 class Collection extends AbstractCollection

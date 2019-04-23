@@ -5,7 +5,7 @@
  * Sends transactional SMS notifications through the LINK Mobility messaging
  * service.
  *
- * @package Wagento\LinkMobilitySMSNotifications\Test\Unit\Model
+ * @package Wagento\SMSNotifications\Test\Unit\Model
  * @author Joseph Leedy <joseph@wagento.com>
  * @author Yair García Torres <yair.garcia@wagento.com>
  * @copyright Copyright (c) Wagento (https://wagento.com/)
@@ -14,11 +14,11 @@
 
 declare(strict_types=1);
 
-namespace Wagento\LinkMobilitySMSNotifications\Test\Unit\Model;
+namespace Wagento\SMSNotifications\Test\Unit\Model;
 
-use Wagento\LinkMobilitySMSNotifications\Model\Config\Backend\Source as SourceModel;
-use Wagento\LinkMobilitySMSNotifications\Model\SourceValidationRules;
-use Wagento\LinkMobilitySMSNotifications\Model\SourceValidator;
+use Wagento\SMSNotifications\Model\Config\Backend\Source as SourceModel;
+use Wagento\SMSNotifications\Model\SourceValidationRules;
+use Wagento\SMSNotifications\Model\SourceValidator;
 use Magento\Framework\Validator\Alnum as AlphanumericValidator;
 use Magento\Framework\Validator\AlnumFactory as AlphanumericValidatorFactory;
 use Magento\Framework\Validator\DataObject as ValidatorObject;
@@ -36,14 +36,14 @@ use PHPUnit\Framework\TestCase;
 /**
  * Source Configuration Field Validator Test
  *
- * @package Wagento\LinkMobilitySMSNotifications\Test\Unit\Model
+ * @package Wagento\SMSNotifications\Test\Unit\Model
  * @author Joseph Leedy <joseph@wagento.com>
  *
  * phpcs:disable
  */
 class SourceValidatorTest extends TestCase
 {
-    /** @var \Wagento\LinkMobilitySMSNotifications\Model\SourceValidator */
+    /** @var \Wagento\SMSNotifications\Model\SourceValidator */
     private $validator;
 
     /**
@@ -52,7 +52,7 @@ class SourceValidatorTest extends TestCase
      */
     public function testValidateValidSource(string $sourceType, string $source): void
     {
-        /** @var \PHPUnit\Framework\MockObject\MockObject|\Wagento\LinkMobilitySMSNotifications\Model\Config\Backend\Source $sourceModel */
+        /** @var \PHPUnit\Framework\MockObject\MockObject|\Wagento\SMSNotifications\Model\Config\Backend\Source $sourceModel */
         $sourceModel = $this->getMockBuilder(SourceModel::class)
             ->disableOriginalConstructor()
             ->setMethods(['getSource'])
@@ -72,7 +72,7 @@ class SourceValidatorTest extends TestCase
      */
     public function testValidateInvalidSource(string $sourceType, string $source, string $expectedError): void
     {
-        /** @var \PHPUnit\Framework\MockObject\MockObject|\Wagento\LinkMobilitySMSNotifications\Model\Config\Backend\Source $sourceModel */
+        /** @var \PHPUnit\Framework\MockObject\MockObject|\Wagento\SMSNotifications\Model\Config\Backend\Source $sourceModel */
         $sourceModel = $this->getMockBuilder(SourceModel::class)
             ->disableOriginalConstructor()
             ->setMethods(['getSource'])

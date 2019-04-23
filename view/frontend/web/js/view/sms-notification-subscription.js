@@ -16,14 +16,14 @@ define([
     'uiComponent',
     'mage/translate',
     'smsNotifications',
-    'Wagento_LinkMobilitySMSNotifications/js/model/sms-subscription-preferences-modal',
-    'Wagento_LinkMobilitySMSNotifications/js/model/sms-terms-conditions-modal'
+    'Wagento_SMSNotifications/js/model/sms-subscription-preferences-modal',
+    'Wagento_SMSNotifications/js/model/sms-terms-conditions-modal'
 ], function ($, ko, Component, $t, smsNotifications, subscriptionPreferencesModal, termsConditionsModal) {
     'use strict';
 
     return Component.extend({
         defaults: {
-            template: 'Wagento_LinkMobilitySMSNotifications/sms-notification-subscription',
+            template: 'Wagento_SMSNotifications/sms-notification-subscription',
             isOptinRequired: true,
             isTermsAndConditionsShownAfterOptin: true,
             selectedSmsTypes: '',

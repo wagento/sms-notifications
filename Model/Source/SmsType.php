@@ -5,7 +5,7 @@
  * Sends transactional SMS notifications through the LINK Mobility messaging
  * service.
  *
- * @package Wagento\LinkMobilitySMSNotifications\Ui\Component\Listing\Column
+ * @package Wagento\SMSNotifications\Ui\Component\Listing\Column
  * @author Joseph Leedy <joseph@wagento.com>
  * @author Yair García Torres <yair.garcia@wagento.com>
  * @copyright Copyright (c) Wagento (https://wagento.com/)
@@ -14,14 +14,14 @@
 
 declare(strict_types=1);
 
-namespace Wagento\LinkMobilitySMSNotifications\Model\Source;
+namespace Wagento\SMSNotifications\Model\Source;
 
 use Magento\Framework\Data\OptionSourceInterface;
 
 /**
  * SMS Notification Type Option Source Model
  *
- * @package Wagento\LinkMobilitySMSNotifications\Model\Source
+ * @package Wagento\SMSNotifications\Model\Source
  * @author Joseph Leedy <joseph@wagento.com>
  */
 class SmsType implements OptionSourceInterface

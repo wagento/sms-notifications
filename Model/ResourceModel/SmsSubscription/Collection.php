@@ -5,7 +5,7 @@
  * Sends transactional SMS notifications through the LINK Mobility messaging
  * service.
  *
- * @package Wagento\LinkMobilitySMSNotifications\Model\ResourceModel\SmsSubscription
+ * @package Wagento\SMSNotifications\Model\ResourceModel\SmsSubscription
  * @author Joseph Leedy <joseph@wagento.com>
  * @author Yair García Torres <yair.garcia@wagento.com>
  * @copyright Copyright (c) Wagento (https://wagento.com/)
@@ -14,16 +14,16 @@
 
 declare(strict_types=1);
 
-namespace Wagento\LinkMobilitySMSNotifications\Model\ResourceModel\SmsSubscription;
+namespace Wagento\SMSNotifications\Model\ResourceModel\SmsSubscription;
 
-use Wagento\LinkMobilitySMSNotifications\Model\ResourceModel\SmsSubscription as SmsSubscriptionResourceModel;
-use Wagento\LinkMobilitySMSNotifications\Model\SmsSubscription as SmsSubscriptionModel;
+use Wagento\SMSNotifications\Model\ResourceModel\SmsSubscription as SmsSubscriptionResourceModel;
+use Wagento\SMSNotifications\Model\SmsSubscription as SmsSubscriptionModel;
 use Magento\Framework\Model\ResourceModel\Db\Collection\AbstractCollection;
 
 /**
  * SMS Subscription Collection
  *
- * @package Wagento\LinkMobilitySMSNotifications\Model\ResourceModel\SmsSubscription
+ * @package Wagento\SMSNotifications\Model\ResourceModel\SmsSubscription
  * @author Yair García Torres <yair.garcia@wagento.com>
  * @author Joseph Leedy <joseph@wagento.com>
  */

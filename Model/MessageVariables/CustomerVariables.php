@@ -5,7 +5,7 @@
  * Sends transactional SMS notifications through the LINK Mobility messaging
  * service.
  *
- * @package Wagento\LinkMobilitySMSNotifications\Model\MessageVariables
+ * @package Wagento\SMSNotifications\Model\MessageVariables
  * @author Joseph Leedy <joseph@wagento.com>
  * @author Yair García Torres <yair.garcia@wagento.com>
  * @copyright Copyright (c) Wagento (https://wagento.com/)
@@ -14,9 +14,9 @@
 
 declare(strict_types=1);
 
-namespace Wagento\LinkMobilitySMSNotifications\Model\MessageVariables;
+namespace Wagento\SMSNotifications\Model\MessageVariables;
 
-use Wagento\LinkMobilitySMSNotifications\Api\MessageVariablesInterface;
+use Wagento\SMSNotifications\Api\MessageVariablesInterface;
 use Magento\Customer\Api\Data\CustomerInterface;
 use Magento\Framework\App\Config\ScopeConfigInterface;
 use Magento\Framework\Exception\NoSuchEntityException;
@@ -27,7 +27,7 @@ use Magento\Store\Model\StoreManagerInterface;
 /**
  * Customer Variables
  *
- * @package Wagento\LinkMobilitySMSNotifications\Model\MessageVariables
+ * @package Wagento\SMSNotifications\Model\MessageVariables
  * @author Joseph Leedy <joseph@wagento.com>
  */
 class CustomerVariables implements MessageVariablesInterface

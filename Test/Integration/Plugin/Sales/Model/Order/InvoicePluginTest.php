@@ -5,7 +5,7 @@
  * Sends transactional SMS notifications through the LINK Mobility messaging
  * service.
  *
- * @package Wagento\LinkMobilitySMSNotifications\Test\Integration\Plugin\Sales\Model\Order
+ * @package Wagento\SMSNotifications\Test\Integration\Plugin\Sales\Model\Order
  * @author Joseph Leedy <joseph@wagento.com>
  * @author Yair García Torres <yair.garcia@wagento.com>
  * @copyright Copyright (c) Wagento (https://wagento.com/)
@@ -14,11 +14,11 @@
 
 declare(strict_types=1);
 
-namespace Wagento\LinkMobilitySMSNotifications\Test\Integration\Plugin\Sales\Model\Order;
+namespace Wagento\SMSNotifications\Test\Integration\Plugin\Sales\Model\Order;
 
-use Wagento\LinkMobilitySMSNotifications\Model\SmsSender\InvoiceSender;
-use Wagento\LinkMobilitySMSNotifications\Plugin\Sales\Model\Order\InvoicePlugin;
-use Wagento\LinkMobilitySMSNotifications\Test\Integration\_stubs\Model\SmsSender;
+use Wagento\SMSNotifications\Model\SmsSender\InvoiceSender;
+use Wagento\SMSNotifications\Plugin\Sales\Model\Order\InvoicePlugin;
+use Wagento\SMSNotifications\Test\Integration\_stubs\Model\SmsSender;
 use Magento\Framework\Interception\PluginList\PluginList;
 use Magento\Sales\Api\InvoiceManagementInterface;
 use Magento\Sales\Model\Order;
@@ -29,7 +29,7 @@ use PHPUnit\Framework\TestCase;
 /**
  * Invoice Plug-in Test
  *
- * @package Wagento\LinkMobilitySMSNotifications\Test\Integration\Plugin\Sales\Model\Order
+ * @package Wagento\SMSNotifications\Test\Integration\Plugin\Sales\Model\Order
  * @author Joseph Leedy <joseph@wagento.com>
  */
 class InvoicePluginTest extends TestCase
