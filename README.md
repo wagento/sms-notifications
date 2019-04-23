@@ -3,7 +3,7 @@
 Wagento SMS Notifications integrates Magento 2 with the LINK Mobility
 mobile messaging service to send transactional text notifications. Customers can
 be notified when their order is successfully placed as well as when it is
-invoiced, shipped, canceled, refunded, held, or released.
+invoiced, shipped, canceled, refunded, held or released.
 
 Detailed instructions for installation, configuration and usage can be found in
 the [User Guide].
@@ -58,7 +58,7 @@ enable it:
     $ php bin/magento module:enable Wagento_SMSNotifications
 
 Once you have enabled the extension, please follow the instructions in the
-[Post-Install, Post-Update, or Post-Uninstall][post]
+[Post-Install, Post-Update or Post-Uninstall][post]
 section to complete the installation process.
 
 ## Updating
@@ -105,9 +105,9 @@ terminal or command prompt to remove its data:
     DELETE FROM `setup_module` WHERE `module` = 'Wagento_SMSNotifications';
     SQL
 
-## Post-Install, Post-Update, or Post-Uninstall
+## Post-Install, Post-Update or Post-Uninstall
 
-To complete the installation, update, or uninstall process, please run these
+To complete the installation, update or uninstall process, please run these
 commands:
 
     $ cd /path/to/your/site
@@ -126,7 +126,7 @@ descriptions of the available options, please refer to the [User Guide].
 If you experience any issues or errors while using the extension, please open a
 ticket by sending an e-mail to [support@wagento.com][Support]. Be sure to
 include your domain, PHP version, Magento version, a detailed description of the
-problem including steps to reproduce it, and any other relevant information. We
+problem including steps to reproduce it and any other relevant information. We
 do our best to respond to all legitimate inquires within 48 business hours.
 
 ## License
