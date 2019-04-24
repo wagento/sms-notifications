@@ -99,7 +99,7 @@ terminal or command prompt to remove its data:
     $ rm -rf Wagento/SMSNotifications
     $ mysql -u your_user -p your_database <<'SQL'
     DROP TABLE `directory_telephone_prefix`;
-    DROP TABLE `sms_notification_subscription`;
+    DROP TABLE `sms_subscription`;
     DELETE FROM `eav_attribute` WHERE `attribute_code` LIKE 'sms_mobile%';
     DELETE FROM `core_config_data` WHERE `path` LIKE 'sms_notifications/%';
     DELETE FROM `setup_module` WHERE `module` = 'Wagento_SMSNotifications';
