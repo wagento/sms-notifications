@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+/**
+ * Wagento SMS Notifications powered by LINK Mobility
+ *
+ * Sends transactional SMS notifications through the LINK Mobility messaging
+ * service.
+ *
+ * @author Joseph Leedy <joseph@wagento.com>
+ * @author Yair García Torres <yair.garcia@wagento.com>
+ * @copyright Copyright (c) Wagento (https://wagento.com/)
+ * @license https://opensource.org/licenses/OSL-3.0.php Open Software License 3.0
+ */
+-->
+<operations xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:mftf:DataGenerator/etc/dataOperation.xsd">
+    <operation name="SmsNotificationsConfig" dataType="sms_notifications_config" type="create" auth="adminFormKey" url="/admin/system_config/save/section/sms_notifications/" method="POST" successRegex="/messages-message-success/">
+        <object key="groups" dataType="sms_notifications_config">
+            <object key="general" dataType="sms_notifications_config">
+                <object key="fields" dataType="sms_notifications_config">
+                    <object key="enabled" dataType="sms_notifications_enabled_value">
+                        <field key="value">integer</field>
+                    </object>
+                    <object key="require_optin" dataType="sms_notifications_require_optin_value">
+                        <field key="value">integer</field>
+                    </object>
+                </object>
+            </object>
+        </object>
+    </operation>
+</operations>

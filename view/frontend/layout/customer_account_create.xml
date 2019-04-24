@@ -1,18 +1,28 @@
 <?xml version="1.0"?>
 <!--
 /**
- * Copyright © Magento, Inc. All rights reserved.
- * See COPYING.txt for license details.
+ * Wagento SMS Notifications powered by LINK Mobility
+ *
+ * Sends transactional SMS notifications through the LINK Mobility messaging
+ * service.
+ *
+ * @author Joseph Leedy <joseph@wagento.com>
+ * @author Yair García Torres <yair.garcia@wagento.com>
+ * @copyright Copyright (c) Wagento (https://wagento.com/)
+ * @license https://opensource.org/licenses/OSL-3.0.php Open Software License 3.0
  */
 -->
 <page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="1column" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <update handle="sms_terms_conditions"/>
+    <update handle="sms_subscription_preferences"/>
     <body>
-        <referenceBlock name="customer_form_register" template="Linkmobility_Notifications::customer/register.phtml">
-            <block class="Magento\Framework\View\Element\Template" name="customer_sms_notifications" as="customer.sms.notifications" template="Linkmobility_Notifications::customer/signup.phtml" before="-">
-                <block class="Magento\Framework\View\Element\Template" name="customer_sms_notifications_tooltip" as="customer.sms.tooltip" template="Linkmobility_Notifications::customer/tooltip.phtml" >
-                    <block class="Magento\Framework\View\Element\Template" name="customer_sms_notifications_orders" as="customer.sms.tooltip.orders" template="Linkmobility_Notifications::customer/section/orders.phtml" />
-                </block>
+        <referenceContainer name="form.additional.info">
+            <block class="Wagento\SMSNotifications\Block\Customer\Account\Create\SubscribeField" name="customer.account.create.field.sms_notifications.subscribe" as="sms_notifications_subscribe_field" template="Wagento_SMSNotifications::customer/account/create/subscribe-field.phtml"/>
+            <block class="Wagento\SMSNotifications\Block\Customer\Account\Create\MobileTelephoneField" name="customer.account.create.field.mobile_telephone" as="sms_notifications_mobile_telephone_field" template="Wagento_SMSNotifications::customer/account/create/mobile-telephone-field.phtml">
+                <arguments>
+                    <argument name="telephone_prefixes_view_model" xsi:type="object">Wagento\SMSNotifications\ViewModel\TelephonePrefixes</argument>
+                </arguments>
             </block>
-        </referenceBlock>
+        </referenceContainer>
     </body>
 </page>

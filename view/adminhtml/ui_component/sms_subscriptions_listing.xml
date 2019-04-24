@@ -1,0 +1,97 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Wagento SMS Notifications powered by LINK Mobility
+ *
+ * Sends transactional SMS notifications through the LINK Mobility messaging
+ * service.
+ *
+ * @author Joseph Leedy <joseph@wagento.com>
+ * @author Yair García Torres <yair.garcia@wagento.com>
+ * @copyright Copyright (c) Wagento (https://wagento.com/)
+ * @license https://opensource.org/licenses/OSL-3.0.php Open Software License 3.0
+ */
+-->
+<listing xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
+    <argument name="data" xsi:type="array">
+        <item name="js_config" xsi:type="array">
+            <item name="provider" xsi:type="string">sms_subscriptions_listing.sms_subscriptions_listing_data_source</item>
+        </item>
+    </argument>
+    <settings>
+        <spinner>sms_subscriptions_listing_columns</spinner>
+        <deps>
+            <dep>sms_subscriptions_listing.sms_subscriptions_listing_data_source</dep>
+        </deps>
+    </settings>
+    <listingToolbar name="listing_top">
+        <massaction name="listing_massaction">
+            <settings>
+                <selectProvider>sms_subscriptions_listing.sms_subscriptions_listing.sms_subscriptions_listing_columns.sms_types</selectProvider>
+            </settings>
+            <action name="subscribe">
+                <settings>
+                    <url path="sms_notifications/subscription/massCreate"/>
+                    <type>create</type>
+                    <label translate="true">Subscribe</label>
+                </settings>
+            </action>
+            <action name="unsubscribe">
+                <settings>
+                    <confirm>
+                        <message translate="true">Delete selected SMS subscriptions?</message>
+                        <title translate="true">Delete SMS Subscriptions</title>
+                    </confirm>
+                    <url path="sms_notifications/subscription/massDelete"/>
+                    <type>delete</type>
+                    <label translate="true">Unsubscribe</label>
+                </settings>
+            </action>
+        </massaction>
+    </listingToolbar>
+    <dataSource name="sms_subscriptions_listing_data_source" component="Magento_Ui/js/grid/provider">
+        <settings>
+            <storageConfig>
+                <param name="indexField" xsi:type="string">sms_type</param>
+            </storageConfig>
+            <updateUrl path="mui/index/render"/>
+        </settings>
+        <aclResource>Wagento_SMSNotifications::sms_subscriptions</aclResource>
+        <dataProvider class="Wagento\SMSNotifications\Ui\DataProvider\SmsSubscriptions" name="sms_subscriptions_listing_data_source">
+            <settings>
+                <primaryFieldName>sms_type</primaryFieldName>
+                <requestFieldName>sms_type</requestFieldName>
+            </settings>
+        </dataProvider>
+    </dataSource>
+    <columns name="sms_subscriptions_listing_columns">
+        <selectionsColumn name="sms_types" sortOrder="0">
+            <settings>
+                <indexField>sms_type</indexField>
+                <resizeEnabled>false</resizeEnabled>
+                <resizeDefaultWidth>40</resizeDefaultWidth>
+            </settings>
+        </selectionsColumn>
+        <column name="description" sortOrder="10">
+            <settings>
+                <label translate="true">Notification</label>
+                <sortable>false</sortable>
+            </settings>
+        </column>
+        <column name="status" sortOrder="20" class="Wagento\SMSNotifications\Ui\Component\Listing\Column\SmsSubscriptionStatus">
+            <settings>
+                <label translate="true">Status</label>
+                <sortable>false</sortable>
+                <dataType>select</dataType>
+                <options class="Wagento\SMSNotifications\Ui\Component\Listing\Column\SmsSubscriptionStatus"/>
+                <resizeEnabled>false</resizeEnabled>
+                <resizeDefaultWidth>130</resizeDefaultWidth>
+            </settings>
+        </column>
+        <actionsColumn name="actions" sortOrder="30" class="Wagento\SMSNotifications\Ui\Component\Listing\Column\SmsSubscriptionActions">
+            <settings>
+                <indexField>sms_subscription_id</indexField>
+            </settings>
+        </actionsColumn>
+    </columns>
+</listing>

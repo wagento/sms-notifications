@@ -1,0 +1,49 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Wagento SMS Notifications powered by LINK Mobility
+ *
+ * Sends transactional SMS notifications through the LINK Mobility messaging
+ * service.
+ *
+ * @author Joseph Leedy <joseph@wagento.com>
+ * @author Yair García Torres <yair.garcia@wagento.com>
+ * @copyright Copyright (c) Wagento (https://wagento.com/)
+ * @license https://opensource.org/licenses/OSL-3.0.php Open Software License 3.0
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <type name="Wagento\SMSNotifications\Controller\Adminhtml\Subscription\MassCreate">
+        <arguments>
+            <argument name="logger" xsi:type="object">Wagento\SMSNotifications\Logger\Logger</argument>
+        </arguments>
+    </type>
+    <type name="Wagento\SMSNotifications\Controller\Adminhtml\Subscription\MassDelete">
+        <arguments>
+            <argument name="logger" xsi:type="object">Wagento\SMSNotifications\Logger\Logger</argument>
+        </arguments>
+    </type>
+    <type name="Wagento\SMSNotifications\Model\MessageVariables\InvoiceVariables">
+        <arguments>
+            <argument name="urlBuilder" xsi:type="object">Magento\Framework\Url</argument>
+        </arguments>
+    </type>
+    <type name="Wagento\SMSNotifications\Model\MessageVariables\OrderVariables">
+        <arguments>
+            <argument name="urlBuilder" xsi:type="object">Magento\Framework\Url</argument>
+        </arguments>
+    </type>
+    <type name="Wagento\SMSNotifications\Model\MessageVariables\ShipmentVariables">
+        <arguments>
+            <argument name="urlBuilder" xsi:type="object">Magento\Framework\Url</argument>
+        </arguments>
+    </type>
+    <type name="Wagento\SMSNotifications\Ui\DataProvider\SmsSubscriptions">
+        <arguments>
+            <argument name="backendSession" xsi:type="object">Magento\Backend\Model\Session\Proxy</argument>
+        </arguments>
+    </type>
+    <type name="Magento\Ui\Component\MassAction\Filter">
+        <plugin name="smsTypeFilter" type="Wagento\SMSNotifications\Plugin\Component\MassAction\FilterPlugin"/>
+    </type>
+</config>

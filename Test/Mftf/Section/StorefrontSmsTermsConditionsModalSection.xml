@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+/**
+ * Wagento SMS Notifications powered by LINK Mobility
+ *
+ * Sends transactional SMS notifications through the LINK Mobility messaging
+ * service.
+ *
+ * @author Joseph Leedy <joseph@wagento.com>
+ * @author Yair García Torres <yair.garcia@wagento.com>
+ * @copyright Copyright (c) Wagento (https://wagento.com/)
+ * @license https://opensource.org/licenses/OSL-3.0.php Open Software License 3.0
+ */
+-->
+<sections xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:mftf:Page/etc/SectionObject.xsd">
+    <section name="StorefrontSmsTermsConditionsModalSection">
+        <element name="smsTermsConditionsModal" type="block" selector=".modal-popup-sms-terms-conditions"/>
+        <element name="modalTitle" type="text" selector=".modal-popup-sms-terms-conditions .modal-title"/>
+        <element name="modalContent" type="text" selector=".modal-popup-sms-terms-conditions .sms-terms-conditions-content"/>
+        <element name="agreeButton" type="button" selector=".modal-popup-sms-terms-conditions button.action.primary"/>
+        <element name="cancelButton" type="button" selector=".modal-popup-sms-terms-conditions button.action.secondary"/>
+    </section>
+</sections>

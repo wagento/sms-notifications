@@ -1,20 +1,39 @@
 {
-    "name": "linkmobility/notifications",
-    "description": "Linkmobility SMS notifications module",
+    "name": "wagento/module-sms-notifications",
+    "description": "Sends transactional SMS notifications through the LINK Mobility messaging service",
     "type": "magento2-module",
-    "version": "dev-master",
+    "version": "1.0.0",
     "license": [
         "OSL-3.0"
     ],
     "require": {
-        "guzzlehttp/guzzle": "~6.0"
+        "php": "~7.1.3|~7.2.0",
+        "ext-json": "*",
+        "magento/framework": "101.0.*|102.0.*",
+        "magento/module-backend": "100.2.*|101.0.*",
+        "magento/module-config": "101.0.*|101.1.*",
+        "magento/module-customer": "101.0.*|102.0.*",
+        "magento/module-sales": "101.0.*|102.0.*",
+        "magento/module-store": "100.2.*|101.0.*",
+        "magento/module-theme": "100.2.*|101.0.*",
+        "magento/module-translation": "100.2.*|100.3.*",
+        "magento/module-ui": "101.0.*|101.1.*",
+        "guzzlehttp/guzzle": "^6.0",
+        "myclabs/php-enum": "^1.6",
+        "zendframework/zend-hydrator": "^1.1 || ^2.1"
     },
-    "extra": {
-        "map": [
-            [
-                "*",
-                "Linkmobility/Notifications"
-            ]
-        ]
+    "require-dev": {
+        "wagento/module-sms-notifications-webapi": "1.0.0",
+        "phpunit/phpunit": "^6.5",
+        "magento/magento2-functional-testing-framework": "~2.3.12"
+    },
+    "autoload": {
+        "files": [
+            "registration.php",
+            "compat.inc"
+        ],
+        "psr-4": {
+            "Wagento\\SMSNotifications\\": ""
+        }
     }
 }

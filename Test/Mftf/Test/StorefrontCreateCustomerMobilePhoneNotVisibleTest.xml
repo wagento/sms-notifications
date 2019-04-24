@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+/**
+ * Wagento SMS Notifications powered by LINK Mobility
+ *
+ * Sends transactional SMS notifications through the LINK Mobility messaging
+ * service.
+ *
+ * @author Joseph Leedy <joseph@wagento.com>
+ * @author Yair García Torres <yair.garcia@wagento.com>
+ * @copyright Copyright (c) Wagento (https://wagento.com/)
+ * @license https://opensource.org/licenses/OSL-3.0.php Open Software License 3.0
+ */
+-->
+<tests xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:mftf:Test/etc/testSchema.xsd">
+    <test name="StorefrontCreateCustomerMobilePhoneNotVisibleTest">
+        <annotations>
+            <features value="Customer"/>
+            <stories value="Subscribe customer to SMS notifications during registration on storefront"/>
+            <title value="Mobile phone fields not visible on storefront customer registration page"/>
+            <description value="Verifies that the mobile phone fields are not visible on the storefront registration page if customer has not subscribed to SMS."/>
+            <severity value="CRITICAL"/>
+            <testCaseId value="REED-94"/>
+            <group value="wagento"/>
+            <group value="sms_notifications"/>
+            <group value="sms_attributes"/>
+            <group value="customer"/>
+            <group value="create"/>
+        </annotations>
+        <before>
+            <actionGroup ref="EnableSmsNotificationsActionGroup" stepKey="enableSmsNotifications"/>
+            <actionGroup ref="AllowSmsNotificationsOptinActionGroup" stepKey="allowSmsNotificationOptin"/>
+        </before>
+        <amOnPage stepKey="amOnStorefrontPage" url="/"/>
+        <waitForPageLoad stepKey="waitForStorefrontPage"/>
+        <click selector="{{StorefrontPanelHeaderSection.createAnAccountLink}}" stepKey="clickOnCreateAccountLink"/>
+        <dontSeeElement selector="{{StorefrontCustomerCreateFormSection.smsMobilePhonePrefixDropdown}}" stepKey="dontSeeMobilePrefixDropdown"/>
+        <dontSeeElement selector="{{StorefrontCustomerCreateFormSection.smsMobilePhoneNumberField}}" stepKey="dontSeeMobileNumberField"/>
+    </test>
+</tests>

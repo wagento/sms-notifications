@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+/**
+ * Wagento SMS Notifications powered by LINK Mobility
+ *
+ * Sends transactional SMS notifications through the LINK Mobility messaging
+ * service.
+ *
+ * @author Joseph Leedy <joseph@wagento.com>
+ * @author Yair García Torres <yair.garcia@wagento.com>
+ * @copyright Copyright (c) Wagento (https://wagento.com/)
+ * @license https://opensource.org/licenses/OSL-3.0.php Open Software License 3.0
+ */
+-->
+<actionGroups xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:mftf:Test/etc/actionGroupSchema.xsd">
+    <actionGroup name="ConfigSmsNotificationsRequireOptinActionGroup">
+        <amOnPage url="{{_ENV.MAGENTO_BACKEND_NAME}}/admin/system_config/edit/section/sms_notifications/" stepKey="navigateToConfigurationPage"/>
+        <waitForPageLoad stepKey="wait1"/>
+        <conditionalClick stepKey="expandGeneralGroup" selector="{{AdminConfigSmsNotificationsSection.generalGroup}}" dependentSelector="{{AdminConfigSmsNotificationsSection.checkIfGeneralGroupExpanded}}" visible="true"/>
+        <waitForElementVisible selector="{{SmsNotificationsConfigPage.generalGroup}}" stepKey="waitForGeneralConfigGroupOpen"/>
+        <selectOption selector="{{SmsNotificationsConfigPage.require_option}}" userInput="No" stepKey="makeOptinRequired"/>
+        <click selector="{{AdminConfigSmsNotificationsSection.generalGroup}}" stepKey="closeGeneralGroup"/>
+        <click selector="{{ContentManagementSection.Save}}" stepKey="saveConfig"/>
+    </actionGroup>
+    <actionGroup name="AllowSmsNotificationsOptinActionGroup">
+        <createData stepKey="setConfig" entity="AllowSmsNotificationsOptin"/>
+    </actionGroup>
+    <actionGroup name="DisallowSmsNotificationsOptinActionGroup">
+        <createData stepKey="setConfig" entity="DisallowSmsNotificationsOptin"/>
+    </actionGroup>
+</actionGroups>

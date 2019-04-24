@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Wagento SMS Notifications powered by LINK Mobility
+ *
+ * Sends transactional SMS notifications through the LINK Mobility messaging
+ * service.
+ *
+ * @author Joseph Leedy <joseph@wagento.com>
+ * @author Yair García Torres <yair.garcia@wagento.com>
+ * @copyright Copyright (c) Wagento (https://wagento.com/)
+ * @license https://opensource.org/licenses/OSL-3.0.php Open Software License 3.0
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <type name="Wagento\SMSNotifications\Controller\SmsNotifications\ManagePost">
+        <arguments>
+            <argument name="logger" xsi:type="object">Wagento\SMSNotifications\Logger\Logger</argument>
+            <argument name="customerSession" xsi:type="object">Magento\Customer\Model\Session\Proxy</argument>
+            <argument name="smsSender" xsi:type="object">Wagento\SMSNotifications\Model\SmsSender\WelcomeSender</argument>
+        </arguments>
+    </type>
+    <type name="Wagento\SMSNotifications\Observer\CustomerRegisterSuccessObserver">
+        <arguments>
+            <argument name="smsSender" xsi:type="object">Wagento\SMSNotifications\Model\SmsSender\WelcomeSender</argument>
+        </arguments>
+    </type>
+</config>

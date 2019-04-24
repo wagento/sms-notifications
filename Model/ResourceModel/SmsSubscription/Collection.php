@@ -1,41 +1,60 @@
 <?php
+/**
+ * Wagento SMS Notifications powered by LINK Mobility
+ *
+ * Sends transactional SMS notifications through the LINK Mobility messaging
+ * service.
+ *
+ * @package Wagento\SMSNotifications\Model\ResourceModel\SmsSubscription
+ * @author Joseph Leedy <joseph@wagento.com>
+ * @author Yair García Torres <yair.garcia@wagento.com>
+ * @copyright Copyright (c) Wagento (https://wagento.com/)
+ * @license https://opensource.org/licenses/OSL-3.0.php Open Software License 3.0
+ */
 
-namespace Linkmobility\Notifications\Model\ResourceModel\SmsSubscription;
+declare(strict_types=1);
 
-class Collection extends \Magento\Rule\Model\ResourceModel\Rule\Collection\AbstractCollection
+namespace Wagento\SMSNotifications\Model\ResourceModel\SmsSubscription;
+
+use Wagento\SMSNotifications\Model\ResourceModel\SmsSubscription as SmsSubscriptionResourceModel;
+use Wagento\SMSNotifications\Model\SmsSubscription as SmsSubscriptionModel;
+use Magento\Framework\Model\ResourceModel\Db\Collection\AbstractCollection;
+
+/**
+ * SMS Subscription Collection
+ *
+ * @package Wagento\SMSNotifications\Model\ResourceModel\SmsSubscription
+ * @author Yair García Torres <yair.garcia@wagento.com>
+ * @author Joseph Leedy <joseph@wagento.com>
+ */
+class Collection extends AbstractCollection
 {
+    /**
+     * {@inheritdoc}
+     */
+    protected $_idFieldName = 'sms_subscription_id';
 
     /**
-     * @param \Magento\Framework\Data\Collection\EntityFactory $entityFactory
-     * @param \Psr\Log\LoggerInterface $logger
-     * @param \Magento\Framework\Data\Collection\Db\FetchStrategyInterface $fetchStrategy
-     * @param \Magento\Framework\Event\ManagerInterface $eventManager
-     * @param \Magento\Framework\Stdlib\DateTime\TimezoneInterface $date
-     * @param mixed $connection
-     * @param \Magento\Framework\Model\ResourceModel\Db\AbstractDb $resource
+     * @return string[]
      */
-    public function __construct(
-        \Magento\Framework\Data\Collection\EntityFactory $entityFactory,
-        \Psr\Log\LoggerInterface $logger,
-        \Magento\Framework\Data\Collection\Db\FetchStrategyInterface $fetchStrategy,
-        \Magento\Framework\Event\ManagerInterface $eventManager,
-        \Magento\Framework\DB\Adapter\AdapterInterface $connection = null,
-        \Magento\Framework\Model\ResourceModel\Db\AbstractDb $resource = null
-    ) {
-        parent::__construct($entityFactory, $logger, $fetchStrategy, $eventManager, $connection, $resource);
+    public function getAllSmsTypes(): array
+    {
+        $smsTypesSelect = clone $this->getSelect();
+
+        $smsTypesSelect->reset(\Magento\Framework\DB\Select::ORDER);
+        $smsTypesSelect->reset(\Magento\Framework\DB\Select::LIMIT_COUNT);
+        $smsTypesSelect->reset(\Magento\Framework\DB\Select::LIMIT_OFFSET);
+        $smsTypesSelect->reset(\Magento\Framework\DB\Select::COLUMNS);
+        $smsTypesSelect->columns('sms_type', 'main_table');
+
+        return $this->getConnection()->fetchCol($smsTypesSelect, $this->_bindParams);
     }
 
     /**
-     * Set resource model and determine field mapping
-     *
-     * @return void
+     * {@inheritdoc}
      */
     protected function _construct()
     {
-        $this->_init(
-            'Linkmobility\Notifications\Model\SmsSubscription',
-            'Linkmobility\Notifications\Model\ResourceModel\SmsSubscription'
-        );
+        $this->_init(SmsSubscriptionModel::class, SmsSubscriptionResourceModel::class);
     }
-
 }

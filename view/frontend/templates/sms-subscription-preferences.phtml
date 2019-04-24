@@ -1,0 +1,35 @@
+<?php
+/**
+ * Wagento SMS Notifications powered by LINK Mobility
+ *
+ * Sends transactional SMS notifications through the LINK Mobility messaging
+ * service.
+ *
+ * @author Joseph Leedy <joseph@wagento.com>
+ * @author Yair García Torres <yair.garcia@wagento.com>
+ * @copyright Copyright (c) Wagento (https://wagento.com/)
+ * @license https://opensource.org/licenses/OSL-3.0.php Open Software License 3.0
+ */
+
+/** @var \Magento\Framework\View\Element\Template $block */
+
+$groupedSmsTypes = $block->getData('sms_types_view_model')->getGroupedSmsTypes();
+?>
+<div data-bind="scope: 'sms-subscription-preferences-component'" class="sms-subscription-preferences-container">
+    <!-- ko template: getTemplate() --><!-- /ko -->
+</div>
+<script type="text/x-magento-init">
+    {
+        "*": {
+            "Magento_Ui/js/core/app": {
+                "components": {
+                    "sms-subscription-preferences-component": {
+                        "component": "Wagento_SMSNotifications/js/view/sms-subscription-preferences",
+                        "groupedSmsTypes": <?= /* @noEscape */ \json_encode($groupedSmsTypes) ?>,
+                        "modalTitle": "<?= $block->escapeJs(__('Text Notification Preferences')) ?>"
+                    }
+                }
+            }
+        }
+    }
+</script>

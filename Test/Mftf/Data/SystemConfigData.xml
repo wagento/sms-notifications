@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+/**
+ * Wagento SMS Notifications powered by LINK Mobility
+ *
+ * Sends transactional SMS notifications through the LINK Mobility messaging
+ * service.
+ *
+ * @author Joseph Leedy <joseph@wagento.com>
+ * @author Yair García Torres <yair.garcia@wagento.com>
+ * @copyright Copyright (c) Wagento (https://wagento.com/)
+ * @license https://opensource.org/licenses/OSL-3.0.php Open Software License 3.0
+ */
+-->
+<entities xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:mftf:DataGenerator/etc/dataProfileSchema.xsd">
+    <entity name="SmsNotificationsEnabledYes" type="sms_notifications_enabled_value">
+        <data key="value">1</data>
+    </entity>
+    <entity name="SmsNotificationsEnabledNo" type="sms_notifications_enabled_value">
+        <data key="value">0</data>
+    </entity>
+    <entity name="EnableSmsNotifications" type="sms_notifications_config">
+        <requiredEntity type="sms_notifications_enabled_value">SmsNotificationsEnabledYes</requiredEntity>
+    </entity>
+    <entity name="DisableSmsNotifications" type="sms_notifications_config">
+        <requiredEntity type="sms_notifications_enabled_value">SmsNotificationsEnabledNo</requiredEntity>
+    </entity>
+    <entity name="SmsNotificationsRequireOptinYes" type="sms_notifications_require_optin_value">
+        <data key="value">1</data>
+    </entity>
+    <entity name="SmsNotificationsRequireOptinNo" type="sms_notifications_require_optin_value">
+        <data key="value">0</data>
+    </entity>
+    <entity name="AllowSmsNotificationsOptin" type="sms_notifications_config">
+        <requiredEntity type="sms_notifications_require_optin_value">SmsNotificationsRequireOptinYes</requiredEntity>
+    </entity>
+    <entity name="DisallowSmsNotificationsOptin" type="sms_notifications_config">
+        <requiredEntity type="sms_notifications_require_optin_value">SmsNotificationsRequireOptinNo</requiredEntity>
+    </entity>
+</entities>

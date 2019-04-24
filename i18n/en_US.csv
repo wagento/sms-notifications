@@ -1,0 +1,158 @@
+"Could not get customer to subscribe to SMS notification.","Could not get customer to subscribe to SMS notification."
+"Could not get customer to subscribe to SMS notifications.","Could not get customer to subscribe to SMS notifications."
+"Could not get customer to unsubscribe from SMS notification.","Could not get customer to unsubscribe from SMS notification."
+"Could not get customer to unsubscribe from SMS notifications.","Could not get customer to unsubscribe from SMS notifications."
+"Please select an SMS notification to subscribe the customer to.","Please select an SMS notification to subscribe the customer to."
+"The customer has been subscribed to the SMS notification.","The customer has been subscribed to the SMS notification."
+"Something went wrong while subscribing the customer to the SMS notification.","Something went wrong while subscribing the customer to the SMS notification."
+"Could not subscribe customer to SMS notification. Error: %1","Could not subscribe customer to SMS notification. Error: %1"
+"The customer has been unsubscribed from the SMS notification.","The customer has been unsubscribed from the SMS notification."
+"Something went wrong while unsubscribing the customer from the SMS notification.","Something went wrong while unsubscribing the customer from the SMS notification."
+"The customer could not be subscribed to 1 SMS notification.","The customer could not be subscribed to 1 SMS notification."
+"The customer could not be subscribed to %1 SMS notifications.","The customer could not be subscribed to %1 SMS notifications."
+"The customer has been subscribed to 1 SMS notification.","The customer has been subscribed to 1 SMS notification."
+"The customer has been subscribed to %1 SMS notifications.","The customer has been subscribed to %1 SMS notifications."
+"Something went wrong while subscribing the customer to the SMS notifications.","Something went wrong while subscribing the customer to the SMS notifications."
+"Could not subscribe customer to SMS notifications. Error: %1","Could not subscribe customer to SMS notifications. Error: %1"
+"Could not unsubscribe customer from SMS notification. Error: %1","Could not unsubscribe customer from SMS notification. Error: %1"
+"The customer could not be unsubscribed from 1 SMS notification.","The customer could not be unsubscribed from 1 SMS notification."
+"The customer could not be unsubscribed from %1 SMS notifications.","The customer could not be unsubscribed from %1 SMS notifications."
+"The customer has been unsubscribed from 1 SMS notification.","The customer has been unsubscribed from 1 SMS notification."
+"The customer has been unsubscribed from %1 SMS notifications.","The customer has been unsubscribed from %1 SMS notifications."
+"Something went wrong while unsubscribing the customer from the SMS notifications.","Something went wrong while unsubscribing the customer from the SMS notifications."
+"Could not unsubscribe customer from SMS notifications. Error: %1","Could not unsubscribe customer from SMS notifications. Error: %1"
+"Something went wrong while saving your text notification preferences.","Something went wrong while saving your text notification preferences."
+"Could not get ID of customer to save SMS preferences for.","Could not get ID of customer to save SMS preferences for."
+"Invalid Form Key. Please refresh the page.","Invalid Form Key. Please refresh the page."
+"You could not be unsubscribed from 1 text notification.","You could not be unsubscribed from 1 text notification."
+"You could not be unsubscribed from %1 text notifications.","You could not be unsubscribed from %1 text notifications."
+"You have been unsubscribed from 1 text notification.","You have been unsubscribed from 1 text notification."
+"You have been unsubscribed from %1 text notifications.","You have been unsubscribed from %1 text notifications."
+"You could not be subscribed to 1 text notification.","You could not be subscribed to 1 text notification."
+"You could not be subscribed to %1 text notifications.","You could not be subscribed to %1 text notifications."
+"You have been subscribed to 1 text notification.","You have been subscribed to 1 text notification."
+"You have been subscribed to %1 text notifications.","You have been subscribed to %1 text notifications."
+"Your mobile telephone number could not be updated.","Your mobile telephone number could not be updated."
+"Could not save mobile telephone number. Error: %1","Could not save mobile telephone number. Error: %1"
+"Your mobile telephone number has been updated.","Your mobile telephone number has been updated."
+"The API settings are not configured properly.","The API settings are not configured properly."
+"The SMS message was sent successfully.","The SMS message was sent successfully."
+"Customer with ID %1 is already subscribed to ""%2"" SMS notification.","Customer with ID %1 is already subscribed to ""%2"" SMS notification."
+"Could not get customer by ID. Error: %1","Could not get customer by ID. Error: %1"
+"SMS Notification Subscription with ID ""%1"" does not exist.","SMS Notification Subscription with ID ""%1"" does not exist."
+"Validator must be an instance of SmsSubscriptionValidator.","Validator must be an instance of SmsSubscriptionValidator."
+"Validation Rules object must be an instance of SmsSubscriptionValidationRules.","Validation Rules object must be an instance of SmsSubscriptionValidationRules."
+"Model to validate must be an instance of SmsSubscription.","Model to validate must be an instance of SmsSubscription."
+"Validator must be an instance of SourceValidator.","Validator must be an instance of SourceValidator."
+"Validation Rules object must be an instance of SourceValidationRules.","Validation Rules object must be an instance of SourceValidationRules."
+"Model to validate must be an instance of Source.","Model to validate must be an instance of Source."
+"Customer ID is required.","Customer ID is required."
+"SMS Type is required.","SMS Type is required."
+"""%value%"" is not a valid type of SMS notification.","""%value%"" is not a valid type of SMS notification."
+"Source is required.","Source is required."
+"Source must be a numeric short number.","Source must be a numeric short number."
+"Source is too short.","Source is too short."
+"Source is too long.","Source is too long."
+"Source may only contain the characters A-Z or a-z, or digits 0-9.","Source may only contain the characters A-Z or a-z, or digits 0-9."
+"Source must start with a plus (""+"").","Source must start with a plus (""+"")."
+"Order placed successfully","Order placed successfully"
+"Order updated","Order updated"
+"Order shipped","Order shipped"
+"Order refunded","Order refunded"
+"Order canceled","Order canceled"
+"Order placed on hold","Order placed on hold"
+"Order hold released","Order hold released"
+"An SMS notification type must be selected. Please choose at least one and try again.","An SMS notification type must be selected. Please choose at least one and try again."
+"Could not get JSON file of country telephone prefixes to import.","Could not get JSON file of country telephone prefixes to import."
+"Could not parse file containing country telephone prefixes as JSON. Error: ""%1"".","Could not parse file containing country telephone prefixes as JSON. Error: ""%1""."
+"Unknown error","Unknown error"
+Unsubscribe,Unsubscribe
+"Delete SMS Subscription","Delete SMS Subscription"
+"Are you sure that you want to delete this SMS Subscription?","Are you sure that you want to delete this SMS Subscription?"
+Subscribe,Subscribe
+Subscribed,Subscribed
+"Not Subscribed","Not Subscribed"
+"Could not get ID of customer to retrieve SMS subscriptions for.","Could not get ID of customer to retrieve SMS subscriptions for."
+"Version %1","Version %1"
+"User Guide","User Guide"
+"Plans and Pricing","Plans and Pricing"
+"Sign Up For An Account","Sign Up For An Account"
+"Learn more about our SMS services","Learn more about our SMS services"
+"General Configuration","General Configuration"
+"Notification Preferences","Notification Preferences"
+"I wish to receive notifications about my:","I wish to receive notifications about my:"
+"All notifications","All notifications"
+Save,Save
+"* Required Fields","* Required Fields"
+"Text Notification Preferences","Text Notification Preferences"
+"Terms and Conditions","Terms and Conditions"
+"Mobile Phone Number","Mobile Phone Number"
+Country,Country
+"Phone Number","Phone Number"
+"Send me text notifications about my order","Send me text notifications about my order"
+Preferences,Preferences
+"I Agree","I Agree"
+Cancel,Cancel
+"SMS Subscriptions","SMS Subscriptions"
+View,View
+Manage,Manage
+Configuration,Configuration
+"SMS Notifications","SMS Notifications"
+"powered by","powered by"
+"<p>Wagento SMS Notifications allows your customers to subscribe to transactional text messages. Keep your customers engaged by providing them with the following benefits:</p>
+<ul>
+    <li>Boost your customer's confidence in knowing that they've successfully placed their order</li>
+    <li>Notify your customer once their order has been shipped</li>
+    <li>Instantly alert your customer as soon as you update, refund or cancel their order</li>
+</ul>","<p>Wagento SMS Notifications allows your customers to subscribe to transactional text messages. Keep your customers engaged by providing them with the following benefits:</p>
+<ul>
+    <li>Boost your customer's confidence in knowing that they've successfully placed their order</li>
+    <li>Notify your customer once their order has been shipped</li>
+    <li>Instantly alert your customer as soon as you update, refund or cancel their order</li>
+</ul>"
+"General Settings","General Settings"
+Enabled,Enabled
+"Require Opt-in","Require Opt-in"
+"If ""No,"" ""Subscribe to text notifications"" checkbox will automatically be checked on customer registration page.","If ""No,"" ""Subscribe to text notifications"" checkbox will automatically be checked on customer registration page."
+"Show Terms After Opt-in","Show Terms After Opt-in"
+"If ""Yes,"" a welcome message will be sent after the customer subscribes to SMS notifications.","If ""Yes,"" a welcome message will sent after the customer subscribes to SMS notifications."
+"API Configuration","API Configuration"
+"API Username","API Username"
+"API Password","API Password"
+"Platform ID","Platform ID"
+"Platform Partner ID","Platform Partner ID"
+"Gate ID","Gate ID"
+"Source Type","Source Type"
+Source,Source
+"Short Number","Short Number"
+Alphanumeric,Alphanumeric
+"Phone Number","Phone Number"
+"Source format is based on selected Source Type:
+<ul type=""none"" class=""note"">
+    <li><strong>Short Number:</strong> 1-14 digit numeric code (length depends on country, e.g. ""12345"")</li>
+    <li><strong>Alphanumeric:</strong> Up to 11 letters or numbers (A-Z, a-z and 0-9, e.g. ""ABC123"")</li>
+    <li><strong>Phone number:</strong> Mobile number in international format (starting with ""+"", e.g. ""+1-555-555-1234"")</li>
+</ul>","Source format is based on selected Source Type:
+<ul type=""none"" class=""note"">
+    <li><strong>Short Number:</strong> 1-14 digit numeric code (length depends on country, e.g. ""12345"")</li>
+    <li><strong>Alphanumeric:</strong> Up to 11 letters or numbers (A-Z, a-z and 0-9, e.g. ""ABC123"")</li>
+    <li><strong>Phone number:</strong> Mobile number in international format (starting with ""+"", e.g. ""+1-555-555-1234"")</li>
+</ul>"
+"Message Templates","Message Templates"
+"<strong>Note:</strong> We recommend limiting messages to 160 characters or less.","<strong>Note:</strong> We recommend limiting messages to 160 characters or less."
+"Subscription Confirmation (Welcome)","Subscription Confirmation (Welcome)"
+"Order Placed","Order Placed"
+"Order Updated","Order Updated"
+"Order Shipped","Order Shipped"
+"Order Refunded","Order Refunded"
+"Order Canceled","Order Canceled"
+"Order Held","Order Held"
+"Order Hold Released","Order Hold Released"
+"Developer Settings","Developer Settings"
+"Enable Debug Logging","Enable Debug Logging"
+"Delete selected SMS subscriptions?","Delete selected SMS subscriptions?"
+"Delete SMS Subscriptions","Delete SMS Subscriptions"
+Notification,Notification
+Status,Status
+"My Text Notifications","My Text Notifications"
+Order,Order

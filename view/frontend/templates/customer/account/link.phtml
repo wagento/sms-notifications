@@ -1,0 +1,30 @@
+<?php
+/**
+ * Wagento SMS Notifications powered by LINK Mobility
+ *
+ * Sends transactional SMS notifications through the LINK Mobility messaging
+ * service.
+ *
+ * @author Joseph Leedy <joseph@wagento.com>
+ * @author Yair García Torres <yair.garcia@wagento.com>
+ * @copyright Copyright (c) Wagento (https://wagento.com/)
+ * @license https://opensource.org/licenses/OSL-3.0.php Open Software License 3.0
+ */
+
+/** @var \Magento\Framework\View\Element\Html\Link\Current $block */
+?>
+<li class="nav item<?= $block->isCurrent() || $block->getIsHighlighted() ? ' current' : '' ?>" id="sms-notifications-manage-link">
+    <?php if (!$block->isCurrent()): ?>
+    <a href="<?= $block->escapeHtml($block->getHref()) ?>"<?= $block->getTitle() ? ' title="' . $block->escapeHtmlAttr(__($block->getTitle())) . '"' : '' ?>>
+    <?php endif ?>
+    <?php if ($block->isCurrent() || $block->getIsHighlighted()): ?>
+        <strong>
+    <?php endif ?>
+        <?= $block->escapeHtml(__($block->getLabel())) ?>
+    <?php if ($block->isCurrent() || $block->getIsHighlighted()): ?>
+        </strong>
+    <?php endif ?>
+    <?php if (!$block->isCurrent()): ?>
+    </a>
+    <?php endif ?>
+</li>

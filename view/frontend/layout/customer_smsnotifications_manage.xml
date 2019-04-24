@@ -1,0 +1,34 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Wagento SMS Notifications powered by LINK Mobility
+ *
+ * Sends transactional SMS notifications through the LINK Mobility messaging
+ * service.
+ *
+ * @author Joseph Leedy <joseph@wagento.com>
+ * @author Yair García Torres <yair.garcia@wagento.com>
+ * @copyright Copyright (c) Wagento (https://wagento.com/)
+ * @license https://opensource.org/licenses/OSL-3.0.php Open Software License 3.0
+ */
+-->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <update handle="customer_account"/>
+    <body>
+        <referenceBlock name="page.main.title">
+            <action method="setPageTitle">
+                <argument translate="true" name="title" xsi:type="string">My Text Notifications</argument>
+            </action>
+        </referenceBlock>
+        <referenceContainer name="content">
+            <block class="Magento\Framework\View\Element\Template" name="customer.sms_notifications.manage" as="customer_smsnotifications_manage" template="Wagento_SMSNotifications::customer/smsnotifications/manage.phtml" cacheable="false">
+                <arguments>
+                    <argument name="sms_types_view_model" xsi:type="object">Wagento\SMSNotifications\ViewModel\SmsTypes</argument>
+                    <argument name="sms_subscriptions_view_model" xsi:type="object">Wagento\SMSNotifications\ViewModel\CustomerSmsSubscriptions</argument>
+                    <argument name="mobile_telephone_view_model" xsi:type="object">Wagento\SMSNotifications\ViewModel\MobileTelephone</argument>
+                    <argument name="telephone_prefixes_view_model" xsi:type="object">Wagento\SMSNotifications\ViewModel\TelephonePrefixes</argument>
+                </arguments>
+            </block>
+        </referenceContainer>
+    </body>
+</page>

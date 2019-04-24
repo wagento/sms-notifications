@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+/**
+ * Wagento SMS Notifications powered by LINK Mobility
+ *
+ * Sends transactional SMS notifications through the LINK Mobility messaging
+ * service.
+ *
+ * @author Joseph Leedy <joseph@wagento.com>
+ * @author Yair García Torres <yair.garcia@wagento.com>
+ * @copyright Copyright (c) Wagento (https://wagento.com/)
+ * @license https://opensource.org/licenses/OSL-3.0.php Open Software License 3.0
+ */
+-->
+<tests xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:mftf:Test/etc/testSchema.xsd">
+    <test name="StorefrontCreateCustomerSmsSubscribeVisibleTest">
+        <annotations>
+            <features value="Customer"/>
+            <stories value="Subscribe customer to SMS notifications during registration on storefront"/>
+            <title value="SMS subscription checkbox visible on storefront customer registration"/>
+            <description value="Verifies that the SMS subscription checkbox is visible on the storefront registration page if module is enabled."/>
+            <severity value="CRITICAL"/>
+            <testCaseId value="REED-73"/>
+            <group value="wagento"/>
+            <group value="sms_notifications"/>
+            <group value="sms_subscriptions"/>
+            <group value="customer"/>
+            <group value="create"/>
+        </annotations>
+        <before>
+            <actionGroup ref="EnableSmsNotificationsActionGroup" stepKey="enableSmsNotifications"/>
+        </before>
+        <amOnPage stepKey="amOnStorefrontPage" url="/"/>
+        <waitForPageLoad stepKey="waitForStorefrontPage"/>
+        <click selector="{{StorefrontPanelHeaderSection.createAnAccountLink}}" stepKey="clickOnCreateAccountLink"/>
+        <seeElement selector="{{StorefrontCustomerCreateFormSection.smsSubscribeCheckbox}}" stepKey="smsSubscribeCheckboxRendered"/>
+    </test>
+</tests>

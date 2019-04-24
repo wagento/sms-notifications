@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+/**
+ * Wagento SMS Notifications powered by LINK Mobility
+ *
+ * Sends transactional SMS notifications through the LINK Mobility messaging
+ * service.
+ *
+ * @author Joseph Leedy <joseph@wagento.com>
+ * @author Yair García Torres <yair.garcia@wagento.com>
+ * @copyright Copyright (c) Wagento (https://wagento.com/)
+ * @license https://opensource.org/licenses/OSL-3.0.php Open Software License 3.0
+ */
+-->
+<sections xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:mftf:Page/etc/SectionObject.xsd">
+    <section name="StorefrontSmsSubscriptionPreferencesSection">
+        <element name="accountLink" type="button" selector="#sms-notifications-manage-link"/>
+        <element name="preferencesForm" type="block" selector="#form-smsnotifications-manage"/>
+        <element name="selectAllCheckbox" type="checkbox" selector="#select-all-sms-types"/>
+        <element name="smsTypeCheckboxes" type="checkboxset" selector="#form-smsnotifications-manage .checkbox.sms-type"/>
+        <element name="saveButton" type="button" selector="#form-smsnotifications-manage button.action.primary"/>
+    </section>
+</sections>

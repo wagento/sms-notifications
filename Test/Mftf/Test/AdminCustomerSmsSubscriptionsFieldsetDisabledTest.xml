@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+/**
+ * Wagento SMS Notifications powered by LINK Mobility
+ *
+ * Sends transactional SMS notifications through the LINK Mobility messaging
+ * service.
+ *
+ * @author Joseph Leedy <joseph@wagento.com>
+ * @author Yair García Torres <yair.garcia@wagento.com>
+ * @copyright Copyright (c) Wagento (https://wagento.com/)
+ * @license https://opensource.org/licenses/OSL-3.0.php Open Software License 3.0
+ */
+-->
+<tests xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:mftf:Test/etc/testSchema.xsd">
+    <test name="AdminCustomerSmsSubscriptionsFieldsetDisabledTest">
+        <annotations>
+            <features value="Customer"/>
+            <stories value="View SMS subscriptions in Admin"/>
+            <title value="SMS subscriptions tab not visible"/>
+            <description value="Logs into Admin, selects a customer, and verifies that the SMS Subscriptions tab is not added if SMS notifications are disabled."/>
+            <severity value="CRITICAL"/>
+            <testCaseId value="REED-77"/>
+            <group value="wagento"/>
+            <group value="sms_notifications"/>
+            <group value="sms_subscriptions"/>
+            <group value="customer"/>
+        </annotations>
+        <before>
+            <createData entity="Simple_US_Customer" stepKey="createCustomer"/>
+            <actionGroup ref="LoginAsAdmin" stepKey="login"/>
+            <actionGroup ref="DisableSmsNotificationsActionGroup" stepKey="disableSmsNotifications"/>
+        </before>
+        <after>
+            <deleteData createDataKey="createCustomer" stepKey="deleteCustomer"/>
+            <actionGroup ref="EnableSmsNotificationsActionGroup" stepKey="enableSmsNotifications"/>
+            <actionGroup ref="logout" stepKey="logout"/>
+        </after>
+        <actionGroup ref="OpenEditCustomerFromAdminActionGroup" stepKey="OpenEditCustomerFrom">
+            <argument name="customer" value="$$createCustomer$$"/>
+        </actionGroup>
+        <dontSeeElement selector="{{AdminCustomerSmsSubscriptionsSection.smsSubscriptionsTab}}" stepKey="smsSubscriptionsTabNotVisible"/>
+    </test>
+</tests>

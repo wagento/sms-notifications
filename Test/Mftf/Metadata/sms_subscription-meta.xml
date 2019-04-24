@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+/**
+ * Wagento SMS Notifications powered by LINK Mobility
+ *
+ * Sends transactional SMS notifications through the LINK Mobility messaging
+ * service.
+ *
+ * @author Joseph Leedy <joseph@wagento.com>
+ * @author Yair García Torres <yair.garcia@wagento.com>
+ * @copyright Copyright (c) Wagento (https://wagento.com/)
+ * @license https://opensource.org/licenses/OSL-3.0.php Open Software License 3.0
+ */
+-->
+<operations xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:mftf:DataGenerator/etc/dataOperation.xsd">
+    <operation name="CreateSmsSubscription" dataType="sms_subscription" type="create" auth="adminOauth" url="/V1/sms_subscriptions" method="POST">
+        <contentType>application/json</contentType>
+        <object dataType="sms_subscription" key="sms_subscription">
+            <field key="sms_subscription_id">integer</field>
+            <field key="customer_id">string</field>
+            <field key="sms_type">string</field>
+        </object>
+    </operation>
+    <operation name="DeleteSmsSubscription" dataType="sms_subscription" type="delete" auth="adminOauth" url="/V1/sms_subscriptions/{id}" method="DELETE">
+        <contentType>application/json</contentType>
+    </operation>
+</operations>

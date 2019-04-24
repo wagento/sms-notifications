@@ -1,0 +1,43 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Wagento SMS Notifications powered by LINK Mobility
+ *
+ * Sends transactional SMS notifications through the LINK Mobility messaging
+ * service.
+ *
+ * @author Joseph Leedy <joseph@wagento.com>
+ * @author Yair García Torres <yair.garcia@wagento.com>
+ * @copyright Copyright (c) Wagento (https://wagento.com/)
+ * @license https://opensource.org/licenses/OSL-3.0.php Open Software License 3.0
+ */
+-->
+<tests xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:mftf:Test/etc/testSchema.xsd">
+    <test name="StorefrontCustomerAccountSmsPreferencesLinkVisibilityTest">
+        <annotations>
+            <features value="Customer"/>
+            <stories value="Update customer SMS notification preferences from storefront"/>
+            <title value="SMS Subscription Preferences link not visible"/>
+            <description value="Ensures that the SMS Subscription Preferences link is not added to the Customer Account links if module is disabled."/>
+            <severity value="CRITICAL"/>
+            <testCaseId value="REED-109"/>
+            <group value="wagento"/>
+            <group value="sms_notifications"/>
+            <group value="sms_subscriptions"/>
+            <group value="customer"/>
+            <group value="manage"/>
+        </annotations>
+        <before>
+            <actionGroup ref="DisableSmsNotificationsActionGroup" stepKey="disableSmsNotifications"/>
+            <createData entity="Simple_US_Customer" stepKey="customer"/>
+        </before>
+        <after>
+            <deleteData createDataKey="customer" stepKey="deleteCustomer"/>
+        </after>
+        <actionGroup ref="LoginToStorefrontActionGroup" stepKey="loginToStorefrontAccount">
+            <argument name="Customer" value="$$customer$$"/>
+        </actionGroup>
+        <amOnPage url="customer/account/index" stepKey="navigateToCustomerAccountPage"/>
+        <dontSeeElement selector="{{StorefrontSmsSubscriptionPreferencesSection.accountLink}}" stepKey="smsPreferencesAccountLinkNotVisible"/>
+    </test>
+</tests>

@@ -1,35 +1,143 @@
-<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../../../Magento/Config/etc/system_file.xsd">
+<?xml version="1.0"?>
+<!--
+/**
+ * Wagento SMS Notifications powered by LINK Mobility
+ *
+ * Sends transactional SMS notifications through the LINK Mobility messaging
+ * service.
+ *
+ * @author Joseph Leedy <joseph@wagento.com>
+ * @author Yair García Torres <yair.garcia@wagento.com>
+ * @copyright Copyright (c) Wagento (https://wagento.com/)
+ * @license https://opensource.org/licenses/OSL-3.0.php Open Software License 3.0
+ */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_file.xsd">
     <system>
-        <section id="linkmobility" translate="label" sortOrder="302" showInDefault="1" showInWebsite="1" showInStore="1">
+        <section id="sms_notifications" translate="label" sortOrder="1200" showInDefault="1" showInWebsite="1" showInStore="1">
             <class>separator-top</class>
-            <label>Linkmobility SMS</label>
-            <resource>Linkmobility_Notifications::sms_configuration</resource>
-            <tab>sales</tab>
-            <group id="sms_notifications" translate="label" type="text" sortOrder="0" showInDefault="1" showInWebsite="1" showInStore="1">
-                <label>Linkmobility SMS notifications settings</label>
-                <field id="active" translate="label" type="select" sortOrder="0" showInDefault="1" showInWebsite="1" showInStore="1">
+            <label>SMS Notifications</label>
+            <resource>Wagento_SMSNotifications::sms_configuration</resource>
+            <tab>general</tab>
+            <group id="info" translate="comment" type="text" sortOrder="5" showInDefault="1" showInWebsite="1" showInStore="0">
+                <frontend_model>Wagento\SMSNotifications\Block\System\Config\Form\Fieldset\Info</frontend_model>
+                <comment>
+                    <![CDATA[
+<p>Wagento SMS Notifications allows your customers to subscribe to transactional text messages. Keep your customers engaged by providing them with the following benefits:</p>
+<ul>
+    <li>Boost your customer's confidence in knowing that they've successfully placed their order</li>
+    <li>Notify your customer once their order has been shipped</li>
+    <li>Instantly alert your customer as soon as you update, refund or cancel their order</li>
+</ul>
+                    ]]>
+                </comment>
+                <help_url>https://docs.wagento.com/extensions/sms-notifications/UserGuide.pdf</help_url>
+                <more_url>https://docs.wagento.com/extensions/sms-notifications/LinkMobilityPricing.pdf</more_url>
+            </group>
+            <group id="general" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>General Settings</label>
+                <attribute type="expanded">1</attribute>
+                <field id="enabled" translate="label" type="select" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="0">
                     <label>Enabled</label>
                     <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
                 </field>
-                <field id="username" translate="label" type="text" sortOrder="1" showInDefault="1" showInWebsite="0" showInStore="0">
-                    <label>Username</label>
+                <field id="require_optin" translate="label comment" type="select" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="0">
+                    <label>Require Opt-in</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <comment><![CDATA[If "No," "Subscribe to text notifications" will automatically be checked on customer registration page.]]></comment>
                 </field>
-                <field id="password" translate="label" type="obscure" sortOrder="2" showInDefault="1" showInWebsite="0" showInStore="0">
-                    <label>Password</label>
+                <field id="terms_and_conditions" translate="label" type="textarea" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="0">
+                    <label>Terms and Conditions</label>
+                </field>
+                <field id="show_terms_after_optin" translate="label" type="select" sortOrder="40" showInDefault="1" showInWebsite="1" showInStore="0">
+                    <label>Show Terms After Opt-in</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <depends>
+                        <field id="require_optin">1</field>
+                    </depends>
+                </field>
+                <field id="send_welcome_message" translate="label comment" type="select" sortOrder="50" showInDefault="1" showInWebsite="1" showInStore="0">
+                    <label>Send Welcome Message</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+                    <comment><![CDATA[If "Yes," a welcome message will be sent after the customer subscribes to SMS notifications.]]></comment>
+                </field>
+            </group>
+            <group id="api" translate="label" type="text" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="0">
+                <label>API Configuration</label>
+                <field id="username" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="0">
+                    <label>API Username</label>
+                </field>
+                <field id="password" translate="label" type="obscure" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="0">
+                    <label>API Password</label>
                     <backend_model>Magento\Config\Model\Config\Backend\Encrypted</backend_model>
                 </field>
-                <field id="platform_id" translate="label" type="text" sortOrder="3" showInDefault="1" showInWebsite="0" showInStore="0">
+                <field id="platform_id" translate="label" type="obscure" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="0">
                     <label>Platform ID</label>
+                    <backend_model>Magento\Config\Model\Config\Backend\Encrypted</backend_model>
                 </field>
-                <field id="platform_partner_id" translate="label" type="text" sortOrder="4" showInDefault="1" showInWebsite="0" showInStore="0">
+                <field id="platform_partner_id" translate="label" type="obscure" sortOrder="40" showInDefault="1" showInWebsite="1" showInStore="0">
                     <label>Platform Partner ID</label>
+                    <backend_model>Magento\Config\Model\Config\Backend\Encrypted</backend_model>
                 </field>
-                <field id="gate_id" translate="label" type="text" sortOrder="5" showInDefault="1" showInWebsite="0" showInStore="0">
+                <field id="gate_id" translate="label" type="obscure" sortOrder="50" showInDefault="1" showInWebsite="1" showInStore="0">
                     <label>Gate ID</label>
+                    <backend_model>Magento\Config\Model\Config\Backend\Encrypted</backend_model>
                 </field>
-                <field id="source_number" translate="label" type="text" sortOrder="6" showInDefault="1" showInWebsite="0" showInStore="0">
-                    <label>Source Phone Number</label>
-                    <comment>A mobile number, international format, starting with +.</comment>
+                <field id="source_type" translate="label" type="select" sortOrder="60" showInDefault="1" showInWebsite="1" showInStore="0">
+                    <label>Source Type</label>
+                    <source_model>Wagento\SMSNotifications\Model\Config\Source\SourceType</source_model>
+                </field>
+                <field id="source" translate="label comment" type="text" sortOrder="70" showInDefault="1" showInWebsite="1" showInStore="0">
+                    <label>Source</label>
+                    <backend_model>Wagento\SMSNotifications\Model\Config\Backend\Source</backend_model>
+                    <comment>
+                        <![CDATA[
+Source format is based on selected Source Type:
+<ul type="none" class="note">
+    <li><strong>Short Number:</strong> 1-14 digit numeric code (length depends on country, e.g. "12345")</li>
+    <li><strong>Alphanumeric:</strong> Up to 11 letters or numbers (A-Z, a-z and 0-9, e.g. "ABC123")</li>
+    <li><strong>Phone number:</strong> Mobile number in international format (starting with "+", e.g. "+1-555-555-1234")</li>
+</ul>
+                        ]]>
+                    </comment>
+                </field>
+            </group>
+            <group id="templates" translate="label comment" type="text" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1">
+                <label>Message Templates</label>
+                <comment><![CDATA[<strong>Note:</strong> We recommend limiting messages to 160 characters or less.]]></comment>
+                <field id="welcome" translate="label" type="textarea" sortOrder="5" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Subscription Confirmation (Welcome)</label>
+                    <depends>
+                        <field id="sms_notifications/general/send_welcome_message">1</field>
+                    </depends>
+                </field>
+                <field id="order_placed" translate="label" type="textarea" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Order Placed</label>
+                </field>
+                <field id="order_invoiced" translate="label" type="textarea" sortOrder="20" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Order Invoiced</label>
+                </field>
+                <field id="order_shipped" translate="label" type="textarea" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Order Shipped</label>
+                </field>
+                <field id="order_refunded" translate="label" type="textarea" sortOrder="40" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Order Refunded</label>
+                </field>
+                <field id="order_canceled" translate="label" type="textarea" sortOrder="50" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Order Canceled</label>
+                </field>
+                <field id="order_held" translate="label" type="textarea" sortOrder="60" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Order Held</label>
+                </field>
+                <field id="order_released" translate="label" type="textarea" sortOrder="70" showInDefault="1" showInWebsite="1" showInStore="1">
+                    <label>Order Hold Released</label>
+                </field>
+            </group>
+            <group id="developer" translate="label" type="text" sortOrder="40" showInDefault="1" showInWebsite="0" showInStore="0">
+                <label>Developer Settings</label>
+                <field id="debug" translate="label" type="select" sortOrder="10" showInDefault="1" showInWebsite="0" showInStore="0">
+                    <label>Enable Debug Logging</label>
+                    <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
                 </field>
             </group>
         </section>

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+/**
+ * Wagento SMS Notifications powered by LINK Mobility
+ *
+ * Sends transactional SMS notifications through the LINK Mobility messaging
+ * service.
+ *
+ * @author Joseph Leedy <joseph@wagento.com>
+ * @author Yair García Torres <yair.garcia@wagento.com>
+ * @copyright Copyright (c) Wagento (https://wagento.com/)
+ * @license https://opensource.org/licenses/OSL-3.0.php Open Software License 3.0
+ */
+-->
+<tests xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:mftf:Test/etc/testSchema.xsd">
+    <test name="StorefrontCreateCustomerMobilePhoneVisibleTest">
+        <annotations>
+            <features value="Customer"/>
+            <stories value="Subscribe customer to SMS notifications during registration on storefront"/>
+            <title value="Mobile phone fields visible on storefront customer registration page"/>
+            <description value="Verifies that the mobile phone fields are visible on the storefront registration page if customer subscribes to SMS."/>
+            <severity value="CRITICAL"/>
+            <testCaseId value="REED-94"/>
+            <group value="wagento"/>
+            <group value="sms_notifications"/>
+            <group value="sms_attributes"/>
+            <group value="customer"/>
+            <group value="create"/>
+        </annotations>
+        <before>
+            <actionGroup ref="EnableSmsNotificationsActionGroup" stepKey="enableSmsNotifications"/>
+            <actionGroup ref="AllowSmsNotificationsOptinActionGroup" stepKey="allowSmsNotificationOptin"/>
+        </before>
+        <amOnPage stepKey="amOnStorefrontPage" url="/"/>
+        <waitForPageLoad stepKey="waitForStorefrontPage"/>
+        <click selector="{{StorefrontPanelHeaderSection.createAnAccountLink}}" stepKey="clickOnCreateAccountLink"/>
+        <checkOption selector="{{StorefrontCustomerCreateFormSection.smsSubscribeCheckbox}}" stepKey="subscribeToSmsNotifications"/>
+        <wait time="5" stepKey="wait1"/>
+        <click selector="{{StorefrontSmsTermsConditionsModalSection.agreeButton}}" stepKey="clickAgreeButton"/>
+        <wait time="5" stepKey="wait2"/>
+        <seeElement selector="{{StorefrontCustomerCreateFormSection.smsMobilePhonePrefixDropdown}}" stepKey="seeMobilePrefixDropdown"/>
+        <seeElement selector="{{StorefrontCustomerCreateFormSection.smsMobilePhoneNumberField}}" stepKey="seeMobileNumberField"/>
+    </test>
+</tests>

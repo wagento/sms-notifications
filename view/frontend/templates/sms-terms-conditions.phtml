@@ -1,0 +1,35 @@
+<?php
+/**
+ * Wagento SMS Notifications powered by LINK Mobility
+ *
+ * Sends transactional SMS notifications through the LINK Mobility messaging
+ * service.
+ *
+ * @author Joseph Leedy <joseph@wagento.com>
+ * @author Yair García Torres <yair.garcia@wagento.com>
+ * @copyright Copyright (c) Wagento (https://wagento.com/)
+ * @license https://opensource.org/licenses/OSL-3.0.php Open Software License 3.0
+ */
+
+/** @var \Magento\Framework\View\Element\Template $block */
+
+$modalContent = $block->getData('terms_conditions_view_model')->getContent();
+?>
+<div data-bind="scope: 'sms-terms-conditions-component'" class="sms-terms-conditions-container">
+    <!-- ko template: getTemplate() --><!-- /ko -->
+</div>
+<script type="text/x-magento-init">
+    {
+        "*": {
+            "Magento_Ui/js/core/app": {
+                "components": {
+                    "sms-terms-conditions-component": {
+                        "component": "Wagento_SMSNotifications/js/view/sms-terms-conditions",
+                        "modalTitle": "<?= $block->escapeJs(__('Terms and Conditions')) ?>",
+                        "modalContent": "<?= $block->escapeHtml($modalContent) ?>"
+                    }
+                }
+            }
+        }
+    }
+</script>

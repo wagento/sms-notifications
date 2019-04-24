@@ -1,0 +1,33 @@
+<!--
+/**
+ * Wagento SMS Notifications powered by LINK Mobility
+ *
+ * Sends transactional SMS notifications through the LINK Mobility messaging
+ * service.
+ *
+ * @author Joseph Leedy <joseph@wagento.com>
+ * @author Yair García Torres <yair.garcia@wagento.com>
+ * @copyright Copyright (c) Wagento (https://wagento.com/)
+ * @license https://opensource.org/licenses/OSL-3.0.php Open Software License 3.0
+ */
+-->
+<div id="sms-subscription-preferences-modal" data-role="sms-subscription-preferences" data-bind="afterRender: initModal">
+    <p data-bind="i18n: 'I wish to receive notifications about my:'"></p>
+    <div class="field choice sms-type select-all">
+        <input type="checkbox" id="sms-type-select-all" data-bind="checked: selectAllSmsTypes">
+        <label for="sms-type-select-all"><span data-bind="i18n: 'All notifications'"></span></label>
+    </div>
+    <!-- ko foreach: groupedSmsTypes -->
+    <div class="sms-type-group" data-bind="attr: {id: 'sms-type-group-' + groupName}">
+        <h2 data-bind="text: $t(title)"></h2>
+        <ul class="sms-type-list">
+            <!-- ko foreach: smsTypes -->
+            <li class="field choice sms-type">
+                <input type="checkbox" data-bind="attr: {id: 'sms-type-' + code}, checkedValue: code, checked: $parents[1].selectedSmsTypes" class="sms-type-checkbox">
+                <label data-bind="attr: {for: 'sms-type-' + code}" ><span data-bind="i18n: description"></span></label>
+            </li>
+            <!-- /ko -->
+        </ul>
+    </div>
+    <!-- /ko -->
+</div>

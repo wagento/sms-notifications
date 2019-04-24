@@ -1,16 +1,49 @@
 <?xml version="1.0"?>
-
+<!--
+/**
+ * Wagento SMS Notifications powered by LINK Mobility
+ *
+ * Sends transactional SMS notifications through the LINK Mobility messaging
+ * service.
+ *
+ * @author Joseph Leedy <joseph@wagento.com>
+ * @author Yair García Torres <yair.garcia@wagento.com>
+ * @copyright Copyright (c) Wagento (https://wagento.com/)
+ * @license https://opensource.org/licenses/OSL-3.0.php Open Software License 3.0
+ */
+-->
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
     <default>
-        <customer>
-            <linkmobility_notifications>
-                <active>0</active>
+        <sms_notifications>
+            <general>
+                <enabled>0</enabled>
+                <require_optin>1</require_optin>
+                <terms_and_conditions><![CDATA[By subscribing to our SMS notifications and providing your mobile number, you agree to allow us to send text messages to a phone number that you provide. We will only contact you regarding changes to your account and any orders that you place. You may choose which types of alerts to receive or opt-out at any time by visiting your Customer Account Dashboard after registration. We will not use your mobile number for marketing purposes nor will we sell it or give it away. We do not charge you to receive these messages, but message and data rates may be applied by your carrier.]]></terms_and_conditions>
+                <show_terms_after_optin>1</show_terms_after_optin>
+                <send_welcome_message>1</send_welcome_message>
+            </general>
+            <api>
                 <username/>
-                <password/>
-                <platform_id/>
-                <platform_partner_id/>
-                <gate_id/>
-            </linkmobility_notifications>
-        </customer>
+                <password backend_model="Magento\Config\Model\Config\Backend\Encrypted"/>
+                <platform_id backend_model="Magento\Config\Model\Config\Backend\Encrypted"/>
+                <platform_partner_id backend_model="Magento\Config\Model\Config\Backend\Encrypted"/>
+                <gate_id backend_model="Magento\Config\Model\Config\Backend\Encrypted"/>
+                <source_type>MSISDN</source_type>
+                <source/>
+            </api>
+            <templates>
+                <welcome>Thank you for subscribing to text notifications at {{store_name}}, {{customer_first_name}}. Reply HELP for help, STOP to cancel. Msg&amp;data rates may apply.</welcome>
+                <order_placed>Thank you for placing your order at {{store_name}}, {{customer_first_name}} (#{{order_id}}). We'll let you know when it ships or changes. Details: {{order_url}}.</order_placed>
+                <order_invoiced>Your order (#{{order_id}}) has been invoiced. Details: {{invoice_url}}.</order_invoiced>
+                <order_shipped>Your order (#{{order_id}}) has been shipped. Tracking: {{tracking_numbers}}</order_shipped>
+                <order_refunded>Your order (#{{order_id}}) has been refunded. Details: {{order_url}}.</order_refunded>
+                <order_canceled>Your order (#{{order_id}}) has been canceled. Details: {{order_url}}.</order_canceled>
+                <order_held>Your order (#{{order_id}}) has been placed on hold. Details: {{order_url}}.</order_held>
+                <order_released>Your order (#{{order_id}}) has been released from its hold. Details: {{order_url}}.</order_released>
+            </templates>
+            <developer>
+                <debug>0</debug>
+            </developer>
+        </sms_notifications>
     </default>
 </config>
