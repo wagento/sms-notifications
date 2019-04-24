@@ -55,7 +55,7 @@ class MessageServiceTest extends TestCase
 
         $message = 'Order #{{order_id}} has been placed at {{store_name}} by {{customer_name}}. View order: {{order_url}}';
 
-        $this->assertTrue($this->messageService->sendMessage($message, '+15555555678', 'order'));
+        $this->assertTrue($messageService->sendMessage($message, '+15555555678', 'order'));
     }
 
     private function getApiClientMock(): MockObject
