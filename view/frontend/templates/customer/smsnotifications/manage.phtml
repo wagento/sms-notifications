@@ -38,7 +38,7 @@ $mobileTelephoneNumber = $mobileTelephoneViewModel->getNumber() ?? '';
             <legend class="legend"><span><?= $block->escapeHtml(__('Notification Preferences')) ?></span></legend>
             <p><?= $block->escapeHtml(__('I wish to receive notifications about my:')) ?></p>
             <div class="field choice">
-                <input type="checkbox" id="select-all-sms-types" class="checkbox" title="<?= $block->escapeHtmlAttr(__('All notifications')) ?>" data-role="checkbox-toggle" data-mage-init='{"lmCheckboxToggler": {"checkboxSelector": ".checkbox.sms-type"}}'<?php if (count($smsTypes) === count($subscribedSmsTypes)): ?> checked<?php endif ?>>
+                <input type="checkbox" id="select-all-sms-types" class="checkbox" title="<?= $block->escapeHtmlAttr(__('All notifications')) ?>" data-role="checkbox-toggle" data-mage-init='{"wagentoCheckboxToggler": {"checkboxSelector": ".checkbox.sms-type"}}'<?php if (count($smsTypes) === count($subscribedSmsTypes)): ?> checked<?php endif ?>>
                 <label class="label" for="select-all-sms-types"><span><?= $block->escapeHtml(__('All notifications')) ?></span></label>
             </div>
             <?php foreach ($groupedSmsTypes as $group): ?>

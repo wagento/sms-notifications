@@ -14,7 +14,7 @@ define([
     'jquery'
 ],
 function ($) {
-    $.widget('linkMobility.checkboxToggler', {
+    $.widget('wagento.checkboxToggler', {
         options: {
             checkboxSelector: '[data-role-toggleable-checkbox]'
         },
@@ -41,6 +41,6 @@ function ($) {
     });
 
     return {
-        'lmCheckboxToggler': $.linkMobility.checkboxToggler
+        'wagentoCheckboxToggler': $.wagento.checkboxToggler
     };
 });

@@ -13,7 +13,7 @@
 var config = {
     map: {
         '*': {
-            lmCheckboxToggler: 'Wagento_SMSNotifications/js/checkbox-toggler',
+            wagentoCheckboxToggler: 'Wagento_SMSNotifications/js/checkbox-toggler',
             smsNotifications: 'Wagento_SMSNotifications/js/model/sms-notifications'
         }
     }
