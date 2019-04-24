@@ -63,9 +63,8 @@ class Info extends Fieldset
             ->setTemplate(self::TEMPLATE)
             ->setData([
                 'info_text' => $element->getComment() ?? '',
-                'documentation_url' => $group['help_url'] ?: '#',
-                'overview_url' => $group['more_url'] ?: '#',
-                'signup_url' => $group['demo_link'] ?: '#',
+                'help_url' => $group['help_url'] ?: '#',
+                'more_url' => $group['more_url'] ?: '#',
                 'module_version' => $this->moduleResource->getDbVersion('Wagento_SMSNotifications') ?: ''
             ]);
 

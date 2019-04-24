@@ -23,18 +23,16 @@
                 <frontend_model>Wagento\SMSNotifications\Block\System\Config\Form\Fieldset\Info</frontend_model>
                 <comment>
                     <![CDATA[
-<p>LINK Mobility SMS Notifications allows your customers to subscribe to transactional text messages regarding their order and receive them on their mobile telephone. Keep your customers engaged by <a href="https://www.linkmobility.com/" target="_blank">signing up for an account</a> today.</p>
-<p><strong>Benefits:</strong></p>
+<p>Wagento SMS Notifications allows your customers to subscribe to transactional text messages. Keep your customers engaged by providing them with the following benefits:</p>
 <ul>
-    <li>Provide your customer with confidence in knowing that they've successfully placed their order</li>
+    <li>Boost your customer's confidence in knowing that they've successfully placed their order</li>
     <li>Notify your customer once their order has been shipped</li>
     <li>Instantly alert your customer as soon as you update, refund or cancel their order</li>
 </ul>
                     ]]>
                 </comment>
-                <help_url>https://www.linkmobility.com/</help_url>
-                <more_url>https://www.linkmobility.com/</more_url>
-                <demo_link>https://www.linkmobility.com/</demo_link>
+                <help_url>https://docs.wagento.com/extensions/sms-notifications/UserGuide.pdf</help_url>
+                <more_url>https://docs.wagento.com/extensions/sms-notifications/LinkMobilityPricing.pdf</more_url>
             </group>
             <group id="general" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
                 <label>General Settings</label>

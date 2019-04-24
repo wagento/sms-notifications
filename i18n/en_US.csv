@@ -98,18 +98,17 @@ View,View
 Manage,Manage
 Configuration,Configuration
 "SMS Notifications","SMS Notifications"
-"<p>LINK Mobility SMS Notifications allows your customers to subscribe to transactional text messages regarding their order and receive them on their mobile telephone. Keep your customers engaged by <a href=""https://www.linkmobility.com/"" target=""_blank"">signing up for an account</a> today.</p>
-<p><strong>Benefits:</strong></p>
+"powered by","powered by"
+"<p>Wagento SMS Notifications allows your customers to subscribe to transactional text messages. Keep your customers engaged by providing them with the following benefits:</p>
 <ul>
-				<li>Provide your customer with confidence in knowing that they've successfully placed their order</li>
-				<li>Notify your customer once their order has been shipped</li>
-				<li>Instantly alert your customer as soon as you update, refund or cancel their order</li>
-</ul>","<p>LINK Mobility SMS Notifications allows your customers to subscribe to transactional text messages regarding their order and receive them on their mobile telephone. Keep your customers engaged by <a href=""https://www.linkmobility.com/"" target=""_blank"">signing up for an account</a> today.</p>
-<p><strong>Benefits:</strong></p>
+    <li>Boost your customer's confidence in knowing that they've successfully placed their order</li>
+    <li>Notify your customer once their order has been shipped</li>
+    <li>Instantly alert your customer as soon as you update, refund or cancel their order</li>
+</ul>","<p>Wagento SMS Notifications allows your customers to subscribe to transactional text messages. Keep your customers engaged by providing them with the following benefits:</p>
 <ul>
-				<li>Provide your customer with confidence in knowing that they've successfully placed their order</li>
-				<li>Notify your customer once their order has been shipped</li>
-				<li>Instantly alert your customer as soon as you update, refund or cancel their order</li>
+    <li>Boost your customer's confidence in knowing that they've successfully placed their order</li>
+    <li>Notify your customer once their order has been shipped</li>
+    <li>Instantly alert your customer as soon as you update, refund or cancel their order</li>
 </ul>"
 "General Settings","General Settings"
 Enabled,Enabled
