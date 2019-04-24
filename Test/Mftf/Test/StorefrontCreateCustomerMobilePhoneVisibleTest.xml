@@ -21,7 +21,7 @@
             <description value="Verifies that the mobile phone fields are visible on the storefront registration page if customer subscribes to SMS."/>
             <severity value="CRITICAL"/>
             <testCaseId value="REED-94"/>
-            <group value="link_mobility"/>
+            <group value="wagento"/>
             <group value="sms_notifications"/>
             <group value="sms_attributes"/>
             <group value="customer"/>

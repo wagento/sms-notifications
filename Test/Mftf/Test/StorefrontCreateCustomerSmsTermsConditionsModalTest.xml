@@ -21,7 +21,7 @@
             <description value="Ensures that checking the SMS subscription checkbox opens the Terms and Conditions modal."/>
             <severity value="CRITICAL"/>
             <testCaseId value="REED-73"/>
-            <group value="link_mobility"/>
+            <group value="wagento"/>
             <group value="sms_notifications"/>
             <group value="sms_subscriptions"/>
             <group value="customer"/>

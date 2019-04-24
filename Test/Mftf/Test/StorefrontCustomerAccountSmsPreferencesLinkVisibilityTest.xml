@@ -21,7 +21,7 @@
             <description value="Ensures that the SMS Subscription Preferences link is not added to the Customer Account links if module is disabled."/>
             <severity value="CRITICAL"/>
             <testCaseId value="REED-109"/>
-            <group value="link_mobility"/>
+            <group value="wagento"/>
             <group value="sms_notifications"/>
             <group value="sms_subscriptions"/>
             <group value="customer"/>

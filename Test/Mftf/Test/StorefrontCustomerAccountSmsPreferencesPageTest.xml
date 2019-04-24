@@ -21,7 +21,7 @@
             <description value="Customer can view their SMS subscription preferences."/>
             <severity value="CRITICAL"/>
             <testCaseId value="REED-109"/>
-            <group value="link_mobility"/>
+            <group value="wagento"/>
             <group value="sms_notifications"/>
             <group value="sms_subscriptions"/>
             <group value="customer"/>
