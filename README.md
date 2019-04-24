@@ -11,7 +11,7 @@ the [User Guide].
 ## Requirements
 
 * PHP 7.1.3+ or 7.2.0+
-* Magento Open Source/Commerce 2.2.27+ or 2.3.0+
+* Magento Open Source/Commerce 2.2.7+ or 2.3.0+
 * A [LINK Mobility] account
 
 ## Installation
