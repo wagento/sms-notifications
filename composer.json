@@ -20,7 +20,7 @@
         "magento/module-ui": "101.0.*|101.1.*",
         "guzzlehttp/guzzle": "^6.0",
         "myclabs/php-enum": "^1.6",
-        "zendframework/zend-hydrator": "^1.1"
+        "zendframework/zend-hydrator": "^1.1 || ^2.1"
     },
     "require-dev": {
         "wagento/module-sms-notifications-webapi": "1.0.0",
