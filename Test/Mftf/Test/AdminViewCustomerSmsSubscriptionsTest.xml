@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
 /**
- * LINK Mobility SMS Notifications
+ * Wagento SMS Notifications powered by LINK Mobility
  *
  * Sends transactional SMS notifications through the LINK Mobility messaging
  * service.
@@ -21,7 +21,7 @@
             <description value="Logs into Admin, selects a customer, and views their SMS subscriptions."/>
             <severity value="CRITICAL"/>
             <testCaseId value="REED-77"/>
-            <group value="link_mobility"/>
+            <group value="wagento"/>
             <group value="sms_notifications"/>
             <group value="sms_subscriptions"/>
             <group value="customer"/>

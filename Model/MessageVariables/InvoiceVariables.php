@@ -1,11 +1,11 @@
 <?php
 /**
- * LINK Mobility SMS Notifications
+ * Wagento SMS Notifications powered by LINK Mobility
  *
  * Sends transactional SMS notifications through the LINK Mobility messaging
  * service.
  *
- * @package Wagento\LinkMobilitySMSNotifications\Model\MessageVariables
+ * @package Wagento\SMSNotifications\Model\MessageVariables
  * @author Joseph Leedy <joseph@wagento.com>
  * @author Yair García Torres <yair.garcia@wagento.com>
  * @copyright Copyright (c) Wagento (https://wagento.com/)
@@ -14,9 +14,9 @@
 
 declare(strict_types=1);
 
-namespace Wagento\LinkMobilitySMSNotifications\Model\MessageVariables;
+namespace Wagento\SMSNotifications\Model\MessageVariables;
 
-use Wagento\LinkMobilitySMSNotifications\Api\MessageVariablesInterface;
+use Wagento\SMSNotifications\Api\MessageVariablesInterface;
 use Magento\Framework\App\Config\ScopeConfigInterface;
 use Magento\Framework\UrlInterface as UrlBuilder;
 use Magento\Sales\Api\Data\InvoiceInterface;
@@ -25,7 +25,7 @@ use Magento\Store\Model\ScopeInterface;
 /**
  * Invoice Message Variables
  *
- * @package Wagento\LinkMobilitySMSNotifications\Model\MessageVariables
+ * @package Wagento\SMSNotifications\Model\MessageVariables
  * @author Joseph Leedy <joseph@wagento.com>
  */
 class InvoiceVariables implements MessageVariablesInterface

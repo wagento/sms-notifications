@@ -1,11 +1,11 @@
 <?php
 /**
- * LINK Mobility SMS Notifications
+ * Wagento SMS Notifications powered by LINK Mobility
  *
  * Sends transactional SMS notifications through the LINK Mobility messaging
  * service.
  *
- * @package Wagento\LinkMobilitySMSNotifications\Gateway\Hydrator
+ * @package Wagento\SMSNotifications\Gateway\Hydrator
  * @author Joseph Leedy <joseph@wagento.com>
  * @author Yair García Torres <yair.garcia@wagento.com>
  * @copyright Copyright (c) Wagento (https://wagento.com/)
@@ -14,14 +14,14 @@
 
 declare(strict_types=1);
 
-namespace Wagento\LinkMobilitySMSNotifications\Gateway\Hydrator;
+namespace Wagento\SMSNotifications\Gateway\Hydrator;
 
 use Zend\Hydrator\Reflection;
 
 /**
  * Message Entity Hydrator
  *
- * @package Wagento\LinkMobilitySMSNotifications\Gateway\Hydrator
+ * @package Wagento\SMSNotifications\Gateway\Hydrator
  * @author Joseph Leedy <joseph@wagento.com>
  */
 final class MessageEntity extends Reflection

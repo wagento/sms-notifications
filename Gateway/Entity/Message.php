@@ -1,11 +1,11 @@
 <?php
 /**
- * LINK Mobility SMS Notifications
+ * Wagento SMS Notifications powered by LINK Mobility
  *
  * Sends transactional SMS notifications through the LINK Mobility messaging
  * service.
  *
- * @package Wagento\LinkMobilitySMSNotifications\Gateway\Entity
+ * @package Wagento\SMSNotifications\Gateway\Entity
  * @author Joseph Leedy <joseph@wagento.com>
  * @author Yair García Torres <yair.garcia@wagento.com>
  * @copyright Copyright (c) Wagento (https://wagento.com/)
@@ -14,12 +14,12 @@
 
 declare(strict_types=1);
 
-namespace Wagento\LinkMobilitySMSNotifications\Gateway\Entity;
+namespace Wagento\SMSNotifications\Gateway\Entity;
 
 /**
  * Message Entity
  *
- * @package Wagento\LinkMobilitySMSNotifications\Gateway\Entity
+ * @package Wagento\SMSNotifications\Gateway\Entity
  * @author Joseph Leedy <joseph@wagento.com>
  *
  * @SuppressWarnings(PHPMD.TooManyFields)
@@ -37,7 +37,7 @@ final class Message implements MessageInterface
     /**
      * Type of source phone number
      *
-     * @var \Wagento\LinkMobilitySMSNotifications\Gateway\Entity\TON
+     * @var \Wagento\SMSNotifications\Gateway\Entity\TON
      */
     private $sourceTON;
     /**
@@ -49,13 +49,13 @@ final class Message implements MessageInterface
     /**
      * Type of destination phone number
      *
-     * @var \Wagento\LinkMobilitySMSNotifications\Gateway\Entity\TON
+     * @var \Wagento\SMSNotifications\Gateway\Entity\TON
      */
     private $destinationTON;
     /**
      * Data Coding Scheme to use when sending messages
      *
-     * @var \Wagento\LinkMobilitySMSNotifications\Gateway\Entity\DCS
+     * @var \Wagento\SMSNotifications\Gateway\Entity\DCS
      */
     private $dcs;
     /**
@@ -200,7 +200,7 @@ final class Message implements MessageInterface
     }
 
     /**
-     * @param \Wagento\LinkMobilitySMSNotifications\Gateway\Entity\TON|string $sourceTON
+     * @param \Wagento\SMSNotifications\Gateway\Entity\TON|string $sourceTON
      * @return void
      */
     public function setSourceTON($sourceTON): void
@@ -228,7 +228,7 @@ final class Message implements MessageInterface
     }
 
     /**
-     * @param \Wagento\LinkMobilitySMSNotifications\Gateway\Entity\TON|string $destinationTON
+     * @param \Wagento\SMSNotifications\Gateway\Entity\TON|string $destinationTON
      */
     public function setDestinationTON($destinationTON): void
     {
@@ -245,7 +245,7 @@ final class Message implements MessageInterface
     }
 
     /**
-     * @param \Wagento\LinkMobilitySMSNotifications\Gateway\Entity\DCS|string $dcs
+     * @param \Wagento\SMSNotifications\Gateway\Entity\DCS|string $dcs
      */
     public function setDcs($dcs): void
     {

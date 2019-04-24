@@ -1,11 +1,11 @@
 <?php
 /**
- * LINK Mobility SMS Notifications
+ * Wagento SMS Notifications powered by LINK Mobility
  *
  * Sends transactional SMS notifications through the LINK Mobility messaging
  * service.
  *
- * @package Wagento\LinkMobilitySMSNotifications\Model\Customer\Attribute\Source
+ * @package Wagento\SMSNotifications\Model\Customer\Attribute\Source
  * @author Joseph Leedy <joseph@wagento.com>
  * @author Yair García Torres <yair.garcia@wagento.com>
  * @copyright Copyright (c) Wagento (https://wagento.com/)
@@ -16,9 +16,9 @@
 
 declare(strict_types=1);
 
-namespace Wagento\LinkMobilitySMSNotifications\Model\Customer\Attribute\Source;
+namespace Wagento\SMSNotifications\Model\Customer\Attribute\Source;
 
-use Wagento\LinkMobilitySMSNotifications\Model\ResourceModel\TelephonePrefix\CollectionFactory as TelephonePrefixCollectionFactory;
+use Wagento\SMSNotifications\Model\ResourceModel\TelephonePrefix\CollectionFactory as TelephonePrefixCollectionFactory;
 use Magento\Eav\Model\Entity\Attribute\Source\AbstractSource;
 use Magento\Framework\App\Config\ScopeConfigInterface;
 use Magento\Framework\Data\Collection;
@@ -29,7 +29,7 @@ use Magento\Store\Model\StoreManagerInterface;
 /**
  * Telephone Prefix Source Model
  *
- * @package Wagento\LinkMobilitySMSNotifications\Model\Customer\Attribute\Source
+ * @package Wagento\SMSNotifications\Model\Customer\Attribute\Source
  * @author Joseph Leedy <joseph@wagento.com>
  */
 class TelephonePrefix extends AbstractSource
@@ -43,7 +43,7 @@ class TelephonePrefix extends AbstractSource
      */
     private $storeManager;
     /**
-     * @var \Wagento\LinkMobilitySMSNotifications\Model\ResourceModel\TelephonePrefix\CollectionFactory
+     * @var \Wagento\SMSNotifications\Model\ResourceModel\TelephonePrefix\CollectionFactory
      */
     private $prefixCollectionFactory;
 
@@ -74,7 +74,7 @@ class TelephonePrefix extends AbstractSource
             ->getItems();
         $options = [];
 
-        /** @var \Wagento\LinkMobilitySMSNotifications\Model\TelephonePrefix $prefix */
+        /** @var \Wagento\SMSNotifications\Model\TelephonePrefix $prefix */
         foreach ($prefixes as $prefix) {
             $options[] = [
                 'value' => $prefix->getCountryCode() . '_' . $prefix->getPrefix(),

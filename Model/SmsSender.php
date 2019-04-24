@@ -1,11 +1,11 @@
 <?php
 /**
- * LINK Mobility SMS Notifications
+ * Wagento SMS Notifications powered by LINK Mobility
  *
  * Sends transactional SMS notifications through the LINK Mobility messaging
  * service.
  *
- * @package Wagento\LinkMobilitySMSNotifications\Model
+ * @package Wagento\SMSNotifications\Model
  * @author Joseph Leedy <joseph@wagento.com>
  * @author Yair García Torres <yair.garcia@wagento.com>
  * @copyright Copyright (c) Wagento (https://wagento.com/)
@@ -14,10 +14,10 @@
 
 declare(strict_types=1);
 
-namespace Wagento\LinkMobilitySMSNotifications\Model;
+namespace Wagento\SMSNotifications\Model;
 
-use Wagento\LinkMobilitySMSNotifications\Api\ConfigInterface;
-use Wagento\LinkMobilitySMSNotifications\Api\SmsSubscriptionRepositoryInterface;
+use Wagento\SMSNotifications\Api\ConfigInterface;
+use Wagento\SMSNotifications\Api\SmsSubscriptionRepositoryInterface;
 use Magento\Customer\Api\CustomerRepositoryInterface;
 use Magento\Customer\Api\Data\CustomerInterface;
 use Magento\Framework\Exception\LocalizedException;
@@ -29,7 +29,7 @@ use Psr\Log\LoggerInterface;
 /**
  * SMS Sender
  *
- * @package Wagento\LinkMobilitySMSNotifications\Model
+ * @package Wagento\SMSNotifications\Model
  * @author Joseph Leedy <joseph@wagento.com>
  */
 abstract class SmsSender
@@ -43,11 +43,11 @@ abstract class SmsSender
      */
     protected $storeRepository;
     /**
-     * @var \Wagento\LinkMobilitySMSNotifications\Api\ConfigInterface
+     * @var \Wagento\SMSNotifications\Api\ConfigInterface
      */
     protected $config;
     /**
-     * @var \Wagento\LinkMobilitySMSNotifications\Model\MessageService
+     * @var \Wagento\SMSNotifications\Model\MessageService
      */
     protected $messageService;
     /**
@@ -55,7 +55,7 @@ abstract class SmsSender
      */
     private $customerRepository;
     /**
-     * @var \Wagento\LinkMobilitySMSNotifications\Api\SmsSubscriptionRepositoryInterface
+     * @var \Wagento\SMSNotifications\Api\SmsSubscriptionRepositoryInterface
      */
     private $subscriptionRepository;
 

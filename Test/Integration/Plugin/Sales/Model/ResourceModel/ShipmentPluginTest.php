@@ -1,11 +1,11 @@
 <?php
 /**
- * LINK Mobility SMS Notifications
+ * Wagento SMS Notifications powered by LINK Mobility
  *
  * Sends transactional SMS notifications through the LINK Mobility messaging
  * service.
  *
- * @package Wagento\LinkMobilitySMSNotifications\Test\Integration\Plugin\Sales\Model\ResourceModel
+ * @package Wagento\SMSNotifications\Test\Integration\Plugin\Sales\Model\ResourceModel
  * @author Joseph Leedy <joseph@wagento.com>
  * @author Yair García Torres <yair.garcia@wagento.com>
  * @copyright Copyright (c) Wagento (https://wagento.com/)
@@ -14,11 +14,11 @@
 
 declare(strict_types=1);
 
-namespace Wagento\LinkMobilitySMSNotifications\Test\Integration\Plugin\Sales\Model\ResourceModel;
+namespace Wagento\SMSNotifications\Test\Integration\Plugin\Sales\Model\ResourceModel;
 
-use Wagento\LinkMobilitySMSNotifications\Model\SmsSender\ShipmentSender;
-use Wagento\LinkMobilitySMSNotifications\Plugin\Sales\Model\ResourceModel\Order\ShipmentPlugin;
-use Wagento\LinkMobilitySMSNotifications\Test\Integration\_stubs\Model\SmsSender;
+use Wagento\SMSNotifications\Model\SmsSender\ShipmentSender;
+use Wagento\SMSNotifications\Plugin\Sales\Model\ResourceModel\Order\ShipmentPlugin;
+use Wagento\SMSNotifications\Test\Integration\_stubs\Model\SmsSender;
 use Magento\Framework\Interception\PluginList\PluginList;
 use Magento\Sales\Model\Order;
 use Magento\Sales\Model\ResourceModel\Order\Shipment as ShipmentResourceModel;
@@ -28,7 +28,7 @@ use PHPUnit\Framework\TestCase;
 /**
  * Shipment Plug-in Test
  *
- * @package Wagento\LinkMobilitySMSNotifications\Test\Integration\Plugin\Sales\Model\ResourceModel
+ * @package Wagento\SMSNotifications\Test\Integration\Plugin\Sales\Model\ResourceModel
  * @author Joseph Leedy <joseph@wagento.com>
  */
 class ShipmentPluginTest extends TestCase

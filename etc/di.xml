@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!--
 /**
- * LINK Mobility SMS Notifications
+ * Wagento SMS Notifications powered by LINK Mobility
  *
  * Sends transactional SMS notifications through the LINK Mobility messaging
  * service.
@@ -13,133 +13,133 @@
  */
 -->
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
-    <preference for="Wagento\LinkMobilitySMSNotifications\Api\MobileTelephoneNumberManagementInterface" type="Wagento\LinkMobilitySMSNotifications\Model\MobileTelephoneNumberManagement"/>
-    <preference for="Wagento\LinkMobilitySMSNotifications\Api\SmsSubscriptionManagementInterface" type="Wagento\LinkMobilitySMSNotifications\Model\SmsSubscriptionManagement"/>
-    <preference for="Wagento\LinkMobilitySMSNotifications\Api\SmsSubscriptionRepositoryInterface" type="Wagento\LinkMobilitySMSNotifications\Model\SmsSubscriptionRepository"/>
-    <preference for="Wagento\LinkMobilitySMSNotifications\Api\Data\SmsSubscriptionInterface" type="Wagento\LinkMobilitySMSNotifications\Model\Data\SmsSubscription"/>
-    <preference for="Wagento\LinkMobilitySMSNotifications\Api\Data\TelephonePrefixInterface" type="Wagento\LinkMobilitySMSNotifications\Model\Data\TelephonePrefix"/>
-    <preference for="Wagento\LinkMobilitySMSNotifications\Api\ConfigInterface" type="Wagento\LinkMobilitySMSNotifications\Model\Config"/>
-    <preference for="Wagento\LinkMobilitySMSNotifications\Gateway\ApiClientInterface" type="Wagento\LinkMobilitySMSNotifications\Gateway\ApiClient"/>
-    <preference for="Wagento\LinkMobilitySMSNotifications\Util\TemplateProcessorInterface" type="Wagento\LinkMobilitySMSNotifications\Util\TemplateProcessor"/>
-    <type name="Wagento\LinkMobilitySMSNotifications\Logger\Handler\FileHandler">
+    <preference for="Wagento\SMSNotifications\Api\MobileTelephoneNumberManagementInterface" type="Wagento\SMSNotifications\Model\MobileTelephoneNumberManagement"/>
+    <preference for="Wagento\SMSNotifications\Api\SmsSubscriptionManagementInterface" type="Wagento\SMSNotifications\Model\SmsSubscriptionManagement"/>
+    <preference for="Wagento\SMSNotifications\Api\SmsSubscriptionRepositoryInterface" type="Wagento\SMSNotifications\Model\SmsSubscriptionRepository"/>
+    <preference for="Wagento\SMSNotifications\Api\Data\SmsSubscriptionInterface" type="Wagento\SMSNotifications\Model\Data\SmsSubscription"/>
+    <preference for="Wagento\SMSNotifications\Api\Data\TelephonePrefixInterface" type="Wagento\SMSNotifications\Model\Data\TelephonePrefix"/>
+    <preference for="Wagento\SMSNotifications\Api\ConfigInterface" type="Wagento\SMSNotifications\Model\Config"/>
+    <preference for="Wagento\SMSNotifications\Gateway\ApiClientInterface" type="Wagento\SMSNotifications\Gateway\ApiClient"/>
+    <preference for="Wagento\SMSNotifications\Util\TemplateProcessorInterface" type="Wagento\SMSNotifications\Util\TemplateProcessor"/>
+    <type name="Wagento\SMSNotifications\Logger\Handler\FileHandler">
         <arguments>
             <argument name="filesystem" xsi:type="object">Magento\Framework\Filesystem\Driver\File</argument>
         </arguments>
     </type>
-    <type name="Wagento\LinkMobilitySMSNotifications\Logger\Logger">
+    <type name="Wagento\SMSNotifications\Logger\Logger">
         <arguments>
             <argument name="name" xsi:type="string">sms_notifications</argument>
             <argument name="handlers" xsi:type="array">
-                <item name="debug" xsi:type="object">Wagento\LinkMobilitySMSNotifications\Logger\Handler\FileHandler</item>
+                <item name="debug" xsi:type="object">Wagento\SMSNotifications\Logger\Handler\FileHandler</item>
             </argument>
             <argument name="processors" xsi:type="array">
-                <item name="sensitiveDataProcessor" xsi:type="object">Wagento\LinkMobilitySMSNotifications\Logger\Processor\SensitiveDataProcessor</item>
+                <item name="sensitiveDataProcessor" xsi:type="object">Wagento\SMSNotifications\Logger\Processor\SensitiveDataProcessor</item>
             </argument>
         </arguments>
     </type>
-    <type name="Wagento\LinkMobilitySMSNotifications\Model\Config\Backend\Source">
+    <type name="Wagento\SMSNotifications\Model\Config\Backend\Source">
         <arguments>
-            <argument name="validator" xsi:type="object">Wagento\LinkMobilitySMSNotifications\Model\SourceValidator</argument>
+            <argument name="validator" xsi:type="object">Wagento\SMSNotifications\Model\SourceValidator</argument>
         </arguments>
     </type>
-    <type name="Wagento\LinkMobilitySMSNotifications\Model\MessageService">
+    <type name="Wagento\SMSNotifications\Model\MessageService">
         <arguments>
-            <argument name="logger" xsi:type="object">Wagento\LinkMobilitySMSNotifications\Logger\Logger</argument>
+            <argument name="logger" xsi:type="object">Wagento\SMSNotifications\Logger\Logger</argument>
         </arguments>
     </type>
-    <type name="Wagento\LinkMobilitySMSNotifications\Model\MobileTelephoneNumberManagement">
+    <type name="Wagento\SMSNotifications\Model\MobileTelephoneNumberManagement">
         <arguments>
-            <argument name="logger" xsi:type="object">Wagento\LinkMobilitySMSNotifications\Logger\Logger</argument>
+            <argument name="logger" xsi:type="object">Wagento\SMSNotifications\Logger\Logger</argument>
         </arguments>
     </type>
-    <type name="Wagento\LinkMobilitySMSNotifications\Model\SmsSender\CreditmemoSender">
+    <type name="Wagento\SMSNotifications\Model\SmsSender\CreditmemoSender">
         <arguments>
-            <argument name="logger" xsi:type="object">Wagento\LinkMobilitySMSNotifications\Logger\Logger</argument>
+            <argument name="logger" xsi:type="object">Wagento\SMSNotifications\Logger\Logger</argument>
         </arguments>
     </type>
-    <type name="Wagento\LinkMobilitySMSNotifications\Model\SmsSender\OrderSender">
+    <type name="Wagento\SMSNotifications\Model\SmsSender\OrderSender">
         <arguments>
-            <argument name="logger" xsi:type="object">Wagento\LinkMobilitySMSNotifications\Logger\Logger</argument>
+            <argument name="logger" xsi:type="object">Wagento\SMSNotifications\Logger\Logger</argument>
         </arguments>
     </type>
-    <type name="Wagento\LinkMobilitySMSNotifications\Model\SmsSender\ShipmentSender">
+    <type name="Wagento\SMSNotifications\Model\SmsSender\ShipmentSender">
         <arguments>
-            <argument name="logger" xsi:type="object">Wagento\LinkMobilitySMSNotifications\Logger\Logger</argument>
+            <argument name="logger" xsi:type="object">Wagento\SMSNotifications\Logger\Logger</argument>
         </arguments>
     </type>
-    <type name="Wagento\LinkMobilitySMSNotifications\Model\SmsSubscription">
+    <type name="Wagento\SMSNotifications\Model\SmsSubscription">
         <arguments>
-            <argument name="validator" xsi:type="object">Wagento\LinkMobilitySMSNotifications\Model\SmsSubscriptionValidator</argument>
+            <argument name="validator" xsi:type="object">Wagento\SMSNotifications\Model\SmsSubscriptionValidator</argument>
         </arguments>
     </type>
-    <type name="Wagento\LinkMobilitySMSNotifications\Model\SmsSubscriptionManagement">
+    <type name="Wagento\SMSNotifications\Model\SmsSubscriptionManagement">
         <arguments>
-            <argument name="logger" xsi:type="object">Wagento\LinkMobilitySMSNotifications\Logger\Logger</argument>
+            <argument name="logger" xsi:type="object">Wagento\SMSNotifications\Logger\Logger</argument>
         </arguments>
     </type>
-    <type name="Wagento\LinkMobilitySMSNotifications\Model\SmsSubscriptionValidator">
+    <type name="Wagento\SMSNotifications\Model\SmsSubscriptionValidator">
         <arguments>
-            <argument name="validationRules" xsi:type="object">Wagento\LinkMobilitySMSNotifications\Model\SmsSubscriptionValidationRules</argument>
+            <argument name="validationRules" xsi:type="object">Wagento\SMSNotifications\Model\SmsSubscriptionValidationRules</argument>
         </arguments>
     </type>
-    <type name="Wagento\LinkMobilitySMSNotifications\Model\SourceValidator">
+    <type name="Wagento\SMSNotifications\Model\SourceValidator">
         <arguments>
-            <argument name="validationRules" xsi:type="object">Wagento\LinkMobilitySMSNotifications\Model\SourceValidationRules</argument>
+            <argument name="validationRules" xsi:type="object">Wagento\SMSNotifications\Model\SourceValidationRules</argument>
         </arguments>
     </type>
-    <type name="Wagento\LinkMobilitySMSNotifications\Plugin\Sales\Api\CreditmemoRepositoryInterfacePlugin">
+    <type name="Wagento\SMSNotifications\Plugin\Sales\Api\CreditmemoRepositoryInterfacePlugin">
         <arguments>
-            <argument name="smsSender" xsi:type="object">Wagento\LinkMobilitySMSNotifications\Model\SmsSender\CreditmemoSender</argument>
+            <argument name="smsSender" xsi:type="object">Wagento\SMSNotifications\Model\SmsSender\CreditmemoSender</argument>
         </arguments>
     </type>
-    <type name="Wagento\LinkMobilitySMSNotifications\Plugin\Sales\Api\OrderRepositoryInterfacePlugin">
+    <type name="Wagento\SMSNotifications\Plugin\Sales\Api\OrderRepositoryInterfacePlugin">
         <arguments>
-            <argument name="smsSender" xsi:type="object">Wagento\LinkMobilitySMSNotifications\Model\SmsSender\OrderSender</argument>
+            <argument name="smsSender" xsi:type="object">Wagento\SMSNotifications\Model\SmsSender\OrderSender</argument>
         </arguments>
     </type>
-    <type name="Wagento\LinkMobilitySMSNotifications\Plugin\Sales\Model\Order\InvoicePlugin">
+    <type name="Wagento\SMSNotifications\Plugin\Sales\Model\Order\InvoicePlugin">
         <arguments>
-            <argument name="smsSender" xsi:type="object">Wagento\LinkMobilitySMSNotifications\Model\SmsSender\InvoiceSender</argument>
+            <argument name="smsSender" xsi:type="object">Wagento\SMSNotifications\Model\SmsSender\InvoiceSender</argument>
         </arguments>
     </type>
-    <type name="Wagento\LinkMobilitySMSNotifications\Plugin\Sales\Model\ResourceModel\Order\ShipmentPlugin">
+    <type name="Wagento\SMSNotifications\Plugin\Sales\Model\ResourceModel\Order\ShipmentPlugin">
         <arguments>
-            <argument name="smsSender" xsi:type="object">Wagento\LinkMobilitySMSNotifications\Model\SmsSender\ShipmentSender</argument>
+            <argument name="smsSender" xsi:type="object">Wagento\SMSNotifications\Model\SmsSender\ShipmentSender</argument>
         </arguments>
     </type>
-    <type name="Wagento\LinkMobilitySMSNotifications\Setup\InstallData">
+    <type name="Wagento\SMSNotifications\Setup\InstallData">
         <arguments>
-            <argument name="logger" xsi:type="object">Wagento\LinkMobilitySMSNotifications\Logger\Logger</argument>
+            <argument name="logger" xsi:type="object">Wagento\SMSNotifications\Logger\Logger</argument>
         </arguments>
     </type>
-    <type name="Wagento\LinkMobilitySMSNotifications\Util\TemplateProcessor">
+    <type name="Wagento\SMSNotifications\Util\TemplateProcessor">
         <arguments>
             <argument name="converter" xsi:type="object">Zend\Filter\Word\SeparatorToCamelCase</argument>
         </arguments>
     </type>
-    <type name="Wagento\LinkMobilitySMSNotifications\ViewModel\CustomerSmsSubscriptions">
+    <type name="Wagento\SMSNotifications\ViewModel\CustomerSmsSubscriptions">
         <arguments>
             <argument name="customerSession" xsi:type="object">Magento\Customer\Model\Session\Proxy</argument>
         </arguments>
     </type>
-    <type name="Wagento\LinkMobilitySMSNotifications\ViewModel\MobileTelephone">
+    <type name="Wagento\SMSNotifications\ViewModel\MobileTelephone">
         <arguments>
             <argument name="customerSession" xsi:type="object">Magento\Customer\Model\Session\Proxy</argument>
         </arguments>
     </type>
     <type name="Magento\Sales\Api\CreditmemoRepositoryInterface">
-        <plugin name="sms_notifications_send_refund_sms" type="Wagento\LinkMobilitySMSNotifications\Plugin\Sales\Api\CreditmemoRepositoryInterfacePlugin"/>
+        <plugin name="sms_notifications_send_refund_sms" type="Wagento\SMSNotifications\Plugin\Sales\Api\CreditmemoRepositoryInterfacePlugin"/>
     </type>
     <type name="Magento\Sales\Api\OrderRepositoryInterface">
-        <plugin name="sms_notifications_send_order_sms" type="Wagento\LinkMobilitySMSNotifications\Plugin\Sales\Api\OrderRepositoryInterfacePlugin"/>
+        <plugin name="sms_notifications_send_order_sms" type="Wagento\SMSNotifications\Plugin\Sales\Api\OrderRepositoryInterfacePlugin"/>
     </type>
     <type name="Magento\Sales\Model\Order">
-        <plugin name="sms_notifications_add_order_extension_attribute" type="Wagento\LinkMobilitySMSNotifications\Plugin\Sales\Model\OrderPlugin"/>
+        <plugin name="sms_notifications_add_order_extension_attribute" type="Wagento\SMSNotifications\Plugin\Sales\Model\OrderPlugin"/>
     </type>
     <type name="Magento\Sales\Model\Order\Invoice">
-        <plugin name="sms_notifications_send_order_invoiced_sms" type="Wagento\LinkMobilitySMSNotifications\Plugin\Sales\Model\Order\InvoicePlugin"/>
+        <plugin name="sms_notifications_send_order_invoiced_sms" type="Wagento\SMSNotifications\Plugin\Sales\Model\Order\InvoicePlugin"/>
     </type>
     <type name="Magento\Sales\Model\ResourceModel\Order\Shipment">
-        <plugin name="sms_notifications_send_shipment_sms" type="Wagento\LinkMobilitySMSNotifications\Plugin\Sales\Model\ResourceModel\Order\ShipmentPlugin"/>
+        <plugin name="sms_notifications_send_shipment_sms" type="Wagento\SMSNotifications\Plugin\Sales\Model\ResourceModel\Order\ShipmentPlugin"/>
     </type>
 </config>

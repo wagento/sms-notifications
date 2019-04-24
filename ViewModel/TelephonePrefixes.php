@@ -1,11 +1,11 @@
 <?php
 /**
- * LINK Mobility SMS Notifications
+ * Wagento SMS Notifications powered by LINK Mobility
  *
  * Sends transactional SMS notifications through the LINK Mobility messaging
  * service.
  *
- * @package Wagento\LinkMobilitySMSNotifications\ViewModel
+ * @package Wagento\SMSNotifications\ViewModel
  * @author Joseph Leedy <joseph@wagento.com>
  * @author Yair García Torres <yair.garcia@wagento.com>
  * @copyright Copyright (c) Wagento (https://wagento.com/)
@@ -16,9 +16,9 @@
 
 declare(strict_types=1);
 
-namespace Wagento\LinkMobilitySMSNotifications\ViewModel;
+namespace Wagento\SMSNotifications\ViewModel;
 
-use Wagento\LinkMobilitySMSNotifications\Model\ResourceModel\TelephonePrefix\CollectionFactory as TelephonePrefixCollectionFactory;
+use Wagento\SMSNotifications\Model\ResourceModel\TelephonePrefix\CollectionFactory as TelephonePrefixCollectionFactory;
 use Magento\Customer\Model\Customer;
 use Magento\Directory\Helper\Data as DirectoryHelper;
 use Magento\Eav\Api\AttributeRepositoryInterface;
@@ -29,7 +29,7 @@ use Magento\Framework\View\Element\Block\ArgumentInterface;
 /**
  * Telephone Prefixes View Model
  *
- * @package Wagento\LinkMobilitySMSNotifications\ViewModel
+ * @package Wagento\SMSNotifications\ViewModel
  * @author Joseph Leedy <joseph@wagento.com>
  */
 final class TelephonePrefixes implements ArgumentInterface
@@ -43,7 +43,7 @@ final class TelephonePrefixes implements ArgumentInterface
      */
     private $attributeRepository;
     /**
-     * @var \Wagento\LinkMobilitySMSNotifications\Model\ResourceModel\TelephonePrefix\CollectionFactory
+     * @var \Wagento\SMSNotifications\Model\ResourceModel\TelephonePrefix\CollectionFactory
      */
     private $telephonePrefixCollectionFactory;
 
@@ -72,7 +72,7 @@ final class TelephonePrefixes implements ArgumentInterface
 
     public function getDefaultPrefix(): string
     {
-        /** @var \Wagento\LinkMobilitySMSNotifications\Model\TelephonePrefix $prefix */
+        /** @var \Wagento\SMSNotifications\Model\TelephonePrefix $prefix */
         $prefix = $this->telephonePrefixCollectionFactory->create()
             ->addFieldToFilter('country_code', ['eq' => $this->directoryHelper->getDefaultCountry()])
             ->setPageSize(1)

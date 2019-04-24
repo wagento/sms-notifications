@@ -1,11 +1,11 @@
 <?php
 /**
- * LINK Mobility SMS Notifications
+ * Wagento SMS Notifications powered by LINK Mobility
  *
  * Sends transactional SMS notifications through the LINK Mobility messaging
  * service.
  *
- * @package Wagento\LinkMobilitySMSNotifications\Test\Integration\Model\SmsSender
+ * @package Wagento\SMSNotifications\Test\Integration\Model\SmsSender
  * @author Joseph Leedy <joseph@wagento.com>
  * @author Yair García Torres <yair.garcia@wagento.com>
  * @copyright Copyright (c) Wagento (https://wagento.com/)
@@ -14,17 +14,17 @@
 
 declare(strict_types=1);
 
-namespace Wagento\LinkMobilitySMSNotifications\Test\Integration\Model\SmsSender;
+namespace Wagento\SMSNotifications\Test\Integration\Model\SmsSender;
 
-use Wagento\LinkMobilitySMSNotifications\Model\SmsSender\OrderSender;
-use Wagento\LinkMobilitySMSNotifications\Test\Integration\SmsSenderTestCase;
+use Wagento\SMSNotifications\Model\SmsSender\OrderSender;
+use Wagento\SMSNotifications\Test\Integration\SmsSenderTestCase;
 use Magento\Sales\Api\Data\OrderExtensionInterface;
 use Magento\Sales\Api\Data\OrderInterface;
 
 /**
  * Order SMS Sender Test
  *
- * @package Wagento\LinkMobilitySMSNotifications\Test\Integration\Model\SmsSender
+ * @package Wagento\SMSNotifications\Test\Integration\Model\SmsSender
  * @author Joseph Leedy <joseph@wagento.com>
  */
 class OrderSenderTest extends SmsSenderTestCase

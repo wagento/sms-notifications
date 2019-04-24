@@ -1,11 +1,11 @@
 <?php
 /**
- * LINK Mobility SMS Notifications
+ * Wagento SMS Notifications powered by LINK Mobility
  *
  * Sends transactional SMS notifications through the LINK Mobility messaging
  * service.
  *
- * @package Wagento\LinkMobilitySMSNotifications\Controller\SmsNotifications
+ * @package Wagento\SMSNotifications\Controller\SmsNotifications
  * @author Joseph Leedy <joseph@wagento.com>
  * @author Yair García Torres <yair.garcia@wagento.com>
  * @copyright Copyright (c) Wagento (https://wagento.com/)
@@ -14,12 +14,12 @@
 
 declare(strict_types=1);
 
-namespace Wagento\LinkMobilitySMSNotifications\Controller\SmsNotifications;
+namespace Wagento\SMSNotifications\Controller\SmsNotifications;
 
-use Wagento\LinkMobilitySMSNotifications\Api\MobileTelephoneNumberManagementInterface;
-use Wagento\LinkMobilitySMSNotifications\Api\SmsSubscriptionManagementInterface;
-use Wagento\LinkMobilitySMSNotifications\Api\SmsSubscriptionRepositoryInterface;
-use Wagento\LinkMobilitySMSNotifications\Model\SmsSender;
+use Wagento\SMSNotifications\Api\MobileTelephoneNumberManagementInterface;
+use Wagento\SMSNotifications\Api\SmsSubscriptionManagementInterface;
+use Wagento\SMSNotifications\Api\SmsSubscriptionRepositoryInterface;
+use Wagento\SMSNotifications\Model\SmsSender;
 use Magento\Customer\Model\Session as CustomerSession;
 use Magento\Framework\App\Action\Action;
 use Magento\Framework\App\Action\Context;
@@ -34,7 +34,7 @@ use Psr\Log\LoggerInterface;
 /**
  * Manage SMS Subscriptions POST Action Controller
  *
- * @package Wagento\LinkMobilitySMSNotifications\Controller\SmsNotifications
+ * @package Wagento\SMSNotifications\Controller\SmsNotifications
  * @author Joseph Leedy <joseph@wagento.com>
  */
 class ManagePost extends Action implements ActionInterface, CsrfAwareActionInterface
@@ -56,19 +56,19 @@ class ManagePost extends Action implements ActionInterface, CsrfAwareActionInter
      */
     private $formKeyValidator;
     /**
-     * @var \Wagento\LinkMobilitySMSNotifications\Api\SmsSubscriptionRepositoryInterface
+     * @var \Wagento\SMSNotifications\Api\SmsSubscriptionRepositoryInterface
      */
     private $smsSubscriptionRepository;
     /**
-     * @var \Wagento\LinkMobilitySMSNotifications\Api\SmsSubscriptionManagementInterface
+     * @var \Wagento\SMSNotifications\Api\SmsSubscriptionManagementInterface
      */
     private $smsSubscriptionManagement;
     /**
-     * @var \Wagento\LinkMobilitySMSNotifications\Model\SmsSender|\Wagento\LinkMobilitySMSNotifications\Model\SmsSender\WelcomeSender
+     * @var \Wagento\SMSNotifications\Model\SmsSender|\Wagento\SMSNotifications\Model\SmsSender\WelcomeSender
      */
     private $smsSender;
     /**
-     * @var \Wagento\LinkMobilitySMSNotifications\Api\MobileTelephoneNumberManagementInterface
+     * @var \Wagento\SMSNotifications\Api\MobileTelephoneNumberManagementInterface
      */
     private $mobileTelephoneNumberManagement;
 
@@ -169,7 +169,7 @@ class ManagePost extends Action implements ActionInterface, CsrfAwareActionInter
     }
 
     /**
-     * @param \Wagento\LinkMobilitySMSNotifications\Model\SmsSubscription[] $subscribedSmsTypes
+     * @param \Wagento\SMSNotifications\Model\SmsSubscription[] $subscribedSmsTypes
      * @param string[] $selectedSmsTypes
      * @param string|int $customerId
      */

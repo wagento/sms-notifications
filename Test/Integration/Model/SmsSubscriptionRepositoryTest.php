@@ -1,11 +1,11 @@
 <?php
 /**
- * LINK Mobility SMS Notifications
+ * Wagento SMS Notifications powered by LINK Mobility
  *
  * Sends transactional SMS notifications through the LINK Mobility messaging
  * service.
  *
- * @package Wagento\LinkMobilitySMSNotifications\Test\Integration\Model
+ * @package Wagento\SMSNotifications\Test\Integration\Model
  * @author Joseph Leedy <joseph@wagento.com>
  * @author Yair García Torres <yair.garcia@wagento.com>
  * @copyright Copyright (c) Wagento (https://wagento.com/)
@@ -14,12 +14,12 @@
 
 declare(strict_types=1);
 
-namespace Wagento\LinkMobilitySMSNotifications\Test\Integration\Model;
+namespace Wagento\SMSNotifications\Test\Integration\Model;
 
-use Wagento\LinkMobilitySMSNotifications\Api\Data\SmsSubscriptionInterface;
-use Wagento\LinkMobilitySMSNotifications\Model\ResourceModel\SmsSubscription as SmsSubscriptionResource;
-use Wagento\LinkMobilitySMSNotifications\Model\SmsSubscriptionFactory as SmsSubscriptionModelFactory;
-use Wagento\LinkMobilitySMSNotifications\Model\SmsSubscriptionRepository;
+use Wagento\SMSNotifications\Api\Data\SmsSubscriptionInterface;
+use Wagento\SMSNotifications\Model\ResourceModel\SmsSubscription as SmsSubscriptionResource;
+use Wagento\SMSNotifications\Model\SmsSubscriptionFactory as SmsSubscriptionModelFactory;
+use Wagento\SMSNotifications\Model\SmsSubscriptionRepository;
 use Magento\Framework\Api\SearchCriteriaBuilderFactory;
 use Magento\Framework\Api\SearchResultsInterface;
 use Magento\Framework\Exception\CouldNotDeleteException;
@@ -30,7 +30,7 @@ use PHPUnit\Framework\TestCase;
 /**
  * SMS Subscription Repository Test
  *
- * @package Wagento\LinkMobilitySMSNotifications\Test\Integration\Model
+ * @package Wagento\SMSNotifications\Test\Integration\Model
  * @author Joseph Leedy <joseph@wagento.com>
  */
 class SmsSubscriptionRepositoryTest extends TestCase
@@ -40,11 +40,11 @@ class SmsSubscriptionRepositoryTest extends TestCase
      */
     private $objectManager;
     /**
-     * @var \Wagento\LinkMobilitySMSNotifications\Model\SmsSubscriptionRepository
+     * @var \Wagento\SMSNotifications\Model\SmsSubscriptionRepository
      */
     private $smsSubscriptionRepository;
     /**
-     * @var \Wagento\LinkMobilitySMSNotifications\Model\SmsSubscription
+     * @var \Wagento\SMSNotifications\Model\SmsSubscription
      */
     private static $smsSubscriptionFixture;
 
@@ -135,7 +135,7 @@ class SmsSubscriptionRepositoryTest extends TestCase
     public function testDeleteRemovesSmsSubscriptionEntity(): void
     {
         $smsSubscriptionResource = $this->objectManager->create(SmsSubscriptionResource::class);
-        /** @var \Wagento\LinkMobilitySMSNotifications\Model\SmsSubscription $smsSubscriptionModel */
+        /** @var \Wagento\SMSNotifications\Model\SmsSubscription $smsSubscriptionModel */
         $smsSubscriptionModel = $this->objectManager->create(SmsSubscriptionModelFactory::class)->create();
 
         $smsSubscriptionResource->load($smsSubscriptionModel, self::$smsSubscriptionFixture->getId());

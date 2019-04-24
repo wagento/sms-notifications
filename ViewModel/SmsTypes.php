@@ -1,11 +1,11 @@
 <?php
 /**
- * LINK Mobility SMS Notifications
+ * Wagento SMS Notifications powered by LINK Mobility
  *
  * Sends transactional SMS notifications through the LINK Mobility messaging
  * service.
  *
- * @package Wagento\LinkMobilitySMSNotifications\ViewModel
+ * @package Wagento\SMSNotifications\ViewModel
  * @author Joseph Leedy <joseph@wagento.com>
  * @author Yair García Torres <yair.garcia@wagento.com>
  * @copyright Copyright (c) Wagento (https://wagento.com/)
@@ -14,21 +14,21 @@
 
 declare(strict_types=1);
 
-namespace Wagento\LinkMobilitySMSNotifications\ViewModel;
+namespace Wagento\SMSNotifications\ViewModel;
 
-use Wagento\LinkMobilitySMSNotifications\Model\Source\SmsType as SmsTypeSource;
+use Wagento\SMSNotifications\Model\Source\SmsType as SmsTypeSource;
 use Magento\Framework\View\Element\Block\ArgumentInterface;
 
 /**
  * SMS Types View Model
  *
- * @package Wagento\LinkMobilitySMSNotifications\ViewModel
+ * @package Wagento\SMSNotifications\ViewModel
  * @author Joseph Leedy <joseph@wagento.com>
  */
 final class SmsTypes implements ArgumentInterface
 {
     /**
-     * @var \Wagento\LinkMobilitySMSNotifications\Model\Source\SmsType
+     * @var \Wagento\SMSNotifications\Model\Source\SmsType
      */
     private $smsTypeSource;
 

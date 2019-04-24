@@ -1,11 +1,11 @@
 <?php
 /**
- * LINK Mobility SMS Notifications
+ * Wagento SMS Notifications powered by LINK Mobility
  *
  * Sends transactional SMS notifications through the LINK Mobility messaging
  * service.
  *
- * @package Wagento\LinkMobilitySMSNotifications\Test\Integration
+ * @package Wagento\SMSNotifications\Test\Integration
  * @author Joseph Leedy <joseph@wagento.com>
  * @author Yair García Torres <yair.garcia@wagento.com>
  * @copyright Copyright (c) Wagento (https://wagento.com/)
@@ -14,11 +14,11 @@
 
 declare(strict_types=1);
 
-namespace Wagento\LinkMobilitySMSNotifications\Test\Integration;
+namespace Wagento\SMSNotifications\Test\Integration;
 
-use Wagento\LinkMobilitySMSNotifications\Api\ConfigInterface;
-use Wagento\LinkMobilitySMSNotifications\Api\Data\SmsSubscriptionInterface;
-use Wagento\LinkMobilitySMSNotifications\Model\MessageService;
+use Wagento\SMSNotifications\Api\ConfigInterface;
+use Wagento\SMSNotifications\Api\Data\SmsSubscriptionInterface;
+use Wagento\SMSNotifications\Model\MessageService;
 use Magento\Customer\Api\CustomerRepositoryInterface;
 use Magento\TestFramework\ObjectManager;
 use PHPUnit\Framework\MockObject\MockObject;
@@ -27,7 +27,7 @@ use PHPUnit\Framework\TestCase;
 /**
  * SMS Sender Test Case
  *
- * @package Wagento\LinkMobilitySMSNotifications\Test\Integration
+ * @package Wagento\SMSNotifications\Test\Integration
  * @author Joseph Leedy <joseph@wagento.com>
  */
 class SmsSenderTestCase extends TestCase
@@ -83,7 +83,7 @@ class SmsSenderTestCase extends TestCase
      */
     protected function getConfigMock(): MockObject
     {
-        /** @var \Wagento\LinkMobilitySMSNotifications\Api\ConfigInterface|\PHPUnit\Framework\MockObject\MockObject $configMock */
+        /** @var \Wagento\SMSNotifications\Api\ConfigInterface|\PHPUnit\Framework\MockObject\MockObject $configMock */
         $configMock = $this->getMockBuilder(ConfigInterface::class)
             ->disableOriginalConstructor()
             ->getMockForAbstractClass();

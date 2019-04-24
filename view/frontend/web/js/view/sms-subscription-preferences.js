@@ -1,5 +1,5 @@
 /**
- * LINK Mobility SMS Notifications
+ * Wagento SMS Notifications powered by LINK Mobility
  *
  * Sends transactional SMS notifications through the LINK Mobility messaging
  * service.
@@ -14,14 +14,14 @@ define([
     'jquery',
     'ko',
     'uiComponent',
-    'Wagento_LinkMobilitySMSNotifications/js/model/sms-subscription-preferences-modal',
+    'Wagento_SMSNotifications/js/model/sms-subscription-preferences-modal',
     'smsNotifications'
 ], function ($, ko, Component, subscriptionPreferencesModal, smsNotifications) {
     'use strict';
 
     return Component.extend({
         defaults: {
-            template: 'Wagento_LinkMobilitySMSNotifications/sms-subscription-preferences',
+            template: 'Wagento_SMSNotifications/sms-subscription-preferences',
             groupedSmsTypes: {},
             selectedSmsTypes: [],
             modalTitle: null,

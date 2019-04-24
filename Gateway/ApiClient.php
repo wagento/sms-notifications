@@ -1,11 +1,11 @@
 <?php
 /**
- * LINK Mobility SMS Notifications
+ * Wagento SMS Notifications powered by LINK Mobility
  *
  * Sends transactional SMS notifications through the LINK Mobility messaging
  * service.
  *
- * @package Wagento\LinkMobilitySMSNotifications\Gateway
+ * @package Wagento\SMSNotifications\Gateway
  * @author Joseph Leedy <joseph@wagento.com>
  * @author Yair García Torres <yair.garcia@wagento.com>
  * @copyright Copyright (c) Wagento (https://wagento.com/)
@@ -14,20 +14,20 @@
 
 declare(strict_types=1);
 
-namespace Wagento\LinkMobilitySMSNotifications\Gateway;
+namespace Wagento\SMSNotifications\Gateway;
 
 use GuzzleHttp\Exception\GuzzleException;
-use Wagento\LinkMobilitySMSNotifications\Gateway\Entity\MessageInterface;
-use Wagento\LinkMobilitySMSNotifications\Gateway\Entity\ResultInterface;
-use Wagento\LinkMobilitySMSNotifications\Gateway\Factory\ClientFactory;
-use Wagento\LinkMobilitySMSNotifications\Gateway\Factory\MessageEntityHydratorFactory;
-use Wagento\LinkMobilitySMSNotifications\Gateway\Factory\ResultFactory;
+use Wagento\SMSNotifications\Gateway\Entity\MessageInterface;
+use Wagento\SMSNotifications\Gateway\Entity\ResultInterface;
+use Wagento\SMSNotifications\Gateway\Factory\ClientFactory;
+use Wagento\SMSNotifications\Gateway\Factory\MessageEntityHydratorFactory;
+use Wagento\SMSNotifications\Gateway\Factory\ResultFactory;
 use Psr\Http\Message\ResponseInterface;
 
 /**
  * API Client
  *
- * @package Wagento\LinkMobilitySMSNotifications\Gateway
+ * @package Wagento\SMSNotifications\Gateway
  * @author Joseph Leedy <joseph@wagento.com>
  */
 final class ApiClient implements ApiClientInterface
@@ -35,11 +35,11 @@ final class ApiClient implements ApiClientInterface
     private const BASE_URL = 'https://wsx.sp247.net/sms/';
 
     /**
-     * @var \Wagento\LinkMobilitySMSNotifications\Gateway\Factory\ClientFactory
+     * @var \Wagento\SMSNotifications\Gateway\Factory\ClientFactory
      */
     private $clientFactory;
     /**
-     * @var \Wagento\LinkMobilitySMSNotifications\Gateway\Factory\ResultFactory
+     * @var \Wagento\SMSNotifications\Gateway\Factory\ResultFactory
      */
     private $resultFactory;
     /**
@@ -71,7 +71,7 @@ final class ApiClient implements ApiClientInterface
      */
     private $errors = [];
     /**
-     * @var \Wagento\LinkMobilitySMSNotifications\Gateway\Entity\ResultInterface
+     * @var \Wagento\SMSNotifications\Gateway\Entity\ResultInterface
      */
     private $result;
 
@@ -97,7 +97,7 @@ final class ApiClient implements ApiClientInterface
     }
 
     /**
-     * @param string[]|\Wagento\LinkMobilitySMSNotifications\Gateway\Entity\MessageInterface $data
+     * @param string[]|\Wagento\SMSNotifications\Gateway\Entity\MessageInterface $data
      */
     public function setData($data): void
     {
@@ -123,7 +123,7 @@ final class ApiClient implements ApiClientInterface
     }
 
     /**
-     * @throws \Wagento\LinkMobilitySMSNotifications\Gateway\ApiException
+     * @throws \Wagento\SMSNotifications\Gateway\ApiException
      *
      * @phpcs:disable Generic.Files.LineLength.TooLong
      */

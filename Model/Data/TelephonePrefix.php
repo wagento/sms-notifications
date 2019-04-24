@@ -1,11 +1,11 @@
 <?php
 /**
- * LINK Mobility SMS Notifications
+ * Wagento SMS Notifications powered by LINK Mobility
  *
  * Sends transactional SMS notifications through the LINK Mobility messaging
  * service.
  *
- * @package Wagento\LinkMobilitySMSNotifications\Model\Data
+ * @package Wagento\SMSNotifications\Model\Data
  * @author Joseph Leedy <joseph@wagento.com>
  * @author Yair García Torres <yair.garcia@wagento.com>
  * @copyright Copyright (c) Wagento (https://wagento.com/)
@@ -14,15 +14,15 @@
 
 declare(strict_types=1);
 
-namespace Wagento\LinkMobilitySMSNotifications\Model\Data;
+namespace Wagento\SMSNotifications\Model\Data;
 
-use Wagento\LinkMobilitySMSNotifications\Api\Data\TelephonePrefixInterface;
+use Wagento\SMSNotifications\Api\Data\TelephonePrefixInterface;
 use Magento\Framework\Api\AbstractSimpleObject;
 
 /**
  * Telephone Prefix Entity
  *
- * @package Wagento\LinkMobilitySMSNotifications\Model\Data
+ * @package Wagento\SMSNotifications\Model\Data
  * @author Joseph Leedy <joseph@wagento.com>
  */
 final class TelephonePrefix extends AbstractSimpleObject implements TelephonePrefixInterface

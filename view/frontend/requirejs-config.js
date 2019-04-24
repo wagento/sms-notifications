@@ -1,5 +1,5 @@
 /**
- * LINK Mobility SMS Notifications
+ * Wagento SMS Notifications powered by LINK Mobility
  *
  * Sends transactional SMS notifications through the LINK Mobility messaging
  * service.
@@ -13,8 +13,8 @@
 var config = {
     map: {
         '*': {
-            lmCheckboxToggler: 'Wagento_LinkMobilitySMSNotifications/js/checkbox-toggler',
-            smsNotifications: 'Wagento_LinkMobilitySMSNotifications/js/model/sms-notifications'
+            wagentoCheckboxToggler: 'Wagento_SMSNotifications/js/checkbox-toggler',
+            smsNotifications: 'Wagento_SMSNotifications/js/model/sms-notifications'
         }
     }
 };

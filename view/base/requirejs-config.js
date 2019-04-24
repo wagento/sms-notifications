@@ -1,5 +1,5 @@
 /**
- * LINK Mobility SMS Notifications
+ * Wagento SMS Notifications powered by LINK Mobility
  *
  * Sends transactional SMS notifications through the LINK Mobility messaging
  * service.
@@ -13,7 +13,7 @@ var config = {
     config: {
         mixins: {
             'Magento_Ui/js/grid/massactions': {
-                'Wagento_LinkMobilitySMSNotifications/js/grid/massactions-mixin': true
+                'Wagento_SMSNotifications/js/grid/massactions-mixin': true
             }
         }
     }

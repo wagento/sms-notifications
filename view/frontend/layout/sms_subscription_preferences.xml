@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!--
 /**
- * LINK Mobility SMS Notifications
+ * Wagento SMS Notifications powered by LINK Mobility
  *
  * Sends transactional SMS notifications through the LINK Mobility messaging
  * service.
@@ -15,9 +15,9 @@
 <page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
     <body>
         <referenceContainer name="content">
-            <block class="Wagento\LinkMobilitySMSNotifications\Block\SmsSubscriptionPreferences" name="sms_notifications.subscription_preferences" as="sms_subscription_preferences" template="Wagento_LinkMobilitySMSNotifications::sms-subscription-preferences.phtml">
+            <block class="Wagento\SMSNotifications\Block\SmsSubscriptionPreferences" name="sms_notifications.subscription_preferences" as="sms_subscription_preferences" template="Wagento_SMSNotifications::sms-subscription-preferences.phtml">
                 <arguments>
-                    <argument name="sms_types_view_model" xsi:type="object">Wagento\LinkMobilitySMSNotifications\ViewModel\SmsTypes</argument>
+                    <argument name="sms_types_view_model" xsi:type="object">Wagento\SMSNotifications\ViewModel\SmsTypes</argument>
                 </arguments>
             </block>
         </referenceContainer>

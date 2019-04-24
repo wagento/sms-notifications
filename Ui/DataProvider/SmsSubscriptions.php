@@ -1,11 +1,11 @@
 <?php
 /**
- * LINK Mobility SMS Notifications
+ * Wagento SMS Notifications powered by LINK Mobility
  *
  * Sends transactional SMS notifications through the LINK Mobility messaging
  * service.
  *
- * @package Wagento\LinkMobilitySMSNotifications\Ui\DataProvider
+ * @package Wagento\SMSNotifications\Ui\DataProvider
  * @author Joseph Leedy <joseph@wagento.com>
  * @author Yair García Torres <yair.garcia@wagento.com>
  * @copyright Copyright (c) Wagento (https://wagento.com/)
@@ -14,10 +14,10 @@
 
 declare(strict_types=1);
 
-namespace Wagento\LinkMobilitySMSNotifications\Ui\DataProvider;
+namespace Wagento\SMSNotifications\Ui\DataProvider;
 
-use Wagento\LinkMobilitySMSNotifications\Model\ResourceModel\SmsSubscription\CollectionFactory;
-use Wagento\LinkMobilitySMSNotifications\Model\Source\SmsType;
+use Wagento\SMSNotifications\Model\ResourceModel\SmsSubscription\CollectionFactory;
+use Wagento\SMSNotifications\Model\Source\SmsType;
 use Magento\Backend\Model\Session as BackendSession;
 use Magento\Framework\Api\FilterBuilder;
 use Magento\Framework\Exception\LocalizedException;
@@ -26,7 +26,7 @@ use Magento\Ui\DataProvider\AbstractDataProvider;
 /**
  * SMS Subscriptions Data Provider
  *
- * @package Wagento\LinkMobilitySMSNotifications\Ui\DataProvider
+ * @package Wagento\SMSNotifications\Ui\DataProvider
  */
 final class SmsSubscriptions extends AbstractDataProvider
 {
@@ -39,7 +39,7 @@ final class SmsSubscriptions extends AbstractDataProvider
      */
     private $filterBuilder;
     /**
-     * @var \Wagento\LinkMobilitySMSNotifications\Model\Source\SmsType
+     * @var \Wagento\SMSNotifications\Model\Source\SmsType
      */
     private $smsTypeSource;
 
@@ -47,7 +47,7 @@ final class SmsSubscriptions extends AbstractDataProvider
      * @param string $name
      * @param string $primaryFieldName
      * @param string $requestFieldName
-     * @param \Wagento\LinkMobilitySMSNotifications\Model\ResourceModel\SmsSubscription\CollectionFactory $collectionFactory
+     * @param \Wagento\SMSNotifications\Model\ResourceModel\SmsSubscription\CollectionFactory $collectionFactory
      * @param \Magento\Backend\Model\Session $backendSession
      * @param \Magento\Framework\Api\FilterBuilder $filterBuilder
      * @param array $meta

@@ -1,11 +1,11 @@
 <?php
 /**
- * LINK Mobility SMS Notifications
+ * Wagento SMS Notifications powered by LINK Mobility
  *
  * Sends transactional SMS notifications through the LINK Mobility messaging
  * service.
  *
- * @package Wagento\LinkMobilitySMSNotifications\Test\Unit\Model
+ * @package Wagento\SMSNotifications\Test\Unit\Model
  * @author Joseph Leedy <joseph@wagento.com>
  * @author Yair García Torres <yair.garcia@wagento.com>
  * @copyright Copyright (c) Wagento (https://wagento.com/)
@@ -14,12 +14,12 @@
 
 declare(strict_types=1);
 
-namespace Wagento\LinkMobilitySMSNotifications\Test\Unit\Model;
+namespace Wagento\SMSNotifications\Test\Unit\Model;
 
-use Wagento\LinkMobilitySMSNotifications\Model\SmsSubscription;
-use Wagento\LinkMobilitySMSNotifications\Model\SmsSubscriptionValidationRules;
-use Wagento\LinkMobilitySMSNotifications\Model\SmsSubscriptionValidator;
-use Wagento\LinkMobilitySMSNotifications\Model\Source\SmsType;
+use Wagento\SMSNotifications\Model\SmsSubscription;
+use Wagento\SMSNotifications\Model\SmsSubscriptionValidationRules;
+use Wagento\SMSNotifications\Model\SmsSubscriptionValidator;
+use Wagento\SMSNotifications\Model\Source\SmsType;
 use Magento\Framework\Validator\DataObject;
 use Magento\Framework\Validator\DataObjectFactory;
 use Magento\Framework\Validator\NotEmpty;
@@ -29,12 +29,12 @@ use PHPUnit\Framework\TestCase;
 /**
  * SMS Subscription Validator Test
  *
- * @package Wagento\LinkMobilitySMSNotifications\Test\Unit\Model
+ * @package Wagento\SMSNotifications\Test\Unit\Model
  * @author Joseph Leedy <joseph@wagento.com>
  */
 class SmsSubscriptionValidatorTest extends TestCase
 {
-    /** @var \Wagento\LinkMobilitySMSNotifications\Model\SmsSubscriptionValidator */
+    /** @var \Wagento\SMSNotifications\Model\SmsSubscriptionValidator */
     private $validator;
 
     public function testValidateValidSubscription(): void

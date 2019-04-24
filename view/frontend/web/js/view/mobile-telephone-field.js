@@ -1,5 +1,5 @@
 /**
- * LINK Mobility SMS Notifications
+ * Wagento SMS Notifications powered by LINK Mobility
  *
  * Sends transactional SMS notifications through the LINK Mobility messaging
  * service.
@@ -20,7 +20,7 @@ define([
 
     return Component.extend({
         defaults: {
-            template: 'Wagento_LinkMobilitySMSNotifications/mobile-telephone-field',
+            template: 'Wagento_SMSNotifications/mobile-telephone-field',
             mobileTelephonePrefixOptions: [],
             defaultMobileTelephonePrefix: '',
             mobileTelephonePrefix: '',

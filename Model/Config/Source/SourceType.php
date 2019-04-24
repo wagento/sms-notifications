@@ -1,11 +1,11 @@
 <?php
 /**
- * LINK Mobility SMS Notifications
+ * Wagento SMS Notifications powered by LINK Mobility
  *
  * Sends transactional SMS notifications through the LINK Mobility messaging
  * service.
  *
- * @package Wagento\LinkMobilitySMSNotifications\Model\Config\Source
+ * @package Wagento\SMSNotifications\Model\Config\Source
  * @author Joseph Leedy <joseph@wagento.com>
  * @author Yair García Torres <yair.garcia@wagento.com>
  * @copyright Copyright (c) Wagento (https://wagento.com/)
@@ -14,14 +14,14 @@
 
 declare(strict_types=1);
 
-namespace Wagento\LinkMobilitySMSNotifications\Model\Config\Source;
+namespace Wagento\SMSNotifications\Model\Config\Source;
 
 use Magento\Framework\Option\ArrayInterface;
 
 /**
  * Source Type Configuration Field Source Model
  *
- * @package Wagento\LinkMobilitySMSNotifications\Model\Config\Source
+ * @package Wagento\SMSNotifications\Model\Config\Source
  * @author Joseph Leedy <joseph@wagento.com>
  */
 final class SourceType implements ArrayInterface

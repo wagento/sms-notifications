@@ -1,11 +1,11 @@
 <?php
 /**
- * LINK Mobility SMS Notifications
+ * Wagento SMS Notifications powered by LINK Mobility
  *
  * Sends transactional SMS notifications through the LINK Mobility messaging
  * service.
  *
- * @package Wagento\LinkMobilitySMSNotifications\Model\Data
+ * @package Wagento\SMSNotifications\Model\Data
  * @author Joseph Leedy <joseph@wagento.com>
  * @author Yair García Torres <yair.garcia@wagento.com>
  * @copyright Copyright (c) Wagento (https://wagento.com/)
@@ -14,23 +14,23 @@
 
 declare(strict_types=1);
 
-namespace Wagento\LinkMobilitySMSNotifications\Model\Data;
+namespace Wagento\SMSNotifications\Model\Data;
 
-use Wagento\LinkMobilitySMSNotifications\Api\Data\SmsSubscriptionExtensionInterface;
-use Wagento\LinkMobilitySMSNotifications\Api\Data\SmsSubscriptionInterface;
+use Wagento\SMSNotifications\Api\Data\SmsSubscriptionExtensionInterface;
+use Wagento\SMSNotifications\Api\Data\SmsSubscriptionInterface;
 use Magento\Framework\Api\AbstractExtensibleObject;
 
 /**
  * SMS Subscription Entity
  *
- * @package Wagento\LinkMobilitySMSNotifications\Model\Data
+ * @package Wagento\SMSNotifications\Model\Data
  * @author Joseph Leedy <joseph@wagento.com>
  */
 final class SmsSubscription extends AbstractExtensibleObject implements SmsSubscriptionInterface
 {
     /**
      * @param int $id
-     * @return \Wagento\LinkMobilitySMSNotifications\Api\Data\SmsSubscriptionInterface
+     * @return \Wagento\SMSNotifications\Api\Data\SmsSubscriptionInterface
      */
     public function setId(int $id): SmsSubscriptionInterface
     {
@@ -47,7 +47,7 @@ final class SmsSubscription extends AbstractExtensibleObject implements SmsSubsc
 
     /**
      * @param int $smsSubscriptionId
-     * @return \Wagento\LinkMobilitySMSNotifications\Api\Data\SmsSubscriptionInterface
+     * @return \Wagento\SMSNotifications\Api\Data\SmsSubscriptionInterface
      */
     public function setSmsSubscriptionId(int $smsSubscriptionId): SmsSubscriptionInterface
     {
@@ -64,7 +64,7 @@ final class SmsSubscription extends AbstractExtensibleObject implements SmsSubsc
 
     /**
      * @param int $customerId
-     * @return \Wagento\LinkMobilitySMSNotifications\Api\Data\SmsSubscriptionInterface
+     * @return \Wagento\SMSNotifications\Api\Data\SmsSubscriptionInterface
      */
     public function setCustomerId(int $customerId): SmsSubscriptionInterface
     {
@@ -81,7 +81,7 @@ final class SmsSubscription extends AbstractExtensibleObject implements SmsSubsc
 
     /**
      * @param string $smsType
-     * @return \Wagento\LinkMobilitySMSNotifications\Api\Data\SmsSubscriptionInterface
+     * @return \Wagento\SMSNotifications\Api\Data\SmsSubscriptionInterface
      */
     public function setSmsType(string $smsType): SmsSubscriptionInterface
     {
@@ -97,8 +97,8 @@ final class SmsSubscription extends AbstractExtensibleObject implements SmsSubsc
     }
 
     /**
-     * @param \Wagento\LinkMobilitySMSNotifications\Api\Data\SmsSubscriptionExtensionInterface $smsSubscriptionExtension
-     * @return \Wagento\LinkMobilitySMSNotifications\Api\Data\SmsSubscriptionInterface
+     * @param \Wagento\SMSNotifications\Api\Data\SmsSubscriptionExtensionInterface $smsSubscriptionExtension
+     * @return \Wagento\SMSNotifications\Api\Data\SmsSubscriptionInterface
      *
      * @phpcs:disable Generic.Files.LineLength.TooLong
      */
@@ -108,7 +108,7 @@ final class SmsSubscription extends AbstractExtensibleObject implements SmsSubsc
     }
 
     /**
-     * @return \Wagento\LinkMobilitySMSNotifications\Api\Data\SmsSubscriptionExtensionInterface|null
+     * @return \Wagento\SMSNotifications\Api\Data\SmsSubscriptionExtensionInterface|null
      */
     public function getExtensionAttributes(): ?SmsSubscriptionExtensionInterface
     {

@@ -1,6 +1,6 @@
 <?php
 /**
- * LINK Mobility SMS Notifications
+ * Wagento SMS Notifications powered by LINK Mobility
  *
  * Sends transactional SMS notifications through the LINK Mobility messaging
  * service.
@@ -11,9 +11,9 @@
  * @license https://opensource.org/licenses/OSL-3.0.php Open Software License 3.0
  */
 
-/** @var \Wagento\LinkMobilitySMSNotifications\Block\Customer\Account\Create\MobileTelephoneField $block */
+/** @var \Wagento\SMSNotifications\Block\Customer\Account\Create\MobileTelephoneField $block */
 
-/** @var \Wagento\LinkMobilitySMSNotifications\ViewModel\TelephonePrefixes $telephonePrefixesViewModel */
+/** @var \Wagento\SMSNotifications\ViewModel\TelephonePrefixes $telephonePrefixesViewModel */
 $telephonePrefixesViewModel = $block->getData('telephone_prefixes_view_model');
 ?>
 <div class="field mobile-telephone-number" id="mobile-telephone-number-field" data-bind="scope: 'sms-mobile-telephone'">
@@ -25,7 +25,7 @@ $telephonePrefixesViewModel = $block->getData('telephone_prefixes_view_model');
             "Magento_Ui/js/core/app": {
                 "components": {
                     "sms-mobile-telephone": {
-                        "component": "Wagento_LinkMobilitySMSNotifications/js/view/mobile-telephone-field",
+                        "component": "Wagento_SMSNotifications/js/view/mobile-telephone-field",
                         "config": {
                             "mobileTelephonePrefixOptions": <?= \json_encode($telephonePrefixesViewModel->getOptions()) ?>,
                             "defaultMobileTelephonePrefix": "<?= /** @noEscape */ $telephonePrefixesViewModel->getDefaultPrefix() ?>"

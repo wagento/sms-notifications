@@ -1,11 +1,11 @@
 <?php
 /**
- * LINK Mobility SMS Notifications
+ * Wagento SMS Notifications powered by LINK Mobility
  *
  * Sends transactional SMS notifications through the LINK Mobility messaging
  * service.
  *
- * @package Wagento\LinkMobilitySMSNotifications\Model\ResourceModel\SmsSubscription\Grid
+ * @package Wagento\SMSNotifications\Model\ResourceModel\SmsSubscription\Grid
  * @author Joseph Leedy <joseph@wagento.com>
  * @author Yair García Torres <yair.garcia@wagento.com>
  * @copyright Copyright (c) Wagento (https://wagento.com/)
@@ -14,7 +14,7 @@
 
 declare(strict_types=1);
 
-namespace Wagento\LinkMobilitySMSNotifications\Ui\Component\Listing\Column;
+namespace Wagento\SMSNotifications\Ui\Component\Listing\Column;
 
 use Magento\Framework\Data\OptionSourceInterface;
 use Magento\Ui\Component\Listing\Columns\Column;
@@ -22,7 +22,7 @@ use Magento\Ui\Component\Listing\Columns\Column;
 /**
  * SMS Subscription Status Column
  *
- * @package Wagento\LinkMobilitySMSNotifications\Ui\Component\Listing\Column
+ * @package Wagento\SMSNotifications\Ui\Component\Listing\Column
  * @author Joseph Leedy <joseph@wagento.com>
  */
 final class SmsSubscriptionStatus extends Column implements OptionSourceInterface

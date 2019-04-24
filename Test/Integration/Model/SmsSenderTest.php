@@ -1,11 +1,11 @@
 <?php
 /**
- * LINK Mobility SMS Notifications
+ * Wagento SMS Notifications powered by LINK Mobility
  *
  * Sends transactional SMS notifications through the LINK Mobility messaging
  * service.
  *
- * @package Wagento\LinkMobilitySMSNotifications\Test\Integration\Model
+ * @package Wagento\SMSNotifications\Test\Integration\Model
  * @author Joseph Leedy <joseph@wagento.com>
  * @author Yair García Torres <yair.garcia@wagento.com>
  * @copyright Copyright (c) Wagento (https://wagento.com/)
@@ -14,10 +14,10 @@
 
 declare(strict_types=1);
 
-namespace Wagento\LinkMobilitySMSNotifications\Test\Integration\Model;
+namespace Wagento\SMSNotifications\Test\Integration\Model;
 
-use Wagento\LinkMobilitySMSNotifications\Test\Integration\_stubs\Model\SmsSender;
-use Wagento\LinkMobilitySMSNotifications\Test\Integration\SmsSenderTestCase;
+use Wagento\SMSNotifications\Test\Integration\_stubs\Model\SmsSender;
+use Wagento\SMSNotifications\Test\Integration\SmsSenderTestCase;
 use Magento\Customer\Api\Data\CustomerInterface;
 use Magento\Customer\Model\Customer;
 use Psr\Log\Test\TestLogger;
@@ -25,7 +25,7 @@ use Psr\Log\Test\TestLogger;
 /**
  * SMS Sender Test
  *
- * @package Wagento\LinkMobilitySMSNotifications\Test\Integration\Model
+ * @package Wagento\SMSNotifications\Test\Integration\Model
  * @author Joseph Leedy <joseph@wagento.com>
  *
  * @phpcs:disable Generic.Files.LineLength.TooLong
@@ -33,7 +33,7 @@ use Psr\Log\Test\TestLogger;
 class SmsSenderTest extends SmsSenderTestCase
 {
     /**
-     * @var \Wagento\LinkMobilitySMSNotifications\Model\SmsSender
+     * @var \Wagento\SMSNotifications\Model\SmsSender
      */
     private $smsSender;
 

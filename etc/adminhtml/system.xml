@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!--
 /**
- * LINK Mobility SMS Notifications
+ * Wagento SMS Notifications powered by LINK Mobility
  *
  * Sends transactional SMS notifications through the LINK Mobility messaging
  * service.
@@ -17,24 +17,22 @@
         <section id="sms_notifications" translate="label" sortOrder="1200" showInDefault="1" showInWebsite="1" showInStore="1">
             <class>separator-top</class>
             <label>SMS Notifications</label>
-            <resource>Wagento_LinkMobilitySMSNotifications::sms_configuration</resource>
+            <resource>Wagento_SMSNotifications::sms_configuration</resource>
             <tab>general</tab>
             <group id="info" translate="comment" type="text" sortOrder="5" showInDefault="1" showInWebsite="1" showInStore="0">
-                <frontend_model>Wagento\LinkMobilitySMSNotifications\Block\System\Config\Form\Fieldset\Info</frontend_model>
+                <frontend_model>Wagento\SMSNotifications\Block\System\Config\Form\Fieldset\Info</frontend_model>
                 <comment>
                     <![CDATA[
-<p>LINK Mobility SMS Notifications allows your customers to subscribe to transactional text messages regarding their order and receive them on their mobile telephone. Keep your customers engaged by <a href="https://www.linkmobility.com/" target="_blank">signing up for an account</a> today.</p>
-<p><strong>Benefits:</strong></p>
+<p>Wagento SMS Notifications allows your customers to subscribe to transactional text messages. Keep your customers engaged by providing them with the following benefits:</p>
 <ul>
-    <li>Provide your customer with confidence in knowing that they've successfully placed their order</li>
+    <li>Boost your customer's confidence in knowing that they've successfully placed their order</li>
     <li>Notify your customer once their order has been shipped</li>
     <li>Instantly alert your customer as soon as you update, refund or cancel their order</li>
 </ul>
                     ]]>
                 </comment>
-                <help_url>https://www.linkmobility.com/</help_url>
-                <more_url>https://www.linkmobility.com/</more_url>
-                <demo_link>https://www.linkmobility.com/</demo_link>
+                <help_url>https://docs.wagento.com/extensions/sms-notifications/UserGuide.pdf</help_url>
+                <more_url>https://docs.wagento.com/extensions/sms-notifications/LinkMobilityPricing.pdf</more_url>
             </group>
             <group id="general" translate="label" type="text" sortOrder="10" showInDefault="1" showInWebsite="1" showInStore="1">
                 <label>General Settings</label>
@@ -87,11 +85,11 @@
                 </field>
                 <field id="source_type" translate="label" type="select" sortOrder="60" showInDefault="1" showInWebsite="1" showInStore="0">
                     <label>Source Type</label>
-                    <source_model>Wagento\LinkMobilitySMSNotifications\Model\Config\Source\SourceType</source_model>
+                    <source_model>Wagento\SMSNotifications\Model\Config\Source\SourceType</source_model>
                 </field>
                 <field id="source" translate="label comment" type="text" sortOrder="70" showInDefault="1" showInWebsite="1" showInStore="0">
                     <label>Source</label>
-                    <backend_model>Wagento\LinkMobilitySMSNotifications\Model\Config\Backend\Source</backend_model>
+                    <backend_model>Wagento\SMSNotifications\Model\Config\Backend\Source</backend_model>
                     <comment>
                         <![CDATA[
 Source format is based on selected Source Type:

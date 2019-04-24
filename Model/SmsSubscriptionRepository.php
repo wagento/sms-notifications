@@ -1,11 +1,11 @@
 <?php
 /**
- * LINK Mobility SMS Notifications
+ * Wagento SMS Notifications powered by LINK Mobility
  *
  * Sends transactional SMS notifications through the LINK Mobility messaging
  * service.
  *
- * @package Wagento\LinkMobilitySMSNotifications\Model
+ * @package Wagento\SMSNotifications\Model
  * @author Joseph Leedy <joseph@wagento.com>
  * @author Yair García Torres <yair.garcia@wagento.com>
  * @copyright Copyright (c) Wagento (https://wagento.com/)
@@ -16,13 +16,13 @@
 
 declare(strict_types=1);
 
-namespace Wagento\LinkMobilitySMSNotifications\Model;
+namespace Wagento\SMSNotifications\Model;
 
-use Wagento\LinkMobilitySMSNotifications\Api\Data\SmsSubscriptionInterface;
-use Wagento\LinkMobilitySMSNotifications\Api\SmsSubscriptionRepositoryInterface;
-use Wagento\LinkMobilitySMSNotifications\Model\SmsSubscriptionFactory as SmsSubscriptionModelFactory;
-use Wagento\LinkMobilitySMSNotifications\Model\ResourceModel\SmsSubscription as SmsSubscriptionResourceModel;
-use Wagento\LinkMobilitySMSNotifications\Model\ResourceModel\SmsSubscription\CollectionFactory as SmsSubscriptionCollectionFactory;
+use Wagento\SMSNotifications\Api\Data\SmsSubscriptionInterface;
+use Wagento\SMSNotifications\Api\SmsSubscriptionRepositoryInterface;
+use Wagento\SMSNotifications\Model\SmsSubscriptionFactory as SmsSubscriptionModelFactory;
+use Wagento\SMSNotifications\Model\ResourceModel\SmsSubscription as SmsSubscriptionResourceModel;
+use Wagento\SMSNotifications\Model\ResourceModel\SmsSubscription\CollectionFactory as SmsSubscriptionCollectionFactory;
 use Magento\Framework\Api\SearchCriteriaBuilder;
 use Magento\Framework\Api\SearchCriteriaInterface;
 use Magento\Framework\Api\SearchResultsInterface;
@@ -34,7 +34,7 @@ use Magento\Framework\Exception\NoSuchEntityException;
 /**
  * SMS Subscription Repository
  *
- * @package Wagento\LinkMobilitySMSNotifications\Model
+ * @package Wagento\SMSNotifications\Model
  * @author Joseph Leedy <joseph@wagento.com>
  */
 class SmsSubscriptionRepository implements SmsSubscriptionRepositoryInterface
@@ -48,15 +48,15 @@ class SmsSubscriptionRepository implements SmsSubscriptionRepositoryInterface
      */
     private $searchCriteriaBuilder;
     /**
-     * @var \Wagento\LinkMobilitySMSNotifications\Model\SmsSubscriptionFactory
+     * @var \Wagento\SMSNotifications\Model\SmsSubscriptionFactory
      */
     private $smsSubscriptionModelFactory;
     /**
-     * @var \Wagento\LinkMobilitySMSNotifications\Model\ResourceModel\SmsSubscription\CollectionFactory
+     * @var \Wagento\SMSNotifications\Model\ResourceModel\SmsSubscription\CollectionFactory
      */
     private $smsSubscriptionCollectionFactory;
     /**
-     * @var \Wagento\LinkMobilitySMSNotifications\Model\ResourceModel\SmsSubscription
+     * @var \Wagento\SMSNotifications\Model\ResourceModel\SmsSubscription
      */
     private $smsSubscriptionResourceModel;
 
@@ -76,12 +76,12 @@ class SmsSubscriptionRepository implements SmsSubscriptionRepositoryInterface
 
     /**
      * @param int $id
-     * @return \Wagento\LinkMobilitySMSNotifications\Api\Data\SmsSubscriptionInterface
+     * @return \Wagento\SMSNotifications\Api\Data\SmsSubscriptionInterface
      * @throws \Magento\Framework\Exception\NoSuchEntityException
      */
     public function get(int $id): SmsSubscriptionInterface
     {
-        /** @var \Wagento\LinkMobilitySMSNotifications\Model\SmsSubscription $smsSubscriptionModel */
+        /** @var \Wagento\SMSNotifications\Model\SmsSubscription $smsSubscriptionModel */
         $smsSubscriptionModel = $this->smsSubscriptionModelFactory->create();
 
         $this->smsSubscriptionResourceModel->load($smsSubscriptionModel, $id);
@@ -104,7 +104,7 @@ class SmsSubscriptionRepository implements SmsSubscriptionRepositoryInterface
 
         $searchResults->setSearchCriteria($searchCriteria);
 
-        /** @var \Wagento\LinkMobilitySMSNotifications\Model\ResourceModel\SmsSubscription\Collection $smsSubscriptionCollection */
+        /** @var \Wagento\SMSNotifications\Model\ResourceModel\SmsSubscription\Collection $smsSubscriptionCollection */
         $smsSubscriptionCollection = $this->smsSubscriptionCollectionFactory->create();
         $filterGroups = $searchCriteria->getFilterGroups();
 
@@ -163,14 +163,14 @@ class SmsSubscriptionRepository implements SmsSubscriptionRepositoryInterface
     }
 
     /**
-     * @param \Wagento\LinkMobilitySMSNotifications\Api\Data\SmsSubscriptionInterface $smsSubscription
-     * @return \Wagento\LinkMobilitySMSNotifications\Api\Data\SmsSubscriptionInterface
+     * @param \Wagento\SMSNotifications\Api\Data\SmsSubscriptionInterface $smsSubscription
+     * @return \Wagento\SMSNotifications\Api\Data\SmsSubscriptionInterface
      * @throws \Magento\Framework\Exception\CouldNotSaveException
      */
     public function save(SmsSubscriptionInterface $smsSubscription): SmsSubscriptionInterface
     {
         try {
-            /** @var \Wagento\LinkMobilitySMSNotifications\Model\SmsSubscription $smsSubscriptionModel */
+            /** @var \Wagento\SMSNotifications\Model\SmsSubscription $smsSubscriptionModel */
             $smsSubscriptionModel = $this->smsSubscriptionModelFactory->create();
 
             $smsSubscriptionModel->updateData($smsSubscription);
@@ -186,14 +186,14 @@ class SmsSubscriptionRepository implements SmsSubscriptionRepositoryInterface
     }
 
     /**
-     * @param \Wagento\LinkMobilitySMSNotifications\Api\Data\SmsSubscriptionInterface $smsSubscription
+     * @param \Wagento\SMSNotifications\Api\Data\SmsSubscriptionInterface $smsSubscription
      * @return bool
      * @throws \Magento\Framework\Exception\CouldNotDeleteException
      */
     public function delete(SmsSubscriptionInterface $smsSubscription): bool
     {
         try {
-            /** @var \Wagento\LinkMobilitySMSNotifications\Model\SmsSubscription $smsSubscriptionModel */
+            /** @var \Wagento\SMSNotifications\Model\SmsSubscription $smsSubscriptionModel */
             $smsSubscriptionModel = $this->smsSubscriptionModelFactory->create();
 
             $smsSubscriptionModel->updateData($smsSubscription);

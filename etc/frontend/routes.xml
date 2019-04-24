@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!--
 /**
- * LINK Mobility SMS Notifications
+ * Wagento SMS Notifications powered by LINK Mobility
  *
  * Sends transactional SMS notifications through the LINK Mobility messaging
  * service.
@@ -15,7 +15,7 @@
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:App/etc/routes.xsd">
     <router id="standard">
         <route id="customer">
-            <module name="Wagento_LinkMobilitySMSNotifications" before="Magento_Customer"/>
+            <module name="Wagento_SMSNotifications" before="Magento_Customer"/>
         </route>
     </router>
 </config>

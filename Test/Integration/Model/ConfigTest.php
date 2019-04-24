@@ -1,11 +1,11 @@
 <?php
 /**
- * LINK Mobility SMS Notifications
+ * Wagento SMS Notifications powered by LINK Mobility
  *
  * Sends transactional SMS notifications through the LINK Mobility messaging
  * service.
  *
- * @package Wagento\LinkMobilitySMSNotifications\Test\Integration\Model
+ * @package Wagento\SMSNotifications\Test\Integration\Model
  * @author Joseph Leedy <joseph@wagento.com>
  * @author Yair García Torres <yair.garcia@wagento.com>
  * @copyright Copyright (c) Wagento (https://wagento.com/)
@@ -14,21 +14,21 @@
 
 declare(strict_types=1);
 
-namespace Wagento\LinkMobilitySMSNotifications\Test\Integration\Model;
+namespace Wagento\SMSNotifications\Test\Integration\Model;
 
-use Wagento\LinkMobilitySMSNotifications\Model\Config;
+use Wagento\SMSNotifications\Model\Config;
 use Magento\TestFramework\Helper\Bootstrap;
 use PHPUnit\Framework\TestCase;
 
 /**
  * Configuration Model Test
  *
- * @package Wagento\LinkMobilitySMSNotifications\Test\Integration\Model
+ * @package Wagento\SMSNotifications\Test\Integration\Model
  * @author Joseph Leedy <joseph@wagento.com>
  */
 class ConfigTest extends TestCase
 {
-    /** @var \Wagento\LinkMobilitySMSNotifications\Model\Config */
+    /** @var \Wagento\SMSNotifications\Model\Config */
     private $config;
 
     /**

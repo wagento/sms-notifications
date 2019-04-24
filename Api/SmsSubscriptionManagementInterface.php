@@ -1,11 +1,11 @@
 <?php
 /**
- * LINK Mobility SMS Notifications
+ * Wagento SMS Notifications powered by LINK Mobility
  *
  * Sends transactional SMS notifications through the LINK Mobility messaging
  * service.
  *
- * @package Wagento\LinkMobilitySMSNotifications\Api
+ * @package Wagento\SMSNotifications\Api
  * @author Joseph Leedy <joseph@wagento.com>
  * @author Yair García Torres <yair.garcia@wagento.com>
  * @copyright Copyright (c) Wagento (https://wagento.com/)
@@ -14,12 +14,12 @@
 
 declare(strict_types=1);
 
-namespace Wagento\LinkMobilitySMSNotifications\Api;
+namespace Wagento\SMSNotifications\Api;
 
 /**
  * SMS Subscription Management Service Interface
  *
- * @package Wagento\LinkMobilitySMSNotifications\Api
+ * @package Wagento\SMSNotifications\Api
  * @author Joseph Leedy <joseph@wagento.com>
  * @api
  */
@@ -36,7 +36,7 @@ interface SmsSubscriptionManagementInterface
     public function removeSubscription(int $subscriptionId, int $customerId): bool;
 
     /**
-     * @param \Wagento\LinkMobilitySMSNotifications\Model\SmsSubscription[] $subscribedSmsTypes
+     * @param \Wagento\SMSNotifications\Model\SmsSubscription[] $subscribedSmsTypes
      * @param string[] $selectedSmsTypes
      * @param string[] $messages
      */

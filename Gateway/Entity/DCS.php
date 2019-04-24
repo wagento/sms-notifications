@@ -1,11 +1,11 @@
 <?php
 /**
- * LINK Mobility SMS Notifications
+ * Wagento SMS Notifications powered by LINK Mobility
  *
  * Sends transactional SMS notifications through the LINK Mobility messaging
  * service.
  *
- * @package Wagento\LinkMobilitySMSNotifications\Gateway\Entity
+ * @package Wagento\SMSNotifications\Gateway\Entity
  * @author Joseph Leedy <joseph@wagento.com>
  * @author Yair García Torres <yair.garcia@wagento.com>
  * @copyright Copyright (c) Wagento (https://wagento.com/)
@@ -14,14 +14,14 @@
 
 declare(strict_types=1);
 
-namespace Wagento\LinkMobilitySMSNotifications\Gateway\Entity;
+namespace Wagento\SMSNotifications\Gateway\Entity;
 
 use MyCLabs\Enum\Enum;
 
 /**
  * DCS Entity
  *
- * @package Wagento\LinkMobilitySMSNotifications\Gateway\Entity
+ * @package Wagento\SMSNotifications\Gateway\Entity
  * @author Joseph Leedy <joseph@wagento.com>
  */
 final class DCS extends Enum

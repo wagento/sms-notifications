@@ -1,11 +1,11 @@
 <?php
 /**
- * LINK Mobility SMS Notifications
+ * Wagento SMS Notifications powered by LINK Mobility
  *
  * Sends transactional SMS notifications through the LINK Mobility messaging
  * service.
  *
- * @package Wagento\LinkMobilitySMSNotifications\Model
+ * @package Wagento\SMSNotifications\Model
  * @author Joseph Leedy <joseph@wagento.com>
  * @author Yair García Torres <yair.garcia@wagento.com>
  * @copyright Copyright (c) Wagento (https://wagento.com/)
@@ -14,16 +14,16 @@
 
 declare(strict_types=1);
 
-namespace Wagento\LinkMobilitySMSNotifications\Model;
+namespace Wagento\SMSNotifications\Model;
 
-use Wagento\LinkMobilitySMSNotifications\Api\ConfigInterface;
+use Wagento\SMSNotifications\Api\ConfigInterface;
 use Magento\Framework\App\Config\ScopeConfigInterface;
 use Magento\Store\Model\ScopeInterface;
 
 /**
  * Configuration Model
  *
- * @package Wagento\LinkMobilitySMSNotifications\Model
+ * @package Wagento\SMSNotifications\Model
  * @author Joseph Leedy <joseph@wagento.com>
  *
  * @phpcs:disable Generic.Files.LineLength.TooLong
