@@ -25,7 +25,8 @@
     "require-dev": {
         "wagento/module-sms-notifications-webapi": "1.0.0",
         "phpunit/phpunit": "^6.5",
-        "magento/magento2-functional-testing-framework": "~2.3.12"
+        "magento/magento2-functional-testing-framework": "~2.3.12",
+        "magento/magento-coding-standard": "^3.0"
     },
     "autoload": {
         "files": [
@@ -45,5 +46,13 @@
             "type": "vcs",
             "url": "https://github.com/wagento/sms-notifications-webapi.git"
         }
-    ]
+    ],
+    "scripts": {
+        "post-install-cmd": [
+            "[ $COMPOSER_DEV_MODE -eq 1 ] && vendor/bin/phpcs --config-set installed_paths ../../magento/magento-coding-standard/"
+        ],
+        "post-update-cmd": [
+            "[ $COMPOSER_DEV_MODE -eq 1 ] && vendor/bin/phpcs --config-set installed_paths ../../magento/magento-coding-standard/"
+        ]
+    }
 }
