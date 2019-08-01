@@ -35,5 +35,11 @@
         "psr-4": {
             "Wagento\\SMSNotifications\\": ""
         }
-    }
+    },
+    "repositories": [
+        {
+            "type": "composer",
+            "url": "https://repo.magento.com/"
+        }
+    ]
 }
