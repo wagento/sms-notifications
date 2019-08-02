@@ -54,6 +54,6 @@
         "post-update-cmd": [
             "[ $COMPOSER_DEV_MODE -eq 1 ] && vendor/bin/phpcs --config-set installed_paths ../../magento/magento-coding-standard/"
         ],
-        "check-standards": "vendor/bin/phpcs --standard=Magento2,PSR12 --extensions=php --ignore=./vendor,./.idea,./Test --colors --runtime-set ignore_errors_on_exit 1 --runtime-set ignore_warnings_on_exit 1 -s ."
+        "check-standards": "vendor/bin/phpcs --standard=Magento2,PSR12 --extensions=php --ignore=./vendor,./.idea,./Test --colors --runtime-set ignore_warnings_on_exit 1 -s ."
     }
 }
