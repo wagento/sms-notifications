@@ -23,6 +23,8 @@ use MyCLabs\Enum\Enum;
  *
  * @package Wagento\SMSNotifications\Gateway\Entity
  * @author Joseph Leedy <joseph@wagento.com>
+ *
+ * @phpcs:disable Magento2.PHP.FinalImplementation.FoundFinal -- This ENUM object is not meant to be extended.
  */
 final class DCS extends Enum
 {

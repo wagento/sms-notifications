@@ -32,6 +32,7 @@ use Psr\Log\LoggerInterface;
  * @author Joseph Leedy <joseph@wagento.com>
  *
  * @codeCoverageIgnore
+ * @phpcs:disable Magento2.PHP.FinalImplementation.FoundFinal -- There is no valid use case for extending an installer.
  */
 final class InstallData implements InstallDataInterface
 {

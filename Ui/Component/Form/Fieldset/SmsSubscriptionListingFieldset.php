@@ -27,6 +27,8 @@ use Magento\Ui\Component\Form\Fieldset;
  *
  * @package Wagento\SMSNotifications\Ui\Component\Form\Fieldset
  * @author Joseph Leedy <joseph@wagento.com>
+ *
+ * @phpcs:disable Magento2.PHP.FinalImplementation.FoundFinal -- This UI component is not meant to be extended.
  */
 final class SmsSubscriptionListingFieldset extends Fieldset
 {
