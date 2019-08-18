@@ -103,7 +103,7 @@ class ManagePost extends Action implements ActionInterface, CsrfAwareActionInter
         /** @var \Magento\Framework\Controller\Result\Redirect $resultRedirect */
         $resultRedirect = $this->resultRedirectFactory->create();
         $customerId = $this->customerSession->getCustomerId();
-        $selectedSmsTypes = array_keys($this->getRequest()->getParam('sms_types', []));
+        $selectedSmsTypes = $this->getRequest()->getParam('sms_types', []);
 
         $resultRedirect->setPath('*/*/manage');
 
