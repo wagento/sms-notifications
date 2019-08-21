@@ -16,6 +16,7 @@ declare(strict_types=1);
 
 namespace Wagento\SMSNotifications\Setup;
 
+use Magento\Framework\App\ProductMetadataInterface;
 use Wagento\SMSNotifications\Model\Customer\Attribute\Source\TelephonePrefix;
 use Magento\Customer\Model\Customer;
 use Magento\Customer\Setup\CustomerSetupFactory;
@@ -30,6 +31,9 @@ use Psr\Log\LoggerInterface;
  * @package Wagento\SMSNotifications\Setup
  * @author Yair García Torres <yair.garcia@wagento.com>
  * @author Joseph Leedy <joseph@wagento.com>
+ * @deprecated
+ * @see \Wagento\SMSNotifications\Setup\Patch\Data\AddSmsMobilePhoneCustomerAttributes
+ * @see \Wagento\SMSNotifications\Setup\Patch\Data\ImportTelephonePrefixes
  *
  * @codeCoverageIgnore
  * @phpcs:disable Magento2.PHP.FinalImplementation.FoundFinal -- There is no valid use case for extending an installer.
@@ -44,13 +48,19 @@ final class InstallData implements InstallDataInterface
      * @var \Psr\Log\LoggerInterface
      */
     private $logger;
+    /**
+     * @var \Magento\Framework\App\ProductMetadataInterface
+     */
+    private $productMetadata;
 
     public function __construct(
         CustomerSetupFactory $customerSetupFactory,
-        LoggerInterface $logger
+        LoggerInterface $logger,
+        ProductMetadataInterface $productMetadata
     ) {
         $this->customerSetupFactory = $customerSetupFactory;
         $this->logger = $logger;
+        $this->productMetadata = $productMetadata;
     }
 
     /**
@@ -58,6 +68,12 @@ final class InstallData implements InstallDataInterface
      */
     public function install(ModuleDataSetupInterface $setup, ModuleContextInterface $context)
     {
+        if (version_compare($this->productMetadata->getVersion(), '2.3.0', '>=')) {
+            // Declarative Schema is used in Magento 2.3.0 and higher (etc/db_schema.xml)
+            // See https://devdocs.magento.com/guides/v2.3/extension-dev-guide/declarative-schema/
+            return;
+        }
+
         $setup->startSetup();
 
         $this->createAttributes($setup);
