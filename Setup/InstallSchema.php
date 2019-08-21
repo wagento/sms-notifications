@@ -16,6 +16,7 @@ declare(strict_types=1);
 
 namespace Wagento\SMSNotifications\Setup;
 
+use Magento\Framework\App\ProductMetadataInterface;
 use Magento\Framework\DB\Adapter\AdapterInterface;
 use Magento\Framework\DB\Ddl\Table;
 use Magento\Framework\Setup\InstallSchemaInterface;
@@ -28,6 +29,8 @@ use Magento\Framework\Setup\SchemaSetupInterface;
  * @package Wagento\SMSNotifications\Setup
  * @author Yair García Torres <yair.garcia@wagento.com>
  * @author Joseph Leedy <joseph@wagento.com>
+ * @deprecated
+ * @see etc/db_schema.xml
  *
  * @codeCoverageIgnore
  * @phpcs:disable Magento2.PHP.FinalImplementation.FoundFinal -- There is no valid use case for extending an installer.
@@ -35,10 +38,26 @@ use Magento\Framework\Setup\SchemaSetupInterface;
 final class InstallSchema implements InstallSchemaInterface
 {
     /**
+     * @var \Magento\Framework\App\ProductMetadataInterface
+     */
+    private $productMetadata;
+
+    public function __construct(ProductMetadataInterface $productMetadata)
+    {
+        $this->productMetadata = $productMetadata;
+    }
+
+    /**
      * {@inheritdoc}
      */
     public function install(SchemaSetupInterface $setup, ModuleContextInterface $context)
     {
+        if (version_compare($this->productMetadata->getVersion(), '2.3.0', '>=')) {
+            // Declarative Schema is used in Magento 2.3.0 and higher (etc/db_schema.xml)
+            // See https://devdocs.magento.com/guides/v2.3/extension-dev-guide/declarative-schema/
+            return;
+        }
+
         $smsSubscriptionTable = $setup->getConnection()
             ->newTable($setup->getTable('sms_subscription'))
             ->addColumn(
