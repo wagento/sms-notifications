@@ -18,6 +18,7 @@ namespace Wagento\SMSNotifications\Setup;
 
 use Magento\Customer\Model\Customer;
 use Magento\Eav\Setup\EavSetupFactory;
+use Magento\Framework\App\ProductMetadataInterface;
 use Magento\Framework\Setup\ModuleContextInterface;
 use Magento\Framework\Setup\SchemaSetupInterface;
 use Magento\Framework\Setup\UninstallInterface;
@@ -27,6 +28,9 @@ use Magento\Framework\Setup\UninstallInterface;
  *
  * @package Wagento\SMSNotifications\Setup
  * @author Joseph Leedy <joseph@wagento.com>
+ * @deprecated
+ * @see \Wagento\SMSNotifications\Setup\Patch\Data\AddSmsMobilePhoneCustomerAttributes
+ * @see \Wagento\SMSNotifications\Setup\Patch\Data\RemoveConfigData
  *
  * @codeCoverageIgnore
  */
@@ -36,10 +40,15 @@ class Uninstall implements UninstallInterface
      * @var \Magento\Eav\Setup\EavSetupFactory
      */
     private $eavSetupFactory;
+    /**
+     * @var \Magento\Framework\App\ProductMetadataInterface
+     */
+    private $productMetadata;
 
-    public function __construct(EavSetupFactory $eavSetupFactory)
+    public function __construct(EavSetupFactory $eavSetupFactory, ProductMetadataInterface $productMetadata)
     {
         $this->eavSetupFactory = $eavSetupFactory;
+        $this->productMetadata = $productMetadata;
     }
 
     /**
@@ -47,6 +56,12 @@ class Uninstall implements UninstallInterface
      */
     public function uninstall(SchemaSetupInterface $setup, ModuleContextInterface $context)
     {
+        if (version_compare($this->productMetadata->getVersion(), '2.3.0', '>=')) {
+            // Declarative Schema is used in Magento 2.3.0 and higher (etc/db_schema.xml)
+            // See https://devdocs.magento.com/guides/v2.3/extension-dev-guide/declarative-schema/
+            return;
+        }
+
         $this->removeSmsSubscriptionTable($setup);
         $this->removeTelephonePrefixDirectoryTable($setup);
         $this->removeMobileTelephoneNumberAttributes();

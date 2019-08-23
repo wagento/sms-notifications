@@ -20,6 +20,7 @@ use Magento\Customer\Model\Customer;
 use Magento\Customer\Setup\CustomerSetupFactory;
 use Magento\Framework\Setup\ModuleDataSetupInterface;
 use Magento\Framework\Setup\Patch\DataPatchInterface;
+use Magento\Framework\Setup\Patch\PatchRevertableInterface;
 use Wagento\SMSNotifications\Model\Customer\Attribute\Source\TelephonePrefix;
 
 /**
@@ -31,7 +32,7 @@ use Wagento\SMSNotifications\Model\Customer\Attribute\Source\TelephonePrefix;
  * @codeCoverageIgnore
  * @phpcs:disable Magento2.PHP.FinalImplementation.FoundFinal -- There is no valid use case for extending a data patch.
  */
-final class AddSmsMobilePhoneCustomerAttributes implements DataPatchInterface
+final class AddSmsMobilePhoneCustomerAttributes implements DataPatchInterface, PatchRevertableInterface
 {
     /**
      * @var \Magento\Framework\Setup\ModuleDataSetupInterface
@@ -73,6 +74,14 @@ final class AddSmsMobilePhoneCustomerAttributes implements DataPatchInterface
         $this->createAttributes();
 
         return $this;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function revert(): void
+    {
+        $this->removeAttributes();
     }
 
     /**
@@ -134,5 +143,14 @@ final class AddSmsMobilePhoneCustomerAttributes implements DataPatchInterface
 
         $mobilePhoneNumberAttribute->addData($attributeData);
         $mobilePhoneNumberAttribute->save();
+    }
+
+    private function removeAttributes(): void
+    {
+        /** @var \Magento\Customer\Setup\CustomerSetup $customerSetup */
+        $customerSetup = $this->customerSetupFactory->create(['setup' => $this->setup]);
+
+        $customerSetup->removeAttribute(Customer::ENTITY, 'sms_mobile_phone_prefix');
+        $customerSetup->removeAttribute(Customer::ENTITY, 'sms_mobile_phone_number');
     }
 }
