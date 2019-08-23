@@ -7,6 +7,8 @@ The format is based on [Keep a Changelog], and this project adheres to
 
 For more information about this extension, please see the [README] document.
 
+## [Unreleased]
+
 ## [1.0.0] - 2019-04-24
 
 ### Added
