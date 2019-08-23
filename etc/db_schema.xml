@@ -16,7 +16,7 @@
     <table name="sms_subscription" resource="default" engine="innodb" comment="SMS Notification Subscriptions">
         <column xsi:type="int" name="sms_subscription_id" padding="10" unsigned="true" nullable="false" identity="true" comment="SMS Subscription ID"/>
         <column xsi:type="int" name="customer_id" padding="10" unsigned="true" nullable="false" identity="false" comment="Customer ID"/>
-        <column xsi:type="varchar" name="sms_type" nullable="false" length="50" comment="SMS Type Code (e.g. &quot;order_placed&quot;)"/>
+        <column xsi:type="varchar" name="sms_type" nullable="false" length="50" comment="SMS Type Code (e.g. &#92;&quot;order_placed&#92;&quot;)"/>
         <constraint xsi:type="primary" referenceId="PRIMARY">
             <column name="sms_subscription_id"/>
         </constraint>
