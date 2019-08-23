@@ -7,6 +7,16 @@ The format is based on [Keep a Changelog], and this project adheres to
 
 For more information about this extension, please see the [README] document.
 
+## [Unreleased]
+
+### [1.1.0] - TBD
+#### Added
+- Declarative Schema configuration and Data Patches for Magento 2.3.0+
+
+#### Deprecated
+- Setup scripts (InstallSchema.php, InstallData.php and Uninstall.php) (still
+used for Magento 2.2 and will be removed when support is dropped)
+
 ## [1.0.0] - 2019-04-24
 
 ### Added
