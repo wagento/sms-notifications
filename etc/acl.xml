@@ -16,9 +16,11 @@
     <acl>
         <resources>
             <resource id="Magento_Backend::admin">
-                <resource id="Wagento_SMSNotifications::sms_subscriptions" title="SMS Subscriptions" translate="title" sortOrder="1000">
-                    <resource id="Wagento_SMSNotifications::view_sms_subscription" title="View" translate="title" sortOrder="10"/>
-                    <resource id="Wagento_SMSNotifications::manage_sms_subscription" title="Manage" translate="title" sortOrder="20"/>
+                <resource id="Magento_Customer::customer">
+                    <resource id="Wagento_SMSNotifications::sms_subscriptions" title="SMS Notification Subscriptions" translate="title" sortOrder="100">
+                        <resource id="Wagento_SMSNotifications::view_sms_subscription" title="View" translate="title" sortOrder="10"/>
+                        <resource id="Wagento_SMSNotifications::manage_sms_subscription" title="Manage" translate="title" sortOrder="20"/>
+                    </resource>
                 </resource>
                 <resource id="Magento_Backend::stores">
                     <resource id="Magento_Backend::stores_settings">
