@@ -19,7 +19,13 @@
                 <resource id="Wagento_SMSNotifications::sms_subscriptions" title="SMS Subscriptions" translate="title" sortOrder="1000">
                     <resource id="Wagento_SMSNotifications::view_sms_subscription" title="View" translate="title" sortOrder="10"/>
                     <resource id="Wagento_SMSNotifications::manage_sms_subscription" title="Manage" translate="title" sortOrder="20"/>
-                    <resource id="Wagento_SMSNotifications::sms_configuration" title="Configuration" translate="title" sortOrder="30"/>
+                </resource>
+                <resource id="Magento_Backend::stores">
+                    <resource id="Magento_Backend::stores_settings">
+                        <resource id="Magento_Config::config">
+                            <resource id="Wagento_SMSNotifications::sms_configuration" title="SMS Notifications Section" translate="title" sortOrder="1500"/>
+                        </resource>
+                    </resource>
                 </resource>
             </resource>
         </resources>
