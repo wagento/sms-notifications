@@ -127,6 +127,16 @@
             <argument name="customerSession" xsi:type="object">Magento\Customer\Model\Session\Proxy</argument>
         </arguments>
     </type>
+    <type name="Magento\Config\Model\Config\TypePool">
+        <arguments>
+            <argument name="sensitive" xsi:type="array">
+                <item name="sms_notifications/api/password" xsi:type="string">1</item>
+                <item name="sms_notifications/api/platform_id" xsi:type="string">1</item>
+                <item name="sms_notifications/api/platform_partner_id" xsi:type="string">1</item>
+                <item name="sms_notifications/api/gate_id" xsi:type="string">1</item>
+            </argument>
+        </arguments>
+    </type>
     <type name="Magento\Sales\Api\CreditmemoRepositoryInterface">
         <plugin name="sms_notifications_send_refund_sms" type="Wagento\SMSNotifications\Plugin\Sales\Api\CreditmemoRepositoryInterfacePlugin"/>
     </type>
