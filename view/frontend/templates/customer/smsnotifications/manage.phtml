@@ -79,3 +79,14 @@ $mobileTelephoneNumber = $mobileTelephoneViewModel->getNumber() ?? '';
         }
     }
 </script>
+<script>
+    require(['jquery'], function ($) {
+        'use strict';
+
+        $('#form-smsnotifications-manage').on('submit', function () {
+            if ($('input.sms-type:checked').length === 0) {
+                $('#mobile-telephone-number').removeClass('required-entry').removeAttr('data-validate');
+            }
+        })
+    });
+</script>
