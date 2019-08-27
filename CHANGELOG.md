@@ -9,6 +9,29 @@ For more information about this extension, please see the [README] document.
 
 ## [Unreleased]
 
+## [1.0.1] - 2019-08-26
+
+### Added
+- API configuration fields can now be exported to `app/etc/env.php` along with
+flags for enabling/disabling the extension and debug mode when using the
+`php bin/magento app:config:dump` command
+
+### Changed
+- Refactored the "SMS Notification Type" fields on the "My Text Notifications"
+page to submit in one array together instead of submitting individually
+- Moved user roles to more appropriate locations (management roles are now under
+"Customers" and settings role is now under "Stores > Settings > Configuration")
+- The logo displayed on the configuration page in the backend has been updated
+
+### Fixed
+- Removed dashes from the example phone number in the comment for the "Source"
+API Configuration field (dashes cause the LINK Mobility API to return an
+"Invalid source number" error)
+- The "Mobile Telephone Number" field on the "My Text Notifications" page is no
+longer required if no SMS Notification Types are selected
+- The "My Text Notifications" page now returns a "Page Not Found" (404) error if
+the extension is disabled in the configuration
+
 ## [1.0.0] - 2019-04-24
 
 ### Added
@@ -16,7 +39,9 @@ For more information about this extension, please see the [README] document.
 - Support for sending mobile text notifications when an order is placed,
 shipped, cancelled, refunded, held, or released from hold
 
-[1.0.0]: https://github.com/wagento/sms-notifications/compare/1.0.0...HEAD
+[Unreleased]: https://github.com/wagento/sms-notifications/compare/1.0.1...HEAD
+[1.0.1]: https://github.com/wagento/sms-notifications/compare/1.0.0...1.0.1
+[1.0.0]: https://github.com/wagento/sms-notifications/releases/tag/1.0.0
 [Keep a Changelog]: https://keepachangelog.com/en/1.0.0/
 [Semantic Versioning]: https://semver.org/spec/v2.0.0.html
 [README]: ./README.md
