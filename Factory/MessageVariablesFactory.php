@@ -33,6 +33,8 @@ use Magento\Sales\Model\Order\Shipment;
  * @package Wagento\SMSNotifications\Factory
  * @author Joseph Leedy <joseph@wagento.com>
  * @api
+ *
+ * @phpcs:disable Magento2.PHP.FinalImplementation.FoundFinal -- This factory is not meant to be extended.
  */
 final class MessageVariablesFactory
 {

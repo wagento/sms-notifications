@@ -26,6 +26,8 @@ use Wagento\SMSNotifications\Gateway\Hydrator\Strategy\Enum as EnumStrategy;
  *
  * @package Wagento\SMSNotifications\Gateway\Factory
  * @author Joseph Leedy <joseph@wagento.com>
+ *
+ * @phpcs:disable Magento2.PHP.FinalImplementation.FoundFinal -- This factory is not meant to be extended.
  */
 final class MessageEntityHydratorFactory
 {

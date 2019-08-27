@@ -24,6 +24,9 @@ use Magento\Framework\Api\AbstractSimpleObject;
  *
  * @package Wagento\SMSNotifications\Model\Data
  * @author Joseph Leedy <joseph@wagento.com>
+ *
+ * @phpcs:disable Magento2.PHP.FinalImplementation.FoundFinal -- This entity is not meant to be extended. Inherit from
+ * its interface instead.
  */
 final class TelephonePrefix extends AbstractSimpleObject implements TelephonePrefixInterface
 {

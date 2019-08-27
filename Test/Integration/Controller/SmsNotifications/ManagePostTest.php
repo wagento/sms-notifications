@@ -54,7 +54,7 @@ class ManagePostTest extends AbstractControllerTestCase
      */
     public function testRedirectAfterPost(): void
     {
-        $this->getRequest()->setPostValue('sms_types', ['order_created' => '1']);
+        $this->getRequest()->setPostValue('sms_types', ['order_created']);
         $this->loginCustomer(1);
         $this->dispatch(self::ACTION_URI);
 
@@ -88,7 +88,7 @@ class ManagePostTest extends AbstractControllerTestCase
     {
         $smsTypes = array_column((new SmsTypeSource())->toArray(), 'code');
 
-        $this->getRequest()->setPostValue('sms_types', array_fill_keys(array_values($smsTypes), '1'));
+        $this->getRequest()->setPostValue('sms_types', $smsTypes);
         $this->loginCustomer(1);
         $this->addFormKeyToRequest();
         $this->dispatch(self::ACTION_URI);
@@ -127,7 +127,7 @@ class ManagePostTest extends AbstractControllerTestCase
         $existingSubscriptions = self::createSmsSubscriptionsFixtureProvider(3);
         $smsTypes = array_slice(array_column((new SmsTypeSource())->toArray(), 'code'), 4);
 
-        $this->getRequest()->setPostValue('sms_types', array_fill_keys(array_values($smsTypes), '1'));
+        $this->getRequest()->setPostValue('sms_types', $smsTypes);
         $this->loginCustomer(1);
         $this->addFormKeyToRequest();
         $this->dispatch(self::ACTION_URI);
@@ -172,7 +172,7 @@ class ManagePostTest extends AbstractControllerTestCase
     {
         $this->createDeletedSubscriptionMocks();
 
-        $this->getRequest()->setPostValue('sms_types', ['order_shipped' => '1']);
+        $this->getRequest()->setPostValue('sms_types', ['order_shipped']);
         $this->loginCustomer(1);
         $this->addFormKeyToRequest();
         $this->dispatch(self::ACTION_URI);
