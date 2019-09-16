@@ -144,6 +144,9 @@
             </argument>
         </arguments>
     </type>
+    <type name="Magento\Customer\Api\CustomerRepositoryInterface">
+        <plugin name="sms_notifications_attach_subscriptions" type="Wagento\SMSNotifications\Plugin\Customer\Api\CustomerRepositoryInterfacePlugin"/>
+    </type>
     <type name="Magento\Sales\Api\CreditmemoRepositoryInterface">
         <plugin name="sms_notifications_send_refund_sms" type="Wagento\SMSNotifications\Plugin\Sales\Api\CreditmemoRepositoryInterfacePlugin"/>
     </type>
