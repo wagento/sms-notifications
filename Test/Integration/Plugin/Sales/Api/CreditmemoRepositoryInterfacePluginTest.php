@@ -55,7 +55,7 @@ class CreditmemoRepositoryInterfacePluginTest extends TestCase
 
     /**
      * @magentoAppArea frontend
-     * @magentoDataFixture creditmemoDataFixtureProvider
+     * @magentoDataFixture Wagento_SMSNotifications::Test/Integration/_files/creditmemo.php
      */
     public function testAfterSaveSendsOrderSms(): void
     {
@@ -78,11 +78,6 @@ class CreditmemoRepositoryInterfacePluginTest extends TestCase
         $creditmemo->addComment('test');
 
         $creditmemoRepository->save($creditmemo);
-    }
-
-    public static function creditmemoDataFixtureProvider(): void
-    {
-        require __DIR__ . '/../../../_files/creditmemo.php';
     }
 
     protected function setUp()

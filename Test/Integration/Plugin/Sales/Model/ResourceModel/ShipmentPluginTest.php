@@ -52,7 +52,7 @@ class ShipmentPluginTest extends TestCase
 
     /**
      * @magentoAppArea frontend
-     * @magentoDataFixture shipmentDataFixtureProvider
+     * @magentoDataFixture Wagento_SMSNotifications::Test/Integration/_files/shipment.php
      */
     public function testAfterSaveSendsShipmentSms(): void
     {
@@ -75,11 +75,6 @@ class ShipmentPluginTest extends TestCase
         $shipment->setCustomerNote('test');
         $shipment->setCustomerNoteNotify(false);
         $shipment->save();
-    }
-
-    public static function shipmentDataFixtureProvider(): void
-    {
-        require __DIR__ . '/../../../../_files/shipment.php';
     }
 
     protected function setUp()

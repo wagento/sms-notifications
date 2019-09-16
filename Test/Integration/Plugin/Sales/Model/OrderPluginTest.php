@@ -49,7 +49,7 @@ class OrderPluginTest extends TestCase
 
     /**
      * @magentoAppArea frontend
-     * @magentoDataFixture orderDataFixtureProvider
+     * @magentoDataFixture Wagento_SMSNotifications::Test/Integration/_files/order.php
      */
     public function testAfterUnholdSetsExtensionAttribute(): void
     {
@@ -60,11 +60,6 @@ class OrderPluginTest extends TestCase
         $order->unhold();
 
         $this->assertTrue($order->getExtensionAttributes()->getIsOrderHoldReleased());
-    }
-
-    public static function orderDataFixtureProvider(): void
-    {
-        require __DIR__ . '/../../../_files/order.php';
     }
 
     protected function setUp()

@@ -55,7 +55,7 @@ class OrderRepositoryInterfacePluginTest extends TestCase
 
     /**
      * @magentoAppArea frontend
-     * @magentoDataFixture orderDataFixtureProvider
+     * @magentoDataFixture Wagento_SMSNotifications::Test/Integration/_files/order.php
      */
     public function testAfterSaveSendsOrderSms(): void
     {
@@ -77,11 +77,6 @@ class OrderRepositoryInterfacePluginTest extends TestCase
         $order->setCustomerIsGuest(true);
 
         $orderRepository->save($order);
-    }
-
-    public static function orderDataFixtureProvider(): void
-    {
-        require __DIR__ . '/../../../_files/order.php';
     }
 
     protected function setUp()

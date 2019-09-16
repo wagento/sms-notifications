@@ -34,7 +34,7 @@ class InvoiceSenderTest extends SmsSenderTestCase
      * @magentoDataFixture Magento/Customer/_files/customer.php
      * @magentoDataFixture smsSubscriptionsFixtureProvider
      * @magentoDataFixture smsMobileNumberFixtureProvider
-     * @magentoDataFixture customerInvoiceFixtureProvider
+     * @magentoDataFixture Wagento_SMSNotifications::Test/Integration/_files/invoice.php
      */
     public function testSendInvoiceSmsForCustomer(): void
     {
@@ -57,7 +57,7 @@ class InvoiceSenderTest extends SmsSenderTestCase
 
     /**
      * @magentoAppArea adminhtml
-     * @magentoDataFixture guestInvoiceFixtureProvider
+     * @magentoDataFixture Wagento_SMSNotifications::Test/Integration/_files/invoice_guest.php
      */
     public function testSendInvoiceSmsForGuest(): void
     {
@@ -70,16 +70,6 @@ class InvoiceSenderTest extends SmsSenderTestCase
         );
 
         $this->assertFalse($invoiceSender->send($this->getInvoice()));
-    }
-
-    public static function customerInvoiceFixtureProvider(): void
-    {
-        require __DIR__ . '/../../_files/invoice.php';
-    }
-
-    public static function guestInvoiceFixtureProvider(): void
-    {
-        require __DIR__ . '/../../_files/invoice_guest.php';
     }
 
     private function getInvoice(): Invoice

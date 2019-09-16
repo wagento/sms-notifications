@@ -51,7 +51,7 @@ class InvoicePluginTest extends TestCase
     /**
      * @magentoAppArea adminhtml
      * @magentoDbIsolation enabled
-     * @magentoDataFixture orderDataFixtureProvider
+     * @magentoDataFixture Wagento_SMSNotifications::Test/Integration/_files/order.php
      */
     public function testAfterRegisterSendsInvoiceSms(): void
     {
@@ -73,11 +73,6 @@ class InvoicePluginTest extends TestCase
         $this->objectManager->addSharedInstance($smsSenderMock, InvoiceSender::class);
 
         $invoice->register();
-    }
-
-    public static function orderDataFixtureProvider(): void
-    {
-        require __DIR__ . '/../../../../_files/order.php';
     }
 
     protected function setUp()

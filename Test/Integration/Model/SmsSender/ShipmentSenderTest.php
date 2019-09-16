@@ -58,7 +58,7 @@ class ShipmentSenderTest extends SmsSenderTestCase
 
     /**
      * @magentoAppArea frontend
-     * @magentoDataFixture guestShipmentFixtureProvider
+     * @magentoDataFixture Wagento_SMSNotifications::Test/Integration/_files/shipment_guest.php
      */
     public function testSendShipmentSmsForGuest(): void
     {
@@ -75,11 +75,6 @@ class ShipmentSenderTest extends SmsSenderTestCase
         $shipment = $order->getShipmentsCollection()->getFirstItem();
 
         $this->assertFalse($shipmentSender->send($shipment));
-    }
-
-    public static function guestShipmentFixtureProvider(): void
-    {
-        require __DIR__ . '/../../_files/shipment_guest.php';
     }
 
     private function getShipmentFixture(): ShipmentInterface

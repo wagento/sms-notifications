@@ -58,7 +58,7 @@ class CreditmemoSenderTest extends SmsSenderTestCase
 
     /**
      * @magentoAppArea frontend
-     * @magentoDataFixture guestCreditmemoFixtureProvider
+     * @magentoDataFixture Wagento_SMSNotifications::Test/Integration/_files/creditmemo_guest.php
      */
     public function testSendCreditmemoSmsForGuest(): void
     {
@@ -75,11 +75,6 @@ class CreditmemoSenderTest extends SmsSenderTestCase
         $creditmemo = $order->getCreditmemosCollection()->getFirstItem();
 
         $this->assertFalse($creditmemoSender->send($creditmemo));
-    }
-
-    public static function guestCreditmemoFixtureProvider(): void
-    {
-        require __DIR__ . '/../../_files/creditmemo_guest.php';
     }
 
     private function getCreditmemoFixture(): CreditmemoInterface
