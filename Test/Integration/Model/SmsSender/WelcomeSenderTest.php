@@ -46,6 +46,10 @@ class WelcomeSenderTest extends SmsSenderTestCase
         $customer = $this->objectManager->create(Customer::class)->load(1);
 
         $configMock->expects($this->once())
+            ->method('sendWelcomeMessage')
+            ->with(1)
+            ->willReturn(true);
+        $configMock->expects($this->once())
             ->method('getWelcomeMessageTemplate')
             ->with(1)
             ->willReturn('Welcome to our store!');
