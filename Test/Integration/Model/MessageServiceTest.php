@@ -34,6 +34,10 @@ class MessageServiceTest extends TestCase
 {
     /**
      * @magentoAppArea frontend
+     * @magentoConfigFixture current_store sms_notifications/api/username TEST
+     * @magentoConfigFixture current_store sms_notifications/api/password PASSWORD
+     * @magentoConfigFixture current_store sms_notifications/api/platform_id 123
+     * @magentoConfigFixture current_store sms_notifications/api/platform_partner_id 123
      * @magentoConfigFixture current_store sms_notifications/api/source_type MSISDN
      * @magentoConfigFixture current_store sms_notifications/api/source +15555551234
      * @magentoConfigFixture current_store general/store_information/name Example Store
