@@ -9,6 +9,12 @@ For more information about this extension, please see the [README] document.
 
 ## [Unreleased]
 
+## [1.0.2] - 2019-10-01
+
+### Changed
+
+- The extension now supports PHP versions greater than 7.2
+
 ## [1.0.1] - 2019-08-26
 
 ### Added
@@ -40,6 +46,7 @@ the extension is disabled in the configuration
 shipped, cancelled, refunded, held, or released from hold
 
 [Unreleased]: https://github.com/wagento/sms-notifications/compare/1.0.1...HEAD
+[1.0.2]: https://github.com/wagento/sms-notifications/compare/1.0.1...1.0.2
 [1.0.1]: https://github.com/wagento/sms-notifications/compare/1.0.0...1.0.1
 [1.0.0]: https://github.com/wagento/sms-notifications/releases/tag/1.0.0
 [Keep a Changelog]: https://keepachangelog.com/en/1.0.0/
