@@ -10,7 +10,7 @@ the [User Guide].
 
 ## Requirements
 
-* PHP 7.1.3+ or 7.2.0+
+* PHP 7.1.3+, 7.2.0+ or 7.3.0+
 * Magento Open Source/Commerce 2.2.7+ or 2.3.0+
 * A [LINK Mobility] account
 
@@ -26,7 +26,8 @@ the following commands to install it from a terminal or command prompt:
     $ composer require wagento/module-sms-notifications
 
 **Note:** The Marketplace version is compatible with both Magento 2.3 and 2.2.
-For 2.2, PHP 7.1 is required, while 7.2 is recommended for 2.3.
+For 2.2, PHP 7.1 is required, while 7.2 is recommended for 2.3.0-2.3.2 and 7.3
+is recommended for Magento 2.3.3 or higher.
 
 ### Manual
 

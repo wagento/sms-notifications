@@ -2,12 +2,12 @@
     "name": "wagento/module-sms-notifications",
     "description": "Sends transactional SMS notifications through the LINK Mobility messaging service",
     "type": "magento2-module",
-    "version": "1.0.1",
+    "version": "1.0.2",
     "license": [
         "OSL-3.0"
     ],
     "require": {
-        "php": "~7.1.3|~7.2.0",
+        "php": "~7.1.3 || ^7.2",
         "ext-json": "*",
         "magento/framework": "101.0.*|102.0.*",
         "magento/module-backend": "100.2.*|101.0.*",
