@@ -7,7 +7,7 @@
         "OSL-3.0"
     ],
     "require": {
-        "php": "~7.1.3 || ^7.2",
+        "php": "^7.3",
         "ext-json": "*",
         "magento/framework": "102.0.*",
         "magento/module-backend": "101.0.*",
