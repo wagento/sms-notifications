@@ -10,8 +10,8 @@ the [User Guide].
 
 ## Requirements
 
-* PHP 7.1.3+, 7.2.0+ or 7.3.0+
-* Magento Open Source/Commerce 2.2.7+ or 2.3.0+
+* PHP 7.3.0+
+* Magento Open Source/Commerce 2.3.0+
 * A [LINK Mobility] account
 
 ## Installation
@@ -25,9 +25,7 @@ the following commands to install it from a terminal or command prompt:
     $ cd /path/to/your/site
     $ composer require wagento/module-sms-notifications
 
-**Note:** The Marketplace version is compatible with both Magento 2.3 and 2.2.
-For 2.2, PHP 7.1 is required, while 7.2 is recommended for 2.3.0-2.3.2 and 7.3
-is recommended for Magento 2.3.3 or higher.
+**Note:** The Marketplace version is compatible with Magento 2.3 and PHP 7.3.
 
 ### Manual
 
@@ -38,17 +36,6 @@ This extension can be downloaded from [GitHub] and installed into the
     $ mkdir Wagento
     $ cd Wagento
     $ git clone git@github.com:wagento/sms-notifications.git SMSNotifications
-
-For Magento 2.2, you will need to append this line to `registration.php`:
-
-    require 'compat.inc';
-
-**Warning**: `compat.inc` contains aliases for interfaces and classes that exist
-in 2.3 but are not available in 2.2. If any other installed extensions require
-these interfaces and/or classes and provide their own work-arounds, you may
-experience compatibility issues and/or degraded site performance. If this
-occurs, please [open a support ticket][Support] and let us know the vendor and
-extension name so that we can work with them on a solution.
 
 ### Post-Install
 

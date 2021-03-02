@@ -25,10 +25,8 @@ use Magento\Framework\App\Action\Action;
 use Magento\Framework\App\Action\Context;
 use Magento\Framework\App\ActionInterface;
 use Magento\Framework\App\CsrfAwareActionInterface;
-use Magento\Framework\App\ProductMetadataInterface;
 use Magento\Framework\App\Request\InvalidRequestException;
 use Magento\Framework\App\RequestInterface;
-use Magento\Framework\Data\Form\FormKey\Validator as FormKeyValidator;
 use Psr\Log\LoggerInterface;
 
 /**
@@ -47,14 +45,6 @@ class ManagePost extends Action implements ActionInterface, CsrfAwareActionInter
      * @var \Psr\Log\LoggerInterface
      */
     private $logger;
-    /**
-     * @var \Magento\Framework\App\ProductMetadataInterface
-     */
-    private $productMetadata;
-    /**
-     * @var \Magento\Framework\Data\Form\FormKey\Validator
-     */
-    private $formKeyValidator;
     /**
      * @var \Wagento\SMSNotifications\Api\SmsSubscriptionRepositoryInterface
      */
@@ -76,8 +66,6 @@ class ManagePost extends Action implements ActionInterface, CsrfAwareActionInter
         Context $context,
         CustomerSession $customerSession,
         LoggerInterface $logger,
-        ProductMetadataInterface $productMetadata,
-        FormKeyValidator $formKeyValidator,
         SmsSubscriptionRepositoryInterface $smsSubscriptionRepository,
         SmsSubscriptionManagementInterface $smsSubscriptionManagement,
         MobileTelephoneNumberManagementInterface $mobileTelephoneNumberManagement,
@@ -87,8 +75,6 @@ class ManagePost extends Action implements ActionInterface, CsrfAwareActionInter
 
         $this->customerSession = $customerSession;
         $this->logger = $logger;
-        $this->productMetadata = $productMetadata;
-        $this->formKeyValidator = $formKeyValidator;
         $this->smsSubscriptionRepository = $smsSubscriptionRepository;
         $this->smsSubscriptionManagement = $smsSubscriptionManagement;
         $this->smsSender = $smsSender;
@@ -106,16 +92,6 @@ class ManagePost extends Action implements ActionInterface, CsrfAwareActionInter
         $selectedSmsTypes = $this->getRequest()->getParam('sms_types', []);
 
         $resultRedirect->setPath('*/*/manage');
-
-        if (version_compare($this->productMetadata->getVersion(), '2.3.0', '<')) {
-            $isValidFormKey = $this->formKeyValidator->validate($this->getRequest());
-
-            if (!$isValidFormKey) {
-                $this->messageManager->addErrorMessage(__('Invalid Form Key. Please refresh the page.'));
-
-                return $resultRedirect;
-            }
-        }
 
         if ($customerId === null) {
             $this->messageManager->addErrorMessage(
