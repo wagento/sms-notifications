@@ -112,6 +112,11 @@
             <argument name="logger" xsi:type="object">Wagento\SMSNotifications\Logger\Logger</argument>
         </arguments>
     </type>
+    <type name="Wagento\SMSNotifications\Setup\Patch\Data\ImportTelephonePrefixes">
+        <arguments>
+            <argument name="logger" xsi:type="object">Wagento\SMSNotifications\Logger\Logger</argument>
+        </arguments>
+    </type>
     <type name="Wagento\SMSNotifications\Util\TemplateProcessor">
         <arguments>
             <argument name="converter" xsi:type="object">Zend\Filter\Word\SeparatorToCamelCase</argument>

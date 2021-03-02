@@ -1,0 +1,24 @@
+{
+    "sms_subscription": {
+        "column": {
+            "sms_subscription_id": true,
+            "customer_id": true,
+            "sms_type": true
+        },
+        "constraint": {
+            "PRIMARY": true,
+            "SMS_SUBSCRIPTION_CUSTOMER_ID_CUSTOMER_ENTITY_ENTITY_ID": true
+        }
+    },
+    "directory_telephone_prefix": {
+        "column": {
+            "country_code": true,
+            "country_name": true,
+            "prefix": true
+        },
+        "constraint": {
+            "PRIMARY": true,
+            "DIRECTORY_TELEPHONE_PREFIX_COUNTRY_CODE": true
+        }
+    }
+}

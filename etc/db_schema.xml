@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Wagento SMS Notifications powered by LINK Mobility
+ *
+ * Sends transactional SMS notifications through the LINK Mobility messaging
+ * service.
+ *
+ * @author Joseph Leedy <joseph@wagento.com>
+ * @author Yair García Torres <yair.garcia@wagento.com>
+ * @copyright Copyright (c) Wagento (https://wagento.com/)
+ * @license https://opensource.org/licenses/OSL-3.0.php Open Software License 3.0
+ */
+-->
+<schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:Setup/Declaration/Schema/etc/schema.xsd">
+    <table name="sms_subscription" resource="default" engine="innodb" comment="SMS Notification Subscriptions">
+        <column xsi:type="int" name="sms_subscription_id" padding="10" unsigned="true" nullable="false" identity="true" comment="SMS Subscription ID"/>
+        <column xsi:type="int" name="customer_id" padding="10" unsigned="true" nullable="false" identity="false" comment="Customer ID"/>
+        <column xsi:type="varchar" name="sms_type" nullable="false" length="50" comment="SMS Type Code (e.g. &#92;&quot;order_placed&#92;&quot;)"/>
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="sms_subscription_id"/>
+        </constraint>
+        <constraint xsi:type="foreign" referenceId="SMS_SUBSCRIPTION_CUSTOMER_ID_CUSTOMER_ENTITY_ENTITY_ID" table="sms_subscription" column="customer_id" referenceTable="customer_entity" referenceColumn="entity_id" onDelete="CASCADE"/>
+    </table>
+    <table name="directory_telephone_prefix" resource="default" engine="innodb" comment="Telephone Prefix Directory for SMS Notifications">
+        <column xsi:type="varchar" name="country_code" nullable="false" length="2" comment="Country Code, in ISO-2 Format"/>
+        <column xsi:type="varchar" name="country_name" nullable="false" length="255" comment="Country Name"/>
+        <column xsi:type="smallint" name="prefix" padding="5" unsigned="true" nullable="false" identity="false" comment="Numeric Telephone Prefix"/>
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="country_code"/>
+        </constraint>
+        <constraint xsi:type="unique" referenceId="DIRECTORY_TELEPHONE_PREFIX_COUNTRY_CODE">
+            <column name="country_code"/>
+        </constraint>
+    </table>
+</schema>

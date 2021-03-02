@@ -5,7 +5,7 @@
  * Sends transactional SMS notifications through the LINK Mobility messaging
  * service.
  *
- * @package Wagento\SMSNotifications\Setup
+ * @package Wagento\SMSNotifications\Setup\Patch\Data
  * @author Joseph Leedy <joseph@wagento.com>
  * @author Yair García Torres <yair.garcia@wagento.com>
  * @copyright Copyright (c) Wagento (https://wagento.com/)
@@ -14,65 +14,83 @@
 
 declare(strict_types=1);
 
-namespace Wagento\SMSNotifications\Setup;
+namespace Wagento\SMSNotifications\Setup\Patch\Data;
 
-use Wagento\SMSNotifications\Model\Customer\Attribute\Source\TelephonePrefix;
 use Magento\Customer\Model\Customer;
 use Magento\Customer\Setup\CustomerSetupFactory;
-use Magento\Framework\Setup\InstallDataInterface;
-use Magento\Framework\Setup\ModuleContextInterface;
 use Magento\Framework\Setup\ModuleDataSetupInterface;
-use Psr\Log\LoggerInterface;
+use Magento\Framework\Setup\Patch\DataPatchInterface;
+use Magento\Framework\Setup\Patch\PatchRevertableInterface;
+use Wagento\SMSNotifications\Model\Customer\Attribute\Source\TelephonePrefix;
 
 /**
- * Database Data Installer
+ * SMS Mobile Telephone Customer Attributes Installer
  *
- * @package Wagento\SMSNotifications\Setup
- * @author Yair García Torres <yair.garcia@wagento.com>
+ * @package Wagento\SMSNotifications\Setup\Patch\Data
  * @author Joseph Leedy <joseph@wagento.com>
  *
  * @codeCoverageIgnore
- * @phpcs:disable Magento2.PHP.FinalImplementation.FoundFinal -- There is no valid use case for extending an installer.
+ * @phpcs:disable Magento2.PHP.FinalImplementation.FoundFinal -- There is no valid use case for extending a data patch.
  */
-final class InstallData implements InstallDataInterface
+final class AddSmsMobilePhoneCustomerAttributes implements DataPatchInterface, PatchRevertableInterface
 {
+    /**
+     * @var \Magento\Framework\Setup\ModuleDataSetupInterface
+     */
+    private $setup;
     /**
      * @var \Magento\Customer\Setup\CustomerSetupFactory
      */
     private $customerSetupFactory;
-    /**
-     * @var \Psr\Log\LoggerInterface
-     */
-    private $logger;
 
-    public function __construct(
-        CustomerSetupFactory $customerSetupFactory,
-        LoggerInterface $logger
-    ) {
+    public function __construct(ModuleDataSetupInterface $setup, CustomerSetupFactory $customerSetupFactory)
+    {
+        $this->setup = $setup;
         $this->customerSetupFactory = $customerSetupFactory;
-        $this->logger = $logger;
     }
 
     /**
      * {@inheritdoc}
      */
-    public function install(ModuleDataSetupInterface $setup, ModuleContextInterface $context)
+    public static function getDependencies(): array
     {
-        $setup->startSetup();
+        return [];
+    }
 
-        $this->createAttributes($setup);
-        $this->importCountryPhonePrefixes($setup);
+    /**
+     * {@inheritdoc}
+     */
+    public function getAliases(): array
+    {
+        return [];
+    }
 
-        $setup->endSetup();
+    /**
+     * {@inheritdoc}
+     * @throws \Exception
+     */
+    public function apply(): self
+    {
+        $this->createAttributes();
+
+        return $this;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function revert(): void
+    {
+        $this->removeAttributes();
     }
 
     /**
      * @throws \Exception
      */
-    private function createAttributes(ModuleDataSetupInterface $setup): void
+    private function createAttributes(): void
     {
         /** @var \Magento\Customer\Setup\CustomerSetup $customerSetup */
-        $customerSetup = $this->customerSetupFactory->create(['setup' => $setup]);
+        $customerSetup = $this->customerSetupFactory->create(['setup' => $this->setup]);
 
         $customerSetup->addAttribute(
             Customer::ENTITY,
@@ -127,36 +145,12 @@ final class InstallData implements InstallDataInterface
         $mobilePhoneNumberAttribute->save();
     }
 
-    /**
-     * @phpcs:disable Generic.Files.LineLength.TooLong
-     */
-    private function importCountryPhonePrefixes(ModuleDataSetupInterface $setup): void
+    private function removeAttributes(): void
     {
-        $countryPrefixes = file_get_contents(__DIR__ . '/_data/country_telephone_prefixes.json');
+        /** @var \Magento\Customer\Setup\CustomerSetup $customerSetup */
+        $customerSetup = $this->customerSetupFactory->create(['setup' => $this->setup]);
 
-        if ($countryPrefixes === false) {
-            $this->logger->critical(__('Could not get JSON file of country telephone prefixes to import.'));
-
-            return;
-        }
-
-        $countryPrefixes = json_decode($countryPrefixes, true);
-
-        if (json_last_error() !== JSON_ERROR_NONE) {
-            $this->logger->critical(
-                __('Could not parse file containing country telephone prefixes as JSON. Error: "%1".', json_last_error_msg())
-            );
-
-            return;
-        }
-
-        // Strip header row
-        unset($countryPrefixes[0]);
-
-        $countryPrefixesTable = $setup->getTable('directory_telephone_prefix');
-
-        foreach ($countryPrefixes as $countryPrefix) {
-            $setup->getConnection()->insert($countryPrefixesTable, $countryPrefix);
-        }
+        $customerSetup->removeAttribute(Customer::ENTITY, 'sms_mobile_phone_prefix');
+        $customerSetup->removeAttribute(Customer::ENTITY, 'sms_mobile_phone_number');
     }
 }

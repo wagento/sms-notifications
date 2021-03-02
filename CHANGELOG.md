@@ -9,6 +9,13 @@ For more information about this extension, please see the [README] document.
 
 ## [Unreleased]
 
+### [1.1.0] - TBD
+
+#### Changed
+
+- Refactored install and uninstall scripts to Declarative Schema configuration
+and Data Patches
+
 ## [1.0.2] - 2019-10-01
 
 ### Changed
