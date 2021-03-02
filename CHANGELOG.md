@@ -10,12 +10,9 @@ For more information about this extension, please see the [README] document.
 ## [Unreleased]
 
 ### [1.1.0] - TBD
-#### Added
-- Declarative Schema configuration and Data Patches for Magento 2.3.0+
-
-#### Deprecated
-- Setup scripts (InstallSchema.php, InstallData.php and Uninstall.php) (still
-used for Magento 2.2 and will be removed when support is dropped)
+#### Changed
+- Refactored install and uninstall scripts to Declarative Schema configuration
+and Data Patches
 
 ## [1.0.0] - 2019-04-24
 
