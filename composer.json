@@ -29,8 +29,7 @@
     },
     "autoload": {
         "files": [
-            "registration.php",
-            "compat.inc"
+            "registration.php"
         ],
         "psr-4": {
             "Wagento\\SMSNotifications\\": ""
