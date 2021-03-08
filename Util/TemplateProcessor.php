@@ -24,7 +24,7 @@ use Zend\Filter\FilterInterface;
  * @package Wagento\SMSNotifications\Util
  * @author Joseph Leedy <joseph@wagento.com>
  */
-final class TemplateProcessor implements TemplateProcessorInterface
+class TemplateProcessor implements TemplateProcessorInterface
 {
     /**
      * @var \Zend\Filter\FilterInterface

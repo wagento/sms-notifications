@@ -25,7 +25,7 @@ use Zend\Hydrator\Strategy\StrategyInterface;
  * @package Wagento\SMSNotifications\Gateway\Hydrator\Strategy
  * @author Joseph Leedy <joseph@wagento.com>
  */
-final class Enum implements StrategyInterface
+class Enum implements StrategyInterface
 {
     /**
      * @var string

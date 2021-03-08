@@ -24,7 +24,7 @@ use Magento\Framework\Option\ArrayInterface;
  * @package Wagento\SMSNotifications\Model\Config\Source
  * @author Joseph Leedy <joseph@wagento.com>
  */
-final class SourceType implements ArrayInterface
+class SourceType implements ArrayInterface
 {
     /**
      * {@inheritdoc}

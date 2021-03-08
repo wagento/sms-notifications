@@ -22,7 +22,7 @@ namespace Wagento\SMSNotifications\Gateway\Entity;
  * @package Wagento\SMSNotifications\Gateway\Entity
  * @author Joseph Leedy <joseph@wagento.com>
  */
-final class SuccessResult implements SuccessResultInterface
+class SuccessResult implements SuccessResultInterface
 {
     private const TYPE = 'success';
 

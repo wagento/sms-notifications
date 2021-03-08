@@ -27,7 +27,7 @@ use Wagento\SMSNotifications\Gateway\Hydrator\Strategy\Enum as EnumStrategy;
  * @package Wagento\SMSNotifications\Gateway\Factory
  * @author Joseph Leedy <joseph@wagento.com>
  */
-final class MessageEntityHydratorFactory
+class MessageEntityHydratorFactory
 {
     public function create(): MessageEntityHydrator
     {

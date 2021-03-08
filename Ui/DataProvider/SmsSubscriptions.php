@@ -28,7 +28,7 @@ use Magento\Ui\DataProvider\AbstractDataProvider;
  *
  * @package Wagento\SMSNotifications\Ui\DataProvider
  */
-final class SmsSubscriptions extends AbstractDataProvider
+class SmsSubscriptions extends AbstractDataProvider
 {
     /**
      * @var \Magento\Backend\Model\Session

@@ -24,6 +24,6 @@ use Zend\Hydrator\Reflection;
  * @package Wagento\SMSNotifications\Gateway\Hydrator
  * @author Joseph Leedy <joseph@wagento.com>
  */
-final class MessageEntity extends Reflection
+class MessageEntity extends Reflection
 {
 }

@@ -25,7 +25,7 @@ use Wagento\SMSNotifications\Gateway\Entity\MessageInterface;
  * @package Wagento\SMSNotifications\Gateway\Factory
  * @author Joseph Leedy <joseph@wagento.com>
  */
-final class MessageFactory
+class MessageFactory
 {
     public function create(
         string $source = null,

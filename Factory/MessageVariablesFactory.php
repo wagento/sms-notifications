@@ -34,7 +34,7 @@ use Magento\Sales\Model\Order\Shipment;
  * @author Joseph Leedy <joseph@wagento.com>
  * @api
  */
-final class MessageVariablesFactory
+class MessageVariablesFactory
 {
     /**
      * @var \Magento\Framework\ObjectManagerInterface

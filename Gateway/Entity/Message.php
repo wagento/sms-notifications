@@ -26,7 +26,7 @@ namespace Wagento\SMSNotifications\Gateway\Entity;
  * @SuppressWarnings(PHPMD.ExcessivePublicCount)
  * @SuppressWarnings(PHPMD.ExcessiveClassComplexity)
  */
-final class Message implements MessageInterface
+class Message implements MessageInterface
 {
     /**
      * Phone number from where the message should originate

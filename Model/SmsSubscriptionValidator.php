@@ -27,7 +27,7 @@ use Magento\Framework\Validator\DataObjectFactory as ValidatorObjectFactory;
  * @package Wagento\SMSNotifications\Model
  * @author Joseph Leedy <joseph@wagento.com>
  */
-final class SmsSubscriptionValidator extends Validator
+class SmsSubscriptionValidator extends Validator
 {
     public function __construct(
         ValidatorObjectFactory $validatorObjectFactory,

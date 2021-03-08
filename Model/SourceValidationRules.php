@@ -33,7 +33,7 @@ use Magento\Framework\Validator\StringLengthFactory as LengthValidatorFactory;
  * @package Wagento\SMSNotifications\Model
  * @author Joseph Leedy <joseph@wagento.com>
  */
-final class SourceValidationRules implements ValidationRulesInterface
+class SourceValidationRules implements ValidationRulesInterface
 {
     private const FIELD = 'source';
 

@@ -27,9 +27,8 @@ use Magento\Framework\Setup\Patch\PatchRevertableInterface;
  * @author Joseph Leedy <joseph@wagento.com>
  *
  * @codeCoverageIgnore
- * @phpcs:disable Magento2.PHP.FinalImplementation.FoundFinal -- There is no valid use case for extending a data patch.
  */
-final class RemoveConfigData implements DataPatchInterface, PatchRevertableInterface
+class RemoveConfigData implements DataPatchInterface, PatchRevertableInterface
 {
     /**
      * @var \Magento\Framework\Setup\ModuleDataSetupInterface

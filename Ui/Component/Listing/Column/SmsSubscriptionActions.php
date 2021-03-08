@@ -27,7 +27,7 @@ use Magento\Ui\Component\Listing\Columns\Column;
  * @package Wagento\SMSNotifications\Ui\Component\Listing\Column
  * @author Joseph Leedy <joseph@wagento.com>
  */
-final class SmsSubscriptionActions extends Column
+class SmsSubscriptionActions extends Column
 {
     /**
      * @var \Magento\Framework\UrlInterface

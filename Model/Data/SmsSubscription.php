@@ -26,7 +26,7 @@ use Magento\Framework\Api\AbstractExtensibleObject;
  * @package Wagento\SMSNotifications\Model\Data
  * @author Joseph Leedy <joseph@wagento.com>
  */
-final class SmsSubscription extends AbstractExtensibleObject implements SmsSubscriptionInterface
+class SmsSubscription extends AbstractExtensibleObject implements SmsSubscriptionInterface
 {
     /**
      * @param int $id

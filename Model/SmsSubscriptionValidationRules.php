@@ -28,7 +28,7 @@ use Magento\Framework\Validator\NotEmptyFactory;
  * @package Wagento\SMSNotifications\Model
  * @author Joseph Leedy <joseph@wagento.com>
  */
-final class SmsSubscriptionValidationRules implements ValidationRulesInterface
+class SmsSubscriptionValidationRules implements ValidationRulesInterface
 {
     /**
      * @var \Magento\Framework\Validator\NotEmptyFactory

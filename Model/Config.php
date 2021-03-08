@@ -28,7 +28,7 @@ use Magento\Store\Model\ScopeInterface;
  *
  * @phpcs:disable Generic.Files.LineLength.TooLong
  */
-final class Config implements ConfigInterface
+class Config implements ConfigInterface
 {
     /**
      * @var \Magento\Framework\App\Config\ScopeConfigInterface

@@ -22,7 +22,7 @@ namespace Wagento\SMSNotifications\Gateway\Entity;
  * @package Wagento\SMSNotifications\Gateway\Entity
  * @author Joseph Leedy <joseph@wagento.com>
  */
-final class ErrorResult implements ErrorResultInterface
+class ErrorResult implements ErrorResultInterface
 {
     private const TYPE = 'error';
 

@@ -25,7 +25,7 @@ use Magento\Framework\View\Element\Block\ArgumentInterface;
  * @package Wagento\SMSNotifications\ViewModel
  * @author Joseph Leedy <joseph@wagento.com>
  */
-final class MobileTelephone implements ArgumentInterface
+class MobileTelephone implements ArgumentInterface
 {
     /**
      * @var \Magento\Customer\Model\Session

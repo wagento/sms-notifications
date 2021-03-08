@@ -30,7 +30,7 @@ use Psr\Http\Message\ResponseInterface;
  * @package Wagento\SMSNotifications\Gateway
  * @author Joseph Leedy <joseph@wagento.com>
  */
-final class ApiClient implements ApiClientInterface
+class ApiClient implements ApiClientInterface
 {
     private const BASE_URL = 'https://wsx.sp247.net/sms/';
 
