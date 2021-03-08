@@ -29,9 +29,6 @@ use Psr\Http\Message\ResponseInterface;
  *
  * @package Wagento\SMSNotifications\Gateway
  * @author Joseph Leedy <joseph@wagento.com>
- *
- * @phpcs:disable Magento2.PHP.FinalImplementation.FoundFinal -- This class is not meant to be extended. Inherit from
- * its interface instead.
  */
 final class ApiClient implements ApiClientInterface
 {

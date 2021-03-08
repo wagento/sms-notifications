@@ -22,8 +22,6 @@ use MyCLabs\Enum\Enum;
  * TON (Type of Number) Entity
  *
  * @package Wagento\SMSNotifications\Gateway\Entity
- *
- * @phpcs:disable Magento2.PHP.FinalImplementation.FoundFinal -- This ENUM object is not meant to be extended.
  */
 class TON extends Enum
 {

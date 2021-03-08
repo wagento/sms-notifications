@@ -25,8 +25,6 @@ use Wagento\SMSNotifications\Gateway\Entity\SuccessResult;
  *
  * @package Wagento\SMSNotifications\Gateway\Factory
  * @author Joseph Leedy <joseph@wagento.com>
- *
- * @phpcs:disable Magento2.PHP.FinalImplementation.FoundFinal -- This factory is not meant to be extended.
  */
 class ResultFactory
 {

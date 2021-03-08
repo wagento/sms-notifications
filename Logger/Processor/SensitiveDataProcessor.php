@@ -23,8 +23,6 @@ namespace Wagento\SMSNotifications\Logger\Processor;
  *
  * @package Wagento\SMSNotifications\Logger\Processor
  * @author Joseph Leedy <joseph@wagento.com>
- *
- * @phpcs:disable Magento2.PHP.FinalImplementation.FoundFinal -- This log processor is not meant to be extended.
  */
 class SensitiveDataProcessor
 {

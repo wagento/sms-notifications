@@ -23,8 +23,6 @@ use Magento\Framework\Option\ArrayInterface;
  *
  * @package Wagento\SMSNotifications\Model\Config\Source
  * @author Joseph Leedy <joseph@wagento.com>
- *
- * @phpcs:disable Magento2.PHP.FinalImplementation.FoundFinal -- This source model is not meant to be extended.
  */
 final class SourceType implements ArrayInterface
 {
