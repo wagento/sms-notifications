@@ -29,7 +29,7 @@ use Magento\Store\Model\StoreManagerInterface;
  *
  * @phpcs:disable Magento2.PHP.FinalImplementation.FoundFinal -- This view model is not meant to be extended.
  */
-final class TermsConditions implements ArgumentInterface
+class TermsConditions implements ArgumentInterface
 {
     /**
      * @var \Magento\Store\Model\StoreManagerInterface

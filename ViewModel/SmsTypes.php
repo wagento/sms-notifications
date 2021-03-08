@@ -27,7 +27,7 @@ use Magento\Framework\View\Element\Block\ArgumentInterface;
  *
  * @phpcs:disable Magento2.PHP.FinalImplementation.FoundFinal -- This view model is not meant to be extended.
  */
-final class SmsTypes implements ArgumentInterface
+class SmsTypes implements ArgumentInterface
 {
     /**
      * @var \Wagento\SMSNotifications\Model\Source\SmsType

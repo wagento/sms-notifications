@@ -26,7 +26,7 @@ namespace Wagento\SMSNotifications\Logger\Processor;
  *
  * @phpcs:disable Magento2.PHP.FinalImplementation.FoundFinal -- This log processor is not meant to be extended.
  */
-final class SensitiveDataProcessor
+class SensitiveDataProcessor
 {
     /**
      * @var string[]

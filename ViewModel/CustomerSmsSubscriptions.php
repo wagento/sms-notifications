@@ -29,7 +29,7 @@ use Magento\Framework\View\Element\Block\ArgumentInterface;
  *
  * @phpcs:disable Magento2.PHP.FinalImplementation.FoundFinal -- This view model is not meant to be extended.
 */
-final class CustomerSmsSubscriptions implements ArgumentInterface
+class CustomerSmsSubscriptions implements ArgumentInterface
 {
     /**
      * @var \Magento\Customer\Model\Session

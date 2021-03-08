@@ -28,7 +28,7 @@ use Magento\Framework\Api\AbstractSimpleObject;
  * @phpcs:disable Magento2.PHP.FinalImplementation.FoundFinal -- This entity is not meant to be extended. Inherit from
  * its interface instead.
  */
-final class TelephonePrefix extends AbstractSimpleObject implements TelephonePrefixInterface
+class TelephonePrefix extends AbstractSimpleObject implements TelephonePrefixInterface
 {
     public function setCountryCode(string $countryCode): TelephonePrefixInterface
     {

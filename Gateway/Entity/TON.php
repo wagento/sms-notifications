@@ -25,7 +25,7 @@ use MyCLabs\Enum\Enum;
  *
  * @phpcs:disable Magento2.PHP.FinalImplementation.FoundFinal -- This ENUM object is not meant to be extended.
  */
-final class TON extends Enum
+class TON extends Enum
 {
     /**
      * Short number; 1-14 digits depending on country.

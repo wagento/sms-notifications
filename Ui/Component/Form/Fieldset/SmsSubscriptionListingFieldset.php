@@ -30,7 +30,7 @@ use Magento\Ui\Component\Form\Fieldset;
  *
  * @phpcs:disable Magento2.PHP.FinalImplementation.FoundFinal -- This UI component is not meant to be extended.
  */
-final class SmsSubscriptionListingFieldset extends Fieldset
+class SmsSubscriptionListingFieldset extends Fieldset
 {
     /**
      * @var \Magento\Store\Model\StoreManagerInterface
