@@ -23,6 +23,7 @@ use Wagento\SMSNotifications\Api\SmsSubscriptionRepositoryInterface;
 use Wagento\SMSNotifications\Model\SmsSubscriptionFactory as SmsSubscriptionModelFactory;
 use Wagento\SMSNotifications\Model\ResourceModel\SmsSubscription as SmsSubscriptionResourceModel;
 use Wagento\SMSNotifications\Model\ResourceModel\SmsSubscription\CollectionFactory as SmsSubscriptionCollectionFactory;
+use Magento\Framework\Api\SearchCriteria\CollectionProcessorInterface;
 use Magento\Framework\Api\SearchCriteriaBuilder;
 use Magento\Framework\Api\SearchCriteriaInterface;
 use Magento\Framework\Api\SearchResultsInterface;
@@ -59,19 +60,25 @@ class SmsSubscriptionRepository implements SmsSubscriptionRepositoryInterface
      * @var \Wagento\SMSNotifications\Model\ResourceModel\SmsSubscription
      */
     private $smsSubscriptionResourceModel;
+    /**
+     * @var \Magento\Framework\Api\SearchCriteria\CollectionProcessorInterface
+     */
+    private $collectionProcessor;
 
     public function __construct(
         SearchResultsInterfaceFactory $searchResultsFactory,
         SearchCriteriaBuilder $searchCriteriaBuilder,
         SmsSubscriptionModelFactory $smsSubscriptionModelFactory,
         SmsSubscriptionCollectionFactory $smsSubscriptionCollectionFactory,
-        SmsSubscriptionResourceModel $smsSubscriptionResourceModel
+        SmsSubscriptionResourceModel $smsSubscriptionResourceModel,
+        CollectionProcessorInterface $collectionProcessor
     ) {
         $this->searchResultsFactory = $searchResultsFactory;
         $this->smsSubscriptionModelFactory = $smsSubscriptionModelFactory;
         $this->smsSubscriptionCollectionFactory = $smsSubscriptionCollectionFactory;
         $this->smsSubscriptionResourceModel = $smsSubscriptionResourceModel;
         $this->searchCriteriaBuilder = $searchCriteriaBuilder;
+        $this->collectionProcessor = $collectionProcessor;
     }
 
     /**
@@ -101,54 +108,14 @@ class SmsSubscriptionRepository implements SmsSubscriptionRepositoryInterface
     {
         /** @var \Magento\Framework\Api\SearchResultsInterface $searchResults */
         $searchResults = $this->searchResultsFactory->create();
-
-        $searchResults->setSearchCriteria($searchCriteria);
-
         /** @var \Wagento\SMSNotifications\Model\ResourceModel\SmsSubscription\Collection $smsSubscriptionCollection */
         $smsSubscriptionCollection = $this->smsSubscriptionCollectionFactory->create();
-        $filterGroups = $searchCriteria->getFilterGroups();
 
-        foreach ($filterGroups as $filterGroup) {
-            $fields = [];
-            $conditions = [];
-            $filters = $filterGroup->getFilters();
+        $this->collectionProcessor->process($searchCriteria, $smsSubscriptionCollection);
 
-            foreach ($filters as $filter) {
-                $condition = $filter->getConditionType() ?: 'eq';
-                $fields[] = $filter->getField();
-                $conditions[] = [$condition => $filter->getValue()];
-            }
-
-            if (count($fields) > 0) {
-                $smsSubscriptionCollection->addFieldToFilter($fields, $conditions);
-            }
-        }
-
+        $searchResults->setSearchCriteria($searchCriteria);
+        $searchResults->setItems($smsSubscriptionCollection->getItems());
         $searchResults->setTotalCount($smsSubscriptionCollection->getSize());
-
-        /** @var \Magento\Framework\Api\SortOrder[] $sortOrders */
-        $sortOrders = $searchCriteria->getSortOrders();
-
-        if ($sortOrders !== null) {
-            /** @var \Magento\Framework\Api\SortOrder $sortOrder */
-            foreach ($sortOrders as $sortOrder) {
-                $smsSubscriptionCollection->addOrder(
-                    $sortOrder->getField(),
-                    $sortOrder->getDirection()
-                );
-            }
-        }
-
-        $smsSubscriptionCollection->setCurPage($searchCriteria->getCurrentPage());
-        $smsSubscriptionCollection->setPageSize($searchCriteria->getPageSize());
-
-        $smsSubscriptions = [];
-
-        foreach ($smsSubscriptionCollection as $smsSubscriptionModel) {
-            $smsSubscriptions[] = $smsSubscriptionModel;
-        }
-
-        $searchResults->setItems($smsSubscriptions);
 
         return $searchResults;
     }
