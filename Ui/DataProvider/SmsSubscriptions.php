@@ -27,10 +27,8 @@ use Magento\Ui\DataProvider\AbstractDataProvider;
  * SMS Subscriptions Data Provider
  *
  * @package Wagento\SMSNotifications\Ui\DataProvider
- *
- * @phpcs:disable Magento2.PHP.FinalImplementation.FoundFinal -- This data provider is not meant to be extended.
  */
-final class SmsSubscriptions extends AbstractDataProvider
+class SmsSubscriptions extends AbstractDataProvider
 {
     /**
      * @var \Magento\Backend\Model\Session

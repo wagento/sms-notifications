@@ -23,9 +23,7 @@ use Zend\Hydrator\Reflection;
  *
  * @package Wagento\SMSNotifications\Gateway\Hydrator
  * @author Joseph Leedy <joseph@wagento.com>
- *
- * @phpcs:disable Magento2.PHP.FinalImplementation.FoundFinal -- This hydrator is not meant to be extended.
  */
-final class MessageEntity extends Reflection
+class MessageEntity extends Reflection
 {
 }

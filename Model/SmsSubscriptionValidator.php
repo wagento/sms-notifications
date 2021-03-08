@@ -26,10 +26,8 @@ use Magento\Framework\Validator\DataObjectFactory as ValidatorObjectFactory;
  *
  * @package Wagento\SMSNotifications\Model
  * @author Joseph Leedy <joseph@wagento.com>
- *
- * @phpcs:disable Magento2.PHP.FinalImplementation.FoundFinal -- This validator is not meant to be extended.
  */
-final class SmsSubscriptionValidator extends Validator
+class SmsSubscriptionValidator extends Validator
 {
     public function __construct(
         ValidatorObjectFactory $validatorObjectFactory,

@@ -25,11 +25,8 @@ use Magento\Framework\Api\AbstractExtensibleObject;
  *
  * @package Wagento\SMSNotifications\Model\Data
  * @author Joseph Leedy <joseph@wagento.com>
- *
- * @phpcs:disable Magento2.PHP.FinalImplementation.FoundFinal -- This entity is not meant to be extended. Inherit from
- * its interface instead.
  */
-final class SmsSubscription extends AbstractExtensibleObject implements SmsSubscriptionInterface
+class SmsSubscription extends AbstractExtensibleObject implements SmsSubscriptionInterface
 {
     /**
      * @param int $id

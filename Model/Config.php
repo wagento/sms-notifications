@@ -27,10 +27,8 @@ use Magento\Store\Model\ScopeInterface;
  * @author Joseph Leedy <joseph@wagento.com>
  *
  * @phpcs:disable Generic.Files.LineLength.TooLong
- * @phpcs:disable Magento2.PHP.FinalImplementation.FoundFinal -- This model is not meant to be extended. Inherit from
- * its interface instead.
  */
-final class Config implements ConfigInterface
+class Config implements ConfigInterface
 {
     /**
      * @var \Magento\Framework\App\Config\ScopeConfigInterface

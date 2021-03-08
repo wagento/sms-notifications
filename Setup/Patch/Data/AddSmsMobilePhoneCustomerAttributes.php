@@ -30,9 +30,8 @@ use Wagento\SMSNotifications\Model\Customer\Attribute\Source\TelephonePrefix;
  * @author Joseph Leedy <joseph@wagento.com>
  *
  * @codeCoverageIgnore
- * @phpcs:disable Magento2.PHP.FinalImplementation.FoundFinal -- There is no valid use case for extending a data patch.
  */
-final class AddSmsMobilePhoneCustomerAttributes implements DataPatchInterface, PatchRevertableInterface
+class AddSmsMobilePhoneCustomerAttributes implements DataPatchInterface, PatchRevertableInterface
 {
     /**
      * @var \Magento\Framework\Setup\ModuleDataSetupInterface

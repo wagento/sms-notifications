@@ -27,9 +27,8 @@ use Psr\Log\LoggerInterface;
  * @author Joseph Leedy <joseph@wagento.com>
  *
  * @codeCoverageIgnore
- * @phpcs:disable Magento2.PHP.FinalImplementation.FoundFinal -- There is no valid use case for extending a data patch.
  */
-final class ImportTelephonePrefixes implements DataPatchInterface
+class ImportTelephonePrefixes implements DataPatchInterface
 {
     /**
      * @var \Psr\Log\LoggerInterface

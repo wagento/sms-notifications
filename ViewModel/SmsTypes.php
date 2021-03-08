@@ -24,10 +24,8 @@ use Magento\Framework\View\Element\Block\ArgumentInterface;
  *
  * @package Wagento\SMSNotifications\ViewModel
  * @author Joseph Leedy <joseph@wagento.com>
- *
- * @phpcs:disable Magento2.PHP.FinalImplementation.FoundFinal -- This view model is not meant to be extended.
  */
-final class SmsTypes implements ArgumentInterface
+class SmsTypes implements ArgumentInterface
 {
     /**
      * @var \Wagento\SMSNotifications\Model\Source\SmsType

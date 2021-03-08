@@ -24,10 +24,8 @@ use Magento\Ui\Component\Listing\Columns\Column;
  *
  * @package Wagento\SMSNotifications\Ui\Component\Listing\Column
  * @author Joseph Leedy <joseph@wagento.com>
- *
- * @phpcs:disable Magento2.PHP.FinalImplementation.FoundFinal -- This UI component is not meant to be extended.
  */
-final class SmsSubscriptionStatus extends Column implements OptionSourceInterface
+class SmsSubscriptionStatus extends Column implements OptionSourceInterface
 {
     /**
      * {@inheritdoc}
