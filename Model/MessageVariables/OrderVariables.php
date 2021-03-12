@@ -57,9 +57,20 @@ class OrderVariables implements MessageVariablesInterface
             return [];
         }
 
+        $orderUrl = $this->urlBuilder->setScope($this->order->getStoreId())
+            ->getUrl(
+                'sales/order/view',
+                [
+                    'order_id' => $this->order->getEntityId(),
+                    '_scope_to_url' => true,
+                    '_nosid' => true
+                ]
+            );
+        $orderUrl = preg_replace('/\?___store=.+$/', '', $orderUrl);
+
         return [
             'order_id' => $this->order->getIncrementId(),
-            'order_url' => $this->urlBuilder->getUrl('sales/order/view', ['order_id' => $this->order->getEntityId()]),
+            'order_url' => $orderUrl,
             'customer_name' => $this->order->getCustomerFirstname() . ' ' . $this->order->getCustomerLastname(),
             'customer_first_name' => $this->order->getCustomerFirstname(),
             'customer_last_name' => $this->order->getCustomerLastname(),
