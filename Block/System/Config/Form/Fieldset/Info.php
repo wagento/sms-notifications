@@ -57,14 +57,11 @@ class Info extends Fieldset
      */
     public function render(AbstractElement $element)
     {
-        $group = $element->getGroup() ?? [];
         $block = $this->getLayout()
             ->createBlock(Template::class, 'sms_notifications_config_header')
             ->setTemplate(self::TEMPLATE)
             ->setData([
                 'info_text' => $element->getComment() ?? '',
-                'help_url' => $group['help_url'] ?: '#',
-                'more_url' => $group['more_url'] ?: '#',
                 'module_version' => $this->moduleResource->getDbVersion('Wagento_SMSNotifications') ?: ''
             ]);
 
