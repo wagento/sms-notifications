@@ -16,13 +16,9 @@ declare(strict_types=1);
 
 namespace Wagento\SMSNotifications\Block\System\Config\Form\Fieldset;
 
-use Magento\Backend\Block\Context;
 use Magento\Backend\Block\Template;
-use Magento\Backend\Model\Auth\Session;
 use Magento\Config\Block\System\Config\Form\Fieldset;
 use Magento\Framework\Data\Form\Element\AbstractElement;
-use Magento\Framework\Module\ResourceInterface as ModuleResource;
-use Magento\Framework\View\Helper\Js;
 
 /**
  * Extension Information Configuration Fieldset Block
@@ -35,23 +31,6 @@ class Info extends Fieldset
     private const TEMPLATE = 'Wagento_SMSNotifications::system/config/form/fieldset/info.phtml';
 
     /**
-     * @var \Magento\Framework\Module\ResourceInterface
-     */
-    private $moduleResource;
-
-    public function __construct(
-        Context $context,
-        Session $authSession,
-        Js $jsHelper,
-        ModuleResource $moduleResource,
-        array $data = []
-    ) {
-        parent::__construct($context, $authSession, $jsHelper, $data);
-
-        $this->moduleResource = $moduleResource;
-    }
-
-    /**
      * {@inheritdoc}
      * @throws \Magento\Framework\Exception\LocalizedException
      */
@@ -61,8 +40,7 @@ class Info extends Fieldset
             ->createBlock(Template::class, 'sms_notifications_config_header')
             ->setTemplate(self::TEMPLATE)
             ->setData([
-                'info_text' => $element->getComment() ?? '',
-                'module_version' => $this->moduleResource->getDbVersion('Wagento_SMSNotifications') ?: ''
+                'info_text' => $element->getComment() ?? ''
             ]);
 
         return $block->_toHtml();
