@@ -10,8 +10,8 @@ the [User Guide].
 
 ## Requirements
 
-* PHP 7.3.0+
-* Magento Open Source/Commerce 2.3.0+
+* PHP 7.3.0+ or 7.4.0+ (recommended)
+* Magento Open Source/Commerce 2.3.0+ or 2.4.0+ (recommended)
 * A [LINK Mobility] account
 
 ## Installation
@@ -24,8 +24,6 @@ the following commands to install it from a terminal or command prompt:
 
     $ cd /path/to/your/site
     $ composer require wagento/module-sms-notifications
-
-**Note:** The Marketplace version is compatible with Magento 2.3 and PHP 7.3.
 
 ### Manual
 
@@ -90,7 +88,6 @@ terminal or command prompt to remove its data:
     DROP TABLE `sms_subscription`;
     DELETE FROM `eav_attribute` WHERE `attribute_code` LIKE 'sms_mobile%';
     DELETE FROM `core_config_data` WHERE `path` LIKE 'sms_notifications/%';
-    DELETE FROM `setup_module` WHERE `module` = 'Wagento_SMSNotifications';
     SQL
 
 ## Post-Install, Post-Update or Post-Uninstall
