@@ -113,6 +113,6 @@ class ShipmentVariables implements MessageVariablesInterface
             $trackingNumbers[] = $track->getTitle() . ': ' . $track->getNumber();
         }
 
-        return implode($trackingNumbers, ', ');
+        return implode(', ', $trackingNumbers);
     }
 }

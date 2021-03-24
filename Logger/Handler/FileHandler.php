@@ -27,10 +27,8 @@ use Magento\Store\Model\StoreManagerInterface;
  *
  * @package Wagento\SMSNotifications\Logger\Handler
  * @author Joseph Leedy <joseph@wagento.com>
- *
- * @phpcs:disable Magento2.PHP.FinalImplementation.FoundFinal -- This log handler is not meant to be extended.
  */
-final class FileHandler extends Base
+class FileHandler extends Base
 {
     /**
      * @var \Magento\Store\Model\StoreManagerInterface

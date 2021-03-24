@@ -24,10 +24,8 @@ use Wagento\SMSNotifications\Gateway\Entity\MessageInterface;
  *
  * @package Wagento\SMSNotifications\Gateway\Factory
  * @author Joseph Leedy <joseph@wagento.com>
- *
- * @phpcs:disable Magento2.PHP.FinalImplementation.FoundFinal -- This factory is not meant to be extended.
  */
-final class MessageFactory
+class MessageFactory
 {
     public function create(
         string $source = null,

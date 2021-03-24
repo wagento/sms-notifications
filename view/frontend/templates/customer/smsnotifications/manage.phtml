@@ -12,6 +12,7 @@
  */
 
 /** @var \Magento\Framework\View\Element\Template $block */
+/** @var \Magento\Framework\Escaper $escaper */
 
 /** @var \Wagento\SMSNotifications\ViewModel\SmsTypes $smsTypesViewModel */
 $smsTypesViewModel = $block->getData('sms_types_view_model');
@@ -26,28 +27,28 @@ $mobileTelephonePrefix = $mobileTelephoneViewModel->getPrefix() ?? $telephonePre
 $mobileTelephoneNumber = $mobileTelephoneViewModel->getNumber() ?? '';
 ?>
 <div id="manage-sms-notification-subscriptions-content">
-    <form action="<?= $block->escapeUrl($block->getUrl('customer/smsnotifications/managePost', ['_secure' => true])) ?>" method="post" enctype="multipart/form-data" id="form-smsnotifications-manage" class="form" data-mage-init='{"validation":{}}' data-hasrequired="<?= $block->escapeHtmlAttr(__('* Required Fields')) ?>">
+    <form action="<?= $escaper->escapeUrl($block->getUrl('customer/smsnotifications/managePost', ['_secure' => true])) ?>" method="post" enctype="multipart/form-data" id="form-smsnotifications-manage" class="form" data-mage-init='{"validation":{}}' data-hasrequired="<?= $escaper->escapeHtmlAttr(__('* Required Fields')) ?>">
         <?= $block->getBlockHtml('formkey') ?>
         <fieldset class="fieldset general">
-            <legend class="legend"><span><?= $block->escapeHtml(__('General Configuration')) ?></span></legend>
+            <legend class="legend"><span><?= $escaper->escapeHtml(__('General Configuration')) ?></span></legend>
             <div class="field mobile-telephone-number" id="mobile-telephone-number-field" data-bind="scope: 'sms-mobile-telephone'">
                 <!-- ko template: getTemplate() --><!-- /ko -->
             </div>
         </fieldset>
         <fieldset class="fieldset notification-preferences">
-            <legend class="legend"><span><?= $block->escapeHtml(__('Notification Preferences')) ?></span></legend>
-            <p><?= $block->escapeHtml(__('I wish to receive notifications about my:')) ?></p>
+            <legend class="legend"><span><?= $escaper->escapeHtml(__('Notification Preferences')) ?></span></legend>
+            <p><?= $escaper->escapeHtml(__('I wish to receive notifications about my:')) ?></p>
             <div class="field choice">
-                <input type="checkbox" id="select-all-sms-types" class="checkbox" title="<?= $block->escapeHtmlAttr(__('All notifications')) ?>" data-role="checkbox-toggle" data-mage-init='{"wagentoCheckboxToggler": {"checkboxSelector": ".checkbox.sms-type"}}'<?php if (count($smsTypes) === count($subscribedSmsTypes)): ?> checked<?php endif ?>>
-                <label class="label" for="select-all-sms-types"><span><?= $block->escapeHtml(__('All notifications')) ?></span></label>
+                <input type="checkbox" id="select-all-sms-types" class="checkbox" title="<?= $escaper->escapeHtmlAttr(__('All notifications')) ?>" data-role="checkbox-toggle" data-mage-init='{"wagentoCheckboxToggler": {"checkboxSelector": ".checkbox.sms-type"}}'<?php if (count($smsTypes) === count($subscribedSmsTypes)): ?> checked<?php endif ?>>
+                <label class="label" for="select-all-sms-types"><span><?= $escaper->escapeHtml(__('All notifications')) ?></span></label>
             </div>
             <?php foreach ($groupedSmsTypes as $group): ?>
-            <fieldset class="fieldset sms-types-<?= $block->escapeHtmlAttr($group['groupName']) ?>">
-                <legend class="legend"><span><?= $block->escapeHtml(__($group['title'])) ?></span></legend>
+            <fieldset class="fieldset sms-types-<?= $escaper->escapeHtmlAttr($group['groupName']) ?>">
+                <legend class="legend"><span><?= $escaper->escapeHtml(__($group['title'])) ?></span></legend>
                 <?php foreach ($group['smsTypes'] as $smsType): ?>
-                <div class="field choice field-sms-type-<?= $block->escapeHtmlAttr($smsType['code']) ?>">
-                    <input type="checkbox" name="sms_types[]" value="<?= $block->escapeHtmlAttr($smsType['code']) ?>" id="sms-type-<?= $block->escapeHtmlAttr($smsType['code']) ?>" class="checkbox sms-type" title="<?= $block->escapeHtmlAttr($smsType['description']) ?>"<?php if (in_array($smsType['code'], $subscribedSmsTypes, true)): ?> checked<?php endif ?>>
-                    <label for="sms-type-<?= $block->escapeHtmlAttr($smsType['code']) ?>" class="label"><span><?= $block->escapeHtml($smsType['description']) ?></span></label>
+                <div class="field choice field-sms-type-<?= $escaper->escapeHtmlAttr($smsType['code']) ?>">
+                    <input type="checkbox" name="sms_types[]" value="<?= $escaper->escapeHtmlAttr($smsType['code']) ?>" id="sms-type-<?= $escaper->escapeHtmlAttr($smsType['code']) ?>" class="checkbox sms-type" title="<?= $escaper->escapeHtmlAttr($smsType['description']) ?>"<?php if (in_array($smsType['code'], $subscribedSmsTypes, true)): ?> checked<?php endif ?>>
+                    <label for="sms-type-<?= $escaper->escapeHtmlAttr($smsType['code']) ?>" class="label"><span><?= $escaper->escapeHtml($smsType['description']) ?></span></label>
                 </div>
                 <?php endforeach ?>
             </fieldset>
@@ -55,7 +56,7 @@ $mobileTelephoneNumber = $mobileTelephoneViewModel->getNumber() ?? '';
         <?php endforeach ?>
         <div class="actions-toolbar">
             <div class="primary">
-                <button type="submit" class="action save primary" title="<?= $block->escapeHtmlAttr(__('Save')) ?>"><span><?= $block->escapeHtml(__('Save')) ?></span></button>
+                <button type="submit" class="action save primary" title="<?= $escaper->escapeHtmlAttr(__('Save')) ?>"><span><?= $escaper->escapeHtml(__('Save')) ?></span></button>
             </div>
         </div>
     </form>
@@ -70,8 +71,8 @@ $mobileTelephoneNumber = $mobileTelephoneViewModel->getNumber() ?? '';
                         "config": {
                             "showField": true,
                             "mobileTelephonePrefixOptions": <?= \json_encode($telephonePrefixesViewModel->getOptions()) ?>,
-                            "mobileTelephonePrefix": "<?= $block->escapeJs($mobileTelephonePrefix) ?>",
-                            "mobileTelephoneNumber": "<?= $block->escapeJs($mobileTelephoneNumber) ?>"
+                            "mobileTelephonePrefix": "<?= $escaper->escapeJs($mobileTelephonePrefix) ?>",
+                            "mobileTelephoneNumber": "<?= $escaper->escapeJs($mobileTelephoneNumber) ?>"
                         }
                     }
                 }

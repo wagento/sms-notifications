@@ -22,9 +22,7 @@ namespace Wagento\SMSNotifications\Logger;
  *
  * @package Wagento\SMSNotifications\Logger
  * @author Joseph Leedy <joseph@wagento.com>
- *
- * @phpcs:disable Magento2.PHP.FinalImplementation.FoundFinal -- This logger is not meant to be extended.
  */
-final class Logger extends \Monolog\Logger
+class Logger extends \Monolog\Logger
 {
 }

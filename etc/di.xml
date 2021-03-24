@@ -107,7 +107,7 @@
             <argument name="smsSender" xsi:type="object">Wagento\SMSNotifications\Model\SmsSender\ShipmentSender</argument>
         </arguments>
     </type>
-    <type name="Wagento\SMSNotifications\Setup\InstallData">
+    <type name="Wagento\SMSNotifications\Setup\Patch\Data\ImportTelephonePrefixes">
         <arguments>
             <argument name="logger" xsi:type="object">Wagento\SMSNotifications\Logger\Logger</argument>
         </arguments>

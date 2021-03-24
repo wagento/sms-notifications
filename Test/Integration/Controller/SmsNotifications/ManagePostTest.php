@@ -26,9 +26,7 @@ use Magento\Customer\Model\Session as CustomerSession;
 use Magento\Framework\Api\ImageProcessor;
 use Magento\Framework\Api\ImageProcessorInterface;
 use Magento\Framework\Api\SearchResultsInterface;
-use Magento\Framework\App\ProductMetadataInterface;
 use Magento\Framework\App\Request\Http as HttpRequest;
-use Magento\Framework\Data\Form\FormKey;
 use Magento\Framework\Exception\CouldNotDeleteException;
 use Magento\Framework\Exception\LocalizedException;
 use Magento\Framework\Message\MessageInterface;
@@ -66,7 +64,6 @@ class ManagePostTest extends AbstractControllerTestCase
      */
     public function testInvalidCustomerIdReturnsErrorMessage(): void
     {
-        $this->addFormKeyToRequest();
         $this->dispatch(self::ACTION_URI);
 
         $this->assertSessionMessages(
@@ -81,7 +78,6 @@ class ManagePostTest extends AbstractControllerTestCase
     }
 
     /**
-     * @magentoAppArea frontend
      * @magentoDataFixture Magento/Customer/_files/customer.php
      */
     public function testSubscribeToAllNotificationsReturnsSuccessMessage(): void
@@ -90,7 +86,6 @@ class ManagePostTest extends AbstractControllerTestCase
 
         $this->getRequest()->setPostValue('sms_types', $smsTypes);
         $this->loginCustomer(1);
-        $this->addFormKeyToRequest();
         $this->dispatch(self::ACTION_URI);
 
         $this->assertSessionMessages(
@@ -109,7 +104,6 @@ class ManagePostTest extends AbstractControllerTestCase
         $smsTypes = array_column((new SmsTypeSource())->toArray(), 'code');
 
         $this->loginCustomer(1);
-        $this->addFormKeyToRequest();
         $this->dispatch(self::ACTION_URI);
 
         $this->assertSessionMessages(
@@ -129,7 +123,6 @@ class ManagePostTest extends AbstractControllerTestCase
 
         $this->getRequest()->setPostValue('sms_types', $smsTypes);
         $this->loginCustomer(1);
-        $this->addFormKeyToRequest();
         $this->dispatch(self::ACTION_URI);
 
         $this->assertSessionMessages(
@@ -150,7 +143,6 @@ class ManagePostTest extends AbstractControllerTestCase
         $this->createDeletedSubscriptionMocks();
 
         $this->loginCustomer(1);
-        $this->addFormKeyToRequest();
         $this->dispatch(self::ACTION_URI);
 
         $this->assertSessionMessages(
@@ -174,7 +166,6 @@ class ManagePostTest extends AbstractControllerTestCase
 
         $this->getRequest()->setPostValue('sms_types', ['order_shipped']);
         $this->loginCustomer(1);
-        $this->addFormKeyToRequest();
         $this->dispatch(self::ACTION_URI);
 
         $this->assertSessionMessages(
@@ -211,7 +202,6 @@ class ManagePostTest extends AbstractControllerTestCase
         $this->getRequest()->setPostValue('sms_mobile_phone_prefix', 'US_1');
         $this->getRequest()->setPostValue('sms_mobile_phone_number', '5555551234');
         $this->loginCustomer(1);
-        $this->addFormKeyToRequest();
         $this->dispatch(self::ACTION_URI);
 
         $this->assertSessionMessages(
@@ -239,7 +229,6 @@ class ManagePostTest extends AbstractControllerTestCase
         $this->getRequest()->setPostValue('sms_mobile_phone_prefix', 'US_1');
         $this->getRequest()->setPostValue('sms_mobile_phone_number', '5555551234');
         $this->loginCustomer(1);
-        $this->addFormKeyToRequest();
         $this->dispatch(self::ACTION_URI);
 
         $this->assertSessionMessages(
@@ -307,14 +296,5 @@ class ManagePostTest extends AbstractControllerTestCase
         );
 
         $this->_objectManager->addSharedInstance($smsSubscriptionRepositoryMock, SmsSubscriptionRepository::class);
-    }
-
-    private function addFormKeyToRequest(): void
-    {
-        if (!version_compare($this->_objectManager->get(ProductMetadataInterface::class)->getVersion(), '2.3.0', '<')) {
-            return;
-        }
-
-        $this->getRequest()->setPostValue('form_key', $this->_objectManager->get(FormKey::class)->getFormKey());
     }
 }

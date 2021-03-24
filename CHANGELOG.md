@@ -9,6 +9,19 @@ For more information about this extension, please see the [README] document.
 
 ## [Unreleased]
 
+## [1.1.0] - 2021-03-24
+
+### Changed
+
+- Updated dependencies on core Magento modules to include versions from Magento
+  2.4
+- Refactored install and uninstall scripts to Declarative Schema configuration
+and Data Patches
+- Refactored templates to use a stand-alone Escaper object for output
+  
+### Removed
+- Removed compatibility logic for Magento 2.2
+
 ## [1.0.2] - 2019-10-01
 
 ### Changed
@@ -45,7 +58,8 @@ the extension is disabled in the configuration
 - Support for sending mobile text notifications when an order is placed,
 shipped, cancelled, refunded, held, or released from hold
 
-[Unreleased]: https://github.com/wagento/sms-notifications/compare/1.0.1...HEAD
+[Unreleased]: https://github.com/wagento/sms-notifications/compare/1.1.0...HEAD
+[1.1.0]: https://github.com/wagento/sms-notifications/compare/1.0.2...1.1.0
 [1.0.2]: https://github.com/wagento/sms-notifications/compare/1.0.1...1.0.2
 [1.0.1]: https://github.com/wagento/sms-notifications/compare/1.0.0...1.0.1
 [1.0.0]: https://github.com/wagento/sms-notifications/releases/tag/1.0.0

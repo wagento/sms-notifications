@@ -25,10 +25,8 @@ namespace Wagento\SMSNotifications\Gateway\Entity;
  * @SuppressWarnings(PHPMD.TooManyFields)
  * @SuppressWarnings(PHPMD.ExcessivePublicCount)
  * @SuppressWarnings(PHPMD.ExcessiveClassComplexity)
- * @phpcs:disable Magento2.PHP.FinalImplementation.FoundFinal -- This class is not meant to be extended. Inherit from
- * its interface instead.
  */
-final class Message implements MessageInterface
+class Message implements MessageInterface
 {
     /**
      * Phone number from where the message should originate

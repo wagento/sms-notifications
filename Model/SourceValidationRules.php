@@ -32,11 +32,8 @@ use Magento\Framework\Validator\StringLengthFactory as LengthValidatorFactory;
  *
  * @package Wagento\SMSNotifications\Model
  * @author Joseph Leedy <joseph@wagento.com>
- *
- * @phpcs:disable Magento2.PHP.FinalImplementation.FoundFinal -- These validation rules are not meant to be
- * extended. Inherit from the interface if you wish to add additional rules.
  */
-final class SourceValidationRules implements ValidationRulesInterface
+class SourceValidationRules implements ValidationRulesInterface
 {
     private const FIELD = 'source';
 

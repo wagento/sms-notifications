@@ -12,6 +12,7 @@
  */
 
 /** @var \Magento\Framework\View\Element\Template $block */
+/** @var \Magento\Framework\Escaper $escaper */
 
 $modalContent = $block->getData('terms_conditions_view_model')->getContent();
 ?>
@@ -25,8 +26,8 @@ $modalContent = $block->getData('terms_conditions_view_model')->getContent();
                 "components": {
                     "sms-terms-conditions-component": {
                         "component": "Wagento_SMSNotifications/js/view/sms-terms-conditions",
-                        "modalTitle": "<?= $block->escapeJs(__('Terms and Conditions')) ?>",
-                        "modalContent": "<?= $block->escapeHtml($modalContent) ?>"
+                        "modalTitle": "<?= $escaper->escapeJs(__('Terms and Conditions')) ?>",
+                        "modalContent": "<?= $escaper->escapeHtml($modalContent) ?>"
                     }
                 }
             }
