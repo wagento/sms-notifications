@@ -64,7 +64,7 @@ class ShipmentVariables implements MessageVariablesInterface
             'customer_name' => $order->getCustomerFirstname() . ' ' . $order->getCustomerLastname(),
             'customer_first_name' => $order->getCustomerFirstname(),
             'customer_last_name' => $order->getCustomerLastname(),
-            'store_name' => $this->getStoreNameById((int)$order->getStoreId(), $order->getStoreName()),
+            'store_name' => $this->getStoreNameById((int)$order->getStoreId(), $order->getStoreName() ?? ''),
         ];
     }
 

@@ -74,7 +74,10 @@ class OrderVariables implements MessageVariablesInterface
             'customer_name' => $this->order->getCustomerFirstname() . ' ' . $this->order->getCustomerLastname(),
             'customer_first_name' => $this->order->getCustomerFirstname(),
             'customer_last_name' => $this->order->getCustomerLastname(),
-            'store_name' => $this->getStoreNameById((int)$this->order->getStoreId(), $this->order->getStoreName()),
+            'store_name' => $this->getStoreNameById(
+                (int)$this->order->getStoreId(),
+                $this->order->getStoreName() ?? ''
+            ),
         ];
     }
 
