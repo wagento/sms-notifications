@@ -12,13 +12,12 @@
  */
 
 /** @var \Magento\Backend\Block\Template $block */
-/** @var \Magento\Framework\Escaper $escaper */
 ?>
 <section id="sms-notifications-info" class="section-config">
     <header>
         <p class="logo"><img src="<?= $block->getViewFileUrl('Wagento_SMSNotifications::images/sms-notifications-logo.png') ?>" alt="Wagento SMS Notifications powered by LINK Mobility" width="250" height="250"></p>
     </header>
     <main>
-        <?= $escaper->escapeHtml($block->getData('info_text'), ['p', 'ul', 'li', 'a', 'strong', 'em']) ?>
+        <?= $block->escapeHtml($block->getData('info_text'), ['p', 'ul', 'li', 'a', 'strong', 'em']) ?>
     </main>
 </section>

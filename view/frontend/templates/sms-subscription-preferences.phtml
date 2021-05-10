@@ -12,7 +12,6 @@
  */
 
 /** @var \Magento\Framework\View\Element\Template $block */
-/** @var \Magento\Framework\Escaper $escaper */
 
 $groupedSmsTypes = $block->getData('sms_types_view_model')->getGroupedSmsTypes();
 ?>
@@ -27,7 +26,7 @@ $groupedSmsTypes = $block->getData('sms_types_view_model')->getGroupedSmsTypes()
                     "sms-subscription-preferences-component": {
                         "component": "Wagento_SMSNotifications/js/view/sms-subscription-preferences",
                         "groupedSmsTypes": <?= /* @noEscape */ \json_encode($groupedSmsTypes) ?>,
-                        "modalTitle": "<?= $escaper->escapeJs(__('Text Notification Preferences')) ?>"
+                        "modalTitle": "<?= $block->escapeJs(__('Text Notification Preferences')) ?>"
                     }
                 }
             }

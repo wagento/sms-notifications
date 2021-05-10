@@ -12,16 +12,15 @@
  */
 
 /** @var \Magento\Framework\View\Element\Html\Link\Current $block */
-/** @var \Magento\Framework\Escaper $escaper */
 ?>
 <li class="nav item<?= $block->isCurrent() || $block->getIsHighlighted() ? ' current' : '' ?>" id="sms-notifications-manage-link">
     <?php if (!$block->isCurrent()): ?>
-    <a href="<?= $escaper->escapeHtml($block->getHref()) ?>"<?= $block->getTitle() ? ' title="' . $escaper->escapeHtmlAttr(__($block->getTitle())) . '"' : '' ?>>
+    <a href="<?= $block->escapeHtml($block->getHref()) ?>"<?= $block->getTitle() ? ' title="' . $block->escapeHtmlAttr(__($block->getTitle())) . '"' : '' ?>>
     <?php endif ?>
     <?php if ($block->isCurrent() || $block->getIsHighlighted()): ?>
         <strong>
     <?php endif ?>
-        <?= $escaper->escapeHtml(__($block->getLabel())) ?>
+        <?= $block->escapeHtml(__($block->getLabel())) ?>
     <?php if ($block->isCurrent() || $block->getIsHighlighted()): ?>
         </strong>
     <?php endif ?>
