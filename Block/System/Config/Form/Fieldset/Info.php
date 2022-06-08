@@ -40,7 +40,7 @@ class Info extends Fieldset
             ->createBlock(Template::class, 'sms_notifications_config_header')
             ->setTemplate(self::TEMPLATE)
             ->setData([
-                'info_text' => $element->getComment() ?? ''
+                'info_text' => $element->getData('comment') ?? ''
             ]);
 
         return $block->_toHtml();

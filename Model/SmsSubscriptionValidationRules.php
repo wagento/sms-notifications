@@ -19,8 +19,8 @@ namespace Wagento\SMSNotifications\Model;
 use Wagento\SMSNotifications\Api\ValidationRulesInterface;
 use Wagento\SMSNotifications\Model\Source\SmsType as SmsTypeSource;
 use Magento\Framework\Validator\DataObject;
-use Magento\Framework\Validator\NotEmpty;
 use Magento\Framework\Validator\NotEmptyFactory;
+use Zend_Validate_NotEmpty as NotEmpty;
 
 /**
  * SMS Subscription Validation Rules

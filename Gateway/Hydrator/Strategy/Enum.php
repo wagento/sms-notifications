@@ -44,7 +44,7 @@ class Enum implements StrategyInterface
     /**
      * {@inheritdoc}
      */
-    public function extract($value)
+    public function extract($value, ?object $object = NULL)
     {
         if ($value === null) {
             return $value;
@@ -63,7 +63,7 @@ class Enum implements StrategyInterface
     /**
      * {@inheritdoc}
      */
-    public function hydrate($value)
+    public function hydrate($value, ?array $data)
     {
         try {
             $enum = new $this->enumClass($value);

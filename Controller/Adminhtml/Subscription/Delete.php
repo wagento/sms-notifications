@@ -31,6 +31,10 @@ class Delete extends Action
     const ADMIN_RESOURCE = 'Wagento_SMSNotifications::manage_sms_subscriptions';
 
     /**
+     * @var \Magento\Framework\App\RequestInterface
+     */
+    protected $_request;
+    /**
      * @var \Wagento\SMSNotifications\Api\SmsSubscriptionManagementInterface
      */
     private $smsSubscriptionManagement;
@@ -41,6 +45,7 @@ class Delete extends Action
     ) {
         parent::__construct($context);
 
+        $this->_request = $context->getRequest();
         $this->smsSubscriptionManagement = $smsSubscriptionManagement;
     }
 
@@ -61,7 +66,7 @@ class Delete extends Action
         }
 
         $customerId = (int)$this->_getSession()->getCustomerData()['customer_id'];
-        $smsSubscriptionId = (int)$this->getRequest()->getParam('sms_subscription_id');
+        $smsSubscriptionId = (int)$this->_request->getParam('sms_subscription_id');
 
         $resultRedirect->setPath('customer/index/edit', ['id' => $customerId, '_current' => true]);
 

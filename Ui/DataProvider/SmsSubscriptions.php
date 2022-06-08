@@ -99,7 +99,7 @@ class SmsSubscriptions extends AbstractDataProvider
         unset($item);
 
         $lastItem = end($data['items']);
-        $itemId = (int)$lastItem['sms_subscription_id'];
+        $itemId = isset($lastItem['sms_subscription_id']) ? (int)$lastItem['sms_subscription_id'] : 0;
 
         foreach ($smsTypes as $key => $smsType) {
             if (in_array($key, $usedSmsTypeKeys, true)) {

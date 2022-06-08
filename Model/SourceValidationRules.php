@@ -20,12 +20,12 @@ use Wagento\SMSNotifications\Api\ValidationRulesInterface;
 use Magento\Framework\Validator\AlnumFactory as AlphanumericValidatorFactory;
 use Magento\Framework\Validator\DataObject as ValidatorObject;
 use Magento\Framework\Validator\IntUtilsFactory as IntegerValidatorFactory;
-use Magento\Framework\Validator\NotEmpty as NotEmptyValidator;
 use Magento\Framework\Validator\NotEmptyFactory as NotEmptyValidatorFactory;
-use Magento\Framework\Validator\Regex as RegexValidator;
 use Magento\Framework\Validator\RegexFactory as RegexValidatorFactory;
-use Magento\Framework\Validator\StringLength as LengthValidator;
 use Magento\Framework\Validator\StringLengthFactory as LengthValidatorFactory;
+use Zend_Validate_NotEmpty as NotEmptyValidator;
+use Zend_Validate_Regex as RegexValidator;
+use Zend_Validate_StringLength as LengthValidator;
 
 /**
  * Source Configuration Field Validation Rules

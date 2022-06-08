@@ -101,7 +101,6 @@ class CustomerRegisterSuccessObserver implements ObserverInterface
 
         if (
             !$this->config->isEnabled($websiteId)
-            || !$this->request->isPost()
             || empty($smsNotificationsParameters)
             || empty($smsNotificationsParameters['subscribed'])
         ) {

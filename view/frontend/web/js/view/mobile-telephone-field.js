@@ -14,7 +14,7 @@ define([
     'ko',
     'uiComponent',
     'mage/translate',
-    'smsNotifications'
+    'Wagento_SMSNotifications/js/model/sms-notifications'
 ], function (ko, Component, $t, smsNotifications) {
     'use strict';
 

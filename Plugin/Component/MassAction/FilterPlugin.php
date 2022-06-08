@@ -153,17 +153,19 @@ class FilterPlugin
 
         try {
             if (is_array($excluded) && count($excluded) > 0) {
-                $this->filterBuilder->setConditionType('nin')
+                $filterBuilder = $this->filterBuilder->setConditionType('nin')
                     ->setField('sms_type')
-                    ->setValue($excluded);
+                    ->setValue($excluded)
+                    ->create();
 
-                $this->dataProvider->addFilter($this->filterBuilder->create());
+                $this->dataProvider->addFilter($filterBuilder);
             } elseif (is_array($selected) && count($selected) > 0) {
-                $this->filterBuilder->setConditionType('in')
+                $filterBuilder = $this->filterBuilder->setConditionType('in')
                     ->setField('sms_type')
-                    ->setValue($selected);
+                    ->setValue($selected)
+                    ->create();
 
-                $this->dataProvider->addFilter($this->filterBuilder->create());
+                $this->dataProvider->addFilter($filterBuilder);
             }
         } catch (\Exception $e) {
             throw new LocalizedException(__($e->getMessage()));

@@ -38,6 +38,10 @@ use Psr\Log\LoggerInterface;
 class ManagePost extends Action implements ActionInterface, CsrfAwareActionInterface
 {
     /**
+     * @var \Magento\Framework\App\RequestInterface
+     */
+    protected $_request;
+    /**
      * @var \Magento\Customer\Model\Session
      */
     private $customerSession;
@@ -73,6 +77,7 @@ class ManagePost extends Action implements ActionInterface, CsrfAwareActionInter
     ) {
         parent::__construct($context);
 
+        $this->_request = $context->getRequest();
         $this->customerSession = $customerSession;
         $this->logger = $logger;
         $this->smsSubscriptionRepository = $smsSubscriptionRepository;
@@ -89,7 +94,7 @@ class ManagePost extends Action implements ActionInterface, CsrfAwareActionInter
         /** @var \Magento\Framework\Controller\Result\Redirect $resultRedirect */
         $resultRedirect = $this->resultRedirectFactory->create();
         $customerId = $this->customerSession->getCustomerId();
-        $selectedSmsTypes = $this->getRequest()->getParam('sms_types', []);
+        $selectedSmsTypes = $this->_request->getParam('sms_types', []);
 
         $resultRedirect->setPath('*/*/manage');
 
@@ -192,8 +197,8 @@ class ManagePost extends Action implements ActionInterface, CsrfAwareActionInter
 
     private function updateMobileTelephoneNumber(): bool
     {
-        $newPrefix = $this->getRequest()->getParam('sms_mobile_phone_prefix', '');
-        $newNumber = $this->getRequest()->getParam('sms_mobile_phone_number', '');
+        $newPrefix = $this->_request->getParam('sms_mobile_phone_prefix', '');
+        $newNumber = $this->_request->getParam('sms_mobile_phone_number', '');
         $customer = $this->customerSession->getCustomerDataObject();
         $numberUpdated = $this->mobileTelephoneNumberManagement->updateNumber($newPrefix, $newNumber, $customer);
 

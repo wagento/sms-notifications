@@ -17,10 +17,10 @@ declare(strict_types=1);
 namespace Wagento\SMSNotifications\Model\ResourceModel;
 
 use Magento\Framework\DataObjectFactory;
-use Magento\Framework\DB\Select;
 use Magento\Framework\Exception\AlreadyExistsException;
 use Magento\Framework\Model\AbstractModel;
 use Magento\Framework\Model\ResourceModel\Db\AbstractDb;
+use Zend_Db_Select;
 
 /**
  * SMS Subscription Resource Model
@@ -68,7 +68,7 @@ class SmsSubscription extends AbstractDb
         $customerId = $data->getData('customer_id');
         $select = $this->getConnection()->select()->from($this->getMainTable());
 
-        $select->reset(Select::WHERE);
+        $select->reset(Zend_Db_Select::WHERE);
         $select->where('sms_type=?', $smsType);
         $select->where('customer_id=?', $customerId);
 

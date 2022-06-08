@@ -15,7 +15,7 @@ define([
     'ko',
     'uiComponent',
     'mage/translate',
-    'smsNotifications',
+    'Wagento_SMSNotifications/js/model/sms-notifications',
     'Wagento_SMSNotifications/js/model/sms-subscription-preferences-modal',
     'Wagento_SMSNotifications/js/model/sms-terms-conditions-modal'
 ], function ($, ko, Component, $t, smsNotifications, subscriptionPreferencesModal, termsConditionsModal) {

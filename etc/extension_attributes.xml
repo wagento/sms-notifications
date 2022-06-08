@@ -26,4 +26,10 @@
     <extension_attributes for="Magento\Sales\Api\Data\ShipmentInterface">
         <attribute code="is_sms_notification_sent" type="bool"/>
     </extension_attributes>
+    <extension_attributes for="Magento\Customer\Api\Data\CustomerInterface">
+        <attribute code="sms_mobile_phone_prefix" type="string"/>
+    </extension_attributes>
+    <extension_attributes for="Magento\Customer\Api\Data\CustomerInterface">
+        <attribute code="sms_mobile_phone_number" type="string"/>
+    </extension_attributes>
 </config>

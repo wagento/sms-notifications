@@ -16,7 +16,7 @@ declare(strict_types=1);
 
 namespace Wagento\SMSNotifications\Gateway\Hydrator;
 
-use Zend\Hydrator\Reflection;
+use Zend\Hydrator\ReflectionHydrator as Reflection;
 
 /**
  * Message Entity Hydrator

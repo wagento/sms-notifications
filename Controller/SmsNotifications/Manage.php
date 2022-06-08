@@ -16,7 +16,7 @@ declare(strict_types=1);
 
 namespace Wagento\SMSNotifications\Controller\SmsNotifications;
 
-use Magento\Customer\Controller\AbstractAccount;
+use Magento\Framework\App\Action\Action;
 use Magento\Framework\App\Action\Context;
 use Magento\Framework\Exception\NoSuchEntityException;
 use Magento\Framework\Exception\NotFoundException;
@@ -30,7 +30,7 @@ use Wagento\SMSNotifications\Model\Config;
  * @author Yair García Torres <yair.garcia@wagento.com>
  * @author Joseph Leedy <joseph@wagento.com>
  */
-class Manage extends AbstractAccount
+class Manage extends Action
 {
     /**
      * @var \Magento\Store\Api\StoreManagementInterface

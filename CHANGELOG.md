@@ -9,6 +9,14 @@ For more information about this extension, please see the [README] document.
 
 ## [Unreleased]
 
+## [1.1.2] - 2021-06-10
+
+### Fixed
+
+- Fixed version compatibility issues to ensure that extension remains compatible with
+  Magento 2.4.4
+- Fixed JS not loading issue on FED customer manage notification page
+
 ## [1.1.2] - 2021-05-10
 
 ### Fixed

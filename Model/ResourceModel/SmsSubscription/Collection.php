@@ -19,6 +19,7 @@ namespace Wagento\SMSNotifications\Model\ResourceModel\SmsSubscription;
 use Wagento\SMSNotifications\Model\ResourceModel\SmsSubscription as SmsSubscriptionResourceModel;
 use Wagento\SMSNotifications\Model\SmsSubscription as SmsSubscriptionModel;
 use Magento\Framework\Model\ResourceModel\Db\Collection\AbstractCollection;
+use Zend_Db_Select;
 
 /**
  * SMS Subscription Collection
@@ -41,10 +42,10 @@ class Collection extends AbstractCollection
     {
         $smsTypesSelect = clone $this->getSelect();
 
-        $smsTypesSelect->reset(\Magento\Framework\DB\Select::ORDER);
-        $smsTypesSelect->reset(\Magento\Framework\DB\Select::LIMIT_COUNT);
-        $smsTypesSelect->reset(\Magento\Framework\DB\Select::LIMIT_OFFSET);
-        $smsTypesSelect->reset(\Magento\Framework\DB\Select::COLUMNS);
+        $smsTypesSelect->reset(Zend_Db_Select::ORDER);
+        $smsTypesSelect->reset(Zend_Db_Select::LIMIT_COUNT);
+        $smsTypesSelect->reset(Zend_Db_Select::LIMIT_OFFSET);
+        $smsTypesSelect->reset(Zend_Db_Select::COLUMNS);
         $smsTypesSelect->columns('sms_type', 'main_table');
 
         return $this->getConnection()->fetchCol($smsTypesSelect, $this->_bindParams);

@@ -14,7 +14,7 @@ define([
     'jquery',
     'uiComponent',
     'Wagento_SMSNotifications/js/model/sms-terms-conditions-modal',
-    'smsNotifications'
+    'Wagento_SMSNotifications/js/model/sms-notifications'
 ], function ($, Component, termsConditionsModal, smsNotifications) {
     'use strict';
 

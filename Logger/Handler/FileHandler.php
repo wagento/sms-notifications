@@ -56,7 +56,7 @@ class FileHandler extends Base
     /**
      * {@inheritdoc}
      */
-    public function isHandling(array $record)
+    public function isHandling(array $record): bool
     {
         try {
             $websiteId = (int)$this->storeManager->getStore()->getWebsiteId();

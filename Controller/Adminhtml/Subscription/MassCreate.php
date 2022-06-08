@@ -32,6 +32,10 @@ class MassCreate extends Action
     const ADMIN_RESOURCE = 'Wagento_SMSNotifications::manage_sms_subscriptions';
 
     /**
+     * @var \Magento\Framework\App\RequestInterface
+     */
+    protected $_request;
+    /**
      * @var \Psr\Log\LoggerInterface
      */
     private $logger;
@@ -47,6 +51,7 @@ class MassCreate extends Action
     ) {
         parent::__construct($context);
 
+        $this->_request = $context->getRequest();
         $this->logger = $logger;
         $this->smsSubscriptionManagement = $smsSubscriptionManagement;
     }
@@ -71,7 +76,7 @@ class MassCreate extends Action
         }
 
         $customerId = (int)$this->_getSession()->getCustomerData()['customer_id'];
-        $selectedSmsTypes = $this->getRequest()->getParam('selected', []);
+        $selectedSmsTypes = $this->_request->getParam('selected', []);
 
         $resultRedirect->setPath('customer/index/edit', ['id' => $customerId, '_current' => true]);
 

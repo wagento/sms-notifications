@@ -15,7 +15,7 @@ define([
     'ko',
     'uiComponent',
     'Wagento_SMSNotifications/js/model/sms-subscription-preferences-modal',
-    'smsNotifications'
+    'Wagento_SMSNotifications/js/model/sms-notifications'
 ], function ($, ko, Component, subscriptionPreferencesModal, smsNotifications) {
     'use strict';
 
